@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             pictureBoxSketch = new PictureBox();
             label1 = new Label();
@@ -36,28 +37,34 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            numericUpDownCountOfHoles = new NumericUpDown();
+            nNumericUpDown = new NumericUpDown();
             label6 = new Label();
-            buttonBuild = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
+            _buttonBuild = new Button();
+            sizeDTextBox = new TextBox();
+            size_dTextBox = new TextBox();
+            size_d1TextBox = new TextBox();
+            size_d2TextBox = new TextBox();
+            sizeHTextBox = new TextBox();
+            size_htextBox = new TextBox();
             groupBoxMainSizes = new GroupBox();
-            trackBar1 = new TrackBar();
-            label7 = new Label();
             label8 = new Label();
-            textBox7 = new TextBox();
-            label9 = new Label();
             saveFolderBrowserDialog = new FolderBrowserDialog();
-            textBox8 = new TextBox();
-            setSaveFolderButton = new Button();
+            _textBoxSavePath = new TextBox();
+            _setSaveFolderButton = new Button();
+            _errorProvider = new ErrorProvider(components);
+            chamferGroupBox = new GroupBox();
+            chamferLengthTextBox = new TextBox();
+            label9 = new Label();
+            angleNumericUpDown = new NumericUpDown();
+            label7 = new Label();
+            D2TextBox = new TextBox();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSketch).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCountOfHoles).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nNumericUpDown).BeginInit();
             groupBoxMainSizes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_errorProvider).BeginInit();
+            chamferGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)angleNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxSketch
@@ -75,7 +82,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 27);
+            label1.Location = new Point(17, 27);
             label1.Name = "label1";
             label1.Size = new Size(15, 16);
             label1.TabIndex = 2;
@@ -84,7 +91,7 @@
             // dSizeLabel
             // 
             dSizeLabel.AutoSize = true;
-            dSizeLabel.Location = new Point(10, 57);
+            dSizeLabel.Location = new Point(18, 57);
             dSizeLabel.Name = "dSizeLabel";
             dSizeLabel.Size = new Size(14, 16);
             dSizeLabel.TabIndex = 3;
@@ -93,7 +100,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(10, 97);
+            label2.Location = new Point(17, 112);
             label2.Name = "label2";
             label2.Size = new Size(19, 16);
             label2.TabIndex = 4;
@@ -102,7 +109,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(10, 136);
+            label3.Location = new Point(17, 147);
             label3.Name = "label3";
             label3.Size = new Size(21, 16);
             label3.TabIndex = 10;
@@ -111,7 +118,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(11, 179);
+            label4.Location = new Point(18, 177);
             label4.Name = "label4";
             label4.Size = new Size(15, 16);
             label4.TabIndex = 11;
@@ -120,124 +127,114 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(15, 219);
+            label5.Location = new Point(18, 207);
             label5.Name = "label5";
             label5.Size = new Size(14, 16);
             label5.TabIndex = 12;
             label5.Text = "h";
             // 
-            // numericUpDownCountOfHoles
+            // nNumericUpDown
             // 
-            numericUpDownCountOfHoles.Location = new Point(38, 251);
-            numericUpDownCountOfHoles.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
-            numericUpDownCountOfHoles.Name = "numericUpDownCountOfHoles";
-            numericUpDownCountOfHoles.Size = new Size(125, 24);
-            numericUpDownCountOfHoles.TabIndex = 13;
-            numericUpDownCountOfHoles.Value = new decimal(new int[] { 2, 0, 0, 0 });
+            nNumericUpDown.Location = new Point(55, 229);
+            nNumericUpDown.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
+            nNumericUpDown.Name = "nNumericUpDown";
+            nNumericUpDown.Size = new Size(147, 24);
+            nNumericUpDown.TabIndex = 13;
+            nNumericUpDown.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(15, 253);
+            label6.Location = new Point(18, 237);
             label6.Name = "label6";
             label6.Size = new Size(14, 16);
             label6.TabIndex = 14;
             label6.Text = "n";
             // 
-            // buttonBuild
+            // _buttonBuild
             // 
-            buttonBuild.Location = new Point(392, 414);
-            buttonBuild.Name = "buttonBuild";
-            buttonBuild.Size = new Size(94, 29);
-            buttonBuild.TabIndex = 15;
-            buttonBuild.Text = "Построить";
-            buttonBuild.UseVisualStyleBackColor = true;
+            _buttonBuild.Location = new Point(392, 414);
+            _buttonBuild.Name = "_buttonBuild";
+            _buttonBuild.Size = new Size(94, 29);
+            _buttonBuild.TabIndex = 15;
+            _buttonBuild.Text = "Построить";
+            _buttonBuild.UseVisualStyleBackColor = true;
+            _buttonBuild.Click += _buttonBuild_Click;
             // 
-            // textBox1
+            // sizeDTextBox
             // 
-            textBox1.Location = new Point(36, 19);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 24);
-            textBox1.TabIndex = 16;
+            sizeDTextBox.Location = new Point(55, 19);
+            sizeDTextBox.Name = "sizeDTextBox";
+            sizeDTextBox.Size = new Size(147, 24);
+            sizeDTextBox.TabIndex = 16;
+            sizeDTextBox.Text = "90";
             // 
-            // textBox2
+            // size_dTextBox
             // 
-            textBox2.Location = new Point(36, 49);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 24);
-            textBox2.TabIndex = 17;
+            size_dTextBox.Location = new Point(55, 49);
+            size_dTextBox.Name = "size_dTextBox";
+            size_dTextBox.Size = new Size(147, 24);
+            size_dTextBox.TabIndex = 17;
+            size_dTextBox.Text = "10";
+            size_dTextBox.TextChanged += size_dTextBox_TextChanged;
             // 
-            // textBox3
+            // size_d1TextBox
             // 
-            textBox3.Location = new Point(36, 89);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 24);
-            textBox3.TabIndex = 18;
+            size_d1TextBox.Location = new Point(55, 109);
+            size_d1TextBox.Name = "size_d1TextBox";
+            size_d1TextBox.Size = new Size(147, 24);
+            size_d1TextBox.TabIndex = 18;
+            size_d1TextBox.Text = "50";
             // 
-            // textBox4
+            // size_d2TextBox
             // 
-            textBox4.Location = new Point(38, 128);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 24);
-            textBox4.TabIndex = 19;
+            size_d2TextBox.Location = new Point(55, 139);
+            size_d2TextBox.Name = "size_d2TextBox";
+            size_d2TextBox.Size = new Size(147, 24);
+            size_d2TextBox.TabIndex = 19;
+            size_d2TextBox.Text = "60";
             // 
-            // textBox5
+            // sizeHTextBox
             // 
-            textBox5.Location = new Point(38, 171);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(125, 24);
-            textBox5.TabIndex = 20;
+            sizeHTextBox.Location = new Point(55, 169);
+            sizeHTextBox.Name = "sizeHTextBox";
+            sizeHTextBox.Size = new Size(147, 24);
+            sizeHTextBox.TabIndex = 20;
+            sizeHTextBox.Text = "8";
             // 
-            // textBox6
+            // size_htextBox
             // 
-            textBox6.Location = new Point(38, 211);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(125, 24);
-            textBox6.TabIndex = 21;
+            size_htextBox.Location = new Point(55, 199);
+            size_htextBox.Name = "size_htextBox";
+            size_htextBox.Size = new Size(147, 24);
+            size_htextBox.TabIndex = 21;
+            size_htextBox.Text = "6";
             // 
             // groupBoxMainSizes
             // 
-            groupBoxMainSizes.Controls.Add(textBox1);
-            groupBoxMainSizes.Controls.Add(textBox6);
-            groupBoxMainSizes.Controls.Add(numericUpDownCountOfHoles);
+            groupBoxMainSizes.Controls.Add(label10);
+            groupBoxMainSizes.Controls.Add(D2TextBox);
+            groupBoxMainSizes.Controls.Add(sizeDTextBox);
+            groupBoxMainSizes.Controls.Add(size_htextBox);
+            groupBoxMainSizes.Controls.Add(nNumericUpDown);
             groupBoxMainSizes.Controls.Add(label6);
             groupBoxMainSizes.Controls.Add(label1);
-            groupBoxMainSizes.Controls.Add(textBox5);
+            groupBoxMainSizes.Controls.Add(sizeHTextBox);
             groupBoxMainSizes.Controls.Add(dSizeLabel);
-            groupBoxMainSizes.Controls.Add(textBox4);
+            groupBoxMainSizes.Controls.Add(size_d2TextBox);
             groupBoxMainSizes.Controls.Add(label5);
-            groupBoxMainSizes.Controls.Add(textBox2);
-            groupBoxMainSizes.Controls.Add(textBox3);
+            groupBoxMainSizes.Controls.Add(size_dTextBox);
+            groupBoxMainSizes.Controls.Add(size_d1TextBox);
             groupBoxMainSizes.Controls.Add(label2);
             groupBoxMainSizes.Controls.Add(label4);
             groupBoxMainSizes.Controls.Add(label3);
             groupBoxMainSizes.FlatStyle = FlatStyle.Flat;
             groupBoxMainSizes.Location = new Point(21, 23);
             groupBoxMainSizes.Name = "groupBoxMainSizes";
-            groupBoxMainSizes.Size = new Size(241, 283);
+            groupBoxMainSizes.Size = new Size(241, 268);
             groupBoxMainSizes.TabIndex = 22;
             groupBoxMainSizes.TabStop = false;
             groupBoxMainSizes.Text = "Основные размеры";
-            // 
-            // trackBar1
-            // 
-            trackBar1.Location = new Point(122, 312);
-            trackBar1.Maximum = 89;
-            trackBar1.Minimum = 1;
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(163, 56);
-            trackBar1.TabIndex = 23;
-            trackBar1.TickFrequency = 5;
-            trackBar1.Value = 1;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(21, 322);
-            label7.Name = "label7";
-            label7.Size = new Size(81, 16);
-            label7.TabIndex = 24;
-            label7.Text = "Угол фаски:";
             // 
             // label8
             // 
@@ -247,40 +244,96 @@
             label8.Size = new Size(0, 16);
             label8.TabIndex = 25;
             // 
-            // textBox7
+            // _textBoxSavePath
             // 
-            textBox7.Location = new Point(132, 354);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(142, 24);
-            textBox7.TabIndex = 26;
+            _textBoxSavePath.Location = new Point(180, 414);
+            _textBoxSavePath.Name = "_textBoxSavePath";
+            _textBoxSavePath.PlaceholderText = "C:\\";
+            _textBoxSavePath.ScrollBars = ScrollBars.Horizontal;
+            _textBoxSavePath.Size = new Size(142, 24);
+            _textBoxSavePath.TabIndex = 28;
+            _textBoxSavePath.Text = "C:\\";
+            _textBoxSavePath.TextChanged += textBoxSavePath_TextChanged;
+            // 
+            // _setSaveFolderButton
+            // 
+            _setSaveFolderButton.Location = new Point(21, 411);
+            _setSaveFolderButton.Name = "_setSaveFolderButton";
+            _setSaveFolderButton.Size = new Size(136, 29);
+            _setSaveFolderButton.TabIndex = 29;
+            _setSaveFolderButton.Text = "Куда сохранять...";
+            _setSaveFolderButton.UseVisualStyleBackColor = true;
+            _setSaveFolderButton.Click += setSaveFolderButton_Click;
+            // 
+            // _errorProvider
+            // 
+            _errorProvider.ContainerControl = this;
+            // 
+            // chamferGroupBox
+            // 
+            chamferGroupBox.Controls.Add(chamferLengthTextBox);
+            chamferGroupBox.Controls.Add(label9);
+            chamferGroupBox.Controls.Add(angleNumericUpDown);
+            chamferGroupBox.Controls.Add(label7);
+            chamferGroupBox.Location = new Point(21, 297);
+            chamferGroupBox.Name = "chamferGroupBox";
+            chamferGroupBox.Size = new Size(241, 90);
+            chamferGroupBox.TabIndex = 30;
+            chamferGroupBox.TabStop = false;
+            chamferGroupBox.Text = "Параметры фаски";
+            // 
+            // chamferLengthTextBox
+            // 
+            chamferLengthTextBox.Location = new Point(67, 50);
+            chamferLengthTextBox.Name = "chamferLengthTextBox";
+            chamferLengthTextBox.Size = new Size(135, 24);
+            chamferLengthTextBox.TabIndex = 3;
+            chamferLengthTextBox.Text = "3";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(21, 357);
+            label9.Location = new Point(10, 53);
             label9.Name = "label9";
-            label9.Size = new Size(86, 16);
-            label9.TabIndex = 27;
-            label9.Text = "Длина фаски";
+            label9.Size = new Size(44, 16);
+            label9.TabIndex = 2;
+            label9.Text = "Длина";
             // 
-            // textBox8
+            // angleNumericUpDown
             // 
-            textBox8.Location = new Point(180, 414);
-            textBox8.Name = "textBox8";
-            textBox8.PlaceholderText = "C:\\";
-            textBox8.Size = new Size(142, 24);
-            textBox8.TabIndex = 28;
-            textBox8.Text = "C:\\";
+            angleNumericUpDown.Location = new Point(67, 20);
+            angleNumericUpDown.Maximum = new decimal(new int[] { 89, 0, 0, 0 });
+            angleNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            angleNumericUpDown.Name = "angleNumericUpDown";
+            angleNumericUpDown.Size = new Size(135, 24);
+            angleNumericUpDown.TabIndex = 1;
+            angleNumericUpDown.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
-            // setSaveFolderButton
+            // label7
             // 
-            setSaveFolderButton.Location = new Point(21, 411);
-            setSaveFolderButton.Name = "setSaveFolderButton";
-            setSaveFolderButton.Size = new Size(136, 29);
-            setSaveFolderButton.TabIndex = 29;
-            setSaveFolderButton.Text = "Куда сохранять...";
-            setSaveFolderButton.UseVisualStyleBackColor = true;
-            setSaveFolderButton.Click += SetSaveFolderButton_Click;
+            label7.AutoSize = true;
+            label7.Location = new Point(11, 22);
+            label7.Name = "label7";
+            label7.Size = new Size(36, 16);
+            label7.TabIndex = 0;
+            label7.Text = "Угол";
+            // 
+            // D2TextBox
+            // 
+            D2TextBox.Location = new Point(55, 79);
+            D2TextBox.Name = "D2TextBox";
+            D2TextBox.Size = new Size(147, 24);
+            D2TextBox.TabIndex = 22;
+            D2TextBox.Text = "72";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(18, 82);
+            label10.Name = "label10";
+            label10.Size = new Size(22, 16);
+            label10.TabIndex = 23;
+            label10.Text = "D2";
             // 
             // MainForm
             // 
@@ -289,15 +342,12 @@
             BackColor = Color.LightGray;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(498, 469);
-            Controls.Add(setSaveFolderButton);
-            Controls.Add(textBox8);
-            Controls.Add(label9);
-            Controls.Add(textBox7);
+            Controls.Add(chamferGroupBox);
+            Controls.Add(_setSaveFolderButton);
+            Controls.Add(_textBoxSavePath);
             Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(trackBar1);
             Controls.Add(groupBoxMainSizes);
-            Controls.Add(buttonBuild);
+            Controls.Add(_buttonBuild);
             Controls.Add(pictureBoxSketch);
             Font = new Font("GOST type B", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -307,10 +357,13 @@
             Name = "MainForm";
             ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)pictureBoxSketch).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCountOfHoles).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nNumericUpDown).EndInit();
             groupBoxMainSizes.ResumeLayout(false);
             groupBoxMainSizes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_errorProvider).EndInit();
+            chamferGroupBox.ResumeLayout(false);
+            chamferGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)angleNumericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -324,23 +377,27 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private NumericUpDown numericUpDownCountOfHoles;
+        private NumericUpDown nNumericUpDown;
         private Label label6;
-        private Button buttonBuild;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private Button _buttonBuild;
+        private TextBox sizeDTextBox;
+        private TextBox size_dTextBox;
+        private TextBox size_d1TextBox;
+        private TextBox size_d2TextBox;
+        private TextBox sizeHTextBox;
+        private TextBox size_htextBox;
         private GroupBox groupBoxMainSizes;
-        private TrackBar trackBar1;
-        private Label label7;
         private Label label8;
-        private TextBox textBox7;
-        private Label label9;
         private FolderBrowserDialog saveFolderBrowserDialog;
-        private TextBox textBox8;
-        private Button setSaveFolderButton;
+        private TextBox _textBoxSavePath;
+        private Button _setSaveFolderButton;
+        private GroupBox chamferGroupBox;
+        private NumericUpDown angleNumericUpDown;
+        private Label label7;
+        private TextBox chamferLengthTextBox;
+        private Label label9;
+        public ErrorProvider _errorProvider;
+        private Label label10;
+        private TextBox D2TextBox;
     }
 }

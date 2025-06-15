@@ -22,6 +22,7 @@
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
+      <Private>False</Private>
     </COMReference>
     <COMReference Include="Kompas6Constants">
       <WrapperTool>tlbimp</WrapperTool>
@@ -31,6 +32,7 @@
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
+      <Private>False</Private>
     </COMReference>
     <COMReference Include="Kompas6Constants3D">
       <WrapperTool>tlbimp</WrapperTool>
@@ -40,6 +42,7 @@
       <Lcid>0</Lcid>
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
+      <Private>False</Private>
     </COMReference>
   </ItemGroup>
 
