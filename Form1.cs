@@ -34,19 +34,17 @@ namespace Oil_level_glass
 
         private void _buttonBuild_Click(object sender, EventArgs e)
         {
-            if (IKompasModel.KompasObject == null)
+            if (IKompasModel.Kompas == null)
             {
                 Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
 
-                IKompasModel.KompasObject = (KompasObject)Activator.CreateInstance(t);
-
-                IKompasModel.KompasObject.Visible = true;
+                IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
             }
 
             try
             {
-                IKompasModel.KompasObject.Visible = true;
-                IKompasModel.KompasObject.ActivateControllerAPI();
+                IKompasModel.Kompas.Visible = true;
+                IKompasModel.Kompas.ActivateControllerAPI();
             }
             catch
             {
@@ -54,11 +52,11 @@ namespace Oil_level_glass
                 {
                     Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
 
-                    IKompasModel.KompasObject = (KompasObject)Activator.CreateInstance(t);
+                    IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
 
-                    IKompasModel.KompasObject.Visible = true;
+                    IKompasModel.Kompas.Visible = true;
 
-                    IKompasModel.KompasObject.ActivateControllerAPI();
+                    IKompasModel.Kompas.ActivateControllerAPI();
                 }
                 catch
                 {

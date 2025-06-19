@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kompas6API5;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace Oil_level_glass.Kompas_classes
 
         string ModelName { get; set; }
 
-        static Kompas6API5.KompasObject ?KompasObject { get; set; }
+        ksDocument3D Document3D { get; set; }
+
+        static Kompas6API5.KompasObject ?Kompas { get; set; }
     }
 }
