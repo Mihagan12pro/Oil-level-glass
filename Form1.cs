@@ -35,6 +35,12 @@ namespace Oil_level_glass
         private void buttonBuild_Click(object sender, EventArgs e)
         {
             Housing housing = new Housing(90,6.65,72,50,60,8,6,2,60,3);
+            housing.SavePath = "C:\\Сборка";
+            housing.ModelName = "Корпус";
+
+            Glass glass = new Glass(6,60);
+           glass.SavePath = housing.SavePath;
+            glass.ModelName = "Стекло";
 
             if (IKompasModel.Kompas == null)
             {
@@ -49,6 +55,7 @@ namespace Oil_level_glass
                 IKompasModel.Kompas.ActivateControllerAPI();
 
                 housing.Build();
+                glass.Build();
             }
             catch
             {
@@ -63,6 +70,7 @@ namespace Oil_level_glass
                     IKompasModel.Kompas.ActivateControllerAPI();
 
                     housing.Build();
+                    glass.Build();
                 }
                 catch
                 {

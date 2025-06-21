@@ -254,14 +254,14 @@ namespace Oil_level_glass.Kompas_classes
             planeXOY = Part.GetDefaultEntity((short)Obj3dType.o3d_planeXOY);
             planeXOZ = Part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
             planeYOZ = Part.GetDefaultEntity((short)Obj3dType.o3d_planeYOZ);
+
+            SavePath = SavePath + "\\" + ModelName + FileExtension;
         }
 
 
         public KompasDetail()
         {
             FileExtension = ".m3d";
-
-            SavePath = SavePath + "\\" + ModelName + FileExtension;
         }
     }
 }

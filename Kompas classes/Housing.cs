@@ -90,6 +90,8 @@ namespace Oil_level_glass.Kompas_classes
             _chamfer1 = Chamfer(new List<Point3D> { new Point3D() { X = _D/2, Y = 0, Z = 0} },_chamferLength,_chamferAngle);
 
             Part.Update();
+
+            Document3D.SaveAs(SavePath);
         }
 
 
