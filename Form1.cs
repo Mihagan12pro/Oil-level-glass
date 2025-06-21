@@ -39,8 +39,12 @@ namespace Oil_level_glass
             housing.ModelName = "Корпус";
 
             Glass glass = new Glass(6,60);
-           glass.SavePath = housing.SavePath;
+            glass.SavePath = housing.SavePath;
             glass.ModelName = "Стекло";
+
+            Ring ring = new Ring(6, 60, 50);
+            ring.SavePath = housing.SavePath;
+            ring.ModelName = "Резиновая подкладка";
 
             if (IKompasModel.Kompas == null)
             {
@@ -56,6 +60,7 @@ namespace Oil_level_glass
 
                 housing.Build();
                 glass.Build();
+                ring.Build();
             }
             catch
             {
@@ -71,6 +76,7 @@ namespace Oil_level_glass
 
                     housing.Build();
                     glass.Build();
+                    ring.Build();
                 }
                 catch
                 {
