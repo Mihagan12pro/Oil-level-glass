@@ -39,7 +39,7 @@
             label5 = new Label();
             nNumericUpDown = new NumericUpDown();
             label6 = new Label();
-            _buttonBuild = new Button();
+            buttonBuild = new Button();
             sizeDTextBox = new TextBox();
             size_dTextBox = new TextBox();
             size_d1TextBox = new TextBox();
@@ -47,6 +47,8 @@
             sizeHTextBox = new TextBox();
             size_htextBox = new TextBox();
             groupBoxMainSizes = new GroupBox();
+            label10 = new Label();
+            D2TextBox = new TextBox();
             label8 = new Label();
             saveFolderBrowserDialog = new FolderBrowserDialog();
             _textBoxSavePath = new TextBox();
@@ -57,8 +59,6 @@
             label9 = new Label();
             angleNumericUpDown = new NumericUpDown();
             label7 = new Label();
-            D2TextBox = new TextBox();
-            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSketch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nNumericUpDown).BeginInit();
             groupBoxMainSizes.SuspendLayout();
@@ -72,9 +72,9 @@
             pictureBoxSketch.BackColor = Color.Transparent;
             pictureBoxSketch.Image = Properties.Resources.assemble;
             pictureBoxSketch.InitialImage = (Image)resources.GetObject("pictureBoxSketch.InitialImage");
-            pictureBoxSketch.Location = new Point(305, 23);
+            pictureBoxSketch.Location = new Point(315, 31);
             pictureBoxSketch.Name = "pictureBoxSketch";
-            pictureBoxSketch.Size = new Size(181, 336);
+            pictureBoxSketch.Size = new Size(171, 307);
             pictureBoxSketch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSketch.TabIndex = 0;
             pictureBoxSketch.TabStop = false;
@@ -151,15 +151,15 @@
             label6.TabIndex = 14;
             label6.Text = "n";
             // 
-            // _buttonBuild
+            // buttonBuild
             // 
-            _buttonBuild.Location = new Point(392, 414);
-            _buttonBuild.Name = "_buttonBuild";
-            _buttonBuild.Size = new Size(94, 29);
-            _buttonBuild.TabIndex = 15;
-            _buttonBuild.Text = "Построить";
-            _buttonBuild.UseVisualStyleBackColor = true;
-            _buttonBuild.Click += _buttonBuild_Click;
+            buttonBuild.Location = new Point(392, 414);
+            buttonBuild.Name = "buttonBuild";
+            buttonBuild.Size = new Size(94, 29);
+            buttonBuild.TabIndex = 15;
+            buttonBuild.Text = "Построить";
+            buttonBuild.UseVisualStyleBackColor = true;
+            buttonBuild.Click += buttonBuild_Click;
             // 
             // sizeDTextBox
             // 
@@ -175,7 +175,7 @@
             size_dTextBox.Name = "size_dTextBox";
             size_dTextBox.Size = new Size(147, 24);
             size_dTextBox.TabIndex = 17;
-            size_dTextBox.Text = "10";
+            size_dTextBox.Text = "6.65";
             size_dTextBox.TextChanged += size_dTextBox_TextChanged;
             // 
             // size_d1TextBox
@@ -235,6 +235,23 @@
             groupBoxMainSizes.TabIndex = 22;
             groupBoxMainSizes.TabStop = false;
             groupBoxMainSizes.Text = "Основные размеры";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(18, 82);
+            label10.Name = "label10";
+            label10.Size = new Size(22, 16);
+            label10.TabIndex = 23;
+            label10.Text = "D2";
+            // 
+            // D2TextBox
+            // 
+            D2TextBox.Location = new Point(55, 79);
+            D2TextBox.Name = "D2TextBox";
+            D2TextBox.Size = new Size(147, 24);
+            D2TextBox.TabIndex = 22;
+            D2TextBox.Text = "72";
             // 
             // label8
             // 
@@ -318,23 +335,6 @@
             label7.TabIndex = 0;
             label7.Text = "Угол";
             // 
-            // D2TextBox
-            // 
-            D2TextBox.Location = new Point(55, 79);
-            D2TextBox.Name = "D2TextBox";
-            D2TextBox.Size = new Size(147, 24);
-            D2TextBox.TabIndex = 22;
-            D2TextBox.Text = "72";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(18, 82);
-            label10.Name = "label10";
-            label10.Size = new Size(22, 16);
-            label10.TabIndex = 23;
-            label10.Text = "D2";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
@@ -347,7 +347,7 @@
             Controls.Add(_textBoxSavePath);
             Controls.Add(label8);
             Controls.Add(groupBoxMainSizes);
-            Controls.Add(_buttonBuild);
+            Controls.Add(buttonBuild);
             Controls.Add(pictureBoxSketch);
             Font = new Font("GOST type B", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -379,7 +379,7 @@
         private Label label5;
         private NumericUpDown nNumericUpDown;
         private Label label6;
-        private Button _buttonBuild;
+        private Button buttonBuild;
         private TextBox sizeDTextBox;
         private TextBox size_dTextBox;
         private TextBox size_d1TextBox;

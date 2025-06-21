@@ -25,7 +25,7 @@ namespace Oil_level_glass.Kompas_classes
 
         public double Radius { get; private set; }
 
-        public Circle(Point center, double diameter, int   lineType) : base(lineType)  
+        public Circle(Point center, double diameter, int lineType) : base(lineType)  
         {
             Center = center; 
             Radius = diameter / 2;
@@ -35,10 +35,10 @@ namespace Oil_level_glass.Kompas_classes
 
     class LineSegment : Entity2D
     {
-        public Point StartPoint { get; private set; }
-        public Point EndPoint { get; private set; }
+        public Point2D StartPoint { get; private set; }
+        public Point2D EndPoint { get; private set; }
 
-        public LineSegment(Point startPoint,Point endPoint,int lineType) : base(lineType)
+        public LineSegment(Point2D startPoint,Point2D endPoint,int lineType) : base(lineType)
         {
             StartPoint = startPoint;
             EndPoint = endPoint;

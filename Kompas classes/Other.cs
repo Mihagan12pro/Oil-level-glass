@@ -14,4 +14,12 @@ namespace Oil_level_glass.Kompas_classes
 
         public double Z { get; set; }
     }
+
+
+    struct Point2D
+    {
+        public double X { get; set; }
+
+        public double Y { get; set; }
+    }
 }

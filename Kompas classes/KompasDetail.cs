@@ -13,6 +13,8 @@ namespace Oil_level_glass.Kompas_classes
         public string? FileExtension { get; set; }
         public ksDocument3D? Document3D { get; set; }
 
+        protected ksEntity planeXOY, planeXOZ, planeYOZ;
+
         protected SketchShell Sketch(ksEntity plane, List<Entity2D> entity2Ds)
         {
             SketchShell sketchShell = new SketchShell();
@@ -135,6 +137,10 @@ namespace Oil_level_glass.Kompas_classes
                 {
                     entityCollection.Add((copy as CutRotatedShell).CutRotated);
                 }
+                else if (copy.GetType() == typeof(ThreadShell))
+                {
+                    entityCollection.Add((copy as ThreadShell).Thread);
+                }
             }
 
             circularCopyShell.CircularCopy.Create();
@@ -237,12 +243,25 @@ namespace Oil_level_glass.Kompas_classes
             return chamferShell;
         }
 
-        public KompasDetail()
+
+        public virtual void Build()
         {
             Document3D = (ksDocument3D)IKompasModel.Kompas.Document3D();
             Document3D.Create(false, true);
 
             Part = (ksPart)Document3D.GetPart((short)Part_Type.pTop_Part);
+
+            planeXOY = Part.GetDefaultEntity((short)Obj3dType.o3d_planeXOY);
+            planeXOZ = Part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
+            planeYOZ = Part.GetDefaultEntity((short)Obj3dType.o3d_planeYOZ);
+        }
+
+
+        public KompasDetail()
+        {
+            FileExtension = ".m3d";
+
+            SavePath = SavePath + "\\" + ModelName + FileExtension;
         }
     }
 }

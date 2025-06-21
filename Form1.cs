@@ -32,8 +32,10 @@ namespace Oil_level_glass
 
         }
 
-        private void _buttonBuild_Click(object sender, EventArgs e)
+        private void buttonBuild_Click(object sender, EventArgs e)
         {
+            Housing housing = new Housing(90,6.65,72,50,60,8,6,2,60,3);
+
             if (IKompasModel.Kompas == null)
             {
                 Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
@@ -45,6 +47,8 @@ namespace Oil_level_glass
             {
                 IKompasModel.Kompas.Visible = true;
                 IKompasModel.Kompas.ActivateControllerAPI();
+
+                housing.Build();
             }
             catch
             {
@@ -57,6 +61,8 @@ namespace Oil_level_glass
                     IKompasModel.Kompas.Visible = true;
 
                     IKompasModel.Kompas.ActivateControllerAPI();
+
+                    housing.Build();
                 }
                 catch
                 {
