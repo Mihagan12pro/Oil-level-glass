@@ -282,7 +282,7 @@
             _setSaveFolderButton.UseVisualStyleBackColor = true;
             _setSaveFolderButton.Click += setSaveFolderButton_Click;
             // 
-            // _errorProvider
+            // _savePathError
             // 
             _savePathError.ContainerControl = this;
             // 
@@ -339,7 +339,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightGray;
+            BackColor = SystemColors.ButtonFace;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(498, 469);
             Controls.Add(chamferGroupBox);
