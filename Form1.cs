@@ -1,5 +1,6 @@
 using Kompas6API5;
 using Oil_level_glass.Kompas_classes;
+using System.Reflection;
 namespace Oil_level_glass
 {
     public partial class MainForm : Form
@@ -7,7 +8,11 @@ namespace Oil_level_glass
         public MainForm()
         {
             InitializeComponent();
+
+            _textBoxSavePath.Text = Directory.GetCurrentDirectory();
         }
+
+        private string _savePath;
 
         private void setSaveFolderButton_Click(object sender, EventArgs e)
         {
@@ -19,11 +24,13 @@ namespace Oil_level_glass
 
         private void textBoxSavePath_TextChanged(object sender, EventArgs e)
         {
-            _errorProvider.SetError(_textBoxSavePath, "Данная папка не существует!");
+            _savePathError.SetError(_textBoxSavePath, "Данная папка не существует!");
 
             if (Directory.Exists(_textBoxSavePath.Text))
             {
-                _errorProvider.Clear();
+                _savePathError.Clear();
+
+                _savePath =  _textBoxSavePath.Text;
             }
         }
 
@@ -35,76 +42,69 @@ namespace Oil_level_glass
         private void buttonBuild_Click(object sender, EventArgs e)
         {
             Housing housing = new Housing(90,6.65,72,50,60,8,6,2,60,3);
-            housing.SavePath = "C:\\Сборка";
+            housing.SavePath = _savePath;
             housing.ModelName = "Корпус";
 
             Glass glass = new Glass(6,60);
-            glass.SavePath = housing.SavePath;
+            glass.SavePath = _savePath;
             glass.ModelName = "Стекло";
 
             Ring ring = new Ring(6, 60, 50);
-            ring.SavePath = housing.SavePath;
+            ring.SavePath = _savePath;
             ring.ModelName = "Резиновая подкладка";
 
             WindowAssemble windowAssemble;
 
-            Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
 
-            IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
-            IKompasModel.Kompas.Visible = true;
-            IKompasModel.Kompas.ActivateControllerAPI();
 
-            housing.Build();
-            glass.Build();
-            ring.Build();
+            if (IKompasModel.Kompas == null)
+            {
+                Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
 
-            windowAssemble = new WindowAssemble(housing, ring, glass);
-            windowAssemble.CreateAssemble();
+                IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
+            }
 
-            //if (IKompasModel.Kompas == null)
-            //{
-            //    Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
+            try
+            {
+                IKompasModel.Kompas.Visible = true;
+                IKompasModel.Kompas.ActivateControllerAPI();
 
-            //    IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
-            //}
+                housing.Build();
+                glass.Build();
+                ring.Build();
 
-            //try
-            //{
-            //    IKompasModel.Kompas.Visible = true;
-            //    IKompasModel.Kompas.ActivateControllerAPI();
+                windowAssemble = new WindowAssemble(housing, ring, glass);
+                windowAssemble.SavePath = _savePath;
+                windowAssemble.ModelName = "Смотровой лючок";
+                windowAssemble.CreateAssemble();
+            }
+            catch
+            {
+                try
+                {
+                    Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
 
-            //    housing.Build();
-            //    glass.Build();
-            //    ring.Build();
+                    IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
 
-            //    windowAssemble = new WindowAssemble(housing,ring,glass);
-            //    windowAssemble.CreateAssemble();
-            //}
-            //catch
-            //{
-            //    try
-            //    {
-            //        Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
+                    IKompasModel.Kompas.Visible = true;
 
-            //        IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
+                    IKompasModel.Kompas.ActivateControllerAPI();
 
-            //        IKompasModel.Kompas.Visible = true;
+                    housing.Build();
+                    glass.Build();
+                    ring.Build();
 
-            //        IKompasModel.Kompas.ActivateControllerAPI();
+                    windowAssemble = new WindowAssemble(housing, ring, glass);
+                    windowAssemble.SavePath = _savePath;
+                    windowAssemble.ModelName = "Смотровой лючок";
+                    windowAssemble.CreateAssemble();
+                }
+                catch
+                {
+                    MessageBox.Show("Возможные причины: либо приложение КОМПАС-3D не установлено, либо приложение не поддерживает работу с данной версией.", "Не удается подключиться к КОМПАС-3D!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-            //        housing.Build();
-            //        glass.Build();
-            //        ring.Build();
-
-            //        windowAssemble = new WindowAssemble(housing, ring, glass);
-            //        windowAssemble.CreateAssemble();
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Возможные причины: либо приложение КОМПАС-3D не установлено, либо приложение не поддерживает работу с данной версией.", "Не удается подключиться к КОМПАС-3D!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-
-            //}
+            }
         }
     }
 }

@@ -53,7 +53,7 @@
             saveFolderBrowserDialog = new FolderBrowserDialog();
             _textBoxSavePath = new TextBox();
             _setSaveFolderButton = new Button();
-            _errorProvider = new ErrorProvider(components);
+            _savePathError = new ErrorProvider(components);
             chamferGroupBox = new GroupBox();
             chamferLengthTextBox = new TextBox();
             label9 = new Label();
@@ -62,7 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxSketch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nNumericUpDown).BeginInit();
             groupBoxMainSizes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)_errorProvider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_savePathError).BeginInit();
             chamferGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)angleNumericUpDown).BeginInit();
             SuspendLayout();
@@ -284,7 +284,7 @@
             // 
             // _errorProvider
             // 
-            _errorProvider.ContainerControl = this;
+            _savePathError.ContainerControl = this;
             // 
             // chamferGroupBox
             // 
@@ -360,7 +360,7 @@
             ((System.ComponentModel.ISupportInitialize)nNumericUpDown).EndInit();
             groupBoxMainSizes.ResumeLayout(false);
             groupBoxMainSizes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)_errorProvider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_savePathError).EndInit();
             chamferGroupBox.ResumeLayout(false);
             chamferGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)angleNumericUpDown).EndInit();
@@ -396,7 +396,7 @@
         private Label label7;
         private TextBox chamferLengthTextBox;
         private Label label9;
-        public ErrorProvider _errorProvider;
+        public ErrorProvider _savePathError;
         private Label label10;
         private TextBox D2TextBox;
     }

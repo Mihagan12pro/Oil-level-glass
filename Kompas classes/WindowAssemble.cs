@@ -22,6 +22,8 @@ namespace Oil_level_glass.Kompas_classes
         {
             base.CreateAssemble();
 
+            SavePath = SavePath + "\\" + ModelName + FileExtension;
+
 
             Document3D.SetPartFromFile(_housing.SavePath,assemble,true);
             Document3D.SetPartFromFile(_glass.SavePath, assemble, true);
@@ -80,6 +82,8 @@ namespace Oil_level_glass.Kompas_classes
             Document3D.AddMateConstraint(0,_housingFaces.First(),_ring2Faces.First(),-1,1, 0);
 
             Document3D.RebuildDocument();
+
+            Document3D.SaveAs(SavePath);
         }
 
         public WindowAssemble(Housing housing, Ring ring,  Glass glass)
