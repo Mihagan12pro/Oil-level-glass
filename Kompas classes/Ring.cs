@@ -1,4 +1,5 @@
-﻿using Kompas6Constants3D;
+﻿using Kompas6API5;
+using Kompas6Constants3D;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,23 @@ namespace Oil_level_glass.Kompas_classes
 {
     internal class Ring : KompasDetail
     {
-        private double _width;
+        public double Width { get; private set; }
         private double _diameter1;
         private double _diameter2;
 
         private SketchShell _sketch1;
         private BossExtrusionShell _extrusion1;
+
+        public Point3D ConstraintFacePoint { get; private set; }
+
+        public Point3D ConstraintEdgePoint2 { get; private set; }
+
+
+        public int ConstraintEdgeIndex { get; private set; }
+
+        
+
+
         public override void Build()
         {
             base.Build();
@@ -29,7 +41,43 @@ namespace Oil_level_glass.Kompas_classes
                         }
                 );
 
-            _extrusion1 = BossExtrusion(new List<SketchShell> { _sketch1 }, true, Direction_Type.dtNormal, _width, 0, false);
+            _extrusion1 = BossExtrusion(new List<SketchShell> { _sketch1 }, true, Direction_Type.dtNormal, Width, 0, false);
+
+            ksEntityCollection edges = Part.EntityCollection((short)Obj3dType.o3d_edge);
+            for (int i = 0; i < edges.GetCount(); i++)
+            {
+                ksEntity edge = edges.GetByIndex(i);
+                ksEdgeDefinition edgeDef = edge.GetDefinition();
+
+                ksVertexDefinition vertex = edgeDef.GetVertex(true);
+
+                double x1, y1, z1;
+
+                if (vertex != null)
+                {
+                    vertex.GetPoint(out x1, out y1, out z1);
+
+                    if (x1 == _diameter2 / 2 && y1 == Width)
+                    {
+                        ConstraintEdgeIndex = i;
+                    }
+                }
+            }
+
+            ksEntityCollection faces = Part.EntityCollection((short)Obj3dType.o3d_face);
+
+
+
+            faces.SelectByPoint(_diameter1 / 2, Width, 0);
+
+
+           
+
+          
+            ConstraintFacePoint = new Point3D() { X = _diameter1 / 2, Y = Width, Z = 0 };
+
+            ConstraintEdgePoint2 = new Point3D() { X = (_diameter1 / 2 + _diameter2/2)/2, Y = 0, Z = 0 };
+            
 
             Part.SetMaterial("Резина", 1.6);
             Part.SetAdvancedColor(Color.Black.ToArgb());
@@ -44,7 +92,7 @@ namespace Oil_level_glass.Kompas_classes
         {
             _diameter1 = d2;
             _diameter2 = d1;
-            _width = h/3;
+            Width = h/3;
         }
     }
 }

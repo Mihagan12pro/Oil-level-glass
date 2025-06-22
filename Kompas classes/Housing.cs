@@ -20,6 +20,14 @@ namespace Oil_level_glass.Kompas_classes
         private ThreadShell _thread;
         private CircularCopyShell _circularCopy1;
         private ChamferShell _chamfer1;
+
+        public Point3D ConstraintFacePoint { get; private set; }
+        public Point3D ConstraintFacePoint2 { get; private set; }
+
+        public Point3D ConstraintFacePoint3 { get; private set; }
+
+        public Point3D ConstraintEdgePoint { get; private set; }
+
         public override void Build()
         {
             base.Build();
@@ -30,23 +38,68 @@ namespace Oil_level_glass.Kompas_classes
 
             _sketch2 = Sketch(planeXOY, new List<Entity2D>
                 {
-                    new LineSegment( new Point2D() { X = 0, Y=0}, new Point2D() { X = 0, Y = _H},Entity2D.AxesLine),
+                    new LineSegment
+                        (
+                            new Point2D() { X = 0, Y=0}, 
+                            new Point2D() { X = 0, Y = _H},
+                            Entity2D.AxesLine
+                        ),
 
-                    new LineSegment( new Point2D() { X = 0, Y = _H}, new Point2D() {X = _d1/2, Y = _H}, Entity2D.MainLine),
+                    new LineSegment
+                        (
+                            new Point2D() { X = 0, Y = _H}, 
+                            new Point2D() {X = _d1/2, Y = _H},
+                            Entity2D.MainLine
+                        ),
 
-                    new LineSegment( new Point2D() {X = _d1/2, Y = _H}, new Point2D() {X = _d1/2, Y = _H - (_H - _h)/2},Entity2D.MainLine),
+                    new LineSegment
+                        (
+                            new Point2D() {X = _d1/2, Y = _H}, 
+                            new Point2D() {X = _d1/2, Y = _H - (_H - _h)/2},
+                            Entity2D.MainLine
+                        ),
 
-                    new LineSegment( new Point2D() {X = _d1/2, Y = _H - (_H - _h)/2 }, new Point2D() {X = _d2/2, Y = _H - (_H - _h)/2}, Entity2D.MainLine),
+                    new LineSegment
+                        ( 
+                            new Point2D() {X = _d1/2, Y = _H - (_H - _h)/2 }, 
+                            new Point2D() {X = _d2/2, Y = _H - (_H - _h)/2}, 
+                            Entity2D.MainLine
+                       ),
 
-                    new LineSegment( new Point2D() {X = _d2/2, Y = _H - (_H - _h)/2}, new Point2D() {X = _d2/2, Y = (_H - _h)/2 },Entity2D.MainLine),
+                    new LineSegment
+                       ( 
+                            new Point2D() {X = _d2/2, Y = _H - (_H - _h)/2}, 
+                            new Point2D() {X = _d2/2, Y = (_H - _h)/2 },
+                            Entity2D.MainLine
+                       ),
 
-                    new LineSegment( new Point2D() {X = _d2/2, Y = (_H - _h)/2 }, new Point2D() { X = _d2/2, Y = (_H - _h)/2},Entity2D.MainLine),
+                    new LineSegment
+                       ( 
+                            new Point2D() {X = _d2/2, Y = (_H - _h)/2 }, 
+                            new Point2D() { X = _d2/2, Y = (_H - _h)/2},
+                            Entity2D.MainLine
+                       ),
 
-                    new LineSegment( new Point2D() { X = _d2/2, Y = (_H - _h)/2}, new Point2D() { X = _d1/2, Y = (_H - _h)/2},Entity2D.MainLine),
+                    new LineSegment
+                        ( 
+                            new Point2D() { X = _d2/2, Y = (_H - _h)/2}, 
+                            new Point2D() { X = _d1/2, Y = (_H - _h)/2},
+                            Entity2D.MainLine
+                        ),
 
-                    new LineSegment( new Point2D() { X = _d1/2, Y = (_H - _h)/2}, new Point2D() {X = _d1/2, Y = 0}, Entity2D.MainLine),
+                    new LineSegment
+                        (
+                            new Point2D() { X = _d1/2, Y = (_H - _h)/2}, 
+                            new Point2D() {X = _d1/2, Y = 0}, 
+                            Entity2D.MainLine
+                        ),
 
-                    new LineSegment( new Point2D() {X = _d1/2, Y = 0}, new Point2D() {X = 0, Y = 0}, Entity2D.MainLine)
+                    new LineSegment
+                        ( 
+                            new Point2D() {X = _d1/2, Y = 0}, 
+                            new Point2D() {X = 0, Y = 0}, 
+                            Entity2D.MainLine
+                        )
                 }
             );
 
@@ -90,6 +143,13 @@ namespace Oil_level_glass.Kompas_classes
             _chamfer1 = Chamfer(new List<Point3D> { new Point3D() { X = _D/2, Y = 0, Z = 0} },_chamferLength,_chamferAngle);
 
             Part.Update();
+
+            ConstraintFacePoint = new Point3D() {X = _d2 / 2, Y = _H - (_H - _h) / 2, Z = 0 };
+            ConstraintEdgePoint = new Point3D() { X = _d2 / 2, Y = _H - (_H - _h) / 2, Z = 0 };
+
+            ConstraintFacePoint2 = new Point3D() { X = _d2 / 2, Y = _H - (_H - _h) / 2, Z = 0 };
+
+            ConstraintFacePoint3 = new Point3D() { X =( _d2 / 2 + _d1/2)/2, Y = _H - (_H - _h) / 2, Z = 0 };
 
             Document3D.SaveAs(SavePath);
         }

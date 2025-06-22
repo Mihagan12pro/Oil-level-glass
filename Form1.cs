@@ -46,44 +46,65 @@ namespace Oil_level_glass
             ring.SavePath = housing.SavePath;
             ring.ModelName = "Резиновая подкладка";
 
-            if (IKompasModel.Kompas == null)
-            {
-                Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
+            WindowAssemble windowAssemble;
 
-                IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
-            }
+            Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
 
-            try
-            {
-                IKompasModel.Kompas.Visible = true;
-                IKompasModel.Kompas.ActivateControllerAPI();
+            IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
+            IKompasModel.Kompas.Visible = true;
+            IKompasModel.Kompas.ActivateControllerAPI();
 
-                housing.Build();
-                glass.Build();
-                ring.Build();
-            }
-            catch
-            {
-                try
-                {
-                    Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
+            housing.Build();
+            glass.Build();
+            ring.Build();
 
-                    IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
+            windowAssemble = new WindowAssemble(housing, ring, glass);
+            windowAssemble.CreateAssemble();
 
-                    IKompasModel.Kompas.Visible = true;
+            //if (IKompasModel.Kompas == null)
+            //{
+            //    Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
 
-                    IKompasModel.Kompas.ActivateControllerAPI();
+            //    IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
+            //}
 
-                    housing.Build();
-                    glass.Build();
-                    ring.Build();
-                }
-                catch
-                {
-                    MessageBox.Show("Возможные причины: либо приложение КОМПАС-3D не установлено, либо приложение не поддерживает работу с данной версией.", "Не удается подключиться к КОМПАС-3D!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            //try
+            //{
+            //    IKompasModel.Kompas.Visible = true;
+            //    IKompasModel.Kompas.ActivateControllerAPI();
 
-            }
+            //    housing.Build();
+            //    glass.Build();
+            //    ring.Build();
+
+            //    windowAssemble = new WindowAssemble(housing,ring,glass);
+            //    windowAssemble.CreateAssemble();
+            //}
+            //catch
+            //{
+            //    try
+            //    {
+            //        Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
+
+            //        IKompasModel.Kompas = (KompasObject)Activator.CreateInstance(t);
+
+            //        IKompasModel.Kompas.Visible = true;
+
+            //        IKompasModel.Kompas.ActivateControllerAPI();
+
+            //        housing.Build();
+            //        glass.Build();
+            //        ring.Build();
+
+            //        windowAssemble = new WindowAssemble(housing, ring, glass);
+            //        windowAssemble.CreateAssemble();
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("Возможные причины: либо приложение КОМПАС-3D не установлено, либо приложение не поддерживает работу с данной версией.", "Не удается подключиться к КОМПАС-3D!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+
+            //}
         }
     }
 }
