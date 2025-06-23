@@ -1,5 +1,6 @@
 using Kompas6API5;
 using Oil_level_glass.Kompas_classes;
+using Oil_level_glass.Services;
 using System.Reflection;
 namespace Oil_level_glass
 {
@@ -10,9 +11,13 @@ namespace Oil_level_glass
             InitializeComponent();
 
             _textBoxSavePath.Text = Directory.GetCurrentDirectory();
+
+            nNumericUpDown.Maximum = Math.Floor(Convert.ToDecimal(Math.PI) * Convert.ToDecimal(sizeD2TextBox.Text) / Convert.ToDecimal(size_dTextBox.Text));
         }
 
         private string _savePath;
+
+
 
         private void setSaveFolderButton_Click(object sender, EventArgs e)
         {
@@ -28,24 +33,163 @@ namespace Oil_level_glass
 
             if (Directory.Exists(_textBoxSavePath.Text))
             {
+                _savePath = _textBoxSavePath.Text;
                 _savePathError.Clear();
-
-                _savePath =  _textBoxSavePath.Text;
             }
+        }
+
+
+
+      
+
+        private void sizeDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ValidationService.IsNumber(sizeDTextBox))
+            {
+                _DError.SetError(sizeDTextBox, "Ввод только положительных чисел!");
+
+                return;
+            }
+
+            _DError.Clear();
         }
 
         private void size_dTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (!ValidationService.IsNumber(size_dTextBox))
+            {
+                __dError.SetError(size_dTextBox, "Ввод только положительных чисел!");
 
+                return;
+            }
+
+
+            try
+            {
+                nNumericUpDown.Maximum = Math.Floor(Convert.ToDecimal(Math.PI) * Convert.ToDecimal(sizeD2TextBox.Text) / Convert.ToDecimal(size_dTextBox.Text));
+
+            }
+            finally
+            {
+                if (__dError.HasErrors)
+                    __dError.Clear();
+            }
         }
+
+        private void D2TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ValidationService.IsNumber(sizeD2TextBox))
+            {
+                _D2Error.SetError(sizeD2TextBox, "Ввод только положительных чисел!");
+
+                return;
+            }
+
+            try
+            {
+                nNumericUpDown.Maximum = Math.Floor(Convert.ToDecimal(Math.PI) * Convert.ToDecimal(sizeD2TextBox.Text) / Convert.ToDecimal(size_dTextBox.Text));
+
+            }
+            finally
+            {
+                if (_D2Error.HasErrors)
+                    _D2Error.Clear();
+            }
+        }
+
+        private void size_d1TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ValidationService.IsNumber(size_d1TextBox))
+            {
+               __d1Error.SetError(size_d1TextBox, "Ввод только положительных чисел!");
+
+                return;
+            }
+
+            __d1Error.Clear();
+        }
+
+        private void size_d2TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ValidationService.IsNumber(size_d2TextBox))
+            {
+                 __d2Error.SetError(size_d2TextBox, "Ввод только положительных чисел!");
+
+                return;
+            }
+
+             __d2Error.Clear();
+        }
+
+        private void sizeHTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ValidationService.IsNumber(sizeHTextBox))
+            {
+                _HError.SetError(sizeHTextBox, "Ввод только положительных чисел!");
+
+                return;
+            }
+
+            _HError.Clear();
+        }
+
+        private void size_htextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ValidationService.IsNumber(size_htextBox))
+            {
+               ___hError.SetError(size_htextBox, "Ввод только положительных чисел!");
+
+                return;
+            }
+
+            ___hError.Clear();
+        }
+
+
+        private void chamferLengthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ValidationService.IsNumber(chamferLengthTextBox))
+            {
+                _chamferLengthError.SetError(chamferLengthTextBox, "Ввод только положительных чисел!");
+
+                return;
+            }
+
+            _chamferLengthError.Clear();
+        }
+
+        private void nNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (nNumericUpDown.Maximum <= nNumericUpDown.Value)
+            {
+                nNumericUpDown.Value = nNumericUpDown.Maximum;
+            }
+
+            if (nNumericUpDown.Value < 2)
+            {
+                _nError.SetError(nNumericUpDown, "Число отверстий не должно быть меньше 2!");
+
+                return;
+            }
+            _nError.Clear();
+        }
+
 
         private void buttonBuild_Click(object sender, EventArgs e)
         {
-            Housing housing = new Housing(90,6.65,72,50,60,8,6,2,60,3);
+            if (_DError.HasErrors || _D2Error.HasErrors || _HError.HasErrors || _chamferLengthError.HasErrors || _savePathError.HasErrors || __d1Error.HasErrors || __d2Error.HasErrors || __dError.HasErrors || __hErrror.HasErrors || ___hError.HasErrors || _nError.HasErrors)
+            {
+                MessageBox.Show("В одно из полей для ввода введены некорректные значения!", "Невозможно начать построение!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+        
+
+            Housing housing = new Housing(90, 6.65, 72, 50, 60, 8, 6, 2, 60, 3);
             housing.SavePath = _savePath;
             housing.ModelName = "Корпус";
 
-            Glass glass = new Glass(6,60);
+            Glass glass = new Glass(6, 60);
             glass.SavePath = _savePath;
             glass.ModelName = "Стекло";
 

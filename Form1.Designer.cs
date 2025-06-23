@@ -48,7 +48,7 @@
             size_htextBox = new TextBox();
             groupBoxMainSizes = new GroupBox();
             label10 = new Label();
-            D2TextBox = new TextBox();
+            sizeD2TextBox = new TextBox();
             label8 = new Label();
             saveFolderBrowserDialog = new FolderBrowserDialog();
             _textBoxSavePath = new TextBox();
@@ -59,12 +59,32 @@
             label9 = new Label();
             angleNumericUpDown = new NumericUpDown();
             label7 = new Label();
+            _DError = new ErrorProvider(components);
+            _D2Error = new ErrorProvider(components);
+            _HError = new ErrorProvider(components);
+            _chamferLengthError = new ErrorProvider(components);
+            __d1Error = new ErrorProvider(components);
+            __d2Error = new ErrorProvider(components);
+            __dError = new ErrorProvider(components);
+            __hErrror = new ErrorProvider(components);
+            ___hError = new ErrorProvider(components);
+            _nError = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxSketch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nNumericUpDown).BeginInit();
             groupBoxMainSizes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)_savePathError).BeginInit();
             chamferGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)angleNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_DError).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_D2Error).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_HError).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_chamferLengthError).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)__d1Error).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)__d2Error).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)__dError).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)__hErrror).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)___hError).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_nError).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxSketch
@@ -141,6 +161,7 @@
             nNumericUpDown.Size = new Size(147, 24);
             nNumericUpDown.TabIndex = 13;
             nNumericUpDown.Value = new decimal(new int[] { 2, 0, 0, 0 });
+            nNumericUpDown.ValueChanged += nNumericUpDown_ValueChanged;
             // 
             // label6
             // 
@@ -153,9 +174,9 @@
             // 
             // buttonBuild
             // 
-            buttonBuild.Location = new Point(392, 414);
+            buttonBuild.Location = new Point(392, 412);
             buttonBuild.Name = "buttonBuild";
-            buttonBuild.Size = new Size(94, 29);
+            buttonBuild.Size = new Size(94, 26);
             buttonBuild.TabIndex = 15;
             buttonBuild.Text = "Построить";
             buttonBuild.UseVisualStyleBackColor = true;
@@ -168,6 +189,7 @@
             sizeDTextBox.Size = new Size(147, 24);
             sizeDTextBox.TabIndex = 16;
             sizeDTextBox.Text = "90";
+            sizeDTextBox.TextChanged += sizeDTextBox_TextChanged;
             // 
             // size_dTextBox
             // 
@@ -175,7 +197,7 @@
             size_dTextBox.Name = "size_dTextBox";
             size_dTextBox.Size = new Size(147, 24);
             size_dTextBox.TabIndex = 17;
-            size_dTextBox.Text = "6.65";
+            size_dTextBox.Text = "6,65";
             size_dTextBox.TextChanged += size_dTextBox_TextChanged;
             // 
             // size_d1TextBox
@@ -185,6 +207,7 @@
             size_d1TextBox.Size = new Size(147, 24);
             size_d1TextBox.TabIndex = 18;
             size_d1TextBox.Text = "50";
+            size_d1TextBox.TextChanged += size_d1TextBox_TextChanged;
             // 
             // size_d2TextBox
             // 
@@ -193,6 +216,7 @@
             size_d2TextBox.Size = new Size(147, 24);
             size_d2TextBox.TabIndex = 19;
             size_d2TextBox.Text = "60";
+            size_d2TextBox.TextChanged += size_d2TextBox_TextChanged;
             // 
             // sizeHTextBox
             // 
@@ -201,6 +225,7 @@
             sizeHTextBox.Size = new Size(147, 24);
             sizeHTextBox.TabIndex = 20;
             sizeHTextBox.Text = "8";
+            sizeHTextBox.TextChanged += sizeHTextBox_TextChanged;
             // 
             // size_htextBox
             // 
@@ -209,11 +234,12 @@
             size_htextBox.Size = new Size(147, 24);
             size_htextBox.TabIndex = 21;
             size_htextBox.Text = "6";
+            size_htextBox.TextChanged += size_htextBox_TextChanged;
             // 
             // groupBoxMainSizes
             // 
             groupBoxMainSizes.Controls.Add(label10);
-            groupBoxMainSizes.Controls.Add(D2TextBox);
+            groupBoxMainSizes.Controls.Add(sizeD2TextBox);
             groupBoxMainSizes.Controls.Add(sizeDTextBox);
             groupBoxMainSizes.Controls.Add(size_htextBox);
             groupBoxMainSizes.Controls.Add(nNumericUpDown);
@@ -245,13 +271,14 @@
             label10.TabIndex = 23;
             label10.Text = "D2";
             // 
-            // D2TextBox
+            // sizeD2TextBox
             // 
-            D2TextBox.Location = new Point(55, 79);
-            D2TextBox.Name = "D2TextBox";
-            D2TextBox.Size = new Size(147, 24);
-            D2TextBox.TabIndex = 22;
-            D2TextBox.Text = "72";
+            sizeD2TextBox.Location = new Point(55, 79);
+            sizeD2TextBox.Name = "sizeD2TextBox";
+            sizeD2TextBox.Size = new Size(147, 24);
+            sizeD2TextBox.TabIndex = 22;
+            sizeD2TextBox.Text = "72";
+            sizeD2TextBox.TextChanged += D2TextBox_TextChanged;
             // 
             // label8
             // 
@@ -263,7 +290,7 @@
             // 
             // _textBoxSavePath
             // 
-            _textBoxSavePath.Location = new Point(180, 414);
+            _textBoxSavePath.Location = new Point(179, 412);
             _textBoxSavePath.Name = "_textBoxSavePath";
             _textBoxSavePath.PlaceholderText = "C:\\";
             _textBoxSavePath.ScrollBars = ScrollBars.Horizontal;
@@ -306,6 +333,7 @@
             chamferLengthTextBox.Size = new Size(135, 24);
             chamferLengthTextBox.TabIndex = 3;
             chamferLengthTextBox.Text = "3";
+            chamferLengthTextBox.TextChanged += chamferLengthTextBox_TextChanged;
             // 
             // label9
             // 
@@ -334,6 +362,46 @@
             label7.Size = new Size(36, 16);
             label7.TabIndex = 0;
             label7.Text = "Угол";
+            // 
+            // _DError
+            // 
+            _DError.ContainerControl = this;
+            // 
+            // _D2Error
+            // 
+            _D2Error.ContainerControl = this;
+            // 
+            // _HError
+            // 
+            _HError.ContainerControl = this;
+            // 
+            // _chamferLengthError
+            // 
+            _chamferLengthError.ContainerControl = this;
+            // 
+            // __d1Error
+            // 
+            __d1Error.ContainerControl = this;
+            // 
+            // __d2Error
+            // 
+            __d2Error.ContainerControl = this;
+            // 
+            // __dError
+            // 
+            __dError.ContainerControl = this;
+            // 
+            // __hErrror
+            // 
+            __hErrror.ContainerControl = this;
+            // 
+            // ___hError
+            // 
+            ___hError.ContainerControl = this;
+            // 
+            // _nError
+            // 
+            _nError.ContainerControl = this;
             // 
             // MainForm
             // 
@@ -364,6 +432,16 @@
             chamferGroupBox.ResumeLayout(false);
             chamferGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)angleNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_DError).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_D2Error).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_HError).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_chamferLengthError).EndInit();
+            ((System.ComponentModel.ISupportInitialize)__d1Error).EndInit();
+            ((System.ComponentModel.ISupportInitialize)__d2Error).EndInit();
+            ((System.ComponentModel.ISupportInitialize)__dError).EndInit();
+            ((System.ComponentModel.ISupportInitialize)__hErrror).EndInit();
+            ((System.ComponentModel.ISupportInitialize)___hError).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_nError).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -396,8 +474,18 @@
         private Label label7;
         private TextBox chamferLengthTextBox;
         private Label label9;
-        public ErrorProvider _savePathError;
         private Label label10;
-        private TextBox D2TextBox;
+        private TextBox sizeD2TextBox;
+        private ErrorProvider _DError;
+        private ErrorProvider _D2Error;
+        private ErrorProvider _HError;
+        private ErrorProvider _chamferLengthError;
+        private ErrorProvider _savePathError;
+        private ErrorProvider __d1Error;
+        private ErrorProvider __d2Error;
+        private ErrorProvider __dError;
+        private ErrorProvider __hErrror;
+        private ErrorProvider ___hError;
+        private ErrorProvider _nError;
     }
 }
