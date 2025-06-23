@@ -90,11 +90,12 @@
             // pictureBoxSketch
             // 
             pictureBoxSketch.BackColor = Color.Transparent;
-            pictureBoxSketch.Image = Properties.Resources.assemble;
+            pictureBoxSketch.BorderStyle = BorderStyle.Fixed3D;
+            pictureBoxSketch.Image = (Image)resources.GetObject("pictureBoxSketch.Image");
             pictureBoxSketch.InitialImage = (Image)resources.GetObject("pictureBoxSketch.InitialImage");
-            pictureBoxSketch.Location = new Point(315, 31);
+            pictureBoxSketch.Location = new Point(280, 50);
             pictureBoxSketch.Name = "pictureBoxSketch";
-            pictureBoxSketch.Size = new Size(171, 307);
+            pictureBoxSketch.Size = new Size(206, 316);
             pictureBoxSketch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSketch.TabIndex = 0;
             pictureBoxSketch.TabStop = false;
