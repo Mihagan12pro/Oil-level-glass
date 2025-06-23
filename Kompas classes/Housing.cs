@@ -138,7 +138,7 @@ namespace Oil_level_glass.Kompas_classes
 
             _thread = Thread(new List<I3DOperation> { _cutRotated2 });
 
-            _circularCopy1 = CircularCopy(new List<ICopy> { _cutRotated2, _thread }, 4, planeXOY, planeYOZ, 360);
+            _circularCopy1 = CircularCopy(new List<ICopy> { _cutRotated2, _thread }, _n, planeXOY, planeYOZ, 360);
 
             _chamfer1 = Chamfer(new List<Point3D> { new Point3D() { X = _D/2, Y = 0, Z = 0} },_chamferLength,_chamferAngle);
 

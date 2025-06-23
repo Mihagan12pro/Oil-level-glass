@@ -183,17 +183,54 @@ namespace Oil_level_glass
                 return;
             }
 
-        
 
-            Housing housing = new Housing(90, 6.65, 72, 50, 60, 8, 6, 2, 60, 3);
+            double D = Convert.ToDouble(sizeDTextBox.Text);
+            double d = Convert.ToDouble(size_dTextBox.Text);
+            double D2 = Convert.ToDouble(sizeD2TextBox.Text);
+            double d1 = Convert.ToDouble(size_d1TextBox.Text);
+            double d2 = Convert.ToDouble(size_d2TextBox.Text);
+            double H = Convert.ToDouble(sizeHTextBox.Text);
+            double h = Convert.ToDouble(size_htextBox.Text);
+            int n = Convert.ToInt32(nNumericUpDown.Value);
+            double chamferAngle = Convert.ToDouble(angleNumericUpDown.Value);
+            double chamferLength = Convert.ToDouble(chamferLengthTextBox.Text);
+
+            double distance1 = chamferLength;
+            double distance2 = Math.Tan(chamferAngle * Math.PI / 180) * distance1;
+
+            if (distance1 >= H || distance2 >= D* 0.5 - (D2 / 2 + d/2))
+            {
+                MessageBox.Show("Уменьшите катет фаски или поменяйте угол!", "Невозможно начать построение!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (H / h < 1.32)
+            {
+                MessageBox.Show("Между размерами H и h должно быть соотношение: H / h = 1,34!", "Невозможно начать построение!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (d2 <= d1)
+            {
+                MessageBox.Show("Размер d2 должен быть больше d1!", "Невозможно начать построение!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (D <= d2)
+            {
+                MessageBox.Show("Размер D должен быть больше d2!", "Невозможно начать построение!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Housing housing = new Housing(D,d,D2,d1,d2,H,h,n,chamferAngle,chamferLength);
             housing.SavePath = _savePath;
             housing.ModelName = "Корпус";
 
-            Glass glass = new Glass(6, 60);
+            Glass glass = new Glass(h,d2);
             glass.SavePath = _savePath;
             glass.ModelName = "Стекло";
 
-            Ring ring = new Ring(6, 60, 50);
+            Ring ring = new Ring(h,d2,d1);
             ring.SavePath = _savePath;
             ring.ModelName = "Резиновая подкладка";
 

@@ -118,11 +118,10 @@ namespace Oil_level_glass.Kompas_classes
             circularCopyShell.CircularCopy = Part.NewEntity((short)Obj3dType.o3d_circularCopy);
             circularCopyShell.CircularCopyDefinition = circularCopyShell.CircularCopy.GetDefinition();
 
-            circularCopyShell.CircularCopyDefinition.count1 = countOfCopies;
 
             circularCopyShell.CircularCopyDefinition.SetAxis(axis2Planes);
 
-            circularCopyShell.CircularCopyDefinition.SetCopyParamAlongDir(countOfCopies,angle, true,true);
+            circularCopyShell.CircularCopyDefinition.SetCopyParamAlongDir(countOfCopies,angle, true,false);
 
             ksEntityCollection entityCollection = circularCopyShell.CircularCopyDefinition.GetOperationArray();
             entityCollection.Clear();
