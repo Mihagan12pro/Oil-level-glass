@@ -93,10 +93,10 @@
             pictureBoxSketch.BorderStyle = BorderStyle.Fixed3D;
             pictureBoxSketch.Image = (Image)resources.GetObject("pictureBoxSketch.Image");
             pictureBoxSketch.InitialImage = (Image)resources.GetObject("pictureBoxSketch.InitialImage");
-            pictureBoxSketch.Location = new Point(280, 50);
+            pictureBoxSketch.Location = new Point(280, 32);
             pictureBoxSketch.Name = "pictureBoxSketch";
-            pictureBoxSketch.Size = new Size(206, 316);
-            pictureBoxSketch.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxSketch.Size = new Size(215, 355);
+            pictureBoxSketch.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxSketch.TabIndex = 0;
             pictureBoxSketch.TabStop = false;
             // 
@@ -175,9 +175,9 @@
             // 
             // buttonBuild
             // 
-            buttonBuild.Location = new Point(392, 412);
+            buttonBuild.Location = new Point(392, 416);
             buttonBuild.Name = "buttonBuild";
-            buttonBuild.Size = new Size(94, 26);
+            buttonBuild.Size = new Size(103, 24);
             buttonBuild.TabIndex = 15;
             buttonBuild.Text = "Построить";
             buttonBuild.UseVisualStyleBackColor = true;
@@ -256,9 +256,9 @@
             groupBoxMainSizes.Controls.Add(label4);
             groupBoxMainSizes.Controls.Add(label3);
             groupBoxMainSizes.FlatStyle = FlatStyle.Flat;
-            groupBoxMainSizes.Location = new Point(21, 23);
+            groupBoxMainSizes.Location = new Point(11, 23);
             groupBoxMainSizes.Name = "groupBoxMainSizes";
-            groupBoxMainSizes.Size = new Size(241, 268);
+            groupBoxMainSizes.Size = new Size(260, 268);
             groupBoxMainSizes.TabIndex = 22;
             groupBoxMainSizes.TabStop = false;
             groupBoxMainSizes.Text = "Основные размеры";
@@ -291,20 +291,21 @@
             // 
             // _textBoxSavePath
             // 
-            _textBoxSavePath.Location = new Point(179, 412);
+            _textBoxSavePath.HideSelection = false;
+            _textBoxSavePath.Location = new Point(172, 417);
             _textBoxSavePath.Name = "_textBoxSavePath";
             _textBoxSavePath.PlaceholderText = "C:\\";
             _textBoxSavePath.ScrollBars = ScrollBars.Horizontal;
-            _textBoxSavePath.Size = new Size(142, 24);
+            _textBoxSavePath.Size = new Size(196, 24);
             _textBoxSavePath.TabIndex = 28;
             _textBoxSavePath.Text = "C:\\";
             _textBoxSavePath.TextChanged += textBoxSavePath_TextChanged;
             // 
             // _setSaveFolderButton
             // 
-            _setSaveFolderButton.Location = new Point(21, 411);
+            _setSaveFolderButton.Location = new Point(11, 416);
             _setSaveFolderButton.Name = "_setSaveFolderButton";
-            _setSaveFolderButton.Size = new Size(136, 29);
+            _setSaveFolderButton.Size = new Size(155, 24);
             _setSaveFolderButton.TabIndex = 29;
             _setSaveFolderButton.Text = "Куда сохранять...";
             _setSaveFolderButton.UseVisualStyleBackColor = true;
@@ -320,9 +321,9 @@
             chamferGroupBox.Controls.Add(label9);
             chamferGroupBox.Controls.Add(angleNumericUpDown);
             chamferGroupBox.Controls.Add(label7);
-            chamferGroupBox.Location = new Point(21, 297);
+            chamferGroupBox.Location = new Point(11, 297);
             chamferGroupBox.Name = "chamferGroupBox";
-            chamferGroupBox.Size = new Size(241, 90);
+            chamferGroupBox.Size = new Size(260, 90);
             chamferGroupBox.TabIndex = 30;
             chamferGroupBox.TabStop = false;
             chamferGroupBox.Text = "Параметры фаски";
@@ -410,7 +411,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(498, 469);
+            ClientSize = new Size(507, 469);
             Controls.Add(chamferGroupBox);
             Controls.Add(_setSaveFolderButton);
             Controls.Add(_textBoxSavePath);
