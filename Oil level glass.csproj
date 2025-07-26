@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <None Remove="Images\assemble.bmp" />
+    <None Remove="Images\mainFormImage.bmp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +50,7 @@
 
   <ItemGroup>
     <Resource Include="Images\assemble.bmp" />
+    <Resource Include="Images\mainFormImage.bmp" />
   </ItemGroup>
 
   <ItemGroup>

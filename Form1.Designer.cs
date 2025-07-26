@@ -28,63 +28,117 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode1 = new TreeNode("Корпус");
-            TreeNode treeNode2 = new TreeNode("Стекло");
-            TreeNode treeNode3 = new TreeNode("Кольцо");
-            TreeNode treeNode4 = new TreeNode("Смотровой лючок", new TreeNode[] { treeNode1, treeNode2, treeNode3 });
-            splitContainer1 = new SplitContainer();
-            mainFormLeftPanel = new Panel();
-            leftPanelTreeView = new TreeView();
-            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
-            splitContainer1.Panel1.SuspendLayout();
-            splitContainer1.SuspendLayout();
-            mainFormLeftPanel.SuspendLayout();
+            mainFormPictureBox = new PictureBox();
+            button1 = new Button();
+            button4 = new Button();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
+            button3 = new Button();
+            button2 = new Button();
+            authorsGitHubLink = new LinkLabel();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)mainFormPictureBox).BeginInit();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // splitContainer1
+            // mainFormPictureBox
             // 
-            splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.IsSplitterFixed = true;
-            splitContainer1.Location = new Point(0, 0);
-            splitContainer1.Name = "splitContainer1";
+            mainFormPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            mainFormPictureBox.BackColor = SystemColors.ButtonFace;
+            mainFormPictureBox.BorderStyle = BorderStyle.FixedSingle;
+            mainFormPictureBox.Image = Properties.Resources.mainFormImage;
+            mainFormPictureBox.Location = new Point(12, 21);
+            mainFormPictureBox.Name = "mainFormPictureBox";
+            mainFormPictureBox.Size = new Size(383, 378);
+            mainFormPictureBox.TabIndex = 0;
+            mainFormPictureBox.TabStop = false;
             // 
-            // splitContainer1.Panel1
+            // button1
             // 
-            splitContainer1.Panel1.Controls.Add(mainFormLeftPanel);
-            splitContainer1.Panel1.SizeChanged += splitContainer1_Panel1_SizeChanged;
-            splitContainer1.Size = new Size(579, 528);
-            splitContainer1.SplitterDistance = 193;
-            splitContainer1.SplitterWidth = 5;
-            splitContainer1.TabIndex = 0;
+            button1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            button1.Location = new Point(16, 22);
+            button1.Margin = new Padding(0);
+            button1.Name = "button1";
+            button1.Size = new Size(173, 55);
+            button1.TabIndex = 1;
+            button1.Text = "Трехмерная сборка";
+            button1.UseVisualStyleBackColor = true;
             // 
-            // mainFormLeftPanel
+            // button4
             // 
-            mainFormLeftPanel.Controls.Add(leftPanelTreeView);
-            mainFormLeftPanel.Location = new Point(3, 2);
-            mainFormLeftPanel.Name = "mainFormLeftPanel";
-            mainFormLeftPanel.Size = new Size(186, 525);
-            mainFormLeftPanel.TabIndex = 0;
+            button4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            button4.Location = new Point(16, 87);
+            button4.Name = "button4";
+            button4.Size = new Size(173, 55);
+            button4.TabIndex = 4;
+            button4.Text = "Сборочный чертеж";
+            button4.UseVisualStyleBackColor = true;
             // 
-            // leftPanelTreeView
+            // groupBox1
             // 
-            leftPanelTreeView.BackColor = SystemColors.ButtonFace;
-            leftPanelTreeView.BorderStyle = BorderStyle.None;
-            leftPanelTreeView.Indent = 30;
-            leftPanelTreeView.ItemHeight = 20;
-            leftPanelTreeView.Location = new Point(5, 10);
-            leftPanelTreeView.Margin = new Padding(3, 30, 3, 30);
-            leftPanelTreeView.Name = "leftPanelTreeView";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Корпус";
-            treeNode2.Name = "Node1";
-            treeNode2.Text = "Стекло";
-            treeNode3.Name = "Node2";
-            treeNode3.Text = "Кольцо";
-            treeNode4.Name = "oilGlassNode";
-            treeNode4.Text = "Смотровой лючок";
-            leftPanelTreeView.Nodes.AddRange(new TreeNode[] { treeNode4 });
-            leftPanelTreeView.Size = new Size(163, 504);
-            leftPanelTreeView.TabIndex = 0;
+            groupBox1.Anchor = AnchorStyles.Right;
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(button4);
+            groupBox1.Location = new Point(416, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(207, 154);
+            groupBox1.TabIndex = 5;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Мастера проектирования";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Anchor = AnchorStyles.None;
+            groupBox2.Controls.Add(button3);
+            groupBox2.Controls.Add(button2);
+            groupBox2.Location = new Point(416, 188);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(207, 154);
+            groupBox2.TabIndex = 6;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Справки";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(16, 89);
+            button3.Name = "button3";
+            button3.Size = new Size(173, 55);
+            button3.TabIndex = 3;
+            button3.Text = "О программе";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            button2.Location = new Point(16, 22);
+            button2.Margin = new Padding(0);
+            button2.Name = "button2";
+            button2.Size = new Size(173, 55);
+            button2.TabIndex = 2;
+            button2.Text = "Руководство пользователя";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // authorsGitHubLink
+            // 
+            authorsGitHubLink.AutoSize = true;
+            authorsGitHubLink.LinkVisited = true;
+            authorsGitHubLink.Location = new Point(532, 381);
+            authorsGitHubLink.Name = "authorsGitHubLink";
+            authorsGitHubLink.Size = new Size(96, 18);
+            authorsGitHubLink.TabIndex = 7;
+            authorsGitHubLink.TabStop = true;
+            authorsGitHubLink.Text = "Mihagan12pro";
+            authorsGitHubLink.UseWaitCursor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(416, 381);
+            label1.Name = "label1";
+            label1.Size = new Size(110, 18);
+            label1.TabIndex = 8;
+            label1.Text = "Author's GitHub:";
             // 
             // MainForm
             // 
@@ -92,24 +146,35 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(579, 528);
-            Controls.Add(splitContainer1);
+            ClientSize = new Size(635, 420);
+            Controls.Add(label1);
+            Controls.Add(authorsGitHubLink);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(mainFormPictureBox);
             Font = new Font("Calibri", 9F);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
             Name = "MainForm";
             SizeGripStyle = SizeGripStyle.Show;
-            Text = "Смотровой лючок";
-            splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
-            splitContainer1.ResumeLayout(false);
-            mainFormLeftPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)mainFormPictureBox).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private SplitContainer splitContainer1;
-        private Panel mainFormLeftPanel;
-        private TreeView leftPanelTreeView;
+        private PictureBox mainFormPictureBox;
+        private Button button1;
+        private Button button4;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private Button button3;
+        private Button button2;
+        private LinkLabel authorsGitHubLink;
+        private Label label1;
     }
 }
