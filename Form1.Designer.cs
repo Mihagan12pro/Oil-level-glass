@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             mainFormPictureBox = new PictureBox();
-            button1 = new Button();
+            AssembleWizardButton = new Button();
             button4 = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
@@ -48,22 +48,23 @@
             mainFormPictureBox.BackColor = SystemColors.ButtonFace;
             mainFormPictureBox.BorderStyle = BorderStyle.FixedSingle;
             mainFormPictureBox.Image = Properties.Resources.mainFormImage;
-            mainFormPictureBox.Location = new Point(12, 21);
+            mainFormPictureBox.Location = new Point(11, 21);
             mainFormPictureBox.Name = "mainFormPictureBox";
-            mainFormPictureBox.Size = new Size(383, 378);
+            mainFormPictureBox.Size = new Size(390, 378);
             mainFormPictureBox.TabIndex = 0;
             mainFormPictureBox.TabStop = false;
             // 
-            // button1
+            // AssembleWizardButton
             // 
-            button1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            button1.Location = new Point(16, 22);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Size = new Size(173, 55);
-            button1.TabIndex = 1;
-            button1.Text = "Трехмерная сборка";
-            button1.UseVisualStyleBackColor = true;
+            AssembleWizardButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            AssembleWizardButton.Location = new Point(16, 22);
+            AssembleWizardButton.Margin = new Padding(0);
+            AssembleWizardButton.Name = "AssembleWizardButton";
+            AssembleWizardButton.Size = new Size(173, 55);
+            AssembleWizardButton.TabIndex = 1;
+            AssembleWizardButton.Text = "Трехмерная сборка";
+            AssembleWizardButton.UseVisualStyleBackColor = true;
+            AssembleWizardButton.Click += AssembleWizardButton_Click;
             // 
             // button4
             // 
@@ -78,11 +79,11 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Right;
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(AssembleWizardButton);
             groupBox1.Controls.Add(button4);
             groupBox1.Location = new Point(416, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(207, 154);
+            groupBox1.Size = new Size(207, 153);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Мастера проектирования";
@@ -92,9 +93,9 @@
             groupBox2.Anchor = AnchorStyles.None;
             groupBox2.Controls.Add(button3);
             groupBox2.Controls.Add(button2);
-            groupBox2.Location = new Point(416, 188);
+            groupBox2.Location = new Point(416, 189);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(207, 154);
+            groupBox2.Size = new Size(207, 153);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             groupBox2.Text = "Справки";
@@ -123,7 +124,7 @@
             // 
             authorsGitHubLink.AutoSize = true;
             authorsGitHubLink.LinkVisited = true;
-            authorsGitHubLink.Location = new Point(532, 381);
+            authorsGitHubLink.Location = new Point(533, 381);
             authorsGitHubLink.Name = "authorsGitHubLink";
             authorsGitHubLink.Size = new Size(96, 18);
             authorsGitHubLink.TabIndex = 7;
@@ -136,9 +137,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(416, 381);
             label1.Name = "label1";
-            label1.Size = new Size(110, 18);
+            label1.Size = new Size(101, 18);
             label1.TabIndex = 8;
-            label1.Text = "Author's GitHub:";
+            label1.Text = "GitHub автора:";
             // 
             // MainForm
             // 
@@ -154,7 +155,6 @@
             Controls.Add(mainFormPictureBox);
             Font = new Font("Calibri", 9F);
             FormBorderStyle = FormBorderStyle.Fixed3D;
-            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "MainForm";
             SizeGripStyle = SizeGripStyle.Show;
@@ -168,7 +168,7 @@
         #endregion
 
         private PictureBox mainFormPictureBox;
-        private Button button1;
+        private Button AssembleWizardButton;
         private Button button4;
         private GroupBox groupBox1;
         private GroupBox groupBox2;

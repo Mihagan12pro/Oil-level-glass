@@ -1,6 +1,6 @@
-
 using System.Diagnostics;
 using System.Reflection;
+using Oil_level_glass.Wizards.Forms;
 
 namespace Oil_level_glass
 {
@@ -20,10 +20,9 @@ namespace Oil_level_glass
             System.Diagnostics.Process.Start(new ProcessStartInfo("https://github.com/Mihagan12pro") { UseShellExecute = true });
         }
 
-        private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
+        private void AssembleWizardButton_Click(object sender, EventArgs e)
         {
-            //mainFormLeftPanel.Height = splitContainer1.Panel1.Height;
-            //mainFormLeftPanel.Width = splitContainer1.Panel1.Width;
+            new AssembleWizardForm().ShowDialog();
         }
     }
 }
