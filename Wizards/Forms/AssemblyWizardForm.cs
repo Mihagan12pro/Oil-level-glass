@@ -19,7 +19,12 @@ namespace Oil_level_glass.Wizards.Forms
 
             DataContext = new AssemblyViewModel();
 
-            //DataBindings.Add(new Binding("Size", DataContext, "FormSize",false, DataSourceUpdateMode.OnPropertyChanged));
+
+        }
+
+        private void AssembleWizardForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

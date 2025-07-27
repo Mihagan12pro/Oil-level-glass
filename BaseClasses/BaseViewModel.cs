@@ -11,20 +11,5 @@ namespace Oil_level_glass.BaseClasses
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-
-
-        protected int formSize;
-        public virtual int FormSize
-        {
-            protected get
-            {
-                return formSize; 
-            }
-            set 
-            {
-                formSize = value;
-                OnPropertyChanged();
-            }
-        }
     }
 }
