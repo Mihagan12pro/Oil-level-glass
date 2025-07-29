@@ -1,22 +1,55 @@
 ﻿using Oil_level_glass.BaseClasses;
 using Oil_level_glass.Services;
-using System.Windows.Forms;
 
 namespace Oil_level_glass.Wizards.ViewModels
 {
     internal abstract class AssemblyTabViewModel : BaseWizardViewModel
     {
-        protected Color modelColor;
+        private Color _modelColor;
 
         public Color ModelColor
         {
             get
             {
-                return modelColor;
+                return _modelColor;
             }
             protected set
             {
-                modelColor = value;
+                _modelColor = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private double _density;
+
+        public double Density
+        {
+            get
+            {
+                return _density;
+            }
+            set
+            {
+                _density = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private string? _materialTittle;
+
+        public string? MaterialTittle
+        {
+            get
+            {
+                return _materialTittle;
+            }
+            set
+            {
+                _materialTittle = value;
 
                 OnPropertyChanged();
             }
@@ -42,9 +75,9 @@ namespace Oil_level_glass.Wizards.ViewModels
         }
 
 
-        public AssemblyTabViewModel(Color color)
+        public AssemblyTabViewModel()
         {
-            ModelColor = color;
+
         }
     }
 }

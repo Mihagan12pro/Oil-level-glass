@@ -6,34 +6,34 @@ namespace Oil_level_glass.BaseClasses
     internal abstract class BaseWizardViewModel : BaseViewModel
     {
 
-        protected string ?saveFolder;
+        private string ?_saveFolder;
 
         public string? SaveFolder
         {
            get
            {
-                return saveFolder;
+                return _saveFolder;
            }
            protected set
            {
-                saveFolder = value;
+                _saveFolder = value;
 
                 OnPropertyChanged();
            }
         }
 
 
-        protected string? fileName;
+        private string? _fileName;
 
         public string ?FileName
         {
             get
             {
-                return fileName;
+                return _fileName;
             }
             protected set
             {
-                fileName = value; 
+                _fileName = value; 
                 OnPropertyChanged();
             }
         }

@@ -8,22 +8,52 @@ namespace Oil_level_glass.Wizards.Forms
         {
             InitializeComponent();
 
-            BlankTab.DataContext = new BlankTabViewModel(Color.AliceBlue);
+            blankTab.DataContext = new BlankTabViewModel();
 
             blankColorBox.DataBindings.Add
             (
-                new Binding(nameof(blankColorBox.BackColor), BlankTab.DataContext, "ModelColor")
+                new Binding(nameof(blankColorBox.BackColor), blankTab.DataContext, "ModelColor")
             );
 
             blankColorDialogButton.DataBindings.Add
             (
-                new Binding("Command", BlankTab.DataContext, "ExecuteColorDialog",true)
+                new Binding("Command", blankTab.DataContext, "ExecuteColorDialog", true)
             );
-        } 
+
+            blankFileNameTextBox.DataBindings.Add
+            (
+                new Binding("Text", blankTab.DataContext, "FileName", false, DataSourceUpdateMode.OnPropertyChanged)
+            );
+
+            blankFolderBrowserButton.DataBindings.Add
+            (
+                new Binding("Command", blankTab.DataContext, "ExecuteFolderBrowser", true)
+            );
+
+            blankSaveFolderTextBox.DataBindings.Add
+            (
+                new Binding("Text", blankTab.DataContext, "SaveFolder")
+            );
+
+            blankDensityTextBox.DataBindings.Add
+            (
+                new Binding("Text", blankTab.DataContext, "Density", false, DataSourceUpdateMode.OnPropertyChanged)
+            );
+
+            blankMaterialTextBox.DataBindings.Add
+            (
+                new Binding("Text", blankTab.DataContext, "MaterialTittle", false, DataSourceUpdateMode.OnPropertyChanged)
+            );
+        }
 
         private void AssembleWizardForm_Load(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void blankDensityTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

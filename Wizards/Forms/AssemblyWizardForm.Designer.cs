@@ -28,26 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Label blankDensityLabel;
             wizardTabControl = new TabControl();
             MainTab = new TabPage();
             mainTabSplitContainer = new SplitContainer();
             wizardDescriptionBox = new RichTextBox();
             panel1 = new Panel();
             mainTabPicture = new PictureBox();
-            BlankTab = new TabPage();
+            blankTab = new TabPage();
             housingBlankSplitContainer = new SplitContainer();
             housingBlankTablePanel = new TableLayoutPanel();
             housingSizesGroupBox = new GroupBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            blankDiameterTextBox = new TextBox();
+            blankCentralHoleTextBox = new TextBox();
+            blankHeightTextBox = new TextBox();
             housingMaterialsGroupBox = new GroupBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            blankMaterialLabel = new Label();
+            blankMaterialTextBox = new TextBox();
+            blankDensityTextBox = new MaskedTextBox();
             otherBlankParametersGroupBox = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            saveFolderBlankTextBox = new TextBox();
+            blankSaveFolderTextBox = new TextBox();
             blankColorDialogButton = new Button();
-            folderBrowserBlankButton = new Button();
+            blankFolderBrowserButton = new Button();
             blankColorBox = new PictureBox();
-            fileNameBlankTextBox = new TextBox();
+            blankFileNameTextBox = new TextBox();
             blankNameLabel = new TextBox();
             pictureBox1 = new PictureBox();
+            blankDensityLabel = new Label();
             wizardTabControl.SuspendLayout();
             MainTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainTabSplitContainer).BeginInit();
@@ -56,22 +69,36 @@
             mainTabSplitContainer.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainTabPicture).BeginInit();
-            BlankTab.SuspendLayout();
+            blankTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)housingBlankSplitContainer).BeginInit();
             housingBlankSplitContainer.Panel1.SuspendLayout();
             housingBlankSplitContainer.Panel2.SuspendLayout();
             housingBlankSplitContainer.SuspendLayout();
             housingBlankTablePanel.SuspendLayout();
+            housingSizesGroupBox.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            housingMaterialsGroupBox.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             otherBlankParametersGroupBox.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)blankColorBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
+            // blankDensityLabel
+            // 
+            blankDensityLabel.AutoSize = true;
+            blankDensityLabel.Font = new Font("Calibri", 9F, FontStyle.Italic);
+            blankDensityLabel.Location = new Point(3, 41);
+            blankDensityLabel.Name = "blankDensityLabel";
+            blankDensityLabel.Size = new Size(129, 18);
+            blankDensityLabel.TabIndex = 0;
+            blankDensityLabel.Text = "Плотность, г/см ³";
+            // 
             // wizardTabControl
             // 
             wizardTabControl.Controls.Add(MainTab);
-            wizardTabControl.Controls.Add(BlankTab);
+            wizardTabControl.Controls.Add(blankTab);
             wizardTabControl.Dock = DockStyle.Fill;
             wizardTabControl.Location = new Point(0, 0);
             wizardTabControl.Name = "wizardTabControl";
@@ -140,16 +167,16 @@
             mainTabPicture.TabIndex = 0;
             mainTabPicture.TabStop = false;
             // 
-            // BlankTab
+            // blankTab
             // 
-            BlankTab.Controls.Add(housingBlankSplitContainer);
-            BlankTab.Location = new Point(4, 27);
-            BlankTab.Name = "BlankTab";
-            BlankTab.Padding = new Padding(3);
-            BlankTab.Size = new Size(792, 522);
-            BlankTab.TabIndex = 0;
-            BlankTab.Text = "Заготовка корпуса";
-            BlankTab.UseVisualStyleBackColor = true;
+            blankTab.Controls.Add(housingBlankSplitContainer);
+            blankTab.Location = new Point(4, 27);
+            blankTab.Name = "blankTab";
+            blankTab.Padding = new Padding(3);
+            blankTab.Size = new Size(792, 522);
+            blankTab.TabIndex = 0;
+            blankTab.Text = "Заготовка корпуса";
+            blankTab.UseVisualStyleBackColor = true;
             // 
             // housingBlankSplitContainer
             // 
@@ -182,39 +209,162 @@
             housingBlankTablePanel.Location = new Point(16, 0);
             housingBlankTablePanel.Name = "housingBlankTablePanel";
             housingBlankTablePanel.RowCount = 3;
-            housingBlankTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            housingBlankTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            housingBlankTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            housingBlankTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 38.4615364F));
+            housingBlankTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 23.0769253F));
+            housingBlankTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 38.46154F));
             housingBlankTablePanel.Size = new Size(384, 495);
             housingBlankTablePanel.TabIndex = 0;
             // 
             // housingSizesGroupBox
             // 
+            housingSizesGroupBox.Controls.Add(tableLayoutPanel3);
             housingSizesGroupBox.Dock = DockStyle.Fill;
             housingSizesGroupBox.Location = new Point(3, 3);
             housingSizesGroupBox.Name = "housingSizesGroupBox";
-            housingSizesGroupBox.Size = new Size(378, 159);
+            housingSizesGroupBox.Size = new Size(378, 184);
             housingSizesGroupBox.TabIndex = 0;
             housingSizesGroupBox.TabStop = false;
             housingSizesGroupBox.Text = "Размеры заготовки корпуса";
             // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Controls.Add(label1, 0, 0);
+            tableLayoutPanel3.Controls.Add(label2, 0, 1);
+            tableLayoutPanel3.Controls.Add(label3, 0, 2);
+            tableLayoutPanel3.Controls.Add(blankDiameterTextBox, 1, 0);
+            tableLayoutPanel3.Controls.Add(blankCentralHoleTextBox, 1, 1);
+            tableLayoutPanel3.Controls.Add(blankHeightTextBox, 1, 2);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 22);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 3;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.Size = new Size(372, 159);
+            tableLayoutPanel3.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(17, 18);
+            label1.TabIndex = 0;
+            label1.Text = "D";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(3, 53);
+            label2.Name = "label2";
+            label2.Size = new Size(24, 18);
+            label2.TabIndex = 1;
+            label2.Text = "D1";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(3, 106);
+            label3.Name = "label3";
+            label3.Size = new Size(17, 18);
+            label3.TabIndex = 2;
+            label3.Text = "H";
+            // 
+            // blankDiameterTextBox
+            // 
+            blankDiameterTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            blankDiameterTextBox.Location = new Point(33, 3);
+            blankDiameterTextBox.Name = "blankDiameterTextBox";
+            blankDiameterTextBox.Size = new Size(336, 26);
+            blankDiameterTextBox.TabIndex = 3;
+            // 
+            // blankCentralHoleTextBox
+            // 
+            blankCentralHoleTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            blankCentralHoleTextBox.Location = new Point(33, 56);
+            blankCentralHoleTextBox.Name = "blankCentralHoleTextBox";
+            blankCentralHoleTextBox.Size = new Size(336, 26);
+            blankCentralHoleTextBox.TabIndex = 4;
+            // 
+            // blankHeightTextBox
+            // 
+            blankHeightTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            blankHeightTextBox.Location = new Point(33, 109);
+            blankHeightTextBox.Name = "blankHeightTextBox";
+            blankHeightTextBox.Size = new Size(336, 26);
+            blankHeightTextBox.TabIndex = 5;
+            // 
             // housingMaterialsGroupBox
             // 
+            housingMaterialsGroupBox.Controls.Add(tableLayoutPanel2);
             housingMaterialsGroupBox.Dock = DockStyle.Fill;
-            housingMaterialsGroupBox.Location = new Point(3, 168);
+            housingMaterialsGroupBox.Location = new Point(3, 193);
             housingMaterialsGroupBox.Name = "housingMaterialsGroupBox";
-            housingMaterialsGroupBox.Size = new Size(378, 159);
+            housingMaterialsGroupBox.Size = new Size(378, 108);
             housingMaterialsGroupBox.TabIndex = 1;
             housingMaterialsGroupBox.TabStop = false;
             housingMaterialsGroupBox.Text = "Материал корпуса";
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 99.99999F));
+            tableLayoutPanel2.Controls.Add(blankDensityLabel, 0, 1);
+            tableLayoutPanel2.Controls.Add(blankMaterialLabel, 0, 0);
+            tableLayoutPanel2.Controls.Add(blankMaterialTextBox, 1, 0);
+            tableLayoutPanel2.Controls.Add(blankDensityTextBox, 1, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 22);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(372, 83);
+            tableLayoutPanel2.TabIndex = 0;
+            // 
+            // blankMaterialLabel
+            // 
+            blankMaterialLabel.AutoSize = true;
+            blankMaterialLabel.Font = new Font("Calibri", 9F, FontStyle.Italic);
+            blankMaterialLabel.Location = new Point(3, 0);
+            blankMaterialLabel.Name = "blankMaterialLabel";
+            blankMaterialLabel.Size = new Size(149, 18);
+            blankMaterialLabel.TabIndex = 1;
+            blankMaterialLabel.Text = "Название материала";
+            // 
+            // blankMaterialTextBox
+            // 
+            blankMaterialTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            blankMaterialTextBox.Location = new Point(158, 3);
+            blankMaterialTextBox.Name = "blankMaterialTextBox";
+            blankMaterialTextBox.PlaceholderText = "Сталь";
+            blankMaterialTextBox.Size = new Size(211, 26);
+            blankMaterialTextBox.TabIndex = 0;
+            blankMaterialTextBox.Text = "Сталь";
+            // 
+            // blankDensityTextBox
+            // 
+            blankDensityTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            blankDensityTextBox.Location = new Point(158, 44);
+            blankDensityTextBox.Mask = "0.000";
+            blankDensityTextBox.Name = "blankDensityTextBox";
+            blankDensityTextBox.PromptChar = '0';
+            blankDensityTextBox.Size = new Size(211, 26);
+            blankDensityTextBox.TabIndex = 2;
+            blankDensityTextBox.Text = "7871";
             // 
             // otherBlankParametersGroupBox
             // 
             otherBlankParametersGroupBox.Controls.Add(tableLayoutPanel1);
             otherBlankParametersGroupBox.Dock = DockStyle.Fill;
-            otherBlankParametersGroupBox.Location = new Point(3, 333);
+            otherBlankParametersGroupBox.Location = new Point(3, 307);
             otherBlankParametersGroupBox.Name = "otherBlankParametersGroupBox";
-            otherBlankParametersGroupBox.Size = new Size(378, 159);
+            otherBlankParametersGroupBox.Size = new Size(378, 185);
             otherBlankParametersGroupBox.TabIndex = 2;
             otherBlankParametersGroupBox.TabStop = false;
             otherBlankParametersGroupBox.Text = "Прочие параметры";
@@ -224,11 +374,11 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(saveFolderBlankTextBox, 1, 2);
+            tableLayoutPanel1.Controls.Add(blankSaveFolderTextBox, 1, 2);
             tableLayoutPanel1.Controls.Add(blankColorDialogButton, 0, 0);
-            tableLayoutPanel1.Controls.Add(folderBrowserBlankButton, 0, 2);
+            tableLayoutPanel1.Controls.Add(blankFolderBrowserButton, 0, 2);
             tableLayoutPanel1.Controls.Add(blankColorBox, 1, 0);
-            tableLayoutPanel1.Controls.Add(fileNameBlankTextBox, 1, 1);
+            tableLayoutPanel1.Controls.Add(blankFileNameTextBox, 1, 1);
             tableLayoutPanel1.Controls.Add(blankNameLabel, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 22);
@@ -237,18 +387,18 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(372, 134);
+            tableLayoutPanel1.Size = new Size(372, 160);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // saveFolderBlankTextBox
+            // blankSaveFolderTextBox
             // 
-            saveFolderBlankTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            saveFolderBlankTextBox.Location = new Point(139, 91);
-            saveFolderBlankTextBox.Name = "saveFolderBlankTextBox";
-            saveFolderBlankTextBox.PlaceholderText = "C:\\";
-            saveFolderBlankTextBox.ReadOnly = true;
-            saveFolderBlankTextBox.Size = new Size(230, 26);
-            saveFolderBlankTextBox.TabIndex = 3;
+            blankSaveFolderTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            blankSaveFolderTextBox.Location = new Point(139, 109);
+            blankSaveFolderTextBox.Name = "blankSaveFolderTextBox";
+            blankSaveFolderTextBox.PlaceholderText = "C:\\";
+            blankSaveFolderTextBox.ReadOnly = true;
+            blankSaveFolderTextBox.Size = new Size(230, 26);
+            blankSaveFolderTextBox.TabIndex = 3;
             // 
             // blankColorDialogButton
             // 
@@ -261,37 +411,38 @@
             blankColorDialogButton.Text = "Цвет корпуса...";
             blankColorDialogButton.UseVisualStyleBackColor = true;
             // 
-            // folderBrowserBlankButton
+            // blankFolderBrowserButton
             // 
-            folderBrowserBlankButton.Location = new Point(3, 91);
-            folderBrowserBlankButton.Name = "folderBrowserBlankButton";
-            folderBrowserBlankButton.Size = new Size(130, 26);
-            folderBrowserBlankButton.TabIndex = 2;
-            folderBrowserBlankButton.Text = "Куда сохранить...";
-            folderBrowserBlankButton.UseVisualStyleBackColor = true;
+            blankFolderBrowserButton.Location = new Point(3, 109);
+            blankFolderBrowserButton.Name = "blankFolderBrowserButton";
+            blankFolderBrowserButton.Size = new Size(130, 26);
+            blankFolderBrowserButton.TabIndex = 2;
+            blankFolderBrowserButton.Text = "Куда сохранить...";
+            blankFolderBrowserButton.UseVisualStyleBackColor = true;
             // 
             // blankColorBox
             // 
+            blankColorBox.BorderStyle = BorderStyle.FixedSingle;
             blankColorBox.Location = new Point(139, 3);
             blankColorBox.Name = "blankColorBox";
             blankColorBox.Size = new Size(28, 25);
             blankColorBox.TabIndex = 0;
             blankColorBox.TabStop = false;
             // 
-            // fileNameBlankTextBox
+            // blankFileNameTextBox
             // 
-            fileNameBlankTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            fileNameBlankTextBox.Location = new Point(139, 47);
-            fileNameBlankTextBox.Name = "fileNameBlankTextBox";
-            fileNameBlankTextBox.PlaceholderText = "Корпус";
-            fileNameBlankTextBox.Size = new Size(230, 26);
-            fileNameBlankTextBox.TabIndex = 5;
-            fileNameBlankTextBox.Text = "Корпус";
+            blankFileNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            blankFileNameTextBox.Location = new Point(139, 56);
+            blankFileNameTextBox.Name = "blankFileNameTextBox";
+            blankFileNameTextBox.PlaceholderText = "Корпус";
+            blankFileNameTextBox.Size = new Size(230, 26);
+            blankFileNameTextBox.TabIndex = 5;
+            blankFileNameTextBox.Text = "Корпус";
             // 
             // blankNameLabel
             // 
             blankNameLabel.BorderStyle = BorderStyle.None;
-            blankNameLabel.Location = new Point(3, 47);
+            blankNameLabel.Location = new Point(3, 56);
             blankNameLabel.Name = "blankNameLabel";
             blankNameLabel.ReadOnly = true;
             blankNameLabel.Size = new Size(125, 19);
@@ -333,12 +484,18 @@
             mainTabSplitContainer.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)mainTabPicture).EndInit();
-            BlankTab.ResumeLayout(false);
+            blankTab.ResumeLayout(false);
             housingBlankSplitContainer.Panel1.ResumeLayout(false);
             housingBlankSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)housingBlankSplitContainer).EndInit();
             housingBlankSplitContainer.ResumeLayout(false);
             housingBlankTablePanel.ResumeLayout(false);
+            housingSizesGroupBox.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
+            housingMaterialsGroupBox.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             otherBlankParametersGroupBox.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -350,7 +507,7 @@
         #endregion
 
         private TabControl wizardTabControl;
-        private TabPage BlankTab;
+        private TabPage blankTab;
         private SplitContainer housingBlankSplitContainer;
         private PictureBox pictureBox1;
         private TableLayoutPanel housingBlankTablePanel;
@@ -364,10 +521,21 @@
         private RichTextBox wizardDescriptionBox;
         private Button blankColorDialogButton;
         private PictureBox blankColorBox;
-        private TextBox saveFolderBlankTextBox;
-        private Button folderBrowserBlankButton;
-        private TextBox fileNameBlankTextBox;
+        private TextBox blankSaveFolderTextBox;
+        private Button blankFolderBrowserButton;
+        private TextBox blankFileNameTextBox;
         private TextBox blankNameLabel;
         private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label blankMaterialLabel;
+        private TextBox blankMaterialTextBox;
+        private MaskedTextBox blankDensityTextBox;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private TextBox blankDiameterTextBox;
+        private TextBox blankCentralHoleTextBox;
+        private TextBox blankHeightTextBox;
     }
-}
+} 
