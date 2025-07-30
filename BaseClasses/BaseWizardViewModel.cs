@@ -16,7 +16,7 @@ namespace Oil_level_glass.BaseClasses
            {
                 _saveFolder = value;
 
-                OnPropertyChanged();
+                //OnPropertyChanged();
            }
         }
 
