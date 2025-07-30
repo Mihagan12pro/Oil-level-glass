@@ -1,5 +1,6 @@
 ﻿using Oil_level_glass.BaseClasses;
 using Oil_level_glass.Services;
+using System.Globalization;
 
 namespace Oil_level_glass.Wizards.ViewModels
 {

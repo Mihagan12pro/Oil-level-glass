@@ -1,11 +1,9 @@
-﻿
-using Oil_level_glass.Services;
+﻿using Oil_level_glass.Services;
 
 namespace Oil_level_glass.BaseClasses
 {
     internal abstract class BaseWizardViewModel : BaseViewModel
     {
-
         private string ?_saveFolder;
 
         public string? SaveFolder
@@ -24,7 +22,6 @@ namespace Oil_level_glass.BaseClasses
 
 
         private string? _fileName;
-
         public string ?FileName
         {
             get
@@ -34,7 +31,20 @@ namespace Oil_level_glass.BaseClasses
             protected set
             {
                 _fileName = value; 
-                OnPropertyChanged();
+                //OnPropertyChanged();
+
+                
+            }
+        }
+
+
+        private void SaveFolderValidation()
+        {
+            ClearErrors(nameof(SaveFolder));
+
+            if (string.IsNullOrEmpty(SaveFolder))
+            {
+                AddError(nameof(SaveFolder), "Не выбрана папка для сохранения 3D моделей!");
             }
         }
 
@@ -56,6 +66,12 @@ namespace Oil_level_glass.BaseClasses
                         }
                     );
             }
+        }
+
+
+        public BaseWizardViewModel()
+        {
+            SaveFolder = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
     }
 }

@@ -44,6 +44,11 @@ namespace Oil_level_glass.Wizards.Forms
             (
                 new Binding("Text", blankTab.DataContext, "MaterialTittle", false, DataSourceUpdateMode.OnPropertyChanged)
             );
+
+            blankDiameterTextBox.DataBindings.Add
+            (
+                new Binding("Text", blankTab.DataContext, "BlankDiameter", false, DataSourceUpdateMode.OnPropertyChanged) { FormattingEnabled = true, FormatString = "0.000" }
+            );
         }
 
         private void AssembleWizardForm_Load(object sender, EventArgs e)

@@ -43,9 +43,9 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            blankDiameterTextBox = new TextBox();
             blankCentralHoleTextBox = new TextBox();
             blankHeightTextBox = new TextBox();
+            blankDiameterTextBox = new MaskedTextBox();
             housingMaterialsGroupBox = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             blankMaterialLabel = new Label();
@@ -234,9 +234,9 @@
             tableLayoutPanel3.Controls.Add(label1, 0, 0);
             tableLayoutPanel3.Controls.Add(label2, 0, 1);
             tableLayoutPanel3.Controls.Add(label3, 0, 2);
-            tableLayoutPanel3.Controls.Add(blankDiameterTextBox, 1, 0);
             tableLayoutPanel3.Controls.Add(blankCentralHoleTextBox, 1, 1);
             tableLayoutPanel3.Controls.Add(blankHeightTextBox, 1, 2);
+            tableLayoutPanel3.Controls.Add(blankDiameterTextBox, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 22);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -274,14 +274,6 @@
             label3.TabIndex = 2;
             label3.Text = "H";
             // 
-            // blankDiameterTextBox
-            // 
-            blankDiameterTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            blankDiameterTextBox.Location = new Point(33, 3);
-            blankDiameterTextBox.Name = "blankDiameterTextBox";
-            blankDiameterTextBox.Size = new Size(336, 26);
-            blankDiameterTextBox.TabIndex = 3;
-            // 
             // blankCentralHoleTextBox
             // 
             blankCentralHoleTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -297,6 +289,13 @@
             blankHeightTextBox.Name = "blankHeightTextBox";
             blankHeightTextBox.Size = new Size(336, 26);
             blankHeightTextBox.TabIndex = 5;
+            // 
+            // blankDiameterTextBox
+            // 
+            blankDiameterTextBox.Location = new Point(33, 3);
+            blankDiameterTextBox.Name = "blankDiameterTextBox";
+            blankDiameterTextBox.Size = new Size(336, 26);
+            blankDiameterTextBox.TabIndex = 6;
             // 
             // housingMaterialsGroupBox
             // 
@@ -354,6 +353,7 @@
             blankDensityTextBox.Mask = "0.000";
             blankDensityTextBox.Name = "blankDensityTextBox";
             blankDensityTextBox.PromptChar = '0';
+            blankDensityTextBox.RejectInputOnFirstFailure = true;
             blankDensityTextBox.Size = new Size(211, 26);
             blankDensityTextBox.TabIndex = 2;
             blankDensityTextBox.Text = "7871";
@@ -396,7 +396,6 @@
             blankSaveFolderTextBox.Location = new Point(139, 109);
             blankSaveFolderTextBox.Name = "blankSaveFolderTextBox";
             blankSaveFolderTextBox.PlaceholderText = "C:\\";
-            blankSaveFolderTextBox.ReadOnly = true;
             blankSaveFolderTextBox.Size = new Size(230, 26);
             blankSaveFolderTextBox.TabIndex = 3;
             // 
@@ -534,8 +533,8 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox blankDiameterTextBox;
         private TextBox blankCentralHoleTextBox;
         private TextBox blankHeightTextBox;
+        private MaskedTextBox blankDiameterTextBox;
     }
 } 
