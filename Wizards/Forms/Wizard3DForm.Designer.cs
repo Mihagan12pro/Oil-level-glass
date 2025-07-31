@@ -80,7 +80,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(800, 450);
+            tabControl1.Size = new Size(800, 453);
             tabControl1.TabIndex = 0;
             // 
             // housingTabPage
@@ -89,7 +89,7 @@
             housingTabPage.Location = new Point(4, 27);
             housingTabPage.Name = "housingTabPage";
             housingTabPage.Padding = new Padding(3);
-            housingTabPage.Size = new Size(792, 419);
+            housingTabPage.Size = new Size(792, 422);
             housingTabPage.TabIndex = 0;
             housingTabPage.Text = "Корпус";
             housingTabPage.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(housingPicture);
-            splitContainer1.Size = new Size(786, 413);
+            splitContainer1.Size = new Size(786, 416);
             splitContainer1.SplitterDistance = 400;
             splitContainer1.TabIndex = 0;
             // 
@@ -126,7 +126,7 @@
             housingLeftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 38.70968F));
             housingLeftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 26.8817234F));
             housingLeftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 34.4086037F));
-            housingLeftPanel.Size = new Size(381, 390);
+            housingLeftPanel.Size = new Size(381, 393);
             housingLeftPanel.TabIndex = 0;
             // 
             // housingSizesGroupBox
@@ -135,7 +135,7 @@
             housingSizesGroupBox.Dock = DockStyle.Fill;
             housingSizesGroupBox.Location = new Point(3, 3);
             housingSizesGroupBox.Name = "housingSizesGroupBox";
-            housingSizesGroupBox.Size = new Size(375, 144);
+            housingSizesGroupBox.Size = new Size(375, 146);
             housingSizesGroupBox.TabIndex = 0;
             housingSizesGroupBox.TabStop = false;
             housingSizesGroupBox.Text = "Размеры заготовки";
@@ -158,7 +158,7 @@
             housingSizesPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             housingSizesPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             housingSizesPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            housingSizesPanel.Size = new Size(369, 119);
+            housingSizesPanel.Size = new Size(369, 121);
             housingSizesPanel.TabIndex = 0;
             // 
             // housingDiameterLabel
@@ -173,7 +173,7 @@
             // housingHoleLabel
             // 
             housingHoleLabel.AutoSize = true;
-            housingHoleLabel.Location = new Point(3, 39);
+            housingHoleLabel.Location = new Point(3, 40);
             housingHoleLabel.Name = "housingHoleLabel";
             housingHoleLabel.Size = new Size(24, 18);
             housingHoleLabel.TabIndex = 1;
@@ -182,7 +182,7 @@
             // housingHeightLabel
             // 
             housingHeightLabel.AutoSize = true;
-            housingHeightLabel.Location = new Point(3, 78);
+            housingHeightLabel.Location = new Point(3, 80);
             housingHeightLabel.Name = "housingHeightLabel";
             housingHeightLabel.Size = new Size(17, 18);
             housingHeightLabel.TabIndex = 2;
@@ -200,7 +200,7 @@
             // housingHoleTextBox
             // 
             housingHoleTextBox.Dock = DockStyle.Fill;
-            housingHoleTextBox.Location = new Point(35, 42);
+            housingHoleTextBox.Location = new Point(35, 43);
             housingHoleTextBox.Margin = new Padding(5, 3, 30, 3);
             housingHoleTextBox.Name = "housingHoleTextBox";
             housingHoleTextBox.Size = new Size(304, 26);
@@ -209,7 +209,7 @@
             // housingHeightTextBox
             // 
             housingHeightTextBox.Dock = DockStyle.Fill;
-            housingHeightTextBox.Location = new Point(35, 81);
+            housingHeightTextBox.Location = new Point(35, 83);
             housingHeightTextBox.Margin = new Padding(5, 3, 30, 3);
             housingHeightTextBox.Name = "housingHeightTextBox";
             housingHeightTextBox.Size = new Size(304, 26);
@@ -219,9 +219,9 @@
             // 
             housingMaterialGroupBox.Controls.Add(housingMaterialPanel);
             housingMaterialGroupBox.Dock = DockStyle.Fill;
-            housingMaterialGroupBox.Location = new Point(3, 153);
+            housingMaterialGroupBox.Location = new Point(3, 155);
             housingMaterialGroupBox.Name = "housingMaterialGroupBox";
-            housingMaterialGroupBox.Size = new Size(375, 98);
+            housingMaterialGroupBox.Size = new Size(375, 99);
             housingMaterialGroupBox.TabIndex = 1;
             housingMaterialGroupBox.TabStop = false;
             housingMaterialGroupBox.Text = "Материал заготовки";
@@ -241,7 +241,7 @@
             housingMaterialPanel.RowCount = 2;
             housingMaterialPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             housingMaterialPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            housingMaterialPanel.Size = new Size(369, 73);
+            housingMaterialPanel.Size = new Size(369, 74);
             housingMaterialPanel.TabIndex = 0;
             // 
             // housingMaterialLabel
@@ -256,7 +256,7 @@
             // housingDensityLabel
             // 
             housingDensityLabel.AutoSize = true;
-            housingDensityLabel.Location = new Point(3, 36);
+            housingDensityLabel.Location = new Point(3, 37);
             housingDensityLabel.Name = "housingDensityLabel";
             housingDensityLabel.Size = new Size(113, 18);
             housingDensityLabel.TabIndex = 1;
@@ -273,8 +273,9 @@
             // 
             // housingDensityTextBox
             // 
+            housingDensityTextBox.Culture = new System.Globalization.CultureInfo("en-US");
             housingDensityTextBox.Dock = DockStyle.Fill;
-            housingDensityTextBox.Location = new Point(149, 39);
+            housingDensityTextBox.Location = new Point(149, 40);
             housingDensityTextBox.Margin = new Padding(3, 3, 30, 3);
             housingDensityTextBox.Mask = "0.000";
             housingDensityTextBox.Name = "housingDensityTextBox";
@@ -286,7 +287,7 @@
             // 
             hoisungOtherParametersGroupBox.Controls.Add(housingOtherParametersPanel);
             hoisungOtherParametersGroupBox.Dock = DockStyle.Fill;
-            hoisungOtherParametersGroupBox.Location = new Point(3, 257);
+            hoisungOtherParametersGroupBox.Location = new Point(3, 260);
             hoisungOtherParametersGroupBox.Name = "hoisungOtherParametersGroupBox";
             hoisungOtherParametersGroupBox.Size = new Size(375, 130);
             hoisungOtherParametersGroupBox.TabIndex = 2;
@@ -361,6 +362,7 @@
             // 
             // housingColorBox
             // 
+            housingColorBox.BorderStyle = BorderStyle.FixedSingle;
             housingColorBox.Location = new Point(144, 71);
             housingColorBox.Margin = new Padding(10, 3, 3, 3);
             housingColorBox.MaximumSize = new Size(26, 26);
@@ -377,7 +379,7 @@
             housingPicture.Image = Properties.Resources.housingBlank;
             housingPicture.Location = new Point(13, 16);
             housingPicture.Name = "housingPicture";
-            housingPicture.Size = new Size(351, 374);
+            housingPicture.Size = new Size(361, 377);
             housingPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             housingPicture.TabIndex = 0;
             housingPicture.TabStop = false;
@@ -386,11 +388,13 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 453);
             Controls.Add(tabControl1);
             MaximizeBox = false;
             MinimizeBox = false;
+            MinimumSize = new Size(530, 500);
             Name = "Wizard3DForm";
+            ShowInTaskbar = false;
             Text = "Мастер 3D сборки";
             tabControl1.ResumeLayout(false);
             housingTabPage.ResumeLayout(false);

@@ -55,6 +55,18 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
+        public Command InvokeFolderBrowserDialog
+        {
+            get
+            {
+                return new Command
+                    (
+                        obj => FolderPath = Dialog.InvokeFolderBrowser(FolderPath)
+                    );
+            }
+        }
+
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -124,9 +136,9 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-        public Command SetFolder
+        public KompasEntity()
         {
-            get => new Command( obj => Dialog.InvokeFolderBrowser(FolderPath) );
+            FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
     }
 }
