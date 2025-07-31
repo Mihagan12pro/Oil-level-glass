@@ -1,4 +1,5 @@
 ﻿using KompasAPI7;
+using Oil_level_glass.Services;
 using System.Collections;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -120,6 +121,12 @@ namespace Oil_level_glass.BaseClasses
 
             if (!System.IO.Directory.Exists(FolderPath))
                 AddError(nameof(FolderPath), "Данной папки не существует");
+        }
+
+
+        public Command SetFolder
+        {
+            get => new Command( obj => Dialog.InvokeFolderBrowser(FolderPath) );
         }
     }
 }

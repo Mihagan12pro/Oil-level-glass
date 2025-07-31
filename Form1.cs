@@ -1,3 +1,4 @@
+using Oil_level_glass.Wizards.Forms;
 using System.Diagnostics;
 using System.Reflection;
 //using Oil_level_glass.Wizards.Forms;
@@ -23,6 +24,8 @@ namespace Oil_level_glass
         private void AssembleWizardButton_Click(object sender, EventArgs e)
         {
             //new AssembleWizardForm().ShowDialog();
+
+            new Wizard3DForm().ShowDialog();
         }
     }
 }
