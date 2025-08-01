@@ -54,9 +54,6 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-
-
-
         public Command InvokeColorDialog
         {
             get

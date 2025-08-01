@@ -168,6 +168,19 @@ namespace Oil_level_glass.Wizards.Forms
                             DataSourceUpdateMode.OnPropertyChanged
                         )
                 );
+
+
+            housingHeightTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingHeightColor"
+                        )
+                );
         }
     }
 }

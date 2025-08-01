@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Oil_level_glass.BaseClasses
 {
     internal abstract class BaseViewModel : INotifyPropertyChanged
     {
+        protected readonly Color errorBackColor = Color.FromArgb(254, 210, 203);
+
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        public virtual void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));

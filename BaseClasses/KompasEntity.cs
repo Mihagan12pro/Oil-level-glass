@@ -9,6 +9,7 @@ namespace Oil_level_glass.BaseClasses
     internal abstract class KompasEntity : INotifyDataErrorInfo, INotifyPropertyChanged
     {
         protected readonly Dictionary<string, List<string>> errorsByPropertyName = new Dictionary<string, List<string>>();
+        public Dictionary<string, List<string>> ErrorsByPropertyName => errorsByPropertyName;
 
 
         public bool HasErrors => errorsByPropertyName.Any();
