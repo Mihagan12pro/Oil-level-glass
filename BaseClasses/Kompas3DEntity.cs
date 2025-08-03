@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.Services;
+﻿using Oil_level_glass.Enums;
+using Oil_level_glass.Services;
 
 namespace Oil_level_glass.BaseClasses
 {
@@ -71,7 +72,7 @@ namespace Oil_level_glass.BaseClasses
             ClearErrors(nameof(Density));
 
             if (Density == 0)
-                AddError(nameof(Density), "Плотность должна быть больше нуля!");
+                AddError(nameof(Density), "Плотность должна быть больше нуля!", InputError.TooSmall);
         }
 
 
@@ -80,7 +81,7 @@ namespace Oil_level_glass.BaseClasses
             ClearErrors(nameof(Material));
 
             if (string.IsNullOrWhiteSpace(Material))
-                AddError(nameof(Material),"Не задан материал!");
+                AddError(nameof(Material), "Не задан материал!", InputError.EmptyField);
         }
     }
 }

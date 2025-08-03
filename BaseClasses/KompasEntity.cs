@@ -1,4 +1,5 @@
 ﻿using KompasAPI7;
+using Oil_level_glass.Enums;
 using Oil_level_glass.Services;
 using System.Collections;
 using System.ComponentModel;
@@ -8,8 +9,8 @@ namespace Oil_level_glass.BaseClasses
 {
     internal abstract class KompasEntity : INotifyDataErrorInfo, INotifyPropertyChanged
     {
-        protected readonly Dictionary<string, List<string>> errorsByPropertyName = new Dictionary<string, List<string>>();
-        public Dictionary<string, List<string>> ErrorsByPropertyName => errorsByPropertyName;
+        protected readonly Dictionary<string, List<(string, InputError)>> errorsByPropertyName = new Dictionary<string, List<(string, InputError)>>();
+        public Dictionary<string, List<(string, InputError)>> ErrorsByPropertyName => errorsByPropertyName;
 
 
         public bool HasErrors => errorsByPropertyName.Any();
@@ -87,14 +88,14 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-        protected void AddError(string propertyName, string error)
+        protected void AddError(string propertyName, string error, InputError input)
         {
             if (!errorsByPropertyName.ContainsKey(propertyName))
-                errorsByPropertyName[propertyName] = new List<string>();
+                errorsByPropertyName[propertyName] = new List<(string, InputError)>();
 
-            if (!errorsByPropertyName[propertyName].Contains(error))
+            if (!errorsByPropertyName[propertyName].Contains((error, input)))
             {
-                errorsByPropertyName[propertyName].Add(error);
+                errorsByPropertyName[propertyName].Add((error, input));
                 OnErrorsChanged(propertyName);
             }
         }
@@ -114,10 +115,10 @@ namespace Oil_level_glass.BaseClasses
             ClearErrors(nameof(FileName));
 
             if (string.IsNullOrWhiteSpace(FileName))
-                AddError(nameof(FileName), "У файла обязательно должно быть название!");
+                AddError(nameof(FileName), "У файла обязательно должно быть название!", InputError.EmptyField);
 
             if (new String(FileName).Length > 256)
-                AddError(nameof(FileName), "Название файла не должно быть больше 256 символов!");
+                AddError(nameof(FileName), "Название файла не должно быть больше 256 символов!", InputError.TooBig);
         }
 
 
@@ -127,13 +128,13 @@ namespace Oil_level_glass.BaseClasses
 
             if (string.IsNullOrWhiteSpace(FolderPath))
             {
-                AddError(nameof(FolderPath), "Задайте папку, в которую должен будут сохранен файл!");
+                AddError(nameof(FolderPath), "Задайте папку, в которую должен будут сохранен файл!", InputError.EmptyField);
 
                 return;
             }
 
             if (!System.IO.Directory.Exists(FolderPath))
-                AddError(nameof(FolderPath), "Данной папки не существует");
+                AddError(nameof(FolderPath), "Данной папки не существует", InputError.BadPath);
         }
 
 

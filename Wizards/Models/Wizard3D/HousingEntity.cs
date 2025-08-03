@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.BaseClasses;
+using Oil_level_glass.Enums;
 using System.Globalization;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
@@ -64,13 +65,13 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             if (!double.TryParse(new String(Height).Replace(',','.'), new CultureInfo("En-us"), out double height))
             {
-                AddError(nameof(Height), "Высота заготовки корпуса должна быть числом!");
+                AddError(nameof(Height), "Высота заготовки корпуса должна быть числом!", InputError.EmptyField);
 
                 return;
             }
 
             if (height <= 0)
-                AddError(nameof(Height), "Высота заготовки должна быть больше нуля!");
+                AddError(nameof(Height), "Высота заготовки должна быть больше нуля!", InputError.TooSmall);
         }
 
 
@@ -78,16 +79,24 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         {
             ClearErrors(nameof(HousingDiameter));
 
+            if (String.IsNullOrEmpty(HousingDiameter))
+            {
+                AddError(nameof(HousingDiameter), $"Поле 'Диаметр корпуса' обязательно для заполнения!", InputError.EmptyField);
+
+                return;
+            }
+
+
             if (!double.TryParse(new String(HousingDiameter).Replace(',', '.'), new CultureInfo("En-us"), out double housingDiameter))
             {
-                AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть числом!");
+                AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть числом!", InputError.InvalidType);
 
                 return;
             }
 
             if (housingDiameter <= 0)
             {
-                AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть больше!");
+                AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть больше!", InputError.TooSmall);
             }
         }
 
@@ -98,14 +107,14 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             if (!double.TryParse(new String(HousingHole).Replace(',', '.'), new CultureInfo("En-us"), out double housingHole))
             {
-                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть числом!");
+                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть числом!", InputError.InvalidType);
 
                 return;
             }
 
             if (housingHole <= 0)
             {
-                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть больше нуля!");
+                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть больше нуля!", InputError.TooSmall);
             }
         }
 
@@ -120,9 +129,9 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             if (housingDiameter <= housingHole)
             {
-                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!");
+                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.BrokenHierarchy);
 
-                AddError(nameof(HousingDiameter), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!");
+                AddError(nameof(HousingDiameter), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.TooSmall);
             }
         }
 

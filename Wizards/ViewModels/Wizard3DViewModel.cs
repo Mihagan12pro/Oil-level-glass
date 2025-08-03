@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.BaseClasses;
+using Oil_level_glass.Enums;
 using Oil_level_glass.Wizards.Models.Wizard3D;
 using System.Runtime.CompilerServices;
 
@@ -40,7 +41,9 @@ namespace Oil_level_glass.Wizards.ViewModels
         }
 
 
-        public Dictionary<string, List<string>> HousingErrors { get; private set; }
+   
+
+        public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
 
 
         private void OnHousingErrorsChanged(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
@@ -61,6 +64,7 @@ namespace Oil_level_glass.Wizards.ViewModels
                 {
                     HousingHeightColor = errorBackColor;
                 }
+            
 
                 _housingEntity.ErrorsChanged += OnHousingErrorsChanged;
             }
