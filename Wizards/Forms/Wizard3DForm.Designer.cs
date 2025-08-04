@@ -64,7 +64,7 @@
             label2 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
-            groupBox1 = new GroupBox();
+            modifyEdgeGroupBox = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             groupBox2 = new GroupBox();
             tableLayoutPanel4 = new TableLayoutPanel();
@@ -82,7 +82,7 @@
             label5 = new Label();
             label6 = new Label();
             textBox5 = new TextBox();
-            numericUpDown1 = new NumericUpDown();
+            textBox6 = new TextBox();
             pictureBox1 = new PictureBox();
             tabControl1.SuspendLayout();
             housingTabPage.SuspendLayout();
@@ -107,7 +107,7 @@
             tableLayoutPanel1.SuspendLayout();
             blankDiametersGroupBox.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            groupBox1.SuspendLayout();
+            modifyEdgeGroupBox.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             groupBox2.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -115,7 +115,6 @@
             tableLayoutPanel5.SuspendLayout();
             groupBox3.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -466,7 +465,7 @@
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(blankDiametersGroupBox, 0, 0);
-            tableLayoutPanel1.Controls.Add(groupBox1, 0, 1);
+            tableLayoutPanel1.Controls.Add(modifyEdgeGroupBox, 0, 1);
             tableLayoutPanel1.Controls.Add(groupBox3, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
@@ -557,17 +556,17 @@
             textBox2.Size = new Size(317, 26);
             textBox2.TabIndex = 3;
             // 
-            // groupBox1
+            // modifyEdgeGroupBox
             // 
-            groupBox1.Controls.Add(tableLayoutPanel3);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(20, 118);
-            groupBox1.Margin = new Padding(20, 5, 10, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(430, 154);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Обработка кромок";
+            modifyEdgeGroupBox.Controls.Add(tableLayoutPanel3);
+            modifyEdgeGroupBox.Dock = DockStyle.Fill;
+            modifyEdgeGroupBox.Location = new Point(20, 118);
+            modifyEdgeGroupBox.Margin = new Padding(20, 5, 10, 3);
+            modifyEdgeGroupBox.Name = "modifyEdgeGroupBox";
+            modifyEdgeGroupBox.Size = new Size(430, 154);
+            modifyEdgeGroupBox.TabIndex = 1;
+            modifyEdgeGroupBox.TabStop = false;
+            modifyEdgeGroupBox.Text = "Обработка кромок";
             // 
             // tableLayoutPanel3
             // 
@@ -733,7 +732,7 @@
             tableLayoutPanel6.Controls.Add(label5, 0, 0);
             tableLayoutPanel6.Controls.Add(label6, 0, 1);
             tableLayoutPanel6.Controls.Add(textBox5, 1, 0);
-            tableLayoutPanel6.Controls.Add(numericUpDown1, 1, 1);
+            tableLayoutPanel6.Controls.Add(textBox6, 1, 1);
             tableLayoutPanel6.Dock = DockStyle.Fill;
             tableLayoutPanel6.Location = new Point(3, 22);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -770,22 +769,24 @@
             textBox5.Size = new Size(316, 26);
             textBox5.TabIndex = 2;
             // 
-            // numericUpDown1
+            // textBox6
             // 
-            numericUpDown1.Dock = DockStyle.Fill;
-            numericUpDown1.Location = new Point(98, 55);
-            numericUpDown1.Margin = new Padding(10, 3, 10, 3);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(316, 26);
-            numericUpDown1.TabIndex = 3;
+            textBox6.Dock = DockStyle.Fill;
+            textBox6.Location = new Point(98, 55);
+            textBox6.Margin = new Padding(10, 3, 10, 3);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(316, 26);
+            textBox6.TabIndex = 3;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(27, 20);
+            pictureBox1.Image = Properties.Resources.chamferEdge;
+            pictureBox1.Location = new Point(18, 22);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(277, 384);
+            pictureBox1.Size = new Size(288, 382);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -828,7 +829,7 @@
             blankDiametersGroupBox.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            groupBox1.ResumeLayout(false);
+            modifyEdgeGroupBox.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
@@ -839,7 +840,6 @@
             groupBox3.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
             tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -882,7 +882,7 @@
         private Label label2;
         private TextBox textBox1;
         private TextBox textBox2;
-        private GroupBox groupBox1;
+        private GroupBox modifyEdgeGroupBox;
         private PictureBox pictureBox1;
         private TableLayoutPanel tableLayoutPanel3;
         private GroupBox groupBox2;
@@ -901,6 +901,6 @@
         private Label label5;
         private Label label6;
         private TextBox textBox5;
-        private NumericUpDown numericUpDown1;
+        private TextBox textBox6;
     }
 }

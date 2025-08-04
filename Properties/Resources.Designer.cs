@@ -63,9 +63,9 @@ namespace Oil_level_glass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap assemble {
+        internal static System.Drawing.Bitmap chamferEdge {
             get {
-                object obj = ResourceManager.GetObject("assemble", resourceCulture);
+                object obj = ResourceManager.GetObject("chamferEdge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +96,26 @@ namespace Oil_level_glass.Properties {
         internal static System.Drawing.Bitmap mainFormImage1 {
             get {
                 object obj = ResourceManager.GetObject("mainFormImage1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap roundEdge {
+            get {
+                object obj = ResourceManager.GetObject("roundEdge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sharpEdge {
+            get {
+                object obj = ResourceManager.GetObject("sharpEdge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
