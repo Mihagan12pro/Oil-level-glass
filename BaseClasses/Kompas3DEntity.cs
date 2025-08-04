@@ -7,6 +7,7 @@ namespace Oil_level_glass.BaseClasses
     internal abstract class Kompas3DEntity : KompasEntity
     {
         protected double maxDensity;
+        protected double minDensity;
 
 
         private Color _modelColor;
@@ -75,31 +76,16 @@ namespace Oil_level_glass.BaseClasses
         {
             ClearErrors(nameof(Density));
 
-            if (String.IsNullOrEmpty(Density))
+            double.TryParse(Density, new CultureInfo("EN-us") ,out double density);
+
+            if (density < minDensity)
             {
-                AddError(nameof(Density), "Поле 'Плотность материала обязательно для заполнения'", InputError.InvalidType);
-
-                return;
+                AddError(nameof(Density), $"Минимальная плотность для данного материала равна {minDensity} г/см³", InputError.TooSmall);
             }
-
-           
-            if (!double.TryParse(new String(Density).Replace(',', '.'), new CultureInfo("En-us"), out double density))
-            {
-                AddError(nameof(Density), "Плотность материала должна быть числом!", InputError.InvalidType);
-                
-                return;
-            }
-
-
-            if (density < 0.534)
-            {
-                AddError(nameof(Density), "Слишком маленькая плотность!", InputError.TooSmall);
-            }
-
 
             if (density > maxDensity)
             {
-                AddError(nameof(Density), "Слишком большая плотность!", InputError.TooBig);
+                AddError(nameof(Density), $"Максимальная плотность для данного материала равна {maxDensity} г/см³", InputError.TooBig);
             }
         }
 

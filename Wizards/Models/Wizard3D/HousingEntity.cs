@@ -160,6 +160,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             HousingHole = "90";
 
             maxDensity = 10;
+            minDensity = 0.534;
         }
     }
 }

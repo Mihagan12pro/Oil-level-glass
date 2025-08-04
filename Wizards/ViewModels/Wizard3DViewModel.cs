@@ -89,7 +89,53 @@ namespace Oil_level_glass.Wizards.ViewModels
         }
 
 
-   
+        private Color _housingNameColor;
+        public Color HousingNameColor
+        {
+            get
+            {
+                return _housingNameColor;
+            }
+            private set
+            {
+                _housingNameColor = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Color _housingFolderColor;
+        public Color HousingFolderColor
+        {
+            get
+            {
+                return _housingFolderColor;
+            }
+            private set
+            {
+                _housingFolderColor = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Color _housingMaterialColor;
+        public Color HousingMaterialColor
+        {
+            get
+            {
+                return _housingMaterialColor;
+            }
+            private set
+            {
+                _housingMaterialColor = value;
+
+                OnPropertyChanged();
+            }
+        }
+
 
         public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
 
@@ -110,6 +156,9 @@ namespace Oil_level_glass.Wizards.ViewModels
                 HousingHeightColor = Color.White;
                 HousingDiameterColor = Color.White;
                 HousingDensityColor = Color.White;
+                HousingNameColor = Color.White;
+                HousingFolderColor = Color.White;
+                HousingMaterialColor = Color.White;
 
 
                 if (HousingEntity.GetErrors(nameof(HousingEntity.Height)) != null)
@@ -148,6 +197,22 @@ namespace Oil_level_glass.Wizards.ViewModels
                 if (HousingEntity.GetErrors(nameof(HousingEntity.Density)) != null)
                 {
                     HousingDensityColor = errorBackColor;
+                }
+
+
+                if (HousingEntity.GetErrors(nameof(HousingEntity.FileName)) != null)
+                {
+                    HousingNameColor = errorBackColor;
+                }
+
+                if (HousingEntity.GetErrors(nameof(HousingEntity.FolderPath)) != null)
+                {
+                    HousingFolderColor = errorBackColor;
+                }
+
+                if (HousingEntity.GetErrors(nameof(HousingEntity.Material)) != null)
+                {
+                    HousingMaterialColor = errorBackColor;
                 }
 
 

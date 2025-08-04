@@ -178,7 +178,11 @@ namespace Oil_level_glass.Wizards.Forms
 
                             DataContext,
 
-                            "HousingHeightColor"
+                            "HousingHeightColor",
+
+                            false,
+
+                            DataSourceUpdateMode.OnValidation
                         )
                 );
 
@@ -190,7 +194,11 @@ namespace Oil_level_glass.Wizards.Forms
 
                             DataContext,
 
-                            "HousingDiameterColor"
+                            "HousingDiameterColor",
+
+                            false,
+
+                            DataSourceUpdateMode.OnValidation
                         )
                 );
 
@@ -202,7 +210,11 @@ namespace Oil_level_glass.Wizards.Forms
 
                             DataContext,
 
-                            "HousingHoleColor"
+                            "HousingHoleColor",
+
+                            false,
+
+                            DataSourceUpdateMode.OnValidation
                         )
                 );
 
@@ -215,7 +227,62 @@ namespace Oil_level_glass.Wizards.Forms
 
                             DataContext,
 
-                            "HousingDensityColor"
+                            "HousingDensityColor",
+
+                            false,
+
+                            DataSourceUpdateMode.OnValidation
+                        )
+                );
+
+
+            housingNameTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingNameColor",
+
+                            false,
+
+                            DataSourceUpdateMode.OnValidation
+                        )
+                );
+
+
+            housingFolderTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingFolderColor",
+
+                            false,
+
+                            DataSourceUpdateMode.OnValidation
+                        )
+                );
+
+
+            housingMaterialTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingMaterialColor",
+
+                            false,
+
+                            DataSourceUpdateMode.OnValidation
                         )
                 );
         }
