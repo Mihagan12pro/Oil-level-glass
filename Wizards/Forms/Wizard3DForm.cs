@@ -181,6 +181,30 @@ namespace Oil_level_glass.Wizards.Forms
                             "HousingHeightColor"
                         )
                 );
+
+            housingDiameterTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingDiameterColor"
+                        )
+                );
+
+            housingHoleTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingHoleColor"
+                        )
+                );
         }
     }
 }

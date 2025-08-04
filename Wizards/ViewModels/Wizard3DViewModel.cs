@@ -36,7 +36,39 @@ namespace Oil_level_glass.Wizards.ViewModels
             {
                 _housingHeightColor = value;
 
-                OnPropertyChanged(nameof(HousingHeightColor));
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Color _housingDiameterColor;
+        public Color HousingDiameterColor
+        {
+            get
+            {
+                return _housingDiameterColor;
+            }
+            private set
+            {
+                _housingDiameterColor = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Color _housingHoleColor;
+        public Color HousingHoleColor
+        {
+            get
+            {
+                return _housingHoleColor;
+            }
+            private set
+            {
+                _housingHoleColor = value;
+
+                OnPropertyChanged();
             }
         }
 
@@ -48,27 +80,56 @@ namespace Oil_level_glass.Wizards.ViewModels
 
         private void OnHousingErrorsChanged(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
         {
-           OnPropertyChanged(nameof(HousingErrors));
+            OnPropertyChanged(nameof(HousingErrors));
         }
 
 
         public override void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            if ((GetType().GetProperty(prop)?.PropertyType != typeof(Color)))
+            if (prop == nameof(HousingErrors))
             {
                 _housingEntity.ErrorsChanged -= OnHousingErrorsChanged;
 
+                HousingHoleColor = Color.White;
                 HousingHeightColor = Color.White;
+                HousingDiameterColor = Color.White;
+
 
                 if (HousingEntity.GetErrors(nameof(HousingEntity.Height)) != null)
                 {
                     HousingHeightColor = errorBackColor;
+
+                    if (HousingErrors[nameof(HousingEntity.Height)][0].Item2 == InputError.BrokenHierarchy)
+                    {
+
+                    }
                 }
-            
+
+
+                if (HousingEntity.GetErrors(nameof(HousingEntity.HousingDiameter)) != null)
+                {
+                    HousingDiameterColor = errorBackColor;
+
+                    if (HousingErrors[nameof(HousingEntity.HousingDiameter)][0].Item2 == InputError.BrokenHierarchy)
+                    {
+                        HousingHoleColor = errorBackColor;
+                    }
+                }
+
+
+                if (HousingEntity.GetErrors(nameof(HousingEntity.HousingHole)) != null)
+                {
+                    HousingHoleColor = errorBackColor;
+
+                    if (HousingErrors[nameof(HousingEntity.HousingHole)][0].Item2 == InputError.BrokenHierarchy)
+                    {
+                        HousingDiameterColor = errorBackColor;
+                    }
+                }
+
 
                 _housingEntity.ErrorsChanged += OnHousingErrorsChanged;
             }
-
 
             base.OnPropertyChanged(prop);
         }

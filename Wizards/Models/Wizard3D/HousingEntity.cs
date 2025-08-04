@@ -34,8 +34,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             {
                 _housingDiameter = value;
 
-                ValidateHousingDiameter();
-                ValidateAllDiameters();
+                ValidateDiameters();
                 OnPropertyChanged();
             }
         }
@@ -52,8 +51,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             {
                 _housingHole = value;
 
-                ValidateHousingHole();
-                ValidateAllDiameters();
+                ValidateDiameters();
                 OnPropertyChanged();
             }
         }
@@ -75,63 +73,72 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         }
 
 
-        private void ValidateHousingDiameter()
+        private void ValidateDiameters()
         {
             ClearErrors(nameof(HousingDiameter));
+
+            double housingDiameter = 0;
+            double housingHole = 0; 
 
             if (String.IsNullOrEmpty(HousingDiameter))
             {
                 AddError(nameof(HousingDiameter), $"Поле 'Диаметр корпуса' обязательно для заполнения!", InputError.EmptyField);
-
-                return;
             }
 
-
-            if (!double.TryParse(new String(HousingDiameter).Replace(',', '.'), new CultureInfo("En-us"), out double housingDiameter))
+            if (GetErrors(nameof(HousingDiameter)) == null)
             {
-                AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть числом!", InputError.InvalidType);
+                if (!double.TryParse(new String(HousingDiameter).Replace(',', '.'), new CultureInfo("En-us"), out housingDiameter))
+                {
+                    AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть числом!", InputError.InvalidType);
+                }
 
-                return;
+                if (GetErrors(nameof(HousingDiameter)) == null)
+                {
+                    if (housingDiameter <= 0)
+                    {
+                        AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть больше нуля!", InputError.TooSmall);
+                    }
+                }
             }
 
-            if (housingDiameter <= 0)
-            {
-                AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть больше!", InputError.TooSmall);
-            }
-        }
 
 
-        private void ValidateHousingHole()
-        {
             ClearErrors(nameof(HousingHole));
 
-            if (!double.TryParse(new String(HousingHole).Replace(',', '.'), new CultureInfo("En-us"), out double housingHole))
+            if (String.IsNullOrEmpty(HousingHole))
             {
-                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть числом!", InputError.InvalidType);
-
-                return;
+                AddError(nameof(HousingHole), $"Поле 'Диаметр центрального отверстия корпуса' обязательно для заполнения!", InputError.EmptyField);
             }
 
-            if (housingHole <= 0)
+            if(GetErrors(nameof(HousingHole)) == null)
             {
-                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть больше нуля!", InputError.TooSmall);
+                if (!double.TryParse(new String(HousingHole).Replace(',', '.'), new CultureInfo("En-us"), out housingHole))
+                {
+                    AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть числом!", InputError.InvalidType);
+
+                    return;
+                }
+
+                if (GetErrors(nameof(HousingHole)) == null)
+                {
+                    if (housingHole <= 0)
+                    {
+                        AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть больше нуля!", InputError.TooSmall);
+                    }
+                }
             }
-        }
 
 
-        private void ValidateAllDiameters()
-        {
-            if (errorsByPropertyName.ContainsKey(nameof(HousingDiameter)) || errorsByPropertyName.ContainsKey(nameof(HousingHole)))
-                return;
 
-            double housingDiameter = Convert.ToDouble(HousingDiameter);
-            double housingHole = Convert.ToDouble(HousingHole);
 
-            if (housingDiameter <= housingHole)
+            if (GetErrors(nameof(HousingHole)) == null && GetErrors(nameof(HousingDiameter)) == null)
             {
-                AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.BrokenHierarchy);
+                if (housingDiameter <= housingHole)
+                {
+                    AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.BrokenHierarchy);
 
-                AddError(nameof(HousingDiameter), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.TooSmall);
+                    AddError(nameof(HousingDiameter), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.BrokenHierarchy);
+                }
             }
         }
 
