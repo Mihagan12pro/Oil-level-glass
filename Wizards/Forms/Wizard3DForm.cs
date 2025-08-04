@@ -11,11 +11,21 @@ namespace Oil_level_glass.Wizards.Forms
 
             DataContext = new Wizard3DViewModel();
 
-            InitHousingBinding();
+            BindHousingProperties();
         }
 
 
-        private void InitHousingBinding()
+        private void BindHousingProperties()
+        {
+            BindHousingText();
+
+            BindHousingBackColors();
+
+            BindHousingCommands();
+        }
+
+
+        private void BindHousingText()
         {
             housingFolderTextBox.DataBindings.Add
                 (
@@ -30,46 +40,6 @@ namespace Oil_level_glass.Wizards.Forms
                             false,
 
                             DataSourceUpdateMode.OnPropertyChanged
-                        )
-                );
-
-            housingFolderButton.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "Command",
-
-                            DataContext,
-
-                            "HousingEntity.InvokeFolderBrowserDialog",
-
-                            true
-                        )
-                );
-
-            housingColorBox.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "BackColor",
-
-                            DataContext,
-
-                            "HousingEntity.ModelColor"
-                        )
-                );
-
-            housingColorButton.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "Command",
-
-                            DataContext,
-
-                            "HousingEntity.InvokeColorDialog",
-
-                            true
                         )
                 );
 
@@ -168,8 +138,58 @@ namespace Oil_level_glass.Wizards.Forms
                             DataSourceUpdateMode.OnPropertyChanged
                         )
                 );
+        }
 
 
+        private void BindHousingCommands()
+        {
+            housingFolderButton.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Command",
+
+                            DataContext,
+
+                            "HousingEntity.InvokeFolderBrowserDialog",
+
+                            true
+                        )
+                );
+
+
+
+            housingColorButton.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Command",
+
+                            DataContext,
+
+                            "HousingEntity.InvokeColorDialog",
+
+                            true
+                        )
+                );
+        }
+
+        private void BindHousingBackColors()
+        {
+    
+            housingColorBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingEntity.ModelColor"
+                        )
+                );
+
+            
             housingHeightTextBox.DataBindings.Add
                 (
                     new Binding
