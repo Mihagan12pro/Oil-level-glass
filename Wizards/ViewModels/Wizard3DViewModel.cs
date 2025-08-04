@@ -73,6 +73,22 @@ namespace Oil_level_glass.Wizards.ViewModels
         }
 
 
+        private Color _housingDensityColor;
+        public Color HousingDensityColor
+        {
+            get
+            {
+                return _housingDensityColor;
+            }
+            private set
+            {
+                _housingDensityColor = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
    
 
         public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
@@ -93,6 +109,7 @@ namespace Oil_level_glass.Wizards.ViewModels
                 HousingHoleColor = Color.White;
                 HousingHeightColor = Color.White;
                 HousingDiameterColor = Color.White;
+                HousingDensityColor = Color.White;
 
 
                 if (HousingEntity.GetErrors(nameof(HousingEntity.Height)) != null)
@@ -125,6 +142,12 @@ namespace Oil_level_glass.Wizards.ViewModels
                     {
                         HousingDiameterColor = errorBackColor;
                     }
+                }
+
+
+                if (HousingEntity.GetErrors(nameof(HousingEntity.Density)) != null)
+                {
+                    HousingDensityColor = errorBackColor;
                 }
 
 

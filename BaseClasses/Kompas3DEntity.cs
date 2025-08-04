@@ -1,10 +1,14 @@
 ﻿using Oil_level_glass.Enums;
 using Oil_level_glass.Services;
+using System.Globalization;
 
 namespace Oil_level_glass.BaseClasses
 {
     internal abstract class Kompas3DEntity : KompasEntity
     {
+        protected double maxDensity;
+
+
         private Color _modelColor;
         public Color ModelColor
         {
@@ -21,8 +25,8 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-        private double _density;
-        public double Density
+        private string? _density;
+        public string? Density
         {
             get
             {
@@ -71,8 +75,32 @@ namespace Oil_level_glass.BaseClasses
         {
             ClearErrors(nameof(Density));
 
-            if (Density == 0)
-                AddError(nameof(Density), "Плотность должна быть больше нуля!", InputError.TooSmall);
+            if (String.IsNullOrEmpty(Density))
+            {
+                AddError(nameof(Density), "Поле 'Плотность материала обязательно для заполнения'", InputError.InvalidType);
+
+                return;
+            }
+
+           
+            if (!double.TryParse(new String(Density).Replace(',', '.'), new CultureInfo("En-us"), out double density))
+            {
+                AddError(nameof(Density), "Плотность материала должна быть числом!", InputError.InvalidType);
+                
+                return;
+            }
+
+
+            if (density < 0.534)
+            {
+                AddError(nameof(Density), "Слишком маленькая плотность!", InputError.TooSmall);
+            }
+
+
+            if (density > maxDensity)
+            {
+                AddError(nameof(Density), "Слишком большая плотность!", InputError.TooBig);
+            }
         }
 
 

@@ -147,7 +147,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         {
             ModelColor = Color.Gold;
 
-            Density = 7.731;
+            Density = "7.731";
 
             Material = "Сталь";
 
@@ -158,6 +158,8 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             HousingDiameter = "180";
 
             HousingHole = "90";
+
+            maxDensity = 10;
         }
     }
 }

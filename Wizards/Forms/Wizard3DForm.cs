@@ -205,6 +205,19 @@ namespace Oil_level_glass.Wizards.Forms
                             "HousingHoleColor"
                         )
                 );
+
+
+            housingDensityTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "HousingDensityColor"
+                        )
+                );
         }
     }
 }
