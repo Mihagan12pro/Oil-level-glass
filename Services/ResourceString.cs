@@ -26,7 +26,7 @@ namespace Oil_level_glass.Services
                     break;
             }
 
-            outputString = Properties.Resources.CulcCountOfScrewHoles.Replace(placeHolder, inputString);
+            outputString = resourceString.Replace(placeHolder, inputString);
 
             return outputString;
         }

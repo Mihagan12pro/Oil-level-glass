@@ -1,6 +1,7 @@
 ﻿using Oil_level_glass.BaseClasses;
 using Oil_level_glass.Enums;
 using Oil_level_glass.Properties;
+using Oil_level_glass.Services;
 using System.Globalization;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
@@ -127,7 +128,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
 
                 if (String.IsNullOrEmpty(ScrewHolesDiameter))
-                    AddError(nameof(ScrewHolesDiameter), $"Поле 'Диаметр отверстия под винты' обязательно для заполнения!", InputError.EmptyField);
+                    AddError(nameof(ScrewHolesDiameter), ResourceString.UseString("Диаметр отверстий под винты", InputError.EmptyField), InputError.EmptyField);
             }
         }
 
@@ -166,7 +167,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             if (String.IsNullOrEmpty(HousingHole))
             {
-                AddError(nameof(HousingHole), Resources.RequiredFieldMessage.Replace("???", "Диаметр центрального отверстия корпуса"), InputError.EmptyField);
+                AddError(nameof(HousingHole), ResourceString.UseString("Диаметр центрального отверстия корпуса", InputError.EmptyField), InputError.EmptyField);
             }
 
             if(GetErrors(nameof(HousingHole)) == null)
