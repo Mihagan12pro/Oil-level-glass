@@ -52,6 +52,8 @@ namespace Oil_level_glass.Wizards.ViewModels
             {
                 _housingDiameterColor = value;
 
+                ScrewHolesDistanceEnabled = (value != errorBackColor);
+
                 OnPropertyChanged();
             }
         }
@@ -67,6 +69,8 @@ namespace Oil_level_glass.Wizards.ViewModels
             private set
             {
                 _housingHoleColor = value;
+
+                ScrewHolesDistanceEnabled = (value != errorBackColor);
 
                 OnPropertyChanged();
             }
@@ -137,6 +141,94 @@ namespace Oil_level_glass.Wizards.ViewModels
         }
 
 
+        private Color _screwHolesDistanceColor;
+        public Color ScrewHolesDistanceColor
+        {
+            get
+            {
+                return _screwHolesDistanceColor;
+            }
+            private set
+            {
+                _screwHolesDistanceColor = value;
+
+                ScrewHolesDiameterEnabled = (value != errorBackColor);
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Color _screwHolesDiameterColor;
+        public Color ScrewHolesDiameterColor
+        {
+            get
+            {
+                return _screwHolesDiameterColor;
+            }
+            private set
+            {
+                _screwHolesDiameterColor = value;
+
+                ScrewHolesCountEnabled = (value != errorBackColor);
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private bool _screwHolesDistanceEnabled;
+        public bool ScrewHolesDistanceEnabled
+        {
+            get
+            {
+                return _screwHolesDistanceEnabled;
+            }
+            private set
+            {
+                _screwHolesDistanceEnabled = value;
+
+                ScrewHolesDiameterEnabled = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private bool _screwHoleDiameterEnabled;
+        public bool ScrewHolesDiameterEnabled
+        {
+            get
+            {
+                return _screwHoleDiameterEnabled;
+            }
+            private set
+            {
+                _screwHoleDiameterEnabled = value;
+
+                ScrewHolesCountEnabled = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private bool _screwHolesCountEnabled;
+        public bool ScrewHolesCountEnabled
+        {
+            get
+            {
+                return _screwHolesCountEnabled;
+            }
+            private set
+            {
+                _screwHolesCountEnabled = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
         public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
 
 
@@ -159,6 +251,8 @@ namespace Oil_level_glass.Wizards.ViewModels
                 HousingNameColor = Color.White;
                 HousingFolderColor = Color.White;
                 HousingMaterialColor = Color.White;
+                ScrewHolesDistanceColor = Color.White;
+                ScrewHolesDiameterColor = Color.White;
 
 
                 if (HousingEntity.GetErrors(nameof(HousingEntity.Height)) != null)
@@ -215,6 +309,16 @@ namespace Oil_level_glass.Wizards.ViewModels
                     HousingMaterialColor = errorBackColor;
                 }
 
+                if (HousingEntity.GetErrors(nameof(HousingEntity.ScrewHolesDistance)) != null)
+                {
+                    ScrewHolesDistanceColor = errorBackColor;
+                }
+
+                if (HousingEntity.GetErrors(nameof(HousingEntity.ScrewHolesDiameter)) != null)
+                {
+                    ScrewHolesDiameterColor = errorBackColor;
+                }
+
 
                 _housingEntity.ErrorsChanged += OnHousingErrorsChanged;
             }
@@ -228,6 +332,8 @@ namespace Oil_level_glass.Wizards.ViewModels
             HousingEntity = new HousingEntity();
 
             HousingErrors = HousingEntity.ErrorsByPropertyName;
+
+            ScrewHolesDistanceEnabled = true;
         }
     }
 }

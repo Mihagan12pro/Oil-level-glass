@@ -1,5 +1,7 @@
 ﻿using Oil_level_glass.Wizards.Models.Wizard3D;
 using Oil_level_glass.Wizards.ViewModels;
+using KompasAPI7;
+using Kompas6Constants3D;
 
 namespace Oil_level_glass.Wizards.Forms
 {
@@ -12,6 +14,10 @@ namespace Oil_level_glass.Wizards.Forms
             DataContext = new Wizard3DViewModel();
 
             BindHousingProperties();
+
+            BindReadOnlyFields();
+
+            BindEnabled();
         }
 
 
@@ -138,6 +144,38 @@ namespace Oil_level_glass.Wizards.Forms
                             DataSourceUpdateMode.OnPropertyChanged
                         )
                 );
+
+            screwHolesDiastanceTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
+
+                            DataContext,
+
+                            "HousingEntity.ScrewHolesDistance",
+
+                            false,
+
+                            DataSourceUpdateMode.OnPropertyChanged
+                        )
+                );
+
+            screwHolesDiameterTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
+
+                            DataContext,
+
+                            "HousingEntity.ScrewHolesDiameter",
+
+                            false,
+
+                            DataSourceUpdateMode.OnPropertyChanged
+                        )
+                );
         }
 
 
@@ -176,7 +214,7 @@ namespace Oil_level_glass.Wizards.Forms
 
         private void BindHousingBackColors()
         {
-    
+
             housingColorBox.DataBindings.Add
                 (
                     new Binding
@@ -189,7 +227,7 @@ namespace Oil_level_glass.Wizards.Forms
                         )
                 );
 
-            
+
             housingHeightTextBox.DataBindings.Add
                 (
                     new Binding
@@ -305,6 +343,104 @@ namespace Oil_level_glass.Wizards.Forms
                             DataSourceUpdateMode.OnValidation
                         )
                 );
+
+
+            screwHolesDiastanceTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "ScrewHolesDistanceColor"
+                        )
+                );
+
+            screwHolesDiameterTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            DataContext,
+
+                            "ScrewHolesDiameterColor"
+                        )
+                );
+        }
+
+
+        private void BindEnabled()
+        {
+            screwHolesComboBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Enabled",
+
+                            DataContext,
+
+                            "ScrewHolesCountEnabled",
+
+                            true
+                        )
+                );
+
+            screwHolesDiameterTextBox.DataBindings.Add
+                (
+                    "Enabled",
+
+                    DataContext,
+
+                    "ScrewHolesDiameterEnabled",
+
+                    true
+                );
+
+            screwHolesDiastanceTextBox.DataBindings.Add
+                (
+                    "Enabled",
+
+                    DataContext,
+
+                    "ScrewHolesDistanceEnabled",
+
+                    true
+                );
+        }
+
+
+        private void BindReadOnlyFields()
+        {
+            housingDiameterInfoBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
+
+                            DataContext,
+
+                            "HousingEntity.HousingDiameter"
+                        )
+                );
+
+            holeDiameterInfoBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
+
+                            DataContext,
+
+                            "HousingEntity.HousingHole"
+                        )
+                );
+        }
+
+        private void housingDiameterLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
+            wizard3DTabControl = new TabControl();
             housingTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
             housingLeftPanel = new TableLayoutPanel();
@@ -56,35 +56,43 @@
             housingColorBox = new PictureBox();
             housingPicture = new PictureBox();
             housingRefineTabPage = new TabPage();
-            splitContainer2 = new SplitContainer();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            refinePanel = new Panel();
+            refineTablePanel = new TableLayoutPanel();
             blankDiametersGroupBox = new GroupBox();
+            blankDiametersContainer = new SplitContainer();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel1 = new Panel();
+            housingDiameterInfoBox = new TextBox();
+            housingDiameterInfoLabel = new Label();
+            panel2 = new Panel();
+            housingHoleDiameterInfoLabel = new Label();
+            holeDiameterInfoBox = new TextBox();
+            blankDiametersPicture = new PictureBox();
+            edgeMidifiersGroupBox = new GroupBox();
+            edgeModifiersContainer = new SplitContainer();
+            splitContainer2 = new SplitContainer();
+            groupBox1 = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            modifyEdgeGroupBox = new GroupBox();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            groupBox2 = new GroupBox();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            chamferRadioButton = new RadioButton();
-            roundingRadioButton = new RadioButton();
+            filletRadioButton = new RadioButton();
             noneRadioButton = new RadioButton();
-            chamferGroupBox = new GroupBox();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            label3 = new Label();
-            label4 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            groupBox3 = new GroupBox();
-            tableLayoutPanel6 = new TableLayoutPanel();
-            label5 = new Label();
-            label6 = new Label();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            pictureBox1 = new PictureBox();
-            tabControl1.SuspendLayout();
+            chamferRadioButton = new RadioButton();
+            edgeModifierPicture = new PictureBox();
+            screwHolesGroupBox = new GroupBox();
+            screwHolesContainer = new SplitContainer();
+            splitContainer3 = new SplitContainer();
+            screwHolesParametersPanel = new TableLayoutPanel();
+            panel3 = new Panel();
+            screwHolesDistanceLabel = new Label();
+            panel4 = new Panel();
+            screwHolesDiameterLabel = new Label();
+            panel5 = new Panel();
+            holesCountLabel = new Label();
+            screwHolesComboBox = new ComboBox();
+            screwHolesDiameterTextBox = new TextBox();
+            screwHolesDiastanceTextBox = new TextBox();
+            holeCountCulculatorLabel = new Label();
+            screwHolesPicture = new PictureBox();
+            wizard3DTabControl.SuspendLayout();
             housingTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -100,35 +108,55 @@
             ((System.ComponentModel.ISupportInitialize)housingColorBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)housingPicture).BeginInit();
             housingRefineTabPage.SuspendLayout();
+            refinePanel.SuspendLayout();
+            refineTablePanel.SuspendLayout();
+            blankDiametersGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)blankDiametersContainer).BeginInit();
+            blankDiametersContainer.Panel1.SuspendLayout();
+            blankDiametersContainer.Panel2.SuspendLayout();
+            blankDiametersContainer.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)blankDiametersPicture).BeginInit();
+            edgeMidifiersGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)edgeModifiersContainer).BeginInit();
+            edgeModifiersContainer.Panel1.SuspendLayout();
+            edgeModifiersContainer.Panel2.SuspendLayout();
+            edgeModifiersContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
-            splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            blankDiametersGroupBox.SuspendLayout();
+            groupBox1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            modifyEdgeGroupBox.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            groupBox2.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            chamferGroupBox.SuspendLayout();
-            tableLayoutPanel5.SuspendLayout();
-            groupBox3.SuspendLayout();
-            tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)edgeModifierPicture).BeginInit();
+            screwHolesGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)screwHolesContainer).BeginInit();
+            screwHolesContainer.Panel1.SuspendLayout();
+            screwHolesContainer.Panel2.SuspendLayout();
+            screwHolesContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
+            screwHolesParametersPanel.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)screwHolesPicture).BeginInit();
             SuspendLayout();
             // 
-            // tabControl1
+            // wizard3DTabControl
             // 
-            tabControl1.Controls.Add(housingTabPage);
-            tabControl1.Controls.Add(housingRefineTabPage);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Font = new Font("Calibri", 9F);
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(800, 453);
-            tabControl1.TabIndex = 0;
+            wizard3DTabControl.Controls.Add(housingTabPage);
+            wizard3DTabControl.Controls.Add(housingRefineTabPage);
+            wizard3DTabControl.Dock = DockStyle.Fill;
+            wizard3DTabControl.Font = new Font("Calibri", 9F);
+            wizard3DTabControl.Location = new Point(0, 0);
+            wizard3DTabControl.Name = "wizard3DTabControl";
+            wizard3DTabControl.SelectedIndex = 0;
+            wizard3DTabControl.Size = new Size(800, 453);
+            wizard3DTabControl.TabIndex = 0;
             // 
             // housingTabPage
             // 
@@ -213,53 +241,54 @@
             housingDiameterLabel.AutoSize = true;
             housingDiameterLabel.Location = new Point(3, 0);
             housingDiameterLabel.Name = "housingDiameterLabel";
-            housingDiameterLabel.Size = new Size(17, 18);
+            housingDiameterLabel.Size = new Size(228, 18);
             housingDiameterLabel.TabIndex = 0;
-            housingDiameterLabel.Text = "D";
+            housingDiameterLabel.Text = "Диаметр всей заготовки корпуса D";
+            housingDiameterLabel.Click += housingDiameterLabel_Click;
             // 
             // housingHoleLabel
             // 
             housingHoleLabel.AutoSize = true;
             housingHoleLabel.Location = new Point(3, 40);
             housingHoleLabel.Name = "housingHoleLabel";
-            housingHoleLabel.Size = new Size(24, 18);
+            housingHoleLabel.Size = new Size(243, 18);
             housingHoleLabel.TabIndex = 1;
-            housingHoleLabel.Text = "D1";
+            housingHoleLabel.Text = "Диаметр центрального отверстия D1";
             // 
             // housingHeightLabel
             // 
             housingHeightLabel.AutoSize = true;
             housingHeightLabel.Location = new Point(3, 80);
             housingHeightLabel.Name = "housingHeightLabel";
-            housingHeightLabel.Size = new Size(17, 18);
+            housingHeightLabel.Size = new Size(184, 18);
             housingHeightLabel.TabIndex = 2;
-            housingHeightLabel.Text = "H";
+            housingHeightLabel.Text = "Высота заготовки корпуса H";
             // 
             // housingDiameterTextBox
             // 
             housingDiameterTextBox.Dock = DockStyle.Fill;
-            housingDiameterTextBox.Location = new Point(35, 3);
-            housingDiameterTextBox.Margin = new Padding(5, 3, 30, 3);
+            housingDiameterTextBox.Location = new Point(269, 3);
+            housingDiameterTextBox.Margin = new Padding(20, 3, 20, 3);
             housingDiameterTextBox.Name = "housingDiameterTextBox";
-            housingDiameterTextBox.Size = new Size(304, 26);
+            housingDiameterTextBox.Size = new Size(80, 26);
             housingDiameterTextBox.TabIndex = 3;
             // 
             // housingHoleTextBox
             // 
             housingHoleTextBox.Dock = DockStyle.Fill;
-            housingHoleTextBox.Location = new Point(35, 43);
-            housingHoleTextBox.Margin = new Padding(5, 3, 30, 3);
+            housingHoleTextBox.Location = new Point(269, 43);
+            housingHoleTextBox.Margin = new Padding(20, 3, 20, 3);
             housingHoleTextBox.Name = "housingHoleTextBox";
-            housingHoleTextBox.Size = new Size(304, 26);
+            housingHoleTextBox.Size = new Size(80, 26);
             housingHoleTextBox.TabIndex = 4;
             // 
             // housingHeightTextBox
             // 
             housingHeightTextBox.Dock = DockStyle.Fill;
-            housingHeightTextBox.Location = new Point(35, 83);
-            housingHeightTextBox.Margin = new Padding(5, 3, 30, 3);
+            housingHeightTextBox.Location = new Point(269, 83);
+            housingHeightTextBox.Margin = new Padding(20, 3, 20, 3);
             housingHeightTextBox.Name = "housingHeightTextBox";
-            housingHeightTextBox.Size = new Size(304, 26);
+            housingHeightTextBox.Size = new Size(80, 26);
             housingHeightTextBox.TabIndex = 5;
             // 
             // housingMaterialGroupBox
@@ -433,7 +462,7 @@
             // 
             // housingRefineTabPage
             // 
-            housingRefineTabPage.Controls.Add(splitContainer2);
+            housingRefineTabPage.Controls.Add(refinePanel);
             housingRefineTabPage.Location = new Point(4, 27);
             housingRefineTabPage.Margin = new Padding(5);
             housingRefineTabPage.Name = "housingRefineTabPage";
@@ -442,181 +471,246 @@
             housingRefineTabPage.Text = "Проработка корпуса";
             housingRefineTabPage.UseVisualStyleBackColor = true;
             // 
+            // refinePanel
+            // 
+            refinePanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            refinePanel.BackColor = SystemColors.ButtonFace;
+            refinePanel.Controls.Add(refineTablePanel);
+            refinePanel.Location = new Point(5, 5);
+            refinePanel.Margin = new Padding(5, 15, 5, 5);
+            refinePanel.Name = "refinePanel";
+            refinePanel.Size = new Size(782, 412);
+            refinePanel.TabIndex = 0;
+            // 
+            // refineTablePanel
+            // 
+            refineTablePanel.ColumnCount = 1;
+            refineTablePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            refineTablePanel.Controls.Add(blankDiametersGroupBox, 0, 0);
+            refineTablePanel.Controls.Add(edgeMidifiersGroupBox, 0, 1);
+            refineTablePanel.Controls.Add(screwHolesGroupBox, 0, 2);
+            refineTablePanel.Dock = DockStyle.Fill;
+            refineTablePanel.Location = new Point(0, 0);
+            refineTablePanel.Name = "refineTablePanel";
+            refineTablePanel.RowCount = 3;
+            refineTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 31.25F));
+            refineTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 37.5F));
+            refineTablePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 31.25F));
+            refineTablePanel.Size = new Size(782, 412);
+            refineTablePanel.TabIndex = 0;
+            // 
+            // blankDiametersGroupBox
+            // 
+            blankDiametersGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            blankDiametersGroupBox.Controls.Add(blankDiametersContainer);
+            blankDiametersGroupBox.Location = new Point(10, 3);
+            blankDiametersGroupBox.Margin = new Padding(10, 3, 10, 3);
+            blankDiametersGroupBox.Name = "blankDiametersGroupBox";
+            blankDiametersGroupBox.Size = new Size(762, 122);
+            blankDiametersGroupBox.TabIndex = 0;
+            blankDiametersGroupBox.TabStop = false;
+            blankDiametersGroupBox.Text = "Диаметры заготовки";
+            // 
+            // blankDiametersContainer
+            // 
+            blankDiametersContainer.Dock = DockStyle.Fill;
+            blankDiametersContainer.Location = new Point(3, 22);
+            blankDiametersContainer.Name = "blankDiametersContainer";
+            // 
+            // blankDiametersContainer.Panel1
+            // 
+            blankDiametersContainer.Panel1.Controls.Add(tableLayoutPanel1);
+            // 
+            // blankDiametersContainer.Panel2
+            // 
+            blankDiametersContainer.Panel2.Controls.Add(blankDiametersPicture);
+            blankDiametersContainer.Size = new Size(756, 97);
+            blankDiametersContainer.SplitterDistance = 504;
+            blankDiametersContainer.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(504, 97);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(housingDiameterInfoBox);
+            panel1.Controls.Add(housingDiameterInfoLabel);
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(498, 42);
+            panel1.TabIndex = 0;
+            // 
+            // housingDiameterInfoBox
+            // 
+            housingDiameterInfoBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            housingDiameterInfoBox.Location = new Point(289, 12);
+            housingDiameterInfoBox.Name = "housingDiameterInfoBox";
+            housingDiameterInfoBox.ReadOnly = true;
+            housingDiameterInfoBox.Size = new Size(182, 26);
+            housingDiameterInfoBox.TabIndex = 1;
+            // 
+            // housingDiameterInfoLabel
+            // 
+            housingDiameterInfoLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            housingDiameterInfoLabel.AutoSize = true;
+            housingDiameterInfoLabel.Font = new Font("Calibri", 9F, FontStyle.Italic);
+            housingDiameterInfoLabel.Location = new Point(3, 15);
+            housingDiameterInfoLabel.Name = "housingDiameterInfoLabel";
+            housingDiameterInfoLabel.Size = new Size(242, 18);
+            housingDiameterInfoLabel.TabIndex = 0;
+            housingDiameterInfoLabel.Text = "Диаметр всей заготовки корпуса D";
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(housingHoleDiameterInfoLabel);
+            panel2.Controls.Add(holeDiameterInfoBox);
+            panel2.Location = new Point(3, 51);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(498, 43);
+            panel2.TabIndex = 1;
+            // 
+            // housingHoleDiameterInfoLabel
+            // 
+            housingHoleDiameterInfoLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            housingHoleDiameterInfoLabel.AutoSize = true;
+            housingHoleDiameterInfoLabel.Font = new Font("Calibri", 9F, FontStyle.Italic);
+            housingHoleDiameterInfoLabel.Location = new Point(5, 15);
+            housingHoleDiameterInfoLabel.Name = "housingHoleDiameterInfoLabel";
+            housingHoleDiameterInfoLabel.Size = new Size(267, 18);
+            housingHoleDiameterInfoLabel.TabIndex = 1;
+            housingHoleDiameterInfoLabel.Text = "Диаметр центрального отверстия D1";
+            // 
+            // holeDiameterInfoBox
+            // 
+            holeDiameterInfoBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            holeDiameterInfoBox.Location = new Point(289, 14);
+            holeDiameterInfoBox.Name = "holeDiameterInfoBox";
+            holeDiameterInfoBox.ReadOnly = true;
+            holeDiameterInfoBox.Size = new Size(182, 26);
+            holeDiameterInfoBox.TabIndex = 0;
+            // 
+            // blankDiametersPicture
+            // 
+            blankDiametersPicture.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            blankDiametersPicture.BorderStyle = BorderStyle.FixedSingle;
+            blankDiametersPicture.Location = new Point(10, 10);
+            blankDiametersPicture.Margin = new Padding(10);
+            blankDiametersPicture.Name = "blankDiametersPicture";
+            blankDiametersPicture.Size = new Size(228, 76);
+            blankDiametersPicture.TabIndex = 0;
+            blankDiametersPicture.TabStop = false;
+            // 
+            // edgeMidifiersGroupBox
+            // 
+            edgeMidifiersGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            edgeMidifiersGroupBox.Controls.Add(edgeModifiersContainer);
+            edgeMidifiersGroupBox.Location = new Point(10, 131);
+            edgeMidifiersGroupBox.Margin = new Padding(10, 3, 10, 3);
+            edgeMidifiersGroupBox.Name = "edgeMidifiersGroupBox";
+            edgeMidifiersGroupBox.Size = new Size(762, 148);
+            edgeMidifiersGroupBox.TabIndex = 1;
+            edgeMidifiersGroupBox.TabStop = false;
+            edgeMidifiersGroupBox.Text = "Обработка кромок";
+            // 
+            // edgeModifiersContainer
+            // 
+            edgeModifiersContainer.Dock = DockStyle.Fill;
+            edgeModifiersContainer.Location = new Point(3, 22);
+            edgeModifiersContainer.Name = "edgeModifiersContainer";
+            // 
+            // edgeModifiersContainer.Panel1
+            // 
+            edgeModifiersContainer.Panel1.Controls.Add(splitContainer2);
+            // 
+            // edgeModifiersContainer.Panel2
+            // 
+            edgeModifiersContainer.Panel2.Controls.Add(edgeModifierPicture);
+            edgeModifiersContainer.Size = new Size(756, 123);
+            edgeModifiersContainer.SplitterDistance = 504;
+            edgeModifiersContainer.TabIndex = 0;
+            // 
             // splitContainer2
             // 
-            splitContainer2.BackColor = SystemColors.ButtonFace;
             splitContainer2.Dock = DockStyle.Fill;
             splitContainer2.Location = new Point(0, 0);
             splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
             // 
-            splitContainer2.Panel1.Controls.Add(tableLayoutPanel1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            splitContainer2.Panel2.Controls.Add(pictureBox1);
-            splitContainer2.Size = new Size(792, 422);
-            splitContainer2.SplitterDistance = 460;
+            splitContainer2.Panel1.Controls.Add(groupBox1);
+            splitContainer2.Size = new Size(504, 123);
+            splitContainer2.SplitterDistance = 252;
             splitContainer2.TabIndex = 0;
             // 
-            // tableLayoutPanel1
+            // groupBox1
             // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(blankDiametersGroupBox, 0, 0);
-            tableLayoutPanel1.Controls.Add(modifyEdgeGroupBox, 0, 1);
-            tableLayoutPanel1.Controls.Add(groupBox3, 0, 2);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.MinimumSize = new Size(300, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 26.97096F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 38.4508972F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 34.5781479F));
-            tableLayoutPanel1.Size = new Size(460, 422);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // blankDiametersGroupBox
-            // 
-            blankDiametersGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            blankDiametersGroupBox.Controls.Add(tableLayoutPanel2);
-            blankDiametersGroupBox.Location = new Point(20, 10);
-            blankDiametersGroupBox.Margin = new Padding(20, 10, 10, 3);
-            blankDiametersGroupBox.Name = "blankDiametersGroupBox";
-            blankDiametersGroupBox.Size = new Size(430, 100);
-            blankDiametersGroupBox.TabIndex = 0;
-            blankDiametersGroupBox.TabStop = false;
-            blankDiametersGroupBox.Text = "Диаметры заготовки";
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(tableLayoutPanel2);
+            groupBox1.Location = new Point(8, 0);
+            groupBox1.Margin = new Padding(3, 3, 10, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(234, 109);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Вид обработки";
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(label1, 0, 0);
-            tableLayoutPanel2.Controls.Add(label2, 0, 1);
-            tableLayoutPanel2.Controls.Add(textBox1, 1, 0);
-            tableLayoutPanel2.Controls.Add(textBox2, 1, 1);
+            tableLayoutPanel2.Controls.Add(filletRadioButton, 0, 1);
+            tableLayoutPanel2.Controls.Add(noneRadioButton, 0, 2);
+            tableLayoutPanel2.Controls.Add(chamferRadioButton, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 22);
-            tableLayoutPanel2.Margin = new Padding(3, 3, 10, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(424, 75);
+            tableLayoutPanel2.RowCount = 3;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.Size = new Size(228, 84);
             tableLayoutPanel2.TabIndex = 0;
             // 
-            // label1
+            // filletRadioButton
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Calibri", 9F, FontStyle.Italic);
-            label1.Location = new Point(10, 0);
-            label1.Margin = new Padding(10, 0, 3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(67, 18);
-            label1.TabIndex = 0;
-            label1.Text = "Размер D";
+            filletRadioButton.AutoSize = true;
+            filletRadioButton.Location = new Point(10, 31);
+            filletRadioButton.Margin = new Padding(10, 3, 3, 3);
+            filletRadioButton.Name = "filletRadioButton";
+            filletRadioButton.Size = new Size(103, 22);
+            filletRadioButton.TabIndex = 1;
+            filletRadioButton.TabStop = true;
+            filletRadioButton.Text = "Скругление";
+            filletRadioButton.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // noneRadioButton
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Calibri", 9F, FontStyle.Italic);
-            label2.Location = new Point(10, 37);
-            label2.Margin = new Padding(10, 0, 3, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(74, 18);
-            label2.TabIndex = 1;
-            label2.Text = "Размер D1";
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Font = new Font("Calibri", 9F, FontStyle.Italic);
-            textBox1.Location = new Point(97, 3);
-            textBox1.Margin = new Padding(10, 3, 10, 3);
-            textBox1.MinimumSize = new Size(40, 0);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(317, 26);
-            textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Font = new Font("Calibri", 9F, FontStyle.Italic);
-            textBox2.Location = new Point(97, 40);
-            textBox2.Margin = new Padding(10, 3, 10, 3);
-            textBox2.MinimumSize = new Size(40, 0);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(317, 26);
-            textBox2.TabIndex = 3;
-            // 
-            // modifyEdgeGroupBox
-            // 
-            modifyEdgeGroupBox.Controls.Add(tableLayoutPanel3);
-            modifyEdgeGroupBox.Dock = DockStyle.Fill;
-            modifyEdgeGroupBox.Location = new Point(20, 118);
-            modifyEdgeGroupBox.Margin = new Padding(20, 5, 10, 3);
-            modifyEdgeGroupBox.Name = "modifyEdgeGroupBox";
-            modifyEdgeGroupBox.Size = new Size(430, 154);
-            modifyEdgeGroupBox.TabIndex = 1;
-            modifyEdgeGroupBox.TabStop = false;
-            modifyEdgeGroupBox.Text = "Обработка кромок";
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(groupBox2, 0, 0);
-            tableLayoutPanel3.Controls.Add(chamferGroupBox, 1, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 22);
-            tableLayoutPanel3.Margin = new Padding(3, 0, 3, 3);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(424, 129);
-            tableLayoutPanel3.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox2.Controls.Add(tableLayoutPanel4);
-            groupBox2.Location = new Point(10, 3);
-            groupBox2.Margin = new Padding(10, 3, 10, 10);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(192, 116);
-            groupBox2.TabIndex = 0;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Вид обработки";
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(chamferRadioButton, 0, 0);
-            tableLayoutPanel4.Controls.Add(roundingRadioButton, 0, 1);
-            tableLayoutPanel4.Controls.Add(noneRadioButton, 0, 2);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 22);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 3;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel4.Size = new Size(186, 91);
-            tableLayoutPanel4.TabIndex = 0;
+            noneRadioButton.AutoSize = true;
+            noneRadioButton.Location = new Point(10, 59);
+            noneRadioButton.Margin = new Padding(10, 3, 3, 3);
+            noneRadioButton.Name = "noneRadioButton";
+            noneRadioButton.Size = new Size(122, 22);
+            noneRadioButton.TabIndex = 2;
+            noneRadioButton.TabStop = true;
+            noneRadioButton.Text = "Без обработки";
+            noneRadioButton.UseVisualStyleBackColor = true;
             // 
             // chamferRadioButton
             // 
             chamferRadioButton.AutoSize = true;
-            chamferRadioButton.Checked = true;
             chamferRadioButton.Location = new Point(10, 3);
             chamferRadioButton.Margin = new Padding(10, 3, 3, 3);
             chamferRadioButton.Name = "chamferRadioButton";
@@ -626,183 +720,195 @@
             chamferRadioButton.Text = "Фаска";
             chamferRadioButton.UseVisualStyleBackColor = true;
             // 
-            // roundingRadioButton
+            // edgeModifierPicture
             // 
-            roundingRadioButton.AutoSize = true;
-            roundingRadioButton.Location = new Point(10, 33);
-            roundingRadioButton.Margin = new Padding(10, 3, 3, 3);
-            roundingRadioButton.Name = "roundingRadioButton";
-            roundingRadioButton.Size = new Size(103, 22);
-            roundingRadioButton.TabIndex = 1;
-            roundingRadioButton.Text = "Скругление";
-            roundingRadioButton.UseVisualStyleBackColor = true;
+            edgeModifierPicture.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            edgeModifierPicture.BorderStyle = BorderStyle.FixedSingle;
+            edgeModifierPicture.Location = new Point(10, 22);
+            edgeModifierPicture.Margin = new Padding(10);
+            edgeModifierPicture.Name = "edgeModifierPicture";
+            edgeModifierPicture.Size = new Size(228, 75);
+            edgeModifierPicture.SizeMode = PictureBoxSizeMode.StretchImage;
+            edgeModifierPicture.TabIndex = 0;
+            edgeModifierPicture.TabStop = false;
             // 
-            // noneRadioButton
+            // screwHolesGroupBox
             // 
-            noneRadioButton.AutoSize = true;
-            noneRadioButton.Location = new Point(10, 63);
-            noneRadioButton.Margin = new Padding(10, 3, 3, 3);
-            noneRadioButton.Name = "noneRadioButton";
-            noneRadioButton.Size = new Size(122, 22);
-            noneRadioButton.TabIndex = 2;
-            noneRadioButton.Text = "Без обработки";
-            noneRadioButton.UseVisualStyleBackColor = true;
+            screwHolesGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            screwHolesGroupBox.Controls.Add(screwHolesContainer);
+            screwHolesGroupBox.Location = new Point(10, 285);
+            screwHolesGroupBox.Margin = new Padding(10, 3, 10, 3);
+            screwHolesGroupBox.Name = "screwHolesGroupBox";
+            screwHolesGroupBox.Size = new Size(762, 124);
+            screwHolesGroupBox.TabIndex = 2;
+            screwHolesGroupBox.TabStop = false;
+            screwHolesGroupBox.Text = "Отверстия под винты";
             // 
-            // chamferGroupBox
+            // screwHolesContainer
             // 
-            chamferGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            chamferGroupBox.Controls.Add(tableLayoutPanel5);
-            chamferGroupBox.Location = new Point(215, 3);
-            chamferGroupBox.Margin = new Padding(3, 3, 10, 10);
-            chamferGroupBox.Name = "chamferGroupBox";
-            chamferGroupBox.Size = new Size(199, 116);
-            chamferGroupBox.TabIndex = 1;
-            chamferGroupBox.TabStop = false;
-            chamferGroupBox.Text = "Параметры фаски";
+            screwHolesContainer.Dock = DockStyle.Fill;
+            screwHolesContainer.Location = new Point(3, 22);
+            screwHolesContainer.Name = "screwHolesContainer";
             // 
-            // tableLayoutPanel5
+            // screwHolesContainer.Panel1
             // 
-            tableLayoutPanel5.ColumnCount = 2;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Controls.Add(label3, 0, 0);
-            tableLayoutPanel5.Controls.Add(label4, 0, 1);
-            tableLayoutPanel5.Controls.Add(textBox3, 1, 0);
-            tableLayoutPanel5.Controls.Add(textBox4, 1, 1);
-            tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(3, 22);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 2;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(193, 91);
-            tableLayoutPanel5.TabIndex = 0;
+            screwHolesContainer.Panel1.Controls.Add(splitContainer3);
             // 
-            // label3
+            // screwHolesContainer.Panel2
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(49, 18);
-            label3.TabIndex = 0;
-            label3.Text = "Длина";
+            screwHolesContainer.Panel2.Controls.Add(screwHolesPicture);
+            screwHolesContainer.Size = new Size(756, 99);
+            screwHolesContainer.SplitterDistance = 504;
+            screwHolesContainer.TabIndex = 0;
             // 
-            // label4
+            // splitContainer3
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 45);
-            label4.Name = "label4";
-            label4.Size = new Size(36, 18);
-            label4.TabIndex = 1;
-            label4.Text = "Угол";
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
             // 
-            // textBox3
+            // splitContainer3.Panel1
             // 
-            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.Location = new Point(58, 3);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(132, 26);
-            textBox3.TabIndex = 2;
+            splitContainer3.Panel1.Controls.Add(screwHolesParametersPanel);
             // 
-            // textBox4
+            // splitContainer3.Panel2
             // 
-            textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(58, 48);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(132, 26);
-            textBox4.TabIndex = 3;
+            splitContainer3.Panel2.Controls.Add(holeCountCulculatorLabel);
+            splitContainer3.Size = new Size(504, 99);
+            splitContainer3.SplitterDistance = 370;
+            splitContainer3.TabIndex = 0;
             // 
-            // groupBox3
+            // screwHolesParametersPanel
             // 
-            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox3.Controls.Add(tableLayoutPanel6);
-            groupBox3.Location = new Point(20, 278);
-            groupBox3.Margin = new Padding(20, 3, 10, 15);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(430, 129);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Отверстия под винты";
+            screwHolesParametersPanel.ColumnCount = 2;
+            screwHolesParametersPanel.ColumnStyles.Add(new ColumnStyle());
+            screwHolesParametersPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            screwHolesParametersPanel.Controls.Add(panel3, 0, 0);
+            screwHolesParametersPanel.Controls.Add(panel4, 0, 1);
+            screwHolesParametersPanel.Controls.Add(panel5, 0, 2);
+            screwHolesParametersPanel.Controls.Add(screwHolesComboBox, 1, 2);
+            screwHolesParametersPanel.Controls.Add(screwHolesDiameterTextBox, 1, 1);
+            screwHolesParametersPanel.Controls.Add(screwHolesDiastanceTextBox, 1, 0);
+            screwHolesParametersPanel.Dock = DockStyle.Fill;
+            screwHolesParametersPanel.Location = new Point(0, 0);
+            screwHolesParametersPanel.Name = "screwHolesParametersPanel";
+            screwHolesParametersPanel.RowCount = 3;
+            screwHolesParametersPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            screwHolesParametersPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            screwHolesParametersPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            screwHolesParametersPanel.Size = new Size(370, 99);
+            screwHolesParametersPanel.TabIndex = 0;
             // 
-            // tableLayoutPanel6
+            // panel3
             // 
-            tableLayoutPanel6.ColumnCount = 2;
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Controls.Add(label5, 0, 0);
-            tableLayoutPanel6.Controls.Add(label6, 0, 1);
-            tableLayoutPanel6.Controls.Add(textBox5, 1, 0);
-            tableLayoutPanel6.Controls.Add(textBox6, 1, 1);
-            tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(3, 22);
-            tableLayoutPanel6.Name = "tableLayoutPanel6";
-            tableLayoutPanel6.RowCount = 2;
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(424, 104);
-            tableLayoutPanel6.TabIndex = 0;
+            panel3.AutoSize = true;
+            panel3.Controls.Add(screwHolesDistanceLabel);
+            panel3.Location = new Point(3, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(224, 25);
+            panel3.TabIndex = 0;
             // 
-            // label5
+            // screwHolesDistanceLabel
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(3, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(65, 18);
-            label5.TabIndex = 0;
-            label5.Text = "Диаметр";
+            screwHolesDistanceLabel.AutoSize = true;
+            screwHolesDistanceLabel.Location = new Point(0, 7);
+            screwHolesDistanceLabel.Name = "screwHolesDistanceLabel";
+            screwHolesDistanceLabel.Size = new Size(221, 18);
+            screwHolesDistanceLabel.TabIndex = 0;
+            screwHolesDistanceLabel.Text = "Расстояние между отверстиями S";
             // 
-            // label6
+            // panel4
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(3, 52);
-            label6.Name = "label6";
-            label6.Size = new Size(82, 18);
-            label6.TabIndex = 1;
-            label6.Text = "Количество";
+            panel4.AutoSize = true;
+            panel4.Controls.Add(screwHolesDiameterLabel);
+            panel4.Location = new Point(3, 35);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(146, 26);
+            panel4.TabIndex = 1;
             // 
-            // textBox5
+            // screwHolesDiameterLabel
             // 
-            textBox5.Dock = DockStyle.Fill;
-            textBox5.Location = new Point(98, 3);
-            textBox5.Margin = new Padding(10, 3, 10, 3);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(316, 26);
-            textBox5.TabIndex = 2;
+            screwHolesDiameterLabel.AutoSize = true;
+            screwHolesDiameterLabel.Location = new Point(0, 8);
+            screwHolesDiameterLabel.Name = "screwHolesDiameterLabel";
+            screwHolesDiameterLabel.Size = new Size(143, 18);
+            screwHolesDiameterLabel.TabIndex = 0;
+            screwHolesDiameterLabel.Text = "Диаметр отверстия d";
             // 
-            // textBox6
+            // panel5
             // 
-            textBox6.Dock = DockStyle.Fill;
-            textBox6.Location = new Point(98, 55);
-            textBox6.Margin = new Padding(10, 3, 10, 3);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(316, 26);
-            textBox6.TabIndex = 3;
+            panel5.Controls.Add(holesCountLabel);
+            panel5.Location = new Point(3, 67);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(250, 29);
+            panel5.TabIndex = 2;
             // 
-            // pictureBox1
+            // holesCountLabel
             // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Image = Properties.Resources.chamferEdge;
-            pictureBox1.Location = new Point(18, 22);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(288, 382);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            holesCountLabel.AutoSize = true;
+            holesCountLabel.Location = new Point(3, 11);
+            holesCountLabel.Name = "holesCountLabel";
+            holesCountLabel.Size = new Size(125, 18);
+            holesCountLabel.TabIndex = 0;
+            holesCountLabel.Text = "Число отверстий n";
+            // 
+            // screwHolesComboBox
+            // 
+            screwHolesComboBox.Location = new Point(259, 67);
+            screwHolesComboBox.Margin = new Padding(3, 3, 10, 3);
+            screwHolesComboBox.Name = "screwHolesComboBox";
+            screwHolesComboBox.Size = new Size(101, 26);
+            screwHolesComboBox.TabIndex = 0;
+            // 
+            // screwHolesDiameterTextBox
+            // 
+            screwHolesDiameterTextBox.Location = new Point(259, 35);
+            screwHolesDiameterTextBox.Margin = new Padding(3, 3, 10, 3);
+            screwHolesDiameterTextBox.Name = "screwHolesDiameterTextBox";
+            screwHolesDiameterTextBox.Size = new Size(101, 26);
+            screwHolesDiameterTextBox.TabIndex = 3;
+            // 
+            // screwHolesDiastanceTextBox
+            // 
+            screwHolesDiastanceTextBox.Location = new Point(259, 3);
+            screwHolesDiastanceTextBox.Margin = new Padding(3, 3, 10, 3);
+            screwHolesDiastanceTextBox.Name = "screwHolesDiastanceTextBox";
+            screwHolesDiastanceTextBox.Size = new Size(101, 26);
+            screwHolesDiastanceTextBox.TabIndex = 4;
+            // 
+            // holeCountCulculatorLabel
+            // 
+            holeCountCulculatorLabel.AutoSize = true;
+            holeCountCulculatorLabel.Location = new Point(11, 10);
+            holeCountCulculatorLabel.Name = "holeCountCulculatorLabel";
+            holeCountCulculatorLabel.Size = new Size(46, 18);
+            holeCountCulculatorLabel.TabIndex = 0;
+            holeCountCulculatorLabel.Text = "label6";
+            // 
+            // screwHolesPicture
+            // 
+            screwHolesPicture.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            screwHolesPicture.BorderStyle = BorderStyle.FixedSingle;
+            screwHolesPicture.Location = new Point(10, 10);
+            screwHolesPicture.Margin = new Padding(10);
+            screwHolesPicture.Name = "screwHolesPicture";
+            screwHolesPicture.Size = new Size(228, 76);
+            screwHolesPicture.TabIndex = 0;
+            screwHolesPicture.TabStop = false;
             // 
             // Wizard3DForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 453);
-            Controls.Add(tabControl1);
+            Controls.Add(wizard3DTabControl);
             MaximizeBox = false;
             MinimizeBox = false;
             MinimumSize = new Size(530, 500);
             Name = "Wizard3DForm";
             ShowInTaskbar = false;
             Text = "Мастер 3D сборки";
-            tabControl1.ResumeLayout(false);
+            wizard3DTabControl.ResumeLayout(false);
             housingTabPage.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
@@ -821,32 +927,56 @@
             ((System.ComponentModel.ISupportInitialize)housingColorBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)housingPicture).EndInit();
             housingRefineTabPage.ResumeLayout(false);
+            refinePanel.ResumeLayout(false);
+            refineTablePanel.ResumeLayout(false);
+            blankDiametersGroupBox.ResumeLayout(false);
+            blankDiametersContainer.Panel1.ResumeLayout(false);
+            blankDiametersContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)blankDiametersContainer).EndInit();
+            blankDiametersContainer.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)blankDiametersPicture).EndInit();
+            edgeMidifiersGroupBox.ResumeLayout(false);
+            edgeModifiersContainer.Panel1.ResumeLayout(false);
+            edgeModifiersContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)edgeModifiersContainer).EndInit();
+            edgeModifiersContainer.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
-            splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            blankDiametersGroupBox.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            modifyEdgeGroupBox.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
-            chamferGroupBox.ResumeLayout(false);
-            tableLayoutPanel5.ResumeLayout(false);
-            tableLayoutPanel5.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            tableLayoutPanel6.ResumeLayout(false);
-            tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)edgeModifierPicture).EndInit();
+            screwHolesGroupBox.ResumeLayout(false);
+            screwHolesContainer.Panel1.ResumeLayout(false);
+            screwHolesContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)screwHolesContainer).EndInit();
+            screwHolesContainer.ResumeLayout(false);
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel2.ResumeLayout(false);
+            splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
+            screwHolesParametersPanel.ResumeLayout(false);
+            screwHolesParametersPanel.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)screwHolesPicture).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControl1;
+        private TabControl wizard3DTabControl;
         private TabPage housingTabPage;
         private SplitContainer splitContainer1;
         private TableLayoutPanel housingLeftPanel;
@@ -874,33 +1004,41 @@
         private PictureBox housingColorBox;
         private MaskedTextBox housingDensityTextBox;
         private TabPage housingRefineTabPage;
-        private SplitContainer splitContainer2;
-        private TableLayoutPanel tableLayoutPanel1;
+        private Panel refinePanel;
+        private TableLayoutPanel refineTablePanel;
         private GroupBox blankDiametersGroupBox;
+        private GroupBox edgeMidifiersGroupBox;
+        private GroupBox screwHolesGroupBox;
+        private SplitContainer blankDiametersContainer;
+        private SplitContainer edgeModifiersContainer;
+        private PictureBox edgeModifierPicture;
+        private SplitContainer screwHolesContainer;
+        private PictureBox blankDiametersPicture;
+        private PictureBox screwHolesPicture;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel1;
+        private TextBox housingDiameterInfoBox;
+        private Label housingDiameterInfoLabel;
+        private Panel panel2;
+        private Label housingHoleDiameterInfoLabel;
+        private TextBox holeDiameterInfoBox;
+        private SplitContainer splitContainer2;
+        private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel2;
-        private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private GroupBox modifyEdgeGroupBox;
-        private PictureBox pictureBox1;
-        private TableLayoutPanel tableLayoutPanel3;
-        private GroupBox groupBox2;
-        private TableLayoutPanel tableLayoutPanel4;
         private RadioButton chamferRadioButton;
-        private RadioButton roundingRadioButton;
+        private RadioButton filletRadioButton;
         private RadioButton noneRadioButton;
-        private GroupBox chamferGroupBox;
-        private TableLayoutPanel tableLayoutPanel5;
-        private Label label3;
-        private Label label4;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private GroupBox groupBox3;
-        private TableLayoutPanel tableLayoutPanel6;
-        private Label label5;
-        private Label label6;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private SplitContainer splitContainer3;
+        private TableLayoutPanel screwHolesParametersPanel;
+        private Panel panel3;
+        private Label screwHolesDistanceLabel;
+        private Panel panel4;
+        private Label screwHolesDiameterLabel;
+        private TextBox screwHolesDiameterTextBox;
+        private TextBox screwHolesDiastanceTextBox;
+        private ComboBox screwHolesComboBox;
+        private Label holeCountCulculatorLabel;
+        private Panel panel5;
+        private Label holesCountLabel;
     }
 }

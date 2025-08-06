@@ -71,6 +71,15 @@ namespace Oil_level_glass.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to d x D2 = ???.
+        /// </summary>
+        internal static string CulcCountOfScrewHoles {
+            get {
+                return ResourceManager.GetString("CulcCountOfScrewHoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap housingBlank {
@@ -97,6 +106,15 @@ namespace Oil_level_glass.Properties {
             get {
                 object obj = ResourceManager.GetObject("mainFormImage1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле «???» является обязательным для заполнения!.
+        /// </summary>
+        internal static string RequiredFieldMessage {
+            get {
+                return ResourceManager.GetString("RequiredFieldMessage", resourceCulture);
             }
         }
         

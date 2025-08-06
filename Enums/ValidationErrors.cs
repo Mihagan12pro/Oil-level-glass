@@ -2,18 +2,20 @@
 {
     enum InputError
     {
-        EmptyField = 0,
+        None = 0,
 
-        BadName = 1,
+        EmptyField = 1,
 
-        BadPath = 2,
+        BadName = 2,
 
-        InvalidType = 3,
+        BadPath = 3,
 
-        TooSmall = 4,
+        InvalidType = 4,
 
-        TooBig = 5,
+        TooSmall = 5,
 
-        BrokenHierarchy = 6
+        TooBig = 6,
+
+        BrokenHierarchy = 7
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Oil_level_glass.BaseClasses;
 using Oil_level_glass.Enums;
+using Oil_level_glass.Properties;
 using System.Globalization;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
@@ -34,7 +35,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             {
                 _housingDiameter = value;
 
-                ValidateDiameters();
+                ValidateMainDiameters();
                 OnPropertyChanged();
             }
         }
@@ -51,7 +52,41 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             {
                 _housingHole = value;
 
-                ValidateDiameters();
+                ValidateMainDiameters();
+                OnPropertyChanged();
+            }
+        }
+
+
+        private string? _screwHolesDistance;
+        public string? ScrewHolesDistance
+        {
+            get
+            {
+                return _screwHolesDistance;
+            }
+            set
+            {
+                _screwHolesDistance = value;
+
+                ValidateScrewHolesDistance();
+                OnPropertyChanged();
+            }
+        }
+
+
+        private string ?_screwHolesDiameter;
+        public string ?ScrewHolesDiameter
+        {
+            get
+            {
+                return _screwHolesDiameter;
+            }
+            set
+            {
+                _screwHolesDiameter = value;
+
+                ValidateScrewHolesDiameter();
                 OnPropertyChanged();
             }
         }
@@ -73,12 +108,37 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         }
 
 
-        private void ValidateDiameters()
+        private void ValidateScrewHolesDistance()
+        {
+            ClearErrors(nameof(ScrewHolesDistance));
+
+            double distance = 0;
+
+            if (String.IsNullOrEmpty(ScrewHolesDistance))
+                AddError(nameof(ScrewHolesDistance), $"Поле 'Расстояние между отверстиями под винты' обязательно для заполнения!", InputError.EmptyField);
+        }
+
+
+        private void ValidateScrewHolesDiameter()
+        {
+            if (GetErrors(nameof(ScrewHolesDistance)) == null)
+            {
+                ClearErrors(nameof(ScrewHolesDiameter));
+
+
+                if (String.IsNullOrEmpty(ScrewHolesDiameter))
+                    AddError(nameof(ScrewHolesDiameter), $"Поле 'Диаметр отверстия под винты' обязательно для заполнения!", InputError.EmptyField);
+            }
+        }
+
+
+        private void ValidateMainDiameters()
         {
             ClearErrors(nameof(HousingDiameter));
 
             double housingDiameter = 0;
-            double housingHole = 0; 
+            double housingHole = 0;
+
 
             if (String.IsNullOrEmpty(HousingDiameter))
             {
@@ -102,19 +162,18 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             }
 
 
-
             ClearErrors(nameof(HousingHole));
 
             if (String.IsNullOrEmpty(HousingHole))
             {
-                AddError(nameof(HousingHole), $"Поле 'Диаметр центрального отверстия корпуса' обязательно для заполнения!", InputError.EmptyField);
+                AddError(nameof(HousingHole), Resources.RequiredFieldMessage.Replace("???", "Диаметр центрального отверстия корпуса"), InputError.EmptyField);
             }
 
             if(GetErrors(nameof(HousingHole)) == null)
             {
                 if (!double.TryParse(new String(HousingHole).Replace(',', '.'), new CultureInfo("En-us"), out housingHole))
                 {
-                    AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть числом!", InputError.InvalidType);
+                    AddError(nameof(HousingHole), Resources.RequiredFieldMessage.Replace("???", "Диаметр центрального отверстия должен быть числом!"), InputError.InvalidType);
 
                     return;
                 }
@@ -127,8 +186,6 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
                     }
                 }
             }
-
-
 
 
             if (GetErrors(nameof(HousingHole)) == null && GetErrors(nameof(HousingDiameter)) == null)
@@ -158,6 +215,9 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             HousingDiameter = "180";
 
             HousingHole = "90";
+
+            ScrewHolesDistance = "135";
+            
 
             maxDensity = 10;
             minDensity = 0.534;
