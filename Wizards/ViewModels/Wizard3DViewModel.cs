@@ -259,7 +259,7 @@ namespace Oil_level_glass.Wizards.ViewModels
                 {
                     HousingHeightColor = errorBackColor;
 
-                    if (HousingErrors[nameof(HousingEntity.Height)][0].Item2 == InputError.BrokenHierarchy)
+                    if (HousingErrors[nameof(HousingEntity.Height)][0].Item2 == InputError.BrokenStrictHierarchy)
                     {
 
                     }
@@ -270,7 +270,7 @@ namespace Oil_level_glass.Wizards.ViewModels
                 {
                     HousingDiameterColor = errorBackColor;
 
-                    if (HousingErrors[nameof(HousingEntity.HousingDiameter)][0].Item2 == InputError.BrokenHierarchy)
+                    if (HousingErrors[nameof(HousingEntity.HousingDiameter)][0].Item2 == InputError.BrokenStrictHierarchy)
                     {
                         HousingHoleColor = errorBackColor;
                     }
@@ -281,7 +281,7 @@ namespace Oil_level_glass.Wizards.ViewModels
                 {
                     HousingHoleColor = errorBackColor;
 
-                    if (HousingErrors[nameof(HousingEntity.HousingHole)][0].Item2 == InputError.BrokenHierarchy)
+                    if (HousingErrors[nameof(HousingEntity.HousingHole)][0].Item2 == InputError.BrokenStrictHierarchy)
                     {
                         HousingDiameterColor = errorBackColor;
                     }

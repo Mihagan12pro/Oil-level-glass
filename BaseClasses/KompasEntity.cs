@@ -1,9 +1,9 @@
-﻿using KompasAPI7;
-using Oil_level_glass.Enums;
+﻿using Oil_level_glass.Enums;
 using Oil_level_glass.Services;
 using System.Collections;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Oil_level_glass.Delegates;
 
 namespace Oil_level_glass.BaseClasses
 {
@@ -23,6 +23,7 @@ namespace Oil_level_glass.BaseClasses
 
 
         private string? _fileName;
+        [Description("Имя файла")]
         public string? FileName
         {
             get
@@ -41,6 +42,8 @@ namespace Oil_level_glass.BaseClasses
 
 
         private string? _folderPath;
+
+        [Description("Путь к папке сохранения")]
         public string? FolderPath
         {
             get
@@ -112,29 +115,19 @@ namespace Oil_level_glass.BaseClasses
 
         private void ValidateFileName()
         {
-            ClearErrors(nameof(FileName));
-
-            if (string.IsNullOrWhiteSpace(FileName))
-                AddError(nameof(FileName), "У файла обязательно должно быть название!", InputError.EmptyField);
-
-            if (new String(FileName).Length > 256)
-                AddError(nameof(FileName), "Название файла не должно быть больше 256 символов!", InputError.TooBig);
+            if (!Validator<KompasEntity>.CheckRequiredField(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
+            {
+                Validator<KompasEntity>.CheckFileName(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+            }
         }
 
 
         private void ValidateFolderPath()
         {
-            ClearErrors(nameof(FolderPath));
-
-            if (string.IsNullOrWhiteSpace(FolderPath))
+            if (Validator<KompasEntity>.CheckRequiredField(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
-                AddError(nameof(FolderPath), "Задайте папку, в которую должен будут сохранен файл!", InputError.EmptyField);
-
-                return;
+                Validator<KompasEntity>.CheckPath(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
             }
-
-            if (!System.IO.Directory.Exists(FolderPath))
-                AddError(nameof(FolderPath), "Данной папки не существует", InputError.BadPath);
         }
 
 

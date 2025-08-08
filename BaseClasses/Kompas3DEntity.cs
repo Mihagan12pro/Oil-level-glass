@@ -1,6 +1,6 @@
-﻿using Oil_level_glass.Enums;
+﻿using Oil_level_glass.Delegates;
 using Oil_level_glass.Services;
-using System.Globalization;
+using System.ComponentModel;
 
 namespace Oil_level_glass.BaseClasses
 {
@@ -11,6 +11,7 @@ namespace Oil_level_glass.BaseClasses
 
 
         private Color _modelColor;
+        [Description("Цвет трехмерной модели")]
         public Color ModelColor
         {
             get
@@ -27,6 +28,7 @@ namespace Oil_level_glass.BaseClasses
 
 
         private string? _density;
+        [Description("Плотность")]
         public string? Density
         {
             get
@@ -44,6 +46,7 @@ namespace Oil_level_glass.BaseClasses
 
 
         private string? _material;
+        [Description("Название материала")]
         public string? Material
         {
             get
@@ -74,28 +77,22 @@ namespace Oil_level_glass.BaseClasses
 
         private void ValidateDensity()
         {
-            ClearErrors(nameof(Density));
+            ErrorAdder adder = AddError;
+            ErrorClearer clearer = ClearErrors;
 
-            double.TryParse(Density, new CultureInfo("EN-us") ,out double density);
-
-            if (density < minDensity)
+            if (!Validator<Kompas3DEntity>.CheckRequiredField(nameof(Density), Density, adder, clearer))
             {
-                AddError(nameof(Density), $"Минимальная плотность для данного материала равна {minDensity} г/см³", InputError.TooSmall);
-            }
-
-            if (density > maxDensity)
-            {
-                AddError(nameof(Density), $"Максимальная плотность для данного материала равна {maxDensity} г/см³", InputError.TooBig);
+                if (!Validator<Kompas3DEntity>.CheckDoubleField(nameof(Density), Density, adder, clearer, out double result))
+                {
+                    Validator<Kompas3DEntity>.CheckDensityValue(nameof(Density), Density, minDensity, maxDensity ,adder, clearer);
+                }
             }
         }
 
 
         private void ValidateMaterial()
         {
-            ClearErrors(nameof(Material));
-
-            if (string.IsNullOrWhiteSpace(Material))
-                AddError(nameof(Material), "Не задан материал!", InputError.EmptyField);
+            Validator<Kompas3DEntity>.CheckRequiredField(nameof(Material), Material, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
         }
     }
 }

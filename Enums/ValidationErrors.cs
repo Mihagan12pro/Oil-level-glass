@@ -6,16 +6,26 @@
 
         EmptyField = 1,
 
-        BadName = 2,
+        BigName = 2,
 
         BadPath = 3,
 
         InvalidType = 4,
 
-        TooSmall = 5,
+        TooSmallNumber = 5,
 
-        TooBig = 6,
+        TooBigNumber = 6,
 
-        BrokenHierarchy = 7
+        BrokenStrictHierarchy = 7,
+
+        BrokenHierarchy = 8,
+
+        ZeroOrNegative = 9,
+
+        NotUniqueName = 10,
+
+        LessMinDensity = 11,
+
+        BiggerMaxDensity = 12
     }
 }

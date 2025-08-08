@@ -139,7 +139,31 @@
   <data name="RequiredFieldMessage" xml:space="preserve">
     <value>Поле «???» является обязательным для заполнения!</value>
   </data>
-  <data name="CulcCountOfScrewGoles" xml:space="preserve">
-    <value>d x D2 = ???</value>
+  <data name="InvalidTypeMessage" xml:space="preserve">
+    <value>Поле «???» должно быть числом!</value>
+  </data>
+  <data name="TooSmallFieldMessage" xml:space="preserve">
+    <value>В поле «???» должно быть записано значение, которое больше  «!!!»!</value>
+  </data>
+  <data name="ZeroOrNegativeMessage" xml:space="preserve">
+    <value>Поле «???» должно содержать число больше нуля!</value>
+  </data>
+  <data name="BrokenStrictHierarchyMessage" xml:space="preserve">
+    <value>Значение поля «???» должно быть строго меньше значения поля «!!!»!</value>
+  </data>
+  <data name="BrokenHierarchyMessage" xml:space="preserve">
+    <value>Значение поля «???» не должно превышать значения поля «!!!»!</value>
+  </data>
+  <data name="BadPathMessage" xml:space="preserve">
+    <value>В поле «???» написан путь к несуществующей папке!</value>
+  </data>
+  <data name="BigNameMessage" xml:space="preserve">
+    <value>В поле «???» записано имя файла, превышающее 256 символов!</value>
+  </data>
+  <data name="LessMinDensityMessage" xml:space="preserve">
+    <value>В поле «???» записано значение плотности, меньшее минимального значения для данного материала!</value>
+  </data>
+  <data name="BiggerMaxDensityMessage" xml:space="preserve">
+    <value>В поле «???» записано значение плотности, превышающее максимальное значение для данного материала!</value>
   </data>
 </root>

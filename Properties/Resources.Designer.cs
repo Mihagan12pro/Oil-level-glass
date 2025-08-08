@@ -61,6 +61,51 @@ namespace Oil_level_glass.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to В поле «???» написан путь к несуществующей папке!.
+        /// </summary>
+        internal static string BadPathMessage {
+            get {
+                return ResourceManager.GetString("BadPathMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В поле «???» записано значение плотности, превышающее максимальное значение для данного материала!.
+        /// </summary>
+        internal static string BiggerMaxDensityMessage {
+            get {
+                return ResourceManager.GetString("BiggerMaxDensityMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В поле «???» записано имя файла, превышающее 256 символов!.
+        /// </summary>
+        internal static string BigNameMessage {
+            get {
+                return ResourceManager.GetString("BigNameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Значение поля «???» не должно превышать значения поля «!!!»!.
+        /// </summary>
+        internal static string BrokenHierarchyMessage {
+            get {
+                return ResourceManager.GetString("BrokenHierarchyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Значение поля «???» должно быть строго меньше значения поля «!!!»!.
+        /// </summary>
+        internal static string BrokenStrictHierarchyMessage {
+            get {
+                return ResourceManager.GetString("BrokenStrictHierarchyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap chamferEdge {
@@ -71,21 +116,30 @@ namespace Oil_level_glass.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to d x D2 = ???.
-        /// </summary>
-        internal static string CulcCountOfScrewHoles {
-            get {
-                return ResourceManager.GetString("CulcCountOfScrewHoles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap housingBlank {
             get {
                 object obj = ResourceManager.GetObject("housingBlank", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле «???» должно быть числом!.
+        /// </summary>
+        internal static string InvalidTypeMessage {
+            get {
+                return ResourceManager.GetString("InvalidTypeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В поле «???» записано значение плотности, меньшее минимального значения для данного материала!.
+        /// </summary>
+        internal static string LessMinDensityMessage {
+            get {
+                return ResourceManager.GetString("LessMinDensityMessage", resourceCulture);
             }
         }
         
@@ -135,6 +189,24 @@ namespace Oil_level_glass.Properties {
             get {
                 object obj = ResourceManager.GetObject("sharpEdge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В поле «???» должно быть записано значение, которое больше  «!!!»!.
+        /// </summary>
+        internal static string TooSmallFieldMessage {
+            get {
+                return ResourceManager.GetString("TooSmallFieldMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле «???» должно содержать число больше нуля!.
+        /// </summary>
+        internal static string ZeroOrNegativeMessage {
+            get {
+                return ResourceManager.GetString("ZeroOrNegativeMessage", resourceCulture);
             }
         }
     }

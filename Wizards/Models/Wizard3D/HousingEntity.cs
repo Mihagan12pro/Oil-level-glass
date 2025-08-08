@@ -1,14 +1,15 @@
 ﻿using Oil_level_glass.BaseClasses;
-using Oil_level_glass.Enums;
-using Oil_level_glass.Properties;
+using Oil_level_glass.Delegates;
 using Oil_level_glass.Services;
-using System.Globalization;
+using System.ComponentModel;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
 {
     internal class HousingEntity : Kompas3DEntity
     {
         private string? _height;
+
+        [Description("Высота корпуса смотрового окна")]
         public string? Height
         {
             get
@@ -26,6 +27,8 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
 
         private string? _housingDiameter;
+
+        [Description("Диаметр корпуса смотрового окна")]
         public string ?HousingDiameter
         {
             get
@@ -43,6 +46,8 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
 
         private string? _housingHole;
+
+        [Description("Центральное отверстие корпуса смотрового окна")]
         public string? HousingHole
         {
             get
@@ -60,6 +65,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
 
         private string? _screwHolesDistance;
+        [Description("Расстояние между отверстиями под винты")]
         public string? ScrewHolesDistance
         {
             get
@@ -77,6 +83,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
 
         private string ?_screwHolesDiameter;
+        [Description("Диаметр отверстия под винты")]
         public string ?ScrewHolesDiameter
         {
             get
@@ -95,108 +102,79 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
         private void ValidateHeight()
         {
-            ClearErrors(nameof(Height));
-
-            if (!double.TryParse(new String(Height).Replace(',','.'), new CultureInfo("En-us"), out double height))
+            if (!Validator<HousingEntity>.CheckRequiredField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
-                AddError(nameof(Height), "Высота заготовки корпуса должна быть числом!", InputError.EmptyField);
-
-                return;
+                if (!Validator<HousingEntity>.CheckDoubleField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors), out double result))
+                {
+                    Validator<HousingEntity>.CheckBiggerThanZero(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+                }
             }
-
-            if (height <= 0)
-                AddError(nameof(Height), "Высота заготовки должна быть больше нуля!", InputError.TooSmall);
         }
 
 
         private void ValidateScrewHolesDistance()
         {
-            ClearErrors(nameof(ScrewHolesDistance));
+            ErrorAdder adder = new ErrorAdder(AddError);
+            ErrorClearer clearer = new ErrorClearer(ClearErrors);
 
-            double distance = 0;
+            if (!Validator<HousingEntity>.CheckRequiredField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer))
+            {
+                if (!Validator<HousingEntity>.CheckDoubleField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer, out double result))
+                {
 
-            if (String.IsNullOrEmpty(ScrewHolesDistance))
-                AddError(nameof(ScrewHolesDistance), $"Поле 'Расстояние между отверстиями под винты' обязательно для заполнения!", InputError.EmptyField);
+                }
+            }
         }
 
 
         private void ValidateScrewHolesDiameter()
         {
-            if (GetErrors(nameof(ScrewHolesDistance)) == null)
+            ErrorAdder adder = new ErrorAdder(AddError);
+            ErrorClearer clearer = new ErrorClearer(ClearErrors);
+
+            if (!Validator<HousingEntity>.CheckRequiredField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer))
             {
-                ClearErrors(nameof(ScrewHolesDiameter));
+                if (!Validator<HousingEntity>.CheckDoubleField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer, out double result))
+                {
 
-
-                if (String.IsNullOrEmpty(ScrewHolesDiameter))
-                    AddError(nameof(ScrewHolesDiameter), ResourceString.UseString("Диаметр отверстий под винты", InputError.EmptyField), InputError.EmptyField);
+                }
             }
         }
 
 
         private void ValidateMainDiameters()
         {
-            ClearErrors(nameof(HousingDiameter));
-
             double housingDiameter = 0;
             double housingHole = 0;
 
+            ErrorAdder adder = AddError;
+            ErrorClearer clearer = ClearErrors;
 
-            if (String.IsNullOrEmpty(HousingDiameter))
+            bool hasDiameterProblems = Validator<HousingEntity>.CheckRequiredField(nameof(HousingDiameter), HousingDiameter, adder, clearer);
+            if (!hasDiameterProblems)
             {
-                AddError(nameof(HousingDiameter), $"Поле 'Диаметр корпуса' обязательно для заполнения!", InputError.EmptyField);
-            }
-
-            if (GetErrors(nameof(HousingDiameter)) == null)
-            {
-                if (!double.TryParse(new String(HousingDiameter).Replace(',', '.'), new CultureInfo("En-us"), out housingDiameter))
+                hasDiameterProblems = Validator<HousingEntity>.CheckDoubleField(nameof(HousingDiameter), HousingDiameter, adder, clearer, out housingDiameter);
+                if (!hasDiameterProblems)
                 {
-                    AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть числом!", InputError.InvalidType);
-                }
-
-                if (GetErrors(nameof(HousingDiameter)) == null)
-                {
-                    if (housingDiameter <= 0)
-                    {
-                        AddError(nameof(HousingDiameter), "Диаметр корпуса должен быть больше нуля!", InputError.TooSmall);
-                    }
+                    hasDiameterProblems = Validator<HousingEntity>.CheckBiggerThanZero(nameof(HousingDiameter), HousingDiameter, adder, clearer);
                 }
             }
 
 
-            ClearErrors(nameof(HousingHole));
-
-            if (String.IsNullOrEmpty(HousingHole))
+            bool hasHoleProblems = Validator<HousingEntity>.CheckRequiredField(nameof(HousingHole), HousingHole, adder, clearer);
+            if (!hasHoleProblems)
             {
-                AddError(nameof(HousingHole), ResourceString.UseString("Диаметр центрального отверстия корпуса", InputError.EmptyField), InputError.EmptyField);
-            }
-
-            if(GetErrors(nameof(HousingHole)) == null)
-            {
-                if (!double.TryParse(new String(HousingHole).Replace(',', '.'), new CultureInfo("En-us"), out housingHole))
+                hasHoleProblems = Validator<HousingEntity>.CheckDoubleField(nameof(HousingHole), HousingHole, adder, clearer, out housingHole);
+                if (!hasHoleProblems)
                 {
-                    AddError(nameof(HousingHole), Resources.RequiredFieldMessage.Replace("???", "Диаметр центрального отверстия должен быть числом!"), InputError.InvalidType);
-
-                    return;
-                }
-
-                if (GetErrors(nameof(HousingHole)) == null)
-                {
-                    if (housingHole <= 0)
-                    {
-                        AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть больше нуля!", InputError.TooSmall);
-                    }
+                    hasHoleProblems = Validator<HousingEntity>.CheckBiggerThanZero(nameof(HousingHole), HousingHole, adder, clearer);
                 }
             }
 
 
-            if (GetErrors(nameof(HousingHole)) == null && GetErrors(nameof(HousingDiameter)) == null)
+            if (!hasDiameterProblems && !hasHoleProblems)
             {
-                if (housingDiameter <= housingHole)
-                {
-                    AddError(nameof(HousingHole), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.BrokenHierarchy);
-
-                    AddError(nameof(HousingDiameter), "Диаметр центрального отверстия должен быть меньше диаметра корпуса!", InputError.BrokenHierarchy);
-                }
+                Validator<HousingEntity>.CheckHierarchy(nameof(HousingHole), HousingHole, nameof(HousingDiameter), HousingDiameter, adder, clearer);
             }
         }
 
@@ -213,9 +191,9 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             Height = "45";
 
-            HousingDiameter = "180";
+            _housingDiameter = "180";
 
-            HousingHole = "90";
+            _housingHole = "90";
 
             ScrewHolesDistance = "135";
             

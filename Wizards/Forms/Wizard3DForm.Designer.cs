@@ -1,4 +1,6 @@
-﻿namespace Oil_level_glass.Wizards.Forms
+﻿using System.Globalization;
+
+namespace Oil_level_glass.Wizards.Forms
 {
     partial class Wizard3DForm
     {
@@ -45,7 +47,7 @@
             housingMaterialLabel = new Label();
             housingDensityLabel = new Label();
             housingMaterialTextBox = new TextBox();
-            housingDensityTextBox = new MaskedTextBox();
+            housingDensityTextBox = new TextBox();
             hoisungOtherParametersGroupBox = new GroupBox();
             housingOtherParametersPanel = new TableLayoutPanel();
             housingNameLabel = new Label();
@@ -349,14 +351,10 @@
             // 
             // housingDensityTextBox
             // 
-            housingDensityTextBox.Culture = new System.Globalization.CultureInfo("en-US");
-            housingDensityTextBox.Dock = DockStyle.Fill;
+            housingDensityTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             housingDensityTextBox.Location = new Point(149, 40);
-            housingDensityTextBox.Margin = new Padding(3, 3, 30, 3);
-            housingDensityTextBox.Mask = "0.000";
             housingDensityTextBox.Name = "housingDensityTextBox";
-            housingDensityTextBox.PromptChar = '0';
-            housingDensityTextBox.Size = new Size(190, 26);
+            housingDensityTextBox.Size = new Size(217, 26);
             housingDensityTextBox.TabIndex = 3;
             // 
             // hoisungOtherParametersGroupBox
@@ -1002,7 +1000,6 @@
         private TextBox housingNameTextBox;
         private TextBox housingFolderTextBox;
         private PictureBox housingColorBox;
-        private MaskedTextBox housingDensityTextBox;
         private TabPage housingRefineTabPage;
         private Panel refinePanel;
         private TableLayoutPanel refineTablePanel;
@@ -1040,5 +1037,6 @@
         private Label holeCountCulculatorLabel;
         private Panel panel5;
         private Label holesCountLabel;
+        private TextBox housingDensityTextBox;
     }
 }
