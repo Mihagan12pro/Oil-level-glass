@@ -52,7 +52,7 @@ namespace Oil_level_glass.Services
         {
             clearer.Invoke(propName);
 
-            if (!Directory.Exists(propName))
+            if (!Directory.Exists(propValue))
             {
                 adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BadPath), InputError.BadPath);
 

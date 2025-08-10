@@ -124,7 +124,7 @@ namespace Oil_level_glass.BaseClasses
 
         private void ValidateFolderPath()
         {
-            if (Validator<KompasEntity>.CheckRequiredField(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
+            if (!Validator<KompasEntity>.CheckRequiredField(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
                 Validator<KompasEntity>.CheckPath(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
             }

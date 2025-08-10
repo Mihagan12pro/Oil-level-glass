@@ -344,17 +344,18 @@ namespace Oil_level_glass.Wizards.Forms
             // 
             housingMaterialTextBox.Dock = DockStyle.Fill;
             housingMaterialTextBox.Location = new Point(149, 3);
-            housingMaterialTextBox.Margin = new Padding(3, 3, 30, 3);
+            housingMaterialTextBox.Margin = new Padding(3, 3, 20, 3);
             housingMaterialTextBox.Name = "housingMaterialTextBox";
-            housingMaterialTextBox.Size = new Size(190, 26);
+            housingMaterialTextBox.Size = new Size(200, 26);
             housingMaterialTextBox.TabIndex = 2;
             // 
             // housingDensityTextBox
             // 
-            housingDensityTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            housingDensityTextBox.Dock = DockStyle.Fill;
             housingDensityTextBox.Location = new Point(149, 40);
+            housingDensityTextBox.Margin = new Padding(3, 3, 20, 3);
             housingDensityTextBox.Name = "housingDensityTextBox";
-            housingDensityTextBox.Size = new Size(217, 26);
+            housingDensityTextBox.Size = new Size(200, 26);
             housingDensityTextBox.TabIndex = 3;
             // 
             // hoisungOtherParametersGroupBox

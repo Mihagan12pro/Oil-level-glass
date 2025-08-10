@@ -181,6 +181,10 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
         public HousingEntity()
         {
+            maxDensity = 10;
+
+            minDensity = 0.534;
+
             ModelColor = Color.Gold;
 
             Density = "7.731";
@@ -195,11 +199,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             _housingHole = "90";
 
-            ScrewHolesDistance = "135";
-            
-
-            maxDensity = 10;
-            minDensity = 0.534;
+            ScrewHolesDistance = "135";            
         }
     }
 }

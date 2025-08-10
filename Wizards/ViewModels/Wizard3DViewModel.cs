@@ -1,7 +1,9 @@
 ﻿using Oil_level_glass.BaseClasses;
 using Oil_level_glass.Enums;
+using Oil_level_glass.Services;
 using Oil_level_glass.Wizards.Models.Wizard3D;
 using System.Runtime.CompilerServices;
+
 
 namespace Oil_level_glass.Wizards.ViewModels
 {
@@ -19,6 +21,7 @@ namespace Oil_level_glass.Wizards.ViewModels
                 _housingEntity = value;
 
                 _housingEntity.ErrorsChanged += OnHousingErrorsChanged;
+             
 
                 OnPropertyChanged();
             }
@@ -244,80 +247,24 @@ namespace Oil_level_glass.Wizards.ViewModels
             {
                 _housingEntity.ErrorsChanged -= OnHousingErrorsChanged;
 
-                HousingHoleColor = Color.White;
-                HousingHeightColor = Color.White;
-                HousingDiameterColor = Color.White;
-                HousingDensityColor = Color.White;
-                HousingNameColor = Color.White;
-                HousingFolderColor = Color.White;
-                HousingMaterialColor = Color.White;
-                ScrewHolesDistanceColor = Color.White;
-                ScrewHolesDiameterColor = Color.White;
 
+                HousingDensityColor = BackColorController.ChangeBackColor(nameof(HousingEntity.Density), HousingErrors);
 
-                if (HousingEntity.GetErrors(nameof(HousingEntity.Height)) != null)
-                {
-                    HousingHeightColor = errorBackColor;
+                HousingHeightColor = BackColorController.ChangeBackColor(nameof(HousingEntity.Height), HousingErrors);
 
-                    if (HousingErrors[nameof(HousingEntity.Height)][0].Item2 == InputError.BrokenStrictHierarchy)
-                    {
+                HousingHoleColor = BackColorController.ChangeBackColor(nameof(HousingEntity.HousingHole), HousingErrors);
 
-                    }
-                }
+                HousingDiameterColor = BackColorController.ChangeBackColor(nameof(HousingEntity.HousingDiameter), HousingErrors);
 
+                HousingNameColor = BackColorController.ChangeBackColor(nameof(HousingEntity.FileName), HousingErrors);
 
-                if (HousingEntity.GetErrors(nameof(HousingEntity.HousingDiameter)) != null)
-                {
-                    HousingDiameterColor = errorBackColor;
+                HousingFolderColor = BackColorController.ChangeBackColor(nameof(HousingEntity.FolderPath), HousingErrors);
 
-                    if (HousingErrors[nameof(HousingEntity.HousingDiameter)][0].Item2 == InputError.BrokenStrictHierarchy)
-                    {
-                        HousingHoleColor = errorBackColor;
-                    }
-                }
+                HousingMaterialColor = BackColorController.ChangeBackColor(nameof(HousingEntity.Material), HousingErrors);
 
+                ScrewHolesDistanceColor = BackColorController.ChangeBackColor(nameof(HousingEntity.ScrewHolesDistance), HousingErrors);
 
-                if (HousingEntity.GetErrors(nameof(HousingEntity.HousingHole)) != null)
-                {
-                    HousingHoleColor = errorBackColor;
-
-                    if (HousingErrors[nameof(HousingEntity.HousingHole)][0].Item2 == InputError.BrokenStrictHierarchy)
-                    {
-                        HousingDiameterColor = errorBackColor;
-                    }
-                }
-
-
-                if (HousingEntity.GetErrors(nameof(HousingEntity.Density)) != null)
-                {
-                    HousingDensityColor = errorBackColor;
-                }
-
-
-                if (HousingEntity.GetErrors(nameof(HousingEntity.FileName)) != null)
-                {
-                    HousingNameColor = errorBackColor;
-                }
-
-                if (HousingEntity.GetErrors(nameof(HousingEntity.FolderPath)) != null)
-                {
-                    HousingFolderColor = errorBackColor;
-                }
-
-                if (HousingEntity.GetErrors(nameof(HousingEntity.Material)) != null)
-                {
-                    HousingMaterialColor = errorBackColor;
-                }
-
-                if (HousingEntity.GetErrors(nameof(HousingEntity.ScrewHolesDistance)) != null)
-                {
-                    ScrewHolesDistanceColor = errorBackColor;
-                }
-
-                if (HousingEntity.GetErrors(nameof(HousingEntity.ScrewHolesDiameter)) != null)
-                {
-                    ScrewHolesDiameterColor = errorBackColor;
-                }
+                ScrewHolesDiameterColor = BackColorController.ChangeBackColor(nameof(HousingEntity.ScrewHolesDiameter), HousingErrors);
 
 
                 _housingEntity.ErrorsChanged += OnHousingErrorsChanged;
