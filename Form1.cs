@@ -23,9 +23,9 @@ namespace Oil_level_glass
 
         private void AssembleWizardButton_Click(object sender, EventArgs e)
         {
-            //new AssembleWizardForm().ShowDialog();
+            Wizard3DForm form = new Wizard3DForm();
 
-            new Wizard3DForm().ShowDialog();
+            form.ShowDialog();
         }
     }
 }

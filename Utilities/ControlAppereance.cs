@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Oil_level_glass.Structs.FieldAppeareance
+namespace Oil_level_glass.Utilities
 {
-    internal struct FieldApperance : INotifyPropertyChanged
+    internal class ControlAppearance : INotifyPropertyChanged
     {
-        public readonly string Propery;
+
+        public readonly string Name;
 
 
         private Color _backColor;
@@ -24,6 +25,22 @@ namespace Oil_level_glass.Structs.FieldAppeareance
         }
 
 
+        private bool _enabled;
+        public bool Enabled
+        {
+            get
+            {
+                return _enabled;
+            }
+            set
+            {
+                _enabled = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
@@ -32,9 +49,11 @@ namespace Oil_level_glass.Structs.FieldAppeareance
         }
 
 
-        public FieldApperance()
+        public ControlAppearance(string name)
         {
-            
+            Name = name;
+
+            BackColor = Color.White;
         }
     }
 }

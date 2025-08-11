@@ -246,7 +246,6 @@ namespace Oil_level_glass.Wizards.Forms
             housingDiameterLabel.Size = new Size(228, 18);
             housingDiameterLabel.TabIndex = 0;
             housingDiameterLabel.Text = "Диаметр всей заготовки корпуса D";
-            housingDiameterLabel.Click += housingDiameterLabel_Click;
             // 
             // housingHoleLabel
             // 

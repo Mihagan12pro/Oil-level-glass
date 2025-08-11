@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Oil_level_glass.BaseClasses
 {
-    internal abstract class Kompas3DEntity : KompasEntity
+    internal abstract class Kompas3DData : KompasData
     {
         protected double maxDensity;
         protected double minDensity;
@@ -80,11 +80,11 @@ namespace Oil_level_glass.BaseClasses
             ErrorAdder adder = AddError;
             ErrorClearer clearer = ClearErrors;
 
-            if (!Validator<Kompas3DEntity>.CheckRequiredField(nameof(Density), Density, adder, clearer))
+            if (!Validator<Kompas3DData>.CheckRequiredField(nameof(Density), Density, adder, clearer))
             {
-                if (!Validator<Kompas3DEntity>.CheckDoubleField(nameof(Density), Density, adder, clearer, out double result))
+                if (!Validator<Kompas3DData>.CheckDoubleField(nameof(Density), Density, adder, clearer, out double result))
                 {
-                    Validator<Kompas3DEntity>.CheckDensityValue(nameof(Density), Density, minDensity, maxDensity ,adder, clearer);
+                    Validator<Kompas3DData>.CheckDensityValue(nameof(Density), Density, minDensity, maxDensity ,adder, clearer);
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace Oil_level_glass.BaseClasses
 
         private void ValidateMaterial()
         {
-            Validator<Kompas3DEntity>.CheckRequiredField(nameof(Material), Material, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+            Validator<Kompas3DData>.CheckRequiredField(nameof(Material), Material, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
         }
     }
 }

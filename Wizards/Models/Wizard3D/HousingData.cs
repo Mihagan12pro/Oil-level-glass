@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
 {
-    internal class HousingEntity : Kompas3DEntity
+    internal class HousingData : Kompas3DData
     {
         private string? _height;
 
@@ -29,7 +29,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         private string? _housingDiameter;
 
         [Description("Диаметр корпуса смотрового окна")]
-        public string ?HousingDiameter
+        public string ?MainDiameter
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         private string? _housingHole;
 
         [Description("Центральное отверстие корпуса смотрового окна")]
-        public string? HousingHole
+        public string? CentralHole
         {
             get
             {
@@ -102,11 +102,11 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
         private void ValidateHeight()
         {
-            if (!Validator<HousingEntity>.CheckRequiredField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
+            if (!Validator<HousingData>.CheckRequiredField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
-                if (!Validator<HousingEntity>.CheckDoubleField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors), out double result))
+                if (!Validator<HousingData>.CheckDoubleField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors), out double result))
                 {
-                    Validator<HousingEntity>.CheckBiggerThanZero(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+                    Validator<HousingData>.CheckBiggerThanZero(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
                 }
             }
         }
@@ -117,9 +117,9 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             ErrorAdder adder = new ErrorAdder(AddError);
             ErrorClearer clearer = new ErrorClearer(ClearErrors);
 
-            if (!Validator<HousingEntity>.CheckRequiredField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer))
+            if (!Validator<HousingData>.CheckRequiredField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer))
             {
-                if (!Validator<HousingEntity>.CheckDoubleField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer, out double result))
+                if (!Validator<HousingData>.CheckDoubleField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer, out double result))
                 {
 
                 }
@@ -132,9 +132,9 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             ErrorAdder adder = new ErrorAdder(AddError);
             ErrorClearer clearer = new ErrorClearer(ClearErrors);
 
-            if (!Validator<HousingEntity>.CheckRequiredField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer))
+            if (!Validator<HousingData>.CheckRequiredField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer))
             {
-                if (!Validator<HousingEntity>.CheckDoubleField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer, out double result))
+                if (!Validator<HousingData>.CheckDoubleField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer, out double result))
                 {
 
                 }
@@ -150,36 +150,36 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             ErrorAdder adder = AddError;
             ErrorClearer clearer = ClearErrors;
 
-            bool hasDiameterProblems = Validator<HousingEntity>.CheckRequiredField(nameof(HousingDiameter), HousingDiameter, adder, clearer);
+            bool hasDiameterProblems = Validator<HousingData>.CheckRequiredField(nameof(MainDiameter), MainDiameter, adder, clearer);
             if (!hasDiameterProblems)
             {
-                hasDiameterProblems = Validator<HousingEntity>.CheckDoubleField(nameof(HousingDiameter), HousingDiameter, adder, clearer, out housingDiameter);
+                hasDiameterProblems = Validator<HousingData>.CheckDoubleField(nameof(MainDiameter), MainDiameter, adder, clearer, out housingDiameter);
                 if (!hasDiameterProblems)
                 {
-                    hasDiameterProblems = Validator<HousingEntity>.CheckBiggerThanZero(nameof(HousingDiameter), HousingDiameter, adder, clearer);
+                    hasDiameterProblems = Validator<HousingData>.CheckBiggerThanZero(nameof(MainDiameter), MainDiameter, adder, clearer);
                 }
             }
 
 
-            bool hasHoleProblems = Validator<HousingEntity>.CheckRequiredField(nameof(HousingHole), HousingHole, adder, clearer);
+            bool hasHoleProblems = Validator<HousingData>.CheckRequiredField(nameof(CentralHole), CentralHole, adder, clearer);
             if (!hasHoleProblems)
             {
-                hasHoleProblems = Validator<HousingEntity>.CheckDoubleField(nameof(HousingHole), HousingHole, adder, clearer, out housingHole);
+                hasHoleProblems = Validator<HousingData>.CheckDoubleField(nameof(CentralHole), CentralHole, adder, clearer, out housingHole);
                 if (!hasHoleProblems)
                 {
-                    hasHoleProblems = Validator<HousingEntity>.CheckBiggerThanZero(nameof(HousingHole), HousingHole, adder, clearer);
+                    hasHoleProblems = Validator<HousingData>.CheckBiggerThanZero(nameof(CentralHole), CentralHole, adder, clearer);
                 }
             }
 
 
             if (!hasDiameterProblems && !hasHoleProblems)
             {
-                Validator<HousingEntity>.CheckHierarchy(nameof(HousingHole), HousingHole, nameof(HousingDiameter), HousingDiameter, adder, clearer);
+                Validator<HousingData>.CheckHierarchy(nameof(CentralHole), CentralHole, nameof(MainDiameter), MainDiameter, adder, clearer);
             }
         }
 
 
-        public HousingEntity()
+        public HousingData()
         {
             maxDensity = 10;
 

@@ -7,7 +7,7 @@ using Oil_level_glass.Delegates;
 
 namespace Oil_level_glass.BaseClasses
 {
-    internal abstract class KompasEntity : INotifyDataErrorInfo, INotifyPropertyChanged
+    internal abstract class KompasData : INotifyDataErrorInfo, INotifyPropertyChanged
     {
         protected readonly Dictionary<string, List<(string, InputError)>> errorsByPropertyName = new Dictionary<string, List<(string, InputError)>>();
         public Dictionary<string, List<(string, InputError)>> ErrorsByPropertyName => errorsByPropertyName;
@@ -115,23 +115,23 @@ namespace Oil_level_glass.BaseClasses
 
         private void ValidateFileName()
         {
-            if (!Validator<KompasEntity>.CheckRequiredField(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
+            if (!Validator<KompasData>.CheckRequiredField(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
-                Validator<KompasEntity>.CheckFileName(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+                Validator<KompasData>.CheckFileName(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
             }
         }
 
 
         private void ValidateFolderPath()
         {
-            if (!Validator<KompasEntity>.CheckRequiredField(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
+            if (!Validator<KompasData>.CheckRequiredField(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
-                Validator<KompasEntity>.CheckPath(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+                Validator<KompasData>.CheckPath(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
             }
         }
 
 
-        public KompasEntity()
+        public KompasData()
         {
             FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }

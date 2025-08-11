@@ -7,7 +7,7 @@ namespace Oil_level_glass.Wizards.Forms
 {
     public partial class Wizard3DForm : Form
     {
-        private Wizard3DViewModel _dataContext = new Wizard3DViewModel();
+        private Wizard3DViewModel? _dataContext = new Wizard3DViewModel();
 
         public Wizard3DForm()
         {
@@ -20,6 +20,8 @@ namespace Oil_level_glass.Wizards.Forms
             BindReadOnlyFields();
 
             BindEnabled();
+
+
         }
 
 
@@ -41,9 +43,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.FolderPath),
+                            nameof(_dataContext.HousingData.FolderPath),
 
                             false,
 
@@ -57,9 +59,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.FileName),
+                            nameof(_dataContext.HousingData.FileName),
 
                             false,
 
@@ -73,9 +75,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.Density),
+                            nameof(_dataContext.HousingData.Density),
 
                             false,
 
@@ -89,9 +91,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.Material),
+                            nameof(_dataContext.HousingData.Material),
 
                             false,
 
@@ -105,9 +107,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.Height),
+                            nameof(_dataContext.HousingData.Height),
 
                             false,
 
@@ -121,9 +123,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.HousingDiameter),
+                            nameof(_dataContext.HousingData.MainDiameter),
 
                             false,
 
@@ -137,9 +139,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.HousingHole),
+                            nameof(_dataContext.HousingData.CentralHole),
 
                             false,
 
@@ -189,9 +191,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Command",
 
-                           _dataContext.HousingEntity,
+                           _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.InvokeFolderBrowserDialog),
+                            nameof(_dataContext.HousingData.InvokeFolderBrowserDialog),
 
                             true
                         )
@@ -205,9 +207,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Command",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.InvokeColorDialog),
+                            nameof(_dataContext.HousingData.InvokeColorDialog),
 
                             true
                         )
@@ -223,9 +225,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.ModelColor)
+                            nameof(_dataContext.HousingData.ModelColor)
                         )
                 );
 
@@ -236,13 +238,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext,
+                            _dataContext?.HousingHeightTextBox,
 
-                            nameof(_dataContext.HousingHeightColor),
-
-                            false,
-
-                            DataSourceUpdateMode.OnValidation
+                            nameof(_dataContext.HousingHeightTextBox.BackColor)
                         )
                 );
 
@@ -252,13 +250,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext,
+                            _dataContext?.HousingDiameterTextBox,
 
-                            nameof(_dataContext.HousingDiameterColor),
-
-                            false,
-
-                            DataSourceUpdateMode.OnValidation
+                            nameof(_dataContext.HousingDiameterTextBox.BackColor)
                         )
                 );
 
@@ -268,13 +262,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext,
+                            _dataContext?.HousingHoleTextBox,
 
-                            nameof(_dataContext.HousingHoleColor),
-
-                            false,
-
-                            DataSourceUpdateMode.OnValidation
+                            nameof(_dataContext.HousingHoleTextBox.BackColor)
                         )
                 );
 
@@ -285,13 +275,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext,
+                            _dataContext?.HousingDensityTextBox,
 
-                            nameof(_dataContext.HousingDensityColor),
-
-                            false,
-
-                            DataSourceUpdateMode.OnValidation
+                            nameof(_dataContext.HousingDensityTextBox.BackColor)
                         )
                 );
 
@@ -302,13 +288,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext,
+                            _dataContext?.HousingFileNameTextBox,
 
-                            nameof(_dataContext.HousingNameColor),
-
-                            false,
-
-                            DataSourceUpdateMode.OnValidation
+                            nameof(_dataContext.HousingFileNameTextBox.BackColor)
                         )
                 );
 
@@ -319,13 +301,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext,
+                            _dataContext?.HousingFolderTextBox,
 
-                            nameof(_dataContext.HousingFolderColor),
-
-                            false,
-
-                            DataSourceUpdateMode.OnValidation
+                            nameof(_dataContext.HousingFolderTextBox.BackColor)
                         )
                 );
 
@@ -336,40 +314,36 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "BackColor",
 
-                            _dataContext,
+                            _dataContext?.HousingMaterialTextBox,
 
-                            nameof(_dataContext.HousingMaterialColor),
-
-                            false,
-
-                            DataSourceUpdateMode.OnValidation
+                            nameof(_dataContext.HousingMaterialTextBox.BackColor)
                         )
                 );
 
 
-            screwHolesDiastanceTextBox.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "BackColor",
+            //screwHolesDiastanceTextBox.DataBindings.Add
+            //    (
+            //        new Binding
+            //            (
+            //                "BackColor",
 
-                            _dataContext,
+            //                _dataContext,
 
-                            nameof(_dataContext.ScrewHolesDistanceColor)
-                        )
-                );
+            //                nameof(_dataContext.HousingDiameterTextBox.BackColor)
+            //            )
+            //    );
 
-            screwHolesDiameterTextBox.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "BackColor",
+            //screwHolesDiameterTextBox.DataBindings.Add
+            //    (
+            //        new Binding
+            //            (
+            //                "BackColor",
 
-                            _dataContext,
+            //                _dataContext,
 
-                            nameof(_dataContext.ScrewHolesDiameterColor)
-                        )
-                );
+            //                nameof(_dataContext.HousingDiameterTextBox.BackColor)
+            //            )
+            //    );
         }
 
 
@@ -421,9 +395,9 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.HousingDiameter)
+                            nameof(_dataContext.HousingData.MainDiameter)
                         )
                 );
 
@@ -433,16 +407,11 @@ namespace Oil_level_glass.Wizards.Forms
                         (
                             "Text",
 
-                            _dataContext.HousingEntity,
+                            _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingEntity.HousingHole)
+                            nameof(_dataContext.HousingData.CentralHole)
                         )
                 );
-        }
-
-        private void housingDiameterLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
