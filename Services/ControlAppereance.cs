@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Oil_level_glass.Services
 {
-    internal static class BackColorController
+    internal static class ControlAppereance
     {
         public static Color ChangeBackColor(string prop, Dictionary<string, List<(string, InputError)>> errors)
         {
@@ -20,6 +20,19 @@ namespace Oil_level_glass.Services
             }
 
             return backColor;
+        }
+
+
+        public static bool ChangeEnableStatement(List<bool> listOfRequirements)
+        {
+            bool enableStatement = true;
+
+            foreach (bool requirement in listOfRequirements)
+            {
+                enableStatement &= requirement;
+            }
+
+            return enableStatement;
         }
     }
 }

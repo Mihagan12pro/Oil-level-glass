@@ -73,12 +73,15 @@ namespace Oil_level_glass.Services
             if (isStrictlyBigger && small >= big)
             {
                 adder.Invoke(bigPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenStrictHierarchy, GetDescription(bigPropName)), InputError.BrokenStrictHierarchy);
+                adder.Invoke(smallPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenStrictHierarchy, GetDescription(bigPropName)), InputError.BrokenStrictHierarchy);
+
                 return true;
             }
 
             if (!isStrictlyBigger && small > big)
             {
                 adder.Invoke(bigPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenHierarchy, GetDescription(bigPropName)), InputError.BrokenHierarchy);
+                adder.Invoke(smallPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenHierarchy, GetDescription(bigPropName)), InputError.BrokenHierarchy);
 
                 return true;
             }

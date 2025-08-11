@@ -238,38 +238,35 @@ namespace Oil_level_glass.Wizards.ViewModels
         private void OnHousingErrorsChanged(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
         {
             OnPropertyChanged(nameof(HousingErrors));
+
+            _housingEntity.ErrorsChanged -= OnHousingErrorsChanged;
+
+
+            HousingDensityColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.Density), HousingErrors);
+
+            HousingHeightColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.Height), HousingErrors);
+
+            HousingHoleColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.HousingHole), HousingErrors);
+
+            HousingDiameterColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.HousingDiameter), HousingErrors);
+
+            HousingNameColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.FileName), HousingErrors);
+
+            HousingFolderColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.FolderPath), HousingErrors);
+
+            HousingMaterialColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.Material), HousingErrors);
+
+            ScrewHolesDistanceColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.ScrewHolesDistance), HousingErrors);
+
+            ScrewHolesDiameterColor = ControlAppereance.ChangeBackColor(nameof(HousingEntity.ScrewHolesDiameter), HousingErrors);
+
+
+            _housingEntity.ErrorsChanged += OnHousingErrorsChanged;
         }
 
 
         public override void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            if (prop == nameof(HousingErrors))
-            {
-                _housingEntity.ErrorsChanged -= OnHousingErrorsChanged;
-
-
-                HousingDensityColor = BackColorController.ChangeBackColor(nameof(HousingEntity.Density), HousingErrors);
-
-                HousingHeightColor = BackColorController.ChangeBackColor(nameof(HousingEntity.Height), HousingErrors);
-
-                HousingHoleColor = BackColorController.ChangeBackColor(nameof(HousingEntity.HousingHole), HousingErrors);
-
-                HousingDiameterColor = BackColorController.ChangeBackColor(nameof(HousingEntity.HousingDiameter), HousingErrors);
-
-                HousingNameColor = BackColorController.ChangeBackColor(nameof(HousingEntity.FileName), HousingErrors);
-
-                HousingFolderColor = BackColorController.ChangeBackColor(nameof(HousingEntity.FolderPath), HousingErrors);
-
-                HousingMaterialColor = BackColorController.ChangeBackColor(nameof(HousingEntity.Material), HousingErrors);
-
-                ScrewHolesDistanceColor = BackColorController.ChangeBackColor(nameof(HousingEntity.ScrewHolesDistance), HousingErrors);
-
-                ScrewHolesDiameterColor = BackColorController.ChangeBackColor(nameof(HousingEntity.ScrewHolesDiameter), HousingErrors);
-
-
-                _housingEntity.ErrorsChanged += OnHousingErrorsChanged;
-            }
-
             base.OnPropertyChanged(prop);
         }
 
