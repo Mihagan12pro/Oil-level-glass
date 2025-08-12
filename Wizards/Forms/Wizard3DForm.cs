@@ -2,6 +2,7 @@
 using Oil_level_glass.Wizards.ViewModels;
 using KompasAPI7;
 using Kompas6Constants3D;
+using System.Linq;
 
 namespace Oil_level_glass.Wizards.Forms
 {
@@ -22,6 +23,19 @@ namespace Oil_level_glass.Wizards.Forms
             BindEnabled();
 
 
+
+            wizard3DTabControl.Selecting += Wizard3DTabControl_Selecting;
+        }
+
+        private void Wizard3DTabControl_Selecting(object? sender, TabControlCancelEventArgs e)
+        {
+            TabPage ?tab = e.TabPage;
+            int tabIndex = wizard3DTabControl.TabPages.IndexOf(tab);
+
+            if (tabIndex > _dataContext?.MaxTabIndex)
+            {
+                e.Cancel = true;
+            }
         }
 
 
@@ -321,6 +335,18 @@ namespace Oil_level_glass.Wizards.Forms
                 );
 
 
+            housingRefineTabPage.DataBindings.Add
+                (
+                    "BackColor",
+
+                    _dataContext?.HousingRefineTabPage,
+
+                    nameof(_dataContext.HousingRefineTabPage.BackColor),
+
+                    false,
+
+                    DataSourceUpdateMode.OnPropertyChanged
+                );
             //screwHolesDiastanceTextBox.DataBindings.Add
             //    (
             //        new Binding
@@ -349,41 +375,52 @@ namespace Oil_level_glass.Wizards.Forms
 
         private void BindEnabled()
         {
-            screwHolesComboBox.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "Enabled",
+            //housingRefineTabPage.DataBindings.Add
+            //    (
+            //        new Binding
+            //            (
+            //                "Enabled",
 
-                            _dataContext,
+            //                _dataContext?.HousingRefineTabPage,
 
-                            nameof(_dataContext.ScrewHolesCountEnabled),
+            //                nameof(_dataContext.HousingRefineTabPage.Enabled)
+            //            )
+            //    );
+            //screwHolesComboBox.DataBindings.Add
+            //    (
+            //        new Binding
+            //            (
+            //                "Enabled",
 
-                            true
-                        )
-                );
+            //                _dataContext,
 
-            screwHolesDiameterTextBox.DataBindings.Add
-                (
-                    "Enabled",
+            //                nameof(_dataContext.ScrewHolesCountEnabled),
 
-                    _dataContext,
+            //                true
+            //            )
+            //    );
 
-                    nameof(_dataContext.ScrewHolesDiameterEnabled),
+            //screwHolesDiameterTextBox.DataBindings.Add
+            //    (
+            //        "Enabled",
 
-                    true
-                );
+            //        _dataContext,
 
-            screwHolesDiastanceTextBox.DataBindings.Add
-                (
-                    "Enabled",
+            //        nameof(_dataContext.ScrewHolesDiameterEnabled),
 
-                    _dataContext,
+            //        true
+            //    );
 
-                    nameof(_dataContext.ScrewHolesDistanceEnabled),
+            //screwHolesDiastanceTextBox.DataBindings.Add
+            //    (
+            //        "Enabled",
 
-                    true
-                );
+            //        _dataContext,
+
+            //        nameof(_dataContext.ScrewHolesDistanceEnabled),
+
+            //        true
+            //    );
         }
 
 

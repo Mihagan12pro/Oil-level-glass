@@ -49,6 +49,12 @@ namespace Oil_level_glass.Utilities
         }
 
 
+        public ControlAppearance()
+        {
+            
+        }
+
+
         public ControlAppearance(string name)
         {
             Name = name;

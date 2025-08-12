@@ -1,15 +1,16 @@
 ﻿using Oil_level_glass.Enums;
 using Oil_level_glass.Utilities;
+using System.Diagnostics;
 
 namespace Oil_level_glass.Services
 {
     internal static class ControlAppereanceEditor
     {
-        public static void ChangeBackColor(ControlAppearance appearance, Dictionary<string, List<(string, InputError)>> errors)
+        public static void ChangeBackColor(ControlAppearance appearance, bool hasErrors)
         {
-            if (errors.ContainsKey(appearance.Name))
+            if (hasErrors)
             {
-                appearance.BackColor =  Color.FromArgb(254, 210, 203);
+                appearance.BackColor = Color.FromArgb(254, 210, 203);
 
                 return;
             }
@@ -18,16 +19,26 @@ namespace Oil_level_glass.Services
         }
 
 
-        public static bool ChangeEnableStatement(List<bool> listOfRequirements)
+        public static void ChangeBackColor(ControlAppearance appearance, Dictionary<string, List<(string, InputError)>> errors)
         {
-            bool enableStatement = true;
+            ChangeBackColor(appearance, errors.ContainsKey(appearance.Name));
+        }
+
+
+        public static void ChangeEnableStatement(ControlAppearance appearance, List<bool> listOfRequirements)
+        {
+            appearance.Enabled = true;
 
             foreach (bool requirement in listOfRequirements)
             {
-                enableStatement &= requirement;
+                appearance.Enabled &= requirement;
             }
+        }
 
-            return enableStatement;
+
+        public static void ChangeEnableStatement(ControlAppearance appearance, bool requirement)
+        {
+            appearance.Enabled = requirement;
         }
     }
 }

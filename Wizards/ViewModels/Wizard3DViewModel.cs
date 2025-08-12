@@ -3,6 +3,7 @@ using Oil_level_glass.Enums;
 using Oil_level_glass.Services;
 using Oil_level_glass.Utilities;
 using Oil_level_glass.Wizards.Models.Wizard3D;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 
@@ -22,6 +23,8 @@ namespace Oil_level_glass.Wizards.ViewModels
         public ControlAppearance  HousingMaterialTextBox { get; private set; }
         public ControlAppearance HousingFolderTextBox { get; private set; }
         public ControlAppearance HousingFileNameTextBox { get; private set; }
+       
+        public ControlAppearance HousingRefineTabPage { get; private set; } = new ControlAppearance();
 
 
         public HousingData HousingData
@@ -42,57 +45,93 @@ namespace Oil_level_glass.Wizards.ViewModels
         }
 
 
-
-        private bool _screwHolesDistanceEnabled;
-        public bool ScrewHolesDistanceEnabled
-        {
-            get
-            {
-                return _screwHolesDistanceEnabled;
-            }
-            private set
-            {
-                _screwHolesDistanceEnabled = value;
-
-                ScrewHolesDiameterEnabled = value;
-
-                OnPropertyChanged();
-            }
-        }
+        public int MaxTabIndex { get; private set; } = 0;
+        //private int   = 1;
 
 
-        private bool _screwHoleDiameterEnabled;
-        public bool ScrewHolesDiameterEnabled
-        {
-            get
-            {
-                return _screwHoleDiameterEnabled;
-            }
-            private set
-            {
-                _screwHoleDiameterEnabled = value;
+        //private int _selectedTab;
+        //public int SelectedTab
+        //{
+        //    get
+        //    {
+        //        return _selectedTab;
+        //    }
+        //    set
+        //    {
+        //        if (ReturnToPreviousTab == false || value <= _maxSelectedTab)
+        //        {
+        //            _selectedTab = value;
 
-                ScrewHolesCountEnabled = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
 
-                OnPropertyChanged();
-            }
-        }
+
+        //private bool _returnToPreviousTab;
+        //public bool ReturnToPreviousTab
+        //{
+        //    get
+        //    {
+        //        return _returnToPreviousTab;
+        //    }
+        //    private set
+        //    {
+        //        _returnToPreviousTab = value;
+
+        //        OnPropertyChanged();
+        //    }
+        //}
+        //private bool _screwHolesDistanceEnabled;
+        //public bool ScrewHolesDistanceEnabled
+        //{
+        //    get
+        //    {
+        //        return _screwHolesDistanceEnabled;
+        //    }
+        //    private set
+        //    {
+        //        _screwHolesDistanceEnabled = value;
+
+        //        ScrewHolesDiameterEnabled = value;
+
+        //        OnPropertyChanged();
+        //    }
+        //}
 
 
-        private bool _screwHolesCountEnabled;
-        public bool ScrewHolesCountEnabled
-        {
-            get
-            {
-                return _screwHolesCountEnabled;
-            }
-            private set
-            {
-                _screwHolesCountEnabled = value;
+        //private bool _screwHoleDiameterEnabled;
+        //public bool ScrewHolesDiameterEnabled
+        //{
+        //    get
+        //    {
+        //        return _screwHoleDiameterEnabled;
+        //    }
+        //    private set
+        //    {
+        //        _screwHoleDiameterEnabled = value;
 
-                OnPropertyChanged();
-            }
-        }
+        //        ScrewHolesCountEnabled = value;
+
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+
+        //private bool _screwHolesCountEnabled;
+        //public bool ScrewHolesCountEnabled
+        //{
+        //    get
+        //    {
+        //        return _screwHolesCountEnabled;
+        //    }
+        //    private set
+        //    {
+        //        _screwHolesCountEnabled = value;
+
+        //        OnPropertyChanged();
+        //    }
+        //}
 
 
         public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
@@ -115,6 +154,18 @@ namespace Oil_level_glass.Wizards.ViewModels
 
         public override void OnPropertyChanged([CallerMemberName] string prop = "")
         {
+            if (prop == nameof(HousingErrors))
+            {
+                if (HousingData.HasErrors)
+                {
+                    MaxTabIndex = 0;
+                }
+                else
+                {
+                    MaxTabIndex = 1;
+                }
+            }
+
             base.OnPropertyChanged(prop);
         }
 
