@@ -2,6 +2,7 @@
 using Oil_level_glass.Enums;
 using Oil_level_glass.Services;
 using Oil_level_glass.Utilities;
+using Oil_level_glass.Wizards.Models.HousingRefineData;
 using Oil_level_glass.Wizards.Models.Wizard3D;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -15,17 +16,31 @@ namespace Oil_level_glass.Wizards.ViewModels
 
         private Dictionary<Type, List<ControlAppearance>> _kompasDataDictionary = new Dictionary<Type, List<ControlAppearance>>();
 
+        public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
+        public Dictionary<string, List<(string, InputError)>> ScrewHoleErrors { get; private set; }
 
-        public ControlAppearance HousingDiameterTextBox { get; private set; }
-        public ControlAppearance HousingHoleTextBox { get; private set; }
-        public ControlAppearance HousingHeightTextBox { get; private set; }
-        public ControlAppearance HousingDensityTextBox { get; private set; }
-        public ControlAppearance  HousingMaterialTextBox { get; private set; }
-        public ControlAppearance HousingFolderTextBox { get; private set; }
-        public ControlAppearance HousingFileNameTextBox { get; private set; }
-       
-        public ControlAppearance HousingRefineTabPage { get; private set; } = new ControlAppearance();
 
+        public int MaxTabIndex { get; private set; }
+
+
+        public ControlAppearance HousingDiameterTextBox = new ControlAppearance(nameof(HousingData.MainDiameter));
+        
+        public ControlAppearance HousingHoleTextBox = new ControlAppearance(nameof(HousingData.CentralHole));
+        
+        public ControlAppearance HousingHeightTextBox = new ControlAppearance(nameof(HousingData.Height));
+        
+        public ControlAppearance HousingDensityTextBox = new ControlAppearance(nameof(HousingData.Density));
+        
+        public ControlAppearance HousingMaterialTextBox = new ControlAppearance(nameof(HousingData.Material));
+        
+        public ControlAppearance HousingFolderTextBox = new ControlAppearance(nameof(HousingData.FolderPath));
+        
+        public ControlAppearance HousingFileNameTextBox = new ControlAppearance(nameof(HousingData.FileName));
+
+
+        public ControlAppearance ScrewDistanceTextBox { get; private set; } = new ControlAppearance(nameof(HousingData.ScrewHoleData.HoleDistance));
+        public ControlAppearance ScrewDiameterTextBox { get; private set; } = new ControlAppearance(nameof(HousingData.ScrewHoleData.HoleDiameter));
+        public ControlAppearance ScrewCountTextBox { get; private set; } = new ControlAppearance(nameof(HousingData.ScrewHoleData.HoleCount));
 
         public HousingData HousingData
         {
@@ -38,103 +53,30 @@ namespace Oil_level_glass.Wizards.ViewModels
                 _housingData = value;
 
                 _housingData.ErrorsChanged += OnHousingErrorsChanged;
-             
+                _housingData.ScrewHoleData.ErrorsChanged += ScrewHoleData_ErrorsChanged;
 
                 OnPropertyChanged();
             }
         }
 
 
-        public int MaxTabIndex { get; private set; }
-        //private int   = 1;
+        private void ScrewHoleData_ErrorsChanged(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(ScrewHoleErrors));
+
+            _housingData.ScrewHoleData.ErrorsChanged -= ScrewHoleData_ErrorsChanged;
+
+            foreach (ControlAppearance controlAppearance in _kompasDataDictionary[typeof(ScrewHoleData)])
+            {
+                ControlAppereanceEditor.ChangeBackColor(controlAppearance, ScrewHoleErrors);
+            }
 
 
-        //private int _selectedTab;
-        //public int SelectedTab
-        //{
-        //    get
-        //    {
-        //        return _selectedTab;
-        //    }
-        //    set
-        //    {
-        //        if (ReturnToPreviousTab == false || value <= _maxSelectedTab)
-        //        {
-        //            _selectedTab = value;
+            ControlAppereanceEditor.ChangeEnableStatement(ScrewDiameterTextBox, !ScrewHoleErrors.ContainsKey(ScrewDistanceTextBox.Name));
+            ControlAppereanceEditor.ChangeEnableStatement(ScrewCountTextBox, new List<bool> { ScrewDiameterTextBox.Enabled, !ScrewHoleErrors.ContainsKey(ScrewDiameterTextBox.Name) });
 
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
-
-
-        //private bool _returnToPreviousTab;
-        //public bool ReturnToPreviousTab
-        //{
-        //    get
-        //    {
-        //        return _returnToPreviousTab;
-        //    }
-        //    private set
-        //    {
-        //        _returnToPreviousTab = value;
-
-        //        OnPropertyChanged();
-        //    }
-        //}
-        //private bool _screwHolesDistanceEnabled;
-        //public bool ScrewHolesDistanceEnabled
-        //{
-        //    get
-        //    {
-        //        return _screwHolesDistanceEnabled;
-        //    }
-        //    private set
-        //    {
-        //        _screwHolesDistanceEnabled = value;
-
-        //        ScrewHolesDiameterEnabled = value;
-
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-
-        //private bool _screwHoleDiameterEnabled;
-        //public bool ScrewHolesDiameterEnabled
-        //{
-        //    get
-        //    {
-        //        return _screwHoleDiameterEnabled;
-        //    }
-        //    private set
-        //    {
-        //        _screwHoleDiameterEnabled = value;
-
-        //        ScrewHolesCountEnabled = value;
-
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-
-        //private bool _screwHolesCountEnabled;
-        //public bool ScrewHolesCountEnabled
-        //{
-        //    get
-        //    {
-        //        return _screwHolesCountEnabled;
-        //    }
-        //    private set
-        //    {
-        //        _screwHolesCountEnabled = value;
-
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-
-        public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
+            _housingData.ScrewHoleData.ErrorsChanged += ScrewHoleData_ErrorsChanged;
+        }
 
 
         private void OnHousingErrorsChanged(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
@@ -175,14 +117,7 @@ namespace Oil_level_glass.Wizards.ViewModels
             HousingData = new HousingData();
 
             HousingErrors = HousingData.ErrorsByPropertyName;
-
-            HousingDiameterTextBox = new ControlAppearance(nameof(HousingData.MainDiameter));
-            HousingHoleTextBox = new ControlAppearance(nameof(HousingData.CentralHole));
-            HousingHeightTextBox = new ControlAppearance(nameof(HousingData.Height));
-            HousingDensityTextBox = new ControlAppearance(nameof(HousingData.Density));
-            HousingMaterialTextBox = new ControlAppearance(nameof(HousingData.Material));
-            HousingFolderTextBox = new ControlAppearance(nameof(HousingData.FolderPath));
-            HousingFileNameTextBox = new ControlAppearance(nameof(HousingData.FileName));
+            ScrewHoleErrors = HousingData.ScrewHoleData.ErrorsByPropertyName;
 
             _kompasDataDictionary[typeof(HousingData)] = new List<ControlAppearance>
                 {
@@ -200,6 +135,16 @@ namespace Oil_level_glass.Wizards.ViewModels
 
                     HousingFileNameTextBox
                 };
+
+
+            _kompasDataDictionary[typeof(ScrewHoleData)] = new List<ControlAppearance>
+            {
+                ScrewDistanceTextBox,
+
+                ScrewDiameterTextBox,
+
+                ScrewCountTextBox
+            };
 
             MaxTabIndex = 1;
         }

@@ -34,12 +34,11 @@ namespace Oil_level_glass.Services
                     {
                         resourceString = Resources.TooSmallFieldMessage;
 
-
-
-                        if (otherParams == null)
-                        {
-                           inputString2 = "нуля";
-                        }
+                        break;
+                    }
+                case InputError.TooBigNumber:
+                    {
+                        resourceString = Resources.TooBigFieldMessage;
 
                         break;
                     }

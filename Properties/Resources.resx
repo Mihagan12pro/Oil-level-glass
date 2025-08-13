@@ -143,7 +143,7 @@
     <value>Поле «???» должно быть числом!</value>
   </data>
   <data name="TooSmallFieldMessage" xml:space="preserve">
-    <value>В поле «???» должно быть записано значение, которое больше  «!!!»!</value>
+    <value>В поле «???» должно быть записано слишком маленьккое значение!</value>
   </data>
   <data name="ZeroOrNegativeMessage" xml:space="preserve">
     <value>Поле «???» должно содержать число больше нуля!</value>
@@ -165,5 +165,8 @@
   </data>
   <data name="BiggerMaxDensityMessage" xml:space="preserve">
     <value>В поле «???» записано значение плотности, превышающее максимальное значение для данного материала!</value>
+  </data>
+  <data name="TooBigFieldMessage" xml:space="preserve">
+    <value>В поле «???» записано слишком большое значение!</value>
   </data>
 </root>

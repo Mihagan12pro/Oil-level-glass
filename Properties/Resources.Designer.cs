@@ -193,7 +193,16 @@ namespace Oil_level_glass.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to В поле «???» должно быть записано значение, которое больше  «!!!»!.
+        ///   Looks up a localized string similar to В поле «???» записано слишком большое значение!.
+        /// </summary>
+        internal static string TooBigFieldMessage {
+            get {
+                return ResourceManager.GetString("TooBigFieldMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В поле «???» должно быть записано слишком маленьккое значение!.
         /// </summary>
         internal static string TooSmallFieldMessage {
             get {

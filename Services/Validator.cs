@@ -7,6 +7,22 @@ namespace Oil_level_glass.Services
 {
     internal static class Validator<T>
     {
+        public static bool CheckRange(string propName, object minValue, object maxValue, ErrorAdder adder, ErrorClearer clearer)
+        {
+            clearer.Invoke(propName);
+
+            double min = Convert.ToDouble(minValue);
+            double max = Convert.ToDouble(maxValue);
+
+            if (min > max)
+            {
+                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.TooBigNumber), InputError.TooBigNumber);
+            }
+
+            return false;
+        }
+
+
         public static bool CheckDensityValue(string propName, string? propValue,double minDensity, double maxDensity, ErrorAdder adder, ErrorClearer clearer)
         {
             clearer.Invoke(propName);
@@ -58,6 +74,51 @@ namespace Oil_level_glass.Services
                 return true;
             }
             return false;
+        }
+
+
+        public static bool CheckHierarchy(string propName, string propValue, string otherPropName, string otherPropValue, bool currentPropBigger, ErrorAdder adder, ErrorClearer clearer, bool strict = true)
+        {
+            clearer.Invoke(propName);
+
+            double numberProp = Convert.ToDouble(propValue);
+            
+            if (!currentPropBigger)
+            {
+                double smallerPropValue = Convert.ToDouble(otherPropValue);
+                if (strict && numberProp < smallerPropValue)
+                {
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(otherPropName), InputError.BrokenStrictHierarchy, GetDescription(propName)), InputError.BrokenStrictHierarchy);
+
+                    return true;
+                }
+                else if (!strict && numberProp <= smallerPropValue)
+                {
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(otherPropName), InputError.BrokenStrictHierarchy, GetDescription(propName)), InputError.BrokenStrictHierarchy);
+
+                    return true;
+                }
+
+                return false;
+            }
+            else
+            {
+                double biggerPropValue = Convert.ToDouble(otherPropValue);
+                if (strict && numberProp > biggerPropValue)
+                {
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription( propName), InputError.BrokenStrictHierarchy, GetDescription(otherPropName)), InputError.BrokenStrictHierarchy);
+
+                    return true;
+                }
+                else if (!strict && numberProp >= biggerPropValue)
+                {
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BrokenStrictHierarchy, GetDescription(otherPropName)), InputError.BrokenStrictHierarchy);
+
+                    return true;
+                }
+
+                return false;
+            }
         }
 
 
@@ -116,7 +177,7 @@ namespace Oil_level_glass.Services
 
                 return false;
             }
-            catch(FormatException)
+            catch
             {
                 adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.InvalidType), InputError.InvalidType);
             }

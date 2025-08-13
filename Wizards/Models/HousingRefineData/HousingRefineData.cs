@@ -1,11 +1,13 @@
 ﻿using Oil_level_glass.BaseClasses;
+using System.ComponentModel;
 
 namespace Oil_level_glass.Wizards.Models.HousingRefineData
 {
     internal abstract class HousingRefineData : BaseKompasData
     {
-        protected static double s_mainDiameter;
-        public double MainDiameter
+        protected static string? s_mainDiameter;
+        [Description("Диаметр заготовки D")]
+        public string? MainDiameter
         {
             get
             {
@@ -20,8 +22,9 @@ namespace Oil_level_glass.Wizards.Models.HousingRefineData
         }
 
 
-        protected static double s_centralHoleDiameter;
-        public double CentralHoleDiameter
+        protected static string? s_centralHoleDiameter;
+        [Description("Диаметр заготовки D1")]
+        public string? CentralHoleDiameter
         {
             get
             {
@@ -36,8 +39,9 @@ namespace Oil_level_glass.Wizards.Models.HousingRefineData
         }
 
 
-        protected static double s_height;
-        public double Height
+        protected static string? s_height;
+        [Description("Высота заготовски H")]
+        public string? Height
         {
             get
             {
@@ -52,7 +56,7 @@ namespace Oil_level_glass.Wizards.Models.HousingRefineData
         }
 
 
-        public HousingRefineData(double mainDiameter, double centralHoleDiameter, double height)
+        public HousingRefineData(string? mainDiameter, string? centralHoleDiameter, string? height)
         {
             MainDiameter = mainDiameter;
 

@@ -43,37 +43,23 @@ namespace Oil_level_glass.Wizards.Forms
                 notifyIcon.Visible = true;
 
                 notifyIcon.ShowBalloonTip(2000);
-               
 
                 e.Cancel = true;
             }
-
-    
-
-            
-
-            //NotifyIcon notifyIcon = new NotifyIcon();
-            //notifyIcon.Icon = SystemIcons.Information;
-            //notifyIcon.Bal
-            //notifyIcon.BalloonTipTitle = "Подсказка";
-            //notifyIcon.BalloonTipText = $"Занесите корретные данные в поля для ввода на вкладке {wizard3DTabControl.TabPages[_dataContext.MaxTabIndex].Text}!";
-
-            //notifyIcon.Visible = true;
-            //notifyIcon.ShowBalloonTip(500);
         }
 
 
         private void BindHousingProperties()
         {
-            BindHousingText();
+            BindText();
 
-            BindHousingBackColors();
+            BindBackColors();
 
-            BindHousingCommands();
+            BindCommands();
         }
 
 
-        private void BindHousingText()
+        private void BindText()
         {
             housingFolderTextBox.DataBindings.Add
                 (
@@ -187,41 +173,131 @@ namespace Oil_level_glass.Wizards.Forms
                         )
                 );
 
-            //screwHolesDiastanceTextBox.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "Text",
+            mainDiameterRefineInfo.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
 
-            //                _dataContext.HousingEntity,
+                            _dataContext?.HousingData.ScrewHoleData,
 
-            //                nameof(_dataContext.HousingEntity.ScrewHolesDistance),
+                            nameof(_dataContext.HousingData.ScrewHoleData.MainDiameter),
 
-            //                false,
+                            false
+                        )
+                );
 
-            //                DataSourceUpdateMode.OnPropertyChanged
-            //            )
-            //    );
+            centralDiameterRefineInfo.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
 
-            //screwHolesDiameterTextBox.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "Text",
+                            _dataContext?.HousingData.ScrewHoleData,
 
-            //                _dataContext.HousingEntity,
+                            nameof(_dataContext.HousingData.ScrewHoleData.CentralHoleDiameter),
 
-            //                nameof(_dataContext.HousingEntity.ScrewHolesDiameter),
+                            false
+                        )
+                );
 
-            //                false,
+            heightRefineInfo.DataBindings.Add
+                (   
+                    new Binding
+                        (
+                            "Text",
 
-            //                DataSourceUpdateMode.OnPropertyChanged
-            //            )
-            //    );
+                            _dataContext?.HousingData.ScrewHoleData,
+
+                            nameof(_dataContext.HousingData.ScrewHoleData.Height),
+
+                            false
+                        )
+                );
+
+            holesDistanceTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
+
+                            _dataContext?.HousingData.ScrewHoleData,
+
+                            nameof(_dataContext.HousingData.ScrewHoleData.HoleDistance),
+
+                            false,
+
+                            DataSourceUpdateMode.OnPropertyChanged
+                        )
+                );
+
+            holesCountTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            nameof(holesCountTextBox.Minimum),
+
+                            _dataContext?.HousingData.ScrewHoleData,
+
+                            nameof(_dataContext.HousingData.ScrewHoleData.MinHolesCount),
+
+                            false,
+
+                            DataSourceUpdateMode.OnPropertyChanged
+                        )
+                );
+
+            holesCountTextBox.DataBindings.Add
+               (
+                   new Binding
+                       (
+                           nameof(holesCountTextBox.Maximum),
+
+                           _dataContext?.HousingData.ScrewHoleData,
+
+                           nameof(_dataContext.HousingData.ScrewHoleData.MaxHoleCount),
+
+                           false,
+
+                           DataSourceUpdateMode.OnPropertyChanged
+                       )
+               );
+
+            holesDiameterTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "Text",
+
+                            _dataContext?.HousingData.ScrewHoleData,
+
+                            nameof(_dataContext.HousingData.ScrewHoleData.HoleDiameter),
+
+                            false,
+
+                            DataSourceUpdateMode.OnPropertyChanged
+                        )
+                );
+
+            holesCountTextBox.DataBindings.Add
+                (
+                new Binding
+                        (
+                            "Text",
+
+                            _dataContext?.HousingData.ScrewHoleData,
+
+                            nameof(_dataContext.HousingData.ScrewHoleData.HoleCount),
+
+                            false,
+
+                            DataSourceUpdateMode.OnPropertyChanged
+                        )
+                );
         }
 
 
-        private void BindHousingCommands()
+        private void BindCommands()
         {
             housingFolderButton.DataBindings.Add
                 (
@@ -254,7 +330,7 @@ namespace Oil_level_glass.Wizards.Forms
                 );
         }
 
-        private void BindHousingBackColors()
+        private void BindBackColors()
         {
 
             housingColorBox.DataBindings.Add
@@ -357,85 +433,58 @@ namespace Oil_level_glass.Wizards.Forms
                             nameof(_dataContext.HousingMaterialTextBox.BackColor)
                         )
                 );
+
+            holesDistanceTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            _dataContext?.ScrewDistanceTextBox,
+
+                            nameof(_dataContext.ScrewDistanceTextBox.BackColor)
+                        )
+                );
+
+            holesDiameterTextBox.DataBindings.Add
+                (
+                    new Binding
+                        (
+                            "BackColor",
+
+                            _dataContext?.ScrewDiameterTextBox,
+
+                            nameof(_dataContext.ScrewDiameterTextBox.BackColor)
+                        )
+                );
         }
 
 
         private void BindEnabled()
         {
-            //housingRefineTabPage.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "Enabled",
+            holesCountTextBox.DataBindings.Add
+                (
+                    "Enabled",
 
-            //                _dataContext?.HousingRefineTabPage,
+                    _dataContext?.ScrewCountTextBox, 
 
-            //                nameof(_dataContext.HousingRefineTabPage.Enabled)
-            //            )
-            //    );
-            //screwHolesComboBox.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "Enabled",
+                    nameof(_dataContext.ScrewDistanceTextBox.Enabled)
+                );
 
-            //                _dataContext,
+            holesDiameterTextBox.DataBindings.Add
+               (
+                   "Enabled",
 
-            //                nameof(_dataContext.ScrewHolesCountEnabled),
+                   _dataContext?.ScrewDiameterTextBox,
 
-            //                true
-            //            )
-            //    );
-
-            //screwHolesDiameterTextBox.DataBindings.Add
-            //    (
-            //        "Enabled",
-
-            //        _dataContext,
-
-            //        nameof(_dataContext.ScrewHolesDiameterEnabled),
-
-            //        true
-            //    );
-
-            //screwHolesDiastanceTextBox.DataBindings.Add
-            //    (
-            //        "Enabled",
-
-            //        _dataContext,
-
-            //        nameof(_dataContext.ScrewHolesDistanceEnabled),
-
-            //        true
-            //    );
+                   nameof(_dataContext.ScrewDiameterTextBox.Enabled)
+               );
         }
 
 
         private void BindReadOnlyFields()
         {
-            //housingDiameterInfoBox.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "Text",
-
-            //                _dataContext?.HousingData,
-
-            //                nameof(_dataContext.HousingData.MainDiameter)
-            //            )
-            //    );
-
-            //holeDiameterInfoBox.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "Text",
-
-            //                _dataContext?.HousingData,
-
-            //                nameof(_dataContext.HousingData.CentralHole)
-            //            )
-            //    );
+            
         }
     }
 }

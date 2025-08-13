@@ -60,6 +60,8 @@ namespace Oil_level_glass.Utilities
             Name = name;
 
             BackColor = Color.White;
+
+            Enabled = true;
         }
     }
 }

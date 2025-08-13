@@ -1,12 +1,28 @@
 ﻿using Oil_level_glass.BaseClasses;
 using Oil_level_glass.Delegates;
 using Oil_level_glass.Services;
+using Oil_level_glass.Wizards.Models.HousingRefineData;
 using System.ComponentModel;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
 {
     internal class HousingData : Kompas3DData
     {
+        private ScrewHoleData _screwHoleData;
+        public ScrewHoleData ScrewHoleData
+        {
+            get
+            {
+                return _screwHoleData;
+            }
+            private set
+            {
+                _screwHoleData = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         private string? _height;
 
         [Description("Высота корпуса смотрового окна")]
@@ -64,40 +80,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         }
 
 
-        private string? _screwHolesDistance;
-        [Description("Расстояние между отверстиями под винты")]
-        public string? ScrewHolesDistance
-        {
-            get
-            {
-                return _screwHolesDistance;
-            }
-            set
-            {
-                _screwHolesDistance = value;
-
-                ValidateScrewHolesDistance();
-                OnPropertyChanged();
-            }
-        }
-
-
-        private string ?_screwHolesDiameter;
-        [Description("Диаметр отверстия под винты")]
-        public string ?ScrewHolesDiameter
-        {
-            get
-            {
-                return _screwHolesDiameter;
-            }
-            set
-            {
-                _screwHolesDiameter = value;
-
-                ValidateScrewHolesDiameter();
-                OnPropertyChanged();
-            }
-        }
+     
 
 
         private void ValidateHeight()
@@ -112,34 +95,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         }
 
 
-        private void ValidateScrewHolesDistance()
-        {
-            ErrorAdder adder = new ErrorAdder(AddError);
-            ErrorClearer clearer = new ErrorClearer(ClearErrors);
-
-            if (!Validator<HousingData>.CheckRequiredField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer))
-            {
-                if (!Validator<HousingData>.CheckDoubleField(nameof(ScrewHolesDistance), ScrewHolesDistance, adder, clearer, out double result))
-                {
-
-                }
-            }
-        }
-
-
-        private void ValidateScrewHolesDiameter()
-        {
-            ErrorAdder adder = new ErrorAdder(AddError);
-            ErrorClearer clearer = new ErrorClearer(ClearErrors);
-
-            if (!Validator<HousingData>.CheckRequiredField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer))
-            {
-                if (!Validator<HousingData>.CheckDoubleField(nameof(ScrewHolesDiameter), ScrewHolesDiameter, adder, clearer, out double result))
-                {
-
-                }
-            }
-        }
+       
 
 
         private void ValidateMainDiameters()
@@ -157,6 +113,9 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
                 if (!hasDiameterProblems)
                 {
                     hasDiameterProblems = Validator<HousingData>.CheckBiggerThanZero(nameof(MainDiameter), MainDiameter, adder, clearer);
+
+                    if (!hasDiameterProblems)
+                        ScrewHoleData.MainDiameter = _housingDiameter;
                 }
             }
 
@@ -199,7 +158,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             _housingHole = "90";
 
-            ScrewHolesDistance = "135";            
+            ScrewHoleData = new ScrewHoleData(MainDiameter, CentralHole, Height);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Oil_level_glass.Enums;
 using Oil_level_glass.Utilities;
-using System.Diagnostics;
 
 namespace Oil_level_glass.Services
 {
