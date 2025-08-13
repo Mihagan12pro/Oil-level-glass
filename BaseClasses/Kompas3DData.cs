@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Oil_level_glass.BaseClasses
 {
-    internal abstract class Kompas3DData : KompasData
+    internal abstract class Kompas3DData : Kompas2DData
     {
         protected double maxDensity;
         protected double minDensity;

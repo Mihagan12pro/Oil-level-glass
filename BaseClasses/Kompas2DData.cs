@@ -7,21 +7,8 @@ using Oil_level_glass.Delegates;
 
 namespace Oil_level_glass.BaseClasses
 {
-    internal abstract class KompasData : INotifyDataErrorInfo, INotifyPropertyChanged
+    internal abstract class Kompas2DData : BaseKompasData
     {
-        protected readonly Dictionary<string, List<(string, InputError)>> errorsByPropertyName = new Dictionary<string, List<(string, InputError)>>();
-        public Dictionary<string, List<(string, InputError)>> ErrorsByPropertyName => errorsByPropertyName;
-
-
-        public bool HasErrors => errorsByPropertyName.Any();
-
-
-        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-
         private string? _fileName;
         [Description("Имя файла")]
         public string? FileName
@@ -72,25 +59,6 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
-
-
-        public IEnumerable GetErrors(string? propertyName)
-        {
-            return errorsByPropertyName.ContainsKey(propertyName) ? errorsByPropertyName[propertyName] : null;
-        }
-
-
-        protected void OnErrorsChanged(string propertyName)
-        {
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
-        }
-
-
         protected void AddError(string propertyName, string error, InputError input)
         {
             if (!errorsByPropertyName.ContainsKey(propertyName))
@@ -115,23 +83,23 @@ namespace Oil_level_glass.BaseClasses
 
         private void ValidateFileName()
         {
-            if (!Validator<KompasData>.CheckRequiredField(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
+            if (!Validator<Kompas2DData>.CheckRequiredField(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
-                Validator<KompasData>.CheckFileName(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+                Validator<Kompas2DData>.CheckFileName(nameof(FileName), FileName, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
             }
         }
 
 
         private void ValidateFolderPath()
         {
-            if (!Validator<KompasData>.CheckRequiredField(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
+            if (!Validator<Kompas2DData>.CheckRequiredField(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
             {
-                Validator<KompasData>.CheckPath(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
+                Validator<Kompas2DData>.CheckPath(nameof(FolderPath), FolderPath, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
             }
         }
 
 
-        public KompasData()
+        public Kompas2DData()
         {
             FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }

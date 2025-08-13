@@ -29,13 +29,13 @@ namespace Oil_level_glass.Wizards.Forms
 
         private void Wizard3DTabControl_Selecting(object? sender, TabControlCancelEventArgs e)
         {
-            TabPage ?tab = e.TabPage;
-            int tabIndex = wizard3DTabControl.TabPages.IndexOf(tab);
+            //TabPage ?tab = e.TabPage;
+            //int tabIndex = wizard3DTabControl.TabPages.IndexOf(tab);
 
-            if (tabIndex > _dataContext?.MaxTabIndex)
-            {
-                e.Cancel = true;
-            }
+            //if (tabIndex > _dataContext?.MaxTabIndex)
+            //{
+            //    e.Cancel = true;
+            //}
         }
 
 
@@ -333,43 +333,6 @@ namespace Oil_level_glass.Wizards.Forms
                             nameof(_dataContext.HousingMaterialTextBox.BackColor)
                         )
                 );
-
-
-            housingRefineTabPage.DataBindings.Add
-                (
-                    "BackColor",
-
-                    _dataContext?.HousingRefineTabPage,
-
-                    nameof(_dataContext.HousingRefineTabPage.BackColor),
-
-                    false,
-
-                    DataSourceUpdateMode.OnPropertyChanged
-                );
-            //screwHolesDiastanceTextBox.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "BackColor",
-
-            //                _dataContext,
-
-            //                nameof(_dataContext.HousingDiameterTextBox.BackColor)
-            //            )
-            //    );
-
-            //screwHolesDiameterTextBox.DataBindings.Add
-            //    (
-            //        new Binding
-            //            (
-            //                "BackColor",
-
-            //                _dataContext,
-
-            //                nameof(_dataContext.HousingDiameterTextBox.BackColor)
-            //            )
-            //    );
         }
 
 
@@ -426,29 +389,29 @@ namespace Oil_level_glass.Wizards.Forms
 
         private void BindReadOnlyFields()
         {
-            housingDiameterInfoBox.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "Text",
+            //housingDiameterInfoBox.DataBindings.Add
+            //    (
+            //        new Binding
+            //            (
+            //                "Text",
 
-                            _dataContext?.HousingData,
+            //                _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingData.MainDiameter)
-                        )
-                );
+            //                nameof(_dataContext.HousingData.MainDiameter)
+            //            )
+            //    );
 
-            holeDiameterInfoBox.DataBindings.Add
-                (
-                    new Binding
-                        (
-                            "Text",
+            //holeDiameterInfoBox.DataBindings.Add
+            //    (
+            //        new Binding
+            //            (
+            //                "Text",
 
-                            _dataContext?.HousingData,
+            //                _dataContext?.HousingData,
 
-                            nameof(_dataContext.HousingData.CentralHole)
-                        )
-                );
+            //                nameof(_dataContext.HousingData.CentralHole)
+            //            )
+            //    );
         }
     }
 }
