@@ -45,7 +45,7 @@ namespace Oil_level_glass.Wizards.ViewModels
         }
 
 
-        public int MaxTabIndex { get; private set; } = 0;
+        public int MaxTabIndex { get; private set; }
         //private int   = 1;
 
 
@@ -200,6 +200,8 @@ namespace Oil_level_glass.Wizards.ViewModels
 
                     HousingFileNameTextBox
                 };
+
+            MaxTabIndex = 1;
         }
     }
 }

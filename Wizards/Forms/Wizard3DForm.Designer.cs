@@ -30,6 +30,7 @@ namespace Oil_level_glass.Wizards.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             wizard3DTabControl = new TabControl();
             housingTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
@@ -67,21 +68,22 @@ namespace Oil_level_glass.Wizards.Forms
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            mainDiameterRefineInfo = new TextBox();
+            centralDiameterRefineInfo = new TextBox();
+            heightRefineInfo = new TextBox();
             screwHolesGroupBox = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            numericUpDown1 = new NumericUpDown();
+            holesDistanceTextBox = new TextBox();
+            holesDiameterTextBox = new TextBox();
+            holesCountTextBox = new NumericUpDown();
             chamferGroupBox = new GroupBox();
             glassTab = new TabPage();
             ringTab = new TabPage();
             assembleTab = new TabPage();
+            toolTip1 = new ToolTip(components);
             wizard3DTabControl.SuspendLayout();
             housingTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -106,7 +108,7 @@ namespace Oil_level_glass.Wizards.Forms
             tableLayoutPanel1.SuspendLayout();
             screwHolesGroupBox.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)holesCountTextBox).BeginInit();
             SuspendLayout();
             // 
             // wizard3DTabControl
@@ -437,6 +439,7 @@ namespace Oil_level_glass.Wizards.Forms
             housingRefineTab.Size = new Size(794, 422);
             housingRefineTab.TabIndex = 2;
             housingRefineTab.Text = "Проработка корпуса";
+            toolTip1.SetToolTip(housingRefineTab, "Занесите корретные значения в поля для ввода!");
             housingRefineTab.UseVisualStyleBackColor = true;
             // 
             // housingRefinePanel
@@ -518,9 +521,9 @@ namespace Oil_level_glass.Wizards.Forms
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(label2, 0, 1);
             tableLayoutPanel1.Controls.Add(label3, 0, 2);
-            tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
-            tableLayoutPanel1.Controls.Add(textBox2, 1, 1);
-            tableLayoutPanel1.Controls.Add(textBox3, 1, 2);
+            tableLayoutPanel1.Controls.Add(mainDiameterRefineInfo, 1, 0);
+            tableLayoutPanel1.Controls.Add(centralDiameterRefineInfo, 1, 1);
+            tableLayoutPanel1.Controls.Add(heightRefineInfo, 1, 2);
             tableLayoutPanel1.Font = new Font("Calibri", 9F, FontStyle.Italic);
             tableLayoutPanel1.Location = new Point(3, 22);
             tableLayoutPanel1.Margin = new Padding(3, 0, 3, 3);
@@ -563,35 +566,35 @@ namespace Oil_level_glass.Wizards.Forms
             label3.TabIndex = 2;
             label3.Text = "Высота заготовки H";
             // 
-            // textBox1
+            // mainDiameterRefineInfo
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(184, 3);
-            textBox1.Margin = new Padding(15, 3, 0, 3);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(155, 26);
-            textBox1.TabIndex = 3;
+            mainDiameterRefineInfo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            mainDiameterRefineInfo.Location = new Point(184, 3);
+            mainDiameterRefineInfo.Margin = new Padding(15, 3, 0, 3);
+            mainDiameterRefineInfo.Name = "mainDiameterRefineInfo";
+            mainDiameterRefineInfo.ReadOnly = true;
+            mainDiameterRefineInfo.Size = new Size(155, 26);
+            mainDiameterRefineInfo.TabIndex = 3;
             // 
-            // textBox2
+            // centralDiameterRefineInfo
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.Location = new Point(184, 36);
-            textBox2.Margin = new Padding(15, 3, 0, 3);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(155, 26);
-            textBox2.TabIndex = 4;
+            centralDiameterRefineInfo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            centralDiameterRefineInfo.Location = new Point(184, 36);
+            centralDiameterRefineInfo.Margin = new Padding(15, 3, 0, 3);
+            centralDiameterRefineInfo.Name = "centralDiameterRefineInfo";
+            centralDiameterRefineInfo.ReadOnly = true;
+            centralDiameterRefineInfo.Size = new Size(155, 26);
+            centralDiameterRefineInfo.TabIndex = 4;
             // 
-            // textBox3
+            // heightRefineInfo
             // 
-            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.Location = new Point(184, 69);
-            textBox3.Margin = new Padding(15, 3, 0, 0);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(155, 26);
-            textBox3.TabIndex = 5;
+            heightRefineInfo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            heightRefineInfo.Location = new Point(184, 69);
+            heightRefineInfo.Margin = new Padding(15, 3, 0, 0);
+            heightRefineInfo.Name = "heightRefineInfo";
+            heightRefineInfo.ReadOnly = true;
+            heightRefineInfo.Size = new Size(155, 26);
+            heightRefineInfo.TabIndex = 5;
             // 
             // screwHolesGroupBox
             // 
@@ -614,9 +617,9 @@ namespace Oil_level_glass.Wizards.Forms
             tableLayoutPanel2.Controls.Add(label4, 0, 0);
             tableLayoutPanel2.Controls.Add(label5, 0, 1);
             tableLayoutPanel2.Controls.Add(label6, 0, 2);
-            tableLayoutPanel2.Controls.Add(textBox4, 1, 0);
-            tableLayoutPanel2.Controls.Add(textBox5, 1, 1);
-            tableLayoutPanel2.Controls.Add(numericUpDown1, 1, 2);
+            tableLayoutPanel2.Controls.Add(holesDistanceTextBox, 1, 0);
+            tableLayoutPanel2.Controls.Add(holesDiameterTextBox, 1, 1);
+            tableLayoutPanel2.Controls.Add(holesCountTextBox, 1, 2);
             tableLayoutPanel2.Location = new Point(6, 25);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
@@ -657,34 +660,34 @@ namespace Oil_level_glass.Wizards.Forms
             label6.TabIndex = 2;
             label6.Text = "Количество отверстий n";
             // 
-            // textBox4
+            // holesDistanceTextBox
             // 
-            textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(177, 3);
-            textBox4.Margin = new Padding(10, 3, 20, 3);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(164, 26);
-            textBox4.TabIndex = 3;
+            holesDistanceTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            holesDistanceTextBox.Location = new Point(177, 3);
+            holesDistanceTextBox.Margin = new Padding(10, 3, 20, 3);
+            holesDistanceTextBox.Name = "holesDistanceTextBox";
+            holesDistanceTextBox.Size = new Size(164, 26);
+            holesDistanceTextBox.TabIndex = 3;
             // 
-            // textBox5
+            // holesDiameterTextBox
             // 
-            textBox5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.Location = new Point(177, 39);
-            textBox5.Margin = new Padding(10, 3, 20, 3);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(164, 26);
-            textBox5.TabIndex = 4;
+            holesDiameterTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            holesDiameterTextBox.Location = new Point(177, 39);
+            holesDiameterTextBox.Margin = new Padding(10, 3, 20, 3);
+            holesDiameterTextBox.Name = "holesDiameterTextBox";
+            holesDiameterTextBox.Size = new Size(164, 26);
+            holesDiameterTextBox.TabIndex = 4;
             // 
-            // numericUpDown1
+            // holesCountTextBox
             // 
-            numericUpDown1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            numericUpDown1.Location = new Point(177, 75);
-            numericUpDown1.Margin = new Padding(10, 3, 20, 3);
-            numericUpDown1.Minimum = new decimal(new int[] { 4, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(164, 26);
-            numericUpDown1.TabIndex = 5;
-            numericUpDown1.Value = new decimal(new int[] { 4, 0, 0, 0 });
+            holesCountTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            holesCountTextBox.Location = new Point(177, 75);
+            holesCountTextBox.Margin = new Padding(10, 3, 20, 3);
+            holesCountTextBox.Minimum = new decimal(new int[] { 4, 0, 0, 0 });
+            holesCountTextBox.Name = "holesCountTextBox";
+            holesCountTextBox.Size = new Size(164, 26);
+            holesCountTextBox.TabIndex = 5;
+            holesCountTextBox.Value = new decimal(new int[] { 4, 0, 0, 0 });
             // 
             // chamferGroupBox
             // 
@@ -765,7 +768,7 @@ namespace Oil_level_glass.Wizards.Forms
             screwHolesGroupBox.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)holesCountTextBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -813,15 +816,16 @@ namespace Oil_level_glass.Wizards.Forms
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox mainDiameterRefineInfo;
+        private TextBox centralDiameterRefineInfo;
+        private TextBox heightRefineInfo;
         private TableLayoutPanel tableLayoutPanel2;
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private NumericUpDown numericUpDown1;
+        private TextBox holesDistanceTextBox;
+        private TextBox holesDiameterTextBox;
+        private NumericUpDown holesCountTextBox;
+        private ToolTip toolTip1;
     }
 }

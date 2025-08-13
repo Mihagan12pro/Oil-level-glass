@@ -3,6 +3,7 @@ using Oil_level_glass.Wizards.ViewModels;
 using KompasAPI7;
 using Kompas6Constants3D;
 using System.Linq;
+using System.ComponentModel;
 
 namespace Oil_level_glass.Wizards.Forms
 {
@@ -29,13 +30,36 @@ namespace Oil_level_glass.Wizards.Forms
 
         private void Wizard3DTabControl_Selecting(object? sender, TabControlCancelEventArgs e)
         {
-            //TabPage ?tab = e.TabPage;
-            //int tabIndex = wizard3DTabControl.TabPages.IndexOf(tab);
+            TabPage? tab = e.TabPage;
+            int tabIndex = wizard3DTabControl.TabPages.IndexOf(tab);
 
-            //if (tabIndex > _dataContext?.MaxTabIndex)
-            //{
-            //    e.Cancel = true;
-            //}
+           
+            if (tabIndex > _dataContext?.MaxTabIndex)
+            {
+                NotifyIcon notifyIcon = new NotifyIcon();
+                notifyIcon.Icon = SystemIcons.Information;
+                notifyIcon.BalloonTipTitle = "Подсказка";
+                notifyIcon.BalloonTipText = $"Заполните корректными данными поля для ввода на вкладке «{wizard3DTabControl.TabPages[_dataContext.MaxTabIndex].Text}»";
+                notifyIcon.Visible = true;
+
+                notifyIcon.ShowBalloonTip(2000);
+               
+
+                e.Cancel = true;
+            }
+
+    
+
+            
+
+            //NotifyIcon notifyIcon = new NotifyIcon();
+            //notifyIcon.Icon = SystemIcons.Information;
+            //notifyIcon.Bal
+            //notifyIcon.BalloonTipTitle = "Подсказка";
+            //notifyIcon.BalloonTipText = $"Занесите корретные данные в поля для ввода на вкладке {wizard3DTabControl.TabPages[_dataContext.MaxTabIndex].Text}!";
+
+            //notifyIcon.Visible = true;
+            //notifyIcon.ShowBalloonTip(500);
         }
 
 
