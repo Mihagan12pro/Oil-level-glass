@@ -86,17 +86,11 @@ namespace Oil_level_glass.Wizards.Models.HousingRefineData
             ErrorClearer clearer = ClearErrors;
             
 
-            if (!Validator<ScrewHoleData>.CheckRequiredField(nameof(HoleDistance), HoleDistance, adder, clearer))
+            if (!Validator<ScrewHoleData>.CheckStandardNumber(nameof(HoleDistance), HoleDistance, adder, clearer))
             {
-                if (!Validator<ScrewHoleData>.CheckDoubleField(nameof(HoleDistance), HoleDistance, adder, clearer, out double distance))
+                if (!Validator<ScrewHoleData>.CheckHierarchy(nameof(HoleDistance), HoleDistance, nameof(MainDiameter), MainDiameter, true, adder, clearer, false))
                 {
-                   if (!Validator<ScrewHoleData>.CheckBiggerThanZero(nameof(HoleDistance), HoleDistance, adder, clearer))
-                   {
-                        if (!Validator<ScrewHoleData>.CheckHierarchy(nameof(HoleDistance), HoleDistance, nameof(MainDiameter), MainDiameter, true,adder, clearer,false))
-                        {
-                            Validator<ScrewHoleData>.CheckHierarchy(nameof(HoleDistance), HoleDistance, nameof(CentralHoleDiameter), CentralHoleDiameter, false, adder, clearer, false);
-                        }
-                   }
+                    Validator<ScrewHoleData>.CheckHierarchy(nameof(HoleDistance), HoleDistance, nameof(CentralHoleDiameter), CentralHoleDiameter, false, adder, clearer, false);
                 }
             }
         }
@@ -107,17 +101,10 @@ namespace Oil_level_glass.Wizards.Models.HousingRefineData
             ErrorAdder adder = AddError;
             ErrorClearer clearer = ClearErrors;
 
-
-            if (!Validator<ScrewHoleData>.CheckRequiredField(nameof(HoleDiameter), HoleDiameter, adder, clearer))
+            if (!Validator<ScrewHoleData>.CheckStandardNumber(nameof(HoleDiameter), HoleDiameter, adder, clearer))
             {
-                if (!Validator<ScrewHoleData>.CheckDoubleField(nameof(HoleDiameter), HoleDiameter, adder, clearer, out double distance))
-                {
-                    if (!Validator<ScrewHoleData>.CheckBiggerThanZero(nameof(HoleDiameter), HoleDiameter, adder, clearer))
-                    {
-                        if (!Validator<ScrewHoleData>.CheckRange(nameof(HoleDiameter), MinHolesCount, CulcMax(), adder, clearer))
-                            MaxHoleCount = CulcMax();
-                    }
-                }
+                if (!Validator<ScrewHoleData>.CheckRange(nameof(HoleDiameter), MinHolesCount, CulcMax(), adder, clearer))
+                    MaxHoleCount = CulcMax();
             }
         }
 
@@ -129,7 +116,7 @@ namespace Oil_level_glass.Wizards.Models.HousingRefineData
 
 
 
-        public ScrewHoleData(string ?mainDiameter, string? centralHoleDiameter, string? height) : base(mainDiameter, centralHoleDiameter, height)
+        public ScrewHoleData(string ?mainDiameter, string? centralHoleDiameter, string? height)
         {
             HoleDistance = "100";
             HoleDiameter = "10";

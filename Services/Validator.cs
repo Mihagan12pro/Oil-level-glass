@@ -7,6 +7,20 @@ namespace Oil_level_glass.Services
 {
     internal static class Validator<T>
     {
+        public static bool CheckStandardNumber(string propName, string? propValue, ErrorAdder adder, ErrorClearer clearer)
+        {
+            if (!CheckRequiredField(propName, propValue, adder, clearer))
+            {
+                if (!CheckDoubleField(propName, propValue, adder, clearer, out double result))
+                {
+                    return CheckBiggerThanZero(propName, propValue, adder, clearer);
+                }
+            }
+
+            return true;
+        }
+
+
         public static bool CheckRange(string propName, object minValue, object maxValue, ErrorAdder adder, ErrorClearer clearer)
         {
             clearer.Invoke(propName);
@@ -16,7 +30,34 @@ namespace Oil_level_glass.Services
 
             if (min > max)
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.TooBigNumber), InputError.TooBigNumber);
+                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.TooBigNumber));
+            }
+
+            return false;
+        }
+
+
+        public static bool CheckWithinRange(string propName, object propValue, object minValue, object maxValue, ErrorAdder adder, ErrorClearer clearer)
+        {
+            clearer.Invoke(propName);
+
+            double value = Convert.ToDouble(propValue);
+            double min = Convert.ToDouble(minValue);
+            double max = Convert.ToDouble(maxValue);
+
+            if (value < min)
+            {
+                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.TooSmallNumber));
+
+                return true;
+            }
+
+
+            if (value > max)
+            {
+                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.TooBigNumber));
+
+                return true;
             }
 
             return false;
@@ -31,14 +72,14 @@ namespace Oil_level_glass.Services
 
             if (number > maxDensity)
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.BiggerMaxDensity), InputError.BiggerMaxDensity);
+                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.BiggerMaxDensity));
 
                 return true;
             }
 
             if (number < minDensity)
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.LessMinDensity), InputError.LessMinDensity);
+                adder.Invoke(propName, ResourceString.UseErrorString(propName, InputError.LessMinDensity));
 
                 return true;
             }
@@ -54,7 +95,7 @@ namespace Oil_level_glass.Services
 
             if (propValue?.Length > 256)
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BigName), InputError.BigName);
+                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BigName));
 
                 return true;
             }
@@ -69,7 +110,7 @@ namespace Oil_level_glass.Services
 
             if (!Directory.Exists(propValue))
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BadPath), InputError.BadPath);
+                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BadPath));
 
                 return true;
             }
@@ -88,13 +129,13 @@ namespace Oil_level_glass.Services
                 double smallerPropValue = Convert.ToDouble(otherPropValue);
                 if (strict && numberProp < smallerPropValue)
                 {
-                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(otherPropName), InputError.BrokenStrictHierarchy, GetDescription(propName)), InputError.BrokenStrictHierarchy);
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(otherPropName), InputError.BrokenStrictHierarchy, GetDescription(propName)));
 
                     return true;
                 }
                 else if (!strict && numberProp <= smallerPropValue)
                 {
-                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(otherPropName), InputError.BrokenStrictHierarchy, GetDescription(propName)), InputError.BrokenStrictHierarchy);
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(otherPropName), InputError.BrokenStrictHierarchy, GetDescription(propName)));
 
                     return true;
                 }
@@ -106,13 +147,13 @@ namespace Oil_level_glass.Services
                 double biggerPropValue = Convert.ToDouble(otherPropValue);
                 if (strict && numberProp > biggerPropValue)
                 {
-                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription( propName), InputError.BrokenStrictHierarchy, GetDescription(otherPropName)), InputError.BrokenStrictHierarchy);
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription( propName), InputError.BrokenStrictHierarchy, GetDescription(otherPropName)));
 
                     return true;
                 }
                 else if (!strict && numberProp >= biggerPropValue)
                 {
-                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BrokenStrictHierarchy, GetDescription(otherPropName)), InputError.BrokenStrictHierarchy);
+                    adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.BrokenStrictHierarchy, GetDescription(otherPropName)));
 
                     return true;
                 }
@@ -132,16 +173,16 @@ namespace Oil_level_glass.Services
 
             if (isStrictlyBigger && small >= big)
             {
-                adder.Invoke(bigPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenStrictHierarchy, GetDescription(bigPropName)), InputError.BrokenStrictHierarchy);
-                adder.Invoke(smallPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenStrictHierarchy, GetDescription(bigPropName)), InputError.BrokenStrictHierarchy);
+                adder.Invoke(bigPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenStrictHierarchy, GetDescription(bigPropName)));
+                adder.Invoke(smallPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenStrictHierarchy, GetDescription(bigPropName)));
 
                 return true;
             }
 
             if (!isStrictlyBigger && small > big)
             {
-                adder.Invoke(bigPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenHierarchy, GetDescription(bigPropName)), InputError.BrokenHierarchy);
-                adder.Invoke(smallPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenHierarchy, GetDescription(bigPropName)), InputError.BrokenHierarchy);
+                adder.Invoke(bigPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenHierarchy, GetDescription(bigPropName)));
+                adder.Invoke(smallPropName, ResourceString.UseErrorString(GetDescription(smallPropName), InputError.BrokenHierarchy, GetDescription(bigPropName)));
 
                 return true;
             }
@@ -158,7 +199,7 @@ namespace Oil_level_glass.Services
 
             if (number <= 0)
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.ZeroOrNegative), InputError.ZeroOrNegative);
+                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.ZeroOrNegative));
 
                 return true;
             }
@@ -179,7 +220,7 @@ namespace Oil_level_glass.Services
             }
             catch
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.InvalidType), InputError.InvalidType);
+                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.InvalidType));
             }
             finally
             {
@@ -197,7 +238,7 @@ namespace Oil_level_glass.Services
 
             if (String.IsNullOrWhiteSpace(propValue) || String.IsNullOrEmpty(propValue))
             {
-                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.EmptyField), InputError.EmptyField);
+                adder.Invoke(propName, ResourceString.UseErrorString(GetDescription(propName), InputError.EmptyField));
 
 
                 return true;

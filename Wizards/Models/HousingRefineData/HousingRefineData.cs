@@ -56,13 +56,9 @@ namespace Oil_level_glass.Wizards.Models.HousingRefineData
         }
 
 
-        public HousingRefineData(string? mainDiameter, string? centralHoleDiameter, string? height)
+        public HousingRefineData()
         {
-            MainDiameter = mainDiameter;
 
-            CentralHoleDiameter = centralHoleDiameter;
-
-            Height = height;
         }
     }
 }

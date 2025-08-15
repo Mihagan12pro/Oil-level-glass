@@ -7,8 +7,8 @@ namespace Oil_level_glass.BaseClasses
 {
     internal abstract class BaseKompasData : INotifyDataErrorInfo, INotifyPropertyChanged
     {
-        protected readonly Dictionary<string, List<(string, InputError)>> errorsByPropertyName = new Dictionary<string, List<(string, InputError)>>();
-        public Dictionary<string, List<(string, InputError)>> ErrorsByPropertyName => errorsByPropertyName;
+        protected readonly Dictionary<string, List<string>> errorsByPropertyName = new Dictionary<string, List<string>>();
+        public Dictionary<string, List<string>> ErrorsByPropertyName => errorsByPropertyName;
 
 
         public bool HasErrors => errorsByPropertyName.Any();
@@ -39,14 +39,14 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-        protected void AddError(string propertyName, string error, InputError input)
+        protected void AddError(string propertyName, string error)
         {
             if (!errorsByPropertyName.ContainsKey(propertyName))
-                errorsByPropertyName[propertyName] = new List<(string, InputError)>();
+                errorsByPropertyName[propertyName] = new List<string>();
 
-            if (!errorsByPropertyName[propertyName].Contains((error, input)))
+            if (!errorsByPropertyName[propertyName].Contains((error)))
             {
-                errorsByPropertyName[propertyName].Add((error, input));
+                errorsByPropertyName[propertyName].Add((error));
                 OnErrorsChanged(propertyName);
             }
         }

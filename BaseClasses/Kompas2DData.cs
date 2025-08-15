@@ -59,27 +59,6 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-        protected void AddError(string propertyName, string error, InputError input)
-        {
-            if (!errorsByPropertyName.ContainsKey(propertyName))
-                errorsByPropertyName[propertyName] = new List<(string, InputError)>();
-
-            if (!errorsByPropertyName[propertyName].Contains((error, input)))
-            {
-                errorsByPropertyName[propertyName].Add((error, input));
-                OnErrorsChanged(propertyName);
-            }
-        }
-
-        protected void ClearErrors(string propertyName)
-        {
-            if (errorsByPropertyName.ContainsKey(propertyName))
-            {
-                errorsByPropertyName.Remove(propertyName);
-                OnErrorsChanged(propertyName);
-            }
-        }
-
 
         private void ValidateFileName()
         {

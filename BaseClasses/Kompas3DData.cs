@@ -80,12 +80,9 @@ namespace Oil_level_glass.BaseClasses
             ErrorAdder adder = AddError;
             ErrorClearer clearer = ClearErrors;
 
-            if (!Validator<Kompas3DData>.CheckRequiredField(nameof(Density), Density, adder, clearer))
+            if (!Validator<Kompas3DData>.CheckStandardNumber(nameof(Density), Density, adder, clearer))
             {
-                if (!Validator<Kompas3DData>.CheckDoubleField(nameof(Density), Density, adder, clearer, out double result))
-                {
-                    Validator<Kompas3DData>.CheckDensityValue(nameof(Density), Density, minDensity, maxDensity ,adder, clearer);
-                }
+                Validator<Kompas3DData>.CheckDensityValue(nameof(Density), Density, minDensity, maxDensity, adder, clearer);
             }
         }
 

@@ -23,6 +23,20 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             }
         }
 
+
+        private ChamferData _chamferData;
+        public ChamferData ChamferData
+        {
+            get => _chamferData;
+
+            private set
+            {
+                _chamferData = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         private string? _height;
 
         [Description("Высота корпуса смотрового окна")]
@@ -80,22 +94,10 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
         }
 
 
-     
-
-
         private void ValidateHeight()
         {
-            if (!Validator<HousingData>.CheckRequiredField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors)))
-            {
-                if (!Validator<HousingData>.CheckDoubleField(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors), out double result))
-                {
-                    Validator<HousingData>.CheckBiggerThanZero(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
-                }
-            }
+            Validator<HousingData>.CheckStandardNumber(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
         }
-
-
-       
 
 
         private void ValidateMainDiameters()
@@ -159,6 +161,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             _housingHole = "90";
 
             ScrewHoleData = new ScrewHoleData(MainDiameter, CentralHole, Height);
+            ChamferData = new ChamferData(ScrewHoleData);
         }
     }
 }

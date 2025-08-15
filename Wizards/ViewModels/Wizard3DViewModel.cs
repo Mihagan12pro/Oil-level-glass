@@ -4,7 +4,6 @@ using Oil_level_glass.Services;
 using Oil_level_glass.Utilities;
 using Oil_level_glass.Wizards.Models.HousingRefineData;
 using Oil_level_glass.Wizards.Models.Wizard3D;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 
 
@@ -16,8 +15,8 @@ namespace Oil_level_glass.Wizards.ViewModels
 
         private Dictionary<Type, List<ControlAppearance>> _kompasDataDictionary = new Dictionary<Type, List<ControlAppearance>>();
 
-        public Dictionary<string, List<(string, InputError)>> HousingErrors { get; private set; }
-        public Dictionary<string, List<(string, InputError)>> ScrewHoleErrors { get; private set; }
+        public Dictionary<string, List<string>> HousingErrors { get; private set; }
+        public Dictionary<string, List<string>> ScrewHoleErrors { get; private set; }
 
 
         public int MaxTabIndex { get; private set; }
@@ -41,6 +40,8 @@ namespace Oil_level_glass.Wizards.ViewModels
         public ControlAppearance ScrewDistanceTextBox { get; private set; } = new ControlAppearance(nameof(HousingData.ScrewHoleData.HoleDistance));
         public ControlAppearance ScrewDiameterTextBox { get; private set; } = new ControlAppearance(nameof(HousingData.ScrewHoleData.HoleDiameter));
         public ControlAppearance ScrewCountTextBox { get; private set; } = new ControlAppearance(nameof(HousingData.ScrewHoleData.HoleCount));
+
+
 
         public HousingData HousingData
         {

@@ -18,7 +18,7 @@ namespace Oil_level_glass.Services
         }
 
 
-        public static void ChangeBackColor(ControlAppearance appearance, Dictionary<string, List<(string, InputError)>> errors)
+        public static void ChangeBackColor(ControlAppearance appearance, Dictionary<string, List<string>> errors)
         {
             ChangeBackColor(appearance, errors.ContainsKey(appearance.Name));
         }

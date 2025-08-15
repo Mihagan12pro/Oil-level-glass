@@ -30,7 +30,6 @@ namespace Oil_level_glass.Wizards.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             wizard3DTabControl = new TabControl();
             housingTabPage = new TabPage();
             splitContainer1 = new SplitContainer();
@@ -64,6 +63,7 @@ namespace Oil_level_glass.Wizards.Forms
             screwHolesPictureBox = new PictureBox();
             chamferPictureBox = new PictureBox();
             refineSizesGroupBox = new GroupBox();
+            angleLabel = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             label2 = new Label();
@@ -80,10 +80,20 @@ namespace Oil_level_glass.Wizards.Forms
             holesDiameterTextBox = new TextBox();
             holesCountTextBox = new NumericUpDown();
             chamferGroupBox = new GroupBox();
+            splitContainer2 = new SplitContainer();
+            chamferTyoeGroupBox = new GroupBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            twoSidesRadioButton = new RadioButton();
+            sideAngleChamferRadio = new RadioButton();
+            chamferSizesGroupBox = new GroupBox();
+            chamferSizesPanel = new TableLayoutPanel();
+            side1Label = new Label();
+            textBox1 = new TextBox();
+            secondChamferSizeLabel = new Label();
+            secondChamferSizeTextBox = new TextBox();
             glassTab = new TabPage();
             ringTab = new TabPage();
             assembleTab = new TabPage();
-            toolTip1 = new ToolTip(components);
             wizard3DTabControl.SuspendLayout();
             housingTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -109,6 +119,15 @@ namespace Oil_level_glass.Wizards.Forms
             screwHolesGroupBox.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)holesCountTextBox).BeginInit();
+            chamferGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
+            chamferTyoeGroupBox.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            chamferSizesGroupBox.SuspendLayout();
+            chamferSizesPanel.SuspendLayout();
             SuspendLayout();
             // 
             // wizard3DTabControl
@@ -125,6 +144,7 @@ namespace Oil_level_glass.Wizards.Forms
             wizard3DTabControl.SelectedIndex = 0;
             wizard3DTabControl.Size = new Size(802, 453);
             wizard3DTabControl.TabIndex = 0;
+            wizard3DTabControl.Selecting += Wizard3DTabControl_Selecting;
             // 
             // housingTabPage
             // 
@@ -439,7 +459,6 @@ namespace Oil_level_glass.Wizards.Forms
             housingRefineTab.Size = new Size(794, 422);
             housingRefineTab.TabIndex = 2;
             housingRefineTab.Text = "Проработка корпуса";
-            toolTip1.SetToolTip(housingRefineTab, "Занесите корретные значения в поля для ввода!");
             housingRefineTab.UseVisualStyleBackColor = true;
             // 
             // housingRefinePanel
@@ -503,6 +522,7 @@ namespace Oil_level_glass.Wizards.Forms
             // refineSizesGroupBox
             // 
             refineSizesGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            refineSizesGroupBox.Controls.Add(angleLabel);
             refineSizesGroupBox.Controls.Add(tableLayoutPanel1);
             refineSizesGroupBox.Location = new Point(10, 3);
             refineSizesGroupBox.Margin = new Padding(10, 3, 10, 10);
@@ -511,6 +531,15 @@ namespace Oil_level_glass.Wizards.Forms
             refineSizesGroupBox.TabIndex = 3;
             refineSizesGroupBox.TabStop = false;
             refineSizesGroupBox.Text = "Размеры заготовки";
+            // 
+            // angleLabel
+            // 
+            angleLabel.AutoSize = true;
+            angleLabel.Location = new Point(249, 0);
+            angleLabel.Name = "angleLabel";
+            angleLabel.Size = new Size(48, 18);
+            angleLabel.TabIndex = 1;
+            angleLabel.Text = "Угол α";
             // 
             // tableLayoutPanel1
             // 
@@ -692,13 +721,148 @@ namespace Oil_level_glass.Wizards.Forms
             // chamferGroupBox
             // 
             chamferGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            chamferGroupBox.Location = new Point(10, 276);
-            chamferGroupBox.Margin = new Padding(10, 0, 10, 10);
+            chamferGroupBox.Controls.Add(splitContainer2);
+            chamferGroupBox.Location = new Point(10, 279);
+            chamferGroupBox.Margin = new Padding(10, 3, 10, 10);
             chamferGroupBox.Name = "chamferGroupBox";
-            chamferGroupBox.Size = new Size(373, 130);
+            chamferGroupBox.Padding = new Padding(3, 0, 3, 3);
+            chamferGroupBox.Size = new Size(373, 127);
             chamferGroupBox.TabIndex = 5;
             chamferGroupBox.TabStop = false;
-            chamferGroupBox.Text = "Параметры фаски";
+            chamferGroupBox.Text = "Фаска";
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(3, 19);
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(chamferTyoeGroupBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(chamferSizesGroupBox);
+            splitContainer2.Size = new Size(367, 105);
+            splitContainer2.SplitterDistance = 183;
+            splitContainer2.TabIndex = 0;
+            // 
+            // chamferTyoeGroupBox
+            // 
+            chamferTyoeGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            chamferTyoeGroupBox.Controls.Add(tableLayoutPanel3);
+            chamferTyoeGroupBox.Location = new Point(10, 0);
+            chamferTyoeGroupBox.Margin = new Padding(10);
+            chamferTyoeGroupBox.Name = "chamferTyoeGroupBox";
+            chamferTyoeGroupBox.Size = new Size(163, 95);
+            chamferTyoeGroupBox.TabIndex = 2;
+            chamferTyoeGroupBox.TabStop = false;
+            chamferTyoeGroupBox.Text = "Тип";
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Controls.Add(twoSidesRadioButton, 0, 1);
+            tableLayoutPanel3.Controls.Add(sideAngleChamferRadio, 0, 0);
+            tableLayoutPanel3.Location = new Point(6, 20);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel3.Size = new Size(150, 69);
+            tableLayoutPanel3.TabIndex = 0;
+            // 
+            // twoSidesRadioButton
+            // 
+            twoSidesRadioButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            twoSidesRadioButton.AutoSize = true;
+            twoSidesRadioButton.Location = new Point(3, 37);
+            twoSidesRadioButton.Name = "twoSidesRadioButton";
+            twoSidesRadioButton.Size = new Size(144, 29);
+            twoSidesRadioButton.TabIndex = 1;
+            twoSidesRadioButton.Text = "Две стороны";
+            twoSidesRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // sideAngleChamferRadio
+            // 
+            sideAngleChamferRadio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            sideAngleChamferRadio.AutoSize = true;
+            sideAngleChamferRadio.Location = new Point(3, 3);
+            sideAngleChamferRadio.Name = "sideAngleChamferRadio";
+            sideAngleChamferRadio.Size = new Size(144, 28);
+            sideAngleChamferRadio.TabIndex = 0;
+            sideAngleChamferRadio.Text = "Угол и фаска";
+            sideAngleChamferRadio.UseVisualStyleBackColor = true;
+            // 
+            // chamferSizesGroupBox
+            // 
+            chamferSizesGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            chamferSizesGroupBox.Controls.Add(chamferSizesPanel);
+            chamferSizesGroupBox.Location = new Point(6, 0);
+            chamferSizesGroupBox.Margin = new Padding(10);
+            chamferSizesGroupBox.Name = "chamferSizesGroupBox";
+            chamferSizesGroupBox.Size = new Size(164, 95);
+            chamferSizesGroupBox.TabIndex = 1;
+            chamferSizesGroupBox.TabStop = false;
+            chamferSizesGroupBox.Text = "Размеры";
+            // 
+            // chamferSizesPanel
+            // 
+            chamferSizesPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            chamferSizesPanel.ColumnCount = 2;
+            chamferSizesPanel.ColumnStyles.Add(new ColumnStyle());
+            chamferSizesPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            chamferSizesPanel.Controls.Add(side1Label, 0, 0);
+            chamferSizesPanel.Controls.Add(textBox1, 1, 0);
+            chamferSizesPanel.Controls.Add(secondChamferSizeLabel, 0, 1);
+            chamferSizesPanel.Controls.Add(secondChamferSizeTextBox, 1, 1);
+            chamferSizesPanel.Location = new Point(6, 23);
+            chamferSizesPanel.Name = "chamferSizesPanel";
+            chamferSizesPanel.RowCount = 2;
+            chamferSizesPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            chamferSizesPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            chamferSizesPanel.Size = new Size(152, 66);
+            chamferSizesPanel.TabIndex = 0;
+            // 
+            // side1Label
+            // 
+            side1Label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            side1Label.AutoSize = true;
+            side1Label.Location = new Point(3, 5);
+            side1Label.Margin = new Padding(3, 5, 3, 0);
+            side1Label.Name = "side1Label";
+            side1Label.Size = new Size(80, 28);
+            side1Label.TabIndex = 0;
+            side1Label.Text = "Длина l1";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(89, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(60, 26);
+            textBox1.TabIndex = 1;
+            // 
+            // secondChamferSizeLabel
+            // 
+            secondChamferSizeLabel.AutoSize = true;
+            secondChamferSizeLabel.Location = new Point(3, 38);
+            secondChamferSizeLabel.Margin = new Padding(3, 5, 3, 0);
+            secondChamferSizeLabel.Name = "secondChamferSizeLabel";
+            secondChamferSizeLabel.Size = new Size(80, 18);
+            secondChamferSizeLabel.TabIndex = 2;
+            secondChamferSizeLabel.Text = "Hello world";
+            // 
+            // secondChamferSizeTextBox
+            // 
+            secondChamferSizeTextBox.Location = new Point(89, 36);
+            secondChamferSizeTextBox.Name = "secondChamferSizeTextBox";
+            secondChamferSizeTextBox.Size = new Size(60, 26);
+            secondChamferSizeTextBox.TabIndex = 3;
             // 
             // glassTab
             // 
@@ -763,12 +927,24 @@ namespace Oil_level_glass.Wizards.Forms
             ((System.ComponentModel.ISupportInitialize)screwHolesPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)chamferPictureBox).EndInit();
             refineSizesGroupBox.ResumeLayout(false);
+            refineSizesGroupBox.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             screwHolesGroupBox.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)holesCountTextBox).EndInit();
+            chamferGroupBox.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
+            chamferTyoeGroupBox.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel3.PerformLayout();
+            chamferSizesGroupBox.ResumeLayout(false);
+            chamferSizesPanel.ResumeLayout(false);
+            chamferSizesPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -811,7 +987,6 @@ namespace Oil_level_glass.Wizards.Forms
         private PictureBox chamferPictureBox;
         private GroupBox refineSizesGroupBox;
         private GroupBox screwHolesGroupBox;
-        private GroupBox chamferGroupBox;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label1;
         private Label label2;
@@ -826,6 +1001,18 @@ namespace Oil_level_glass.Wizards.Forms
         private TextBox holesDistanceTextBox;
         private TextBox holesDiameterTextBox;
         private NumericUpDown holesCountTextBox;
-        private ToolTip toolTip1;
+        private GroupBox chamferGroupBox;
+        private SplitContainer splitContainer2;
+        private GroupBox chamferSizesGroupBox;
+        private GroupBox chamferTyoeGroupBox;
+        private RadioButton twoSidesRadioButton;
+        private RadioButton sideAngleChamferRadio;
+        private TableLayoutPanel tableLayoutPanel3;
+        private TableLayoutPanel chamferSizesPanel;
+        private Label side1Label;
+        private TextBox textBox1;
+        private Label secondChamferSizeLabel;
+        private Label angleLabel;
+        private TextBox secondChamferSizeTextBox;
     }
 }

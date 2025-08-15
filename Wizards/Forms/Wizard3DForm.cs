@@ -1,9 +1,4 @@
-﻿using Oil_level_glass.Wizards.Models.Wizard3D;
-using Oil_level_glass.Wizards.ViewModels;
-using KompasAPI7;
-using Kompas6Constants3D;
-using System.Linq;
-using System.ComponentModel;
+﻿using Oil_level_glass.Wizards.ViewModels;
 
 namespace Oil_level_glass.Wizards.Forms
 {
@@ -11,53 +6,35 @@ namespace Oil_level_glass.Wizards.Forms
     {
         private Wizard3DViewModel? _dataContext = new Wizard3DViewModel();
 
+        private TextBox _chamferSideAngle;
+        private TextBox _chamferTwoSides;
+
         public Wizard3DForm()
         {
             InitializeComponent();
 
             DataContext = _dataContext;
 
-            BindHousingProperties();
-
-            BindReadOnlyFields();
-
-            BindEnabled();
-
-
-
-            wizard3DTabControl.Selecting += Wizard3DTabControl_Selecting;
-        }
-
-        private void Wizard3DTabControl_Selecting(object? sender, TabControlCancelEventArgs e)
-        {
-            TabPage? tab = e.TabPage;
-            int tabIndex = wizard3DTabControl.TabPages.IndexOf(tab);
-
-           
-            if (tabIndex > _dataContext?.MaxTabIndex)
-            {
-                NotifyIcon notifyIcon = new NotifyIcon();
-                notifyIcon.Icon = SystemIcons.Information;
-                notifyIcon.BalloonTipTitle = "Подсказка";
-                notifyIcon.BalloonTipText = $"Заполните корректными данными поля для ввода на вкладке «{wizard3DTabControl.TabPages[_dataContext.MaxTabIndex].Text}»";
-                notifyIcon.Visible = true;
-
-                notifyIcon.ShowBalloonTip(2000);
-
-                e.Cancel = true;
-            }
-        }
-
-
-        private void BindHousingProperties()
-        {
             BindText();
 
             BindBackColors();
 
             BindCommands();
+
+            BindBoolProperties();
+
+            sideAngleChamferRadio.CheckedChanged += SideAngleChamferRadio_CheckedChanged;
         }
 
+        private void SideAngleChamferRadio_CheckedChanged(object? sender, EventArgs e)
+        {
+            if (sideAngleChamferRadio.Checked)
+            {
+
+
+                return;
+            }
+        }
 
         private void BindText()
         {
@@ -202,7 +179,7 @@ namespace Oil_level_glass.Wizards.Forms
                 );
 
             heightRefineInfo.DataBindings.Add
-                (   
+                (
                     new Binding
                         (
                             "Text",
@@ -460,16 +437,17 @@ namespace Oil_level_glass.Wizards.Forms
         }
 
 
-        private void BindEnabled()
+        private void BindBoolProperties()
         {
             holesCountTextBox.DataBindings.Add
                 (
                     "Enabled",
 
-                    _dataContext?.ScrewCountTextBox, 
+                    _dataContext?.ScrewCountTextBox,
 
                     nameof(_dataContext.ScrewDistanceTextBox.Enabled)
                 );
+
 
             holesDiameterTextBox.DataBindings.Add
                (
@@ -482,9 +460,23 @@ namespace Oil_level_glass.Wizards.Forms
         }
 
 
-        private void BindReadOnlyFields()
+        private void Wizard3DTabControl_Selecting(object? sender, TabControlCancelEventArgs e)
         {
-            
+            TabPage? tab = e.TabPage;
+            int tabIndex = wizard3DTabControl.TabPages.IndexOf(tab);
+
+            if (tabIndex > _dataContext?.MaxTabIndex)
+            {
+                NotifyIcon notifyIcon = new NotifyIcon();
+                notifyIcon.Icon = SystemIcons.Information;
+                notifyIcon.BalloonTipTitle = "Подсказка";
+                notifyIcon.BalloonTipText = $"Заполните корректными данными поля для ввода на вкладке «{wizard3DTabControl.TabPages[_dataContext.MaxTabIndex].Text}»";
+                notifyIcon.Visible = true;
+
+                notifyIcon.ShowBalloonTip(2000);
+
+                e.Cancel = true;
+            }
         }
     }
 }
