@@ -1,45 +1,16 @@
-﻿using Oil_level_glass.BaseClasses;
-using Oil_level_glass.Delegates;
+﻿using Oil_level_glass.BaseClasses.KompasData;
+using Oil_level_glass.Utilities.Attributes.Numbers;
 using Oil_level_glass.Services;
-using Oil_level_glass.Wizards.Models.HousingRefineData;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using Oil_level_glass.Properties;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
 {
     internal class HousingData : Kompas3DData
-    {
-        private ScrewHoleData _screwHoleData;
-        public ScrewHoleData ScrewHoleData
-        {
-            get
-            {
-                return _screwHoleData;
-            }
-            private set
-            {
-                _screwHoleData = value;
-
-                OnPropertyChanged();
-            }
-        }
-
-
-        private ChamferData _chamferData;
-        public ChamferData ChamferData
-        {
-            get => _chamferData;
-
-            private set
-            {
-                _chamferData = value;
-
-                OnPropertyChanged();
-            }
-        }
-
+    {  
         private string? _height;
 
-        [Description("Высота корпуса смотрового окна")]
+        [Number()]
         public string? Height
         {
             get
@@ -50,7 +21,6 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             {
                 _height = value;
 
-                ValidateHeight();
                 OnPropertyChanged();
             }
         }
@@ -58,7 +28,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
         private string? _housingDiameter;
 
-        [Description("Диаметр корпуса смотрового окна")]
+        [Number()]
         public string ?MainDiameter
         {
             get
@@ -69,74 +39,52 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             {
                 _housingDiameter = value;
 
-                ValidateMainDiameters();
                 OnPropertyChanged();
             }
         }
 
 
-        private string? _housingHole;
+        private string? _centralHole;
 
-        [Description("Центральное отверстие корпуса смотрового окна")]
+        [Number()]
         public string? CentralHole
         {
             get
             {
-                return _housingHole;
+                return _centralHole;
             }
             set
             {
-                _housingHole = value;
+                _centralHole = value;
 
-                ValidateMainDiameters();
                 OnPropertyChanged();
             }
         }
 
 
-        private void ValidateHeight()
+        protected override IEnumerable<ValidationResult> Validate(ValidationContext validationContext, List<ValidationResult> errors)
         {
-            Validator<HousingData>.CheckStandardNumber(nameof(Height), Height, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
-        }
-
-
-        private void ValidateMainDiameters()
-        {
-            double housingDiameter = 0;
-            double housingHole = 0;
-
-            ErrorAdder adder = AddError;
-            ErrorClearer clearer = ClearErrors;
-
-            bool hasDiameterProblems = Validator<HousingData>.CheckRequiredField(nameof(MainDiameter), MainDiameter, adder, clearer);
-            if (!hasDiameterProblems)
+            if (!errorsByPropertyName.ContainsKey(nameof(CentralHole)) && !errorsByPropertyName.ContainsKey(nameof(MainDiameter)))
             {
-                hasDiameterProblems = Validator<HousingData>.CheckDoubleField(nameof(MainDiameter), MainDiameter, adder, clearer, out housingDiameter);
-                if (!hasDiameterProblems)
+                if (DoubleConverter.Convert(CentralHole) >= DoubleConverter.Convert(MainDiameter))
                 {
-                    hasDiameterProblems = Validator<HousingData>.CheckBiggerThanZero(nameof(MainDiameter), MainDiameter, adder, clearer);
+                    errors.Add(new ValidationResult(Resources.TooBigNumberStrError, new List<string> 
+                        {
+                            nameof(CentralHole) 
+                        }
+                    ));
 
-                    if (!hasDiameterProblems)
-                        ScrewHoleData.MainDiameter = _housingDiameter;
+
+                    errors.Add(new ValidationResult(Resources.TooSmallNumberStrError, new List<string> 
+                        {
+                            nameof(MainDiameter) 
+                        }
+                    ));
                 }
             }
 
 
-            bool hasHoleProblems = Validator<HousingData>.CheckRequiredField(nameof(CentralHole), CentralHole, adder, clearer);
-            if (!hasHoleProblems)
-            {
-                hasHoleProblems = Validator<HousingData>.CheckDoubleField(nameof(CentralHole), CentralHole, adder, clearer, out housingHole);
-                if (!hasHoleProblems)
-                {
-                    hasHoleProblems = Validator<HousingData>.CheckBiggerThanZero(nameof(CentralHole), CentralHole, adder, clearer);
-                }
-            }
-
-
-            if (!hasDiameterProblems && !hasHoleProblems)
-            {
-                Validator<HousingData>.CheckHierarchy(nameof(CentralHole), CentralHole, nameof(MainDiameter), MainDiameter, adder, clearer);
-            }
+            return errors;
         }
 
 
@@ -152,16 +100,11 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
             Material = "Сталь";
 
-            FileName = "Корпус";
-
             Height = "45";
 
             _housingDiameter = "180";
 
-            _housingHole = "90";
-
-            ScrewHoleData = new ScrewHoleData(MainDiameter, CentralHole, Height);
-            ChamferData = new ChamferData(ScrewHoleData);
+            _centralHole = "90";
         }
     }
 }

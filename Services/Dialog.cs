@@ -21,15 +21,16 @@ namespace Oil_level_glass.Services
         }
         
 
-        public static string? InvokeFolderBrowser(string? path, Environment.SpecialFolder rootFolder = Environment.SpecialFolder.MyDocuments)
+        public static void InvokeFolderBrowser(string? path, Environment.SpecialFolder rootFolder = Environment.SpecialFolder.MyDocuments)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
+  
             dialog.RootFolder = rootFolder;
+
+    
 
             if (dialog.ShowDialog() == DialogResult.OK)
                 path = dialog.SelectedPath;
-
-            return path;
         }
     }
 }

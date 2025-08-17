@@ -13,6 +13,7 @@
   <ItemGroup>
     <Compile Remove="AssemblyWizardForm.cs" />
     <Compile Remove="AssemblyWizardForm.Designer.cs" />
+    <Compile Remove="Services\Validator.cs" />
   </ItemGroup>
 
   <ItemGroup>

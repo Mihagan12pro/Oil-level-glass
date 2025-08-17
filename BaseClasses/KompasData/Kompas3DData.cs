@@ -1,17 +1,19 @@
-﻿using Oil_level_glass.Delegates;
+﻿using Oil_level_glass.BaseClasses.ModelsBase;
+using Oil_level_glass.Delegates;
 using Oil_level_glass.Services;
+using Oil_level_glass.Wizards.Models.CommonModels;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-namespace Oil_level_glass.BaseClasses
+namespace Oil_level_glass.BaseClasses.KompasData
 {
-    internal abstract class Kompas3DData : Kompas2DData
+    internal abstract class Kompas3DData : KompasData
     {
         protected double maxDensity;
         protected double minDensity;
 
 
         private Color _modelColor;
-        [Description("Цвет трехмерной модели")]
         public Color ModelColor
         {
             get
@@ -28,7 +30,6 @@ namespace Oil_level_glass.BaseClasses
 
 
         private string? _density;
-        [Description("Плотность")]
         public string? Density
         {
             get
@@ -39,14 +40,12 @@ namespace Oil_level_glass.BaseClasses
             {
                 _density = value;
 
-                ValidateDensity();
                 OnPropertyChanged();
             }
         }
 
 
         private string? _material;
-        [Description("Название материала")]
         public string? Material
         {
             get
@@ -57,7 +56,6 @@ namespace Oil_level_glass.BaseClasses
             {
                 _material = value;
 
-                ValidateMaterial();
                 OnPropertyChanged();
             }
         }
@@ -75,21 +73,12 @@ namespace Oil_level_glass.BaseClasses
         }
 
 
-        private void ValidateDensity()
+        public override void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            ErrorAdder adder = AddError;
-            ErrorClearer clearer = ClearErrors;
-
-            if (!Validator<Kompas3DData>.CheckStandardNumber(nameof(Density), Density, adder, clearer))
+            if (prop != nameof(ModelColor))
             {
-                Validator<Kompas3DData>.CheckDensityValue(nameof(Density), Density, minDensity, maxDensity, adder, clearer);
+                base.OnPropertyChanged(prop);
             }
-        }
-
-
-        private void ValidateMaterial()
-        {
-            Validator<Kompas3DData>.CheckRequiredField(nameof(Material), Material, new ErrorAdder(AddError), new ErrorClearer(ClearErrors));
         }
     }
 }
