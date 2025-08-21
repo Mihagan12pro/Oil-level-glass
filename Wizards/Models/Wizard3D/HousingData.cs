@@ -3,6 +3,7 @@ using Oil_level_glass.Utilities.Attributes.Numbers;
 using Oil_level_glass.Services;
 using System.ComponentModel.DataAnnotations;
 using Oil_level_glass.Properties;
+using Oil_level_glass.Utilities.Attributes.Comparers;
 
 namespace Oil_level_glass.Wizards.Models.Wizard3D
 {
@@ -28,7 +29,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
         private string? _housingDiameter;
 
-        [Number()]
+        [GreaterThan(nameof(CentralHole))]
         public string ?MainDiameter
         {
             get
@@ -46,7 +47,7 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
 
         private string? _centralHole;
 
-        [Number()]
+        [SmallerThan(nameof(MainDiameter))]
         public string? CentralHole
         {
             get
@@ -61,31 +62,6 @@ namespace Oil_level_glass.Wizards.Models.Wizard3D
             }
         }
 
-
-        protected override IEnumerable<ValidationResult> Validate(ValidationContext validationContext, List<ValidationResult> errors)
-        {
-            if (!errorsByPropertyName.ContainsKey(nameof(CentralHole)) && !errorsByPropertyName.ContainsKey(nameof(MainDiameter)))
-            {
-                if (DoubleConverter.Convert(CentralHole) >= DoubleConverter.Convert(MainDiameter))
-                {
-                    errors.Add(new ValidationResult(Resources.TooBigNumberStrError, new List<string> 
-                        {
-                            nameof(CentralHole) 
-                        }
-                    ));
-
-
-                    errors.Add(new ValidationResult(Resources.TooSmallNumberStrError, new List<string> 
-                        {
-                            nameof(MainDiameter) 
-                        }
-                    ));
-                }
-            }
-
-
-            return errors;
-        }
 
 
         public HousingData()

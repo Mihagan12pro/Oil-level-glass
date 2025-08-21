@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace Oil_level_glass.BaseClasses.ModelsBase
 {
-    internal abstract class BaseModel : BasePropertyChanger, INotifyDataErrorInfo, IValidatableObject
+    internal abstract class BaseModel : BasePropertyChanger, INotifyDataErrorInfo
     {
         protected readonly Dictionary<string, List<string>> errorsByPropertyName = new Dictionary<string, List<string>>();
         public Dictionary<string, List<string>> ErrorsByPropertyName => errorsByPropertyName;
@@ -75,17 +75,17 @@ namespace Oil_level_glass.BaseClasses.ModelsBase
         }
 
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            List<ValidationResult> errors = new List<ValidationResult>();
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    List<ValidationResult> errors = new List<ValidationResult>();
 
-            return Validate(validationContext, errors);
-        }
+        //    return Validate(validationContext, errors);
+        //}
 
 
-        protected virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext, List<ValidationResult> errors)
-        {
-            return errors;
-        }
+        //protected virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext, List<ValidationResult> errors)
+        //{
+        //    return errors;
+        //}
     }
 }
