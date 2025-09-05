@@ -1,10 +1,11 @@
-﻿using Oil_level_glass_Core.Data.ModelProperties;
+﻿using KompasAPI7;
+using Oil_level_glass_Core.Data.ModelProperties;
 
 namespace Oil_level_glass_Core.Creators
 {
-    public abstract class BaseCreator<P> where P : ModelProperties
+    public abstract record BaseCreator
     {
-        public P? Properties { get; set; }
+        public ModelProperties<IKompasDocument>? Properties { get; init; }
 
         protected void Save()
         {

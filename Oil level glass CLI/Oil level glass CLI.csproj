@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Oil level glass Core\Oil level glass Core.csproj" />
+  </ItemGroup>
+
 </Project>

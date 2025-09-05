@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass_Core.Data.ModelProperties.Properties3D
 {
-    public abstract record ModelAssemblyProperties : Model3DProperties
+    public abstract record ModelAssemblyProperties : Model3DProperties<IAssemblyDocument>
     {
-        public IAssemblyDocument? KompasDocument { get; set; }
-
         public ModelAssemblyProperties()
         {
             KompasFile = new AssemblyFile();
