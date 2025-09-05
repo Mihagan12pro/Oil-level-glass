@@ -3,13 +3,13 @@ using KompasAPI7;
 
 namespace Oil_level_glass_Core.Data.ModelProperties.Properties3D
 {
-    public abstract record Model3DProperties<D> : ModelProperties<IKompasDocument3D>
+    public abstract record Model3DProperties : ModelProperties
     {
         private IPart7? _part;
-        internal IPart7? Part 
+        internal protected IPart7? Part 
         {
             get => _part;
-            set
+            protected set
             {
                 _part = value;
 

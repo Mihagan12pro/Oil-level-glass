@@ -2,9 +2,10 @@
 using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
+
 namespace Oil_level_glass_Core.Services
 {
-    public static class DocumentManager
+    internal static class DocumentManager
     {
         private static IKompasDocument3D CreateDocument3D(bool isActive)
         {

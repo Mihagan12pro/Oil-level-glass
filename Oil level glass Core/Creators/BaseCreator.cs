@@ -5,11 +5,12 @@ namespace Oil_level_glass_Core.Creators
 {
     public abstract record BaseCreator
     {
-        public ModelProperties<IKompasDocument>? Properties { get; init; }
+        public ModelProperties? Properties { get; init; }
+
 
         protected void Save()
         {
-            Properties?.KompasDocument?.SaveAs(Properties?.KompasFile?.FullName);
+            Properties?.SaveDocument();
         }
 
 
