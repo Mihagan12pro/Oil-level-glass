@@ -10,15 +10,23 @@
   <ItemGroup>
     <Reference Include="KAPITypes">
       <HintPath>..\..\..\CSharp\Common\KAPITypes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Kompas6API5">
+      <HintPath>..\..\..\CSharp\Common\Kompas6API5.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Kompas6Constants">
       <HintPath>..\..\..\CSharp\Common\Kompas6Constants.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Kompas6Constants3D">
       <HintPath>..\..\..\CSharp\Common\Kompas6Constants3D.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="KompasAPI7">
       <HintPath>..\..\..\CSharp\Common\KompasAPI7.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
 
