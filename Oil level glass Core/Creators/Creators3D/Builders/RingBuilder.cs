@@ -1,6 +1,5 @@
 ﻿using KompasAPI7;
 using Oil_level_glass_Core.Data.Materials;
-using Oil_level_glass_Core.Services;
 
 namespace Oil_level_glass_Core.Creators.Creators3D.Builders
 {
@@ -12,25 +11,27 @@ namespace Oil_level_glass_Core.Creators.Creators3D.Builders
 
         public double RingHeight { get; set; }
 
-        private ISketch? _profileSketch;
-        private IExtrusion? _profileSketchExtrusion;
+        IVariable7 variable7;
+
+        private ISketch? _sketch1;
+        private IExtrusion? _sketch1Extrusion;
 
 
         private void AddSketch1()
         {
-            _profileSketch = Properties?.GetNewSketch();
+            _sketch1 = Properties?.GetNewSketch();
 
-            _profileSketch.Plane = Properties?.PlaneXOY;
+            _sketch1.Plane = Properties?.PlaneXOY;
 
-            _profileSketch.Update();
+            _sketch1.Update();
+
+            Properties.KompasDocument2D = _sketch1.BeginEdit();
         }
 
 
         public override void Create()
         {
-            //Properties.KompasDocument = DocumentManager.GetPartDocument();
             base.Create();
-
 
             AddSketch1();
         }

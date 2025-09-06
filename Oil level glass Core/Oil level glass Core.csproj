@@ -25,4 +25,9 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="KompasApiV7\Geometry\" />
+    <Folder Include="KompasApiV7\Operations\" />
+  </ItemGroup>
+
 </Project>

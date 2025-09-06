@@ -8,10 +8,10 @@ namespace Oil_level_glass_Core.Creators
         public ModelProperties? Properties { get; init; }
 
 
-        protected void Save()
-        {
-            Properties?.SaveDocument();
-        }
+        //protected void Save()
+        //{
+        //    Properties?.SaveDocument();
+        //}
 
 
         public abstract void Create();

@@ -51,12 +51,9 @@ namespace Oil_level_glass_Core.Data.ModelProperties.Properties3D
         internal IDrawingContainer DrawingContainer { get; private set; }
 
 
-        //internal IPartDocument? KompasDocument { get; set; }
-
-
         internal ISketch? GetNewSketch()
         {
-            return ModelContainer.Sketchs.Add();
+            return ModelContainer?.Sketchs.Add();
         }
 
         public override void SaveDocument()
