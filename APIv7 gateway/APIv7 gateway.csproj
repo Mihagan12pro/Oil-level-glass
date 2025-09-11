@@ -2,18 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Oil_level_glass_Core</RootNamespace>
+    <RootNamespace>APIv7_gateway</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="KAPITypes">
-      <HintPath>..\..\CSharp\Common\KAPITypes.dll</HintPath>
-    </Reference>
-    <Reference Include="Kompas6API5">
-      <HintPath>..\..\CSharp\Common\Kompas6API5.dll</HintPath>
-    </Reference>
+    <Folder Include="Gateways\Two-D\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Kompas6Constants">
       <HintPath>..\..\CSharp\Common\Kompas6Constants.dll</HintPath>
     </Reference>
@@ -23,10 +21,6 @@
     <Reference Include="KompasAPI7">
       <HintPath>..\..\CSharp\Common\KompasAPI7.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="KompasApiV7\Gateways\Two-D\" />
   </ItemGroup>
 
 </Project>

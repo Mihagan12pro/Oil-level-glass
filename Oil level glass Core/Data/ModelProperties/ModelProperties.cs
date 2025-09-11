@@ -6,8 +6,5 @@ namespace Oil_level_glass_Core.Data.ModelProperties
     public abstract record ModelProperties
     {
         public KompasFile? KompasFile { get; init; }
-
-        public abstract void SaveDocument();
-        //internal virtual IKompasDocument? KompasDocument { get; set; }
     }
 }

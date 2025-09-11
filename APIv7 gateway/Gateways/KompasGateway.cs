@@ -1,6 +1,6 @@
 ﻿using KompasAPI7;
 
-namespace Oil_level_glass_Core.KompasApiV7.Gateways
+namespace APIv7_gateway.Gateways
 {
     internal abstract class KompasGateway
     {

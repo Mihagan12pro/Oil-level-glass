@@ -7,9 +7,5 @@ namespace Oil_level_glass_Core.Creators.Creators3D.Builders
     {
         public new ModelPartProperties? Properties { get; init; }
 
-        public override void Create()
-        {
-            Properties.PartDocument = DocumentManager.GetPartDocument();
-        }
     }
 }

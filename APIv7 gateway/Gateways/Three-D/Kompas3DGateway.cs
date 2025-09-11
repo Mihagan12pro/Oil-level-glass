@@ -1,11 +1,6 @@
-﻿using Kompas6Constants;
-using Kompas6Constants3D;
-using KompasAPI7;
-using Oil_level_glass_Core.Data.Files;
-using Oil_level_glass_Core.KompasApiV7.Interfaces;
-using Oil_level_glass_Core.Services;
+﻿using KompasAPI7;
 
-namespace Oil_level_glass_Core.KompasApiV7.Gateways.Three_D
+namespace APIv7_gateway.Gateways.Three_D
 {
     internal abstract class Kompas3DGateway : KompasGateway
     {

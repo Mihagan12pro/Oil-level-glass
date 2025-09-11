@@ -5,19 +5,19 @@ class Program
 {
     static void Main()
     {
-        try
-        {
-            RingBuilder ringBuilder = new RingBuilder();
+        //try
+        //{
+        //    RingBuilder ringBuilder = new RingBuilder();
 
-            ringBuilder.Create();
-        }
-        catch (COMException)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
+        //    //ringBuilder.Create();
+        //}
+        //catch (COMException)
+        //{
+        //    Console.ForegroundColor = ConsoleColor.Red;
 
-            Console.WriteLine("Вы не запустили КОМПАС-3D!");
+        //    Console.WriteLine("Вы не запустили КОМПАС-3D!");
 
-            Console.ForegroundColor = ConsoleColor.White;
-        }
+        //    Console.ForegroundColor = ConsoleColor.White;
+        //}
     }
 }
