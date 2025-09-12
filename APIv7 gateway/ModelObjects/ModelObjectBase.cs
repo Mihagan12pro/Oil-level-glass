@@ -1,4 +1,5 @@
-﻿using KompasAPI7;
+﻿using APIv7_gateway.Interfaces;
+using KompasAPI7;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.ModelObjects
 {
-    internal abstract record ModelObjectBase
+    public abstract record ModelObjectBase : IApi7Object
     {
-        protected IModelObject modelObject { get; init; }
+        protected IModelObject? modelObject { get; init; }
 
-        public IModelObject ModelObject => modelObject;
+        public IModelObject? ModelObject => modelObject;
 
-        public ModelObjectBase(IModelContainer modelContainer)
+
+        public void Update()
         {
-         
+            modelObject?.Update();
         }
     }
 }

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.Utils
 {
-    internal sealed class Depth : BaseUtil<double>
+    public sealed class Depth : BaseUtil<double>
     {
-
     }
 }

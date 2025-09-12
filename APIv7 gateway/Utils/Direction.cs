@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.Utils
 {
-    internal sealed class Direction : BaseUtil<ksDirectionTypeEnum>
+    public sealed class Direction : BaseUtil<ksDirectionTypeEnum>
     {
-      
+
     }
 }

@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Gateways\Two-D\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Kompas6Constants">
       <HintPath>..\..\CSharp\Common\Kompas6Constants.dll</HintPath>
     </Reference>

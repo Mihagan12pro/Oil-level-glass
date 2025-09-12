@@ -5,19 +5,10 @@ class Program
 {
     static void Main()
     {
-        //try
-        //{
-        //    RingBuilder ringBuilder = new RingBuilder();
+        RingBuilder builder = new RingBuilder();
+        builder.ExternalDiameter = 200;
+        builder.InternalDiameter = 180;
 
-        //    //ringBuilder.Create();
-        //}
-        //catch (COMException)
-        //{
-        //    Console.ForegroundColor = ConsoleColor.Red;
-
-        //    Console.WriteLine("Вы не запустили КОМПАС-3D!");
-
-        //    Console.ForegroundColor = ConsoleColor.White;
-        //}
+        builder.Create();
     }
 }

@@ -1,15 +1,20 @@
-﻿using Kompas6Constants;
+﻿using APIv7_gateway.Interfaces;
+using Kompas6Constants;
 using KompasAPI7;
-using APIv7_gateway.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace APIv7_gateway.Gateways.Three_D
 {
-    internal class KompasAssemblyGateway : Kompas3DGateway, IFileGateway
+    public class KompasAssemblyGateway : Kompas3DGateway, ISerializableGateway
     {
         private IMateConstraints3D? _mateConstraints;
-        public override IPart7? Part 
+        public override IPart7? Part
         {
-            get => base.Part; 
+            get => base.Part;
             protected set
             {
                 base.Part = value;

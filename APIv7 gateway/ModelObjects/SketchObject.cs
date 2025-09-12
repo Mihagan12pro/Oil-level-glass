@@ -1,32 +1,50 @@
 ﻿using KompasAPI7;
-using APIv7_gateway.ModelObjects.Standart.Planes;
-using APIv7_gateway.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APIv7_gateway.ModelObjects
 {
-    internal record SketchObject : ModelObjectBase
+    public record SketchObject : ModelObjectBase
     {
-        public required PlaneObjectBase Plane { get; init; }
-
-
-        public void AddGeometrySketch()
+        private PlaneObject? _plane;
+        public required PlaneObject? Plane
         {
-            IKompasDocument2D document2D = ((ISketch)modelObject).BeginEdit();
+            get => _plane;
 
-            ((ISketch)modelObject).EndEdit();
+            set
+            {
+                _plane = value;
+
+                ISketch ?sketch = (modelObject as ISketch);
+                if (sketch == null)
+                {
+                    throw new NullReferenceException();
+                }
+
+                sketch.Plane = value?.ModelObject;
+                sketch.Update();
+            }
         }
 
 
-        public SketchObject(IModelContainer modelContainer) : base(modelContainer)
+        public IKompasDocument2D BeginEdit()
         {
-            modelObject = modelContainer.Sketchs.Add();
+            ISketch ?sketch = (modelObject as ISketch);
+
+            if (sketch == null)
+                throw new NullReferenceException();
+
+            return sketch.BeginEdit();
+        }
+
+
+        public void EndEdit()
+        {
+            (modelObject as ISketch)?.EndEdit();
+        }
+
+
+        internal SketchObject(ISketch sketch)
+        {
+            modelObject = sketch as ISketch;
         }
     }
 }
-
-

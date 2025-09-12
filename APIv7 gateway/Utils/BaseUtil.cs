@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.Utils
 {
-    internal abstract class BaseUtil<T>
+    public abstract class BaseUtil<T>
     {
         public required bool IsNormal;
 
