@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APIv7_gateway.Utils
+namespace Native_methods
 {
-    public sealed class Depth : BaseUtil<double>
+    internal class COMConnector
     {
     }
 }

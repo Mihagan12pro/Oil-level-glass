@@ -1,13 +1,13 @@
-﻿using Oil_level_glass_Core.Creators.Creators3D.Builders;
-using System.Runtime.InteropServices;
+﻿using Oil_level_glass_Core.Creators.Model3D;
 
 class Program
 {
     static void Main()
     {
-        RingBuilder builder = new RingBuilder();
+        RingCreator builder = new RingCreator();
         builder.ExternalDiameter = 200;
         builder.InternalDiameter = 180;
+        builder.Height = 20;
 
         builder.Create();
     }

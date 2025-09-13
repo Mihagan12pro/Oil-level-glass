@@ -10,35 +10,20 @@ namespace Oil_level_glass_Core.Data.Files
 
         public string? FolderPath { get; set; }
 
-        public Naming Naming;
+        public string? Marking { get; set; }
         
-
+        public string? Name { get; set; }
 
 
         public string FullName
         {
             get
             {
-                if (FolderPath == null || Naming.Marking == null || Naming.Name == null)
+                if (FolderPath == null || Marking == null || Name == null)
                     throw new NullReferenceException();
 
-                return Path.Combine(FolderPath, $"{Naming.Marking}_{Naming.Name}{Extension}");
+                return Path.Combine(FolderPath, $"{Marking}_{Name}{Extension}");
             }
-        }
-
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (!Directory.Exists(FolderPath))
-            {
-                yield return new ValidationResult(StringMaster.FolderNotExistsError);
-            }
-        }
-
-
-        public KompasFile()
-        {
-            Naming = new Naming();
         }
     }
 }

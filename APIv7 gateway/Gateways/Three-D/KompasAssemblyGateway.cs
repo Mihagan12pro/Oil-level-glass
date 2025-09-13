@@ -24,12 +24,6 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public void Close(DocumentCloseOptions howSave = DocumentCloseOptions.kdSaveChanges)
-        {
-            kompasDocument?.Close(howSave);
-        }
-
-
         public void Save(string file)
         {
             kompasDocument?.SaveAs(file);
@@ -41,6 +35,13 @@ namespace APIv7_gateway.Gateways.Three_D
             return Part?.Parts.AddFromFile(file, true);
         }
 
+        public void Close(DocumentCloseOptions howSave = DocumentCloseOptions.kdSaveChanges)
+        {
+            if (kompasDocument == null)
+                throw new NullReferenceException();
+
+            kompasDocument.Close(howSave);
+        }
 
         public KompasAssemblyGateway(IAssemblyDocument document3D)
         {

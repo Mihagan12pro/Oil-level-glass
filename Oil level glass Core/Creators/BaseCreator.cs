@@ -6,5 +6,7 @@ namespace Oil_level_glass_Core.Creators
     public abstract record BaseCreator
     {
         public ModelProperties? Properties { get; init; }
+
+        public abstract void Create();
     }
 }

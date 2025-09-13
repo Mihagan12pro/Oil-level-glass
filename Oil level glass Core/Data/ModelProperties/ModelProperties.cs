@@ -5,6 +5,6 @@ namespace Oil_level_glass_Core.Data.ModelProperties
 {
     public abstract record ModelProperties
     {
-        public KompasFile? KompasFile { get; init; }
+        public KompasFile KompasFile { get; init; }
     }
 }

@@ -1,4 +1,7 @@
-﻿using APIv7_gateway.Interfaces;
+﻿using APIv7_gateway.Extrusion_params;
+using APIv7_gateway.Extrusion_params.Direction;
+using APIv7_gateway.Extrusion_params.Types;
+using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
 using Kompas6Constants;
 using Kompas6Constants3D;
@@ -39,20 +42,21 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-
-        public void Close(DocumentCloseOptions howSave = DocumentCloseOptions.kdSaveChanges)
-        {
-            kompasDocument?.Close(howSave);
-        }
-
-
         public void Save(string? file)
         {
             kompasDocument?.SaveAs(file);
         }
 
+        public void Close(DocumentCloseOptions howSave = DocumentCloseOptions.kdSaveChanges)
+        {
+            if (kompasDocument == null)
+                throw new NullReferenceException();
 
-        public SketchObject ?CreateSketch(PlaneObject? plane)
+            kompasDocument.Close(howSave);
+        }
+
+
+        public SketchObject CreateSketch(PlaneObject? plane)
         {
             if (_modelContainer == null)
                 throw new NullReferenceException();
@@ -62,17 +66,29 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
+        public ExtrusionObject CreateExtrusion(SketchObject ?sketch, DepthParameter depth, DirectionParameter direction, ExtrusionTypeParameter extrusionType)
+        {
+            if (_modelContainer == null)
+                throw new NullReferenceException();
+
+            return new ExtrusionObject(_modelContainer.Extrusions.Add(ksObj3dTypeEnum.o3d_bossExtrusion)) 
+            {
+                Sketch = sketch, 
+
+                Depth = depth,
+
+                Direction = direction,
+
+                ExtrusionType = extrusionType
+            };
+        }
+
+
         public KompasPartGateway(IPartDocument document3D)
         {
             kompasDocument = document3D;
 
             Part = document3D.TopPart;
-        }
-
-
-        public KompasPartGateway(IPart7 externalPart)
-        {
-            Part = externalPart;
         }
     }
 }
