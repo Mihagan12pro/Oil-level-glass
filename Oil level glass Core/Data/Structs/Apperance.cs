@@ -4,15 +4,17 @@
     {
         public RGB RGB = new RGB();
 
-        public double Ambient { get; set; } = 1;
+        public double Ambient { get; set; } = 100;
 
-        public double Diffuse { get; set; } = 1;
+        public double Diffuse { get; set; } = 100;
 
-        public double Shininess { get; set; } = 1;
+        public double Shininess { get; set; } = 100;
 
-        public double Transparency { get; set; } = 1;
+        public double Transparency { get; set; } = 100;
 
-        public double Emission { get; set; } = 0.5;
+        public double Specularity { get; set; } = 100;
+
+        public double Emission { get; set; } = 50;
 
         public Appearance()
         {

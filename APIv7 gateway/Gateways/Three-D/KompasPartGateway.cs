@@ -1,5 +1,4 @@
 ﻿using APIv7_gateway.Extrusion_params;
-using APIv7_gateway.Extrusion_params.Direction;
 using APIv7_gateway.Extrusion_params.Types;
 using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
@@ -41,11 +40,46 @@ namespace APIv7_gateway.Gateways.Three_D
             }
         }
 
+        public void SetName(string naming, string marking)
+        {
+            if (Part == null)
+                throw new NullReferenceException();
+
+            Part.Name = naming;
+
+            Part.Marking = marking;
+
+            Part.Update();
+        }
+
 
         public void Save(string? file)
         {
             kompasDocument?.SaveAs(file);
         }
+
+
+        public void SetMaterial(string tittle, double density, int hatchStyle)
+        {
+            Part?.SetMaterial(tittle, density);
+
+            IHatchParam ?hatchParam = Part?.HatchParam;
+            hatchParam.Style = hatchStyle;
+
+            Part?.Update();
+        }
+
+
+        public void SetAppearance(int color, double ambient, double diffuse, double specularity, double shininess, double transparency, double emission)
+        {
+            IColorParam7 ?colorParam = Part as IColorParam7;
+
+
+            colorParam?.SetAdvancedColor(color, ambient / 100, diffuse / 100, specularity / 100, shininess / 100, transparency / 100, emission / 100);
+
+            Part?.Update();
+        }
+
 
         public void Close(DocumentCloseOptions howSave = DocumentCloseOptions.kdSaveChanges)
         {

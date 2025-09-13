@@ -8,13 +8,15 @@ namespace Oil_level_glass_Core.Data.ModelProperties.Properties3D
     {
         public Material Material { get; set; }
 
-        public Appearance Appearance { get; set; }
+        public Appearance Appearance { get; private set; }
 
 
        
         public ModelPartProperties()
         {
             KompasFile = new PartFile();
+
+            Appearance = new Appearance();
         }
     }
 }

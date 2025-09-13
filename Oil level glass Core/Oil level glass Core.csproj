@@ -8,12 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="KAPITypes">
-      <HintPath>..\..\CSharp\Common\KAPITypes.dll</HintPath>
-    </Reference>
-    <Reference Include="Kompas6API5">
-      <HintPath>..\..\CSharp\Common\Kompas6API5.dll</HintPath>
-    </Reference>
     <Reference Include="Kompas6Constants">
       <HintPath>..\..\CSharp\Common\Kompas6Constants.dll</HintPath>
     </Reference>

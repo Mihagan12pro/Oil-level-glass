@@ -10,20 +10,24 @@ namespace Oil_level_glass_Core.Data.Files
 
         public string? FolderPath { get; set; }
 
-        public string? Marking { get; set; }
-        
-        public string? Name { get; set; }
-
+        public Name Name;
 
         public string FullName
         {
             get
             {
-                if (FolderPath == null || Marking == null || Name == null)
+                if (FolderPath == null || Name.Naming  == null || Name.Marking == null)
                     throw new NullReferenceException();
 
-                return Path.Combine(FolderPath, $"{Marking}_{Name}{Extension}");
+
+                return Path.Combine(FolderPath, $"{Name.Marking}_{Name.Naming}{Extension}");
             }
+        }
+
+
+        public KompasFile()
+        {
+            Name = new Name();
         }
     }
 }
