@@ -14,7 +14,7 @@ namespace Oil_level_glass_Core.Creators.Model3D
 {
     public record RingCreator : BasePartCreator
     {
-        private SketchObject _sketch1;
+        private SketchObject? _sketch1;
 
         public double InternalDiameter { get; set; }
         public double ExternalDiameter { get; set; }
@@ -23,9 +23,9 @@ namespace Oil_level_glass_Core.Creators.Model3D
 
         public override void Create()
         {
-            KompasPartGateway = new KompasPartGateway((IPartDocument)application.Documents.Add(Kompas6Constants.DocumentTypeEnum.ksDocumentPart));
+            KompasPartGateway = new KompasPartGateway((IPartDocument)Application.Documents.Add(Kompas6Constants.DocumentTypeEnum.ksDocumentPart));
 
-            KompasPartGateway.SetName(Properties.KompasFile.Name.Naming, Properties.KompasFile.Name.Marking);
+            SetNamingParameters();
 
             _sketch1 = KompasPartGateway.CreateSketch(KompasPartGateway.PlaneXOY);
             _sketch1?.Update();
@@ -43,11 +43,9 @@ namespace Oil_level_glass_Core.Creators.Model3D
             ExtrusionObject extrusion1 = KompasPartGateway.CreateExtrusion(_sketch1, new DepthParameter() { Depth = Height }, new DirectionMiddle(), new ExtrusionBlind());
             extrusion1.Update();
 
-            KompasPartGateway.SetMaterial((Properties as ModelPartProperties)?.Material.Tittle, (Properties as ModelPartProperties).Material.Density, (Properties as ModelPartProperties).Material.HatchStyle);
+            SetMaterialParameters();
 
-            KompasPartGateway.SetAppearance((Properties as ModelPartProperties).Appearance.RGB.GetColor(), (Properties as ModelPartProperties).Appearance.Ambient, (Properties as ModelPartProperties).Appearance.Diffuse, 
-                (Properties as ModelPartProperties).Appearance.Specularity, 
-                (Properties as ModelPartProperties).Appearance.Shininess, (Properties as ModelPartProperties).Appearance.Transparency, (Properties as ModelPartProperties).Appearance.Emission);
+            SetColorParameters();
 
             KompasPartGateway.Save(Properties?.KompasFile.FullName);
         }
@@ -55,8 +53,8 @@ namespace Oil_level_glass_Core.Creators.Model3D
 
         public RingCreator()
         {
-            (Properties as ModelPartProperties).Material = new Rubber() {Density = 3, Tittle = "Резина" };
-
+            Properties = new ModelPartProperties() { Material = new Rubber() };
+           
             Properties.KompasFile.Name.Naming = "Прокладка";
             Properties.KompasFile.Name.Marking = "МПСТ.000.000.001";
 

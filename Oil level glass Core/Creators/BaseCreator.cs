@@ -3,9 +3,9 @@ using Oil_level_glass_Core.Data.ModelProperties;
 
 namespace Oil_level_glass_Core.Creators
 {
-    public abstract record BaseCreator
+    public abstract record BaseCreator<P> where P : ModelProperties
     {
-        public ModelProperties? Properties { get; init; }
+        public P? Properties { get; init; }
 
         public abstract void Create();
     }

@@ -40,7 +40,7 @@ namespace APIv7_gateway.Gateways.Three_D
             }
         }
 
-        public void SetName(string naming, string marking)
+        public void SetName(string? naming, string ?marking)
         {
             if (Part == null)
                 throw new NullReferenceException();
@@ -59,25 +59,31 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public void SetMaterial(string tittle, double density, int hatchStyle)
+        public void SetMaterial(string? tittle, double density, int hatchStyle)
         {
-            Part?.SetMaterial(tittle, density);
+            if (Part == null)
+                throw new NullReferenceException();
 
-            IHatchParam ?hatchParam = Part?.HatchParam;
+            Part.SetMaterial(tittle, density);
+
+            IHatchParam hatchParam = Part.HatchParam;
             hatchParam.Style = hatchStyle;
 
-            Part?.Update();
+            Part.Update();
         }
 
 
         public void SetAppearance(int color, double ambient, double diffuse, double specularity, double shininess, double transparency, double emission)
         {
-            IColorParam7 ?colorParam = Part as IColorParam7;
+            if (Part == null)
+                throw new NullReferenceException();
+
+            IColorParam7 colorParam = (IColorParam7)Part;
 
 
-            colorParam?.SetAdvancedColor(color, ambient / 100, diffuse / 100, specularity / 100, shininess / 100, transparency / 100, emission / 100);
+            colorParam.SetAdvancedColor(color, ambient / 100, diffuse / 100, specularity / 100, shininess / 100, transparency / 100, emission / 100);
 
-            Part?.Update();
+            Part.Update();
         }
 
 

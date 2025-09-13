@@ -6,7 +6,7 @@ namespace Oil_level_glass_Core.Data.ModelProperties.Properties3D
 {
     public record ModelPartProperties : ModelProperties
     {
-        public Material Material { get; set; }
+        public required Material Material { get; set; }
 
         public Appearance Appearance { get; private set; }
 
