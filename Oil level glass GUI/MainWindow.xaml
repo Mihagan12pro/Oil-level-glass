@@ -14,6 +14,6 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <Slider Template="{StaticResource SliderHorizontal}" Height="20" Padding="0"></Slider>
+        <Slider Template="{StaticResource SliderHorizontal}" Maximum="100" Height="20" Width="200" Padding="0" Margin="0"></Slider>
     </Grid>
 </Window>
