@@ -47,7 +47,9 @@ namespace Oil_level_glass_Core.Creators.Model3D
 
             SetColorParameters();
 
-            KompasPartGateway.Save(Properties?.KompasFile.FullName);
+            SetNamingParameters();
+
+            SaveModel();
         }
 
 

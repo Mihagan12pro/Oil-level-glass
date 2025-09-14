@@ -8,5 +8,7 @@ namespace Oil_level_glass_Core.Creators
         public P? Properties { get; init; }
 
         public abstract void Create();
+
+        public abstract void SaveModel();
     }
 }

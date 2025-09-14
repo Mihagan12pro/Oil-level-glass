@@ -22,9 +22,19 @@ namespace Oil_level_glass_Core.Creators.Model3D.Base
         public IApplication Application { get; init; }
 
 
+        public override void SaveModel()
+        {
+            if (KompasPartGateway == null || Properties == null || Properties.KompasFile == null)
+                throw new NullReferenceException();
+
+            KompasPartGateway.Save(Properties?.KompasFile.FullName);
+        }
+
+
+
         protected void SetNamingParameters()
         {
-            if (KompasPartGateway == null || Properties == null)
+            if (KompasPartGateway == null || Properties == null || Properties.KompasFile == null)
                 throw new NullReferenceException();
 
             KompasPartGateway.SetName(Properties.KompasFile.Name.Naming, Properties?.KompasFile.Name.Marking);
@@ -50,6 +60,9 @@ namespace Oil_level_glass_Core.Creators.Model3D.Base
 
             KompasPartGateway.SetMaterial(Properties.Material.Tittle, Properties.Material.Density, Properties.Material.HatchStyle);
         }
+
+
+
 
         public BasePartCreator()
         {
