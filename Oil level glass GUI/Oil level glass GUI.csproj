@@ -5,8 +5,12 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <RootNamespace>Oil_level_glass_GUI</RootNamespace>
     <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Styles\ResourceDictionaries\" />
+  </ItemGroup>
 
 </Project>
