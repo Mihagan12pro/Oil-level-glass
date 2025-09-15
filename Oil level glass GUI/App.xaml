@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Oil_level_glass_GUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-       
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Templates/KompasSlider.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Styles/ResourceDictionaries/TextBoxBasicStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Styles/Templates/Windows/MessageWindow.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -11,24 +11,16 @@ namespace APIv7_gateway.DrawingObjects
 {
     public abstract record DrawingObjectBase :  IApi7Object
     {
-        protected IDrawingObject drawingObject { get; init; }
+        protected IDrawingObject? drawingObject { get; init; }
 
 
-        public IDrawingObject DrawingObject => drawingObject;
+        public IDrawingObject ?DrawingObject => drawingObject;
 
-        public required virtual ksCurveStyleEnum Style { get; set; }
+        public virtual ksCurveStyleEnum Style { get; set; } = ksCurveStyleEnum.ksCSNormal;
 
         public void Update()
         {
-            drawingObject.Update();
-        }
-
-
-        internal DrawingObjectBase(IDrawingObject drawingObject)
-        {
-            this.drawingObject = drawingObject;
-
-            Style = ksCurveStyleEnum.ksCSNormal;
+            drawingObject?.Update();
         }
     }
 }

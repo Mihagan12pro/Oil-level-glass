@@ -9,11 +9,21 @@ namespace APIv7_gateway.DrawingObjects
         {
             get
             {
-                return ((ICircle)drawingObject).Radius * 2;
+                ICircle? circle = drawingObject as ICircle;
+
+                if (circle == null)
+                    throw new InvalidDataException();
+
+                return circle.Radius * 2;
             }
             set
             {
-                ((ICircle)drawingObject).Radius = value * 0.5;
+                ICircle? circle = drawingObject as ICircle;
+
+                if (circle == null)
+                    throw new InvalidDataException();
+
+                circle.Radius = value * 0.5;
             }
         }
 
@@ -22,11 +32,21 @@ namespace APIv7_gateway.DrawingObjects
         {
             get
             {
-                return ((ICircle)drawingObject).Xc;
+                ICircle? circle = drawingObject as ICircle;
+
+                if (circle == null)
+                    throw new InvalidDataException();
+
+                return circle.Xc;
             }
             set
             {
-                ((ICircle)drawingObject).Xc = value;
+                ICircle? circle = drawingObject as ICircle;
+
+                if (circle == null)
+                    throw new InvalidDataException();
+
+                circle.Xc = value;
             }
         }
 
@@ -35,27 +55,43 @@ namespace APIv7_gateway.DrawingObjects
         {
             get
             {
-                return ((ICircle)drawingObject).Yc;
+                ICircle? circle = drawingObject as ICircle;
+
+                if (circle == null)
+                    throw new InvalidDataException();
+
+                return circle.Yc;
             }
             set
             {
-                ((ICircle)drawingObject).Yc = value;
+                ICircle? circle = drawingObject as ICircle;
+
+                if (circle == null)
+                    throw new InvalidDataException();
+
+                circle.Yc = value;
             }
         }
 
-        public required override ksCurveStyleEnum Style
+        public override ksCurveStyleEnum Style
         {
             get => base.Style;
             set
             {
+                ICircle ?circle = drawingObject as ICircle;
+
+                if (circle == null)
+                    throw new InvalidDataException();
+
+
                 base.Style = value;
 
-                ((ICircle)drawingObject).Style = (int)base.Style;
+                circle.Style = (int)base.Style;
             }
         }
 
 
-        public CircleObject(ICircle drawingObject) : base(drawingObject)
+        internal CircleObject(ICircle drawingObject) 
         {
             this.drawingObject = drawingObject;
         }

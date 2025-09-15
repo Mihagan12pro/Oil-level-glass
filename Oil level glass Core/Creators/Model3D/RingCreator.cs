@@ -56,11 +56,6 @@ namespace Oil_level_glass_Core.Creators.Model3D
         public RingCreator()
         {
             Properties = new ModelPartProperties() { Material = new Rubber() };
-           
-            Properties.KompasFile.Name.Naming = "Прокладка";
-            Properties.KompasFile.Name.Marking = "МПСТ.000.000.001";
-
-            Properties.KompasFile.FolderPath = "C:\\Users\\kargi";
         }
     }
 }

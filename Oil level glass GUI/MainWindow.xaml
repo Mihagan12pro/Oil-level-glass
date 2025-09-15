@@ -6,14 +6,9 @@
         xmlns:local="clr-namespace:Oil_level_glass_GUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/Templates/KompasSlider.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid>
-        <Slider Template="{StaticResource SliderHorizontal}" Maximum="100" Height="20" Width="200" Padding="0" Margin="0"></Slider>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="212,92,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Slider Template="{StaticResource SliderHorizontal}" HorizontalAlignment="Left" Margin="293,217,0,0" VerticalAlignment="Top" Width="282" Height="20"/>
+
     </Grid>
 </Window>
