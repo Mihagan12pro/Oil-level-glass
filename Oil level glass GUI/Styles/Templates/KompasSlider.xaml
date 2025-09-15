@@ -104,9 +104,10 @@
     
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Margin="0,0,-35,0"
+                    Margin="0,1,-35,0"
                         Width="25"
-                    Panel.ZIndex="1">
+                    
+                    Panel.ZIndex="2">
                     <TextBox BorderThickness="0"  Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource TextBoxBasic}"  Text="{Binding Value, 
                   RelativeSource={RelativeSource TemplatedParent},
                   StringFormat={}{0:N0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Black" FontSize="10" ></TextBox>
