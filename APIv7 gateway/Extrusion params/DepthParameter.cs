@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.Extrusion_params
 {
-    public record DepthParameter : IExtrusionParameter
+    public class DepthParameter : IExtrusionParameter
     {
         public bool IsNormal { get; set; } = true;
 

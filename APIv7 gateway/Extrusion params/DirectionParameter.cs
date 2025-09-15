@@ -3,9 +3,9 @@ using KompasAPI7;
 
 namespace APIv7_gateway.Extrusion_params
 {
-    public abstract record DirectionParameter : IExtrusionParameter
+    public class DirectionParameter : IExtrusionParameter
     {
-        public ksDirectionTypeEnum DirectionType { get; init; }
+        public readonly ksDirectionTypeEnum DirectionType;
 
         public bool IsNormal { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -17,6 +17,12 @@ namespace APIv7_gateway.Extrusion_params
             IExtrusion? extrusion = (IExtrusion)modelObject;
 
             extrusion.Direction = DirectionType;
+        }
+
+
+        public DirectionParameter(ksDirectionTypeEnum direction = ksDirectionTypeEnum.dtBoth)
+        {
+            DirectionType = direction;
         }
     }
 }

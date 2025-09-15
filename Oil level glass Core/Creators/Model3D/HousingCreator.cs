@@ -1,6 +1,5 @@
 ﻿using APIv7_gateway.DrawingObjects;
 using APIv7_gateway.Extrusion_params;
-using APIv7_gateway.Extrusion_params.Direction;
 using APIv7_gateway.Extrusion_params.Types;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.Gateways.Two_D;
@@ -47,7 +46,9 @@ namespace Oil_level_glass_Core.Creators.Model3D
 
             _sketch1?.EndEdit();
 
-            ExtrusionObject extrusion1 = KompasPartGateway.CreateExtrusion(_sketch1, new DepthParameter() { Depth = BlankHeight }, new DirectionMiddle(), new ExtrusionBlind());
+            DirectionParameter directionReverse = new DirectionParameter(Kompas6Constants3D.ksDirectionTypeEnum.dtBoth);
+
+            ExtrusionObject extrusion1 = KompasPartGateway.CreateExtrusion(_sketch1, new DepthParameter() { Depth = -BlankHeight }, directionReverse, new ExtrusionBlind());
             extrusion1.Update();
 
             //SetMaterialParameters();
