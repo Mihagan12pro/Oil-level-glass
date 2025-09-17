@@ -18,6 +18,7 @@ namespace APIv7_gateway.DrawingObjects
                 if (point == null)
                     throw new InvalidDataException();
 
+
                 return point.X;
             }
             set

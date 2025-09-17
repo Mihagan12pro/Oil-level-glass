@@ -6,7 +6,7 @@ namespace APIv7_gateway.ModelObjects
     {
         internal PlaneObject(IModelObject plane)
         {
-            if (!(plane is IPlane3D))
+            if (!(plane is IPlane3D || plane is IFace))
                 throw new InvalidDataException();
 
 

@@ -5,6 +5,7 @@ using APIv7_gateway.ModelObjects;
 using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
+using Utils;
 
 namespace APIv7_gateway.Gateways.Three_D
 {
@@ -39,6 +40,56 @@ namespace APIv7_gateway.Gateways.Three_D
                 PlaneYOZ = new PlaneObject(base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeYOZ]);
             }
         }
+
+
+        internal List<FaceObject> Faces
+        {
+            get
+            {
+                if (Part == null)
+                    throw new NullReferenceException();
+
+                List<FaceObject> faces = new List<FaceObject>();
+
+                foreach(object obj in ArrayMaster.ObjectToArray(Part.DefaultObject[ksObj3dTypeEnum.o3d_face]))
+                {
+                    IFace? face = obj as IFace;
+
+                    if (face == null)
+                        throw new NullReferenceException();
+
+                    faces.Add(new FaceObject(face));
+                }
+
+                return faces;
+            }
+        }
+
+
+        public IFace GetPlanarFace(double x, double y, double z)
+        {
+            foreach(IFace face in Faces)
+            {
+                IEdge[] ?faceEdges = ArrayMaster.ObjectToArray(face.LimitingEdges) as IEdge[];
+
+                if (faceEdges == null)
+                    throw new InvalidDataException();
+
+                foreach(IEdge edge in faceEdges)
+                {
+                    edge.GetPoint(true, out double x1, out double y1, out double z1);
+
+                    if (x1 == x && y1 == y && z1 == z)
+                        return face;
+                }
+            }
+
+            throw new NullReferenceException();
+        }
+
+
+
+
 
         public void SetName(string? naming, string ?marking)
         {
@@ -104,6 +155,7 @@ namespace APIv7_gateway.Gateways.Three_D
 
             return new SketchObject(_modelContainer.Sketchs.Add()) { Plane = plane};
         }
+
 
 
         public ExtrusionObject CreateExtrusion(SketchObject ?sketch, DepthParameter depth, DirectionParameter direction, ExtrusionTypeParameter extrusionType)

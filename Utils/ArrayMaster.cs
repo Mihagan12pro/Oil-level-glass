@@ -4,10 +4,10 @@
     {
         public static Array ObjectToArray(object obj)
         {
-            if (!(obj is Array))
-                throw new InvalidDataException();
+            if (obj is Array)
+                return (Array)obj;
 
-            return (Array)obj;
+            return new []{ obj };
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Oil_level_glass_Core.Creators.Model3D
 
             _sketch1?.EndEdit();
 
-            ExtrusionObject extrusion1 = KompasPartGateway.CreateExtrusion(_sketch1, new DepthParameter() { Depth = Height }, new DirectionParameter(), new ExtrusionBlind());
+            ExtrusionObject extrusion1 = KompasPartGateway.CreateExtrusion(_sketch1, new DepthParameter() { Depth = Height }, new DirectionParameter(Kompas6Constants3D.ksDirectionTypeEnum.dtNormal), new ExtrusionBlind());
             extrusion1.Update();
 
             SetMaterialParameters();
