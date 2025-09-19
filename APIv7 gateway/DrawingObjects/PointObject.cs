@@ -1,34 +1,18 @@
 ﻿using KompasAPI7;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APIv7_gateway.DrawingObjects
 {
-    public record PointObject : DrawingObjectBase
+    public class PointObject : DrawingObjectBase
     {
         public required double X
         {
             get
             {
-                IPoint ?point = drawingObject as IPoint;
-
-                if (point == null)
-                    throw new InvalidDataException();
-
-
-                return point.X;
+                return _point.X;
             }
             set
             {
-                IPoint? point = drawingObject as IPoint;
-
-                if (point == null)
-                    throw new InvalidDataException();
-
-                point.X = value;
+                _point.X = value;
             }
         }
 
@@ -37,28 +21,22 @@ namespace APIv7_gateway.DrawingObjects
         {
             get
             {
-                IPoint? point = drawingObject as IPoint;
-
-                if (point == null)
-                    throw new InvalidDataException();
-
-                return point.Y;
+                return _point.Y;
             }
             set
             {
-                IPoint? point = drawingObject as IPoint;
-
-                if (point == null)
-                    throw new InvalidDataException();
-
-                point.Y = value;
+                _point.Y = value;
             }
         }
 
 
+        private readonly IPoint _point;
+
+        public override IDrawingObject? DrawingObject => _point;
+
         internal PointObject(IPoint point)
         {
-            drawingObject = point;
+            _point = point;
         }
     }
 }

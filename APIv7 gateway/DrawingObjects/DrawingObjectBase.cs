@@ -9,18 +9,15 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.DrawingObjects
 {
-    public abstract record DrawingObjectBase :  IApi7Object
+    public abstract class DrawingObjectBase :  IApi7Object
     {
-        protected IDrawingObject? drawingObject { get; init; }
-
-
-        public IDrawingObject ?DrawingObject => drawingObject;
+        public abstract IDrawingObject? DrawingObject { get; }
 
         public virtual ksCurveStyleEnum Style { get; set; } = ksCurveStyleEnum.ksCSNormal;
 
         public void Update()
         {
-            drawingObject?.Update();
+            DrawingObject?.Update();
         }
     }
 }

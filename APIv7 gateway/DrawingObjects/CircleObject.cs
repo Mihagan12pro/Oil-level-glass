@@ -3,27 +3,17 @@ using KompasAPI7;
 
 namespace APIv7_gateway.DrawingObjects
 {
-    public record CircleObject : DrawingObjectBase
+    public class CircleObject : DrawingObjectBase
     {
         public required double Diameter
         {
             get
             {
-                ICircle? circle = drawingObject as ICircle;
-
-                if (circle == null)
-                    throw new InvalidDataException();
-
-                return circle.Radius * 2;
+                return _circle.Radius * 2;
             }
             set
             {
-                ICircle? circle = drawingObject as ICircle;
-
-                if (circle == null)
-                    throw new InvalidDataException();
-
-                circle.Radius = value * 0.5;
+                _circle.Radius = value * 0.5;
             }
         }
 
@@ -32,21 +22,11 @@ namespace APIv7_gateway.DrawingObjects
         {
             get
             {
-                ICircle? circle = drawingObject as ICircle;
-
-                if (circle == null)
-                    throw new InvalidDataException();
-
-                return circle.Xc;
+                return _circle.Xc;
             }
             set
             {
-                ICircle? circle = drawingObject as ICircle;
-
-                if (circle == null)
-                    throw new InvalidDataException();
-
-                circle.Xc = value;
+                _circle.Xc = value;
             }
         }
 
@@ -55,21 +35,11 @@ namespace APIv7_gateway.DrawingObjects
         {
             get
             {
-                ICircle? circle = drawingObject as ICircle;
-
-                if (circle == null)
-                    throw new InvalidDataException();
-
-                return circle.Yc;
+                return _circle.Yc;
             }
             set
             {
-                ICircle? circle = drawingObject as ICircle;
-
-                if (circle == null)
-                    throw new InvalidDataException();
-
-                circle.Yc = value;
+                _circle.Yc = value;
             }
         }
 
@@ -78,22 +48,19 @@ namespace APIv7_gateway.DrawingObjects
             get => base.Style;
             set
             {
-                ICircle ?circle = drawingObject as ICircle;
-
-                if (circle == null)
-                    throw new InvalidDataException();
-
-
                 base.Style = value;
 
-                circle.Style = (int)base.Style;
+                _circle.Style = (int)base.Style;
             }
         }
 
+        public override IDrawingObject? DrawingObject => throw new NotImplementedException();
 
-        internal CircleObject(ICircle drawingObject) 
+        private readonly ICircle _circle;
+
+        internal CircleObject(ICircle circle) 
         {
-            this.drawingObject = drawingObject;
+            _circle = circle;
         }
     }
 }

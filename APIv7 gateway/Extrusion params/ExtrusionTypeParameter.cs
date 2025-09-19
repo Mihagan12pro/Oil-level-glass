@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.Extrusion_params.Types
 {
-    public abstract record ExtrusionTypeParameter : IExtrusionParameter
+    public class ExtrusionTypeParameter : IExtrusionParameter
     {
-        public ksEndTypeEnum EndType { get; init; }
+        public readonly ksEndTypeEnum EndType;
 
         public bool IsNormal { get; set; }
 
@@ -22,6 +22,12 @@ namespace APIv7_gateway.Extrusion_params.Types
             IExtrusion? extrusion = (IExtrusion)modelObject;
 
             extrusion.ExtrusionType[IsNormal] = EndType;
+        }
+
+
+        public ExtrusionTypeParameter(ksEndTypeEnum endType = ksEndTypeEnum.etBlind)
+        {
+            EndType = endType;
         }
     }
 }
