@@ -5,6 +5,9 @@ using APIv7_gateway.ModelObjects;
 using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
+using KompasData.KompasFile;
+using KompasData.Materials;
+using KompasData.Structs;
 using Utils;
 
 namespace APIv7_gateway.Gateways.Three_D
@@ -89,16 +92,15 @@ namespace APIv7_gateway.Gateways.Three_D
 
 
 
-
-
-        public void SetName(string? naming, string ?marking)
+        
+        public void SetName(KompasFile kompasFile)
         {
             if (Part == null)
                 throw new NullReferenceException();
 
-            Part.Name = naming;
+            Part.Name = kompasFile.Name.Naming;
 
-            Part.Marking = marking;
+            Part.Marking = kompasFile.Name.Marking;
 
             Part.Update();
         }
@@ -110,21 +112,21 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public void SetMaterial(string? tittle, double density, int hatchStyle)
+        public void SetMaterial(Material material)
         {
             if (Part == null)
                 throw new NullReferenceException();
 
-            Part.SetMaterial(tittle, density);
+            Part.SetMaterial(material.Tittle, material.Density);
 
             IHatchParam hatchParam = Part.HatchParam;
-            hatchParam.Style = hatchStyle;
+            hatchParam.Style = material.HatchStyle;
 
             Part.Update();
         }
 
 
-        public void SetAppearance(int color, double ambient, double diffuse, double specularity, double shininess, double transparency, double emission)
+        public void SetAppearance(Appereance appereance)
         {
             if (Part == null)
                 throw new NullReferenceException();
@@ -132,7 +134,7 @@ namespace APIv7_gateway.Gateways.Three_D
             IColorParam7 colorParam = (IColorParam7)Part;
 
 
-            colorParam.SetAdvancedColor(color, ambient / 100, diffuse / 100, specularity / 100, shininess / 100, transparency / 100, emission / 100);
+            colorParam.SetAdvancedColor(appereance.Color, appereance.Ambient, appereance.Diffuse, appereance.Specularity, appereance.Shininess, appereance.Transparency, appereance.Emission);
 
             Part.Update();
         }

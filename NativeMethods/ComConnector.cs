@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oil_level_glass_Core.Services
+namespace NativeMethods
 {
-    public static class COMConnector
+    public static class ComConnector
     {
         public static object GetInstance(string progId)
         {

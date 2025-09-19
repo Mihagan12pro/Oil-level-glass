@@ -1,3 +1,15 @@
-﻿namespace KompasData.Materials;
+﻿using Kompas6Constants;
 
-public record Glass();
+namespace KompasData.Materials;
+
+public record Glass : Material
+{
+    public Glass()
+    {
+        MinDensity = 2.2;
+
+        MaxDensity = 7.5;
+
+        HatchStyle = (int)ksHatchStyleEnum.ksHatchGlass;
+    }
+}

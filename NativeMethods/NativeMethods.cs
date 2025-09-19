@@ -1,9 +1,14 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Oil_level_glass_Core.Services
+namespace NativeMethods
 {
-    internal static  class NativeMethods
+    public static class NativeMethods
     {
         private const string OLEAUT32 = "oleaut32.dll";
         private const string OLE32 = "ole32.dll";

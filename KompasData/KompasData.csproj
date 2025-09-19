@@ -2,16 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>APIv7_gateway</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\KompasData\KompasData.csproj" />
-    <ProjectReference Include="..\NativeMethods\NativeMethods.csproj" />
-    <ProjectReference Include="..\Utils\Utils.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Kompas6Constants">
