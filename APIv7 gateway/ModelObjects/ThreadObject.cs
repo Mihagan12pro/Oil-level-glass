@@ -7,22 +7,20 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.ModelObjects
 {
-    public record ThreadObject : ModelObjectBase
+    public class ThreadObject : ModelObjectBase
     {
+        private readonly IThreadsParameters _threadParameters;
+
+        private readonly IThread _thread;
+
         public required double Pitch
         {
             get
             {
-                if (_threadParameters == null)
-                    throw new NullReferenceException();
-
                 return _threadParameters.Pitch;
             }
             set
             {
-
-                if (_threadParameters == null)
-                    throw new NullReferenceException();
 
                 _threadParameters.Pitch = value;
             }
@@ -33,31 +31,24 @@ namespace APIv7_gateway.ModelObjects
         {
             get
             {
-                if (_threadParameters == null)
-                    throw new NullReferenceException();
-
                 return _threadParameters.Diameter;
             }
             set
             {
-
-                if (_threadParameters == null)
-                    throw new NullReferenceException();
-
                 _threadParameters.Diameter = value;
             }
         }
 
+        public override IModelObject? ModelObject => _thread;
 
-        private IThreadsParameters? _threadParameters;
 
         internal ThreadObject(IThread thread)
         {
             thread.AutoLenght = true;
 
-            _threadParameters = thread as IThreadsParameters;
+            _thread = thread;
 
-            modelObject = thread;
+            _threadParameters = (IThreadsParameters)_thread;
         }
     }
 }

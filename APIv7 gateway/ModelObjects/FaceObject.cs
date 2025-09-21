@@ -1,24 +1,32 @@
 ﻿using KompasAPI7;
+using System.Data;
 using Utils;
 
 namespace APIv7_gateway.ModelObjects
 {
-    public record FaceObject : ModelObjectBase
+    public class FaceObject : ModelObjectBase
     {
-        public Dictionary<(double X, double Y, double Z), EdgeObject> Edges { get; private set; }
+        private IFace _face;
 
-        public FaceObject(IFace face)
+        private Dictionary<(double X, double Y, double Z), EdgeObject> _edges;
+
+        public Dictionary<(double X, double Y, double Z), EdgeObject> Edges => new Dictionary<(double X, double Y, double Z), EdgeObject>(_edges);
+
+        public override IModelObject? ModelObject => _face;
+
+        internal FaceObject(IFace face)
         {
-            Edges = new Dictionary<(double x, double y, double z), EdgeObject>();
+            _edges = new Dictionary<(double x, double y, double z), EdgeObject>();
 
             foreach (IEdge edge in ArrayMaster.ObjectToArray(face.LimitingEdges))
             {
                 EdgeObject edgeObj = new EdgeObject(edge);
 
-                Edges[(edgeObj.X, edgeObj.Y, edgeObj.Z)] = edgeObj;
+                _edges[(edgeObj.X, edgeObj.Y, edgeObj.Z)] = edgeObj;
             }
+           
 
-            modelObject = face;
+            _face = face;
         }
     }
 }

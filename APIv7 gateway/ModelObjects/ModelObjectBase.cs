@@ -3,16 +3,14 @@ using KompasAPI7;
 
 namespace APIv7_gateway.ModelObjects
 {
-    public abstract record ModelObjectBase : IApi7Object
+    public abstract class ModelObjectBase : IApi7Object
     {
-        protected IModelObject? modelObject { get; init; }
-
-        public IModelObject? ModelObject => modelObject;
+        public abstract IModelObject? ModelObject { get; }
 
 
         public void Update()
         {
-            modelObject?.Update();
+            ModelObject?.Update();
         }
     }
 }

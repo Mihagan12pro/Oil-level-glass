@@ -1,7 +1,9 @@
-﻿using APIv7_gateway.Extrusion_params;
+﻿using APIv7_gateway.Enums;
+using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Extrusion_params.Types;
 using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
+using APIv7_gateway.ModelObjects.Extrusions;
 using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
@@ -36,61 +38,69 @@ namespace APIv7_gateway.Gateways.Three_D
 
                 _modelContainer = base.Part as IModelContainer;
 
-                PlaneXOY = new PlaneObject(base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOY]);
+                PlaneXOY = new PlaneObject((IPlane3D)base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOY]);
 
-                PlaneXOZ = new PlaneObject(base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOZ]);
+                PlaneXOZ = new PlaneObject((IPlane3D)base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOZ]);
 
-                PlaneYOZ = new PlaneObject(base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeYOZ]);
+                PlaneYOZ = new PlaneObject((IPlane3D)base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeYOZ]);
             }
         }
 
 
-        internal List<FaceObject> Faces
+        public FaceObject GetFaceByPoint(FaceTypes faceType = FaceTypes.Planar, double x = 0, double y = 0, double z = 0)
         {
-            get
+            if (ModelContainer == null)
+                throw new NullReferenceException();
+
+            IFace[]? modelFaces = ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_face]) as IFace[];
+
+            if (modelFaces == null)
+                throw new NullReferenceException();
+
+            List<IFace> specificFaces = new List<IFace>();
+
+            foreach (IFace face in modelFaces)
             {
-                if (Part == null)
-                    throw new NullReferenceException();
-
-                List<FaceObject> faces = new List<FaceObject>();
-
-                foreach(object obj in ArrayMaster.ObjectToArray(Part.DefaultObject[ksObj3dTypeEnum.o3d_face]))
+                switch (faceType)
                 {
-                    IFace? face = obj as IFace;
+                    case FaceTypes.Planar:
+                        if (face.IsPlanar)
+                            specificFaces.Add(face);
+                        break;
 
-                    if (face == null)
-                        throw new NullReferenceException();
-
-                    faces.Add(new FaceObject(face));
-                }
-
-                return faces;
-            }
-        }
-
-
-        public IFace GetPlanarFace(double x, double y, double z)
-        {
-            foreach(IFace face in Faces)
-            {
-                IEdge[] ?faceEdges = ArrayMaster.ObjectToArray(face.LimitingEdges) as IEdge[];
-
-                if (faceEdges == null)
-                    throw new InvalidDataException();
-
-                foreach(IEdge edge in faceEdges)
-                {
-                    edge.GetPoint(true, out double x1, out double y1, out double z1);
-
-                    if (x1 == x && y1 == y && z1 == z)
-                        return face;
+                    case FaceTypes.Cylindric:
+                        if (face.IsCylinder)
+                            specificFaces.Add(face);
+                        break;
                 }
             }
 
-            throw new NullReferenceException();
+            if (specificFaces.Count == 0)
+                throw new Exception("Faces have not been found!");
+
+            FaceObject? specificFaceObject = null;
+
+            foreach(IFace face in specificFaces)
+            {
+                FaceObject faceObject = new FaceObject(face);
+
+                try
+                {
+                    EdgeObject edgeObject = faceObject.Edges[(x, y, z)];
+
+                    specificFaceObject = new FaceObject(face);
+                }
+                catch
+                {
+                    Console.WriteLine("Не та грань!");
+                }
+            }
+
+            if (specificFaceObject == null)
+                throw new Exception("Face has not been found!");
+
+            return specificFaceObject;
         }
-
-
 
         
         public void SetName(KompasFile kompasFile)
@@ -149,23 +159,24 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public SketchObject CreateSketch(PlaneObject? plane)
+        public SketchObject CreateSketch(PlaneObject plane)
         {
-            if (_modelContainer == null)
-                throw new NullReferenceException();
-
-
-            return new SketchObject(_modelContainer.Sketchs.Add()) { Plane = plane};
+            return new SketchObject(_modelContainer.Sketchs.Add(), plane);
         }
 
 
+        public SketchObject CreateSketch(FaceObject faceObject)
+        {
+            return new SketchObject(_modelContainer.Sketchs.Add(), faceObject);
+        }
 
-        public ExtrusionObject CreateExtrusion(SketchObject ?sketch, DepthParameter depth, DirectionParameter direction, ExtrusionTypeParameter extrusionType)
+
+        public BossExtrusionObject CreateExtrusion(SketchObject ?sketch, DepthParameter depth, DirectionParameter direction, ExtrusionTypeParameter extrusionType)
         {
             if (_modelContainer == null)
                 throw new NullReferenceException();
 
-            return new ExtrusionObject(_modelContainer.Extrusions.Add(ksObj3dTypeEnum.o3d_bossExtrusion)) 
+            return new BossExtrusionObject(_modelContainer.Extrusions.Add(ksObj3dTypeEnum.o3d_bossExtrusion)) 
             {
                 Sketch = sketch, 
 

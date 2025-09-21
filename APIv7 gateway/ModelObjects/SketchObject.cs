@@ -2,49 +2,39 @@
 
 namespace APIv7_gateway.ModelObjects
 {
-    public record SketchObject : ModelObjectBase
+    public class SketchObject : ModelObjectBase
     {
-        private PlaneObject? _plane;
-        public required PlaneObject? Plane
-        {
-            get => _plane;
+        private readonly PlaneObject? _plane;
 
-            set
-            {
-                _plane = value;
+        private readonly FaceObject? _face;
 
-                ISketch ?sketch = (modelObject as ISketch);
-                if (sketch == null)
-                {
-                    throw new NullReferenceException();
-                }
+        private readonly ISketch _sketch;
 
-                sketch.Plane = value?.ModelObject;
-                sketch.Update();
-            }
-        }
+        public override IModelObject? ModelObject => _sketch;
 
-
-        public IKompasDocument2D BeginEdit()
-        {
-            ISketch ?sketch = (modelObject as ISketch);
-
-            if (sketch == null)
-                throw new NullReferenceException();
-
-            return sketch.BeginEdit();
-        }
+        public IKompasDocument2D SketchEditor => _sketch.BeginEdit();
 
 
         public void EndEdit()
         {
-            (modelObject as ISketch)?.EndEdit();
+            _sketch?.EndEdit();
         }
 
 
-        internal SketchObject(ISketch sketch)
+        internal SketchObject(ISketch sketch, PlaneObject plane)
         {
-            modelObject = sketch as ISketch;
+            _sketch = sketch;
+            _plane = plane;
+
+            _sketch.Plane = plane.ModelObject;
+        }
+
+        internal SketchObject(ISketch sketch, FaceObject face)
+        {
+            _sketch = sketch;
+            _face = face;
+
+            _sketch.Plane = face.ModelObject;
         }
     }
 }

@@ -7,22 +7,27 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.ModelObjects
 {
-    public record EdgeObject : ModelObjectBase
+    public class EdgeObject : ModelObjectBase
     {
-        public double X { get; init; }
-        public double Y { get; init; }
-        public double Z { get; init; }
+        private readonly IEdge _edge;
 
+        public double X { get; private set; }
+        public double Y { get; private set; }
+        public double Z { get; private set; }
+
+        public override IModelObject? ModelObject => _edge;
 
         public EdgeObject(IEdge edge)
         {
-            modelObject = edge;
+            _edge = edge;
 
             edge.GetPoint(true, out double x, out double y, out double z);
 
             X = x;
             Y = y;
             Z = z;
+
+            IFeature7 feature7;
         }
     }
 }

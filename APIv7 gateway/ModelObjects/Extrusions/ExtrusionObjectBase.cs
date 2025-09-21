@@ -1,29 +1,16 @@
 ﻿using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Extrusion_params.Types;
 using KompasAPI7;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace APIv7_gateway.ModelObjects
+namespace APIv7_gateway.ModelObjects.Extrusions
 {
-    public record ExtrusionObject : ModelObjectBase
+    public abstract class ExtrusionObjectBase : ModelObjectBase
     {
-        private SketchObject? _sketch;
-        public required SketchObject? Sketch
-        {
-            get { return _sketch; }
-            set
-            {
-                _sketch = value;
-
-                IExtrusion? extrusion = modelObject as IExtrusion;
-
-                if (extrusion == null)
-                    throw new InvalidDataException();
-
-                extrusion.Sketch = _sketch?.ModelObject as Sketch;
-            }
-        }
-
-
         private DepthParameter? _depth;
         public required DepthParameter? Depth
         {
@@ -35,7 +22,7 @@ namespace APIv7_gateway.ModelObjects
 
                 _depth = value;
 
-                _depth.AcceptParameter(ModelObject);  
+                _depth.AcceptParameter(ModelObject);
             }
         }
 
@@ -71,9 +58,8 @@ namespace APIv7_gateway.ModelObjects
             }
         }
 
-        internal ExtrusionObject(IExtrusion extrusion)
-        {
-            modelObject = extrusion;
-        }
+
+        protected SketchObject? sketch;
+        public virtual required SketchObject? Sketch { get => sketch; set => sketch = value; }
     }
 }

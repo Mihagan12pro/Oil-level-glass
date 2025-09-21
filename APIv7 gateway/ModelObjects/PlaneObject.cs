@@ -2,15 +2,16 @@
 
 namespace APIv7_gateway.ModelObjects
 {
-    public record PlaneObject : ModelObjectBase
+    public class PlaneObject : ModelObjectBase
     {
-        internal PlaneObject(IModelObject plane)
+        private readonly IPlane3D _plane;
+
+        public override IModelObject? ModelObject => _plane;
+
+
+        internal PlaneObject(IPlane3D plane)
         {
-            if (!(plane is IPlane3D || plane is IFace))
-                throw new InvalidDataException();
-
-
-            modelObject = plane;
+            _plane = plane;
         }
     }
 }
