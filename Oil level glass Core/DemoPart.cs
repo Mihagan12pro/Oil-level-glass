@@ -1,4 +1,6 @@
 ﻿using APIv7_gateway.Gateways.Three_D;
+using APIv7_gateway.Gateways.Two_D;
+using APIv7_gateway.ModelObjects;
 using Oil_level_glass_Core.Base;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,10 @@ namespace Oil_level_glass_Core
         public override void Build()
         {
             KompasPartGateway = new KompasPartGateway();
+
+            SketchObject sketch = KompasPartGateway.CreateSketch(KompasPartGateway.PlaneXOY);
+
+            Kompas2DGateway kompas2DGateway = new Kompas2DGateway(sketch.SketchEditor);
         }
 
 

@@ -10,6 +10,6 @@ namespace APIv7_gateway.Enums
     {
         Planar,
 
-        Cylindric,
+        Cylindric
     }
 }
