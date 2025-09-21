@@ -13,4 +13,8 @@
     <Folder Include="CustomObjects\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Oil level glass Core\Oil level glass Core.csproj" />
+  </ItemGroup>
+
 </Project>

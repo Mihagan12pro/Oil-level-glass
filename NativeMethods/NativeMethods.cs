@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NativeMethods
 {
-    public static class NativeMethods
+    internal static class NativeMethods
     {
         private const string OLEAUT32 = "oleaut32.dll";
         private const string OLE32 = "ole32.dll";

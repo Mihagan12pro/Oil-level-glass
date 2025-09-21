@@ -1,4 +1,5 @@
-﻿using Oil_level_glass_GUI.Dialogs;
+﻿using Oil_level_glass_Core;
+using Oil_level_glass_GUI.Dialogs;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,9 +25,9 @@ namespace Oil_level_glass_GUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            StartWizardWindow window = new StartWizardWindow();
+            DemoPart part = new DemoPart();
 
-            window.Show();
+            part.Build();
         }
     }
 }

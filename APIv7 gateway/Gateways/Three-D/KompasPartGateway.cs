@@ -10,6 +10,7 @@ using KompasAPI7;
 using KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Structs;
+using NativeMethods;
 using Utils;
 
 namespace APIv7_gateway.Gateways.Three_D
@@ -189,11 +190,12 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public KompasPartGateway(IPartDocument document3D)
+        public KompasPartGateway(bool isActive = false)
         {
-            kompasDocument = document3D;
-
-            Part = document3D.TopPart;
+            if (isActive)
+                kompasDocument = kompasApplication?.ActiveDocument;
+            else
+                kompasDocument = kompasApplication?.Documents.Add(DocumentTypeEnum.ksDocumentPart);
         }
     }
 }

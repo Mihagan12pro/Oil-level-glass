@@ -1,11 +1,7 @@
 ﻿using APIv7_gateway.Interfaces;
 using Kompas6Constants;
 using KompasAPI7;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NativeMethods;
 
 namespace APIv7_gateway.Gateways.Three_D
 {
@@ -43,11 +39,14 @@ namespace APIv7_gateway.Gateways.Three_D
             kompasDocument.Close(howSave);
         }
 
-        public KompasAssemblyGateway(IAssemblyDocument document3D)
-        {
-            kompasDocument = document3D;
 
-            Part = document3D.TopPart;
+        public KompasAssemblyGateway(bool isActive = false)
+        {
+            //IAssemblyDocument? assemblyDocument = ComConnector.GetInstance(kompasProgId) as IAssemblyDocument;
+
+            //kompasDocument = assemblyDocument;
+
+            //Part = (kompasDocument as IPartDocument)?.TopPart;
         }
     }
 }

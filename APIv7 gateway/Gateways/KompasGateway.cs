@@ -1,4 +1,5 @@
 ﻿using KompasAPI7;
+using NativeMethods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,13 @@ namespace APIv7_gateway.Gateways
     {
         protected IKompasDocument? kompasDocument;
 
+        protected const string kompasProgId = "KOMPAS.Application.7";
+
+        protected readonly IApplication? kompasApplication;
 
         public KompasGateway()
         {
-
+            kompasApplication = ComConnector.GetInstance(kompasProgId) as IApplication;
         }
     }
 }
