@@ -15,7 +15,7 @@ namespace APIv7_gateway.ModelObjects
         public double Y { get; private set; }
         public double Z { get; private set; }
 
-        public override IModelObject? ModelObject => _edge;
+        internal override IModelObject? ModelObject => _edge;
 
         public EdgeObject(IEdge edge)
         {
@@ -26,8 +26,6 @@ namespace APIv7_gateway.ModelObjects
             X = x;
             Y = y;
             Z = z;
-
-            IFeature7 feature7;
         }
     }
 }

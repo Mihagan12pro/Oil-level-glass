@@ -12,7 +12,7 @@ namespace APIv7_gateway.ModelObjects
 
         public Dictionary<(double X, double Y, double Z), EdgeObject> Edges => new Dictionary<(double X, double Y, double Z), EdgeObject>(_edges);
 
-        public override IModelObject? ModelObject => _face;
+        internal override IModelObject? ModelObject => _face;
 
         internal FaceObject(IFace face)
         {

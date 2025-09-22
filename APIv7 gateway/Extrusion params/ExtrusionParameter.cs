@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace APIv7_gateway.Extrusion_params
 {
-    public interface IExtrusionParameter
+    public abstract class ExtrusionParameter
     {
         bool IsNormal { get; set; }
 
-        void AcceptParameter(IModelObject? modelObject); 
+        internal abstract void AcceptParameter(IModelObject? modelObject); 
     }
 }

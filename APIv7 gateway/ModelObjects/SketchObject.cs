@@ -10,7 +10,7 @@ namespace APIv7_gateway.ModelObjects
 
         private readonly ISketch _sketch;
 
-        public override IModelObject? ModelObject => _sketch;
+        internal override IModelObject? ModelObject => _sketch;
 
         public IKompasDocument2D SketchEditor => _sketch.BeginEdit();
 

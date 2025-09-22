@@ -1,4 +1,5 @@
-﻿using APIv7_gateway.Interfaces;
+﻿using APIv7_gateway.Enums;
+using APIv7_gateway.Interfaces;
 using Kompas6Constants;
 using KompasAPI7;
 using System;
@@ -11,9 +12,9 @@ namespace APIv7_gateway.DrawingObjects
 {
     public abstract class DrawingObjectBase :  IApi7Object
     {
-        public abstract IDrawingObject? DrawingObject { get; }
+        internal abstract IDrawingObject? DrawingObject { get; }
 
-        public virtual ksCurveStyleEnum Style { get; set; } = ksCurveStyleEnum.ksCSNormal;
+        public virtual CurveStyles Style { get; set; } = CurveStyles.Normal;
 
         public void Update()
         {

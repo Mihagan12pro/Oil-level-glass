@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Oil level glass Core\Oil level glass Core.csproj" />
+    <ProjectReference Include="..\Oil level glass Core\Oil level glass 3D Core.csproj" />
   </ItemGroup>
 
 </Project>

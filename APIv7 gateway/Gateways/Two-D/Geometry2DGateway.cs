@@ -1,4 +1,5 @@
 ﻿using APIv7_gateway.DrawingObjects;
+using APIv7_gateway.Enums;
 using Kompas6Constants;
 using KompasAPI7;
 using System;
@@ -12,10 +13,10 @@ namespace APIv7_gateway.Gateways.Two_D
     public class Geometry2DGateway : Kompas2DGateway
     {
         private readonly IDrawingContainer _drawingContainer;
-        public IDrawingContainer DrawingContainer => _drawingContainer;
+        internal IDrawingContainer DrawingContainer => _drawingContainer;
 
 
-        public CircleObject AddCircle(double diameter, double xc, double yc, ksCurveStyleEnum style = ksCurveStyleEnum.ksCSNormal)
+        public CircleObject AddCircle(double diameter, double xc, double yc, CurveStyles style = CurveStyles.Normal)
         {
             return new CircleObject(DrawingContainer.Circles.Add())
             {
@@ -27,7 +28,7 @@ namespace APIv7_gateway.Gateways.Two_D
         }
 
 
-        public PointObject AddPoint(double x, double y, ksCurveStyleEnum style = ksCurveStyleEnum.ksCSNormal)
+        public PointObject AddPoint(double x, double y, CurveStyles style = CurveStyles.Normal)
         {
             return new PointObject(DrawingContainer.Points.Add())
             {

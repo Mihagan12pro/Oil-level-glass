@@ -5,7 +5,7 @@ namespace APIv7_gateway.ModelObjects
 {
     public abstract class ModelObjectBase : IApi7Object
     {
-        public abstract IModelObject? ModelObject { get; }
+        internal abstract IModelObject? ModelObject { get; }
 
 
         public void Update()

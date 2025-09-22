@@ -39,7 +39,7 @@ namespace APIv7_gateway.ModelObjects
             }
         }
 
-        public override IModelObject? ModelObject => _thread;
+        internal override IModelObject? ModelObject => _thread;
 
 
         internal ThreadObject(IThread thread)

@@ -1,6 +1,5 @@
 ﻿using APIv7_gateway.Enums;
 using APIv7_gateway.Extrusion_params;
-using APIv7_gateway.Extrusion_params.Types;
 using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
 using APIv7_gateway.ModelObjects.Extrusions;
@@ -10,8 +9,6 @@ using KompasAPI7;
 using KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Structs;
-using NativeMethods;
-using System.Numerics;
 using Utils;
 
 namespace APIv7_gateway.Gateways.Three_D
@@ -19,7 +16,7 @@ namespace APIv7_gateway.Gateways.Three_D
     public class KompasPartGateway : Kompas3DGateway, ISerializableGateway
     {
         private IModelContainer? _modelContainer;
-        public IModelContainer? ModelContainer => _modelContainer;
+        internal IModelContainer? ModelContainer => _modelContainer;
 
 
         public PlaneObject ?PlaneXOY { get; private set; }
@@ -179,7 +176,7 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public BossExtrusionObject CreateExtrusion(SketchObject ?sketch, DepthParameter depth, DirectionParameter direction, ExtrusionTypeParameter extrusionType)
+        public BossExtrusionObject CreateExtrusion(SketchObject ?sketch, DistanceParameter depth, DirectionParameter direction)
         {
             if (_modelContainer == null)
                 throw new NullReferenceException();
@@ -190,9 +187,7 @@ namespace APIv7_gateway.Gateways.Three_D
 
                 Depth = depth,
 
-                Direction = direction,
-
-                ExtrusionType = extrusionType
+                Direction = direction
             };
         }
 

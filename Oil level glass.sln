@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass Core", "Oil level glass Core\Oil level glass Core.csproj", "{A6663E53-AB0D-451F-ACE1-3D758B0052C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass 3D Core", "Oil level glass Core\Oil level glass 3D Core.csproj", "{A6663E53-AB0D-451F-ACE1-3D758B0052C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}"
 EndProject

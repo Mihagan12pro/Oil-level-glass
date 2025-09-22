@@ -32,7 +32,7 @@ namespace APIv7_gateway.DrawingObjects
 
         private readonly IPoint _point;
 
-        public override IDrawingObject? DrawingObject => _point;
+        internal override IDrawingObject? DrawingObject => _point;
 
         internal PointObject(IPoint point)
         {

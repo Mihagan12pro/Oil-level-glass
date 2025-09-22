@@ -1,6 +1,4 @@
-﻿using APIv7_gateway.Extrusion_params;
-using APIv7_gateway.Extrusion_params.Types;
-using KompasAPI7;
+﻿using KompasAPI7;
 
 namespace APIv7_gateway.ModelObjects.Extrusions
 {
@@ -8,7 +6,7 @@ namespace APIv7_gateway.ModelObjects.Extrusions
     {
         private readonly IExtrusion _bossExtrusion;
 
-        public override IModelObject? ModelObject => _bossExtrusion;
+        internal override IModelObject? ModelObject => _bossExtrusion;
 
         public override required SketchObject? Sketch 
         {

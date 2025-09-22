@@ -1,4 +1,5 @@
-﻿using Kompas6Constants;
+﻿using APIv7_gateway.Enums;
+using Kompas6Constants;
 using KompasAPI7;
 
 namespace APIv7_gateway.DrawingObjects
@@ -43,7 +44,7 @@ namespace APIv7_gateway.DrawingObjects
             }
         }
 
-        public override ksCurveStyleEnum Style
+        public override CurveStyles Style
         {
             get => base.Style;
             set
@@ -54,7 +55,7 @@ namespace APIv7_gateway.DrawingObjects
             }
         }
 
-        public override IDrawingObject? DrawingObject => throw new NotImplementedException();
+        internal override IDrawingObject? DrawingObject => _circle;
 
         private readonly ICircle _circle;
 

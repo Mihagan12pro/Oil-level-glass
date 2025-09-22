@@ -1,28 +1,40 @@
-﻿using Kompas6Constants3D;
+﻿using APIv7_gateway.Enums;
+using Kompas6Constants3D;
 using KompasAPI7;
 
 namespace APIv7_gateway.Extrusion_params
 {
-    public class DirectionParameter : IExtrusionParameter
+    public class DirectionParameter : ExtrusionParameter
     {
-        public readonly ksDirectionTypeEnum DirectionType;
+        private readonly ksDirectionTypeEnum _directionType;
 
-        public bool IsNormal { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsNormal { get; set; }
 
-        public void AcceptParameter(IModelObject? modelObject)
+        internal override void AcceptParameter(IModelObject? modelObject)
         {
             if (!(modelObject is IExtrusion))
                 throw new InvalidDataException();
 
             IExtrusion? extrusion = (IExtrusion)modelObject;
 
-            extrusion.Direction = DirectionType;
+            extrusion.Direction = _directionType;
         }
 
 
-        public DirectionParameter(ksDirectionTypeEnum direction = ksDirectionTypeEnum.dtBoth)
+        public DirectionParameter(ExtrusionDirections direction = ExtrusionDirections.MiddlePlane)
         {
-            DirectionType = direction;
+            switch(direction)
+            {
+                case ExtrusionDirections.Normal:
+                    _directionType = ksDirectionTypeEnum.dtNormal;
+                    break;
+                case ExtrusionDirections.MiddlePlane:
+                    _directionType = ksDirectionTypeEnum.dtMiddlePlane;
+                    break;
+                case ExtrusionDirections.Reverse:
+                    _directionType = ksDirectionTypeEnum.dtReverse;
+                    break;
+            }
         }
     }
 }

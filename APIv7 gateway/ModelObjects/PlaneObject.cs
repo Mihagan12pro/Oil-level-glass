@@ -6,7 +6,7 @@ namespace APIv7_gateway.ModelObjects
     {
         private readonly IPlane3D _plane;
 
-        public override IModelObject? ModelObject => _plane;
+        internal override IModelObject? ModelObject => _plane;
 
 
         internal PlaneObject(IPlane3D plane)
