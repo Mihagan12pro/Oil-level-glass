@@ -11,6 +11,7 @@ using KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Structs;
 using NativeMethods;
+using System.Numerics;
 using Utils;
 
 namespace APIv7_gateway.Gateways.Three_D
@@ -162,13 +163,19 @@ namespace APIv7_gateway.Gateways.Three_D
 
         public SketchObject CreateSketch(PlaneObject plane)
         {
-            return new SketchObject(_modelContainer.Sketchs.Add(), plane);
+            SketchObject sketchObject = new SketchObject(_modelContainer.Sketchs.Add(), plane);
+            sketchObject.Update();
+
+            return sketchObject;
         }
 
 
         public SketchObject CreateSketch(FaceObject faceObject)
         {
-            return new SketchObject(_modelContainer.Sketchs.Add(), faceObject);
+            SketchObject sketchObject = new SketchObject(_modelContainer.Sketchs.Add(), faceObject);
+            sketchObject.Update();
+
+            return sketchObject;
         }
 
 
@@ -196,6 +203,8 @@ namespace APIv7_gateway.Gateways.Three_D
                 kompasDocument = kompasApplication?.ActiveDocument;
             else
                 kompasDocument = kompasApplication?.Documents.Add(DocumentTypeEnum.ksDocumentPart);
+
+            Part = (kompasDocument as IPartDocument).TopPart;
         }
     }
 }
