@@ -1,19 +1,13 @@
 ﻿using APIv7_gateway.DrawingObjects;
 using APIv7_gateway.Enums;
-using Kompas6Constants;
 using KompasAPI7;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APIv7_gateway.Gateways.Two_D
 {
-    public class Geometry2DGateway : Kompas2DGateway
+    public class Geometry2DGateway
     {
-        private readonly IDrawingContainer _drawingContainer;
-        internal IDrawingContainer DrawingContainer => _drawingContainer;
+        private readonly IDrawingContainer? _drawingContainer;
+        internal IDrawingContainer? DrawingContainer => _drawingContainer;
 
 
         public CircleObject AddCircle(double diameter, double xc, double yc, CurveStyles style = CurveStyles.Normal)
@@ -42,9 +36,9 @@ namespace APIv7_gateway.Gateways.Two_D
         }
 
 
-        public Geometry2DGateway(IKompasDocument2D? document2D) : base(document2D)
+        public Geometry2DGateway(SketchEditor sketchEditor) 
         {
-            _drawingContainer = (IDrawingContainer)view;
+            _drawingContainer = sketchEditor.DrawingContainer;
         }
     }
 }

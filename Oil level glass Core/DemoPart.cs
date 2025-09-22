@@ -1,15 +1,9 @@
-﻿using APIv7_gateway.DrawingObjects;
+﻿using APIv7_gateway;
+using APIv7_gateway.DrawingObjects;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.Gateways.Two_D;
 using APIv7_gateway.ModelObjects;
-using KompasAPI7;
 using Oil_level_glass_Core.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Oil_level_glass_Core
 {
@@ -20,6 +14,18 @@ namespace Oil_level_glass_Core
             KompasPartGateway = new KompasPartGateway();
 
             SketchObject _sketch1 = KompasPartGateway.CreateSketch(KompasPartGateway.PlaneXOY);
+
+            SketchEditor sketchEditor = _sketch1.SketchEditor;
+
+            Geometry2DGateway geometry2DGateway = new Geometry2DGateway(sketchEditor);
+
+            CircleObject circleObject = geometry2DGateway.AddCircle(100, 0, 0);
+            circleObject.Update();
+
+            CircleObject circleObject2 = geometry2DGateway.AddCircle(200, 0, 0);
+            circleObject2.Update();
+
+            sketchEditor.EndEdit();
         }
 
 

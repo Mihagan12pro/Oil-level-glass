@@ -24,7 +24,6 @@ namespace APIv7_gateway.ModelObjects
 
                 _edges[(edgeObj.X, edgeObj.Y, edgeObj.Z)] = edgeObj;
             }
-           
 
             _face = face;
         }

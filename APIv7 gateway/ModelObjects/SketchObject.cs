@@ -12,12 +12,12 @@ namespace APIv7_gateway.ModelObjects
 
         internal override IModelObject? ModelObject => _sketch;
 
-        public IKompasDocument2D SketchEditor => _sketch.BeginEdit();
-
-
-        public void EndEdit()
+        public SketchEditor SketchEditor
         {
-            _sketch?.EndEdit();
+            get
+            {
+                return new SketchEditor(_sketch);
+            }
         }
 
 
