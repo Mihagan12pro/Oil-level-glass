@@ -3,6 +3,7 @@ using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
 using APIv7_gateway.ModelObjects.Extrusions;
+using APIv7_gateway.ModelObjects.Parts;
 using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
@@ -13,38 +14,12 @@ using Utils;
 
 namespace APIv7_gateway.Gateways.Three_D
 {
-    public class KompasPartGateway : Kompas3DGateway, ISerializableGateway
+    public class KompasPartGateway : KompasGateway, ISerializableGateway
     {
         private IModelContainer? _modelContainer;
         internal IModelContainer? ModelContainer => _modelContainer;
 
-
-        public PlaneObject ?PlaneXOY { get; private set; }
-        public PlaneObject ?PlaneXOZ { get; private set; }
-        public PlaneObject ?PlaneYOZ { get; private set; }
-
-
-
-        public override IPart7? Part
-        {
-            get => base.Part;
-            protected set
-            {
-                base.Part = value;
-
-                if (base.Part == null)
-                    throw new NullReferenceException();
-
-                _modelContainer = base.Part as IModelContainer;
-
-                PlaneXOY = new PlaneObject((IPlane3D)base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOY]);
-
-                PlaneXOZ = new PlaneObject((IPlane3D)base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOZ]);
-
-                PlaneYOZ = new PlaneObject((IPlane3D)base.Part.DefaultObject[ksObj3dTypeEnum.o3d_planeYOZ]);
-            }
-        }
-
+        private readonly PartObject _part;
 
         public FaceObject GetFaceByPoint(FaceTypes faceType = FaceTypes.Planar, double x = 0, double y = 0, double z = 0)
         {
@@ -104,14 +79,7 @@ namespace APIv7_gateway.Gateways.Three_D
         
         public void SetName(KompasFile kompasFile)
         {
-            if (Part == null)
-                throw new NullReferenceException();
-
-            Part.Name = kompasFile.Name.Naming;
-
-            Part.Marking = kompasFile.Name.Marking;
-
-            Part.Update();
+            _part.ChangeName(kompasFile.Name);
         }
 
 
@@ -123,29 +91,13 @@ namespace APIv7_gateway.Gateways.Three_D
 
         public void SetMaterial(Material material)
         {
-            if (Part == null)
-                throw new NullReferenceException();
-
-            Part.SetMaterial(material.Tittle, material.Density);
-
-            IHatchParam hatchParam = Part.HatchParam;
-            hatchParam.Style = material.HatchStyle;
-
-            Part.Update();
+            _part.ChangeMaterial(material);
         }
 
 
         public void SetAppearance(Appereance appereance)
         {
-            if (Part == null)
-                throw new NullReferenceException();
-
-            IColorParam7 colorParam = (IColorParam7)Part;
-
-
-            colorParam.SetAdvancedColor(appereance.Color, appereance.Ambient, appereance.Diffuse, appereance.Specularity, appereance.Shininess, appereance.Transparency, appereance.Emission);
-
-            Part.Update();
+            _part.ChangeApperance(appereance);
         }
 
 
@@ -199,7 +151,12 @@ namespace APIv7_gateway.Gateways.Three_D
             else
                 kompasDocument = kompasApplication?.Documents.Add(DocumentTypeEnum.ksDocumentPart);
 
-            Part = (kompasDocument as IPartDocument).TopPart;
+            IPartDocument ?partDocument = (kompasDocument as IPartDocument);
+
+            if (partDocument == null)
+                throw new NullReferenceException();
+
+            _part = new PartObject(partDocument.TopPart);
         }
     }
 }

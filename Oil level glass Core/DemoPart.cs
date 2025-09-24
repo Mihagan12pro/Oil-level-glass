@@ -3,6 +3,7 @@ using APIv7_gateway.DrawingObjects;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.Gateways.Two_D;
 using APIv7_gateway.ModelObjects;
+using KompasAPI7;
 using Oil_level_glass_Core.Base;
 
 namespace Oil_level_glass_Core
