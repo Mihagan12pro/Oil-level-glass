@@ -3,6 +3,7 @@ using APIv7_gateway.DrawingObjects;
 using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.ModelObjects;
+using APIv7_gateway.ModelObjects.Chamfers;
 using APIv7_gateway.ModelObjects.Extrusions;
 using Oil_level_glass_Core.Base;
 
@@ -25,6 +26,10 @@ namespace Oil_level_glass_Core
 
             BossExtrusionObject bossExtrusion1 = partGateway.CreateExtrusion(sketch1, new DistanceParameter(20), new DirectionParameter());
             bossExtrusion1.Update();
+
+            EdgeObject edge = partGateway.Part.GetEdgeByPoint(100, 0, 10);
+
+            ChamferByAngleObject chamfer1 = partGateway.CreateChamferByAngle(3, 45, new EdgeObject[] { edge }); 
         }
 
 

@@ -67,8 +67,12 @@ namespace APIv7_gateway.Gateways.Three_D
 
         public ChamferByAngleObject CreateChamferByAngle(double distance1, double angle, EdgeObject[] edges)
         {
-            return new ChamferByAngleObject(ModelContainer.Chamfers.Add()) { Distance1 = distance1, Angle = angle, Edges = edges};
+            ChamferByAngleObject chamfer = new ChamferByAngleObject(ModelContainer.Chamfers.Add()) { Distance1 = distance1, Angle = angle, Edges = edges };
+            chamfer.Update();
+
+            return chamfer;
         }
+
 
         public SketchObject CreateSketch(FaceObject faceObject)
         {
@@ -107,7 +111,7 @@ namespace APIv7_gateway.Gateways.Three_D
             if (partDocument == null)
                 throw new NullReferenceException();
 
-            Part = new PartObject(partDocument.TopPart);
+            Part = new PartObject(partDocument.TopPart as Part7Class);
 
             _modelContainer = Part.ModelContainer;
         }

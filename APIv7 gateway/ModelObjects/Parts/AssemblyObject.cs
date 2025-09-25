@@ -4,7 +4,7 @@ namespace APIv7_gateway.ModelObjects.Parts
 {
     public class AssemblyObject : PartObject
     {
-        internal AssemblyObject(IPart7 part) : base(part)
+        internal AssemblyObject(Part7Class part) : base(part)
         {
 
         }
@@ -15,7 +15,7 @@ namespace APIv7_gateway.ModelObjects.Parts
             if (!File.Exists(fullName))
                 throw new FileNotFoundException();
 
-            return new PartObject(part.Parts.AddFromFile(fullName));
+            return new PartObject(part.Parts.AddFromFile(fullName) as Part7Class);
         }
     }
 }

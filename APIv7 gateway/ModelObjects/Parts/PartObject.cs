@@ -30,16 +30,16 @@ namespace APIv7_gateway.ModelObjects.Parts
         }
 
 
-        public EdgeObject FindEdgeByPoint(double x = 0, double y = 0, double z = 0)
+        public EdgeObject GetEdgeByPoint(double x = 0, double y = 0, double z = 0)
         {
-            IEdge[]? modelEdges = ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_edge]) as IEdge[];
+            object[] modelEdges = (object[])ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_edge]);
 
             IEdge? modelEdge = null;
 
-            List<EdgeObject> edgeObjects = new List<EdgeObject>();
-
-            foreach(IEdge edge in modelEdges)
+            foreach (object obj in modelEdges)
             {
+                IEdge edge = (IEdge)obj;
+
                 edge.GetPoint(true, out double x1, out double y1, out double z1);
 
                 if (x1 == x && y1 == y && z1 == z)
@@ -136,7 +136,7 @@ namespace APIv7_gateway.ModelObjects.Parts
 
 
 
-        internal PartObject(IPart7 part)
+        internal PartObject(Part7Class part)
         {
             this.part = part;
 
