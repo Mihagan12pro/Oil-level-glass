@@ -1,5 +1,6 @@
 ﻿using APIv7_gateway;
 using APIv7_gateway.DrawingObjects;
+using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.ModelObjects;
 using APIv7_gateway.ModelObjects.Extrusions;
@@ -22,7 +23,8 @@ namespace Oil_level_glass_Core
 
             sketch1.EndEdit();
 
-            BossExtrusionObject bossExtrusion1 = partGateway.CreateExtrusion();
+            BossExtrusionObject bossExtrusion1 = partGateway.CreateExtrusion(sketch1, new DistanceParameter(20), new DirectionParameter());
+            bossExtrusion1.Update();
         }
 
 

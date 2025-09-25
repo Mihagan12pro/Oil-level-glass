@@ -23,9 +23,6 @@ namespace APIv7_gateway.ModelObjects.Extrusions
 
         internal BossExtrusionObject(IExtrusion extrusion)
         {
-            if (extrusion is ICutExtrusion)
-                throw new InvalidDataException("Only for boss extrusion!");
-
             _bossExtrusion = extrusion;
         }
     }
