@@ -2,6 +2,7 @@
 using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
+using APIv7_gateway.ModelObjects.Chamfers;
 using APIv7_gateway.ModelObjects.Extrusions;
 using APIv7_gateway.ModelObjects.Parts;
 using Kompas6Constants;
@@ -63,6 +64,11 @@ namespace APIv7_gateway.Gateways.Three_D
             return sketchObject;
         }
 
+
+        public ChamferByAngleObject CreateChamferByAngle(double distance1, double angle, EdgeObject[] edges)
+        {
+            return new ChamferByAngleObject(ModelContainer.Chamfers.Add()) { Distance1 = distance1, Angle = angle, Edges = edges};
+        }
 
         public SketchObject CreateSketch(FaceObject faceObject)
         {

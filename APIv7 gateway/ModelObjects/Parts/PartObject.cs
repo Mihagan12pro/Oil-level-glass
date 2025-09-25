@@ -30,6 +30,33 @@ namespace APIv7_gateway.ModelObjects.Parts
         }
 
 
+        public EdgeObject FindEdgeByPoint(double x = 0, double y = 0, double z = 0)
+        {
+            IEdge[]? modelEdges = ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_edge]) as IEdge[];
+
+            IEdge? modelEdge = null;
+
+            List<EdgeObject> edgeObjects = new List<EdgeObject>();
+
+            foreach(IEdge edge in modelEdges)
+            {
+                edge.GetPoint(true, out double x1, out double y1, out double z1);
+
+                if (x1 == x && y1 == y && z1 == z)
+                {
+                    modelEdge = edge;
+
+                    break;
+                }
+            }
+
+            if (modelEdge == null)
+                throw new Exception($"Edge that contains point with coordinates x = {x}, y = {y}, z = {z} has not been found!");
+
+            return new EdgeObject(modelEdge);
+        }
+
+
         public FaceObject GetFaceByPoint(FaceTypes faceType = FaceTypes.Planar, double x = 0, double y = 0, double z = 0)
         {
             if (ModelContainer == null)
