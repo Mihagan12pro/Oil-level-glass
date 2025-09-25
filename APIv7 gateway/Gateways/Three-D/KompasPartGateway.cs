@@ -16,70 +16,15 @@ namespace APIv7_gateway.Gateways.Three_D
 {
     public class KompasPartGateway : KompasGateway, ISerializableGateway
     {
-        private IModelContainer? _modelContainer;
+        private readonly IModelContainer? _modelContainer;
         internal IModelContainer? ModelContainer => _modelContainer;
 
-        private readonly PartObject _part;
-
-        public FaceObject GetFaceByPoint(FaceTypes faceType = FaceTypes.Planar, double x = 0, double y = 0, double z = 0)
-        {
-            if (ModelContainer == null)
-                throw new NullReferenceException();
-
-            IFace[]? modelFaces = ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_face]) as IFace[];
-
-            if (modelFaces == null)
-                throw new NullReferenceException();
-
-            List<IFace> specificFaces = new List<IFace>();
-
-            foreach (IFace face in modelFaces)
-            {
-                switch (faceType)
-                {
-                    case FaceTypes.Planar:
-                        if (face.IsPlanar)
-                            specificFaces.Add(face);
-                        break;
-
-                    case FaceTypes.Cylindric:
-                        if (face.IsCylinder)
-                            specificFaces.Add(face);
-                        break;
-                }
-            }
-
-            if (specificFaces.Count == 0)
-                throw new Exception("Faces have not been found!");
-
-            FaceObject? specificFaceObject = null;
-
-            foreach(IFace face in specificFaces)
-            {
-                FaceObject faceObject = new FaceObject(face);
-
-                try
-                {
-                    EdgeObject edgeObject = faceObject.Edges[(x, y, z)];
-
-                    specificFaceObject = new FaceObject(face);
-                }
-                catch
-                {
-                    Console.WriteLine("Не та грань!");
-                }
-            }
-
-            if (specificFaceObject == null)
-                throw new Exception("Face has not been found!");
-
-            return specificFaceObject;
-        }
+        public readonly PartObject Part;
 
         
         public void SetName(KompasFile kompasFile)
         {
-            _part.ChangeName(kompasFile.Name);
+            Part.ChangeName(kompasFile.Name);
         }
 
 
@@ -91,13 +36,13 @@ namespace APIv7_gateway.Gateways.Three_D
 
         public void SetMaterial(Material material)
         {
-            _part.ChangeMaterial(material);
+            Part.ChangeMaterial(material);
         }
 
 
         public void SetAppearance(Appereance appereance)
         {
-            _part.ChangeApperance(appereance);
+            Part.ChangeApperance(appereance);
         }
 
 
@@ -156,7 +101,9 @@ namespace APIv7_gateway.Gateways.Three_D
             if (partDocument == null)
                 throw new NullReferenceException();
 
-            _part = new PartObject(partDocument.TopPart);
+            Part = new PartObject(partDocument.TopPart);
+
+            _modelContainer = Part.ModelContainer;
         }
     }
 }

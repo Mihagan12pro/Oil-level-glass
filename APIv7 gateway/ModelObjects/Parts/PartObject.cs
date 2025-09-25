@@ -1,6 +1,9 @@
-﻿using KompasAPI7;
+﻿using APIv7_gateway.Enums;
+using Kompas6Constants3D;
+using KompasAPI7;
 using KompasData.Materials;
 using KompasData.Structs;
+using Utils;
 
 namespace APIv7_gateway.ModelObjects.Parts
 {
@@ -12,6 +15,10 @@ namespace APIv7_gateway.ModelObjects.Parts
 
         internal string FullPath => part.FileName;
 
+        public readonly PlaneObject PlaneXOY, PlaneYOZ, PlaneXOZ;
+
+        private readonly IModelContainer? _modelContainer;
+        internal IModelContainer? ModelContainer => _modelContainer;
 
         internal void ChangeName(Name name)
         {
@@ -34,6 +41,61 @@ namespace APIv7_gateway.ModelObjects.Parts
             part.Update();
         }
 
+        public FaceObject GetFaceByPoint(FaceTypes faceType = FaceTypes.Planar, double x = 0, double y = 0, double z = 0)
+        {
+            if (ModelContainer == null)
+                throw new NullReferenceException();
+
+            IFace[]? modelFaces = ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_face]) as IFace[];
+
+            if (modelFaces == null)
+                throw new NullReferenceException();
+
+            List<IFace> specificFaces = new List<IFace>();
+
+            foreach (IFace face in modelFaces)
+            {
+                switch (faceType)
+                {
+                    case FaceTypes.Planar:
+                        if (face.IsPlanar)
+                            specificFaces.Add(face);
+                        break;
+
+                    case FaceTypes.Cylindric:
+                        if (face.IsCylinder)
+                            specificFaces.Add(face);
+                        break;
+                }
+            }
+
+            if (specificFaces.Count == 0)
+                throw new Exception("Faces have not been found!");
+
+            FaceObject? specificFaceObject = null;
+
+            foreach (IFace face in specificFaces)
+            {
+                FaceObject faceObject = new FaceObject(face);
+
+                try
+                {
+                    EdgeObject edgeObject = faceObject.Edges[(x, y, z)];
+
+                    specificFaceObject = new FaceObject(face);
+                }
+                catch
+                {
+                    Console.WriteLine("Не та грань!");
+                }
+            }
+
+            if (specificFaceObject == null)
+                throw new Exception("Face has not been found!");
+
+            return specificFaceObject;
+        }
+
 
         internal void ChangeApperance(Appereance appereance)
         {
@@ -48,6 +110,14 @@ namespace APIv7_gateway.ModelObjects.Parts
         internal PartObject(IPart7 part)
         {
             this.part = part;
+
+            _modelContainer = part as IModelContainer;
+
+            PlaneXOY = new PlaneObject((IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOY]);
+
+            PlaneYOZ = new PlaneObject((IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeYOZ]);
+
+            PlaneXOZ = new PlaneObject((IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOZ]);
         }
     }
 }

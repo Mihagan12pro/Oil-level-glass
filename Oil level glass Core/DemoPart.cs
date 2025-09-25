@@ -3,7 +3,6 @@ using APIv7_gateway.DrawingObjects;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.Gateways.Two_D;
 using APIv7_gateway.ModelObjects;
-using KompasAPI7;
 using Oil_level_glass_Core.Base;
 
 namespace Oil_level_glass_Core
@@ -12,21 +11,13 @@ namespace Oil_level_glass_Core
     {
         public override void Build()
         {
-            KompasPartGateway = new KompasPartGateway();
+            KompasPartGateway partGateway = new KompasPartGateway();
 
-            SketchObject _sketch1 = KompasPartGateway.CreateSketch(KompasPartGateway.PlaneXOY);
+            SketchObject sketch1 = partGateway.CreateSketch(partGateway.Part.PlaneXOY);
 
-            SketchEditor sketchEditor = _sketch1.SketchEditor;
+            SketchEditor sketch1Editor = sketch1.SketchEditor;
 
-            Geometry2DGateway geometry2DGateway = new Geometry2DGateway(sketchEditor);
-
-            CircleObject circleObject = geometry2DGateway.AddCircle(100, 0, 0);
-            circleObject.Update();
-
-            CircleObject circleObject2 = geometry2DGateway.AddCircle(200, 0, 0);
-            circleObject2.Update();
-
-            sketchEditor.EndEdit();
+            
         }
 
 

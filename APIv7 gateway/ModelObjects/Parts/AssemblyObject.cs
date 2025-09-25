@@ -12,6 +12,9 @@ namespace APIv7_gateway.ModelObjects.Parts
 
         public PartObject AddPartToAssembly(string fullName)
         {
+            if (!File.Exists(fullName))
+                throw new FileNotFoundException();
+
             return new PartObject(part.Parts.AddFromFile(fullName));
         }
     }

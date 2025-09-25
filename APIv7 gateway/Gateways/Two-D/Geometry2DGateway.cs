@@ -4,7 +4,7 @@ using KompasAPI7;
 
 namespace APIv7_gateway.Gateways.Two_D
 {
-    public class Geometry2DGateway
+    public class Geometry2DGateway : KompasGateway
     {
         private readonly IDrawingContainer? _drawingContainer;
         internal IDrawingContainer? DrawingContainer => _drawingContainer;
