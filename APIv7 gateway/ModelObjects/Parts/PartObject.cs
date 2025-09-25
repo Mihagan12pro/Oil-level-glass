@@ -62,15 +62,17 @@ namespace APIv7_gateway.ModelObjects.Parts
             if (ModelContainer == null)
                 throw new NullReferenceException();
 
-            IFace[]? modelFaces = ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_face]) as IFace[];
+            object[] modelFaces = (object[])ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_face]);
 
             if (modelFaces == null)
                 throw new NullReferenceException();
 
             List<IFace> specificFaces = new List<IFace>();
 
-            foreach (IFace face in modelFaces)
+            foreach (object obj in modelFaces)
             {
+                IFace face = (IFace)obj;
+
                 switch (faceType)
                 {
                     case FaceTypes.Planar:

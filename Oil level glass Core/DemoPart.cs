@@ -1,5 +1,6 @@
 ﻿using APIv7_gateway;
 using APIv7_gateway.DrawingObjects;
+using APIv7_gateway.Enums;
 using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.ModelObjects;
@@ -30,6 +31,14 @@ namespace Oil_level_glass_Core
             EdgeObject edge = partGateway.Part.GetEdgeByPoint(100, 0, 10);
 
             ChamferByAngleObject chamfer1 = partGateway.CreateChamferByAngle(3, 45, new EdgeObject[] { edge }); 
+
+            FaceObject face = partGateway.Part.GetFaceByPoint(FaceTypes.Planar, 97, 0, 10);
+
+            SketchObject sketch2 = partGateway.CreateSketch(face);
+
+            PointObject point = sketch2.AddPoint(70, 0, 0);
+
+            sketch2.EndEdit();
         }
 
 
