@@ -30,17 +30,6 @@ namespace APIv7_gateway.ModelObjects.Parts
         }
 
 
-        internal void ChangeMaterial(Material material)
-        {
-            part.SetMaterial(material.Tittle, material.Density);
-
-            IHatchParam hatchParam = part.HatchParam;
-
-            hatchParam.Style = material.HatchStyle;
-
-            part.Update();
-        }
-
         public FaceObject GetFaceByPoint(FaceTypes faceType = FaceTypes.Planar, double x = 0, double y = 0, double z = 0)
         {
             if (ModelContainer == null)
@@ -105,6 +94,19 @@ namespace APIv7_gateway.ModelObjects.Parts
 
             part.Update();
         }
+
+
+        internal void ChangeMaterial(Material material)
+        {
+            part.SetMaterial(material.Tittle, material.Density);
+
+            IHatchParam hatchParam = part.HatchParam;
+
+            hatchParam.Style = material.HatchStyle;
+
+            part.Update();
+        }
+
 
 
         internal PartObject(IPart7 part)
