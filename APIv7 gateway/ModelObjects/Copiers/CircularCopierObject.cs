@@ -41,7 +41,7 @@ namespace APIv7_gateway.ModelObjects.Copiers
             }
         }
 
-        public double CircularStep
+        public double RingStep
         {
             get => _circularCopier.Step2;
             set
@@ -52,7 +52,13 @@ namespace APIv7_gateway.ModelObjects.Copiers
             }
         }
 
-        public required Axis3DObject Axis { get; set; }
+        public required Axis3DObject Axis
+        {
+            set
+            {
+                _circularCopier.Axis = value.ModelObject;
+            }
+        }
 
         public required override ModelObjectBase[] ModelObjects
         {
@@ -80,7 +86,7 @@ namespace APIv7_gateway.ModelObjects.Copiers
         {
             _circularCopier = copier;
 
-            CircularStep = 360;
+            RingStep = 360;
         }
     }
 }

@@ -18,6 +18,8 @@ namespace APIv7_gateway.ModelObjects.Parts
 
         public readonly PlaneObject PlaneXOY, PlaneYOZ, PlaneXOZ;
 
+        public readonly Axis3DObject AxisOX, AxisOY, AxisOZ;
+
         private readonly IModelContainer? _modelContainer;
         internal IModelContainer? ModelContainer => _modelContainer;
 
@@ -177,6 +179,12 @@ namespace APIv7_gateway.ModelObjects.Parts
             PlaneYOZ = new PlaneObject((IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeYOZ]);
 
             PlaneXOZ = new PlaneObject((IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOZ]);
+
+            AxisOX = new Axis3DObject((IAxis3D)part.DefaultObject[ksObj3dTypeEnum.o3d_axisOX]);
+
+            AxisOY = new Axis3DObject((IAxis3D)part.DefaultObject[ksObj3dTypeEnum.o3d_axisOY]);
+
+            AxisOZ = new Axis3DObject((IAxis3D)part.DefaultObject[ksObj3dTypeEnum.o3d_axisOZ]);
         }
     }
 }
