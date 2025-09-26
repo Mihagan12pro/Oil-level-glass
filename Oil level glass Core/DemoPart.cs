@@ -3,7 +3,6 @@ using APIv7_gateway.Enums;
 using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.ModelObjects;
-using APIv7_gateway.ModelObjects.Chamfers;
 using APIv7_gateway.ModelObjects.Extrusions;
 using APIv7_gateway.ModelObjects.Holes;
 using Oil_level_glass_Core.Base;
@@ -30,7 +29,9 @@ namespace Oil_level_glass_Core
 
             EdgeObject edge = partGateway.Part.GetEdgeByPoint(100, 0, 10);
 
-            ChamferByAngleObject chamfer1 = partGateway.CreateChamferByAngle(3, 45, new EdgeObject[] { edge }); 
+            ChamferObject chamfer1 = partGateway.CreateChamfer(3, ChamferType.ByAngleAndSide, new EdgeObject[] { edge });
+            chamfer1.Angle = 60;
+            chamfer1.Update();
 
             FaceObject face = partGateway.Part.GetFaceByPoint(FaceTypes.Planar, 97, 0, 10);
 

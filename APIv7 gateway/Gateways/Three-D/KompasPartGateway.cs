@@ -1,7 +1,7 @@
-﻿using APIv7_gateway.Extrusion_params;
+﻿using APIv7_gateway.Enums;
+using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
-using APIv7_gateway.ModelObjects.Chamfers;
 using APIv7_gateway.ModelObjects.Extrusions;
 using APIv7_gateway.ModelObjects.Holes;
 using APIv7_gateway.ModelObjects.Parts;
@@ -64,9 +64,9 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public ChamferByAngleObject CreateChamferByAngle(double distance1, double angle, EdgeObject[] edges)
+        public ChamferObject CreateChamfer(double distance1, ChamferType type, EdgeObject[] edges)
         {
-            ChamferByAngleObject chamfer = new ChamferByAngleObject(ModelContainer.Chamfers.Add()) { Distance1 = distance1, Angle = angle, Edges = edges };
+            ChamferObject chamfer = new ChamferObject(ModelContainer.Chamfers.Add()) { FirstSide = distance1, Edges = edges, ChamferType = type };
             chamfer.Update();
 
             return chamfer;
