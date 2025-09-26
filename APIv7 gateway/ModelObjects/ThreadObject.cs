@@ -1,9 +1,4 @@
 ﻿using KompasAPI7;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APIv7_gateway.ModelObjects
 {
@@ -13,6 +8,50 @@ namespace APIv7_gateway.ModelObjects
 
         private readonly IThread _thread;
 
+
+        public bool IsAutoLength
+        {
+            get
+            {
+                return _thread.AutoLenght;
+            }
+            set
+            {
+                _thread.AutoLenght = value;
+            }
+        }
+
+
+        public bool IsAutoDiameter
+        {
+            get
+            {
+                return _thread.AutoDiameter;
+            }
+            set
+            {
+                _thread.AutoDiameter = value;
+
+                Update();
+            }
+        }
+
+
+        public double Length
+        {
+            get
+            {
+                return _thread.Lenght;
+            }
+            set
+            {
+                _thread.Lenght = value;
+
+                Update();
+            }
+        }
+
+
         public required double Pitch
         {
             get
@@ -21,8 +60,9 @@ namespace APIv7_gateway.ModelObjects
             }
             set
             {
-
                 _threadParameters.Pitch = value;
+
+                Update();
             }
         }
 
@@ -36,6 +76,8 @@ namespace APIv7_gateway.ModelObjects
             set
             {
                 _threadParameters.Diameter = value;
+
+                Update();
             }
         }
 
@@ -44,8 +86,6 @@ namespace APIv7_gateway.ModelObjects
 
         internal ThreadObject(IThread thread)
         {
-            thread.AutoLenght = true;
-
             _thread = thread;
 
             _threadParameters = (IThreadsParameters)_thread;

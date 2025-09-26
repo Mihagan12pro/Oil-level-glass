@@ -1,4 +1,5 @@
-﻿using APIv7_gateway.Enums;
+﻿using APIv7_gateway.DrawingObjects;
+using APIv7_gateway.Enums;
 using Kompas6Constants3D;
 using KompasAPI7;
 using KompasData.Materials;
@@ -27,6 +28,33 @@ namespace APIv7_gateway.ModelObjects.Parts
             part.Marking = name.Marking;
 
             part.Update();
+        }
+
+
+        public VertexObject GetVertexByPoint(double x = 0, double y = 0, double z = 0)
+        {
+            object[] vertices = (object[])ArrayMaster.ObjectToArray(ModelContainer.Objects[ksObj3dTypeEnum.o3d_vertex]);
+
+            IVertex? vertex = null;
+
+            foreach (object obj in vertices)
+            {
+                IVertex vert = (IVertex)obj;
+
+                vert.GetPoint(out double x1, out double y1, out double z1);
+
+                if (x1 == x && y1 == y && z1 == z)
+                {
+                    vertex = vert;
+
+                    break;
+                }
+            }
+
+            if (vertex == null)
+                throw new Exception($"Vertex with coordinates x = {x}, y = {y}, z = {z} has not been found!");
+
+            return new VertexObject(vertex);
         }
 
 

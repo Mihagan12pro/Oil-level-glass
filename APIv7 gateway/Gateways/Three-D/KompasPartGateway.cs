@@ -1,9 +1,9 @@
-﻿using APIv7_gateway.Enums;
-using APIv7_gateway.Extrusion_params;
+﻿using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Interfaces;
 using APIv7_gateway.ModelObjects;
 using APIv7_gateway.ModelObjects.Chamfers;
 using APIv7_gateway.ModelObjects.Extrusions;
+using APIv7_gateway.ModelObjects.Holes;
 using APIv7_gateway.ModelObjects.Parts;
 using Kompas6Constants;
 using Kompas6Constants3D;
@@ -11,7 +11,6 @@ using KompasAPI7;
 using KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Structs;
-using Utils;
 
 namespace APIv7_gateway.Gateways.Three_D
 {
@@ -96,6 +95,12 @@ namespace APIv7_gateway.Gateways.Three_D
 
                 Direction = direction
             };
+        }
+
+
+        public HoleObject CreateHole(VertexObject vertex, FaceObject face)
+        {
+            return new HoleObject(_modelContainer.Holes3D.Add()) { Face = face, Vertex = vertex };
         }
 
 
