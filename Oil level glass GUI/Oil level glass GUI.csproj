@@ -10,7 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CustomObjects\" />
+    <Compile Remove="CustomObjects\**" />
+    <EmbeddedResource Remove="CustomObjects\**" />
+    <None Remove="CustomObjects\**" />
+    <Page Remove="CustomObjects\**" />
   </ItemGroup>
 
   <ItemGroup>

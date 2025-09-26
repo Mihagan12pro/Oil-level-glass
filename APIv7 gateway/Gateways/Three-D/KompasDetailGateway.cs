@@ -14,10 +14,10 @@ using KompasData.Structs;
 
 namespace APIv7_gateway.Gateways.Three_D
 {
-    public class KompasPartGateway : KompasGateway, ISerializableGateway
+    public class KompasDetailGateway : KompasPartBaseGateway, ISerializableGateway
     {
         private readonly IModelContainer? _modelContainer;
-        internal IModelContainer? ModelContainer => _modelContainer;
+        internal override IModelContainer? ModelContainer => _modelContainer;
 
         public readonly PartObject Part;
 
@@ -104,7 +104,7 @@ namespace APIv7_gateway.Gateways.Three_D
         }
 
 
-        public KompasPartGateway(bool isActive = false)
+        public KompasDetailGateway(bool isActive = false)
         {
             if (isActive)
                 kompasDocument = kompasApplication?.ActiveDocument;

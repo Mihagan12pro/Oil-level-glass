@@ -5,9 +5,12 @@ using NativeMethods;
 
 namespace APIv7_gateway.Gateways.Three_D
 {
-    public class KompasAssemblyGateway : KompasGateway, ISerializableGateway
+    public class KompasAssemblyGateway : KompasPartBaseGateway, ISerializableGateway
     {
         private IMateConstraints3D? _mateConstraints;
+
+        internal override IModelContainer? ModelContainer => throw new NotImplementedException();
+
         public void Save(string file)
         {
             kompasDocument?.SaveAs(file);
@@ -25,11 +28,7 @@ namespace APIv7_gateway.Gateways.Three_D
 
         public KompasAssemblyGateway(bool isActive = false)
         {
-            //IAssemblyDocument? assemblyDocument = ComConnector.GetInstance(kompasProgId) as IAssemblyDocument;
 
-            //kompasDocument = assemblyDocument;
-
-            //Part = (kompasDocument as IPartDocument)?.TopPart;
         }
     }
 }

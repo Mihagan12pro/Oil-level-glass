@@ -3,6 +3,7 @@ using APIv7_gateway.Enums;
 using APIv7_gateway.Extrusion_params;
 using APIv7_gateway.Gateways.Three_D;
 using APIv7_gateway.ModelObjects;
+using APIv7_gateway.ModelObjects.Copiers;
 using APIv7_gateway.ModelObjects.Extrusions;
 using APIv7_gateway.ModelObjects.Holes;
 using Oil_level_glass_Core.Base;
@@ -13,7 +14,7 @@ namespace Oil_level_glass_Core
     {
         public override void Build()
         {
-            KompasPartGateway partGateway = new KompasPartGateway();
+            KompasDetailGateway partGateway = new KompasDetailGateway();
 
             SketchObject sketch1 = partGateway.CreateSketch(partGateway.Part.PlaneXOY);
             sketch1.BeginEdit();
@@ -47,12 +48,15 @@ namespace Oil_level_glass_Core
             hole.Diameter = 20;
 
             ThreadObject thread = hole.ThreadObject;
-            thread.Pitch = 1.1;
+            thread.Pitch = 1.75;
             thread.IsAutoDiameter = true;
             thread.IsAutoLength = true;
 
             hole.ShowThread = true;
             hole.Update();
+
+
+            CircularCopierObject circularCopier = partGateway.CreateCircularCopier();
         }
 
 

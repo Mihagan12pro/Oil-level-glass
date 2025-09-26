@@ -9,7 +9,7 @@ namespace Oil_level_glass_Core.Base
 {
     public abstract class BaseBuilder
     {
-        public KompasPartGateway ?KompasPartGateway { get; protected set; }
+        public KompasDetailGateway ?KompasPartGateway { get; protected set; }
 
         public abstract void Build();
     }
