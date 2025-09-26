@@ -6,7 +6,7 @@ namespace APIv7_gateway.Gateways.Three_D
 {
     public abstract class KompasPartBaseGateway : KompasGateway
     {
-        internal abstract IModelContainer? ModelContainer { get; }
+        internal abstract IModelContainer ModelContainer { get; }
 
         public CircularCopierObject CreateCircularCopier(Axis3DObject axis, ModelObjectBase[] objects)
         {

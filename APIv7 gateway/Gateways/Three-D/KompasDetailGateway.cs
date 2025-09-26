@@ -16,8 +16,8 @@ namespace APIv7_gateway.Gateways.Three_D
 {
     public class KompasDetailGateway : KompasPartBaseGateway, ISerializableGateway
     {
-        private readonly IModelContainer? _modelContainer;
-        internal override IModelContainer? ModelContainer => _modelContainer;
+        private readonly IModelContainer _modelContainer;
+        internal override IModelContainer ModelContainer => _modelContainer;
 
         public readonly PartObject Part;
 
@@ -116,7 +116,7 @@ namespace APIv7_gateway.Gateways.Three_D
             if (partDocument == null)
                 throw new NullReferenceException();
 
-            Part = new PartObject(partDocument.TopPart as Part7Class);
+            Part = new PartObject(partDocument.TopPart);
 
             _modelContainer = Part.ModelContainer;
         }

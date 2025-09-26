@@ -20,8 +20,8 @@ namespace APIv7_gateway.ModelObjects.Parts
 
         public readonly Axis3DObject AxisOX, AxisOY, AxisOZ;
 
-        private readonly IModelContainer? _modelContainer;
-        internal IModelContainer? ModelContainer => _modelContainer;
+        private readonly IModelContainer _modelContainer;
+        internal IModelContainer ModelContainer => _modelContainer;
 
         internal void ChangeName(Name name)
         {
@@ -168,11 +168,11 @@ namespace APIv7_gateway.ModelObjects.Parts
 
 
 
-        internal PartObject(Part7Class part)
+        internal PartObject(IPart7 part)
         {
             this.part = part;
 
-            _modelContainer = part as IModelContainer;
+            _modelContainer = (IModelContainer)part;
 
             PlaneXOY = new PlaneObject((IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOY]);
 

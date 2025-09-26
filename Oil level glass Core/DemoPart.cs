@@ -57,7 +57,7 @@ namespace Oil_level_glass_Core
 
 
             CircularCopierObject circularCopier = partGateway.CreateCircularCopier(partGateway.Part.AxisOZ, new ModelObjectBase[] { hole});
-            circularCopier.RingCount = 5;
+            circularCopier.RingCount = 6;
             circularCopier.Update();
         }
 
