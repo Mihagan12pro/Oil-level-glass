@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasData", "KompasData\Ko
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeMethods", "NativeMethods\NativeMethods.csproj", "{17B7B2EC-6254-4C7E-9536-C259A7FA0089}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependenciesManager", "DependenciesManager\DependenciesManager.csproj", "{74B6DD2C-6D5D-489A-9B56-5ED04103461B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{17B7B2EC-6254-4C7E-9536-C259A7FA0089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17B7B2EC-6254-4C7E-9536-C259A7FA0089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17B7B2EC-6254-4C7E-9536-C259A7FA0089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,7 @@ Global
 		{36D591C7-65C7-A0D1-1CBC-10CDE441BDC8} = {754FC069-D67B-A9D7-50A1-8D1CA196D8F1}
 		{097B336B-FBE1-424D-9188-8C561F6C2BC2} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
 		{A233B139-35F2-4A63-BDC7-252656E8B3A0} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {754FC069-D67B-A9D7-50A1-8D1CA196D8F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09E88832-B967-43DA-BE85-E0BC97BD4700}

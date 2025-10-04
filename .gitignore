@@ -15,7 +15,9 @@
 
 # Mono auto generated files
 mono_crash.*
-
+*.m3d.bak
+*.a3d.bak
+*.apmf
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -361,7 +363,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-
-*.a3d
-*.cdw
-*.m3d

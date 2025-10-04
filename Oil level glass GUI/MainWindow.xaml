@@ -5,10 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oil_level_glass_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="212,92,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Slider Template="{StaticResource SliderHorizontal}" HorizontalAlignment="Left" Margin="293,217,0,0" VerticalAlignment="Top" Width="282" Height="20"/>
-
-    </Grid>
+        Height="450" Width="800" Background="#f0f0f0">
+    <Grid/>
 </Window>
