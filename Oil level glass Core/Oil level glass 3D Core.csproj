@@ -7,9 +7,5 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\APIv7 gateway\APIv7 gateway.csproj" />
-  </ItemGroup>
-
 </Project>
 

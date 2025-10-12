@@ -85,6 +85,7 @@
             btInstallFolder.TabIndex = 5;
             btInstallFolder.Text = "Выбрать папку...";
             btInstallFolder.UseVisualStyleBackColor = true;
+            btInstallFolder.Click += BrowsingButtons_Click;
             // 
             // label2
             // 
@@ -112,6 +113,7 @@
             btSearchKompasFolder.TabIndex = 2;
             btSearchKompasFolder.Text = "Выбрать папку...";
             btSearchKompasFolder.UseVisualStyleBackColor = true;
+            btSearchKompasFolder.Click += BrowsingButtons_Click;
             // 
             // label1
             // 
@@ -233,6 +235,8 @@
             Name = "MainForm";
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "Установщик";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

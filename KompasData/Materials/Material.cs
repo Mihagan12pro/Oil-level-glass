@@ -1,5 +1,4 @@
 ﻿namespace KompasData.Materials;
-using Kompas6Constants;
 
 public abstract record Material
 {
