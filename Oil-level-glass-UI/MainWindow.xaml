@@ -1,31 +1,14 @@
-﻿<Window x:Class="Oil_level_glass_UI.MainWindow"
+﻿<kompas:KompasWindow x:Class="Oil_level_glass_UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oil_level_glass_UI"
         xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="450" WindowStyle="None" Margin="-1">
-    <DockPanel x:Name="RootWindow">
-        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Margin="0">
-            <Button x:Name="CloseButton"
-                    DockPanel.Dock="Right">
-                <icons:PackIconMaterial Kind="Close" Height="8"></icons:PackIconMaterial>
-            </Button>
-            <Button x:Name="MaxButton"  Width="20" Height="20"
-                    DockPanel.Dock="Right">
-                <icons:PackIconMaterial Kind="WindowMaximize" VerticalAlignment="Bottom" Height="8" Width="18" HorizontalAlignment="Right"/>
-            </Button>
-            <Button x:Name="MinButton"
-                    DockPanel.Dock="Right" Background="Transparent" Width="20" Height="20">
-                <icons:PackIconMaterial Kind="WindowMinimize" VerticalAlignment="Bottom" Height="2" Width="18" HorizontalAlignment="Right"/>
-            </Button>
+        Title="MainWindow" Height="450" Width="450" Margin="-1" Style="{StaticResource KompasWindowStyle}">
+    
 
-            <TextBlock HorizontalAlignment="Center">Application Name</TextBlock>
-        </DockPanel>
-
-        <ContentControl Content="{Binding CurrentPage}" />
-    </DockPanel>
-</Window>
+</kompas:KompasWindow>
