@@ -3,7 +3,7 @@
                     xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/KompasButtonStyles.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/RootButtonStyle.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="local:KompasWindow" x:Key="KompasWindowStyle">
@@ -23,7 +23,7 @@
                         <Grid x:Name="LayoutRoot"
                               Background="{TemplateBinding Background}">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="36"/>
+                                <RowDefinition Height="30"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
@@ -52,22 +52,28 @@
                                 <Grid x:Name="WindowControlsGrid" Grid.Column="2" 
                                           Background="White">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="36"/>
-                                        <ColumnDefinition Width="36"/>
-                                        <ColumnDefinition Width="36"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="30"/>
                                     </Grid.ColumnDefinitions>
 
                                     <Button x:Name="MinimizeButton" 
                                             Style="{StaticResource RootButtons}"
-                                            Grid.Column="0"/>
+                                            Grid.Column="0">
+                                        <icons:PackIconMaterial Kind="WindowMinimize"/>
+                                    </Button>
 
                                     <Button x:Name="MaximizeButton" 
                                             Style="{StaticResource RootButtons}"
-                                            Grid.Column="1" />
-                                    
+                                            Grid.Column="1" >
+                                        <icons:PackIconMaterial Kind="WindowMaximize"/>
+                                    </Button>
+
                                     <Button x:Name="CloseButton" 
                                             Style="{StaticResource RootButtons}"
-                                            Grid.Column="2"/>
+                                            Grid.Column="2">
+                                        <icons:PackIconMaterial Kind="Close"/>
+                                    </Button>
                                 </Grid>
                             </Grid>
 

@@ -8,7 +8,4 @@
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="450" Margin="-1" Style="{StaticResource KompasWindowStyle}">
-    
-
-</kompas:KompasWindow>
+        Title="МАСТЕР СМОТРОВЫХ ЛЮЧКОВ" Height="450" Width="620" Margin="-1" Style="{StaticResource KompasWindowStyle}"/>
