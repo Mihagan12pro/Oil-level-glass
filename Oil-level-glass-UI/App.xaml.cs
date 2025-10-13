@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Oil_level_glass_GUI
+namespace Oil_level_glass_UI
 {
     /// <summary>
     /// Interaction logic for App.xaml

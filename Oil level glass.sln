@@ -23,8 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Realesed", "Realesed", "{A2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{D4ABC500-0A22-4721-B9C3-C89213990C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass GUI", "Oil level glass GUI\Oil level glass GUI.csproj", "{80C5EE41-B059-4A4C-81AB-4EBC41C7C575}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasData", "KompasData\KompasData.csproj", "{0442F4AA-1AA2-4BF6-BC5B-58C9B14C3A09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeMethods", "NativeMethods\NativeMethods.csproj", "{17B7B2EC-6254-4C7E-9536-C259A7FA0089}"
@@ -32,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependenciesManager", "DependenciesManager\DependenciesManager.csproj", "{74B6DD2C-6D5D-489A-9B56-5ED04103461B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil-level-glass-UI", "Oil-level-glass-UI\Oil-level-glass-UI.csproj", "{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,6 @@ Global
 		{D4ABC500-0A22-4721-B9C3-C89213990C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4ABC500-0A22-4721-B9C3-C89213990C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4ABC500-0A22-4721-B9C3-C89213990C4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80C5EE41-B059-4A4C-81AB-4EBC41C7C575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80C5EE41-B059-4A4C-81AB-4EBC41C7C575}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80C5EE41-B059-4A4C-81AB-4EBC41C7C575}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80C5EE41-B059-4A4C-81AB-4EBC41C7C575}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0442F4AA-1AA2-4BF6-BC5B-58C9B14C3A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0442F4AA-1AA2-4BF6-BC5B-58C9B14C3A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0442F4AA-1AA2-4BF6-BC5B-58C9B14C3A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
