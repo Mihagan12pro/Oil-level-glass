@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Oil_level_glass_UI"
         xmlns:svg="http://www.w3.org/2000/svg"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
+        xmlns:window="clr-namespace:Oil_level_glass_UI"
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="МАСТЕР СМОТРОВЫХ ЛЮЧКОВ" Height="450" Width="620" Margin="-1" Style="{StaticResource KompasWindowStyle}"/>
+        Title="МАСТЕР СМОТРОВЫХ ЛЮЧКОВ" Height="450" Width="620" Style="{DynamicResource KompasWindowStyle}"/>

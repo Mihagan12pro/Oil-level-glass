@@ -14,7 +14,17 @@
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
         <Setter Property="Title" Value="{Binding Title}"/>
         <Setter Property="WindowStyle" Value="None"></Setter>
-
+        <Setter Property="ResizeMode" Value="CanResize"/>
+<Setter Property="WindowStyle" Value="None"/>
+<Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome GlassFrameThickness="1" 
+                           ResizeBorderThickness="4"
+                           CaptionHeight="0"/>
+            </Setter.Value>
+        </Setter>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:KompasWindow">
@@ -48,6 +58,7 @@
                                            Foreground="Black"
                                            Panel.ZIndex="0"
                                            IsEnabled="{TemplateBinding IsActive}"/>
+                                
 
                                 <Grid x:Name="WindowControlsGrid" Grid.Column="2" 
                                           Background="White">
@@ -58,21 +69,33 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Button x:Name="MinimizeButton" 
+                                            
                                             Style="{StaticResource RootButtons}"
                                             Grid.Column="0">
                                         <icons:PackIconMaterial Kind="WindowMinimize"/>
                                     </Button>
 
                                     <Button x:Name="MaximizeButton" 
+                                                              
                                             Style="{StaticResource RootButtons}"
                                             Grid.Column="1" >
                                         <icons:PackIconMaterial Kind="WindowMaximize"/>
                                     </Button>
 
+                                    <Button x:Name="RestoreButton" 
+                            
+                                        Style="{StaticResource RootButtons}"
+                                        Grid.Column="1" 
+                                        Visibility="Collapsed">
+                                        <icons:PackIconMaterial Kind="WindowRestore"/>
+                                    </Button>
+
                                     <Button x:Name="CloseButton" 
+                                            
                                             Style="{StaticResource RootButtons}"
                                             Grid.Column="2">
-                                        <icons:PackIconMaterial Kind="Close"/>
+                                        <icons:PackIconMaterial Kind="WindowClose"/>
+
                                     </Button>
                                 </Grid>
                             </Grid>
@@ -88,6 +111,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <!--<Setter Property="ResizeMode" Value="CanResizeWithGrip"></Setter>
+        <Setter Property="AllowsTransparency" Value="True"></Setter>-->
     </Style>
        
 </ResourceDictionary>
