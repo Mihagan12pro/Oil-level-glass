@@ -7,8 +7,7 @@
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="local:KompasWindow" x:Key="KompasWindowStyle">
-        <Setter Property="Background" Value="#e4e4e4"/>
-        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Background" Value="#f2f2f2"/>
         <Setter Property="MinHeight" Value="320"/>
         <Setter Property="MinWidth" Value="480"/>
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
@@ -21,7 +20,7 @@
             <Setter.Value>
                 <WindowChrome GlassFrameThickness="1" 
                            ResizeBorderThickness="4"
-                           CaptionHeight="0"/>
+                           CaptionHeight="0" />
             </Setter.Value>
         </Setter>
 
@@ -29,78 +28,85 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:KompasWindow">
                     <Grid Background="Transparent" x:Name="WindowRoot">
-
-                        <Grid x:Name="LayoutRoot"
+                        <Border
+                             x:Name="MainBorder"
+                                BorderBrush="Black" 
+                                BorderThickness="1"  
+                                Background="Transparent">
+                            <Grid x:Name="LayoutRoot" 
                               Background="{TemplateBinding Background}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <!--TitleBar-->
-                            <Grid x:Name="PART_HeaderBar">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock Text="{TemplateBinding Title}" 
-                                           Grid.Column="0"
-                                           Grid.ColumnSpan="3"
-                                           TextTrimming="CharacterEllipsis"
-                                           HorizontalAlignment="Stretch" 
-                                           FontSize="13"
-                                           TextAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           Width="Auto"
-                                           Padding="200 0 200 0"
-                                           Foreground="Black"
-                                           Panel.ZIndex="0"
-                                           IsEnabled="{TemplateBinding IsActive}"/>
-
-
-                                <Grid x:Name="WindowControlsGrid" Grid.Column="2" >
+                                <!--<StackPanel>-->
+                                <!--TitleBar-->
+                                <Grid x:Name="PART_HeaderBar" Background="#e4e4e4">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button x:Name="MinimizeButton"                   
-                                            Style="{StaticResource RootButtons}"
-                                            Grid.Column="0">
-                                        <icons:PackIconMaterial Kind="WindowMinimize"/>
-                                    </Button>
+                                    <TextBlock Text="{TemplateBinding Title}" 
+                                                   Grid.Column="0"
+                                                   Grid.ColumnSpan="3"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   HorizontalAlignment="Stretch" 
+                                                   FontSize="13"
+                                                   TextAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Width="Auto"
+                                                   Padding="200 0 200 0"
+                                                   Foreground="Black"
+                                                   Panel.ZIndex="0"
+                                                   IsEnabled="{TemplateBinding IsActive}"/>
 
-                                    <Button x:Name="MaximizeButton"                                    
-                                            Style="{StaticResource RootButtons}"
-                                            Grid.Column="1" >
-                                        <icons:PackIconMaterial Kind="WindowMaximize"/>
-                                    </Button>
 
-                                    <Button x:Name="RestoreButton" 
-                                        Style="{StaticResource RootButtons}"
-                                        Grid.Column="1" 
-                                        Visibility="Collapsed">
-                                        <icons:PackIconMaterial Kind="WindowRestore"/>
-                                    </Button>
+                                    <Grid x:Name="WindowControlsGrid" Grid.Column="2" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="30"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <Button x:Name="CloseButton" 
-                                            Style="{StaticResource RootButtons}"
-                                            Grid.Column="2">
-                                        <icons:PackIconMaterial Kind="WindowClose"/>
-                                    </Button>
+                                        <Button x:Name="MinimizeButton"                   
+                                                    Style="{StaticResource RootButtons}"
+                                                    Grid.Column="0">
+                                            <icons:PackIconMaterial Kind="WindowMinimize"/>
+                                        </Button>
+
+                                        <Button x:Name="MaximizeButton"                                    
+                                                    Style="{StaticResource RootButtons}"
+                                                    Grid.Column="1" >
+                                            <icons:PackIconMaterial Kind="WindowMaximize"/>
+                                        </Button>
+
+                                        <Button x:Name="RestoreButton" 
+                                                Style="{StaticResource RootButtons}"
+                                                Grid.Column="1" 
+                                                Visibility="Collapsed">
+                                            <icons:PackIconMaterial Kind="WindowRestore"/>
+                                        </Button>
+
+                                        <Button x:Name="CloseButton" 
+                                                    Style="{StaticResource RootButtons}"
+                                                    Grid.Column="2">
+                                            <icons:PackIconMaterial Kind="WindowClose"/>
+                                        </Button>
+                                    </Grid>
                                 </Grid>
+                                <!--</StackPanel>-->
+                                <Border BorderBrush="#333333" BorderThickness="0 0 0 2">
+                                    <Grid x:Name="PART_MainContentGrid"
+                                        Grid.Row="1"
+                                        Panel.ZIndex="10">
+                                        <ContentPresenter x:Name="PART_MainContentPresenter" Grid.Row="1"/>
+                                    </Grid>
+                                </Border>
                             </Grid>
-                            <Border BorderBrush="#333333" BorderThickness="0 0 0 2">
-                                <Grid x:Name="PART_MainContentGrid"
-                                    Grid.Row="1"
-                                    Panel.ZIndex="10">
-                                    <ContentPresenter x:Name="PART_MainContentPresenter" Grid.Row="1"/>
-                                </Grid>
-                            </Border>
-                        </Grid>
+                        </Border>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
