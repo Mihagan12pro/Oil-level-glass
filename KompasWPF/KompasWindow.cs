@@ -42,13 +42,18 @@ namespace KompasWPF
     /// </summary>
     public partial class KompasWindow : Window
     {
-        public Button CloseButton { get; protected set; }
+        public Button CloseButton { get; protected set; } = null!;
 
-        public Button MinimizeButton { get; protected set; }
+        public Button MinimizeButton { get; protected set; } = null!;
 
-        public Button MaximizeButton { get; protected set; }
+        public Button MaximizeButton { get; protected set; } = null!;
 
-        public Button RestoreButton { get; protected set; }
+        public Button RestoreButton { get; protected set; } = null!;
+
+        public Grid WindowControlsGrid { get; protected set; } = null!;
+
+        public Grid HeaderBar { get; protected set; } = null!;
+
 
         public override void OnApplyTemplate()
         {
@@ -62,23 +67,56 @@ namespace KompasWPF
             MinimizeButton.Click += MinimizeButton_Click;
             RestoreButton.Click += RestoreButton_Click;
 
+            WindowControlsGrid = GetRequiredTemplateChild<Grid>(nameof(WindowControlsGrid));
+            HeaderBar = GetRequiredTemplateChild<Grid>("PART_HeaderBar");
 
+            foreach(UIElement uiElement in HeaderBar.Children)
+            {
+                if (uiElement != WindowControlsGrid)
+                {
+                    uiElement.PreviewMouseDown += UiElement_PreviewMouseDown;
+                }
+            }
+          
             base.OnApplyTemplate();
         }
 
-        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+
+        private void UiElement_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            WindowState = WindowState.Normal;
-            MaximizeButton.Visibility = Visibility.Visible;
-            RestoreButton.Visibility = Visibility.Collapsed;
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
+        
+
+        protected void ToggleWindowState()
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                MaximizeButton.Visibility = Visibility.Visible;
+                RestoreButton.Visibility = Visibility.Collapsed;
+
+                WindowState = WindowState.Normal;
+            }
+            else if (WindowState == WindowState.Normal)
+            {
+                MaximizeButton.Visibility = Visibility.Collapsed;
+                RestoreButton.Visibility = Visibility.Visible;
+
+                WindowState = WindowState.Maximized;
+            }
         }
 
 
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleWindowState();
+        }
+
+      
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Maximized;
-            MaximizeButton.Visibility = Visibility.Collapsed;
-            RestoreButton.Visibility = Visibility.Visible;
+            ToggleWindowState();
         }
         
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
