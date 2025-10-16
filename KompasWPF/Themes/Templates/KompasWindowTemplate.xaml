@@ -7,7 +7,7 @@
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="local:KompasWindow" x:Key="KompasWindowStyle">
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="#e4e4e4"/>
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="MinHeight" Value="320"/>
         <Setter Property="MinWidth" Value="480"/>
@@ -24,7 +24,7 @@
                            CaptionHeight="0"/>
             </Setter.Value>
         </Setter>
-        
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:KompasWindow">
@@ -58,32 +58,28 @@
                                            Foreground="Black"
                                            Panel.ZIndex="0"
                                            IsEnabled="{TemplateBinding IsActive}"/>
-                                
 
-                                <Grid x:Name="WindowControlsGrid" Grid.Column="2" 
-                                          Background="White">
+
+                                <Grid x:Name="WindowControlsGrid" Grid.Column="2" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="30"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Button x:Name="MinimizeButton" 
-                                            
+                                    <Button x:Name="MinimizeButton"                   
                                             Style="{StaticResource RootButtons}"
                                             Grid.Column="0">
                                         <icons:PackIconMaterial Kind="WindowMinimize"/>
                                     </Button>
 
-                                    <Button x:Name="MaximizeButton" 
-                                                              
+                                    <Button x:Name="MaximizeButton"                                    
                                             Style="{StaticResource RootButtons}"
                                             Grid.Column="1" >
                                         <icons:PackIconMaterial Kind="WindowMaximize"/>
                                     </Button>
 
                                     <Button x:Name="RestoreButton" 
-                            
                                         Style="{StaticResource RootButtons}"
                                         Grid.Column="1" 
                                         Visibility="Collapsed">
@@ -91,29 +87,24 @@
                                     </Button>
 
                                     <Button x:Name="CloseButton" 
-                                            
                                             Style="{StaticResource RootButtons}"
                                             Grid.Column="2">
                                         <icons:PackIconMaterial Kind="WindowClose"/>
-
                                     </Button>
                                 </Grid>
                             </Grid>
-
-                            <Grid x:Name="PART_MainContentGrid"
-                                  Grid.Row="1"
-                                  Panel.ZIndex="10">
-                                <ContentPresenter x:Name="PART_MainContentPresenter" 
-                                                  Grid.Row="1"/>
-                            </Grid>
+                            <Border BorderBrush="#333333" BorderThickness="0 0 0 2">
+                                <Grid x:Name="PART_MainContentGrid"
+                                    Grid.Row="1"
+                                    Panel.ZIndex="10">
+                                    <ContentPresenter x:Name="PART_MainContentPresenter" Grid.Row="1"/>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
-        <!--<Setter Property="ResizeMode" Value="CanResizeWithGrip"></Setter>
-        <Setter Property="AllowsTransparency" Value="True"></Setter>-->
     </Style>
        
 </ResourceDictionary>

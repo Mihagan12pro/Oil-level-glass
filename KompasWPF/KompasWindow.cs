@@ -42,5 +42,59 @@ namespace KompasWPF
     /// </summary>
     public partial class KompasWindow : Window
     {
+        public Button CloseButton { get; protected set; }
+
+        public Button MinimizeButton { get; protected set; }
+
+        public Button MaximizeButton { get; protected set; }
+
+        public Button RestoreButton { get; protected set; }
+
+        public override void OnApplyTemplate()
+        {
+            CloseButton = GetRequiredTemplateChild<Button>(nameof(CloseButton));
+            MinimizeButton = GetRequiredTemplateChild<Button>(nameof(MinimizeButton));
+            MaximizeButton = GetRequiredTemplateChild<Button>(nameof(MaximizeButton));
+            RestoreButton = GetRequiredTemplateChild<Button>(nameof(RestoreButton));
+
+            MaximizeButton.Click += MaximizeButton_Click;
+            CloseButton.Click += CloseButton_Click;
+            MinimizeButton.Click += MinimizeButton_Click;
+            RestoreButton.Click += RestoreButton_Click;
+
+
+            base.OnApplyTemplate();
+        }
+
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+            MaximizeButton.Visibility = Visibility.Visible;
+            RestoreButton.Visibility = Visibility.Collapsed;
+        }
+
+
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+            MaximizeButton.Visibility = Visibility.Collapsed;
+            RestoreButton.Visibility = Visibility.Visible;
+        }
+        
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+
+        public T GetRequiredTemplateChild<T>(string childName) where T : DependencyObject
+        {
+            return (T)base.GetTemplateChild(childName);
+        }
     }
 }
