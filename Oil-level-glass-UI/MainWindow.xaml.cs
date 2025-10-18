@@ -1,4 +1,5 @@
 ﻿using KompasWPF;
+using System.Diagnostics;
 
 namespace Oil_level_glass_UI
 {

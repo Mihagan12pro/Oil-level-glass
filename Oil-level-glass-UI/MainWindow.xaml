@@ -9,4 +9,21 @@
         xmlns:window="clr-namespace:Oil_level_glass_UI"
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="МАСТЕР СМОТРОВЫХ ЛЮЧКОВ" Height="450" Width="620" Style="{DynamicResource KompasWindowStyle}"/>
+        Title="МАСТЕР СМОТРОВЫХ ЛЮЧКОВ" MinHeight="450" MinWidth="450" Height="450" Width="620" Style="{DynamicResource KompasWindowStyle}">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Gray" Grid.Row="0" BorderThickness="1">
+            <Image   Source="/Images/Oil level glass.png" Stretch="Fill"></Image>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Button Style="{DynamicResource HelpButton}" Width="20" Height="20" Margin="0 5" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+
+            <Button Style="{DynamicResource FormButton}" Content = "3D модели" Width="80" Height="20" Margin="0 5" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Button>
+        </Grid>
+    </Grid>
+</kompas:KompasWindow>
