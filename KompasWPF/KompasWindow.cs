@@ -40,7 +40,7 @@ namespace KompasWPF
     ///     <MyNamespace:CustomControl1/>
     ///
     /// </summary>
-    public partial class KompasWindow : Window
+    public partial class KompasWindow : Window, IDisposable
     {
         public Button CloseButton { get; protected set; } = null!;
 
@@ -54,33 +54,57 @@ namespace KompasWPF
 
         public Grid HeaderBar { get; protected set; } = null!;
 
+        private bool _isTemplateApplied = false;
 
         public override void OnApplyTemplate()
         {
+            base.OnApplyTemplate();
+
             CloseButton = GetRequiredTemplateChild<Button>(nameof(CloseButton));
             MinimizeButton = GetRequiredTemplateChild<Button>(nameof(MinimizeButton));
             MaximizeButton = GetRequiredTemplateChild<Button>(nameof(MaximizeButton));
             RestoreButton = GetRequiredTemplateChild<Button>(nameof(RestoreButton));
 
-            MaximizeButton.Click += MaximizeButton_Click;
-            CloseButton.Click += CloseButton_Click;
-            MinimizeButton.Click += MinimizeButton_Click;
-            RestoreButton.Click += RestoreButton_Click;
-
             WindowControlsGrid = GetRequiredTemplateChild<Grid>(nameof(WindowControlsGrid));
             HeaderBar = GetRequiredTemplateChild<Grid>("PART_HeaderBar");
 
-            foreach(UIElement uiElement in HeaderBar.Children)
+            _isTemplateApplied = true;
+
+            if (IsLoaded)
             {
-                if (uiElement != WindowControlsGrid)
-                {
-                    uiElement.PreviewMouseDown += UiElement_PreviewMouseDown;
-                }
+                InitializeEventHandlers();
             }
-          
-            base.OnApplyTemplate();
         }
 
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+
+            Loaded += KompasWindow_Loaded;
+        }
+
+        private void KompasWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_isTemplateApplied)
+            {
+                InitializeEventHandlers();
+            }
+            else
+            {
+                ApplyTemplate();
+
+                CloseButton = GetRequiredTemplateChild<Button>(nameof(CloseButton));
+                MinimizeButton = GetRequiredTemplateChild<Button>(nameof(MinimizeButton));
+                MaximizeButton = GetRequiredTemplateChild<Button>(nameof(MaximizeButton));
+                RestoreButton = GetRequiredTemplateChild<Button>(nameof(RestoreButton));
+                WindowControlsGrid = GetRequiredTemplateChild<Grid>(nameof(WindowControlsGrid));
+                HeaderBar = GetRequiredTemplateChild<Grid>("PART_HeaderBar");
+            
+                _isTemplateApplied = true;
+                InitializeEventHandlers();
+            }
+        }
 
         private void UiElement_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -129,10 +153,36 @@ namespace KompasWPF
             Close();
         }
 
+        private void InitializeEventHandlers()
+        {
+            MaximizeButton.Click += MaximizeButton_Click;
+            CloseButton.Click += CloseButton_Click;
+            MinimizeButton.Click += MinimizeButton_Click;
+            RestoreButton.Click += RestoreButton_Click;
+
+            foreach (UIElement uiElement in HeaderBar.Children)
+            {
+                if (uiElement != WindowControlsGrid)
+                {
+                    uiElement.PreviewMouseDown += UiElement_PreviewMouseDown;
+                }
+            }
+        }
+
 
         public T GetRequiredTemplateChild<T>(string childName) where T : DependencyObject
         {
             return (T)base.GetTemplateChild(childName);
+        }
+
+        public void Dispose()
+        {
+            
+        }
+
+        public KompasWindow()
+        {
+           
         }
     }
 }
