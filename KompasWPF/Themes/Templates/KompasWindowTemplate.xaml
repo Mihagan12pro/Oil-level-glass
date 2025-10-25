@@ -4,8 +4,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/RootButtonStyle.xaml"></ResourceDictionary>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/FormButtonStyle.xaml"></ResourceDictionary>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/HelpButtonStyle.xaml"></ResourceDictionary>
         <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/KompasTootTipStyle.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
     

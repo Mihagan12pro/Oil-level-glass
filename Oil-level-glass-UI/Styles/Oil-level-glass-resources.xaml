@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:local="clr-namespace:Oil_level_glass_UI"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style TargetType="local:MainWindow" BasedOn="{StaticResource KompasWindowStyle}" x:Key="MainWindowStyle">
-
-    </Style>
-
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Generic.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

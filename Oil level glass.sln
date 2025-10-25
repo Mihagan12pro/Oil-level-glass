@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasData", "KompasData\Ko
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeMethods", "NativeMethods\NativeMethods.csproj", "{17B7B2EC-6254-4C7E-9536-C259A7FA0089}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependenciesManager", "DependenciesManager\DependenciesManager.csproj", "{74B6DD2C-6D5D-489A-9B56-5ED04103461B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil-level-glass-UI", "Oil-level-glass-UI\Oil-level-glass-UI.csproj", "{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}"
@@ -57,10 +55,6 @@ Global
 		{17B7B2EC-6254-4C7E-9536-C259A7FA0089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17B7B2EC-6254-4C7E-9536-C259A7FA0089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17B7B2EC-6254-4C7E-9536-C259A7FA0089}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74B6DD2C-6D5D-489A-9B56-5ED04103461B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
