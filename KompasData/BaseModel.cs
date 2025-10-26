@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.Model
 {
-    public abstract class ModelBase /*: INotifyDataErrorInfo*/
+    public abstract class BaseModel /*: INotifyDataErrorInfo*/
     {
         //public bool HasErrors => throw new NotImplementedException();
 
