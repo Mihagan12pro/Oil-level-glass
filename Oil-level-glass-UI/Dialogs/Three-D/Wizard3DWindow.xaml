@@ -23,7 +23,7 @@
                 
             </TabItem>
         </TabControl>
-        <kompasUserControl:FormFooter Height="20" VerticalAlignment="Bottom" Margin="10">
+        <kompasUserControl:FormFooter Height="20" VerticalAlignment="Bottom" Margin="10" Name="Footer">
             
         </kompasUserControl:FormFooter>
     </Grid>

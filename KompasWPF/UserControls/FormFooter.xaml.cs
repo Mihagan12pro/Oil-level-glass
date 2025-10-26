@@ -23,6 +23,17 @@ namespace KompasWPF.UserControls
         public FormFooter()
         {
             InitializeComponent();
+
+            CancelAction = () => { Window.GetWindow(this).DialogResult = true; };
+        }
+
+        public CancelAction? CancelAction { get; set; }
+
+        private void BtCancel_Click(object sender, RoutedEventArgs e)
+        {
+            CancelAction?.Invoke();
         }
     }
+
+    public delegate void CancelAction();
 }

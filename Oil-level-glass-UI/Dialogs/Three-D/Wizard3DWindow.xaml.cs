@@ -12,7 +12,7 @@ namespace Oil_level_glass_UI.Dialogs.Three_D
         {
             InitializeComponent();
 
-           
+            DataContext = new Wizard3DViewModel();
         }
     }
 }

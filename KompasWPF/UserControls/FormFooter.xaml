@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <Button Name="BtHelp" Style="{StaticResource HelpButton}" Width="20" Height="20" HorizontalAlignment="Left" Grid.Column="0"></Button>
-        <Button Name="BtCancel" Style="{StaticResource FormButton}" Width="60" Height="20" HorizontalAlignment="Right" Content="Отмена" Grid.Column="1"></Button>
+        <Button Name="BtCancel" Style="{StaticResource FormButton}" Width="60" Height="20" HorizontalAlignment="Right" Content="Отмена" Grid.Column="1" Click="BtCancel_Click"></Button>
         <Button Name="BtOk" Style="{StaticResource FormButton}" Width="60" Height="20" HorizontalAlignment="Right" Content="Ок" Grid.Column="2"></Button>
     </Grid>
 </UserControl>
