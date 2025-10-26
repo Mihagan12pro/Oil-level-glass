@@ -1,6 +1,6 @@
-﻿namespace KompasData.Structs;
+﻿namespace KompasData.Other;
 
-public struct Appereance
+public class Appereance
 {
     public double Ambient { get; set; } 
 

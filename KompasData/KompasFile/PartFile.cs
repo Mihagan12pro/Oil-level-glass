@@ -1,6 +1,6 @@
 ﻿namespace KompasData.KompasFile;
 
-public record PartFile : KompasFile
+public class PartFile : KompasFile
 {
     public PartFile()
     {

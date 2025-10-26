@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass 3D Core", "Oil level glass Core\Oil level glass 3D Core.csproj", "{A6663E53-AB0D-451F-ACE1-3D758B0052C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.Core", "Oil level glass Core\Oil level glass.Core.csproj", "{A6663E53-AB0D-451F-ACE1-3D758B0052C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}"
 EndProject
@@ -23,13 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Realesed", "Realesed", "{A2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{D4ABC500-0A22-4721-B9C3-C89213990C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasData", "KompasData\KompasData.csproj", "{0442F4AA-1AA2-4BF6-BC5B-58C9B14C3A09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.Model", "KompasData\Oil level glass.Model.csproj", "{0442F4AA-1AA2-4BF6-BC5B-58C9B14C3A09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeMethods", "NativeMethods\NativeMethods.csproj", "{17B7B2EC-6254-4C7E-9536-C259A7FA0089}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil-level-glass-UI", "Oil-level-glass-UI\Oil-level-glass-UI.csproj", "{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI", "Oil-level-glass-UI\Oil level glass.UI.csproj", "{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasWPF", "KompasWPF\KompasWPF.csproj", "{A79CCA35-ECD8-4901-925A-FDF342C3CAF1}"
 EndProject

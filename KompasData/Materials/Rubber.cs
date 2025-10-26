@@ -1,7 +1,7 @@
 ﻿namespace KompasData.Materials;
 using Kompas6Constants;
 
-public record Rubber : Material
+public class Rubber : Material
 {
     public Rubber()
     {

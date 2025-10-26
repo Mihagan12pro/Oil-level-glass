@@ -2,7 +2,7 @@
 
 namespace KompasData.Materials;
 
-public record Glass : Material
+public class Glass : Material
 {
     public Glass()
     {

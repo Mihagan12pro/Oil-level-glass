@@ -1,23 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KompasWPF.UserControls
 {
-    /// <summary>
-    /// Interaction logic for FormFooter.xaml
-    /// </summary>
     public partial class FormFooter : UserControl
     {
         public FormFooter()
@@ -29,6 +14,9 @@ namespace KompasWPF.UserControls
 
         public CancelAction? CancelAction { get; set; }
 
+        public OkAction? OkAction { get; set; }
+
+
         private void BtCancel_Click(object sender, RoutedEventArgs e)
         {
             CancelAction?.Invoke();
@@ -36,4 +24,6 @@ namespace KompasWPF.UserControls
     }
 
     public delegate void CancelAction();
+
+    public delegate void OkAction();
 }

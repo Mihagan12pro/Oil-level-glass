@@ -1,4 +1,4 @@
-﻿namespace Oil_level_glass_Core.Base
+﻿namespace Oil_level_glass_Core.Builders
 {
     public abstract class BaseBuilder
     {

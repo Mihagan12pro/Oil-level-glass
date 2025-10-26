@@ -1,6 +1,6 @@
-﻿namespace KompasData.Structs;
+﻿namespace KompasData.Other;
 
-public struct Name
+public class Name
 {
     public string Naming { get; set; }
 

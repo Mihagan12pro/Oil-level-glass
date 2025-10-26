@@ -1,6 +1,6 @@
 ﻿namespace KompasData.Materials;
 
-public abstract record Material
+public abstract class Material
 {
     public double Density { get; set; }
     
