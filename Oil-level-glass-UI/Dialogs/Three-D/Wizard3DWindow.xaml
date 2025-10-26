@@ -8,8 +8,11 @@
         mc:Ignorable="d"
         Title="СОЗДАНИЕ 3D МОДЕЛИ" Height="450" Width="800" Style="{DynamicResource KompasWindowStyle}" ShowInTaskbar="False">
     <Grid>
-        <TabControl TabStripPlacement="Left" >
-            <TabItem Header="qwe"></TabItem>
+        <TabControl Style="{DynamicResource KompasTabControl}" TabStripPlacement="Left" >
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Сборка"></TabItem>
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Корпус"></TabItem>
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Линза"></TabItem>
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Прокладка"></TabItem>
         </TabControl>
     </Grid>
 </kompas:KompasWindow>

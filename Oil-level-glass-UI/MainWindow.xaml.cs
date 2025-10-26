@@ -1,6 +1,5 @@
 ﻿using KompasWPF;
 using Oil_level_glass_UI.Dialogs.Three_D;
-using System.Diagnostics;
 
 namespace Oil_level_glass_UI
 {
@@ -18,6 +17,8 @@ namespace Oil_level_glass_UI
         {
             using (Wizard3DWindow wizard3DWindow = new Wizard3DWindow())
             {
+                wizard3DWindow.Owner = this;
+
                 wizard3DWindow.ShowDialog();
             }
         }
