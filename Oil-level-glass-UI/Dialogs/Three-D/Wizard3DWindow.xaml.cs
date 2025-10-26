@@ -1,4 +1,5 @@
 ﻿using KompasWPF;
+using KompasWPF.UserControls;
 
 namespace Oil_level_glass_UI.Dialogs.Three_D
 {
@@ -10,6 +11,8 @@ namespace Oil_level_glass_UI.Dialogs.Three_D
         public Wizard3DWindow()
         {
             InitializeComponent();
+
+           
         }
     }
 }

@@ -5,14 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oil_level_glass_UI.Dialogs.Three_D"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
+        xmlns:kompasUserControl="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"             
         mc:Ignorable="d"
         Title="СОЗДАНИЕ 3D МОДЕЛИ" Height="450" Width="800" Style="{DynamicResource KompasWindowStyle}" ShowInTaskbar="False">
     <Grid>
-        <TabControl Style="{DynamicResource KompasTabControl}" TabStripPlacement="Left" >
-            <TabItem Style="{DynamicResource KompasTabItem}" Header="Сборка"></TabItem>
-            <TabItem Style="{DynamicResource KompasTabItem}" Header="Корпус"></TabItem>
-            <TabItem Style="{DynamicResource KompasTabItem}" Header="Линза"></TabItem>
-            <TabItem Style="{DynamicResource KompasTabItem}" Header="Прокладка"></TabItem>
+        <TabControl Style="{DynamicResource KompasTabControl}" TabStripPlacement="Left">
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Сборка">
+                
+            </TabItem>
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Корпус">
+                
+            </TabItem>
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Линза" >
+                
+            </TabItem>
+            <TabItem Style="{DynamicResource KompasTabItem}" Header="Прокладка">
+                
+            </TabItem>
         </TabControl>
+        <kompasUserControl:FormFooter Height="20" VerticalAlignment="Bottom" Margin="10">
+            
+        </kompasUserControl:FormFooter>
     </Grid>
 </kompas:KompasWindow>
