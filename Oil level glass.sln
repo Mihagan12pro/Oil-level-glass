@@ -27,11 +27,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.Model", "Ko
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeMethods", "NativeMethods\NativeMethods.csproj", "{17B7B2EC-6254-4C7E-9536-C259A7FA0089}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI", "Oil-level-glass-UI\Oil level glass.UI.csproj", "{2DCB4F49-FB11-4762-B7BB-A290D089AFC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasWPF", "KompasWPF\KompasWPF.csproj", "{A79CCA35-ECD8-4901-925A-FDF342C3CAF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.Tests", "Oil level glass.Tests\Oil level glass.Tests.csproj", "{5D3EAC11-EB57-4067-8F1D-BF4439D20E79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +63,10 @@ Global
 		{A79CCA35-ECD8-4901-925A-FDF342C3CAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A79CCA35-ECD8-4901-925A-FDF342C3CAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A79CCA35-ECD8-4901-925A-FDF342C3CAF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3EAC11-EB57-4067-8F1D-BF4439D20E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3EAC11-EB57-4067-8F1D-BF4439D20E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3EAC11-EB57-4067-8F1D-BF4439D20E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3EAC11-EB57-4067-8F1D-BF4439D20E79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,7 +75,6 @@ Global
 		{36D591C7-65C7-A0D1-1CBC-10CDE441BDC8} = {754FC069-D67B-A9D7-50A1-8D1CA196D8F1}
 		{097B336B-FBE1-424D-9188-8C561F6C2BC2} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
 		{A233B139-35F2-4A63-BDC7-252656E8B3A0} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
-		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {754FC069-D67B-A9D7-50A1-8D1CA196D8F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09E88832-B967-43DA-BE85-E0BC97BD4700}
