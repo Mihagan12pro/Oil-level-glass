@@ -40,7 +40,7 @@ namespace KompasWPF
     ///     <MyNamespace:CustomControl1/>
     ///
     /// </summary>
-    public partial class KompasWindow : Window, IDisposable
+    public partial class KompasWindow : Window
     {
         public Button CloseButton { get; protected set; } = null!;
 
@@ -175,10 +175,6 @@ namespace KompasWPF
             return (T)base.GetTemplateChild(childName);
         }
 
-        public void Dispose()
-        {
-            
-        }
 
         public KompasWindow()
         {

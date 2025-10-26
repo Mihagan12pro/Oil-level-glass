@@ -8,7 +8,7 @@
         </ResourceDictionary.MergedDictionaries>
 
     
-    <Style x:Key="HelpButton" TargetType="Button" BasedOn="{StaticResource RootButtons}">
+    <Style x:Key="HelpButton" TargetType="Button" x:Shared="False"  BasedOn="{StaticResource RootButtons}">
         <Setter Property="Content">
             <Setter.Value>
                 <icons:Material Kind="HelpCircle"></icons:Material>

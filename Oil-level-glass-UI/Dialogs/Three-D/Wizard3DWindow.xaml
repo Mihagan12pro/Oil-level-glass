@@ -11,13 +11,13 @@
     <Grid>
         <TabControl Style="{DynamicResource KompasTabControl}" TabStripPlacement="Left">
             <TabItem Style="{DynamicResource KompasTabItem}" Header="Сборка">
-                
+
             </TabItem>
             <TabItem Style="{DynamicResource KompasTabItem}" Header="Корпус">
-                
+
             </TabItem>
             <TabItem Style="{DynamicResource KompasTabItem}" Header="Линза" >
-                
+
             </TabItem>
             <TabItem Style="{DynamicResource KompasTabItem}" Header="Прокладка">
                 
@@ -28,3 +28,4 @@
         </kompasUserControl:FormFooter>
     </Grid>
 </kompas:KompasWindow>
+ 

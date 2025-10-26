@@ -17,9 +17,9 @@
         </Border>
 
         <Grid Grid.Row="1">
-            <Button Style="{DynamicResource HelpButton}" Width="20" Height="20" Margin="0 5" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+            <Button Name="BtHelp" Style="{StaticResource HelpButton}" Width="20" Height="20" Margin="0 5" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
 
-            <Button Style="{DynamicResource FormButton}" Content = "Мастер 3D" Width="80" Height="20" Margin="0 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Button_Click"></Button>
+            <Button Style="{StaticResource FormButton}" Content = "Мастер 3D" Width="80" Height="20" Margin="0 5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Button_Click"></Button>
         </Grid>
     </Grid>
 </kompas:KompasWindow>
