@@ -17,6 +17,7 @@
 mono_crash.*
 *.m3d.bak
 *.a3d.bak
+*TemplateEngineHost
 *.apmf
 # Build results
 [Dd]ebug/
@@ -46,7 +47,7 @@ Generated\ Files/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-
+*.idea
 # NUnit
 *.VisualState.xml
 TestResult.xml
