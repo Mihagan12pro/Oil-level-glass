@@ -21,5 +21,9 @@ namespace Oil_level_glass_Core.Assemblers
         public required RubberStripBuilder RubberStripBuilder { get; set; }
 
         public required HousingBuilder HousingBuilder { get;set;}
+
+        public OilLevelGlassAssembler(bool createNewDocument) : base(createNewDocument)
+        {
+        }
     }
 }

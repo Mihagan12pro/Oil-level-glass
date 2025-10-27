@@ -15,5 +15,10 @@ namespace Oil_level_glass_Core.Builders
         {
             throw new NotImplementedException();
         }
+
+        public RubberStripBuilder(bool createNewDocument) : base(createNewDocument)
+        {
+            
+        }
     }
 }
