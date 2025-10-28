@@ -45,6 +45,15 @@ namespace Oil_level_glass_Core.Builders
         }
 
 
+        protected override void SaveDocument()
+        {
+            Part.Marking = File.Name.Marking;
+            Part.Name = File.Name.Naming;
+
+            kompasDocument?.SaveAs(File.FullName);
+        }
+
+
         protected IVariable7 GetVariableByParameterNote(IFeature7 feature, string note, bool externalOnly = false, bool inSource = false)
         {
             foreach(IVariable7 variable in ArrayMaster.ObjectToArray(feature.Variables[externalOnly, inSource]))

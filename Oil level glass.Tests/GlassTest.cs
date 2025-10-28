@@ -36,6 +36,9 @@ namespace Oil_level_glass.Tests
          
 
             PartFile file = new PartFile();
+            file.Folder = @"C:\Test";
+            file.Name.Marking = "ÊÌÑ.000000.001";
+            file.Name.Naming = "Ëèíçà";
 
             GlassModel glassModel = new GlassModel() { ExternalDiameter = 20, Height = 5};
              

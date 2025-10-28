@@ -16,6 +16,11 @@ namespace Oil_level_glass_Core.Assemblers
             throw new NotImplementedException();
         }
 
+        protected override void SaveDocument()
+        {
+            throw new NotImplementedException();
+        }
+
         public required GlassBuilder GlassBuilder { get; set; }
 
         public required RubberStripBuilder RubberStripBuilder { get; set; }

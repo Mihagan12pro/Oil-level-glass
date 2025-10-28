@@ -15,6 +15,9 @@ namespace Oil_level_glass_Core
 
         protected readonly bool createNewDocument;
 
+        protected abstract void SaveDocument();
+
+
         public BaseAPI7Object(bool createNewDocument)
         {
             this.createNewDocument = createNewDocument;

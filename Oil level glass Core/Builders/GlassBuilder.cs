@@ -1,8 +1,6 @@
-﻿using Kompas6API5;
-using Kompas6Constants3D;
+﻿using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Model.Parts;
-using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
@@ -27,6 +25,8 @@ namespace Oil_level_glass_Core.Builders
 
             SetAppearance();
             SetMaterial();
+
+            SaveDocument();
         }
 
 
