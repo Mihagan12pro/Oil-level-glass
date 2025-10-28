@@ -5,6 +5,7 @@ using KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Other;
 using Oil_level_glass_Core.Interfaces;
+using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
@@ -41,6 +42,18 @@ namespace Oil_level_glass_Core.Builders
             viewsAndLayersManager = document2D!.ViewsAndLayersManager;
             view = viewsAndLayersManager.Views.ActiveView;
             drawingContainer = (IDrawingContainer)view;
+        }
+
+
+        protected IVariable7 GetVariableByParameterNote(IFeature7 feature, string note, bool externalOnly = false, bool inSource = false)
+        {
+            foreach(IVariable7 variable in ArrayMaster.ObjectToArray(feature.Variables[externalOnly, inSource]))
+            {
+                if (variable.ParameterNote == note)
+                    return variable;
+            }
+
+            throw new Exception($"The variable with parameter note {note} does not exists!");
         }
 
 

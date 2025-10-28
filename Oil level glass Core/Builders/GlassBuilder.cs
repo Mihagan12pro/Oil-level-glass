@@ -1,4 +1,5 @@
-﻿using Kompas6Constants3D;
+﻿using Kompas6API5;
+using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Model.Parts;
 using Utils;
@@ -64,14 +65,8 @@ namespace Oil_level_glass_Core.Builders
             parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCFixedDim;
             parametriticConstraint.Create();
 
-            foreach (IVariable7 variable in ArrayMaster.ObjectToArray((_sketch1 as IFeature7)!.Variables[false, false]))
-            {
-                if (variable.ParameterNote == "Диаметральный размер")
-                {
-                    variable.Expression = _externalDiameterVariable.Name;
-                    break;
-                }
-            }
+            IVariable7 variable = GetVariableByParameterNote((_sketch1 as IFeature7)!, "Диаметральный размер");
+            variable.Expression = _externalDiameterVariable.Name;
 
             _sketch1.EndEdit();
         }
@@ -89,16 +84,8 @@ namespace Oil_level_glass_Core.Builders
             _heightVariable = Part.AddVariable("H", Glass.Height, "Высота линзы");
 
 
-            foreach (IVariable7 variable in ArrayMaster.ObjectToArray((_extrusion1 as IFeature7)!.Variables[false, false]))
-            {
-                if (variable.ParameterNote == "Расстояние 1")
-                {
-                    variable.Expression = _heightVariable.Name;
-                    break;
-                }
-            }
-
-            Part.Update();
+            IVariable7 variable = GetVariableByParameterNote((_extrusion1 as IFeature7)!, "Расстояние 1");
+            variable.Expression = _heightVariable.Name;
         }
 
 
