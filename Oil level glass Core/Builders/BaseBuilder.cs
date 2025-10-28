@@ -15,7 +15,6 @@ namespace Oil_level_glass_Core.Builders
         {
             SetMaterial();
             SetAppearance();
-
             SaveDocument();
         }
 
@@ -68,7 +67,7 @@ namespace Oil_level_glass_Core.Builders
                     return variable;
             }
 
-            throw new Exception($"The variable with parameter note {note} does not exists!");
+            throw new Exception($"The objectVariable with parameter note {note} does not exists!");
         }
 
 
@@ -110,6 +109,23 @@ namespace Oil_level_glass_Core.Builders
             );
 
             Part.Update();
+        }
+
+
+        protected void AddVariableToDimension(IDrawingObject dimension, IFeature7 feature, IVariable7 variable, string sizeType)
+        {
+            IDrawingObject1 drawingObject1 = (IDrawingObject1)dimension;
+            IParametriticConstraint parametriticConstraint = drawingObject1.NewConstraint();
+            parametriticConstraint = drawingObject1.NewConstraint();
+            parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCDimWithVariable;
+            parametriticConstraint.Create();
+
+            parametriticConstraint = drawingObject1.NewConstraint();
+            parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCFixedDim;
+            parametriticConstraint.Create();
+
+            IVariable7 objectVariable = GetVariableByParameterNote(feature, sizeType);
+            objectVariable.Expression = variable.Name;
         }
 
 

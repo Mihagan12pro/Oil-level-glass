@@ -52,18 +52,7 @@ namespace Oil_level_glass_Core.Builders
 
             _externalDiameterVariable = Part.AddVariable("D", Glass.ExternalDiameter, "Диаметр линзы");
 
-            IDrawingObject1 drawingObject1 = (IDrawingObject1)_diametralDimension;
-            IParametriticConstraint parametriticConstraint = drawingObject1.NewConstraint();
-            parametriticConstraint = drawingObject1.NewConstraint();
-            parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCDimWithVariable;
-            parametriticConstraint.Create();
-
-            parametriticConstraint = drawingObject1.NewConstraint();
-            parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCFixedDim;
-            parametriticConstraint.Create();
-
-            IVariable7 variable = GetVariableByParameterNote((_sketch1 as IFeature7)!, "Диаметральный размер");
-            variable.Expression = _externalDiameterVariable.Name;
+            AddVariableToDimension(_diametralDimension, (IFeature7)_sketch1, _externalDiameterVariable, "Диаметральный размер");
 
             _sketch1.EndEdit();
         }
