@@ -10,11 +10,18 @@
   <ItemGroup>
     <ProjectReference Include="..\KompasData\Oil level glass.Model.csproj" />
     <ProjectReference Include="..\NativeMethods\NativeMethods.csproj" />
+    <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Kompas6API5">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v23 Study\SDK\Samples\CSharp\Common\Kompas6API5.dll</HintPath>
+    </Reference>
     <Reference Include="Kompas6Constants">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v23 Study\SDK\Samples\CSharp\Common\Kompas6Constants.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6Constants3D">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v23 Study\SDK\Samples\CSharp\Common\Kompas6Constants3D.dll</HintPath>
     </Reference>
     <Reference Include="KompasAPI7">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v23 Study\SDK\Samples\CSharp\Common\KompasAPI7.dll</HintPath>

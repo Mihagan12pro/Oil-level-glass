@@ -13,14 +13,33 @@ namespace Oil_level_glass.Tests
         {
             Material material = new Glass() { Tittle = "Стекло", Density = 5 };
 
-            Appereance appearance = new Appereance() {Transparency = 10};
+            Appereance appearance = new Appereance() 
+            {
+                Transparency = -1, 
+
+                Diffuse = 0,
+
+                Ambient = 0,
+
+                Specularity = 0,
+
+                Shininess = 0,
+
+                Emission = 0,
+
+                Blue = 255, 
+
+                Red = 255,
+                
+                Green = 255
+            };
          
 
             PartFile file = new PartFile();
 
             GlassModel glassModel = new GlassModel() { ExternalDiameter = 20, Height = 5};
              
-            GlassBuilder builder = new GlassBuilder(false)
+            GlassBuilder builder = new GlassBuilder(true)
             {
                Material = material,
 
@@ -30,6 +49,8 @@ namespace Oil_level_glass.Tests
 
                Glass = glassModel
             };
+
+            builder.Build();
         }
     }
 }
