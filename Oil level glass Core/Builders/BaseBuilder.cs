@@ -11,7 +11,13 @@ namespace Oil_level_glass_Core.Builders
 {
     public abstract class BaseBuilder : BaseAPI7Object, ICreator3D
     {
-        public abstract void Build();
+        public virtual void Build()
+        {
+            SetMaterial();
+            SetAppearance();
+
+            SaveDocument();
+        }
 
         public required PartFile File { get; set; }
 

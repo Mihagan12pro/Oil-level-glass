@@ -40,7 +40,7 @@ namespace Oil_level_glass.Tests
             file.Name.Marking = "ÊÌÑ.000000.001";
             file.Name.Naming = "Ëèíçà";
 
-            GlassModel glassModel = new GlassModel() { ExternalDiameter = 20, Height = 5};
+            GlassModel glassModel = new GlassModel() { ExternalDiameter = 200, Height = 5};
              
             GlassBuilder builder = new GlassBuilder(true)
             {

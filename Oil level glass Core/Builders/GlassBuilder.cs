@@ -23,10 +23,7 @@ namespace Oil_level_glass_Core.Builders
             AddSketch1();
             ExtrudeSketch1();
 
-            SetAppearance();
-            SetMaterial();
-
-            SaveDocument();
+            base.Build();
         }
 
 
