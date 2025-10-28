@@ -30,7 +30,7 @@ namespace Oil_level_glass_Core.Builders
 
         protected IDrawingContainer drawingContainer;
 
-        protected ISymbols2DContainer symbols2DContainer;
+        protected ISymbols2DContainer symbols2dContainer;
 
         protected IViewsAndLayersManager viewsAndLayersManager;
 
@@ -48,7 +48,7 @@ namespace Oil_level_glass_Core.Builders
         {
             viewsAndLayersManager = document2D!.ViewsAndLayersManager;
             view = viewsAndLayersManager.Views.ActiveView;
-            symbols2DContainer = (ISymbols2DContainer)view;
+            symbols2dContainer = (ISymbols2DContainer)view;
         }
 
 

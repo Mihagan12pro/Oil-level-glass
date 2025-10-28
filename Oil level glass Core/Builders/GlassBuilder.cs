@@ -1,8 +1,6 @@
-﻿using Kompas6API5;
-using Kompas6Constants3D;
+﻿using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Model.Parts;
-using System.Diagnostics;
 using Utils;
 
 namespace Oil_level_glass_Core.Builders
@@ -13,7 +11,7 @@ namespace Oil_level_glass_Core.Builders
 
         private IExtrusion _extrusion1;
 
-        private ICircle _circleForSketch1;
+        private ICircle _circle;
 
         private IVariable7? _heightVariable, _externalDiameterVariable;
 
@@ -40,12 +38,40 @@ namespace Oil_level_glass_Core.Builders
             document2D = _sketch1.BeginEdit();
             InitDrawingContainer();
 
-            _circleForSketch1 = drawingContainer.Circles.Add();
-            _circleForSketch1.Radius = Glass.ExternalDiameter * 0.5;
-            _circleForSketch1.Xc = 0;
-            _circleForSketch1.Yc = 0;
-            _circleForSketch1.Update();
+            _circle = drawingContainer.Circles.Add();
+            _circle.Radius = Glass.ExternalDiameter * 0.5;
+            _circle.Xc = 0;
+            _circle.Yc = 0;
+            _circle.Update();
 
+            InitSymbolContaiber();
+             
+            _diametralDimension = symbols2dContainer.DiametralDimensions.Add();
+            _diametralDimension.BaseObject = _circle;
+            _diametralDimension.DimensionType = false;
+            _diametralDimension.Angle = 45;
+            _diametralDimension.Update();
+
+            _externalDiameterVariable = Part.AddVariable("D", Glass.ExternalDiameter, "Диаметр линзы");
+
+            IDrawingObject1 drawingObject1 = (IDrawingObject1)_diametralDimension;
+            IParametriticConstraint parametriticConstraint = drawingObject1.NewConstraint();
+            parametriticConstraint = drawingObject1.NewConstraint();
+            parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCDimWithVariable;
+            parametriticConstraint.Create();
+
+            parametriticConstraint = drawingObject1.NewConstraint();
+            parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCFixedDim;
+            parametriticConstraint.Create();
+
+            foreach (IVariable7 variable in ArrayMaster.ObjectToArray((_sketch1 as IFeature7)!.Variables[false, false]))
+            {
+                if (variable.ParameterNote == "Диаметральный размер")
+                {
+                    variable.Expression = _externalDiameterVariable.Name;
+                    break;
+                }
+            }
 
             _sketch1.EndEdit();
         }
@@ -62,9 +88,8 @@ namespace Oil_level_glass_Core.Builders
 
             _heightVariable = Part.AddVariable("H", Glass.Height, "Высота линзы");
 
-            IFeature7 treeExtrusion = (IFeature7)_extrusion1;
-            var variablesExtrusion = ArrayMaster.ObjectToArray(treeExtrusion.Variables[false, false]);
-            foreach (IVariable7 variable in variablesExtrusion)
+
+            foreach (IVariable7 variable in ArrayMaster.ObjectToArray((_extrusion1 as IFeature7)!.Variables[false, false]))
             {
                 if (variable.ParameterNote == "Расстояние 1")
                 {

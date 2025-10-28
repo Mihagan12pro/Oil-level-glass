@@ -2,12 +2,12 @@
 {
     public static class ArrayMaster
     {
-        public static Array ObjectToArray(object obj)
+        public static object[] ObjectToArray(object obj)
         {
-            if (obj is Array)
-                return (Array)obj;
+            if (obj is object[])
+                return (object[])obj;
 
-            return new []{ obj };
+            return new object[]{ obj };
         }
     }
 }
