@@ -66,9 +66,7 @@ namespace Oil_level_glass_Core.Builders
 
             _heightVariable = Part.AddVariable("H", Glass.Height, "Высота линзы");
 
-
-            IVariable7 variable = GetVariableByParameterNote((_extrusion1 as IFeature7)!, "Расстояние 1");
-            variable.Expression = _heightVariable.Name;
+            AddVariableToSolidBody((IFeature7)_extrusion1, _heightVariable.Name, "Расстояние 1");
         }
 
 

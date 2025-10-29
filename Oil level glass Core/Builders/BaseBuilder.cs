@@ -59,15 +59,20 @@ namespace Oil_level_glass_Core.Builders
         }
 
 
-        protected IVariable7 GetVariableByParameterNote(IFeature7 feature, string note, bool externalOnly = false, bool inSource = false)
+        protected void AddVariableToSolidBody(IFeature7 feature, string expression, string note, bool externalOnly = false, bool inSource = false)
         {
-            foreach(IVariable7 variable in ArrayMaster.ObjectToArray(feature.Variables[externalOnly, inSource]))
-            { 
-                if (variable.ParameterNote == note)
-                    return variable;
+            IVariable7? variable = null;
+
+            foreach(IVariable7 v in ArrayMaster.ObjectToArray(feature.Variables[externalOnly, inSource]))
+            {
+                if (v.ParameterNote == note)
+                    variable = v;
             }
 
-            throw new Exception($"The objectVariable with parameter note {note} does not exists!");
+            if (variable == null)
+                throw new Exception($"The objectVariable with parameter note {note} does not exists!");
+     
+            variable.Expression = expression;
         }
 
 
