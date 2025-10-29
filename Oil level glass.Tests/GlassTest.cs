@@ -1,21 +1,26 @@
+Ôªøusing KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Other;
-using KompasData.KompasFile;
 using Oil_level_glass.Model.Parts;
 using Oil_level_glass_Core.Builders;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Oil_level_glass.Tests
 {
     public class GlassTest
     {
-        [Fact]
+        [Fact()]
         public void Test1()
         {
-            Material material = new Glass() { Tittle = "—ÚÂÍÎÓ", Density = 5 };
+            Material material = new Glass() { Tittle = "–°—Ç–µ–∫–ª–æ", Density = 5 };
 
-            Appereance appearance = new Appereance() 
+            Appereance appearance = new Appereance()
             {
-                Transparency = -1, 
+                Transparency = -1,
 
                 Diffuse = 0,
 
@@ -27,30 +32,30 @@ namespace Oil_level_glass.Tests
 
                 Emission = 0,
 
-                Blue = 255, 
+                Blue = 255,
 
                 Red = 255,
-                
+
                 Green = 255
             };
-         
+
 
             PartFile file = new PartFile();
             file.Folder = @"C:\Test";
-            file.Name.Marking = " Ã—.000000.001";
-            file.Name.Naming = "ÀËÌÁ‡";
+            file.Name.Marking = "–ö–ú–°.000000.001";
+            file.Name.Naming = "–õ–∏–Ω–∑–∞";
 
-            GlassModel glassModel = new GlassModel() { ExternalDiameter = 200, Height = 5};
-             
+            GlassModel glassModel = new GlassModel() { ExternalDiameter = 200, Height = 5 };
+
             GlassBuilder builder = new GlassBuilder(true)
             {
-               Material = material,
+                Material = material,
 
-               Appearance = appearance,
+                Appearance = appearance,
 
-               File = file,
+                File = file,
 
-               Glass = glassModel
+                Glass = glassModel
             };
 
             builder.Build();

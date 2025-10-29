@@ -1,6 +1,7 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Model.Parts;
+using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
@@ -49,10 +50,6 @@ namespace Oil_level_glass_Core.Builders
             _diametralDimension.DimensionType = false;
             _diametralDimension.Angle = 45;
             _diametralDimension.Update();
-
-            _externalDiameterVariable = Part.AddVariable("D", Glass.ExternalDiameter, "Диаметр линзы");
-
-            AddVariableToDimension(_diametralDimension, (IFeature7)_sketch1, _externalDiameterVariable, "Диаметральный размер");
 
             _sketch1.EndEdit();
         }
