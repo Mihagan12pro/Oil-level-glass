@@ -18,9 +18,13 @@ namespace Oil_level_glass_Core.Builders
 
         private ISketch _sketch1;
 
+        private IExtrusion _extrusion1;
+
         public override void Build()
         {
             AddSketch1();
+
+            AddExtrusion1();
 
             base.Build();
         }
@@ -71,6 +75,18 @@ namespace Oil_level_glass_Core.Builders
 
             _sketch1.EndEdit();
         }
+
+
+        private void AddExtrusion1()
+        {
+            _extrusion1 = extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_baseExtrusion);
+            _extrusion1.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
+            _extrusion1.Sketch = _sketch1 as Sketch;
+            _extrusion1.Depth[true] = RubberStrip.Height;
+
+            _extrusion1.Update();
+        }
+
 
         public RubberStripBuilder(bool createNewDocument) : base(createNewDocument)
         {

@@ -51,6 +51,8 @@ namespace Oil_level_glass_Core.Builders
             _diametralDimension.Angle = 45;
             _diametralDimension.Update();
 
+            AddVariableToDimension(_diametralDimension, (_sketch1 as IFeature7)!, _externalDiameterVariable!, "D1", "v1");
+
             _sketch1.EndEdit();
         }
 

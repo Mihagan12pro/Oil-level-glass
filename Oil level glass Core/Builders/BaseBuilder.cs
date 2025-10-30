@@ -54,6 +54,7 @@ namespace Oil_level_glass_Core.Builders
         {
             Part.Marking = File.Name.Marking;
             Part.Name = File.Name.Naming;
+            Part.Update();
 
             kompasDocument?.SaveAs(File.FullName);
         }
