@@ -12,19 +12,23 @@ namespace Oil_level_glass_Core.Builders
         private ISketch _sketch1, _sketch2;
 
         private IExtrusion _extrusion1;
+        private ICutExtrusion _cutExtrusion1;
 
-        private ICircle _mainCircle, _smallSocketCircle;
+        private ICircle _mainCircle, _smallSocketCircle, _bigSocketCircle;
 
-        private IDiametralDimension _mainDiameterDimension, _smallSocketDiameterDimension;
+        private IDiametralDimension _mainDiameterDimension, _smallSocketDiameterDimension, _bigSocketDiameterDimension;
 
-        private IVariable7 _mainDiameterVariable, _smallSocketDiameterVariable;
+        private IVariable7 _mainDiameterVariable, _smallSocketDiameterVariable, _bigSocketDiameterVariable;
 
-        private IVariable7 _mainHeightVariable;
+        private IVariable7 _mainHeightVariable, _socketHeightVariable;
 
         public override void Build()
         {
             AddSketch1();
             ExtrudeSketch1();
+
+            AddSketch2();
+            ExtrudeSketch2();
 
             base.Build();
         }
@@ -87,6 +91,55 @@ namespace Oil_level_glass_Core.Builders
 
             _mainHeightVariable = Part.AddVariable("H", Housing.MainHeight, "Высота корпуса");
             AddVariableToSolidBody((IFeature7)_extrusion1, _mainHeightVariable.Name, "Расстояние 1");
+        }
+
+
+        private void AddSketch2()
+        {
+            _sketch2 = sketchs.Add();
+            _sketch2.Plane = Part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOY];
+            _sketch2.Update();
+
+            document2D = _sketch2.BeginEdit();
+
+            InitDrawingContainer();
+
+            _bigSocketCircle = drawingContainer.Circles.Add();
+            _bigSocketCircle.Radius = Housing.BigSocketDiameter * 0.5;
+            _bigSocketCircle.Xc = 0;
+            _bigSocketCircle.Yc = 0;
+            _bigSocketCircle.Update();
+
+            InitSymbolContaiber();
+
+            _bigSocketDiameterDimension = symbols2dContainer.DiametralDimensions.Add();
+            _bigSocketDiameterDimension.BaseObject = _bigSocketCircle;
+            _bigSocketDiameterDimension.Angle = 45;
+            _bigSocketDiameterDimension.Update();
+
+            _bigSocketDiameterVariable = Part.AddVariable("D1", Housing.BigSocketDiameter, "Внутренний диаметр корпуса");
+
+            IFeature7 feature = (IFeature7)_sketch2;
+
+            AddVariableToDimension(_bigSocketDiameterDimension, feature, _bigSocketDiameterVariable.Name, "v3");
+
+            _sketch2.EndEdit();
+        }
+
+
+        private void ExtrudeSketch2()
+        {
+            _cutExtrusion1 = (ICutExtrusion)ModelContainer.Extrusions.Add(ksObj3dTypeEnum.o3d_cutExtrusion);
+            _cutExtrusion1.Sketch = (Sketch)_sketch2;
+            _cutExtrusion1.Direction = ksDirectionTypeEnum.dtMiddlePlane;
+            _cutExtrusion1.Depth[true] = Housing.SocketHeight;
+            _cutExtrusion1.Update();
+
+            _socketHeightVariable = Part.AddVariable("H1", Housing.SocketHeight, "Высота внутреннего отверстия корпуса");
+
+            IFeature7 feature = (IFeature7)_cutExtrusion1;
+
+            AddVariableToSolidBody(feature, _socketHeightVariable.Name, "Расстояние 2");
         }
 
 

@@ -26,11 +26,11 @@ namespace Oil_level_glass.Tests
             file.Name.Naming = "Корпус";
 
             HousingModel housing = new HousingModel();
-            housing.BigSocketDimeter = 200;
+            housing.BigSocketDiameter = 200;
             housing.SmallSocketDiameter = 180;
             housing.MainDiameter = 300;
             housing.MainHeight = 60;
-            housing.SocketHeight = 30;
+            housing.SocketHeight = 25;
             housing.ScrewHoleCicleDiameter = 190;
             housing.ScrewHoleDiameter = 5;
             housing.ChamferLength = 0.5;

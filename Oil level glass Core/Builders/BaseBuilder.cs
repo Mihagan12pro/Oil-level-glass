@@ -95,13 +95,13 @@ namespace Oil_level_glass_Core.Builders
             parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCFixedDim;
             parametriticConstraint.Create();
 
+            
+
             IVariable7 variable = feature.Variable[externalOnly, inSource, displayName];
             variable.Expression = expression;
-
         }
 
-
-
+        
         protected void InitSymbolContaiber()
         {
             viewsAndLayersManager = document2D!.ViewsAndLayersManager;

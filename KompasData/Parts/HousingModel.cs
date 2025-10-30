@@ -14,7 +14,7 @@ namespace Oil_level_glass.Model.Parts
 
         public double SocketHeight { get; set; }
 
-        public double BigSocketDimeter { get; set; }
+        public double BigSocketDiameter { get; set; }
 
         public double SmallSocketDiameter { get; set; }
 
