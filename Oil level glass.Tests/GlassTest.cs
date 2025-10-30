@@ -3,11 +3,6 @@ using KompasData.Materials;
 using KompasData.Other;
 using Oil_level_glass.Model.Parts;
 using Oil_level_glass_Core.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oil_level_glass.Tests
 {

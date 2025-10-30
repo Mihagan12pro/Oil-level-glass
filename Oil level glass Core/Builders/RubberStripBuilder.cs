@@ -1,8 +1,5 @@
-﻿using Kompas6API5;
-using KompasAPI7;
-using KompasData.Materials;
+﻿using KompasAPI7;
 using Oil_level_glass.Model.Parts;
-using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
@@ -67,11 +64,17 @@ namespace Oil_level_glass_Core.Builders
             _internalDiametralDimension.BaseObject = _internalCircle;
             _internalDiametralDimension.Update();
 
+
+
             IFeature7 featureSketch = (IFeature7)_sketch1;
 
 
-            AddVariableToDimension(_externalDiametralDimension, featureSketch, _externalDiameterVariable, "D1", "v1");
-            AddVariableToDimension(_internalDiametralDimension, featureSketch, _internalDiameterVariable, "D2", "v2");
+            _externalDiameterVariable = Part.AddVariable("D1", RubberStrip.ExternalDiameter, "Наружный диаметр");
+            _internalDiameterVariable = Part.AddVariable("D2", RubberStrip.InternalDiameter, "Внутренний диаметр");
+
+
+            AddVariableToDimension(_externalDiametralDimension, featureSketch, _externalDiameterVariable.Name, "v1");
+            AddVariableToDimension(_internalDiametralDimension, featureSketch, _internalDiameterVariable.Name, "v2");
 
             _sketch1.EndEdit();
         }
@@ -85,6 +88,9 @@ namespace Oil_level_glass_Core.Builders
             _extrusion1.Depth[true] = RubberStrip.Height;
 
             _extrusion1.Update();
+
+            _heightVariable = Part.AddVariable("H", RubberStrip.Height, "Высота прокладки");
+            AddVariableToSolidBody((_extrusion1 as IFeature7)!, _heightVariable.Name, "Расстояние 1");
         }
 
 

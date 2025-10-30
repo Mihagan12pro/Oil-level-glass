@@ -60,26 +60,30 @@ namespace Oil_level_glass_Core.Builders
         }
 
 
-        protected void AddVariableToSolidBody(IFeature7 feature, string expression, string note, bool externalOnly = false, bool inSource = false)
+        protected void AddVariableToSolidBody(IFeature7 feature, string expression, string parameterNote, bool externalOnly = false, bool inSource = false)
         {
             IVariable7? variable = null;
 
             foreach(IVariable7 v in ArrayMaster.ObjectToArray(feature.Variables[externalOnly, inSource]))
             {
-                if (v.ParameterNote == note)
+                if (v.ParameterNote == parameterNote)
                     variable = v;
             }
 
             if (variable == null)
-                throw new Exception($"The objectVariable with parameter note {note} does not exists!");
+                throw new Exception($"The objectVariable with parameter parameterNote {parameterNote} does not exists!");
      
             variable.Expression = expression;
+            //variable.Note = "1";
+
+            Part.Update();
         }
 
 
-        protected void AddVariableToDimension(IDrawingObject dimension, IFeature7 feature, IVariable7 variable, string expression, string displayName, bool externalOnly = false, bool inSource = false)
+        protected void AddVariableToDimension(IDrawingObject dimension, IFeature7 feature, string expression, string displayName, bool externalOnly = false, bool inSource = false)
         {
             IDrawingObject1 drawingObject1 = (IDrawingObject1)dimension;
+      
             IParametriticConstraint parametriticConstraint = drawingObject1.NewConstraint();
             parametriticConstraint = drawingObject1.NewConstraint();
             parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCDimWithVariable;
@@ -91,8 +95,9 @@ namespace Oil_level_glass_Core.Builders
             parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCFixedDim;
             parametriticConstraint.Create();
 
-            variable = feature.Variable[externalOnly, inSource, displayName];
+            IVariable7 variable = feature.Variable[externalOnly, inSource, displayName];
             variable.Expression = expression;
+
         }
 
 

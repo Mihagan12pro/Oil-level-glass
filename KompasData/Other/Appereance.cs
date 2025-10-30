@@ -2,17 +2,17 @@
 
 public class Appereance
 {
-    public double Ambient { get; set; } = 1;
+    public double Ambient { get; set; } = 0.5;
 
-    public double Diffuse { get; set; } = 1;
+    public double Diffuse { get; set; } = 0.6;
 
-    public double Shininess { get; set; } = 1;
+    public double Shininess { get; set; } = 0.8;
 
-    public double Transparency { get; set; } = 0.5;
+    public double Transparency { get; set; } = 1;
 
-    public double Specularity { get; set; } = 1;
+    public double Specularity { get; set; } = 0.8;
 
-    public double Emission { get; set; } = 1;
+    public double Emission { get; set; } = 0.5;
     
     public int Red { get; set; } = 144;
 

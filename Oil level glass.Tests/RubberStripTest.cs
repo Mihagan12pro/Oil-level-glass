@@ -17,7 +17,9 @@ namespace Oil_level_glass.Tests
 
                 Red = 0,
 
-                Green = 0
+                Green = 0,
+
+                Transparency = 1
             };
 
 
