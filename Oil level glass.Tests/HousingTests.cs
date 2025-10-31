@@ -31,7 +31,7 @@ namespace Oil_level_glass.Tests
             housing.MainDiameter = 300;
             housing.MainHeight = 60;
             housing.SocketHeight = 25;
-            housing.ScrewHoleCicleDiameter = 190;
+            housing.ScrewHoleCicleDiameter = 250;
             housing.ScrewHoleDiameter = 5;
             housing.ChamferLength = 0.5;
 

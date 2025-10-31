@@ -4,12 +4,11 @@ using KompasAPI7;
 using KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Other;
-using Oil_level_glass_Core.Interfaces;
 using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
-    public abstract class BaseBuilder : BaseAPI7Object, ICreator3D
+    public abstract class BaseBuilder : BaseAPI7Object
     {
         public virtual void Build()
         {
@@ -24,9 +23,9 @@ namespace Oil_level_glass_Core.Builders
 
         public required Appereance Appearance { get; set; }
 
-        public IPart7 Part { get; }
+        internal IPart7 Part { get; }
 
-        public IModelContainer ModelContainer { get; }
+        internal IModelContainer ModelContainer { get; }
 
         protected Sketchs sketchs;
 

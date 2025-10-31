@@ -2,6 +2,7 @@
 using KompasAPI7;
 using KompasData.Materials;
 using Oil_level_glass.Model.Parts;
+using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
@@ -9,17 +10,20 @@ namespace Oil_level_glass_Core.Builders
     {
         public required HousingModel Housing { get; set; }
 
-        private ISketch _sketch1, _sketch2;
+        private ISketch _sketch1, _sketch2, _sketch3;
 
         private IExtrusion _extrusion1;
         private ICutExtrusion _cutExtrusion1;
 
         private ICircle _mainCircle, _smallSocketCircle, _bigSocketCircle;
+        private IPoint _point1;
+        private IHole3D _hole1;
 
         private IDiametralDimension _mainDiameterDimension, _smallSocketDiameterDimension, _bigSocketDiameterDimension;
 
-        private IVariable7 _mainDiameterVariable, _smallSocketDiameterVariable, _bigSocketDiameterVariable;
+        private IFace _topFace;
 
+        private IVariable7 _mainDiameterVariable, _smallSocketDiameterVariable, _bigSocketDiameterVariable;
         private IVariable7 _mainHeightVariable, _socketHeightVariable;
 
         public override void Build()
@@ -29,6 +33,9 @@ namespace Oil_level_glass_Core.Builders
 
             AddSketch2();
             ExtrudeSketch2();
+
+            AddSketch3();
+            CreateHole1();
 
             base.Build();
         }
@@ -140,6 +147,68 @@ namespace Oil_level_glass_Core.Builders
             IFeature7 feature = (IFeature7)_cutExtrusion1;
 
             AddVariableToSolidBody(feature, _socketHeightVariable.Name, "Расстояние 2");
+        }
+
+
+        private void AddSketch3()
+        {
+            IFeature7 extrusion1Feature = (IFeature7)_extrusion1;
+
+            object[] faces = ArrayMaster.ObjectToArray(extrusion1Feature.ModelObjects[ksObj3dTypeEnum.o3d_face]);
+            foreach(var i in faces)
+            {
+                if (i is IFace)
+                {
+                    IFace face = (IFace)i;
+
+                    if (face.IsPlanar)
+                    {
+                        object[] edges = ArrayMaster.ObjectToArray(face.LimitingEdges);
+
+                        foreach(var j in edges)
+                        {
+                            IEdge edge = (IEdge)j;
+
+                           
+                            edge.GetPoint(true, out double x, out double y, out double z);
+
+                            if (z > 0)
+                            {
+                                _sketch3 = sketchs.Add();
+                                _sketch3.Plane = face;
+
+                                _sketch3.Update();
+
+                                document2D = _sketch3.BeginEdit();
+
+                                InitDrawingContainer();
+
+                                _point1 = drawingContainer.Points.Add();
+                                _point1.X = Housing.ScrewHoleCicleDiameter * 0.5;
+                                _point1.Y = 0;
+                                _point1.Update();
+
+                                _sketch3.EndEdit();
+
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void CreateHole1()
+        {
+            _hole1 = ModelContainer.Holes3D.Add();
+            IHoleDisposal holeDisposal = (IHoleDisposal)_hole1;
+            IFeature7 sketch3Feature = (IFeature7)_sketch3;
+            object[] vertices = ArrayMaster.ObjectToArray(sketch3Feature.ModelObjects[ksObj3dTypeEnum.o3d_vertex]);
+
+            IVertex vertex = (IVertex)vertices[0];
+
+            _hole1.Update();
         }
 
 
