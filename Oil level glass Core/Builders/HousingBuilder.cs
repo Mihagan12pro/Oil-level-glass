@@ -18,6 +18,7 @@ namespace Oil_level_glass_Core.Builders
         private ICircle _mainCircle, _smallSocketCircle, _bigSocketCircle;
         private IPoint _point1;
         private IHole3D _hole1;
+        private IThread _thread;
 
         private IDiametralDimension _mainDiameterDimension, _smallSocketDiameterDimension, _bigSocketDiameterDimension;
 
@@ -159,11 +160,11 @@ namespace Oil_level_glass_Core.Builders
             {
                 if (i is IFace)
                 {
-                    IFace face = (IFace)i;
+                    _topFace = (IFace)i;
 
-                    if (face.IsPlanar)
+                    if (_topFace.IsPlanar)
                     {
-                        object[] edges = ArrayMaster.ObjectToArray(face.LimitingEdges);
+                        object[] edges = ArrayMaster.ObjectToArray(_topFace.LimitingEdges);
 
                         foreach(var j in edges)
                         {
@@ -175,7 +176,7 @@ namespace Oil_level_glass_Core.Builders
                             if (z > 0)
                             {
                                 _sketch3 = sketchs.Add();
-                                _sketch3.Plane = face;
+                                _sketch3.Plane = _topFace;
 
                                 _sketch3.Update();
 
@@ -202,11 +203,25 @@ namespace Oil_level_glass_Core.Builders
         private void CreateHole1()
         {
             _hole1 = ModelContainer.Holes3D.Add();
+            _hole1.ShowThread = true;
+
             IHoleDisposal holeDisposal = (IHoleDisposal)_hole1;
             IFeature7 sketch3Feature = (IFeature7)_sketch3;
             object[] vertices = ArrayMaster.ObjectToArray(sketch3Feature.ModelObjects[ksObj3dTypeEnum.o3d_vertex]);
 
             IVertex vertex = (IVertex)vertices[0];
+
+            holeDisposal.AssociationVertex = vertex;
+            holeDisposal.BaseSurface = _topFace;
+            _hole1.DepthType = ksDepthTypeEnum.ksDTReachThrough;
+
+            _thread = _hole1.Thread;
+            _thread.AutoLenght = true;
+
+            IThreadsParameters threadParameters = (IThreadsParameters)_thread;
+            threadParameters.Diameter = Housing.ScrewHoleDiameter;
+
+            _thread.Update();
 
             _hole1.Update();
         }
