@@ -4,6 +4,7 @@ using KompasAPI7;
 using KompasData.KompasFile;
 using KompasData.Materials;
 using KompasData.Other;
+using Oil_level_glass_Core.Delegates;
 using Utils;
 
 namespace Oil_level_glass_Core.Builders
@@ -139,6 +140,53 @@ namespace Oil_level_glass_Core.Builders
             );
 
             Part.Update();
+        }
+
+
+        internal void GetFaceByPoint(object[] faces, ref IFace targetFace, CheckFace checkFace, double x = 0, double y = 0, double z = 0)
+        {
+            foreach (var obj in faces)
+            {
+                if (obj is IFace face)
+                {
+                    if (checkFace.Invoke(face))
+                    {
+                        object[] edges = ArrayMaster.ObjectToArray(face.LimitingEdges);
+
+
+                        IEdge? edge = null;
+
+                        GetEdgeByPoint(edges, ref edge!, x, y, z);
+
+                        if (edge != null)
+                        {
+                            targetFace = face;
+
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        internal void GetEdgeByPoint(object[] edges, ref IEdge targetEdge, double x = 0, double y = 0, double z = 0)
+        {
+            
+            foreach(var obj in edges)
+            {
+                if (obj is IEdge edge)
+                {
+                    edge.GetPoint(true, out double x1, out double y1, out double z1);
+
+                    if (x1 == x && y1 == y && z1 == z)
+                    {
+                        targetEdge = edge;
+
+                        break;
+                    }
+                }
+            }
         }
 
 

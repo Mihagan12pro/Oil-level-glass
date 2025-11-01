@@ -2,6 +2,7 @@
 using KompasAPI7;
 using KompasData.Materials;
 using Oil_level_glass.Model.Parts;
+using Oil_level_glass_Core.Delegates;
 using Utils;
 
 namespace Oil_level_glass_Core.Builders
@@ -156,47 +157,27 @@ namespace Oil_level_glass_Core.Builders
             IFeature7 extrusion1Feature = (IFeature7)_extrusion1;
 
             object[] faces = ArrayMaster.ObjectToArray(extrusion1Feature.ModelObjects[ksObj3dTypeEnum.o3d_face]);
-            foreach(var i in faces)
-            {
-                if (i is IFace)
-                {
-                    _topFace = (IFace)i;
 
-                    if (_topFace.IsPlanar)
-                    {
-                        object[] edges = ArrayMaster.ObjectToArray(_topFace.LimitingEdges);
+            CheckFace isPlanar = (IFace face) => 
+                face.IsPlanar;
 
-                        foreach(var j in edges)
-                        {
-                            IEdge edge = (IEdge)j;
+            GetFaceByPoint(faces, ref _topFace, isPlanar, Housing.MainDiameter * 0.5, 0, Housing.MainHeight * 0.5);
 
-                           
-                            edge.GetPoint(true, out double x, out double y, out double z);
+            _sketch3 = sketchs.Add();
+            _sketch3.Plane = _topFace;
 
-                            if (z > 0)
-                            {
-                                _sketch3 = sketchs.Add();
-                                _sketch3.Plane = _topFace;
+            _sketch3.Update();
 
-                                _sketch3.Update();
+            document2D = _sketch3.BeginEdit();
 
-                                document2D = _sketch3.BeginEdit();
+            InitDrawingContainer();
 
-                                InitDrawingContainer();
+            _point1 = drawingContainer.Points.Add();
+            _point1.X = Housing.ScrewHoleCicleDiameter * 0.5;
+            _point1.Y = 0;
+            _point1.Update();
 
-                                _point1 = drawingContainer.Points.Add();
-                                _point1.X = Housing.ScrewHoleCicleDiameter * 0.5;
-                                _point1.Y = 0;
-                                _point1.Update();
-
-                                _sketch3.EndEdit();
-
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+            _sketch3.EndEdit();
         }
 
 
