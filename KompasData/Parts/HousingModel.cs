@@ -24,7 +24,7 @@ namespace Oil_level_glass.Model.Parts
 
         public double ScrewHoleDiameter { get; set; }
 
-        public double ScrewHoleCicleDiameter { get; set; }
+        //public double ScrewHoleCicleDiameter { get; set; }
 
         public int ScrewHolesCount { get; set; }
     }

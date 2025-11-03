@@ -97,11 +97,52 @@ namespace Oil_level_glass_Core.Builders
 
             
 
+
             IVariable7 variable = feature.Variable[externalOnly, inSource, displayName];
             variable.Expression = expression;
+         
         }
 
-        
+
+        protected void MergePoints(IDrawingObject targetObject, int targetIndex, IDrawingObject partnerObject, int partnerIndex)
+        {
+            IDrawingObject1 drawingObject = (IDrawingObject1)targetObject;
+
+            IParametriticConstraint parametricConstraint = drawingObject.NewConstraint();
+            parametricConstraint.Index = targetIndex;
+            parametricConstraint.Partner = partnerObject;
+            parametricConstraint.PartnerIndex = partnerIndex;
+            parametricConstraint.ConstraintType = ksConstraintTypeEnum.ksCMergePoints;
+
+            parametricConstraint.Create();
+        }
+
+
+        protected void MakePointFixed(IDrawingObject drawingObject, int index = 0)
+        {
+            IDrawingObject1 drawingObject1 = (IDrawingObject1)drawingObject;
+
+            IParametriticConstraint parametricConstraint = drawingObject1.NewConstraint();
+            parametricConstraint.Index = index;
+            parametricConstraint.ConstraintType = ksConstraintTypeEnum.ksCFixedPoint;
+
+            parametricConstraint.Create();
+        }
+
+
+        protected void MakeObjectsConcentric(IDrawingObject targetObject, IDrawingObject partnerObject)
+        {
+            IDrawingObject1 drawingObject = (IDrawingObject1)targetObject;
+
+            IParametriticConstraint parametricConstraint = drawingObject.NewConstraint();
+            parametricConstraint.Partner = partnerObject;
+            parametricConstraint.ConstraintType = ksConstraintTypeEnum.ksCConcentricity;
+            parametricConstraint.Index = 0;
+
+            parametricConstraint.Create();
+        }
+
+
         protected void InitSymbolContaiber()
         {
             viewsAndLayersManager = document2D!.ViewsAndLayersManager;

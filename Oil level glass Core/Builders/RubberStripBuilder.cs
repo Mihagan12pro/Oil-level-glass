@@ -76,6 +76,9 @@ namespace Oil_level_glass_Core.Builders
             AddVariableToDimension(_externalDiametralDimension, featureSketch, _externalDiameterVariable.Name, "v1");
             AddVariableToDimension(_internalDiametralDimension, featureSketch, _internalDiameterVariable.Name, "v2");
 
+            MakePointFixed(_internalCircle);
+            MakeObjectsConcentric(_externalCircle, _internalCircle);
+          
             _sketch1.EndEdit();
         }
 

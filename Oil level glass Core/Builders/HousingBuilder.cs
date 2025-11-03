@@ -20,13 +20,15 @@ namespace Oil_level_glass_Core.Builders
         private IPoint _point1;
         private IHole3D _hole1;
         private IThread _thread;
+        private ICircularPattern _circularPattern1;
 
         private IDiametralDimension _mainDiameterDimension, _smallSocketDiameterDimension, _bigSocketDiameterDimension;
+        private ILineDimension _holeVertexLineDimension;
 
         private IFace _topFace;
 
         private IVariable7 _mainDiameterVariable, _smallSocketDiameterVariable, _bigSocketDiameterVariable;
-        private IVariable7 _mainHeightVariable, _socketHeightVariable;
+        private IVariable7 _mainHeightVariable, _socketHeightVariable, _screwHoleVertexVariable;
 
         public override void Build()
         {
@@ -38,6 +40,8 @@ namespace Oil_level_glass_Core.Builders
 
             AddSketch3();
             CreateHole1();
+
+            AddMirrorPattern1();
 
             base.Build();
         }
@@ -85,6 +89,8 @@ namespace Oil_level_glass_Core.Builders
             AddVariableToDimension(_mainDiameterDimension, sketchFeature, _mainDiameterVariable.Name, "v1");
             AddVariableToDimension(_smallSocketDiameterDimension, sketchFeature, _smallSocketDiameterVariable.Name, "v2");
 
+            MakePointFixed(_smallSocketCircle);
+            MakeObjectsConcentric(_smallSocketCircle, _mainCircle);
 
             _sketch1.EndEdit();
         }
@@ -131,6 +137,7 @@ namespace Oil_level_glass_Core.Builders
             IFeature7 feature = (IFeature7)_sketch2;
 
             AddVariableToDimension(_bigSocketDiameterDimension, feature, _bigSocketDiameterVariable.Name, "v3");
+            MakePointFixed(_bigSocketCircle);
 
             _sketch2.EndEdit();
         }
@@ -173,9 +180,32 @@ namespace Oil_level_glass_Core.Builders
             InitDrawingContainer();
 
             _point1 = drawingContainer.Points.Add();
-            _point1.X = Housing.ScrewHoleCicleDiameter * 0.5;
+            _point1.X = (Housing.MainDiameter * 0.5 + Housing.SmallSocketDiameter * 0.5) / 2;
             _point1.Y = 0;
             _point1.Update();
+
+            InitSymbolContaiber();
+
+            _holeVertexLineDimension = symbols2dContainer.LineDimensions.Add();
+            _holeVertexLineDimension.X1 = 0;
+            _holeVertexLineDimension.Y1 = 0;
+            _holeVertexLineDimension.X2 = _point1.X;
+            _holeVertexLineDimension.Y1 = 0;
+
+            _holeVertexLineDimension.Y3 = _holeVertexLineDimension.X2 * 0.5;
+
+            ILineSegmentAndPointDimension lineSegmentAndPoint = (ILineSegmentAndPointDimension)_holeVertexLineDimension;
+            lineSegmentAndPoint.SetBaseObjectPoint(0, _point1.X, _point1.Y);
+
+            _holeVertexLineDimension.Update();
+
+            _screwHoleVertexVariable = Part.AddVariable("D3", (Housing.MainDiameter * 0.5 + Housing.BigSocketDiameter * 0.5) / 2, "Средний диаметр");
+            _screwHoleVertexVariable.Expression = $"({_mainDiameterVariable.Name} * 0.5 + {_bigSocketDiameterVariable.Name} * 0.5) / 2";
+
+            IFeature7 featureSKetch = (IFeature7)_sketch3;
+
+            AddVariableToDimension(_holeVertexLineDimension, featureSKetch, _screwHoleVertexVariable.Expression ,"v4");
+            //MakePointFixed(_holeVertexLineDimension, 1);
 
             _sketch3.EndEdit();
         }
@@ -205,6 +235,18 @@ namespace Oil_level_glass_Core.Builders
             _thread.Update();
 
             _hole1.Update();
+        }
+
+
+        private void AddMirrorPattern1()
+        {
+            _circularPattern1 = (ICircularPattern)ModelContainer.FeaturePatterns.Add(ksObj3dTypeEnum.o3d_circularCopy);
+
+            _circularPattern1.Axis = Part.DefaultObject[ksObj3dTypeEnum.o3d_axisOZ];
+            _circularPattern1.AddInitialObjects(_hole1);
+            _circularPattern1.Count2 = Housing.ScrewHolesCount;
+
+            _circularPattern1.Update();
         }
 
 
