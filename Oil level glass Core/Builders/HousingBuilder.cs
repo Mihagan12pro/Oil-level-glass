@@ -30,6 +30,8 @@ namespace Oil_level_glass_Core.Builders
 
         private IVariable7 _mainDiameterVariable, _smallSocketDiameterVariable, _bigSocketDiameterVariable;
         private IVariable7 _mainHeightVariable, _socketHeightVariable;
+        private IVariable7 _chamferAngleVariable, _chamferLengthVariable;
+        private IVariable7 _screwHolesCountVariable;
 
         public override void Build()
         {
@@ -258,6 +260,13 @@ namespace Oil_level_glass_Core.Builders
             _circularPattern1.Count2 = Housing.ScrewHolesCount;
 
             _circularPattern1.Update();
+
+            IFeature7 circularFeature = (IFeature7)_circularPattern1;
+
+
+            _screwHolesCountVariable = Part.AddVariable("n", Housing.ScrewHolesCount, "Число отверстий");
+
+            AddVariableToSolidBody(circularFeature, _screwHolesCountVariable.Name, "N 2");
         }
 
 
@@ -274,6 +283,14 @@ namespace Oil_level_glass_Core.Builders
             _chamfer1.BaseObjects = new object[] { edge };
 
             _chamfer1.Update();
+
+            IFeature7 chamferFeature = (IFeature7)_chamfer1;
+
+            _chamferAngleVariable = Part.AddVariable("alpha", Housing.ChamferAngle, "Угол фаски");
+            _chamferLengthVariable = Part.AddVariable("l1", Housing.ChamferLength, "Длина фаски");
+
+            AddVariableToSolidBody(chamferFeature, _chamferAngleVariable.Name, "Угол");
+            AddVariableToSolidBody(chamferFeature, _chamferLengthVariable.Name, "Длина 1");
         }
 
 
