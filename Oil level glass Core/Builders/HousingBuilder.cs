@@ -1,6 +1,5 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
-using KompasData.Materials;
 using Oil_level_glass.Model.Parts;
 using Oil_level_glass_Core.Delegates;
 using Utils;
@@ -15,12 +14,14 @@ namespace Oil_level_glass_Core.Builders
 
         private IExtrusion _extrusion1;
         private ICutExtrusion _cutExtrusion1;
+        private IChamfer _chamfer1;
 
         private ICircle _mainCircle, _smallSocketCircle, _bigSocketCircle;
         private IPoint _point1;
         private IHole3D _hole1;
         private IThread _thread;
         private ICircularPattern _circularPattern1;
+        private ILineSegment _helpLine;
 
         private IDiametralDimension _mainDiameterDimension, _smallSocketDiameterDimension, _bigSocketDiameterDimension;
         private ILineDimension _holeVertexLineDimension;
@@ -28,7 +29,7 @@ namespace Oil_level_glass_Core.Builders
         private IFace _topFace;
 
         private IVariable7 _mainDiameterVariable, _smallSocketDiameterVariable, _bigSocketDiameterVariable;
-        private IVariable7 _mainHeightVariable, _socketHeightVariable, _screwHoleVertexVariable;
+        private IVariable7 _mainHeightVariable, _socketHeightVariable;
 
         public override void Build()
         {
@@ -42,6 +43,8 @@ namespace Oil_level_glass_Core.Builders
             CreateHole1();
 
             AddMirrorPattern1();
+
+            AddChamfer();
 
             base.Build();
         }
@@ -179,8 +182,16 @@ namespace Oil_level_glass_Core.Builders
 
             InitDrawingContainer();
 
+            _helpLine = drawingContainer.LineSegments.Add();
+            _helpLine.Style = 3;
+            _helpLine.X1 = 0;
+            _helpLine.Y1 = 0;
+            _helpLine.X2 = (Housing.MainDiameter * 0.5 + Housing.SmallSocketDiameter * 0.5) / 2;
+            _helpLine.Y2 = 0;
+            _helpLine.Update();
+
             _point1 = drawingContainer.Points.Add();
-            _point1.X = (Housing.MainDiameter * 0.5 + Housing.SmallSocketDiameter * 0.5) / 2;
+            _point1.X = _helpLine.X2;
             _point1.Y = 0;
             _point1.Update();
 
@@ -189,23 +200,23 @@ namespace Oil_level_glass_Core.Builders
             _holeVertexLineDimension = symbols2dContainer.LineDimensions.Add();
             _holeVertexLineDimension.X1 = 0;
             _holeVertexLineDimension.Y1 = 0;
-            _holeVertexLineDimension.X2 = _point1.X;
+            _holeVertexLineDimension.X2 = _helpLine.X2;
             _holeVertexLineDimension.Y1 = 0;
 
-            _holeVertexLineDimension.Y3 = _holeVertexLineDimension.X2 * 0.5;
-
-            ILineSegmentAndPointDimension lineSegmentAndPoint = (ILineSegmentAndPointDimension)_holeVertexLineDimension;
-            lineSegmentAndPoint.SetBaseObjectPoint(0, _point1.X, _point1.Y);
+            _holeVertexLineDimension.Y3 = _helpLine.X2;
 
             _holeVertexLineDimension.Update();
 
-            _screwHoleVertexVariable = Part.AddVariable("D3", (Housing.MainDiameter * 0.5 + Housing.BigSocketDiameter * 0.5) / 2, "Средний диаметр");
-            _screwHoleVertexVariable.Expression = $"({_mainDiameterVariable.Name} * 0.5 + {_bigSocketDiameterVariable.Name} * 0.5) / 2";
+            MergePoints(_helpLine, 0, _holeVertexLineDimension, 0);
+            MergePoints(_helpLine, 1, _holeVertexLineDimension, 1);
+            MakePointFixed(_helpLine, 0);
+            AlignPoint(_helpLine, 1, _helpLine, 0, true);
+            MergePoints(_helpLine, 1, _point1, 0);
 
-            IFeature7 featureSKetch = (IFeature7)_sketch3;
+            IFeature7 sketchFeature = (IFeature7)_sketch3;
 
-            AddVariableToDimension(_holeVertexLineDimension, featureSKetch, _screwHoleVertexVariable.Expression ,"v4");
-            //MakePointFixed(_holeVertexLineDimension, 1);
+            AddVariableToDimension(_holeVertexLineDimension, sketchFeature, $"( {_mainDiameterVariable.Name}/2 + {_bigSocketDiameterVariable.Name}/2)/2", "v4");
+
 
             _sketch3.EndEdit();
         }
@@ -247,6 +258,22 @@ namespace Oil_level_glass_Core.Builders
             _circularPattern1.Count2 = Housing.ScrewHolesCount;
 
             _circularPattern1.Update();
+        }
+
+
+        private void AddChamfer()
+        {
+            _chamfer1 = ModelContainer.Chamfers.Add();
+            _chamfer1.Angle = Housing.ChamferAngle;
+            _chamfer1.Distance1 = Housing.ChamferLength;
+
+            IEdge? edge = null;
+
+            GetEdgeByPoint(ArrayMaster.ObjectToArray(_topFace.LimitingEdges), ref edge!, Housing.MainDiameter * 0.5, 0, Housing.MainHeight * 0.5);
+
+            _chamfer1.BaseObjects = new object[] { edge };
+
+            _chamfer1.Update();
         }
 
 

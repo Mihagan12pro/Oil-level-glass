@@ -74,10 +74,11 @@ namespace Oil_level_glass_Core.Builders
                 throw new Exception($"The objectVariable with parameter parameterNote {parameterNote} does not exists!");
      
             variable.Expression = expression;
-            //variable.Note = "1";
 
             Part.Update();
         }
+
+
 
 
         protected void AddVariableToDimension(IDrawingObject dimension, IFeature7 feature, string expression, string displayName, bool externalOnly = false, bool inSource = false)
@@ -95,12 +96,27 @@ namespace Oil_level_glass_Core.Builders
             parametriticConstraint.ConstraintType = Kompas6Constants.ksConstraintTypeEnum.ksCFixedDim;
             parametriticConstraint.Create();
 
-            
-
-
             IVariable7 variable = feature.Variable[externalOnly, inSource, displayName];
             variable.Expression = expression;
-         
+        }
+
+        protected void AlignPoint(IDrawingObject targetObject, int targetIndex, IDrawingObject partnerObject, int partnerIndex, bool isHorisontal)
+        {
+            IDrawingObject1 drawingObject1 = (IDrawingObject1)targetObject;
+
+            IParametriticConstraint parametricConstraint = drawingObject1.NewConstraint();
+            parametricConstraint.Index = targetIndex;
+            parametricConstraint.Partner = partnerObject;
+            parametricConstraint.PartnerIndex = partnerIndex;
+
+            if (isHorisontal)
+            {
+                parametricConstraint.ConstraintType = ksConstraintTypeEnum.ksCHAlignPoints;
+            }
+            else
+                parametricConstraint.ConstraintType = ksConstraintTypeEnum.ksCVAlignPoints;
+
+            parametricConstraint.Create();
         }
 
 

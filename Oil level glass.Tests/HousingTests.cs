@@ -3,11 +3,6 @@ using KompasData.Materials;
 using KompasData.Other;
 using Oil_level_glass.Model.Parts;
 using Oil_level_glass_Core.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oil_level_glass.Tests
 {
@@ -32,7 +27,7 @@ namespace Oil_level_glass.Tests
             housing.MainHeight = 60;
             housing.SocketHeight = 25;
             housing.ScrewHoleDiameter = 15;
-            housing.ChamferLength = 0.5;
+            housing.ChamferLength = 5;
             housing.ScrewHolesCount = 4;
 
            
