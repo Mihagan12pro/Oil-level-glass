@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oil_level_glass.Model.ComplexEntities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,8 @@ namespace Oil_level_glass.Model.Parts
 
         public double ChamferAngle { get; set; } = 45;
 
-        public double ScrewHoleDiameter { get; set; }
+        public ThreadModel Thread { get; } = new ThreadModel();
 
-        //public double ScrewHoleCicleDiameter { get; set; }
 
         public int ScrewHolesCount { get; set; }
     }

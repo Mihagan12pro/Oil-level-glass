@@ -243,7 +243,7 @@ namespace Oil_level_glass_Core.Builders
             _thread.AutoLenght = true;
 
             IThreadsParameters threadParameters = (IThreadsParameters)_thread;
-            threadParameters.Diameter = Housing.ScrewHoleDiameter;
+            threadParameters.Init(Housing.Thread.Standard, Housing.Thread.NominalDiameter, Housing.Thread.Pitch);
 
             _thread.Update();
 
