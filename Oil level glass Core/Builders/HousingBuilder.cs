@@ -150,7 +150,7 @@ namespace Oil_level_glass_Core.Builders
 
         private void ExtrudeSketch2()
         {
-            _cutExtrusion1 = (ICutExtrusion)ModelContainer.Extrusions.Add(ksObj3dTypeEnum.o3d_cutExtrusion);
+            _cutExtrusion1 = (ICutExtrusion)modelContainer.Extrusions.Add(ksObj3dTypeEnum.o3d_cutExtrusion);
             _cutExtrusion1.Sketch = (Sketch)_sketch2;
             _cutExtrusion1.Direction = ksDirectionTypeEnum.dtMiddlePlane;
             _cutExtrusion1.Depth[true] = Housing.SocketHeight;
@@ -226,7 +226,7 @@ namespace Oil_level_glass_Core.Builders
 
         private void CreateHole1()
         {
-            _hole1 = ModelContainer.Holes3D.Add();
+            _hole1 = modelContainer.Holes3D.Add();
             _hole1.ShowThread = true;
 
             IHoleDisposal holeDisposal = (IHoleDisposal)_hole1;
@@ -269,7 +269,7 @@ namespace Oil_level_glass_Core.Builders
 
         private void AddMirrorPattern1()
         {
-            _circularPattern1 = (ICircularPattern)ModelContainer.FeaturePatterns.Add(ksObj3dTypeEnum.o3d_circularCopy);
+            _circularPattern1 = (ICircularPattern)modelContainer.FeaturePatterns.Add(ksObj3dTypeEnum.o3d_circularCopy);
 
             _circularPattern1.Axis = Part.DefaultObject[ksObj3dTypeEnum.o3d_axisOZ];
             _circularPattern1.AddInitialObjects(_hole1);
@@ -288,7 +288,7 @@ namespace Oil_level_glass_Core.Builders
 
         private void AddChamfer()
         {
-            _chamfer1 = ModelContainer.Chamfers.Add();
+            _chamfer1 = modelContainer.Chamfers.Add();
             _chamfer1.Angle = Housing.ChamferAngle;
             _chamfer1.Distance1 = Housing.ChamferLength;
 

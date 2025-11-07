@@ -27,7 +27,10 @@ namespace Oil_level_glass_Core
             kompasDocument?.SaveAs(file?.FullName);
         }
 
-        public abstract void Create();
+        public virtual void Create()
+        {
+            SaveDocument();
+        }
 
 
         public BaseCreator(bool createNewDocument)

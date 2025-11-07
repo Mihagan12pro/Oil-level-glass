@@ -10,24 +10,6 @@ namespace Oil_level_glass_Core.Builders
 {
     public abstract class BaseDetailBuilder : Base3DCreator
     {
-        //public required BaseDetailModel Detail { get; set; } 
-
-
-        //public virtual void Build()
-        //{
-        //    SetMaterial();
-        //    SetAppearance();
-        //    SaveDocument();
-        //}
-
-        //public required PartFile File { get; set; }
-
-        //public required Material Material { get; set; }
-
-        //public required Appereance Appearance { get; set; }
-
-        internal IModelContainer ModelContainer { get; }
-
         protected Sketchs sketchs;
 
         protected Extrusions extrusions;
@@ -46,7 +28,8 @@ namespace Oil_level_glass_Core.Builders
         {
             SetMaterial();
             SetAppearance();
-            SaveDocument();
+            
+            base.Create();
         }
 
 
@@ -178,7 +161,7 @@ namespace Oil_level_glass_Core.Builders
 
         protected void SetAppearance()
         {
-            IColorParam7 colorParameter = (IColorParam7)ModelContainer;
+            IColorParam7 colorParameter = (IColorParam7)modelContainer;
 
             Appereance appearance = ((BaseDetailModel)EntityModel).Appereance;
 
@@ -279,11 +262,11 @@ namespace Oil_level_glass_Core.Builders
             IPartDocument partDocument = (IPartDocument)kompasDocument!;
             Part = partDocument!.TopPart;
 
-            ModelContainer = (IModelContainer)Part;
+            modelContainer = (IModelContainer)Part;
 
-            sketchs = ModelContainer.Sketchs;
+            sketchs = modelContainer.Sketchs;
 
-            extrusions = ModelContainer.Extrusions;
+            extrusions = modelContainer.Extrusions;
         }
     }
 }

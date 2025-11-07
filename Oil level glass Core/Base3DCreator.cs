@@ -11,6 +11,8 @@ namespace Oil_level_glass_Core
     {
         public IPart7 Part { get; protected set; }
 
+        protected IModelContainer modelContainer;
+
         public override void SaveDocument()
         {
             Part.Marking = EntityModel.File!.Name.Marking;
