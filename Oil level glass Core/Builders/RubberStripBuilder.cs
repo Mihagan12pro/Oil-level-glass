@@ -3,9 +3,9 @@ using Oil_level_glass.Model.Parts;
 
 namespace Oil_level_glass_Core.Builders
 {
-    public class RubberStripBuilder : BaseBuilder
+    public class RubberStripBuilder : BaseDetailBuilder
     {
-        public required RubberStripModel RubberStrip { get; set; }
+        public RubberStripModel RubberStrip => (RubberStripModel)EntityModel;
 
         private ICircle _internalCircle, _externalCircle;
 
@@ -17,13 +17,13 @@ namespace Oil_level_glass_Core.Builders
 
         private IExtrusion _extrusion1;
 
-        public override void Build()
+        public override void Create()
         {
             AddSketch1();
 
             AddExtrusion1();
 
-            base.Build();
+            base.Create();
         }
 
         private void AddSketch1()

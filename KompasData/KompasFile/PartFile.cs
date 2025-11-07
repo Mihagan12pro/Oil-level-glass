@@ -1,9 +1,10 @@
-﻿namespace KompasData.KompasFile;
-
-public class PartFile : KompasFile
+﻿namespace Oil_level_glass.Model.KompasFile
 {
-    public PartFile()
+    public class PartFile : KompasFile
     {
-        Extension = ".m3d";     
+        public PartFile()
+        {
+            Extension = ".m3d";
+        }
     }
 }

@@ -1,8 +1,10 @@
-﻿namespace KompasData.Other;
+﻿using Oil_level_glass.Model;
 
-public class Name
+namespace Model.Other;
+
+public class Name : BaseModel
 {
-    public string Naming { get; set; }
+    public string? Naming { get; set; }
 
-    public string Marking { get; set; }
+    public string? Marking { get; set; }
 }

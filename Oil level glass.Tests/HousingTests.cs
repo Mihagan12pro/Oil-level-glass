@@ -1,6 +1,6 @@
-﻿using KompasData.KompasFile;
-using KompasData.Materials;
-using KompasData.Other;
+﻿using Model.Materials;
+using Model.Other;
+using Oil_level_glass.Model.KompasFile;
 using Oil_level_glass.Model.Parts;
 using Oil_level_glass_Core.Builders;
 
@@ -11,40 +11,34 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void Test()
         {
-            Appereance appereance = new Appereance();
-
-            Metal metal = new Metal() { Tittle = "Метал", Density = 7 };
-
-            PartFile file = new PartFile();
-            file.Folder = @"C:\Test";
-            file.Name.Marking = "КМС.000000.003";
-            file.Name.Naming = "Корпус";
-
-            HousingModel housing = new HousingModel();
-            housing.BigSocketDiameter = 200;
-            housing.SmallSocketDiameter = 180;
-            housing.MainDiameter = 300;
-            housing.MainHeight = 60;
-            housing.SocketHeight = 25;
-            housing.Thread.Pitch = 1.5;
-            housing.Thread.NominalDiameter = 10;
-            housing.ChamferLength = 5;
-            housing.ScrewHolesCount = 4;
-
-           
-
-            HousingBuilder housingBuilder = new HousingBuilder(true)
+            for(int i = 0; i < 11; i++)
             {
-                Appearance = appereance,
+                HousingModel model = new HousingModel();
+                model.BigSocketDiameter = 200;
+                model.SmallSocketDiameter = 180;
+                model.MainDiameter = 300;
+                model.MainHeight = 60;
+                model.SocketHeight = 25;
+                model.Thread.Pitch = 1.5;
+                model.Thread.NominalDiameter = 10;
+                model.ChamferLength = 5;
+                model.ScrewHolesCount = 4;
 
-                Material = metal,
+                model.File!.Folder = @"C:\Test";
+                model.File!.Name.Marking = "КМС.000000.003";
+                model.File!.Name.Naming = "Корпус";
 
-                File = file,
+                model.Material!.Tittle = "Метал";
+                model.Material.Density = 7;
 
-                Housing = housing
-            };
 
-            housingBuilder.Build();
+                HousingBuilder builder = new HousingBuilder(true)
+                {
+                    EntityModel = model
+                };
+
+                builder.Create();
+            }
         }
     }
 }

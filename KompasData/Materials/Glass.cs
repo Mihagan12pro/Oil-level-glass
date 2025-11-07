@@ -1,6 +1,6 @@
 ﻿using Kompas6Constants;
 
-namespace KompasData.Materials;
+namespace Model.Materials;
 
 public class Glass : Material
 {

@@ -5,8 +5,10 @@ using System;
 
 namespace Oil_level_glass_Core.Builders
 {
-    public class GlassBuilder : BaseBuilder
+    public class GlassBuilder : BaseDetailBuilder
     {
+        public GlassModel Glass => (GlassModel)EntityModel;
+
         private Sketch _sketch1;
 
         private IExtrusion _extrusion1;
@@ -17,14 +19,13 @@ namespace Oil_level_glass_Core.Builders
 
         private IDiametralDimension _diametralDimension;
 
-        public required GlassModel Glass {get; set;}
 
-        public override void Build()
+        public override void Create()
         {
             AddSketch1();
             ExtrudeSketch1();
 
-            base.Build();
+            base.Create();
         }
 
 

@@ -1,4 +1,7 @@
-﻿using KompasAPI7;
+﻿using Kompas6API5;
+using KompasAPI7;
+using Oil_level_glass.Model;
+using Oil_level_glass.Model.KompasFile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass_Core
 {
-    public abstract class BaseAPI7Object
+    public abstract class BaseCreator
     {
         protected IApplication? application;
 
@@ -15,10 +18,19 @@ namespace Oil_level_glass_Core
 
         protected readonly bool createNewDocument;
 
-        protected abstract void SaveDocument();
+        public required BaseEntityModel EntityModel { get; set; }
+
+        public virtual void SaveDocument()
+        {
+            KompasFile? file = EntityModel.File;
+
+            kompasDocument?.SaveAs(file?.FullName);
+        }
+
+        public abstract void Create();
 
 
-        public BaseAPI7Object(bool createNewDocument)
+        public BaseCreator(bool createNewDocument)
         {
             this.createNewDocument = createNewDocument;
 

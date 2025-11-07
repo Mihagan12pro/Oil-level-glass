@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.Model.ComplexEntities;
+﻿using Model.Materials;
+using Oil_level_glass.Model.ComplexEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.Model.Parts
 {
-    public class HousingModel : BaseModel
+    public class HousingModel : BaseDetailModel
     {
         public double MainDiameter { get; set; }
 
@@ -23,9 +24,14 @@ namespace Oil_level_glass.Model.Parts
 
         public double ChamferAngle { get; set; } = 45;
 
+        public int ScrewHolesCount { get; set; }
+
         public ThreadModel Thread { get; } = new ThreadModel();
 
-
-        public int ScrewHolesCount { get; set; }
+ 
+        public HousingModel()
+        {
+            Material = new Metal();
+        }
     }
 }

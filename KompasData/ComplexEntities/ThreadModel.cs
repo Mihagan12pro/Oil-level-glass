@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.Model.ComplexEntities
 {
-    public class ThreadModel
+    public class ThreadModel : BaseModel
     {
         public double NominalDiameter { get; set; }
 

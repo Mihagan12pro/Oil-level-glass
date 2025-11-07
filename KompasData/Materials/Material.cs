@@ -1,10 +1,12 @@
-﻿namespace KompasData.Materials;
+﻿using Oil_level_glass.Model;
 
-public abstract class Material
+namespace Model.Materials;
+
+public abstract class Material : BaseModel
 {
     public double Density { get; set; }
     
-    public required string Tittle { get; set; }    
+    public string? Tittle { get; set; }    
     
     public double MinDensity { get; init; }
     

@@ -1,4 +1,4 @@
-﻿namespace KompasData.Materials;
+﻿namespace Model.Materials;
 using Kompas6Constants;
 
 public class Rubber : Material

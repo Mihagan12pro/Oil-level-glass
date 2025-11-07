@@ -6,9 +6,9 @@ using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
-    public class HousingBuilder : BaseBuilder
+    public class HousingBuilder : BaseDetailBuilder
     {
-        public required HousingModel Housing { get; set; }
+        public HousingModel Housing => (HousingModel)EntityModel;
 
         private ISketch _sketch1, _sketch2, _sketch3;
 
@@ -33,7 +33,7 @@ namespace Oil_level_glass_Core.Builders
         private IVariable7 _chamferAngleVariable, _chamferLengthVariable;
         private IVariable7 _screwHolesCountVariable;
 
-        public override void Build()
+        public override void Create()
         {
             AddSketch1();
             ExtrudeSketch1();
@@ -48,7 +48,7 @@ namespace Oil_level_glass_Core.Builders
 
             AddChamfer();
 
-            base.Build();
+            base.Create();
         }
 
 
@@ -188,7 +188,7 @@ namespace Oil_level_glass_Core.Builders
             _helpLine.Style = 3;
             _helpLine.X1 = 0;
             _helpLine.Y1 = 0;
-            _helpLine.X2 = (Housing.MainDiameter * 0.5 + Housing.SmallSocketDiameter * 0.5) / 2;
+            _helpLine.X2 = (Housing.MainDiameter * 0.5 + Housing.BigSocketDiameter * 0.5) / 2;
             _helpLine.Y2 = 0;
             _helpLine.Update();
 
@@ -233,7 +233,23 @@ namespace Oil_level_glass_Core.Builders
             IFeature7 sketch3Feature = (IFeature7)_sketch3;
             object[] vertices = ArrayMaster.ObjectToArray(sketch3Feature.ModelObjects[ksObj3dTypeEnum.o3d_vertex]);
 
-            IVertex vertex = (IVertex)vertices[0];
+
+            //foreach(var i in vertices)
+            //{
+            //    IVertex v = (IVertex)i;
+
+            //    v.GetPoint(out double x, out double y, out double z);
+
+            //    Console.WriteLine($"{x} {y} {z}");
+            //}
+
+            IVertex? vertex = null;
+
+            double x = (Housing.MainDiameter * 0.5 + Housing.BigSocketDiameter * 0.5) / 2;
+            double y = 0;
+            double z = Housing.MainHeight * 0.5;
+
+            GetVertexByPoint(vertices, ref vertex!, x, y, z);
 
             holeDisposal.AssociationVertex = vertex;
             holeDisposal.BaseSurface = _topFace;

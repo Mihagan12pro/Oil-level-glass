@@ -1,9 +1,10 @@
-﻿namespace KompasData.KompasFile;
-
-public class AssemblyFile : KompasFile
+﻿namespace Oil_level_glass.Model.KompasFile
 {
-    public AssemblyFile()
+    public class AssemblyFile : KompasFile
     {
-        Extension = ".a3d";
+        public AssemblyFile()
+        {
+            Extension = ".a3d";
+        }
     }
 }

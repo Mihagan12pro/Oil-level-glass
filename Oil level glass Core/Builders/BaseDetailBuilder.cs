@@ -1,30 +1,30 @@
 ﻿using Kompas6Constants;
-using Kompas6Constants3D;
 using KompasAPI7;
-using KompasData.KompasFile;
-using KompasData.Materials;
-using KompasData.Other;
+using Model.Materials;
+using Model.Other;
+using Oil_level_glass.Model;
 using Oil_level_glass_Core.Delegates;
 using Utils;
 
 namespace Oil_level_glass_Core.Builders
 {
-    public abstract class BaseBuilder : BaseAPI7Object
+    public abstract class BaseDetailBuilder : Base3DCreator
     {
-        public virtual void Build()
-        {
-            SetMaterial();
-            SetAppearance();
-            SaveDocument();
-        }
+        //public required BaseDetailModel Detail { get; set; } 
 
-        public required PartFile File { get; set; }
 
-        public required Material Material { get; set; }
+        //public virtual void Build()
+        //{
+        //    SetMaterial();
+        //    SetAppearance();
+        //    SaveDocument();
+        //}
 
-        public required Appereance Appearance { get; set; }
+        //public required PartFile File { get; set; }
 
-        internal IPart7 Part { get; }
+        //public required Material Material { get; set; }
+
+        //public required Appereance Appearance { get; set; }
 
         internal IModelContainer ModelContainer { get; }
 
@@ -42,21 +42,19 @@ namespace Oil_level_glass_Core.Builders
 
         protected IView view;
 
+        public override void Create()
+        {
+            SetMaterial();
+            SetAppearance();
+            SaveDocument();
+        }
+
+
         protected void InitDrawingContainer()
         {
             viewsAndLayersManager = document2D!.ViewsAndLayersManager;
             view = viewsAndLayersManager.Views.ActiveView;
             drawingContainer = (IDrawingContainer)view;
-        }
-
-
-        protected override void SaveDocument()
-        {
-            Part.Marking = File.Name.Marking;
-            Part.Name = File.Name.Naming;
-            Part.Update();
-
-            kompasDocument?.SaveAs(File.FullName);
         }
 
 
@@ -169,9 +167,11 @@ namespace Oil_level_glass_Core.Builders
 
         protected void SetMaterial()
         {
-            Part.SetMaterial(Material.Tittle, Material.Density);
+            Material? material = ((BaseDetailModel)EntityModel).Material;
+
+            Part.SetMaterial(material!.Tittle, material!.Density);
             IHatchParam hatchParameter = Part.HatchParam;
-            hatchParameter.Style = Material.HatchStyle;
+            hatchParameter.Style = material.HatchStyle;
 
             Part.Update();
         }
@@ -180,20 +180,22 @@ namespace Oil_level_glass_Core.Builders
         {
             IColorParam7 colorParameter = (IColorParam7)ModelContainer;
 
+            Appereance appearance = ((BaseDetailModel)EntityModel).Appereance;
+
             colorParameter.SetAdvancedColor(
-                Appearance.Color,
+                appearance.Color,
 
-                Appearance.Ambient,
+                appearance.Ambient,
 
-                Appearance.Diffuse,
+                appearance.Diffuse,
 
-                Appearance.Specularity,
+                appearance.Specularity,
 
-                Appearance.Shininess,
+                appearance.Shininess,
 
-                Appearance.Transparency,
+                appearance.Transparency,
 
-                Appearance.Emission
+                appearance.Emission
             );
 
             Part.Update();
@@ -227,6 +229,25 @@ namespace Oil_level_glass_Core.Builders
         }
 
 
+        internal void GetVertexByPoint(object[] vertices, ref IVertex targetVertex, double x = 0, double y = 0, double z = 0)
+        {
+            foreach(var obj in vertices)
+            {
+                if (obj is IVertex vertex)
+                {
+                    vertex.GetPoint(out double x1, out double y1, out double z1);
+
+                    if (x1 == x && y1 == y && z1 == z)
+                    {
+                        targetVertex = vertex;
+
+                        break;
+                    }
+                }
+            }
+        }
+
+
         internal void GetEdgeByPoint(object[] edges, ref IEdge targetEdge, double x = 0, double y = 0, double z = 0)
         {
             
@@ -247,7 +268,7 @@ namespace Oil_level_glass_Core.Builders
         }
 
 
-        public BaseBuilder(bool createNewDocument) : base(createNewDocument)
+        public BaseDetailBuilder(bool createNewDocument) : base(createNewDocument)
         {
             if (createNewDocument)
                 kompasDocument = application?.Documents.Add(DocumentTypeEnum.ksDocumentPart);

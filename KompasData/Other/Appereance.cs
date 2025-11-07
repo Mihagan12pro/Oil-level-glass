@@ -1,6 +1,8 @@
-﻿namespace KompasData.Other;
+﻿using Oil_level_glass.Model;
 
-public class Appereance
+namespace Model.Other;
+
+public class Appereance : BaseModel
 {
     public double Ambient { get; set; } = 0.5;
 
