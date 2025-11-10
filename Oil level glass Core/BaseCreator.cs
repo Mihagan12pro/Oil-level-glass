@@ -1,12 +1,6 @@
-﻿using Kompas6API5;
-using KompasAPI7;
-using Oil_level_glass.Model;
+﻿using KompasAPI7;
+using Oil_level_glass.Model.Entities;
 using Oil_level_glass.Model.KompasFile;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oil_level_glass_Core
 {

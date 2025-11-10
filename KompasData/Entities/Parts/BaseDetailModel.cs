@@ -2,7 +2,7 @@
 using Model.Other;
 using Oil_level_glass.Model.KompasFile;
 
-namespace Oil_level_glass.Model
+namespace Oil_level_glass.Model.Entities.Parts
 {
     public abstract class BaseDetailModel : BaseEntityModel
     {

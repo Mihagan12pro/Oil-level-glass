@@ -1,7 +1,7 @@
 ﻿
 using Model.Materials;
 
-namespace Oil_level_glass.Model.Parts
+namespace Oil_level_glass.Model.Entities.Parts.Classic
 {
     public class RubberStripModel : BaseDetailModel
     {

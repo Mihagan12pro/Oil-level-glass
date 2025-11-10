@@ -1,5 +1,5 @@
 ﻿using KompasAPI7;
-using Oil_level_glass.Model.Parts;
+using Oil_level_glass.Model.Entities.Parts.Classic;
 
 namespace Oil_level_glass_Core.Builders
 {

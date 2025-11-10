@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Model.Parts;
+﻿using Oil_level_glass.Model.Entities.Parts.Classic;
 using Oil_level_glass_Core.Assemblers;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace Oil_level_glass.Tests
             model.SmallSocketDiameter = 180;
             model.MainDiameter = 300;
             model.MainHeight = 60;
-            model.SocketHeight = 25;
+            model.SocketHeight = 15;
             model.Thread.Pitch = 1.5;
             model.Thread.NominalDiameter = 10;
             model.ChamferLength = 5;
@@ -64,7 +64,7 @@ namespace Oil_level_glass.Tests
 
             model.ExternalDiameter = 200;
             model.InternalDiameter = 180;
-            model.Height = 2;
+            model.Height = 5;
 
             return model;
         }

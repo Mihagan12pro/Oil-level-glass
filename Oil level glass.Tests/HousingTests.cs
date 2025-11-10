@@ -1,7 +1,7 @@
 ﻿using Model.Materials;
 using Model.Other;
+using Oil_level_glass.Model.Entities.Parts.Classic;
 using Oil_level_glass.Model.KompasFile;
-using Oil_level_glass.Model.Parts;
 using Oil_level_glass_Core.Builders;
 
 namespace Oil_level_glass.Tests

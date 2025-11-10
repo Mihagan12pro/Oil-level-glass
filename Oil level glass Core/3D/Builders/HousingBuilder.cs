@@ -1,8 +1,9 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
-using Oil_level_glass.Model.Parts;
-using Oil_level_glass_Core.Delegates;
+using Oil_level_glass.Model.Entities.Parts.Classic;
 using Utils;
+using Utils.Delegates;
+using Utils.Extensions;
 
 namespace Oil_level_glass_Core.Builders
 {
@@ -168,12 +169,10 @@ namespace Oil_level_glass_Core.Builders
         {
             IFeature7 extrusion1Feature = (IFeature7)_extrusion1;
 
-            object[] faces = ArrayMaster.ObjectToArray(extrusion1Feature.ModelObjects[ksObj3dTypeEnum.o3d_face]);
-
             CheckFace isPlanar = (IFace face) => 
                 face.IsPlanar;
 
-            GetFaceByPoint(faces, ref _topFace, isPlanar, Housing.MainDiameter * 0.5, 0, Housing.MainHeight * 0.5);
+            _topFace = Part.GetFaceByPoint(extrusion1Feature, isPlanar, Housing.MainDiameter * 0.5, 0, Housing.MainHeight * 0.5);
 
             _sketch3 = sketchs.Add();
             _sketch3.Plane = _topFace;
@@ -231,25 +230,13 @@ namespace Oil_level_glass_Core.Builders
 
             IHoleDisposal holeDisposal = (IHoleDisposal)_hole1;
             IFeature7 sketch3Feature = (IFeature7)_sketch3;
-            object[] vertices = ArrayMaster.ObjectToArray(sketch3Feature.ModelObjects[ksObj3dTypeEnum.o3d_vertex]);
 
-
-            //foreach(var i in vertices)
-            //{
-            //    IVertex v = (IVertex)i;
-
-            //    v.GetPoint(out double x, out double y, out double z);
-
-            //    Console.WriteLine($"{x} {y} {z}");
-            //}
-
-            IVertex? vertex = null;
 
             double x = (Housing.MainDiameter * 0.5 + Housing.BigSocketDiameter * 0.5) / 2;
             double y = 0;
             double z = Housing.MainHeight * 0.5;
 
-            GetVertexByPoint(vertices, ref vertex!, x, y, z);
+            IVertex vertex = Part.GetVertexByPoint(sketch3Feature, x, y, z);
 
             holeDisposal.AssociationVertex = vertex;
             holeDisposal.BaseSurface = _topFace;
@@ -292,9 +279,7 @@ namespace Oil_level_glass_Core.Builders
             _chamfer1.Angle = Housing.ChamferAngle;
             _chamfer1.Distance1 = Housing.ChamferLength;
 
-            IEdge? edge = null;
-
-            GetEdgeByPoint(ArrayMaster.ObjectToArray(_topFace.LimitingEdges), ref edge!, Housing.MainDiameter * 0.5, 0, Housing.MainHeight * 0.5);
+            IEdge edge = Part.GetEdgeByPoint(_topFace, Housing.MainDiameter * 0.5, 0, Housing.MainHeight * 0.5);
 
             _chamfer1.BaseObjects = new object[] { edge };
 
