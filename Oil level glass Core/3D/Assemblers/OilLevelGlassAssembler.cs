@@ -1,7 +1,7 @@
-﻿using KompasAPI7;
+﻿using Kompas6Constants3D;
+using KompasAPI7;
 using Oil_level_glass.Model.Entities.Parts.Classic;
 using Oil_level_glass_Core.Builders;
-using Utils;
 using Utils.Delegates;
 using Utils.Extensions;
 
@@ -15,18 +15,25 @@ namespace Oil_level_glass_Core.Assemblers
         private GlassBuilder? _glassBuilder;
         private RubberStripBuilder? _rubberStripBuilder;
 
+        private CheckFace _checkPlanarFace = (IFace face) => 
+            face.IsPlanar;
+
         private IPart7 _housing, _topRubberStrip, _bottomRubberStrip, _glass;
 
-        private IFace _topStripInternalFace, _bottomStripInternalFace;
+        private IFace _topStripTopFace, _bottomStripBottomFace, _topHousingSocketFace, _bottomHousingSocketFace;
 
-        private IEdge _topStripInternalEdge, _bottomStripInternalEdge;
+        private IEdge _topStripInternalEdge, _bottomStripInternalEdge, _housingInternalEdge;
 
-        private IMateConstraint3D _stripsConcentric;
+        private IMateConstraint3D _stripsConcentric, _housingStripsConcentric;
+        private IMateConstraint3D _topStripHousingCoincidence, _bottomStripHousingCoincidence;
 
         public override void Create()
         {
             AddHousing();
             AddStrips();
+            MakeConcentricStripsAndHousing();
+            ConnectTopStripToHousing();
+            ConnectBottomStripToHousing();
 
             base.Create();
         }
@@ -62,9 +69,6 @@ namespace Oil_level_glass_Core.Assemblers
                 _rubberStripBuilder.RubberStrip.File!.FullName
             );
 
-            CheckFace checkFace = (IFace face) =>
-                    face.IsCylinder;
-
             double x = OilLevelGlass.RubberStripModel.InternalDiameter * 0.5;
             double y = 0;
             double z = OilLevelGlass.RubberStripModel.Height * 0.5;
@@ -85,6 +89,67 @@ namespace Oil_level_glass_Core.Assemblers
             _stripsConcentric.BaseObject1 = _topStripInternalEdge;
             _stripsConcentric.BaseObject2 = _bottomStripInternalEdge;
             _stripsConcentric.Update();
+        }
+
+
+        private void MakeConcentricStripsAndHousing()
+        {
+            _housingInternalEdge = _housing.GetEdgeByPoint(
+                OilLevelGlass.BigSocketDiameter * 0.5,
+                0,
+                OilLevelGlass.HousingModel.SocketHeight * 0.5
+            );
+
+            _housingStripsConcentric = mateConstraints.Add(MateConstraintType.mc_Concentric);
+            _housingStripsConcentric.BaseObject1 = _housingInternalEdge;
+            _housingStripsConcentric.BaseObject2 = _topStripInternalEdge;
+            _housingStripsConcentric.Update();
+        }
+
+
+        private void ConnectTopStripToHousing()
+        {
+            _topHousingSocketFace = _housing.GetFaceByPoint(
+           _checkPlanarFace,
+            OilLevelGlass.BigSocketDiameter * 0.5,
+            0,
+            OilLevelGlass.HousingModel.SocketHeight * 0.5
+            );
+
+            _topStripTopFace = _topRubberStrip.GetFaceByPoint(
+            _checkPlanarFace,
+            _rubberStripBuilder!.RubberStrip.ExternalDiameter * 0.5,
+            0,
+            _rubberStripBuilder!.RubberStrip.Height * 0.5
+            );
+
+            _topStripHousingCoincidence = mateConstraints.Add(MateConstraintType.mc_Coincidence);
+            _topStripHousingCoincidence.BaseObject1 = _topStripTopFace;
+            _topStripHousingCoincidence.BaseObject2 = _topHousingSocketFace;
+            _topStripHousingCoincidence.Update();
+        }
+
+
+        private void ConnectBottomStripToHousing()
+        {
+            //_bottomHousingSocketFace = _housing.GetFaceByPoint(
+            //   _checkPlanarFace,
+            //    OilLevelGlass.BigSocketDiameter * 0.5,
+            //    0,
+            //    -OilLevelGlass.HousingModel.SocketHeight * 0.5
+            //);
+
+            //_bottomStripInternalEdge.GetPoint(true, out double x, out double y, out double z);
+
+            //_bottomStripBottomFace = _bottomRubberStrip.GetFaceByPoint(
+            //    _checkPlanarFace,
+            //    x,y,z
+            //);
+
+            //_bottomStripHousingCoincidence = mateConstraints.Add(MateConstraintType.mc_Coincidence);
+            //_bottomStripHousingCoincidence.BaseObject1 = _bottomStripBottomFace;
+            //_bottomStripHousingCoincidence.BaseObject2 = _bottomHousingSocketFace;
+            //_bottomStripHousingCoincidence.Update();
         }
 
 
