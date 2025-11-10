@@ -6,6 +6,8 @@ namespace Oil_level_glass_Core.Assemblers
 {
     public abstract class BaseAssembler : Base3DCreator
     {
+        protected readonly IMateConstraints3D mateConstraints;
+
         internal void AddPartByPath(ref IPart7 part, string path, bool external = false, bool redraw = true)
         {
             part = Part?.Parts.AddFromFile(path, external, redraw)!;
@@ -24,6 +26,8 @@ namespace Oil_level_glass_Core.Assemblers
             Part = assemblyDocument!.TopPart;
 
             modelContainer = (IModelContainer)Part;
+
+            mateConstraints = Part.MateConstraints;
         }
     }
 }

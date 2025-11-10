@@ -17,7 +17,11 @@ namespace Oil_level_glass_Core.Assemblers
 
         private IPart7 _housing, _topRubberStrip, _bottomRubberStrip, _glass;
 
-        private IFace _topStripInternalFace, _internalStrip2Face;
+        private IFace _topStripInternalFace, _bottomStripInternalFace;
+
+        private IEdge _topStripInternalEdge, _bottomStripInternalEdge;
+
+        private IMateConstraint3D _stripsConcentric;
 
         public override void Create()
         {
@@ -61,22 +65,26 @@ namespace Oil_level_glass_Core.Assemblers
             CheckFace checkFace = (IFace face) =>
                     face.IsCylinder;
 
-            _topStripInternalFace = _topRubberStrip.GetFaceByPoint(
-                checkFace,   
-                OilLevelGlass.RubberStripModel.InternalDiameter * 0.5,
-                0,
-                OilLevelGlass.RubberStripModel.Height * 0.5
+            double x = OilLevelGlass.RubberStripModel.InternalDiameter * 0.5;
+            double y = 0;
+            double z = OilLevelGlass.RubberStripModel.Height * 0.5;
+
+            _topStripInternalEdge = _topRubberStrip.GetEdgeByPoint(
+                x,
+                y,
+                z
             );
-            //_rubberStripBuilder.GetFaceByPoint(
-            //    ref _internalStripFace,
 
-            //    (IFace face) => 
-            //        face.IsCylinder,
+            _bottomStripInternalEdge = _bottomRubberStrip.GetEdgeByPoint(
+                x,
+                y,
+                -z
+            );
 
-            //    OilLevelGlass.RubberStripModel.InternalDiameter * 0.5,
-            //    0,
-            //    OilLevelGlass.RubberStripModel.Height * 0.5
-            //);
+            _stripsConcentric = mateConstraints.Add(Kompas6Constants3D.MateConstraintType.mc_Concentric);
+            _stripsConcentric.BaseObject1 = _topStripInternalEdge;
+            _stripsConcentric.BaseObject2 = _bottomStripInternalEdge;
+            _stripsConcentric.Update();
         }
 
 
