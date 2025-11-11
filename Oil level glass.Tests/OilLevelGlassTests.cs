@@ -14,10 +14,12 @@ namespace Oil_level_glass.Tests
         public void Test1()
         {
             OilLevelGlassModel model = new OilLevelGlassModel()
-            { 
-                GlassModel = GetGlassModel(),
-                HousingModel = GetHousingModel(), 
-                RubberStripModel = GetRubberStripModel() 
+            {
+                GlassPath = @"C:\Test\КМС.000000.001_Линза..m3d",
+
+                StripPath = @"C:\Test\КМС.000000.002_Резиновая прокладка..m3d",
+
+                HousingPath = @"C:\Test\КМС.000000.003_Корпус..m3d"
             };
 
             OilLevelGlassAssembler assembler = new OilLevelGlassAssembler(true) { EntityModel =  model };
