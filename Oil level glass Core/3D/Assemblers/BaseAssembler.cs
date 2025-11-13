@@ -1,6 +1,5 @@
 ﻿using Kompas6Constants;
 using KompasAPI7;
-using Oil_level_glass.Model.KompasFile;
 
 namespace Oil_level_glass_Core.Assemblers
 {
@@ -11,6 +10,14 @@ namespace Oil_level_glass_Core.Assemblers
         internal void AddPartByPath(ref IPart7 part, string path, bool external = false, bool redraw = true)
         {
             part = Part?.Parts.AddFromFile(path, external, redraw)!;
+        }
+
+
+        public override void SaveDocument()
+        {
+            Part.RebuildModel(true);
+
+            base.SaveDocument();
         }
 
 

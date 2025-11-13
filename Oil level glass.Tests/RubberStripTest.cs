@@ -21,9 +21,9 @@ namespace Oil_level_glass.Tests
             model.Material!.Tittle = "Резина";
 
 
-            model.ExternalDiameter = 200;
-            model.InternalDiameter = 180;
-            model.Height = 2;
+            model.ExternalDiameter = 60;
+            model.InternalDiameter = 50;
+            model.Height = 1.5;
 
             RubberStripBuilder builder = new RubberStripBuilder(true)
             { 

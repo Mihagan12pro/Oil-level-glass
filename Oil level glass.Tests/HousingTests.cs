@@ -12,14 +12,14 @@ namespace Oil_level_glass.Tests
         public void Test()
         {
             HousingModel model = new HousingModel();
-            model.BigSocketDiameter = 200;
-            model.SmallSocketDiameter = 180;
-            model.MainDiameter = 300;
-            model.MainHeight = 60;
-            model.SocketHeight = 25;
+            model.GlassDiameter = 60;
+            model.CentralHoleDiameter = 50;
+            model.MainDiameter = 90;
+            model.MainHeight = 8;
+            model.GlassSocketHeight = 6;
+            model.Chamfer.Length = 1.5;
             model.Thread.Pitch = 1.5;
-            model.Thread.NominalDiameter = 10;
-            model.ChamferLength = 5;
+            model.Thread.NominalDiameter = 5;
             model.ScrewHolesCount = 4;
 
             model.File!.Folder = @"C:\Test";

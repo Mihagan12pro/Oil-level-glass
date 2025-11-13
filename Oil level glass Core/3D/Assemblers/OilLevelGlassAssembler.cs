@@ -1,8 +1,6 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Model.Entities.Parts.Classic;
-using Oil_level_glass_Core.Builders;
-using Utils;
 using Utils.Delegates;
 using Utils.Extensions;
 
@@ -14,56 +12,56 @@ namespace Oil_level_glass_Core.Assemblers
 
         private CheckFace _checkPlanarFace = (IFace face) => 
             face.IsPlanar;
+        private CheckFace _checkCylinderFace = (IFace face) =>
+            face.IsCylinder;
 
         private IPart7 _housing, 
-            _topRubberStrip, 
-            _bottomRubberStrip,
+            _strip1, 
+            _strip2,
             _glass;
 
-        private IFace _glassTopFace, _glassBottomFace;
+        private IFace _strip1CylindricFace;
+        private IEdge _strip1BottomEdge,
+            _strip1TopEdge;
 
-        private IEdge _topStripEdge, 
-            _bottomStripEdge,
-            _glassTopEdge, 
-            _glassBottomEdge,
-            _housingEdge;
+        private IFace _strip2CylindricFace;
+        private IEdge _strip2TopEdge;
 
-        private IMateConstraint3D _stripsConcentric,
-            _housingStripsConcentric,
-            _housingGlassConcentric;
+        private IFace _glassCylindricFace,
+            _glassBottomFace;
 
-        private IMateConstraint3D _topGlassStripCoincidence,
-            _bottomGlassStripCoincidence;
+        private IFace _housingCylindricFace;
+        private IEdge _housingSocketBottomEdge,
+            _housingSocketTopEdge;
+
+        private IMateConstraint3D _strip1HousingConcentric,
+            _strip1HousingCoincidence;
+
+        private IMateConstraint3D _glassHousingConcentric,
+         _strip1GlassCoincidence;
+
+        private IMateConstraint3D _strip2GlassConcentric,
+            _strip2GlassCoincidence;
+
 
         public override void Create()
         {
-            //BuildParts();
-
             AddHousing();
-            AddStrips();
+
+            AddStrip1();
+
+            AddConstraintsHousingStrip1();
+            
             AddGlass();
 
-            //GetPartsEdges();
-            //GetPartsFaces();
+            AddConstraintsStrip1Glass();
 
-            //MakePartsConcentric();
-            //MakePartsCoincidence();
+            AddStrip2();
+
+            AddConstraintsStrip2Housing();
 
             base.Create();
         }
-
-
-        //private void BuildParts()
-        //{
-        //    _housingBuilder = new HousingBuilder(true) { EntityModel = OilLevelGlass.HousingModel };
-        //    _housingBuilder.Create();
-
-        //    _rubberStripBuilder = new RubberStripBuilder(true) { EntityModel = OilLevelGlass.RubberStripModel };
-        //    _rubberStripBuilder.Create();
-
-        //    _glassBuilder = new GlassBuilder(true) { EntityModel = OilLevelGlass.GlassModel };
-        //    _glassBuilder.Create();
-        //}
 
 
         private void AddHousing()
@@ -74,108 +72,110 @@ namespace Oil_level_glass_Core.Assemblers
             );
 
             _housing.Fixed = true;
+
+            _housingCylindricFace = _housing.GetFaces(_checkCylinderFace).ToList()[0];
+            _housingSocketTopEdge = _housing.GetEdgeByPoint(OilLevelGlass.CentralHoleDiameter * 0.5, 0, OilLevelGlass.GlassSocketHeight * 0.5)!;
+            _housingSocketBottomEdge = _housing.GetEdgeByPoint(OilLevelGlass.CentralHoleDiameter * 0.5, 0, -OilLevelGlass.GlassSocketHeight * 0.5)!;
         }
 
-        private void AddStrips()
+
+        private void AddStrip1()
         {
             AddPartByPath(
-                ref _topRubberStrip, 
+                ref _strip1, 
                OilLevelGlass.StripPath
             );
+        
+            _strip1CylindricFace = _strip1.GetFaces(_checkCylinderFace).ToList()[0];
 
-            AddPartByPath(
-                ref _bottomRubberStrip,
-                OilLevelGlass.StripPath
-            );
+            _strip1BottomEdge = _strip1.GetEdgeByPoint(
+                OilLevelGlass.CentralHoleDiameter * 0.5, 
+                0,
+                -(OilLevelGlass.GlassSocketHeight - OilLevelGlass.GlassWidth) / 4
+            )!;
+
+            _strip1TopEdge = _strip1.GetEdgeByPoint(
+                OilLevelGlass.CentralHoleDiameter * 0.5,
+                0,
+                (OilLevelGlass.GlassSocketHeight - OilLevelGlass.GlassWidth) / 4
+            )!;
         }
+
+
+        private void AddConstraintsHousingStrip1()
+        {
+            _strip1HousingConcentric = mateConstraints.Add(MateConstraintType.mc_Concentric);
+            _strip1HousingConcentric.BaseObject1 = _housingCylindricFace;
+            _strip1HousingConcentric.BaseObject2 = _strip1CylindricFace;
+            _strip1HousingConcentric.Update();
+
+            _strip1HousingCoincidence = mateConstraints.Add(MateConstraintType.mc_Coincidence);
+            _strip1HousingCoincidence.BaseObject1 = _housingSocketBottomEdge;
+            _strip1HousingCoincidence.BaseObject2 = _strip1BottomEdge;
+            _strip1HousingCoincidence.Alignment = ksMateConstraintAlignmentEnum.ksMCAlignmentCooriented;
+            _strip1HousingCoincidence.Update();
+        }
+
 
 
         private void AddGlass()
         {
             AddPartByPath(ref _glass, OilLevelGlass.GlassPath);
+
+            _glassCylindricFace = _glass.GetFaces(_checkCylinderFace).ToList()[0];
+
+            _glassBottomFace = _glass.GetFaceByPoint(
+                _glass.GetFaces(_checkPlanarFace), 
+                OilLevelGlass.GlassDiameter * 0.5, 
+                0, 
+                OilLevelGlass.GlassWidth
+            )!;
         }
 
 
-        private void GetPartsEdges()
+        private void AddConstraintsStrip1Glass()
         {
-            //_bottomStripEdge = _topRubberStrip.GetEdgeByPoint(
-            //     OilLevelGlass.RubberStripModel.ExternalDiameter * 0.5,
-            //     0,
-            //     -OilLevelGlass.RubberStripModel.Height * 0.5
-            //);
+            _glassHousingConcentric = mateConstraints.Add(MateConstraintType.mc_Concentric);
+            _glassHousingConcentric.BaseObject1 = _glassCylindricFace;
+            _glassHousingConcentric.BaseObject2 = _housingCylindricFace;
+            _glassHousingConcentric.Alignment = ksMateConstraintAlignmentEnum.ksMCAlignmentOpposite;
+            _glassHousingConcentric.Update();
 
-            //_topStripEdge = _bottomRubberStrip.GetEdgeByPoint(
-            //    OilLevelGlass.RubberStripModel.ExternalDiameter * 0.5,
-            //    0,
-            //    OilLevelGlass.RubberStripModel.Height * 0.5
-            //);
-
-            //_glassTopEdge = _glass.GetEdgeByPoint(
-            //    OilLevelGlass.GlassModel.ExternalDiameter * 0.5,
-            //    0,
-            //    OilLevelGlass.GlassModel.Height * 0.5
-            //);
-
-            //_glassBottomEdge = _glass.GetEdgeByPoint(
-            //    OilLevelGlass.GlassModel.ExternalDiameter * 0.5,
-            //    0,
-            //    -OilLevelGlass.GlassModel.Height * 0.5
-            //);
-
-            //_housingEdge = _housing.GetEdgeByPoint(
-            //    OilLevelGlass.BigSocketDiameter * 0.5,
-            //    0,
-            //    OilLevelGlass.HousingModel.SocketHeight * 0.5
-            //);
+            _strip1GlassCoincidence = mateConstraints.Add(MateConstraintType.mc_Coincidence);
+            _strip1GlassCoincidence.BaseObject1 = _glassBottomFace;
+            _strip1GlassCoincidence.BaseObject2 = _strip1TopEdge;
+            _strip1GlassCoincidence.Update();
         }
 
 
-        private void GetPartsFaces()
+        private void AddStrip2()
         {
-            IExtrusion extrusion = null;
-            for (int i = 0; i < ((IModelContainer)_glass).Extrusions.Count; i++)
-            {
-                extrusion = ((IModelContainer)_glass).Extrusions.Extrusion[i];
+            AddPartByPath(
+                ref _strip2,
+                OilLevelGlass.StripPath
+            );
 
-                break;
-            }
+            _strip2CylindricFace = _strip2.GetFaces(_checkCylinderFace).ToList()[0];
 
-            IFeature7 feature7 = (IFeature7)extrusion!;
-
-            //Part.GetFaceByPoint(feature7, (IFace f) => f.IsPlanar, 0, 0, OilLevelGlass.GlassModel.Height * 0.5);
+            _strip2TopEdge = _strip2.GetEdgeByPoint(
+                OilLevelGlass.CentralHoleDiameter * 0.5,
+                0,
+                (OilLevelGlass.GlassSocketHeight - OilLevelGlass.GlassWidth) / 4
+            )!;
         }
 
-
-        private void MakePartsConcentric()
+        private void AddConstraintsStrip2Housing()
         {
-            _stripsConcentric = mateConstraints.Add(MateConstraintType.mc_Concentric);
-            _stripsConcentric.BaseObject1 = _topStripEdge;
-            _stripsConcentric.Update();
+            _strip2GlassConcentric = mateConstraints.Add(MateConstraintType.mc_Concentric);
+            _strip2GlassConcentric.BaseObject1 = _strip2CylindricFace;
+            _strip2GlassConcentric.BaseObject2 = _housingCylindricFace;
+            _strip2GlassConcentric.Update();
 
-            _housingStripsConcentric = mateConstraints.Add(MateConstraintType.mc_Concentric);
-            _housingStripsConcentric.BaseObject1 = _topStripEdge;
-            _housingStripsConcentric.BaseObject2 = _housingEdge;
-            _housingStripsConcentric.Update();
-
-            _housingGlassConcentric = mateConstraints.Add(MateConstraintType.mc_Concentric);
-            _housingGlassConcentric.BaseObject1 = _glassTopEdge;
-            _housingGlassConcentric.BaseObject2 = _housingEdge;
-            _housingGlassConcentric.Update();
-        }
-
-        private void MakePartsCoincidence()
-        {
-            //_topGlassStripCoincidence = mateConstraints.Add(MateConstraintType.mc_Coincidence);
-            //_topGlassStripCoincidence.BaseObject1 = _glassBottomEdge;
-            //_topGlassStripCoincidence.BaseObject2 = _bottomStripEdge;
-            //_topGlassStripCoincidence.Alignment = ksMateConstraintAlignmentEnum.ksMCAlignmentOpposite;
-            //_topGlassStripCoincidence.Update();
-
-            //_bottomGlassStripCoincidence = mateConstraints.Add(MateConstraintType.mc_Coincidence);
-            //_bottomGlassStripCoincidence.BaseObject1 = _glassTopEdge;
-            //_bottomGlassStripCoincidence.BaseObject2 = _topStripEdge;
-            //_bottomGlassStripCoincidence.Alignment = ksMateConstraintAlignmentEnum.ksMCAlignmentOpposite;
-            //_bottomGlassStripCoincidence.Update();
+            _strip2GlassCoincidence = mateConstraints.Add(MateConstraintType.mc_Coincidence);
+            _strip2GlassCoincidence.BaseObject1 = _strip2TopEdge;
+            _strip2GlassCoincidence.BaseObject2 = _housingSocketTopEdge;
+            _strip2GlassCoincidence.Alignment = ksMateConstraintAlignmentEnum.ksMCAlignmentCooriented;
+            _strip2GlassCoincidence.Update();
         }
 
 

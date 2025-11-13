@@ -19,8 +19,8 @@ namespace Oil_level_glass.Tests
             model.Material!.Tittle = "Стекло";
             model.Material.Density = 5;
 
-            model.ExternalDiameter = 200;
-            model.Height = 5;
+            model.ExternalDiameter = 60;
+            model.Height = 3;
 
             GlassBuilder builder = new GlassBuilder(true)
             {

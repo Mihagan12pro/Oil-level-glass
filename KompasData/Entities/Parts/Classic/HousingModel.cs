@@ -14,15 +14,13 @@ namespace Oil_level_glass.Model.Entities.Parts.Classic
 
         public double MainHeight { get; set; }
 
-        public double SocketHeight { get; set; }
+        public double GlassSocketHeight { get; set; }
 
-        public double BigSocketDiameter { get; set; }
+        public double GlassDiameter { get; set; }
 
-        public double SmallSocketDiameter { get; set; }
+        public double CentralHoleDiameter { get; set; }
 
-        public double ChamferLength { get; set; } = 3;
-
-        public double ChamferAngle { get; set; } = 45;
+        public ChamferModel Chamfer { get; } = new ChamferModel() { Angle = 45, Length = 5 };
 
         public int ScrewHolesCount { get; set; }
 

@@ -17,7 +17,12 @@ namespace Oil_level_glass.Model.Entities.Parts.Classic
         {
             Material = new Glass();
 
-            Appereance.Transparency = 0;
+            Appereance.Transparency = 0.74;
+            Appereance.Ambient = 0.5;
+            Appereance.Diffuse = 0.6;
+            Appereance.Specularity = 0.8;
+            Appereance.Shininess = 0.8;
+            Appereance.Emission = 0.5;
         }
     }
 }

@@ -7,11 +7,76 @@ namespace Utils.Extensions
 {
     public static class PartExtensions
     {
-        public static IEdge GetEdgeByPoint(
+        public static IFace? GetFaceByPoint(this IPart7 part, IEnumerable<IFace> faces, double x, double y, double z, bool start = true)
+        {
+            foreach(IFace face in faces)
+            {
+                try
+                {
+                    IEdge edge = GetEdgeByPoint(part, face, x, y ,z, start);
+
+                    return face;
+                }
+                finally
+                {
+
+                }
+            }
+
+            return null;
+        }
+
+
+        public static IEnumerable<IFace> GetFaces(this IPart7 part, CheckFace? checkFace = null)
+        {
+            List<IFace>faces = new List<IFace>();
+
+            IModelContainer modelContainer = (IModelContainer)part;
+
+            object[] objs = ArrayMaster.ObjectToArray(modelContainer.Objects[ksObj3dTypeEnum.o3d_face]);
+
+            foreach (object obj in objs)
+            {
+                IFace face = (IFace)obj;
+
+                if (checkFace != null)
+                {
+                    if (checkFace(face))
+                    {
+                        faces.Add(face);
+                    }
+                }
+                else
+                {
+                    faces.Add(face);
+                }
+            }
+
+            return faces;
+        }
+
+
+        public static IEdge? GetEdgeByPoint(this IPart7 part, double x, double y, double z, bool start = true)
+        {
+            IModelContainer modelContainer = (IModelContainer)part;
+
+            return GetEdgeByPoint(
+                part,
+                ArrayMaster.ObjectToArray(modelContainer.Objects[ksObj3dTypeEnum.o3d_edge]),
+                x,
+                y,
+                z,
+                start
+            );
+        }
+
+
+        public static IEdge? GetEdgeByPoint(
             this IPart7 part,
-            object[]edges, double x = 0,
-            double y = 0,
-            double z = 0,
+            object[] edges,
+            double x,
+            double y,
+            double z,
             bool start = true)
         {
 
@@ -26,16 +91,16 @@ namespace Utils.Extensions
                     return edge;
                 }
             }
-            throw new EntityNotFoundException("The edge has not been found!");
+            return null;
         }
 
 
-        public static IEdge GetEdgeByPoint(
+        public static IEdge? GetEdgeByPoint(
             this IPart7 part,
             IFace face,
-            double x = 0,
-            double y = 0,
-            double z = 0,
+            double x,
+            double y,
+            double z,
             bool start = true)
         {
             object[] edges = ArrayMaster.ObjectToArray(face.LimitingEdges);
@@ -43,78 +108,8 @@ namespace Utils.Extensions
             return GetEdgeByPoint(part, edges, x, y, z, start);
         }
 
-        public static IEdge GetEdgeByPoint(
-            this IPart7 part,
-            double x = 0,
-            double y = 0,
-            double z = 0,
-            bool start = true)
-        {
-            IFeature7 feature = (IFeature7)part;
-
-            return GetEdgeByPoint(part, feature, x, y, z, start);
-        }
-
-
-        public static IEdge GetEdgeByPoint(
-            this IPart7 part,
-            IFeature7 feature,
-            double x = 0,
-            double y = 0,
-            double z = 0,
-            bool start = true)
-        {
-            object[] edges = ArrayMaster.ObjectToArray(feature.ModelObjects[ksObj3dTypeEnum.o3d_edge]);
-
-            return GetEdgeByPoint(part, edges, x, y, z, start);
-        }
-
-
-        public static IFace GetFaceByPoint(
-            this IPart7 part,
-            CheckFace checkFace,
-            double x = 0,
-            double y = 0,
-            double z = 0,
-            bool start = true)
-        {
-            IFeature7 feature = (IFeature7)part;
-
-            return GetFaceByPoint(part, feature, checkFace, x, y, z, start);
-        }
-
-
-        public static IFace GetFaceByPoint(
-            this IPart7 part,
-            IFeature7 feature,
-            CheckFace checkFace,
-            double x = 0,
-            double y = 0,
-            double z = 0,
-            bool start = true)
-        {
-            object[] faces = ArrayMaster.ObjectToArray(feature.ModelObjects[ksObj3dTypeEnum.o3d_face]);
-
-            foreach(var i in faces)
-            {
-                IFace face = (IFace)i;
-
-                try
-                {
-                    IEdge edge = GetEdgeByPoint(part, face, x, y, z, start);
-
-                    return face;
-                }
-                catch(EntityNotFoundException)
-                {
-                    Console.WriteLine("This face does not contains this edge!");
-                }
-            }
-            throw new EntityNotFoundException("The face has not been found!");
-        }
-
-
-        public static IVertex GetVertexByPoint(
+  
+        public static IVertex? GetVertexByPoint(
             this IPart7 part,
             IFeature7 feature,
             double x = 0,
@@ -135,7 +130,7 @@ namespace Utils.Extensions
                 }
             }
 
-            throw new EntityNotFoundException();
+            return null;
         }
     }
 }
