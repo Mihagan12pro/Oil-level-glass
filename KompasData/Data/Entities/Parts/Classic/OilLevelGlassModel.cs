@@ -84,18 +84,36 @@ public class OilLevelGlassModel : BaseEntityModel
 
             case nameof(GlassPath):
                 {
+                    if (string.IsNullOrEmpty(GlassPath))
+                    {
+                        error = EmptyStringError;
+                        break;
+                    }    
+
                     if (!new FileInfo(GlassPath!).Exists)
                         error = FileDoesNotExistsError;
                     break;
                 }
             case nameof(StripPath):
                 {
+                    if (string.IsNullOrEmpty(StripPath))
+                    {
+                        error = EmptyStringError;
+                        break;
+                    }
+
                     if (!new FileInfo(StripPath!).Exists)
                         error = FileDoesNotExistsError;
                     break;
                 }
             case nameof(HousingPath):
                 {
+                    if (string.IsNullOrEmpty(HousingPath))
+                    {
+                        error = EmptyStringError;
+                        break;
+                    }
+
                     if (!new FileInfo(HousingPath!).Exists)
                         error = FileDoesNotExistsError;
                     break;
