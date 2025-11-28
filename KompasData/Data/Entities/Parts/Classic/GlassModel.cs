@@ -24,23 +24,9 @@ public class GlassModel : BaseDetailModel
     {
         string error = string.Empty;
 
-        switch(columnName)
+        if (columnName == nameof(ExternalDiameter) || columnName == nameof(Height))
         {
-            case nameof(ExternalDiameter):
-                {
-                    if (ExternalDiameter <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(Height):
-                {
-                    if (Height <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
+            error = CheckMinimumValue(columnName);
         }
 
         return error;

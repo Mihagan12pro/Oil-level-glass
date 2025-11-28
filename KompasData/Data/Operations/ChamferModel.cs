@@ -10,22 +10,12 @@
         {
             string error = string.Empty;
 
-            switch (columnName)
-            {
-                case nameof(Angle):
-                    {
-                        if (Angle >= 90 && Angle <= 0)
-                            error = InvalidChamferAngleError;
-                        break;
-                    }
-                case nameof(Length):
-                    {
-                        if (Length <= 0)
-                            error = TooSmallValueError;
+            if (columnName == nameof(Angle))
+                error = CheckRange(columnName, 0, 90);
 
-                        break;
-                    }
-            }
+            else if (columnName == nameof(Length))
+                error = CheckMinimumValue(columnName);
+
 
             return error;
         }

@@ -18,23 +18,11 @@ public abstract class Material : BaseModel
     {
         string error = string.Empty;
 
-        switch(columnName)
-        {
-            case nameof(Density):
-                {
-                    if (MinDensity > Density || MaxDensity < Density)
-                        error = InvalidDensityError;
+        if (columnName == nameof(Density))
+            error = CheckRange(columnName, MinDensity, MaxDensity, false);
 
-                    break;
-                }
-            case nameof(Tittle):
-                {
-                    if (string.IsNullOrWhiteSpace(Tittle))
-                        error = EmptyStringError;
-
-                    break;
-                }
-        }
+        else if (columnName == nameof(Tittle))
+            error = CheckEmptyString(columnName);
 
         return error;
     }

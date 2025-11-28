@@ -43,7 +43,7 @@ namespace Oil_level_glass.Tests
             _glassModel.Height = 1;
             _glassModel.ExternalDiameter = 1;
 
-            _glassModel.File!.Folder = "C:\\Users\\kargi\\OneDrive\\Рабочий стол\\Oil-level-glass";
+            _glassModel.File!.Folder = "C:\\Users\\kargi\\Downloads\\Telegram Desktop";
             _glassModel.File.Name.Naming = "1";
 
             KompasFile file = _glassModel.File;
@@ -91,12 +91,12 @@ namespace Oil_level_glass.Tests
         {
             _glass.Density = 2.19;
 
-            Assert.Equal(BaseModel.InvalidDensityError, _glass[nameof(_glass.Density)]);
+            Assert.Equal(BaseModel.InvalidRangeError, _glass[nameof(_glass.Density)]);
 
             _glass.Density = 7.5001;
 
 
-            Assert.Equal(BaseModel.InvalidDensityError, _glass[nameof(_glass.Density)]);
+            Assert.Equal(BaseModel.InvalidRangeError, _glass[nameof(_glass.Density)]);
 
             _glass.Tittle = "                             ";
 

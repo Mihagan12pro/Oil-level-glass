@@ -5,7 +5,9 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 public class OilLevelGlassModel : BaseEntityModel
 {
-    public string? GlassPath, HousingPath, StripPath;
+    public string? GlassPath { get; set; }
+    public string? HousingPath { get; set; }
+    public string? StripPath { get; set; }
 
     public OilLevelGlassModel()
     {
@@ -34,92 +36,26 @@ public class OilLevelGlassModel : BaseEntityModel
     {
         string error = string.Empty;
 
-        switch (columnName)
+        if (columnName == nameof(MainDiameter) ||
+            columnName == nameof(MainHeight) ||
+            columnName == nameof(CentralHoleDiameter) ||
+            columnName == nameof(GlassDiameter) ||
+            columnName == nameof(GlassWidth) ||
+            columnName == nameof(GlassSocketHeight))
         {
-            case nameof(MainDiameter):
-                if (MainDiameter <= 0)
-                    error = TooSmallValueError;
-
-                break;
-
-            case nameof(MainHeight):
-                {
-                    if (MainHeight <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(GlassSocketHeight):
-                {
-                    if (GlassSocketHeight <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(GlassDiameter):
-                {
-                    if (GlassDiameter <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(CentralHoleDiameter):
-                {
-                    if (CentralHoleDiameter <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(ScrewHolesCount):
-                {
-                    if (ScrewHolesCount < 4)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(GlassPath):
-                {
-                    if (string.IsNullOrEmpty(GlassPath))
-                    {
-                        error = EmptyStringError;
-                        break;
-                    }    
-
-                    if (!new FileInfo(GlassPath!).Exists)
-                        error = FileDoesNotExistsError;
-                    break;
-                }
-            case nameof(StripPath):
-                {
-                    if (string.IsNullOrEmpty(StripPath))
-                    {
-                        error = EmptyStringError;
-                        break;
-                    }
-
-                    if (!new FileInfo(StripPath!).Exists)
-                        error = FileDoesNotExistsError;
-                    break;
-                }
-            case nameof(HousingPath):
-                {
-                    if (string.IsNullOrEmpty(HousingPath))
-                    {
-                        error = EmptyStringError;
-                        break;
-                    }
-
-                    if (!new FileInfo(HousingPath!).Exists)
-                        error = FileDoesNotExistsError;
-                    break;
-                }
+            error = CheckMinimumValue(columnName);
         }
 
+        else if (columnName == nameof(GlassPath) ||
+            columnName == nameof(HousingPath) ||
+            columnName == nameof(StripPath))
+        {
+            error = CheckEmptyString(columnName);
+
+            if (error == string.Empty)
+                error = CheckFile(columnName);
+        }
+        
         return error;
     }
 }

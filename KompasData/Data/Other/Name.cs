@@ -9,25 +9,9 @@ public class Name : BaseModel
     protected override string CheckField(string columnName)
     {
         string error = string.Empty;
-        
-        switch(columnName)
-        {
-            case nameof(Naming):
-                {
-                    if (string.IsNullOrWhiteSpace(Naming))
-                        error = EmptyStringError;
 
-                    break;
-                }
-
-            case nameof(Marking):
-                {
-                    if (string.IsNullOrWhiteSpace(Marking))
-                        error = EmptyStringError;
-
-                    break;
-                }
-        }
+        if (columnName == nameof(Naming) || columnName == nameof(Marking))
+            error = CheckEmptyString(columnName);
 
         return error;
     }

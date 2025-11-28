@@ -21,16 +21,8 @@ namespace Oil_level_glass.Model.Data.KompasFile
         {
             string error = string.Empty;
 
-            switch(columnName)
-            {
-                case nameof(Folder):
-                    {
-                        if (!Directory.Exists(Folder))
-                            error = DirectoryDoesNotExistsError;
-
-                        break;
-                    }
-            }
+            if (columnName == nameof(Folder))
+                error = CheckDirectory(columnName);
 
             return error;
         }

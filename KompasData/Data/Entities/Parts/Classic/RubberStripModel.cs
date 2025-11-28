@@ -23,31 +23,11 @@ public class RubberStripModel : BaseDetailModel
     {
         string error = string.Empty;
 
-        switch (columnName)
+        if ( columnName == nameof(Height) ||
+             columnName == nameof(ExternalDiameter) ||
+             columnName == nameof(InternalDiameter) )
         {
-            case nameof(InternalDiameter):
-                {
-                    if (InternalDiameter <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(ExternalDiameter):
-                {
-                    if (ExternalDiameter <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
-
-            case nameof(Height):
-                {
-                    if (Height <= 0)
-                        error = TooSmallValueError;
-
-                    break;
-                }
+            error = CheckMinimumValue(columnName);
         }
 
         return error;

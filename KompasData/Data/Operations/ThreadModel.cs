@@ -18,23 +18,11 @@ namespace Oil_level_glass.Model.Data.Operations
         {
             string error = string.Empty;
 
-            switch(columnName)
+            if (columnName == nameof(Pitch) || columnName == nameof(NominalDiameter))
             {
-                case nameof(Pitch):
-                    {
-                        if (Pitch <= 0)
-                            error = TooSmallValueError;
-                        break;
-                    }
-
-                case nameof(NominalDiameter):
-                    {
-                        if (NominalDiameter <= 0)
-                            error = TooSmallValueError;
-                    }
-                    break;
+                error = CheckMinimumValue(columnName);
             }
-
+             
             return error;
         }
     }
