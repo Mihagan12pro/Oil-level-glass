@@ -1,5 +1,6 @@
-﻿namespace Model.Materials;
-using Kompas6Constants;
+﻿using Kompas6Constants;
+
+namespace Oil_level_glass.Model.Data.Materials;
 
 public class Rubber : Material
 {

@@ -1,8 +1,8 @@
 ﻿using Kompas6Constants;
 using KompasAPI7;
-using Model.Materials;
-using Model.Other;
-using Oil_level_glass.Model.Entities.Parts;
+using Oil_level_glass.Model.Data.Entities.Parts;
+using Oil_level_glass.Model.Data.Materials;
+using Oil_level_glass.Model.Data.Other;
 using Utils;
 
 namespace Oil_level_glass_Core.Builders

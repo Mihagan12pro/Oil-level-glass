@@ -1,6 +1,6 @@
 ﻿using Kompas6Constants;
 
-namespace Model.Materials;
+namespace Oil_level_glass.Model.Data.Materials;
 
 public class Metal : Material
 {

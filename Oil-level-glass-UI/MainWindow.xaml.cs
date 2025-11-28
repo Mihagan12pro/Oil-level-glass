@@ -1,5 +1,7 @@
 ﻿using KompasWPF;
 using Oil_level_glass_UI.Dialogs.Three_D;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Oil_level_glass_UI
 {

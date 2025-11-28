@@ -1,6 +1,6 @@
-﻿using Model.Other;
+﻿using Oil_level_glass.Model.Data.Other;
 
-namespace Oil_level_glass.Model.KompasFile
+namespace Oil_level_glass.Model.Data.KompasFile
 {
     public abstract class KompasFile : BaseModel
     {
@@ -17,9 +17,14 @@ namespace Oil_level_glass.Model.KompasFile
             Name = new Name();
         }
 
-        public static implicit operator KompasFile(System.Reflection.Metadata.AssemblyFile v)
+        protected override string CheckField(string columnName)
         {
-            throw new NotImplementedException();
+            string error = string.Empty;
+
+            if (columnName == nameof(Folder))
+                error = CheckDirectory(columnName);
+
+            return error;
         }
     }
 }
