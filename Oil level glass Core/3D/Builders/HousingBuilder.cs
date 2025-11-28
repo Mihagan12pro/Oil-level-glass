@@ -1,6 +1,6 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
-using Oil_level_glass.Model.Entities.Parts.Classic;
+using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Utils.Delegates;
 using Utils.Extensions;
 

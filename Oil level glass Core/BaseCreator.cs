@@ -1,6 +1,6 @@
 ﻿using KompasAPI7;
-using Oil_level_glass.Model.Entities;
-using Oil_level_glass.Model.KompasFile;
+using Oil_level_glass.Model.Data.Entities;
+using Oil_level_glass.Model.Data.KompasFile;
 
 namespace Oil_level_glass_Core
 {

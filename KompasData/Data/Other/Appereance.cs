@@ -1,6 +1,4 @@
-﻿using Oil_level_glass.Model;
-
-namespace Model.Other;
+﻿namespace Oil_level_glass.Model.Data.Other;
 
 public class Appereance : BaseModel
 {
@@ -23,4 +21,9 @@ public class Appereance : BaseModel
     public int Blue { get; set; } = 144;
 
     public int Color => ((Red | (Green << 8)) | (Blue << 16));
+
+    protected override string CheckField(string columnName)
+    {
+        throw new NotImplementedException();
+    }
 }
