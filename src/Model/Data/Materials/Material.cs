@@ -1,29 +1,28 @@
-﻿using KompasAPI7;
-
-namespace Oil_level_glass.Model.Data.Materials;
-
-public abstract class Material : BaseModel
+﻿namespace Oil_level_glass.Model.Data.Materials
 {
-    public double Density { get; set; }
-    
-    public string? Tittle { get; set; }    
-    
-    public double MinDensity { get; init; }
-    
-    public double MaxDensity { get; init; }
-    
-    public int HatchStyle { get; init; }
-
-    protected override string CheckField(string columnName)
+    public abstract class Material : BaseModel
     {
-        string error = string.Empty;
+        public double Density { get; set; }
+    
+        public string? Tittle { get; set; }    
+    
+        public double MinDensity { get; init; }
+    
+        public double MaxDensity { get; init; }
+    
+        public int HatchStyle { get; init; }
 
-        if (columnName == nameof(Density))
-            error = CheckRange(columnName, MinDensity, MaxDensity, false);
+        protected override string CheckField(string columnName)
+        {
+            string error = string.Empty;
 
-        else if (columnName == nameof(Tittle))
-            error = CheckEmptyString(columnName);
+            if (columnName == nameof(Density))
+                error = CheckRange(columnName, MinDensity, MaxDensity, false);
 
-        return error;
+            else if (columnName == nameof(Tittle))
+                error = CheckEmptyString(columnName);
+
+            return error;
+        }
     }
 }

@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KompasWPF\KompasWPF.csproj" />
+    <ProjectReference Include="..\WPF.Styles\Oil level glass.WPF.Styles.csproj" />
   </ItemGroup>
 
   <ItemGroup>

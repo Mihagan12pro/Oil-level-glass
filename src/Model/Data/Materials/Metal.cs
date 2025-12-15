@@ -1,15 +1,14 @@
-﻿using Kompas6Constants;
-
-namespace Oil_level_glass.Model.Data.Materials;
-
-public class Metal : Material
+﻿namespace Oil_level_glass.Model.Data.Materials
 {
-    public Metal()
+    public class Metal : Material
     {
-        MinDensity = 0.534;
+        public Metal()
+        {
+            MinDensity = 0.534;
 
-        MaxDensity = 22.6;
+            MaxDensity = 22.6;
 
-        HatchStyle = (int)ksHatchStyleEnum.ksHatchMetal;
+            HatchStyle = 0;
+        }
     }
 }
