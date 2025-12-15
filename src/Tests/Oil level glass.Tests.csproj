@@ -18,11 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KompasData\Oil level glass.Model.csproj" />
-    <ProjectReference Include="..\Oil level glass Core\Oil level glass.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
