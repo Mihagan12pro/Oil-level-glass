@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.Core
 {
-    public interface IPartCreator 
-        : ICreator
+    public interface ICreatorsFactory<TCreator>
+        where TCreator : ICreator
     {
-        /// <summary>
-        /// Save file with a solid part
-        /// </summary>
-        void SaveFile();
+        TCreator GetCreator();
     }
 }
