@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Oil_level_glass.Core.Classic.RubberStrip
     public interface IRubberStripPartCreator 
         : ISolidPartCreator
     {
+        RubberStripModel RubberStrip { get; set; }
+
         void AddSketch1();
 
         /// <summary>

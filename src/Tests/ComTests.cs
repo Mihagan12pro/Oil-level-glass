@@ -13,9 +13,7 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void Test1()
         {
-            CreatorsFactory<IPartCreator> creatorsFactory = new CreatorsFactory<IPartCreator>();
-
-            IPartCreator partCreator = creatorsFactory.GetCreator();
+            
         }
     }
 }

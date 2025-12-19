@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Model\Oil level glass.Model.csproj" />
     <ProjectReference Include="..\Core\Oil level glass.Core.csproj" />
   </ItemGroup>
