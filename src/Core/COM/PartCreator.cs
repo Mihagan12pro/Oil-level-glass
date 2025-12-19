@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Oil_level_glass.COM
 {
     public class PartCreator
+        : Creator
     {
     }
 }
