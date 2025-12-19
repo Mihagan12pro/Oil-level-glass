@@ -1,10 +1,5 @@
 ﻿using Oil_level_glass.Core.Classic.Housing;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oil_level_glass.COM.Classic.Housing
 {
@@ -54,6 +49,11 @@ namespace Oil_level_glass.COM.Classic.Housing
         }
 
         public void RotateSketch1()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SaveFile()
         {
             throw new NotImplementedException();
         }

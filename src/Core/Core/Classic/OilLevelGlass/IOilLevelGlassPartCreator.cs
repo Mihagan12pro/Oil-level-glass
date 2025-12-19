@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Oil_level_glass.Core.Classic.OilLevelGlass
 {
     public interface IOilLevelGlassPartCreator 
-        : IPartCreator
+        : ICreator
     {
     }
 }

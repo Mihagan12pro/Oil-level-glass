@@ -5,7 +5,7 @@ using NativeMethods;
 
 namespace Oil_level_glass.COM
 {
-    internal class Creator 
+    internal abstract class Creator 
         : ICreator
     {
         public KompasObject KompasObject { get; private set; }  
@@ -14,6 +14,8 @@ namespace Oil_level_glass.COM
         {
             KompasObject = (KompasObject)ComConnector.GetInstance("KOMPAS.Application.5");
         }
+
+        public abstract void SaveFile();
 
         protected internal Creator()
         {

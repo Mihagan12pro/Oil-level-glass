@@ -15,5 +15,10 @@ namespace Oil_level_glass.Core
         /// Entry point. Here application initializes code for interaction with API
         /// </summary>
         void Initialize();
+
+        /// <summary>
+        /// Save file with a solid part
+        /// </summary>
+        void SaveFile();
     }
 }

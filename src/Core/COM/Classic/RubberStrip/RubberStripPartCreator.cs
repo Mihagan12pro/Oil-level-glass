@@ -27,5 +27,10 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
         {
             throw new NotImplementedException();
         }
+
+        public override void SaveFile()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.COM
 {
-    internal class SolidPartCreator 
-        : ISolidPartCreator
+    internal abstract class SolidPartCreator 
+        : Creator, ISolidPartCreator
     {
         public void EditAppearances()
         {
@@ -21,11 +21,6 @@ namespace Oil_level_glass.COM
         }
 
         public void Initialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveFile()
         {
             throw new NotImplementedException();
         }
