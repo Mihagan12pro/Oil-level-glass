@@ -10,7 +10,7 @@ namespace Oil_level_glass.COM
     {
         public KompasObject KompasObject { get; private set; }  
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             KompasObject = (KompasObject)ComConnector.GetInstance("KOMPAS.Application.5");
         }

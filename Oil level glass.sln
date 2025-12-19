@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{05E07565
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.Tests", "src\Tests\Oil level glass.Tests.csproj", "{BE588ADC-0D2E-3421-0541-F006E13025C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "src\Shared\Shared.csproj", "{A1B42776-545A-45DE-90BF-783CBDFC5B8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{BE588ADC-0D2E-3421-0541-F006E13025C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE588ADC-0D2E-3421-0541-F006E13025C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE588ADC-0D2E-3421-0541-F006E13025C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B42776-545A-45DE-90BF-783CBDFC5B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B42776-545A-45DE-90BF-783CBDFC5B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B42776-545A-45DE-90BF-783CBDFC5B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B42776-545A-45DE-90BF-783CBDFC5B8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

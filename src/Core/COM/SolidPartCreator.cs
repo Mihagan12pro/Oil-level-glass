@@ -1,4 +1,6 @@
-﻿using Oil_level_glass.Core;
+﻿using KompasAPI7;
+using Oil_level_glass.COM.Extensions;
+using Oil_level_glass.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,12 @@ namespace Oil_level_glass.COM
     internal abstract class SolidPartCreator 
         : Creator, ISolidPartCreator
     {
+        public IPart7? Part7 { get; private set; }
+
+        public IPartDocument? PartDocument { get; private set; }
+
+        public IModelContainer ModelContainer { get; private set; }
+
         public void EditAppearances()
         {
             throw new NotImplementedException();
@@ -20,9 +28,15 @@ namespace Oil_level_glass.COM
             throw new NotImplementedException();
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
-            throw new NotImplementedException();
+            base.Initialize();
+
+            PartDocument = KompasObject.GetPartDocument();
+
+            Part7 = PartDocument.TopPart;
+
+            ModelContainer = (IModelContainer)Part7;
         }
     }
 }
