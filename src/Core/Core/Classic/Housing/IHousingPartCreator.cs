@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Oil_level_glass.Core.Classic.Housing
 {
     public interface IHousingPartCreator
-        : ISolidPartCreator
+        : ISolidPartCreator<HousingModel>
     {
         /// <summary>
         /// Domain model

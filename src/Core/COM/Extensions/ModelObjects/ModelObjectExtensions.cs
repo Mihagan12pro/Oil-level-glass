@@ -14,7 +14,7 @@ namespace Oil_level_glass.COM.Extensions.ModelObjects
         {
             IFeature7 feature = (IFeature7)modelObject;
 
-            IVariable7[] variables = feature.GetVariables();
+            var variables = feature.GetVariables();
 
             foreach (IVariable7 variable in variables)
             {

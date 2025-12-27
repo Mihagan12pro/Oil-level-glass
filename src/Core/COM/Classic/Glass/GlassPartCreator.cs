@@ -1,26 +1,17 @@
-﻿using Kompas6API5;
-using KompasAPI7;
+﻿using KompasAPI7;
 using Oil_level_glass.COM.Extensions;
 using Oil_level_glass.COM.Extensions.Containers;
 using Oil_level_glass.COM.Extensions.ModelObjects;
 using Oil_level_glass.COM.Extensions.V7;
 using Oil_level_glass.Core.Classic.Glass;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Other;
 using Shared.Points;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oil_level_glass.COM.Classic.Glass
 {
     internal class GlassPartCreator
         : SolidPartCreator, IGlassPartCreator
     {
-        public GlassModel GlassModel { get; set; } = null!;
-
         private IVariable7? _diameterVariable;
         private IVariable7? _extrusionHeight;
 
@@ -49,12 +40,7 @@ namespace Oil_level_glass.COM.Classic.Glass
 
         public void EditSketch1()
         {
-            _diameterVariable!.Expression = GlassModel.ExternalDiameter.ToString();
-        }
-
-        public override void SaveFile()
-        {
-            throw new NotImplementedException();
+            _diameterVariable!.Expression = PartModel!.ExternalDiameter.ToString();
         }
 
   
@@ -65,16 +51,18 @@ namespace Oil_level_glass.COM.Classic.Glass
             _extrusion1.Sketch = _sketch1;
             _extrusion1.Depth[true] = 2;
             _extrusion1.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
-
-            _extrusion1.AddVariableToObject(_extrusionHeight!.Name, "Расстояние 1");
+            _extrusion1.ExtrusionType[true] = Kompas6Constants3D.ksEndTypeEnum.etBlind;
 
             _extrusion1.Update();
+
+            _extrusion1.AddVariableToObject(_extrusionHeight!.Name, "Расстояние 1");
         }
 
         public void EditSketch1Extrusion()
         {
-            throw new NotImplementedException();
+            _extrusionHeight!.Expression = PartModel!.Height.ToString();
         }
+
 
         public override void Initialize()
         {

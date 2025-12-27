@@ -22,6 +22,8 @@ namespace Oil_level_glass.Tests
             glassPartCreator.Initialize();
             glassPartCreator.AddSketch1();
             glassPartCreator.ExtrudeSketch1();
+
+            glassPartCreator.EditAppearances();
         }
     }
 }

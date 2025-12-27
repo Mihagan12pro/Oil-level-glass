@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Oil_level_glass.Core.Classic.RubberStrip
 {
     public interface IRubberStripPartCreator 
-        : ISolidPartCreator
+        : ISolidPartCreator<RubberStripModel>
     {
         RubberStripModel RubberStrip { get; set; }
 

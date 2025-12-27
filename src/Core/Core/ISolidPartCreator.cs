@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oil_level_glass.Model.Data.Entities.Parts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,12 @@ namespace Oil_level_glass.Core
     /// <summary>
     /// Only for details. Not for assemblies or drawings
     /// </summary>
-    public interface ISolidPartCreator 
+    public interface ISolidPartCreator<TPartModel>
         : ICreator
+        where TPartModel : BaseDetailModel
     {
+        public TPartModel PartModel { get; set; }
+
         /// <summary>
         /// Edit density, material title, hatch style or etc
         /// </summary>

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Oil_level_glass.COM.Classic.RubberStrip
 {
     internal class RubberStripPartCreator
-        : SolidPartCreator, IRubberStripPartCreator
+        : SolidPartCreator<RubberStripModel>, IRubberStripPartCreator
     {
         public RubberStripModel RubberStrip { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
