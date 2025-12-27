@@ -17,6 +17,14 @@ namespace Oil_level_glass.Core.Classic.Glass
         /// </summary>
         void EditSketch1();
 
-        void RotateSketch1();
+        /// <summary>
+        /// Edit sketch1
+        /// </summary>
+        void ExtrudeSketch1();
+
+        /// <summary>
+        /// Edit sketch1 extrusion (for emample, change direction)
+        /// </summary>
+        void EditSketch1Extrusion();
     }
 }

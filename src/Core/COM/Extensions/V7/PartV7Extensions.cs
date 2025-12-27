@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oil_level_glass.COM.Extensions
+namespace Oil_level_glass.COM.Extensions.V7
 {
     internal static class PartV7Extensions
     {
