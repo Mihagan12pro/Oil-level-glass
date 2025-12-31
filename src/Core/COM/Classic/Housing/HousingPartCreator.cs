@@ -6,7 +6,7 @@ namespace Oil_level_glass.COM.Classic.Housing
     internal class HousingPartCreator
         : ComSolidPartCreator<HousingModel>, IHousingPartCreator
     {
-        public HousingModel Housing { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public HousingModel Housing { get; set; }
 
         public void AddRounding()
         {
@@ -28,6 +28,11 @@ namespace Oil_level_glass.COM.Classic.Housing
             throw new NotImplementedException();
         }
 
+        public void AddSketch3()
+        {
+            throw new NotImplementedException();
+        }
+
         public void EditRounding()
         {
             throw new NotImplementedException();
@@ -43,17 +48,32 @@ namespace Oil_level_glass.COM.Classic.Housing
             throw new NotImplementedException();
         }
 
+        public void EditSketch1Extrusion()
+        {
+            throw new NotImplementedException();
+        }
+
         public void EditSketch2()
         {
             throw new NotImplementedException();
         }
 
-        public void RotateSketch1()
+        public void EditSketch2Extrusion()
         {
             throw new NotImplementedException();
         }
 
-        public override void SaveFile()
+        public void EditSketch3()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExtrudeSketch1()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExtrudeSketch2()
         {
             throw new NotImplementedException();
         }
