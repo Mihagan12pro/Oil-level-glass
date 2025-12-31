@@ -3,7 +3,7 @@
 namespace Oil_level_glass.COM.Classic.OilLevelGlass
 {
     internal class OilLevelGlassPartCreator
-        : Creator, IOilLevelGlassPartCreator
+        : ComCreator, IOilLevelGlassPartCreator
     {
         public override void SaveFile()
         {

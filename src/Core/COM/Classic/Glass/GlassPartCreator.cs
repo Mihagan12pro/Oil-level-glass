@@ -10,7 +10,7 @@ using Shared.Points;
 namespace Oil_level_glass.COM.Classic.Glass
 {
     internal class GlassPartCreator
-        : SolidPartCreator, IGlassPartCreator
+        : ComSolidPartCreator<GlassModel>, IGlassPartCreator
     {
         private IVariable7? _diameterVariable;
         private IVariable7? _extrusionHeight;

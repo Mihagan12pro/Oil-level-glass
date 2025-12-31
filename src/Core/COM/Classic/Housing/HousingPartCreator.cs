@@ -4,7 +4,7 @@ using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 namespace Oil_level_glass.COM.Classic.Housing
 {
     internal class HousingPartCreator
-        : SolidPartCreator<HousingModel>, IHousingPartCreator
+        : ComSolidPartCreator<HousingModel>, IHousingPartCreator
     {
         public HousingModel Housing { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

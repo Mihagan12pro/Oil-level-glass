@@ -6,13 +6,15 @@ using Oil_level_glass.Model.Data.Entities.Parts;
 
 namespace Oil_level_glass.COM
 {
-    internal abstract class SolidPartCreator : Creator
+    internal abstract class ComSolidPartCreator<TModel> : ComCreator, ISolidPartCreator<TModel>
+        where TModel : BaseDetailModel
     {
         public IPart7? Part7 { get; private set; }
 
         public IPartDocument? PartDocument { get; private set; }
 
         public IModelContainer ModelContainer { get; private set; }
+        public TModel PartModel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void SaveFile()
         {
