@@ -1,7 +1,7 @@
 ﻿using Kompas6API5;
-using Oil_level_glass.Core;
-using Oil_level_glass.COM;
+using KompasAPI7;
 using NativeMethods;
+using Oil_level_glass.Core;
 
 namespace Oil_level_glass.COM
 {
@@ -16,6 +16,10 @@ namespace Oil_level_glass.COM
         }
 
         public abstract void SaveFile();
+
+        public abstract void EditNaming();
+
+        public abstract void EditSavingParameter();
 
         protected internal ComCreator()
         {

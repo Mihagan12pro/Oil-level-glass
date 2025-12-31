@@ -18,7 +18,6 @@ namespace Oil_level_glass.COM.Classic.Glass
         private Sketch? _sketch1;
         private IExtrusion? _extrusion1;
 
-
         public void AddSketch1()
         {
             _sketch1 = ModelContainer.Sketchs.Add();
@@ -43,7 +42,6 @@ namespace Oil_level_glass.COM.Classic.Glass
             _diameterVariable!.Expression = PartModel!.ExternalDiameter.ToString();
         }
 
-  
         public void ExtrudeSketch1()
         {
             _extrusion1 = ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_bossExtrusion);
@@ -62,7 +60,6 @@ namespace Oil_level_glass.COM.Classic.Glass
         {
             _extrusionHeight!.Expression = PartModel!.Height.ToString();
         }
-
 
         public override void Initialize()
         {

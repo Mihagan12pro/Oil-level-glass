@@ -7,6 +7,8 @@ public class GlassModel : BaseDetailModel
     public GlassModel()
     {
         Material = new Glass();
+        Material.Title = "Стекло";
+        Material.Density = 6;
 
         Appereance.Transparency = 0.74;
         Appereance.Ambient = 0.5;

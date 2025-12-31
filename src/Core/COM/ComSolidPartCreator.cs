@@ -14,7 +14,7 @@ namespace Oil_level_glass.COM
         public IPartDocument? PartDocument { get; private set; }
 
         public IModelContainer ModelContainer { get; private set; }
-        public TModel PartModel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public TModel PartModel { get; set; }
 
         public override void SaveFile()
         {
@@ -28,7 +28,17 @@ namespace Oil_level_glass.COM
 
         public void EditMaterial()
         {
-            throw new NotImplementedException();
+            Part7!.SetMaterial(PartModel!.Material!);   
+        }
+
+        public override void EditNaming()
+        {
+            Part7!.SetName(PartModel!.File!.Name);
+        }
+
+        public override void EditSavingParameter()
+        {
+            Part7!.SetFileName(PartModel!.File!);
         }
 
         public override void Initialize()

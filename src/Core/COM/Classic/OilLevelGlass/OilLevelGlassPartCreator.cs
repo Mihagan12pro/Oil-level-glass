@@ -9,5 +9,15 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
         {
             throw new NotImplementedException();
         }
+
+        public override void EditNaming()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void EditSavingParameter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

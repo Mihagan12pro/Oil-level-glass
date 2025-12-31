@@ -1,12 +1,6 @@
-﻿using Oil_level_glass.COM;
-using Oil_level_glass.COM.Classic.Glass;
-using Oil_level_glass.Core;
+﻿using Oil_level_glass.COM.Classic.Glass;
 using Oil_level_glass.Core.Classic.Glass;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 namespace Oil_level_glass.Tests
 {
@@ -15,15 +9,28 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void TestGlassCreator()
         {
+            GlassModel glassModel = new GlassModel();
+            glassModel!.File!.Folder = @"C:\foo";
+            glassModel!.File!.Name.Naming = "Линза";
+            glassModel!.File!.Name.Marking = "МПСТ.000.000.001";
+
             ComGlassPartCreatorsFactory partCreatorsFactory = new ComGlassPartCreatorsFactory();
 
             IGlassPartCreator glassPartCreator = partCreatorsFactory.GetCreator();
+
+            glassPartCreator.PartModel = glassModel;
+
 
             glassPartCreator.Initialize();
             glassPartCreator.AddSketch1();
             glassPartCreator.ExtrudeSketch1();
 
             glassPartCreator.EditAppearances();
+            glassPartCreator.EditMaterial();
+            glassPartCreator.EditNaming();
+            glassPartCreator.EditSavingParameter();
+
+            glassPartCreator.SaveFile();
         }
     }
 }

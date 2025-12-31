@@ -1,11 +1,8 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
+using Oil_level_glass.Model.Data.KompasFile;
+using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Other;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oil_level_glass.COM.Extensions.V7
 {
@@ -23,6 +20,28 @@ namespace Oil_level_glass.COM.Extensions.V7
         public static IPlane3D GetPlaneYOZ(this IPart7 part)
         {
             return (IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeYOZ];
+        }
+
+        public static void SetMaterial(this IPart7 part, Material material)
+        {
+            part.SetMaterial(material.Title, material.Density);
+
+            part.Update();
+        }
+
+        public static void SetName(this IPart7 part, Name name)
+        {
+            part.Name = name.Naming;
+            part.Marking = name.Marking;
+
+            part.Update();
+        }
+
+        public static void SetFileName(this IPart7 part, KompasFile file)
+        {
+            part.FileName = file.FullName;
+
+            part.Update();
         }
 
         public static void SetAppearance(this IPart7 part, Appereance appearance)

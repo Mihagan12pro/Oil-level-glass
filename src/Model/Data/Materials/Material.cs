@@ -4,7 +4,7 @@
     {
         public double Density { get; set; }
     
-        public string? Tittle { get; set; }    
+        public string? Title { get; set; }    
     
         public double MinDensity { get; init; }
     
@@ -19,7 +19,7 @@
             if (columnName == nameof(Density))
                 error = CheckRange(columnName, MinDensity, MaxDensity, false);
 
-            else if (columnName == nameof(Tittle))
+            else if (columnName == nameof(Title))
                 error = CheckEmptyString(columnName);
 
             return error;

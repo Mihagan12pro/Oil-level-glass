@@ -20,5 +20,15 @@ namespace Oil_level_glass.Core
         /// Save file with a solid part
         /// </summary>
         void SaveFile();
+
+        /// <summary>
+        /// Set naming of the model
+        /// </summary>
+        void EditNaming();
+
+        /// <summary>
+        /// Set save folder
+        /// </summary>
+        void EditSavingParameter();
     }
 }
