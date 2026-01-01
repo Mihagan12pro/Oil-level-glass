@@ -19,8 +19,12 @@ namespace Oil_level_glass.COM.Classic.Housing
         private Sketch? _sketch2;
         private Sketch? _sketch3;
 
+        private IHole3D? _screwHole;
+
         private IExtrusion? _extrusion1;
         private ICutExtrusion? _extrusion2;
+
+        private ICircularPattern? _circularPattern;
 
         private IVariable7? _externalDiameterVariable;
         private IVariable7? _internalDiameterVariable;
@@ -29,6 +33,8 @@ namespace Oil_level_glass.COM.Classic.Housing
         private IVariable7? _screwHolesDistanceVariable;
 
         private IVariable7? _heightVariable;
+
+        private IVariable7? _countOfScrewHolesVariable;
 
         public void AddSketch1()
         {
@@ -173,22 +179,38 @@ namespace Oil_level_glass.COM.Classic.Housing
                     .ToArray()
                         .GetFaceByAxis(AxisCrossApi.OZ, 4);
 
-            IHole3D hole = ModelContainer.Holes3D.Add();
-            hole.HoleType = ksHoleTypeEnum.ksHTBase;
-            hole.ShowThread = true;
+            _screwHole = ModelContainer.Holes3D.Add();
+            _screwHole.HoleType = ksHoleTypeEnum.ksHTBase;
+            _screwHole.ShowThread = true;
 
             IVertex[] vertices = _sketch3!.GetVertices();
 
-            IHoleDisposal holeDisposal = (IHoleDisposal)hole;
+            IHoleDisposal holeDisposal = (IHoleDisposal)_screwHole;
 
             holeDisposal!.AssociationVertex = _sketch3!.GetVertices()
                 .Where(v => v.ToPoint() == new Point3DCrossApi(36, 0, 4))
                     .First();
             holeDisposal.BaseSurface = face;
-            
-         
 
-            hole.Update();
+
+            IThread thread = _screwHole.Thread;
+            thread.AutoLenght = true;
+
+            IThreadsParameters threadsParameters = (IThreadsParameters)thread;
+            threadsParameters.Init("Метрическая резьба с крупным шагом ГОСТ 24705-2004", 8, 1.25);
+            thread.Update();
+
+            _screwHole.Update();
+
+            _circularPattern = (ICircularPattern)ModelContainer.FeaturePatterns.Add(ksObj3dTypeEnum.o3d_circularCopy);
+            _circularPattern.Axis = Part7!.GetOZ();
+            _circularPattern.Step2 = 360;
+            _circularPattern.Count2 = 4;
+            _circularPattern.AddInitialObjects(_screwHole);
+
+            _circularPattern.Update();
+
+            _circularPattern.AddVariableToObject(_countOfScrewHolesVariable!.Name, "N 2");
         }
 
         public override void Initialize()
@@ -202,6 +224,8 @@ namespace Oil_level_glass.COM.Classic.Housing
             _screwHolesDistanceVariable = Part7!.AddVariable("Ds", 72, "Расстояние между отверстиями под винты");
 
             _heightVariable = Part7!.AddVariable("H", 8, "Высота корпуса");
+
+            _countOfScrewHolesVariable = Part7!.AddVariable("n", 4, "Количество отверстий под винты");
         }
     }
 }

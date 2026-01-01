@@ -9,6 +9,19 @@ namespace Oil_level_glass.COM.Extensions.V7
 {
     internal static class PartV7Extensions
     {
+        public static IAxis3D GetOX(this IPart7 part)
+        {
+            return (IAxis3D)part.DefaultObject[ksObj3dTypeEnum.o3d_axisOX];
+        }
+        public static IAxis3D GetOY(this IPart7 part)
+        {
+            return (IAxis3D)part.DefaultObject[ksObj3dTypeEnum.o3d_axisOY];
+        }
+        public static IAxis3D GetOZ(this IPart7 part)
+        {
+            return (IAxis3D)part.DefaultObject[ksObj3dTypeEnum.o3d_axisOZ];
+        }
+
         public static IPlane3D GetPlaneXOY(this IPart7 part)
         {
             return (IPlane3D)part.DefaultObject[ksObj3dTypeEnum.o3d_planeXOY];
