@@ -1,9 +1,6 @@
-﻿using KompasAPI7;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Kompas6API5;
+using Kompas6Constants3D;
+using KompasAPI7;
 
 namespace Oil_level_glass.COM.Extensions.V7
 {
@@ -39,6 +36,34 @@ namespace Oil_level_glass.COM.Extensions.V7
             IDrawingContainer drawingContainer = (IDrawingContainer)view;
 
             return drawingContainer;
+        }
+
+        public static IVertex[] GetVertices(this ISketch sketch)
+        {
+            IFeature7 feature = (IFeature7)sketch;
+
+            object obj = feature.ModelObjects[Obj3dType.o3d_vertex];
+
+            List<IVertex> vertices = [];
+
+            if (obj is object[])
+            {
+                object[] objs = (object[])obj;
+
+                foreach (var o in objs)
+                {
+                    if (o is IVertex)
+                    {
+                        vertices.Add((IVertex)o);
+                    }
+                }
+            }
+            else
+            {
+                vertices.Add((IVertex)obj);
+            }
+
+            return vertices.ToArray();
         }
     }
 }

@@ -3,6 +3,7 @@ using KompasAPI7;
 using Oil_level_glass.Model.Data.KompasFile;
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Other;
+using Shared.Points;
 
 namespace Oil_level_glass.COM.Extensions.V7
 {
@@ -67,6 +68,34 @@ namespace Oil_level_glass.COM.Extensions.V7
             );
 
             part.Update();
+        }
+
+        public static IFace[] GetFaces(this IPart7 part)
+        {
+            IModelContainer modelContainer = (IModelContainer)part;
+
+            object obj = modelContainer.Objects[Obj3dType.o3d_face];
+
+            List<IFace> faces = [];
+
+            if (obj is object[])
+            {
+                object[] objs = (object[])obj;
+
+                foreach (var o in objs)
+                {
+                    if (o is IFace)
+                    {
+                        faces.Add((IFace)o);
+                    }
+                }
+            }
+            else
+            {
+                faces.Add((IFace)obj);
+            }
+
+            return faces.ToArray();
         }
     }
 }

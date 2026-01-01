@@ -1,11 +1,32 @@
 ﻿using Oil_level_glass.COM.Classic.Glass;
+using Oil_level_glass.COM.Classic.Housing;
 using Oil_level_glass.Core.Classic.Glass;
+using Oil_level_glass.Core.Classic.Housing;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 namespace Oil_level_glass.Tests
 {
     public class ComTests
     {
+        [Fact()]
+        public void TestHousingCreator()
+        {
+            ComHousingPartCreatorsFactory housingPartCreatorsFactory = new ComHousingPartCreatorsFactory();
+
+            IHousingPartCreator housingPartCreator = housingPartCreatorsFactory.GetCreator();
+            housingPartCreator.Initialize();
+
+            housingPartCreator.AddSketch1();
+            housingPartCreator.ExtrudeSketch1();
+
+            housingPartCreator.AddSketch2();
+            housingPartCreator.ExtrudeSketch2();
+
+            housingPartCreator.AddSketch3();
+
+            housingPartCreator.AddScrewHoles();
+        }
+
         [Fact()]
         public void TestGlassCreator()
         {

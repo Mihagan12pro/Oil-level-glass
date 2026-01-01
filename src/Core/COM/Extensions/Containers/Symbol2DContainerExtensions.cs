@@ -1,5 +1,6 @@
 ﻿using Kompas6Constants;
 using KompasAPI7;
+using Shared.Points;
 
 namespace Oil_level_glass.COM.Extensions
 {
