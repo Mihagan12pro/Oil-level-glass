@@ -26,6 +26,8 @@ namespace Oil_level_glass.COM.Classic.Housing
 
         private ICircularPattern? _circularPattern;
 
+        private IChamfer? _chamfer;
+
         private IVariable7? _externalDiameterVariable;
         private IVariable7? _internalDiameterVariable;
         private IVariable7? _socketDiameterVariable;
@@ -35,6 +37,9 @@ namespace Oil_level_glass.COM.Classic.Housing
         private IVariable7? _heightVariable;
 
         private IVariable7? _countOfScrewHolesVariable;
+
+        private IVariable7? _chamferAngleVariable;
+        private IVariable7? _chamferDistance1Variable;
 
         public void AddSketch1()
         {
@@ -152,22 +157,12 @@ namespace Oil_level_glass.COM.Classic.Housing
             _sketch3.EndEdit();
         }
 
-        public void EditRounding()
-        {
-            throw new NotImplementedException();
-        }
-
         public void EditScrewHoles()
         {
             throw new NotImplementedException();
         }
 
         public void EditSketch3()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddRounding()
         {
             throw new NotImplementedException();
         }
@@ -213,6 +208,34 @@ namespace Oil_level_glass.COM.Classic.Housing
             _circularPattern.AddVariableToObject(_countOfScrewHolesVariable!.Name, "N 2");
         }
 
+        public void AddRounding()
+        {
+            _chamfer = ModelContainer.Chamfers.Add();
+
+            _chamfer.Angle = 60;
+            _chamfer.Distance1 = 3;
+            _chamfer.BuildingType = ksChamferBuildingTypeEnum.ksChamferSideAngle;
+
+
+            IFace face = Part7!.GetFaces()
+             .Where(f => f.IsPlanar)
+                 .ToArray()
+                     .GetFaceByAxis(AxisCrossApi.OZ, 4);
+
+            _chamfer.BaseObjects = face.GetEdges()
+                .First(e => e.ToPoint() == new Point3DCrossApi(45, 0, 4));
+
+            _chamfer.Update();
+
+            _chamfer.AddVariableToObject(_chamferAngleVariable!.Name, "Угол");
+            _chamfer.AddVariableToObject(_chamferDistance1Variable!.Name, "Длина 1");
+        }
+        
+        public void EditRounding()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Initialize()
         {
             base.Initialize();
@@ -226,6 +249,9 @@ namespace Oil_level_glass.COM.Classic.Housing
             _heightVariable = Part7!.AddVariable("H", 8, "Высота корпуса");
 
             _countOfScrewHolesVariable = Part7!.AddVariable("n", 4, "Количество отверстий под винты");
+
+            _chamferAngleVariable = Part7!.AddVariable("alpha", 60, "Угол фаски");
+            _chamferDistance1Variable = Part7!.AddVariable("l1", 3, "Длина фаски 1");
         }
     }
 }
