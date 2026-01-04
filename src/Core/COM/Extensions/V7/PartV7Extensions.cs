@@ -83,34 +83,6 @@ namespace Oil_level_glass.COM.Extensions.V7
             part.Update();
         }
 
-        //public static IEdge[] GetEdges(this IPart7 part)
-        //{
-        //    IModelContainer modelContainer = (IModelContainer)part;
-
-        //    object obj = modelContainer.Objects[Obj3dType.o3d_edge];
-
-        //    List<IEdge> edges = [];
-
-        //    if (obj is object[])
-        //    {
-        //        object[] objs = (object[])obj;
-
-        //        foreach (var o in objs)
-        //        {
-        //            if (o is IFace)
-        //            {
-        //                edges.Add((IEdge)o);
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        edges.Add((IEdge)obj);
-        //    }
-
-        //    return edges.ToArray();
-        //}
-
         public static IFace[] GetFaces(this IPart7 part)
         {
             IModelContainer modelContainer = (IModelContainer)part;

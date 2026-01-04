@@ -1,13 +1,25 @@
 ﻿using Oil_level_glass.COM.Classic.Glass;
 using Oil_level_glass.COM.Classic.Housing;
+using Oil_level_glass.COM.Classic.RubberStrip;
 using Oil_level_glass.Core.Classic.Glass;
 using Oil_level_glass.Core.Classic.Housing;
+using Oil_level_glass.Core.Classic.RubberStrip;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 namespace Oil_level_glass.Tests
 {
     public class ComTests
     {
+        [Fact()]
+        public void TestStripCreator()
+        {
+            ComRubberStripPartCreatorFactory creatorFactory = new ComRubberStripPartCreatorFactory();
+            IRubberStripPartCreator stripPartCreator = creatorFactory.GetCreator();
+
+            stripPartCreator.Initialize();
+            stripPartCreator.AddSketch1();
+        }
+
         [Fact()]
         public void TestHousingCreator()
         {

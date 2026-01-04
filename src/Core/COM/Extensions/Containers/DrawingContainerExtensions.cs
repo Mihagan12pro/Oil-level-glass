@@ -53,5 +53,27 @@ namespace Oil_level_glass.COM.Extensions.Containers
 
             return circle;
         }
+
+        public static IRectangle AddRectangle(
+            this IDrawingContainer drawingContainer, 
+            Point2DCrossApi leftBottomPoint,
+            double width,
+            double height,
+            int style = 1)
+        {
+            IRectangle rectangle = drawingContainer.Rectangles.Add();
+
+            rectangle.Width = width;
+            rectangle.Height = height;
+
+            rectangle.X = leftBottomPoint.X;
+            rectangle.Y = leftBottomPoint.Y;
+
+            rectangle.Style = style;
+
+            rectangle.Update();
+
+            return rectangle;
+        }
     }
 }
