@@ -51,10 +51,7 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
 
             ILineDimension bottomDimension = symbols2DContainer.AddLineDimension(bottomLine);
 
-            ILineDimension rightLineDimension = symbols2DContainer.AddLineDimension(rightLine);
-
-            _sketch1.AddVariableToDimension(bottomDimension, "v1", _widthVariable!.Expression);
-            _sketch1.AddVariableToDimension(rightLineDimension, "v2", $"{_externalDiameterVariable!.Name} * 0.5 - {_internalDiameterVariable!.Name} * 0.5");
+            _sketch1.AddVariableToDimension(bottomDimension, "v1", _widthVariable!.Name);
 
             rightLine.MakeLineSegmentsEqual(leftLine);
             bottomLine.MakeLineSegmentsEqual(topLine);
@@ -64,18 +61,23 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
 
             IPoint leftTop = sketch1DrawingContainer.AddPoint(leftTopPoint);
             IPoint rightTop = sketch1DrawingContainer.AddPoint(rightTopPoint);
+            IPoint leftBottom = sketch1DrawingContainer.AddPoint(leftBottomPoint);
 
             IPoint center = sketch1DrawingContainer.AddPoint(new Point2DCrossApi(0, 0));
             center.MakeFixed();
 
             topLine.MakePointMerged(leftTop, LinePoint.Start);
             topLine.MakePointMerged(rightTop, LinePoint.End);
+            bottomLine.MakePointMerged(leftBottom, LinePoint.Start);
 
             center.AlignPoints(leftTop, Axis2DCrossApi.OY);
             leftTop.AlignPoints(rightTop, Axis2DCrossApi.OX);
 
+            ILineDimension internalDiameterDimension = symbols2DContainer.AddLineDimension(leftBottom, center);
+            _sketch1.AddVariableToDimension(internalDiameterDimension, "v2", $"{_internalDiameterVariable!.Name} / 2");
+
             ILineDimension externalDiameterDimension = symbols2DContainer.AddLineDimension(center, leftTop);
-            _sketch1.AddVariableToDimension(externalDiameterDimension, "v3", $"{_externalDiameterVariable.Expression} * 0.5");
+            _sketch1.AddVariableToDimension(externalDiameterDimension, "v3", $"{_externalDiameterVariable!.Name} / 2");
 
             _sketch1.EndEdit();
         }
