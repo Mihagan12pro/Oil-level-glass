@@ -10,8 +10,6 @@ namespace Oil_level_glass.Core.Classic.RubberStrip
     public interface IRubberStripPartCreator 
         : ISolidPartCreator<RubberStripModel>
     {
-        RubberStripModel RubberStrip { get; set; }
-
         void AddSketch1();
 
         /// <summary>
