@@ -7,7 +7,7 @@ using Oil_level_glass.COM.Extensions.ModelObjects;
 using Oil_level_glass.COM.Extensions.V7;
 using Oil_level_glass.Core.Classic.Housing;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Shared;
+using Shared.Axis;
 using Shared.Points;
 
 namespace Oil_level_glass.COM.Classic.Housing
@@ -137,7 +137,7 @@ namespace Oil_level_glass.COM.Classic.Housing
             IFace face = Part7!.GetFaces()
                 .Where(f => f.IsPlanar)
                     .ToArray()
-                        .GetFaceByAxis(AxisCrossApi.OZ, 4);
+                        .GetFaceByAxis(Axis3DCrossApi.OZ, 4);
 
             _sketch3 = ModelContainer.Sketchs.Add();
             _sketch3.Plane = face;
@@ -145,10 +145,7 @@ namespace Oil_level_glass.COM.Classic.Housing
 
             IDrawingContainer sketch3DrawingContainer = _sketch3.GetDrawingContainer();
 
-            IPoint point = sketch3DrawingContainer.Points.Add();
-            point.X = 36;
-            point.Y = 0;
-            point.Update();
+            IPoint point = sketch3DrawingContainer.AddPoint(new Point2DCrossApi(36, 0));
 
             ILineSegment lineSegment = sketch3DrawingContainer.AddLineSegment(new Point2DCrossApi(0, 0), new Point2DCrossApi(36, 0), 3);
             lineSegment.MakePointFixed(LinePoint.Start);
@@ -172,7 +169,7 @@ namespace Oil_level_glass.COM.Classic.Housing
             IFace face = Part7!.GetFaces()
                 .Where(f => f.IsPlanar)
                     .ToArray()
-                        .GetFaceByAxis(AxisCrossApi.OZ, 4);
+                        .GetFaceByAxis(Axis3DCrossApi.OZ, 4);
 
             _screwHole = ModelContainer.Holes3D.Add();
             _screwHole.HoleType = ksHoleTypeEnum.ksHTBase;
@@ -235,7 +232,7 @@ namespace Oil_level_glass.COM.Classic.Housing
             IFace face = Part7!.GetFaces()
              .Where(f => f.IsPlanar)
                  .ToArray()
-                     .GetFaceByAxis(AxisCrossApi.OZ, 4);
+                     .GetFaceByAxis(Axis3DCrossApi.OZ, 4);
 
             _chamfer.BaseObjects = face.GetEdges()
                 .First(e => e.ToPoint() == new Point3DCrossApi(45, 0, 4));

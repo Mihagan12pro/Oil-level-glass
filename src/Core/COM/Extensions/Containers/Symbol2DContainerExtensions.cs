@@ -6,6 +6,35 @@ namespace Oil_level_glass.COM.Extensions
 {
     internal static class Symbol2DContainerExtensions
     {
+        public static ILineDimension AddLineDimension(this ISymbols2DContainer container, IPoint point1, IPoint point2)
+        {
+            ILineDimension lineDimension = container.LineDimensions.Add();
+
+            lineDimension.X1 = point1.X;
+            lineDimension.Y1 = point1.Y;
+
+            lineDimension.X2 = point2.X;
+            lineDimension.Y2 = point2.Y;
+
+            lineDimension.Update();
+
+            IDrawingObject1 drawingObject1 = (IDrawingObject1)lineDimension;
+
+            IParametriticConstraint parametriticConstraint1 = drawingObject1.NewConstraint();
+            parametriticConstraint1.ConstraintType = ksConstraintTypeEnum.ksCMergePoints;
+            parametriticConstraint1.Partner = point1;
+            parametriticConstraint1.Index = 0;
+            parametriticConstraint1.Create();
+
+            IParametriticConstraint parametriticConstraint2 = drawingObject1.NewConstraint();
+            parametriticConstraint2.ConstraintType = ksConstraintTypeEnum.ksCMergePoints;
+            parametriticConstraint2.Partner = point2;
+            parametriticConstraint2.Index = 1;
+            parametriticConstraint2.Create();
+
+            return lineDimension;
+        }
+
         public static ILineDimension AddLineDimension(this ISymbols2DContainer container, ILineSegment lineSegment)
         {
             ILineDimension lineDimension = container.LineDimensions.Add();

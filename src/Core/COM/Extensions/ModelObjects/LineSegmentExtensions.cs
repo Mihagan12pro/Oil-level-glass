@@ -75,12 +75,22 @@ namespace Oil_level_glass.COM.Extensions.ModelObjects
                 return 2;
         }
 
-        public static void MakeLineEqual(this ILineSegment lineSegment, ILineSegment partnerSegment)
+        public static void MakeLineSegmentsEqual(this ILineSegment lineSegment, ILineSegment partnerSegment)
         {
             IDrawingObject1 drawingObject = (IDrawingObject1)lineSegment;
 
             IParametriticConstraint parametriticConstraint = drawingObject.NewConstraint();
             parametriticConstraint.ConstraintType = ksConstraintTypeEnum.ksCEqualLength;
+            parametriticConstraint.Partner = partnerSegment;
+            parametriticConstraint.Create();
+        }
+
+        public static void MakeLineSegmentsPerpendicular(this ILineSegment lineSegment, ILineSegment partnerSegment)
+        {
+            IDrawingObject1 drawingObject = (IDrawingObject1)lineSegment;
+
+            IParametriticConstraint parametriticConstraint = drawingObject.NewConstraint();
+            parametriticConstraint.ConstraintType = ksConstraintTypeEnum.ksCPerpendicular;
             parametriticConstraint.Partner = partnerSegment;
             parametriticConstraint.Create();
         }

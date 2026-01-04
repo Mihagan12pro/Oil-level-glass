@@ -18,6 +18,7 @@ namespace Oil_level_glass.Tests
 
             stripPartCreator.Initialize();
             stripPartCreator.AddSketch1();
+            stripPartCreator.RotateSketch1();
         }
 
         [Fact()]

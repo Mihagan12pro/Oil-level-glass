@@ -6,6 +6,7 @@ using Oil_level_glass.COM.Extensions.ModelObjects;
 using Oil_level_glass.COM.Extensions.V7;
 using Oil_level_glass.Core.Classic.RubberStrip;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Shared.Axis;
 using Shared.Points;
 
 namespace Oil_level_glass.COM.Classic.RubberStrip
@@ -14,6 +15,7 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
         : ComSolidPartCreator<RubberStripModel>, IRubberStripPartCreator
     {
         private Sketch? _sketch1;
+        private IRotated? _sketch1Rotation;
 
         private IVariable7? _widthVariable;
         private IVariable7? _externalDiameterVariable;
@@ -52,13 +54,28 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
             ILineDimension rightLineDimension = symbols2DContainer.AddLineDimension(rightLine);
 
             _sketch1.AddVariableToDimension(bottomDimension, "v1", _widthVariable!.Expression);
-            _sketch1.AddVariableToDimension(rightLineDimension, "v2", $"{_externalDiameterVariable!.Name} - {_internalDiameterVariable!.Name}");
+            _sketch1.AddVariableToDimension(rightLineDimension, "v2", $"{_externalDiameterVariable!.Name} * 0.5 - {_internalDiameterVariable!.Name} * 0.5");
 
-            rightLine.MakeLineEqual(leftLine);
-            bottomLine.MakeLineEqual(topLine);
+            rightLine.MakeLineSegmentsEqual(leftLine);
+            bottomLine.MakeLineSegmentsEqual(topLine);
+
+            rightLine.MakeLineSegmentsPerpendicular(bottomLine);
+            leftLine.MakeLineSegmentsPerpendicular(topLine);
+
+            IPoint leftTop = sketch1DrawingContainer.AddPoint(leftTopPoint);
+            IPoint rightTop = sketch1DrawingContainer.AddPoint(rightTopPoint);
 
             IPoint center = sketch1DrawingContainer.AddPoint(new Point2DCrossApi(0, 0));
             center.MakeFixed();
+
+            topLine.MakePointMerged(leftTop, LinePoint.Start);
+            topLine.MakePointMerged(rightTop, LinePoint.End);
+
+            center.AlignPoints(leftTop, Axis2DCrossApi.OY);
+            leftTop.AlignPoints(rightTop, Axis2DCrossApi.OX);
+
+            ILineDimension externalDiameterDimension = symbols2DContainer.AddLineDimension(center, leftTop);
+            _sketch1.AddVariableToDimension(externalDiameterDimension, "v3", $"{_externalDiameterVariable.Expression} * 0.5");
 
             _sketch1.EndEdit();
         }
@@ -70,7 +87,12 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
 
         public void RotateSketch1()
         {
-            throw new NotImplementedException();
+            _sketch1Rotation = ModelContainer.Rotateds.Add(ksObj3dTypeEnum.o3d_bossRotated);
+            
+            _sketch1Rotation.Profile = _sketch1;
+            _sketch1Rotation.Axis = Part7!.GetOZ();
+
+            _sketch1Rotation.Update();
         }
 
         public override void SaveFile()
@@ -82,8 +104,8 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
         {
             base.Initialize();
 
-            _internalDiameterVariable = Part7!.AddVariable("D1", 25, "Внутренний диаметр прокладки");
-            _externalDiameterVariable = Part7!.AddVariable("D", 30, "Внешний диаметр прокладки");
+            _internalDiameterVariable = Part7!.AddVariable("D1", 50, "Внутренний диаметр прокладки");
+            _externalDiameterVariable = Part7!.AddVariable("D", 60, "Внешний диаметр прокладки");
 
             _widthVariable = Part7!.AddVariable("H", 2, "Высота прокладки");
         }
