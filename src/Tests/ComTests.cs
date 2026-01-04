@@ -27,6 +27,8 @@ namespace Oil_level_glass.Tests
             housingPartCreator.AddScrewHoles();
 
             housingPartCreator.AddRounding();
+
+            housingPartCreator.EditSketch1Extrusion();
         }
 
         [Fact()]

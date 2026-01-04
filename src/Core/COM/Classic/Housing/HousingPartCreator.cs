@@ -21,8 +21,8 @@ namespace Oil_level_glass.COM.Classic.Housing
 
         private IHole3D? _screwHole;
 
-        private IExtrusion? _extrusion1;
-        private ICutExtrusion? _extrusion2;
+        private IExtrusion? _sketch1Extrusion;
+        private ICutExtrusion? _sketch2Extrusion;
 
         private ICircularPattern? _circularPattern;
 
@@ -30,6 +30,8 @@ namespace Oil_level_glass.COM.Classic.Housing
 
         private IVariable7? _externalDiameterVariable;
         private IVariable7? _internalDiameterVariable;
+
+        private IVariable7? _socketDiameterHeightVariable;
         private IVariable7? _socketDiameterVariable;
 
         private IVariable7? _screwHolesDistanceVariable;
@@ -65,26 +67,27 @@ namespace Oil_level_glass.COM.Classic.Housing
 
         public void EditSketch1()
         {
-            throw new NotImplementedException();
+            _externalDiameterVariable!.Expression = PartModel.MainDiameter.ToString();
+            _internalDiameterVariable!.Expression = PartModel.CentralHoleDiameter.ToString();
         }
 
         public void ExtrudeSketch1()
         {
-            _extrusion1 = ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_bossExtrusion);
+            _sketch1Extrusion = ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_bossExtrusion);
 
-            _extrusion1.Sketch = _sketch1;
-            _extrusion1.Depth[true] = 8;
-            _extrusion1.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
-            _extrusion1.ExtrusionType[true] = Kompas6Constants3D.ksEndTypeEnum.etBlind;
+            _sketch1Extrusion.Sketch = _sketch1;
+            _sketch1Extrusion.Depth[true] = 8;
+            _sketch1Extrusion.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
+            _sketch1Extrusion.ExtrusionType[true] = Kompas6Constants3D.ksEndTypeEnum.etBlind;
 
-            _extrusion1.Update();
+            _sketch1Extrusion.Update();
 
-            _extrusion1.AddVariableToObject(_heightVariable!.Name, "Расстояние 1");
+            _sketch1Extrusion.AddVariableToObject(_heightVariable!.Name, "Расстояние 1");
         }
 
         public void EditSketch1Extrusion()
         {
-            throw new NotImplementedException();
+            _heightVariable!.Expression = PartModel.MainHeight.ToString();
         }
 
 
@@ -108,22 +111,24 @@ namespace Oil_level_glass.COM.Classic.Housing
 
         public void EditSketch2()
         {
-            throw new NotImplementedException();
+            _socketDiameterVariable!.Expression = PartModel.GlassSocketDiameter.ToString();
         }
 
         public void ExtrudeSketch2()
         {
-            _extrusion2 = (ICutExtrusion)ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_cutExtrusion);
+            _sketch2Extrusion = (ICutExtrusion)ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_cutExtrusion);
             
-            _extrusion2.Sketch = _sketch2;
-            _extrusion2.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
-            _extrusion2.Depth[true] = 6;
-            _extrusion2.Update();
+            _sketch2Extrusion.Sketch = _sketch2;
+            _sketch2Extrusion.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
+            _sketch2Extrusion.Depth[true] = 6;
+            _sketch2Extrusion.Update();
+
+            _sketch2Extrusion.AddVariableToObject(_socketDiameterHeightVariable!.Name, "Расстояние 2");
         }
 
         public void EditSketch2Extrusion()
         {
-            throw new NotImplementedException();
+            _socketDiameterHeightVariable!.Expression = PartModel.GlassSocketHeight.ToString();
         }
 
 
@@ -157,14 +162,9 @@ namespace Oil_level_glass.COM.Classic.Housing
             _sketch3.EndEdit();
         }
 
-        public void EditScrewHoles()
-        {
-            throw new NotImplementedException();
-        }
-
         public void EditSketch3()
         {
-            throw new NotImplementedException();
+            _screwHolesDistanceVariable!.Expression = PartModel.ScrewHolesDistance.ToString();
         }
 
         public void AddScrewHoles()
@@ -208,6 +208,21 @@ namespace Oil_level_glass.COM.Classic.Housing
             _circularPattern.AddVariableToObject(_countOfScrewHolesVariable!.Name, "N 2");
         }
 
+        public void EditScrewHoles()
+        {
+            _countOfScrewHolesVariable!.Expression = PartModel.ScrewHolesCount.ToString();
+
+
+            IThread thread = _screwHole!.Thread;
+            thread.AutoLenght = true;
+
+            IThreadsParameters threadsParameters = (IThreadsParameters)thread;
+            threadsParameters.Init(PartModel.Thread.Standard, PartModel.Thread.NominalDiameter, PartModel.Thread.Pitch);
+            thread.Update();
+
+            _screwHole.Update();
+        }
+
         public void AddRounding()
         {
             _chamfer = ModelContainer.Chamfers.Add();
@@ -233,7 +248,8 @@ namespace Oil_level_glass.COM.Classic.Housing
         
         public void EditRounding()
         {
-            throw new NotImplementedException();
+            _chamferAngleVariable!.Expression = PartModel.Chamfer.Angle.ToString();
+            _chamferDistance1Variable!.Expression = PartModel.Chamfer.Length.ToString();
         }
 
         public override void Initialize()
@@ -242,7 +258,9 @@ namespace Oil_level_glass.COM.Classic.Housing
 
             _externalDiameterVariable = Part7!.AddVariable("D", 90, "Внешний диаметр корпуса");
             _internalDiameterVariable = Part7!.AddVariable("D1", 50, "Внутренний диаметр корпуса");
+
             _socketDiameterVariable = Part7!.AddVariable("D3", 60, "Диаметр отсека под линзу");
+            _socketDiameterHeightVariable = Part7!.AddVariable("H2", 6, "Высота отсека под линзу");
 
             _screwHolesDistanceVariable = Part7!.AddVariable("Ds", 72, "Расстояние между отверстиями под винты");
 
