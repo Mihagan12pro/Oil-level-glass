@@ -75,5 +75,21 @@ namespace Oil_level_glass.COM.Extensions.Containers
 
             return rectangle;
         }
+
+        public static IPoint AddPoint(
+            this IDrawingContainer drawingContainer,
+            Point2DCrossApi point2D,
+            int style = 1)
+        {
+            IPoint point = drawingContainer.Points.Add();
+
+            point.X = point2D.X;
+            point.Y = point2D.Y;
+            point.Style = style;
+
+            point.Update();
+
+            return point;
+        }
     }
 }

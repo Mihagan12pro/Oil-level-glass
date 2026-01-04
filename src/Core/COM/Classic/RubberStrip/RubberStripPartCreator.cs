@@ -15,6 +15,10 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
     {
         private Sketch? _sketch1;
 
+        private IVariable7? _widthVariable;
+        private IVariable7? _externalDiameterVariable;
+        private IVariable7? _internalDiameterVariable;
+
         public void AddSketch1()
         {
             _sketch1 = ModelContainer.Sketchs.Add();
@@ -37,13 +41,24 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
 
             bottomLine.MergeWithAnotherSegment(rightLine, rightBottomPoint);
             bottomLine.MergeWithAnotherSegment(leftLine, leftBottomPoint);
-
             topLine.MergeWithAnotherSegment(leftLine, leftTopPoint);
+            topLine.MergeWithAnotherSegment(rightLine, rightTopPoint);
+
 
             ISymbols2DContainer symbols2DContainer = sketch1DrawingContainer.GetSymbols2DContainer();
 
             ILineDimension bottomDimension = symbols2DContainer.AddLineDimension(bottomLine);
+
             ILineDimension rightLineDimension = symbols2DContainer.AddLineDimension(rightLine);
+
+            _sketch1.AddVariableToDimension(bottomDimension, "v1", _widthVariable!.Expression);
+            _sketch1.AddVariableToDimension(rightLineDimension, "v2", $"{_externalDiameterVariable!.Name} - {_internalDiameterVariable!.Name}");
+
+            rightLine.MakeLineEqual(leftLine);
+            bottomLine.MakeLineEqual(topLine);
+
+            IPoint center = sketch1DrawingContainer.AddPoint(new Point2DCrossApi(0, 0));
+            center.MakeFixed();
 
             _sketch1.EndEdit();
         }
@@ -61,6 +76,16 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
         public override void SaveFile()
         {
             throw new NotImplementedException();
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            _internalDiameterVariable = Part7!.AddVariable("D1", 25, "Внутренний диаметр прокладки");
+            _externalDiameterVariable = Part7!.AddVariable("D", 30, "Внешний диаметр прокладки");
+
+            _widthVariable = Part7!.AddVariable("H", 2, "Высота прокладки");
         }
     }
 }

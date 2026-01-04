@@ -2,8 +2,6 @@
 using KompasAPI7;
 using Shared.Exceptions;
 using Shared.Points;
-using System;
-using System.Drawing;
 
 namespace Oil_level_glass.COM.Extensions.ModelObjects
 {
@@ -75,6 +73,16 @@ namespace Oil_level_glass.COM.Extensions.ModelObjects
                 return 1;
             else 
                 return 2;
+        }
+
+        public static void MakeLineEqual(this ILineSegment lineSegment, ILineSegment partnerSegment)
+        {
+            IDrawingObject1 drawingObject = (IDrawingObject1)lineSegment;
+
+            IParametriticConstraint parametriticConstraint = drawingObject.NewConstraint();
+            parametriticConstraint.ConstraintType = ksConstraintTypeEnum.ksCEqualLength;
+            parametriticConstraint.Partner = partnerSegment;
+            parametriticConstraint.Create();
         }
     }
 }
