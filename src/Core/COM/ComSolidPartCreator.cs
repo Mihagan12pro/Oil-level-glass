@@ -18,7 +18,7 @@ namespace Oil_level_glass.COM
 
         public override void SaveFile()
         {
-            PartDocument!.SaveAs(PartModel!.File!);
+            PartDocument!.SaveAs(PartModel.File);
         }
 
         public void EditAppearances()

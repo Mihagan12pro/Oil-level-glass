@@ -14,7 +14,7 @@ namespace Oil_level_glass.Core
         : ICreator
         where TPartModel : BaseDetailModel
     {
-        public TPartModel PartModel { get; set; }
+        TPartModel PartModel { get; set; }
 
         /// <summary>
         /// Edit density, material title, hatch style or etc

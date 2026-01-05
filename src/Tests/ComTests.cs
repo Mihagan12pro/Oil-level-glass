@@ -11,22 +11,46 @@ namespace Oil_level_glass.Tests
     public class ComTests
     {
         [Fact()]
+        public void TestOilLevelGlassCreator()
+        {
+
+        }
+
+        [Fact()]
         public void TestStripCreator()
         {
+            RubberStripModel stripModel = new RubberStripModel();
+            stripModel!.File!.Folder = @"C:\Сборка";
+            stripModel.File.Name.Naming = "Прокладка";
+            stripModel.File.Name.Marking = "МПСТ.000.000.003";
+
             ComRubberStripPartCreatorFactory creatorFactory = new ComRubberStripPartCreatorFactory();
             IRubberStripPartCreator stripPartCreator = creatorFactory.GetCreator();
+
+            stripPartCreator.PartModel = stripModel;
 
             stripPartCreator.Initialize();
             stripPartCreator.AddSketch1();
             stripPartCreator.RotateSketch1();
+
+            stripPartCreator.EditSavingParameter();
+            stripPartCreator.EditNaming();
+            stripPartCreator.SaveFile();
         }
 
         [Fact()]
         public void TestHousingCreator()
         {
-            ComHousingPartCreatorsFactory housingPartCreatorsFactory = new ComHousingPartCreatorsFactory();
+            HousingModel housingModel = new HousingModel();
+            housingModel!.File!.Folder = @"C:\Сборка";
+            housingModel.File.Name.Naming = "Корпус";
+            housingModel.File.Name.Marking = "МПСТ.000.000.001";
 
+            ComHousingPartCreatorsFactory housingPartCreatorsFactory = new ComHousingPartCreatorsFactory();
             IHousingPartCreator housingPartCreator = housingPartCreatorsFactory.GetCreator();
+
+            housingPartCreator.PartModel = housingModel;
+
             housingPartCreator.Initialize();
 
             housingPartCreator.AddSketch1();
@@ -36,10 +60,14 @@ namespace Oil_level_glass.Tests
             housingPartCreator.ExtrudeSketch2();
 
             housingPartCreator.AddSketch3();
-
             housingPartCreator.AddScrewHoles();
 
             housingPartCreator.AddRounding();
+
+            housingPartCreator.EditSavingParameter();
+            housingPartCreator.EditNaming();
+
+            housingPartCreator.SaveFile();
         }
 
         [Fact()]
@@ -48,7 +76,7 @@ namespace Oil_level_glass.Tests
             GlassModel glassModel = new GlassModel();
             glassModel!.File!.Folder = @"C:\foo";
             glassModel!.File!.Name.Naming = "Линза";
-            glassModel!.File!.Name.Marking = "МПСТ.000.000.001";
+            glassModel!.File!.Name.Marking = "МПСТ.000.000.002";
 
             ComGlassPartCreatorsFactory partCreatorsFactory = new ComGlassPartCreatorsFactory();
 

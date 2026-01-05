@@ -84,7 +84,9 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
 
         public void EditSketch1()
         {
-            throw new NotImplementedException();
+            _internalDiameterVariable!.Expression = PartModel!.InternalDiameter.ToString();
+            _externalDiameterVariable!.Expression = PartModel!.ExternalDiameter.ToString();
+            _widthVariable!.Expression = PartModel!.Height.ToString();
         }
 
         public void RotateSketch1()
@@ -97,10 +99,6 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
             _sketch1Rotation.Update();
         }
 
-        public override void SaveFile()
-        {
-            throw new NotImplementedException();
-        }
 
         public override void Initialize()
         {
