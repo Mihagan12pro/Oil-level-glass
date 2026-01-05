@@ -12,6 +12,11 @@ namespace Oil_level_glass.Core.Classic.RubberStrip
         /// </summary>
         void EditSketch1();
 
-        void RotateSketch1();
+        void ExtrudeSketch1();
+
+        /// <summary>
+        /// Edit sketch1 extrusion variables
+        /// </summary>
+        void EditSketch1Extrusion();
     }
 }

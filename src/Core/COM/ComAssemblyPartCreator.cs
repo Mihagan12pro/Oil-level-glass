@@ -35,7 +35,7 @@ namespace Oil_level_glass.COM
 
             AssemblyDocument = KompasObject.GetAssemblyDocument();
 
-             AssemblyPart7 = AssemblyDocument.TopPart;
+            AssemblyPart7 = AssemblyDocument.TopPart;
         }
     }
 }

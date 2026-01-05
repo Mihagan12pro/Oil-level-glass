@@ -1,7 +1,9 @@
-﻿namespace Oil_level_glass.Core.Classic.OilLevelGlass
+﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+
+namespace Oil_level_glass.Core.Classic.OilLevelGlass
 {
-    public interface IOilLevelGlassPartCreator 
-        : ICreator
+    public interface IOilLevelGlassPartCreator
+        : IAssemblyPartCreator<OilLevelGlassModel>
     {
         void AddHousing();
 

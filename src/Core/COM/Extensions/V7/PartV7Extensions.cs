@@ -1,6 +1,7 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.COM.Extensions.Containers;
+using Oil_level_glass.Model.Data.Entities.Parts;
 using Oil_level_glass.Model.Data.KompasFile;
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Other;
@@ -119,6 +120,17 @@ namespace Oil_level_glass.COM.Extensions.V7
                 .ToArray();
 
             return edges;
+        }
+
+        public static IPart7 AddPartByModel(
+            this IPart7 assembly, 
+            BaseDetailModel model,
+            bool externalFile = false,
+            bool redraw = true)
+        {
+            IPart7 part = assembly.Parts.AddFromFile(model.File!.FullName, externalFile, redraw);
+
+            return part;
         }
     }
 }
