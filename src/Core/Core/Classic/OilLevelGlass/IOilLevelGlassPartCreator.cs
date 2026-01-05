@@ -8,9 +8,14 @@
         void AddGlass();
 
         /// <summary>
-        /// Add one rubber strip
+        /// Add only top rubber strip
         /// </summary>
-        void AddRubberStrip();
+        void AddTopRubberStrip();
+
+        /// <summary>
+        /// Add only bottom rubber strip
+        /// </summary>
+        void AddBottomRubberStrip();
 
         /// <summary>
         /// Add two rubber strips
