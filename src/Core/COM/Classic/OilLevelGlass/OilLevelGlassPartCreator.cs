@@ -1,4 +1,7 @@
-﻿using KompasAPI7;
+﻿using Kompas6Constants3D;
+using KompasAPI7;
+using Oil_level_glass.COM.Extensions.ModelObjects;
+using Oil_level_glass.COM.Extensions.V7;
 using Oil_level_glass.Core.Classic.OilLevelGlass;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
@@ -8,12 +11,12 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
         : ComAssemblyPartCreator<OilLevelGlassModel>, IOilLevelGlassPartCreator
     {
         private IPart7? _housing;
-        private IFace[]? HousingFaces;
-        private IEdge[]? HousingEdges;
+        private IFace[]? _housingFaces;
+        private IEdge[]? _housingEdges;
 
         private IPart7? _glass;
-        private IFace[]? GlassFaces;
-        private IEdge[]? GlassEdges;
+        private IFace[]? _glassFaces;
+        private IEdge[]? _glassEdges;
 
         private IPart7? _topRubber;
         private IFace[]? _topRubberStripFaces;
@@ -36,7 +39,11 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
 
         public void AddHousing()
         {
-            throw new NotImplementedException();
+            _housing = AssemblyPart7.AddPartByModel(PartModel.HousingModel);
+            _housing.Fixed = true;
+
+            _housingFaces = _housing.GetFaces();
+            _housingEdges = _housing.GetEdges();
         }
 
         public void AddTopRubberStrip()
@@ -49,14 +56,40 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
             throw new NotImplementedException();
         }
 
-        public void Assemble()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddBottomRubberStrip()
         {
-            throw new NotImplementedException();
+            _bottomRubber = AssemblyPart7.AddPartByModel(PartModel.RubberStripModel);
+
+            _bottomRubberStripFaces = _bottomRubber.GetFaces();
+            _bottomRubberStripEdges = _bottomRubber.GetEdges();
+        }
+
+        public void Assemble()
+        {
+            AddHousing();
+
+            AddBottomRubberStrip();
+
+            MakeHousingAndBottomStripConcentric();
+        }
+
+        private void MakeHousingAndBottomStripConcentric()
+        {
+            IMateConstraint3D concentric = AssemblyPart7.MateConstraints.Add(MateConstraintType.mc_Concentric);
+
+            var housingModel = PartModel.HousingModel;
+            var stripModel = PartModel.RubberStripModel;
+
+            foreach(var edge in _bottomRubberStripEdges)
+            {
+                var point = edge.ToPoint();
+            }
+
+            foreach(var edge in _housingEdges)
+            {
+                var point = edge.ToPoint();
+            }
+            //IEdge stripEdge = _bottomRubberStripEdges!.Where(e => e.ToPoint() == new Point3DCrossApi(stripModel.ExternalDiameter / 2, 0 ,0)).First();
         }
     }
 }

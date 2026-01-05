@@ -1,8 +1,10 @@
 ﻿using Oil_level_glass.COM.Classic.Glass;
 using Oil_level_glass.COM.Classic.Housing;
+using Oil_level_glass.COM.Classic.OilLevelGlass;
 using Oil_level_glass.COM.Classic.RubberStrip;
 using Oil_level_glass.Core.Classic.Glass;
 using Oil_level_glass.Core.Classic.Housing;
+using Oil_level_glass.Core.Classic.OilLevelGlass;
 using Oil_level_glass.Core.Classic.RubberStrip;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
@@ -13,7 +15,63 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void TestOilLevelGlassCreator()
         {
+            GlassModel glassModel = new GlassModel()
+            {
+                Height = 2,
 
+                ExternalDiameter = 60
+            };
+            glassModel!.File!.Folder = @"C:\foo";
+            glassModel!.File!.Name.Naming = "Линза";
+            glassModel!.File!.Name.Marking = "МПСТ.000.000.002";
+
+            RubberStripModel stripModel = new RubberStripModel()
+            {
+                Height = 2,
+                
+                InternalDiameter = 50,
+
+                ExternalDiameter = 60
+            };
+            stripModel!.File!.Folder = @"C:\Сборка";
+            stripModel.File.Name.Naming = "Прокладка";
+            stripModel.File.Name.Marking = "МПСТ.000.000.003";
+
+            HousingModel housingModel = new HousingModel()
+            {
+                MainDiameter = 90,
+                CentralHoleDiameter = 50,
+                MainHeight = 8,
+
+                GlassSocketDiameter = 60,
+                GlassSocketHeight = 6,
+
+                ScrewHolesCount = 4,
+                ScrewHolesDistance = 72,
+            };
+            housingModel.Chamfer.Angle = 60;
+            housingModel.Chamfer.Length = 3;
+
+            housingModel!.File!.Folder = @"C:\Сборка";
+            housingModel.File.Name.Naming = "Корпус";
+            housingModel.File.Name.Marking = "МПСТ.000.000.001";
+
+            IOilLevelGlassPartCreatorFactory creatorFactory = new ComOilLevelGlassPartCreatorFactory();
+
+            IOilLevelGlassPartCreator creator = creatorFactory.GetCreator();
+
+            creator.PartModel = new OilLevelGlassModel()
+            {
+                GlassModel = glassModel,
+                
+                HousingModel = housingModel,
+
+                RubberStripModel = stripModel
+            };
+            
+
+            creator.Initialize();
+            creator.Assemble();
         }
 
         [Fact()]
@@ -31,7 +89,7 @@ namespace Oil_level_glass.Tests
 
             stripPartCreator.Initialize();
             stripPartCreator.AddSketch1();
-            stripPartCreator.RotateSketch1();
+            stripPartCreator.ExtrudeSketch1();
 
             stripPartCreator.EditSavingParameter();
             stripPartCreator.EditNaming();

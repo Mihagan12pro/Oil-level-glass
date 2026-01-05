@@ -4,29 +4,21 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 public class OilLevelGlassModel : BaseAssemblyModel
 {
-    public string? GlassPath { get; set; }
-    public string? HousingPath { get; set; }
-    public string? StripPath { get; set; }
+    public GlassModel GlassModel { get; set; } = null!;
 
-    protected override string CheckField(string columnName)
-    {
-        string error = string.Empty;
+    public HousingModel HousingModel { get; set; } = null!;
 
-        if (columnName == nameof(GlassPath) ||
-            columnName == nameof(HousingPath) ||
-            columnName == nameof(StripPath))
-        {
-            error = CheckEmptyString(columnName);
-
-            if (error == string.Empty)
-                error = CheckFile(columnName);
-        }
-        
-        return error;
-    }
+    public RubberStripModel RubberStripModel { get; set; } = null!;
 
     public OilLevelGlassModel()
     {
         File = new AssemblyFile();
+    }
+
+    protected override string CheckField(string columnName)
+    {
+        string error = string.Empty;
+        
+        return error;
     }
 }
