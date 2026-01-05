@@ -1,9 +1,9 @@
 ﻿using Kompas6Constants3D;
 using KompasAPI7;
+using Oil_level_glass.COM.Extensions.Containers;
 using Oil_level_glass.Model.Data.KompasFile;
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Other;
-using Shared.Points;
 
 namespace Oil_level_glass.COM.Extensions.V7
 {
@@ -109,6 +109,16 @@ namespace Oil_level_glass.COM.Extensions.V7
             }
 
             return faces.ToArray();
+        }
+
+        public static IEdge[] GetEdges(this IPart7 part)
+        {
+            IFace[] faces = part.GetFaces();
+
+            IEdge[] edges = faces.SelectMany(f => f.GetEdges())
+                .ToArray();
+
+            return edges;
         }
     }
 }
