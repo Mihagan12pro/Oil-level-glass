@@ -4,6 +4,7 @@ using Oil_level_glass.COM.Extensions.ModelObjects;
 using Oil_level_glass.COM.Extensions.V7;
 using Oil_level_glass.Core.Classic.OilLevelGlass;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Shared.Points;
 
 namespace Oil_level_glass.COM.Classic.OilLevelGlass
 {
@@ -80,16 +81,26 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
             var housingModel = PartModel.HousingModel;
             var stripModel = PartModel.RubberStripModel;
 
-            foreach(var edge in _bottomRubberStripEdges)
-            {
-                var point = edge.ToPoint();
-            }
+            IEdge stripEdge = _bottomRubberStripEdges!.
+                Where(e =>
+                    e.ToPoint() == new Point3DCrossApi(
+                        stripModel.ExternalDiameter / 2,
+                        0,
+                        -stripModel.Height / 2))
+                .First();
 
-            foreach(var edge in _housingEdges)
-            {
-                var point = edge.ToPoint();
-            }
-            //IEdge stripEdge = _bottomRubberStripEdges!.Where(e => e.ToPoint() == new Point3DCrossApi(stripModel.ExternalDiameter / 2, 0 ,0)).First();
+            IEdge housingEdge = _housingEdges!.
+                Where(e => 
+                    e.ToPoint() == new Point3DCrossApi(
+                        housingModel.GlassSocketDiameter / 2,
+                        0,
+                        -housingModel.GlassSocketHeight / 2))
+                .First();
+
+            concentric.BaseObject1 = stripEdge;
+            concentric.BaseObject2 = housingEdge;
+
+            concentric.Update();
         }
     }
 }
