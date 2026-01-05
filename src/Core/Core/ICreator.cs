@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Oil_level_glass.Core
+﻿namespace Oil_level_glass.Core
 {
     /// <summary>
     /// Base interface for all builders

@@ -2,9 +2,9 @@
 
 namespace Oil_level_glass.Model.Data.Entities.Parts;
 
-public abstract class BaseAssembleModel : BaseEntityModel
+public abstract class BaseAssemblyModel : BaseEntityModel
 {
-    public BaseAssembleModel()
+    public BaseAssemblyModel()
     {
         File = new AssemblyFile();
     }

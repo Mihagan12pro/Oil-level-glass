@@ -1,11 +1,6 @@
 ﻿using Kompas6API5;
 using Kompas6Constants;
 using KompasAPI7;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Oil_level_glass.COM.Extensions
 {
@@ -22,5 +17,17 @@ namespace Oil_level_glass.COM.Extensions
 
             return document;
         }
+        public static IAssemblyDocument GetAssemblyDocument(this KompasObject kompas, bool newDocument = true)
+        {
+            IApplication application = (IApplication)kompas.ksGetApplication7();
+
+            if (newDocument)
+                return (IAssemblyDocument)application.Documents.Add(DocumentTypeEnum.ksDocumentAssembly);
+
+            IAssemblyDocument document = (IAssemblyDocument)application.ActiveDocument;
+
+            return document;
+        }
+
     }
 }
