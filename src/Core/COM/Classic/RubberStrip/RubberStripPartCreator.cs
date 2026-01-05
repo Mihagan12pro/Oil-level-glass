@@ -6,6 +6,7 @@ using Oil_level_glass.COM.Extensions.ModelObjects;
 using Oil_level_glass.COM.Extensions.V7;
 using Oil_level_glass.Core.Classic.RubberStrip;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Shared.Points;
 
 namespace Oil_level_glass.COM.Classic.RubberStrip
 {
@@ -21,7 +22,23 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
 
         public void AddSketch1()
         {
-            
+            _sketch1 = ModelContainer.Sketchs.Add();
+            _sketch1.Plane = Part7?.GetPlaneXOY();
+
+            IDrawingContainer sketch1DrawingContainer = _sketch1.GetDrawingContainer();
+
+            ICircle externalCircle = sketch1DrawingContainer.AddCircle(new Point2DCrossApi(0, 0), 60 / 2);
+            ICircle internalCircle = sketch1DrawingContainer.AddCircle(new Point2DCrossApi(0, 0), 50 / 2);
+
+            ISymbols2DContainer symbols2DContainer = sketch1DrawingContainer.GetSymbols2DContainer();
+
+            IDiametralDimension externalDimension = symbols2DContainer.AddDiametralDimension(externalCircle);
+            IDiametralDimension internalDimension = symbols2DContainer.AddDiametralDimension(internalCircle, 135);
+
+            _sketch1.AddVariableToDimension(externalDimension, "v1", _externalDiameterVariable!.Name);
+            _sketch1.AddVariableToDimension(internalDimension, "v2", _internalDiameterVariable!.Name);
+
+            _sketch1.EndEdit();
         }
 
         public void EditSketch1()
@@ -32,7 +49,16 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
 
         public void ExtrudeSketch1()
         {
+            _sketch1Extrusion = ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_bossExtrusion);
 
+            _sketch1Extrusion.Sketch = _sketch1;
+            _sketch1Extrusion.Depth[true] = 2;
+            _sketch1Extrusion.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
+            _sketch1Extrusion.ExtrusionType[true] = Kompas6Constants3D.ksEndTypeEnum.etBlind;
+
+            _sketch1Extrusion.Update();
+
+            _sketch1Extrusion.AddVariableToObject(_widthVariable!.Name, "Расстояние 1");
         }
         public void EditSketch1Extrusion()
         {
@@ -44,10 +70,10 @@ namespace Oil_level_glass.COM.Classic.RubberStrip
         {
             base.Initialize();
 
-            _internalDiameterVariable = Part7!.AddVariable("D1", 50, "Внутренний диаметр прокладки");
-            _externalDiameterVariable = Part7!.AddVariable("D", 60, "Внешний диаметр прокладки");
+            _internalDiameterVariable = Part7!.AddVariable("D1", PartModel.InternalDiameter, "Внутренний диаметр прокладки");
+            _externalDiameterVariable = Part7!.AddVariable("D", PartModel.ExternalDiameter, "Внешний диаметр прокладки");
 
-            _widthVariable = Part7!.AddVariable("H", 2, "Высота прокладки");
+            _widthVariable = Part7!.AddVariable("H", PartModel.Height, "Высота прокладки");
         }
     }
 }

@@ -77,7 +77,14 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void TestStripCreator()
         {
-            RubberStripModel stripModel = new RubberStripModel();
+            RubberStripModel stripModel = new RubberStripModel()
+            {
+                Height = 2,
+
+                InternalDiameter = 50,
+
+                ExternalDiameter = 60
+            };
             stripModel!.File!.Folder = @"C:\Сборка";
             stripModel.File.Name.Naming = "Прокладка";
             stripModel.File.Name.Marking = "МПСТ.000.000.003";
