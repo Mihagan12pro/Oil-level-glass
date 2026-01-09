@@ -7,13 +7,22 @@ namespace Oil_level_glass.COM.KompasDialogs
     internal class ColorDialog
         : ComDialogBase, IColorDialog
     {
-        protected internal ColorDialog(IApplication application) : base(application)
-        {
-        }
-
         public void SelectColor(Appereance appearance)
         {
-            throw new NotImplementedException();
+            int color = appearance.Color;
+
+            applicationDialogs.SelectColor(hwnd, Title, ref color);
+
+            byte[] values = BitConverter.GetBytes(color);
+
+            appearance.Red = values[0];
+            appearance.Green = values[1];
+            appearance.Blue = values[2];
+        }
+
+        protected internal ColorDialog(IApplication application) : base(application)
+        {
+            Title = "ВЫБОР ЦВЕТА";
         }
     }
 }
