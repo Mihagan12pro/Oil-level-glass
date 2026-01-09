@@ -21,7 +21,7 @@ namespace Oil_level_glass.Tests
 
                 ExternalDiameter = 60
             };
-            glassModel!.File!.Folder = @"C:\foo";
+            glassModel!.File!.Folder = @"C:\Сборка";
             glassModel!.File!.Name.Naming = "Линза";
             glassModel!.File!.Name.Marking = "МПСТ.000.000.002";
 
@@ -106,7 +106,18 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void TestHousingCreator()
         {
-            HousingModel housingModel = new HousingModel();
+            HousingModel housingModel = new HousingModel()
+            {
+                MainDiameter = 90,
+                CentralHoleDiameter = 50,
+                MainHeight = 8,
+
+                GlassSocketDiameter = 60,
+                GlassSocketHeight = 6,
+
+                ScrewHolesCount = 4,
+                ScrewHolesDistance = 72,
+            };
             housingModel!.File!.Folder = @"C:\Сборка";
             housingModel.File.Name.Naming = "Корпус";
             housingModel.File.Name.Marking = "МПСТ.000.000.001";
@@ -138,8 +149,13 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void TestGlassCreator()
         {
-            GlassModel glassModel = new GlassModel();
-            glassModel!.File!.Folder = @"C:\foo";
+            GlassModel glassModel = new GlassModel()
+            {
+                Height = 2,
+
+                ExternalDiameter = 60
+            };
+            glassModel!.File!.Folder = @"C:\Сборка";
             glassModel!.File!.Name.Naming = "Линза";
             glassModel!.File!.Name.Marking = "МПСТ.000.000.002";
 

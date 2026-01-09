@@ -253,20 +253,20 @@ namespace Oil_level_glass.COM.Classic.Housing
         {
             base.Initialize();
 
-            _externalDiameterVariable = Part7!.AddVariable("D", 90, "Внешний диаметр корпуса");
-            _internalDiameterVariable = Part7!.AddVariable("D1", 50, "Внутренний диаметр корпуса");
+            _externalDiameterVariable = Part7!.AddVariable("D", PartModel.MainDiameter, "Внешний диаметр корпуса");
+            _internalDiameterVariable = Part7!.AddVariable("D1", PartModel.CentralHoleDiameter, "Диаметр центрального отверстия");
 
-            _socketDiameterVariable = Part7!.AddVariable("D3", 60, "Диаметр отсека под линзу");
-            _socketDiameterHeightVariable = Part7!.AddVariable("H2", 6, "Высота отсека под линзу");
+            _socketDiameterVariable = Part7!.AddVariable("D3", PartModel.GlassSocketDiameter, "Диаметр отсека под линзу");
+            _socketDiameterHeightVariable = Part7!.AddVariable("H2", PartModel.GlassSocketHeight, "Высота отсека под линзу");
 
-            _screwHolesDistanceVariable = Part7!.AddVariable("Ds", 72, "Расстояние между отверстиями под винты");
+            _screwHolesDistanceVariable = Part7!.AddVariable("Ds", PartModel.ScrewHolesDistance, "Расстояние между отверстиями под винты");
 
-            _heightVariable = Part7!.AddVariable("H", 8, "Высота корпуса");
+            _heightVariable = Part7!.AddVariable("H", PartModel.MainHeight, "Высота корпуса");
 
-            _countOfScrewHolesVariable = Part7!.AddVariable("n", 4, "Количество отверстий под винты");
+            _countOfScrewHolesVariable = Part7!.AddVariable("n", PartModel.ScrewHolesCount, "Количество отверстий под винты");
 
-            _chamferAngleVariable = Part7!.AddVariable("alpha", 60, "Угол фаски");
-            _chamferDistance1Variable = Part7!.AddVariable("l1", 3, "Длина фаски 1");
+            _chamferAngleVariable = Part7!.AddVariable("alpha", PartModel.Chamfer.Angle, "Угол фаски");
+            _chamferDistance1Variable = Part7!.AddVariable("l1", PartModel.Chamfer.Length, "Длина фаски 1");
         }
     }
 }

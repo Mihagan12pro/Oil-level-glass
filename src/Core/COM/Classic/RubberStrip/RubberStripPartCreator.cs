@@ -1,5 +1,4 @@
-﻿using Kompas6Constants3D;
-using KompasAPI7;
+﻿using KompasAPI7;
 using Oil_level_glass.COM.Extensions;
 using Oil_level_glass.COM.Extensions.Containers;
 using Oil_level_glass.COM.Extensions.ModelObjects;

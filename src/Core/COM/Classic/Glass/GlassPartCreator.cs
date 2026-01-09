@@ -65,8 +65,8 @@ namespace Oil_level_glass.COM.Classic.Glass
         {
             base.Initialize();
 
-            _diameterVariable = Part7!.AddVariable("D", 60, "Диаметр линзы");
-            _extrusionHeight = Part7!.AddVariable("h", 2, "Высота линзы");
+            _diameterVariable = Part7!.AddVariable("D", PartModel.ExternalDiameter, "Диаметр линзы");
+            _extrusionHeight = Part7!.AddVariable("h", PartModel.Height, "Высота линзы");
         }
     }
 }
