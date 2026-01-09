@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Model\Oil level glass.Model.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Core\Oil level glass.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="KAPITypes">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\KAPITypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6API5">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\Kompas6API5.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6Constants">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\Kompas6Constants.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6Constants3D">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\Kompas6Constants3D.dll</HintPath>
+    </Reference>
+    <Reference Include="KompasAPI7">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\KompasAPI7.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

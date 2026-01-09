@@ -1,0 +1,272 @@
+﻿using Kompas6Constants3D;
+using KompasAPI7;
+using Oil_level_glass.COM.Extensions;
+using Oil_level_glass.COM.Extensions.Collections;
+using Oil_level_glass.COM.Extensions.Containers;
+using Oil_level_glass.COM.Extensions.ModelObjects;
+using Oil_level_glass.COM.Extensions.V7;
+using Oil_level_glass.Core.Classic.Housing;
+using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Shared.Axis;
+using Shared.Points;
+
+namespace Oil_level_glass.COM.Classic.Housing
+{
+    internal class HousingPartCreator
+        : ComSolidPartCreator<HousingModel>, IHousingPartCreator
+    {
+        private Sketch? _sketch1;
+        private Sketch? _sketch2;
+        private Sketch? _sketch3;
+
+        private IHole3D? _screwHole;
+
+        private IExtrusion? _sketch1Extrusion;
+        private ICutExtrusion? _sketch2Extrusion;
+
+        private ICircularPattern? _circularPattern;
+
+        private IChamfer? _chamfer;
+
+        private IVariable7? _externalDiameterVariable;
+        private IVariable7? _internalDiameterVariable;
+
+        private IVariable7? _socketDiameterHeightVariable;
+        private IVariable7? _socketDiameterVariable;
+
+        private IVariable7? _screwHolesDistanceVariable;
+
+        private IVariable7? _heightVariable;
+
+        private IVariable7? _countOfScrewHolesVariable;
+
+        private IVariable7? _chamferAngleVariable;
+        private IVariable7? _chamferDistance1Variable;
+
+        public void AddSketch1()
+        {
+            _sketch1 = ModelContainer.Sketchs.Add();
+            _sketch1.Plane = Part7?.GetPlaneXOY();
+            _sketch1.Update();
+
+            IDrawingContainer sketch1DrawingContainer = _sketch1.GetDrawingContainer();
+
+            ICircle externalCircle = sketch1DrawingContainer.AddCircle(new Point2DCrossApi(0, 0), 90 / 2);
+            ICircle internalCircle = sketch1DrawingContainer.AddCircle(new Point2DCrossApi(0, 0), 50 / 2);
+
+            ISymbols2DContainer symbols2DContainer = sketch1DrawingContainer.GetSymbols2DContainer();
+
+            IDiametralDimension externalDiametralDimension = symbols2DContainer.AddDiametralDimension(externalCircle);
+            IDiametralDimension internalDiametralDimension = symbols2DContainer.AddDiametralDimension(internalCircle);
+
+            _sketch1.AddVariableToDimension(externalDiametralDimension, "v1", _externalDiameterVariable!.Name);
+            _sketch1.AddVariableToDimension(internalDiametralDimension, "v2", _internalDiameterVariable!.Name);
+
+            _sketch1.EndEdit();
+        }
+
+        public void EditSketch1()
+        {
+            _externalDiameterVariable!.Expression = PartModel.MainDiameter.ToString();
+            _internalDiameterVariable!.Expression = PartModel.CentralHoleDiameter.ToString();
+        }
+
+        public void ExtrudeSketch1()
+        {
+            _sketch1Extrusion = ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_bossExtrusion);
+
+            _sketch1Extrusion.Sketch = _sketch1;
+            _sketch1Extrusion.Depth[true] = 8;
+            _sketch1Extrusion.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
+            _sketch1Extrusion.ExtrusionType[true] = Kompas6Constants3D.ksEndTypeEnum.etBlind;
+
+            _sketch1Extrusion.Update();
+
+            _sketch1Extrusion.AddVariableToObject(_heightVariable!.Name, "Расстояние 1");
+        }
+
+        public void EditSketch1Extrusion()
+        {
+            _heightVariable!.Expression = PartModel.MainHeight.ToString();
+        }
+
+
+        public void AddSketch2()
+        {
+            _sketch2 = ModelContainer.Sketchs.Add();
+            _sketch2.Plane = Part7?.GetPlaneXOY();
+            _sketch2.Update();
+
+            IDrawingContainer sketch2DrawingContainer = _sketch2.GetDrawingContainer();
+
+            ICircle circle = sketch2DrawingContainer.AddCircle(new Point2DCrossApi(0, 0), 60 / 2);
+
+            ISymbols2DContainer symbols2DContainer = sketch2DrawingContainer.GetSymbols2DContainer();
+
+            IDiametralDimension diameterDimension = symbols2DContainer.AddDiametralDimension(circle);
+            _sketch2.AddVariableToDimension(diameterDimension, "v3", _socketDiameterVariable!.Name);
+
+            _sketch2.EndEdit();
+        }
+
+        public void EditSketch2()
+        {
+            _socketDiameterVariable!.Expression = PartModel.GlassSocketDiameter.ToString();
+        }
+
+        public void ExtrudeSketch2()
+        {
+            _sketch2Extrusion = (ICutExtrusion)ModelContainer.Extrusions.Add(Kompas6Constants3D.ksObj3dTypeEnum.o3d_cutExtrusion);
+            
+            _sketch2Extrusion.Sketch = _sketch2;
+            _sketch2Extrusion.Direction = Kompas6Constants3D.ksDirectionTypeEnum.dtMiddlePlane;
+            _sketch2Extrusion.Depth[true] = 6;
+            _sketch2Extrusion.Update();
+
+            _sketch2Extrusion.AddVariableToObject(_socketDiameterHeightVariable!.Name, "Расстояние 2");
+        }
+
+        public void EditSketch2Extrusion()
+        {
+            _socketDiameterHeightVariable!.Expression = PartModel.GlassSocketHeight.ToString();
+        }
+
+
+        public void AddSketch3()
+        {
+            IFace face = Part7!.GetFaces()
+                .Where(f => f.IsPlanar)
+                    .ToArray()
+                        .GetFaceByAxis(Axis3DCrossApi.OZ, 4);
+
+            _sketch3 = ModelContainer.Sketchs.Add();
+            _sketch3.Plane = face;
+            _sketch3.Update();
+
+            IDrawingContainer sketch3DrawingContainer = _sketch3.GetDrawingContainer();
+
+            IPoint point = sketch3DrawingContainer.AddPoint(new Point2DCrossApi(36, 0));
+
+            ILineSegment lineSegment = sketch3DrawingContainer.AddLineSegment(new Point2DCrossApi(0, 0), new Point2DCrossApi(36, 0), 3);
+            lineSegment.MakePointFixed(LinePoint.Start);
+            lineSegment.MakePointMerged(point, LinePoint.End);
+
+            ISymbols2DContainer symbols2DContainer = sketch3DrawingContainer.GetSymbols2DContainer();
+
+            ILineDimension lineDimension = symbols2DContainer.AddLineDimension(lineSegment);
+            _sketch3.AddVariableToDimension(lineDimension, "v4", $"{_screwHolesDistanceVariable!.Name}/2");
+
+            _sketch3.EndEdit();
+        }
+
+        public void EditSketch3()
+        {
+            _screwHolesDistanceVariable!.Expression = PartModel.ScrewHolesDistance.ToString();
+        }
+
+        public void AddScrewHoles()
+        {
+            IFace face = Part7!.GetFaces()
+                .Where(f => f.IsPlanar)
+                    .ToArray()
+                        .GetFaceByAxis(Axis3DCrossApi.OZ, 4);
+
+            _screwHole = ModelContainer.Holes3D.Add();
+            _screwHole.HoleType = ksHoleTypeEnum.ksHTBase;
+            _screwHole.ShowThread = true;
+
+            IVertex[] vertices = _sketch3!.GetVertices();
+
+            IHoleDisposal holeDisposal = (IHoleDisposal)_screwHole;
+
+            holeDisposal!.AssociationVertex = _sketch3!.GetVertices()
+                .Where(v => v.ToPoint() == new Point3DCrossApi(36, 0, 4))
+                    .First();
+            holeDisposal.BaseSurface = face;
+
+
+            IThread thread = _screwHole.Thread;
+            thread.AutoLenght = true;
+
+            IThreadsParameters threadsParameters = (IThreadsParameters)thread;
+            threadsParameters.Init("Метрическая резьба с крупным шагом ГОСТ 24705-2004", 8, 1.25);
+            thread.Update();
+
+            _screwHole.Update();
+
+            _circularPattern = (ICircularPattern)ModelContainer.FeaturePatterns.Add(ksObj3dTypeEnum.o3d_circularCopy);
+            _circularPattern.Axis = Part7!.GetOZ();
+            _circularPattern.Step2 = 360;
+            _circularPattern.Count2 = 4;
+            _circularPattern.AddInitialObjects(_screwHole);
+
+            _circularPattern.Update();
+
+            _circularPattern.AddVariableToObject(_countOfScrewHolesVariable!.Name, "N 2");
+        }
+
+        public void EditScrewHoles()
+        {
+            _countOfScrewHolesVariable!.Expression = PartModel.ScrewHolesCount.ToString();
+
+
+            IThread thread = _screwHole!.Thread;
+            thread.AutoLenght = true;
+
+            IThreadsParameters threadsParameters = (IThreadsParameters)thread;
+            threadsParameters.Init(PartModel.Thread.Standard, PartModel.Thread.NominalDiameter, PartModel.Thread.Pitch);
+            thread.Update();
+
+            _screwHole.Update();
+        }
+
+        public void AddRounding()
+        {
+            _chamfer = ModelContainer.Chamfers.Add();
+
+            _chamfer.Angle = 60;
+            _chamfer.Distance1 = 3;
+            _chamfer.BuildingType = ksChamferBuildingTypeEnum.ksChamferSideAngle;
+
+
+            IFace face = Part7!.GetFaces()
+             .Where(f => f.IsPlanar)
+                 .ToArray()
+                     .GetFaceByAxis(Axis3DCrossApi.OZ, 4);
+
+            _chamfer.BaseObjects = face.GetEdges()
+                .First(e => e.ToPoint() == new Point3DCrossApi(45, 0, 4));
+
+            _chamfer.Update();
+
+            _chamfer.AddVariableToObject(_chamferAngleVariable!.Name, "Угол");
+            _chamfer.AddVariableToObject(_chamferDistance1Variable!.Name, "Длина 1");
+        }
+        
+        public void EditRounding()
+        {
+            _chamferAngleVariable!.Expression = PartModel.Chamfer.Angle.ToString();
+            _chamferDistance1Variable!.Expression = PartModel.Chamfer.Length.ToString();
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            _externalDiameterVariable = Part7!.AddVariable("D", PartModel.MainDiameter, "Внешний диаметр корпуса");
+            _internalDiameterVariable = Part7!.AddVariable("D1", PartModel.CentralHoleDiameter, "Диаметр центрального отверстия");
+
+            _socketDiameterVariable = Part7!.AddVariable("D3", PartModel.GlassSocketDiameter, "Диаметр отсека под линзу");
+            _socketDiameterHeightVariable = Part7!.AddVariable("H2", PartModel.GlassSocketHeight, "Высота отсека под линзу");
+
+            _screwHolesDistanceVariable = Part7!.AddVariable("Ds", PartModel.ScrewHolesDistance, "Расстояние между отверстиями под винты");
+
+            _heightVariable = Part7!.AddVariable("H", PartModel.MainHeight, "Высота корпуса");
+
+            _countOfScrewHolesVariable = Part7!.AddVariable("n", PartModel.ScrewHolesCount, "Количество отверстий под винты");
+
+            _chamferAngleVariable = Part7!.AddVariable("alpha", PartModel.Chamfer.Angle, "Угол фаски");
+            _chamferDistance1Variable = Part7!.AddVariable("l1", PartModel.Chamfer.Length, "Длина фаски 1");
+        }
+    }
+}
