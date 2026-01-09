@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.Core.KompasDialogs
 {
-    public interface IDialogProvider
+    public interface IDialogsProvider
     {
         IColorDialog GetColorDialog();
 
