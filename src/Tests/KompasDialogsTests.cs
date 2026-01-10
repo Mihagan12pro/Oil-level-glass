@@ -3,7 +3,7 @@ using Oil_level_glass.COM.KompasDialogs;
 using Oil_level_glass.Core.Classic.Glass;
 using Oil_level_glass.Core.KompasDialogs;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Other;
+using Oil_level_glass.Model.Data.Materials;
 
 namespace Oil_level_glass.Tests
 {
@@ -13,6 +13,18 @@ namespace Oil_level_glass.Tests
 
         [Fact()]
         public void TestMaterial()
+        {
+            ComDialogsProvider dialogsProvider = new ComDialogsProvider();
+
+            IMaterialDialog materialDialog = dialogsProvider.GetMaterialDialog();
+
+            Rubber rubber = new Rubber();
+
+            materialDialog.SelectMaterial(rubber);
+        }
+
+        [Fact()]
+        public void TestColor()
         {
             ComGlassPartCreatorsFactory partCreatorsFactory = new ComGlassPartCreatorsFactory();
 

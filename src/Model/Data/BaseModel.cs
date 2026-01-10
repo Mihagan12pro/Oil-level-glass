@@ -3,7 +3,8 @@ using System.Reflection;
 
 namespace Oil_level_glass.Model.Data
 {
-    public abstract class BaseModel : IDataErrorInfo
+    public abstract class BaseModel 
+        : IDataErrorInfo
     {
         public virtual string this[string columnName]
         {
