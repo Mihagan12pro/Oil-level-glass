@@ -3,6 +3,7 @@ using Oil_level_glass.COM.KompasDialogs;
 using Oil_level_glass.Core.Classic.Glass;
 using Oil_level_glass.Core.KompasDialogs;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Model.Data.KompasFile;
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Operations;
 
@@ -11,6 +12,18 @@ namespace Oil_level_glass.Tests
     public class KompasDialogsTests
     {
         private readonly GlassModel _glassModel;
+
+        [Fact()]
+        public void TestFolders()
+        {
+            ComDialogsProvider dialogsProvider = new ComDialogsProvider();
+
+            var file = new AssemblyFile();
+
+            IFoldersDialog foldersDialog = dialogsProvider.GetFoldersDialog();
+
+            foldersDialog.SelectFolder(file);
+        }
 
         [Fact()]
         public void TestThread2()

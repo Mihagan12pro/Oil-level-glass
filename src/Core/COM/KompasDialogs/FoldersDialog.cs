@@ -9,12 +9,15 @@ namespace Oil_level_glass.COM.KompasDialogs
     {
         public void SelectFolder(KompasFile file)
         {
-            throw new NotImplementedException();
+            SelectFolder(file, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
         }
 
         public void SelectFolder(KompasFile file, string initialFolder)
         {
-            throw new NotImplementedException();
+            string result = applicationDialogs.ChoiceFolder(hwnd, initialFolder);
+
+            if (result != string.Empty)
+                file.Folder = result;
         }
 
         protected internal FoldersDialog(IApplication application) 
