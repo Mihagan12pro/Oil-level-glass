@@ -18,6 +18,10 @@
             string? oldTitle = Title;
             double oldDensity = Density;
 
+            Density = density;
+
+            Title = title;
+
             List<string> errors = new List<string>();
 
             if (hatchStyle != HatchStyle)
@@ -31,8 +35,8 @@
 
             if (errors.Count > 0)
             {
-                Density = density;
-                Title = title;
+                Density = oldDensity;
+                Title = oldTitle;
             }
 
             return errors;

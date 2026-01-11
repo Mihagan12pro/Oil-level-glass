@@ -1,5 +1,4 @@
 ﻿using Kompas6Constants;
-using Kompas6API5;
 using KompasAPI7;
 using Oil_level_glass.Core.KompasDialogs;
 using Oil_level_glass.Model.Data.Materials;
@@ -13,10 +12,17 @@ namespace Oil_level_glass.COM.KompasDialogs
         {
             ChoiceMaterialDialogParam dialogParam = (ChoiceMaterialDialogParam)applicationDialogs.GetDialogParam(KompasAPIObjectTypeEnum.ksObjectChoiceMaterialDialogParam);
 
-            applicationDialogs.ChoiceMaterial(hwnd, dialogParam);
+            if (!applicationDialogs.ChoiceMaterial(hwnd, dialogParam))
+                return;
 
-            material.Density = dialogParam.Density;
-            var a = material[nameof(material.Density)];
+            List<string> errors =  material.TryUpdate(dialogParam.Material, dialogParam.Density, dialogParam.HatchStyle);
+
+            if (errors.Count > 0)
+            {
+                string message = string.Empty;
+
+                application.MessageBoxEx("Был выбран неправильный материал для данного изделия!", "ОШИБКА!", 2);
+            }
         }
 
         protected internal MaterialDialog(IApplication application) : base(application)

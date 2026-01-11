@@ -18,9 +18,9 @@ namespace Oil_level_glass.Tests
 
             IMaterialDialog materialDialog = dialogsProvider.GetMaterialDialog();
 
-            Rubber rubber = new Rubber();
+            var material = new Glass();
 
-            materialDialog.SelectMaterial(rubber);
+            materialDialog.SelectMaterial(material);
         }
 
         [Fact()]
