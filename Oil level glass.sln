@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11312.210
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{754FC069-D67B-A9D7-50A1-8D1CA196D8F1}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{36D591C7-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sketches", "Sketches", "{097B336B-FBE1-424D-9188-8C561F6C2BC2}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Downloads\Oil-level-glass\Oil-level-glass\Class diagrams\Oil level glass Core.drawio = ..\..\..\..\Downloads\Oil-level-glass\Oil-level-glass\Class diagrams\Oil level glass Core.drawio
+		..\Downloads\Oil-level-glass\Oil-level-glass\Class diagrams\Oil level glass Core.drawio = ..\Downloads\Oil-level-glass\Oil-level-glass\Class diagrams\Oil level glass Core.drawio
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Realesed", "Realesed", "{A233B139-35F2-4A63-BDC7-252656E8B3A0}"
@@ -34,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.Tests", "src\Tests\Oil level glass.Tests.csproj", "{BE588ADC-0D2E-3421-0541-F006E13025C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "src\Shared\Shared.csproj", "{A1B42776-545A-45DE-90BF-783CBDFC5B8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A27D415A-E781-4514-AFD3-AA65566B9A99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,7 +73,12 @@ Global
 		{A233B139-35F2-4A63-BDC7-252656E8B3A0} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
 		{755CDF33-999E-573A-CEDF-7BE093830879} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{AEC100DD-5204-E3FC-26FE-A6C4E050FE66} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
+		{99EFDC32-04F3-4529-9D69-B9DEFC04A4F6} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
 		{C07F4D3B-3B73-FF09-EF28-914F61F3465D} = {05E07565-F61A-4FBC-8CE5-E3F9FC3A471C}
+		{05E07565-F61A-4FBC-8CE5-E3F9FC3A471C} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
+		{BE588ADC-0D2E-3421-0541-F006E13025C6} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
+		{A1B42776-545A-45DE-90BF-783CBDFC5B8E} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09E88832-B967-43DA-BE85-E0BC97BD4700}
