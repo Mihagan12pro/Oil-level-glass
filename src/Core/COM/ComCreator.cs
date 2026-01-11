@@ -1,5 +1,4 @@
 ﻿using Kompas6API5;
-using KompasAPI7;
 using NativeMethods;
 using Oil_level_glass.Core;
 

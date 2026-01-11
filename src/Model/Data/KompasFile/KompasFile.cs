@@ -6,7 +6,7 @@ namespace Oil_level_glass.Model.Data.KompasFile
     {
         public Name Name { get; }
     
-        public string ?Folder { get; set; }
+        public string ?Folder { get; set; } = string.Empty;
     
         public string ?Extension { get; init; }
 
