@@ -4,12 +4,38 @@ using Oil_level_glass.Core.Classic.Glass;
 using Oil_level_glass.Core.KompasDialogs;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Model.Data.Materials;
+using Oil_level_glass.Model.Data.Operations;
 
 namespace Oil_level_glass.Tests
 {
     public class KompasDialogsTests
     {
         private readonly GlassModel _glassModel;
+
+        [Fact()]
+        public void TestThread2()
+        {
+            ComDialogsProvider dialogsProvider = new ComDialogsProvider();
+
+            IThreadDialog threadDialog = dialogsProvider.GetThreadDialog();
+
+            ThreadModel threadModel = new ThreadModel();
+
+            threadDialog.SelectThread(threadModel, 20, true);
+        }
+
+
+        [Fact()]
+        public void TestThread1()
+        {
+            ComDialogsProvider dialogsProvider = new ComDialogsProvider();
+
+            IThreadDialog threadDialog = dialogsProvider.GetThreadDialog();
+
+            ThreadModel threadModel = new ThreadModel();
+
+            threadDialog.SelectThread(threadModel);
+        }
 
         [Fact()]
         public void TestMaterial()

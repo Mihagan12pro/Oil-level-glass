@@ -8,5 +8,7 @@ namespace Oil_level_glass.Core.KompasDialogs
     public interface IThreadDialog
     {
         void SelectThread(ThreadModel thread);
+
+        void SelectThread(ThreadModel thread, double maximumDiameter, bool isStrictly = false);
     }
 }

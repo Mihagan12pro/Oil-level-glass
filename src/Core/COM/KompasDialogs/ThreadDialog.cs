@@ -13,7 +13,47 @@ namespace Oil_level_glass.COM.KompasDialogs
 
         public void SelectThread(ThreadModel thread)
         {
-            throw new NotImplementedException();
+            ThreadDialogParam dialogParam = (ThreadDialogParam)applicationDialogs.GetDialogParam(Kompas6Constants.KompasAPIObjectTypeEnum.ksObjectThreadDialogParam);
+
+            applicationDialogs.SelectThread(hwnd, dialogParam);
+
+            thread.Standard = dialogParam.Standart;
+            thread.Pitch = dialogParam.P;
+            thread.NominalDiameter = dialogParam.NominalDiameter;
+        }
+
+        public void SelectThread(
+            ThreadModel thread,
+            double maximumDiameter, 
+            bool isStrictly = false)
+        {
+            ThreadDialogParam dialogParam = (ThreadDialogParam)applicationDialogs.GetDialogParam(Kompas6Constants.KompasAPIObjectTypeEnum.ksObjectThreadDialogParam);
+
+            applicationDialogs.SelectThread(hwnd, dialogParam);
+
+            bool isSuccess = true;
+
+            if (isStrictly)
+            {
+                if (dialogParam.NominalDiameter >= maximumDiameter)
+                    isSuccess = false;
+            }
+            else
+            {
+                if (dialogParam.NominalDiameter > maximumDiameter)
+                    isSuccess = false;
+            }
+
+            if (isSuccess)
+            {
+                thread.Standard = dialogParam.Standart;
+                thread.Pitch = dialogParam.P;
+                thread.NominalDiameter = dialogParam.NominalDiameter;
+
+                return;
+            }
+
+            application.MessageBoxEx("Была выбрана резьба со слишком большим номинальным диаметром!", "ОШИБКА!", 2);
         }
     }
 }
