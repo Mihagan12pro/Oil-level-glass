@@ -5,7 +5,7 @@
     {
         public double Density { get; set; }
     
-        public string? Title { get; set; }    
+        public string? Title { get; set; } = string.Empty;
     
         public double MinDensity { get; init; }
     

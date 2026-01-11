@@ -12,6 +12,12 @@ namespace Oil_level_glass.COM.KompasDialogs
         {
             ChoiceMaterialDialogParam dialogParam = (ChoiceMaterialDialogParam)applicationDialogs.GetDialogParam(KompasAPIObjectTypeEnum.ksObjectChoiceMaterialDialogParam);
 
+            if (material.Title != string.Empty && material.Density > 0)
+            {
+                dialogParam.Material = material.Title;
+                dialogParam.Density = material.Density;
+            }
+
             if (!applicationDialogs.ChoiceMaterial(hwnd, dialogParam))
                 return;
 

@@ -23,6 +23,7 @@ namespace Oil_level_glass.Tests
             IFoldersDialog foldersDialog = dialogsProvider.GetFoldersDialog();
 
             foldersDialog.SelectFolder(file);
+            foldersDialog.SelectFolder(file);
         }
 
         [Fact()]
@@ -34,7 +35,8 @@ namespace Oil_level_glass.Tests
 
             ThreadModel threadModel = new ThreadModel();
 
-            threadDialog.SelectThread(threadModel, 20, true);
+            threadDialog.SelectThread(threadModel, 20);
+            threadDialog.SelectThread(threadModel, 10, true);
         }
 
 
@@ -48,6 +50,7 @@ namespace Oil_level_glass.Tests
             ThreadModel threadModel = new ThreadModel();
 
             threadDialog.SelectThread(threadModel);
+            threadDialog.SelectThread(threadModel);
         }
 
         [Fact()]
@@ -58,6 +61,8 @@ namespace Oil_level_glass.Tests
             IMaterialsDialog materialDialog = dialogsProvider.GetMaterialsDialog();
 
             var material = new Glass();
+
+            materialDialog.SelectMaterial(material);
 
             materialDialog.SelectMaterial(material);
         }

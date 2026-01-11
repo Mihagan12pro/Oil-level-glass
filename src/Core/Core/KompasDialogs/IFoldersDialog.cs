@@ -8,7 +8,5 @@ namespace Oil_level_glass.Core.KompasDialogs
     public interface IFoldersDialog
     {
         void SelectFolder(KompasFile file);
-
-        void SelectFolder(KompasFile file, string initialFolder);
     }
 }

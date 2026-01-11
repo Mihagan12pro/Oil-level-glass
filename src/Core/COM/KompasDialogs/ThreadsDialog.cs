@@ -13,7 +13,18 @@ namespace Oil_level_glass.COM.KompasDialogs
 
         public void SelectThread(ThreadModel thread)
         {
-            ThreadDialogParam dialogParam = (ThreadDialogParam)applicationDialogs.GetDialogParam(Kompas6Constants.KompasAPIObjectTypeEnum.ksObjectThreadDialogParam);
+            ThreadDialogParam dialogParam = (ThreadDialogParam)applicationDialogs
+                .GetDialogParam(
+                    Kompas6Constants.KompasAPIObjectTypeEnum.ksObjectThreadDialogParam
+                );
+
+            if (thread.Standard != string.Empty && thread.NominalDiameter > 0 && thread.Pitch > 0)
+            {
+                dialogParam.P = thread.Pitch;
+                dialogParam.NominalDiameter = thread.NominalDiameter;
+                dialogParam.Standart = thread.Standard;
+            }
+     
 
             applicationDialogs.SelectThread(hwnd, dialogParam);
 
@@ -27,7 +38,17 @@ namespace Oil_level_glass.COM.KompasDialogs
             double maximumDiameter, 
             bool isStrictly = false)
         {
-            ThreadDialogParam dialogParam = (ThreadDialogParam)applicationDialogs.GetDialogParam(Kompas6Constants.KompasAPIObjectTypeEnum.ksObjectThreadDialogParam);
+            ThreadDialogParam dialogParam = (ThreadDialogParam)applicationDialogs
+                .GetDialogParam(
+                    Kompas6Constants.KompasAPIObjectTypeEnum.ksObjectThreadDialogParam
+                );
+
+            if (thread.Standard != string.Empty && thread.NominalDiameter > 0 && thread.Pitch > 0)
+            {
+                dialogParam.P = thread.Pitch;
+                dialogParam.NominalDiameter = thread.NominalDiameter;
+                dialogParam.Standart = thread.Standard;
+            }
 
             applicationDialogs.SelectThread(hwnd, dialogParam);
 
