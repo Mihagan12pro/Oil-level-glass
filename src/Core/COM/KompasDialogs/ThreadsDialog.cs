@@ -4,10 +4,10 @@ using Oil_level_glass.Model.Data.Operations;
 
 namespace Oil_level_glass.COM.KompasDialogs
 {
-    internal class ThreadDialog
-        : ComDialogBase, IThreadDialog
+    internal class ThreadsDialog
+        : ComDialogBase, IThreadsDialog
     {
-        protected internal ThreadDialog(IApplication application) : base(application)
+        protected internal ThreadsDialog(IApplication application) : base(application)
         {
         }
 

@@ -17,7 +17,7 @@ namespace Oil_level_glass.Tests
         {
             ComDialogsProvider dialogsProvider = new ComDialogsProvider();
 
-            IThreadDialog threadDialog = dialogsProvider.GetThreadDialog();
+            IThreadsDialog threadDialog = dialogsProvider.GetThreadsDialog();
 
             ThreadModel threadModel = new ThreadModel();
 
@@ -30,7 +30,7 @@ namespace Oil_level_glass.Tests
         {
             ComDialogsProvider dialogsProvider = new ComDialogsProvider();
 
-            IThreadDialog threadDialog = dialogsProvider.GetThreadDialog();
+            IThreadsDialog threadDialog = dialogsProvider.GetThreadsDialog();
 
             ThreadModel threadModel = new ThreadModel();
 
@@ -42,7 +42,7 @@ namespace Oil_level_glass.Tests
         {
             ComDialogsProvider dialogsProvider = new ComDialogsProvider();
 
-            IMaterialDialog materialDialog = dialogsProvider.GetMaterialDialog();
+            IMaterialsDialog materialDialog = dialogsProvider.GetMaterialsDialog();
 
             var material = new Glass();
 
@@ -65,7 +65,7 @@ namespace Oil_level_glass.Tests
 
             ComDialogsProvider dialogsProvider = new ComDialogsProvider();
 
-            IColorDialog colorDialog = dialogsProvider.GetColorDialog();
+            IColorsDialog colorDialog = dialogsProvider.GetColorsDialog();
             colorDialog.SelectColor(_glassModel.Appereance);
 
             glassPartCreator.EditAppearances();

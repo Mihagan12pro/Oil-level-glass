@@ -5,7 +5,7 @@ namespace Oil_level_glass.Core.KompasDialogs
     /// <summary>
     /// Dialog for selecting material
     /// </summary>
-    public interface IMaterialDialog
+    public interface IMaterialsDialog
     {
         void SelectMaterial(Material material);
     }

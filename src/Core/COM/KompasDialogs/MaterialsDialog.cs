@@ -5,8 +5,8 @@ using Oil_level_glass.Model.Data.Materials;
 
 namespace Oil_level_glass.COM.KompasDialogs
 {
-    internal class MaterialDialog
-        : ComDialogBase, IMaterialDialog
+    internal class MaterialsDialog
+        : ComDialogBase, IMaterialsDialog
     {
         public void SelectMaterial(Material material)
         {
@@ -25,7 +25,7 @@ namespace Oil_level_glass.COM.KompasDialogs
             }
         }
 
-        protected internal MaterialDialog(IApplication application) : base(application)
+        protected internal MaterialsDialog(IApplication application) : base(application)
         {
             Title = "ВЫБОР МАТЕРИАЛА";
         }

@@ -4,8 +4,8 @@ using Oil_level_glass.Model.Data.Other;
 
 namespace Oil_level_glass.COM.KompasDialogs
 {
-    internal class ColorDialog
-        : ComDialogBase, IColorDialog
+    internal class ColorsDialog
+        : ComDialogBase, IColorsDialog
     {
         public void SelectColor(Appereance appearance)
         {
@@ -20,7 +20,7 @@ namespace Oil_level_glass.COM.KompasDialogs
             appearance.Blue = values[2];
         }
 
-        protected internal ColorDialog(IApplication application) : base(application)
+        protected internal ColorsDialog(IApplication application) : base(application)
         {
             Title = "ВЫБОР ЦВЕТА";
         }

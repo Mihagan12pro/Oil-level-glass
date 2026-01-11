@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.Core.KompasDialogs
 {
-    public interface IColorDialog
+    public interface IColorsDialog
     {
         void SelectColor(Appereance appereance);
     }

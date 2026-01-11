@@ -2,10 +2,10 @@
 {
     public interface IDialogsProvider
     {
-        IColorDialog GetColorDialog();
+        IColorsDialog GetColorsDialog();
 
-        IMaterialDialog GetMaterialDialog();
+        IMaterialsDialog GetMaterialsDialog();
 
-        IThreadDialog GetThreadDialog();
+        IThreadsDialog GetThreadsDialog();
     }
 }

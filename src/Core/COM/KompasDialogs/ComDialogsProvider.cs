@@ -8,25 +8,32 @@ namespace Oil_level_glass.COM.KompasDialogs
     public class ComDialogsProvider
         : IDialogsProvider
     {
-        public IColorDialog GetColorDialog()
+        public IColorsDialog GetColorsDialog()
         {
             IApplication application = GetApplication();
 
-            return new ColorDialog(application);
+            return new ColorsDialog(application);
         }
 
-        public IMaterialDialog GetMaterialDialog()
+        public IMaterialsDialog GetMaterialsDialog()
         {
             IApplication application = GetApplication();
 
-            return new MaterialDialog(application);
+            return new MaterialsDialog(application);
         }
 
-        public IThreadDialog GetThreadDialog()
+        public IThreadsDialog GetThreadsDialog()
         {
             IApplication application = GetApplication();
 
-            return new ThreadDialog(application);
+            return new ThreadsDialog(application);
+        }
+
+        public IFoldersDialog GetFoldersDialog()
+        {
+            IApplication application = GetApplication();
+
+            return new FoldersDialog(application);
         }
 
         private IApplication GetApplication()
