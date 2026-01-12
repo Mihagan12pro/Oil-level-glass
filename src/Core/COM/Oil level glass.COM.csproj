@@ -14,20 +14,16 @@
 
   <ItemGroup>
     <Reference Include="Kompas6API5">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\Kompas6API5.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Dependencies\Kompas6API5.dll</HintPath>
     </Reference>
     <Reference Include="Kompas6Constants">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\Kompas6Constants.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Dependencies\Kompas6Constants.dll</HintPath>
     </Reference>
     <Reference Include="Kompas6Constants3D">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\Kompas6Constants3D.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Dependencies\Kompas6Constants3D.dll</HintPath>
     </Reference>
     <Reference Include="KompasAPI7">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v24 Study\SDK\Samples\CSharp\Common\KompasAPI7.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>Dependencies\KompasAPI7.dll</HintPath>
     </Reference>
   </ItemGroup>
 
