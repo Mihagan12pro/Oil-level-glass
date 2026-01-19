@@ -68,6 +68,23 @@ namespace KompasWPF
             WindowControlsGrid = GetRequiredTemplateChild<Grid>(nameof(WindowControlsGrid));
             HeaderBar = GetRequiredTemplateChild<Grid>("PART_HeaderBar");
 
+            switch(ResizeMode)
+            {
+                case ResizeMode.NoResize:
+                    {
+                        MinimizeButton.Visibility = Visibility.Collapsed;
+                        MaximizeButton.Visibility = Visibility.Collapsed;
+                        RestoreButton.Visibility = Visibility.Collapsed;
+                        break;
+                    }
+                case ResizeMode.CanMinimize:
+                    {
+                        MaximizeButton.IsEnabled = false;
+
+                        break;
+                    }
+            }
+
             _isTemplateApplied = true;
 
             if (IsLoaded)

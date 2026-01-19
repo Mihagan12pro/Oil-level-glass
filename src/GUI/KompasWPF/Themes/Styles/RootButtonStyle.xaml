@@ -33,6 +33,9 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#f0f0f0" />
             </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="TextElement.Foreground" Value="#FF838383"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
