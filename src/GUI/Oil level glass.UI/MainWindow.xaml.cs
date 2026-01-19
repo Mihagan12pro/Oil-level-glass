@@ -1,4 +1,5 @@
 ﻿using KompasWPF;
+using Oil_level_glass_UI.Windows.About;
 
 namespace Oil_level_glass_UI
 {
@@ -12,13 +13,13 @@ namespace Oil_level_glass_UI
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BtAbout_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            //Wizard3DWindow wizard3DWindow = new Wizard3DWindow();
-  
-            //wizard3DWindow.Owner = this;
+            AboutWindow window = new AboutWindow();
 
-            //wizard3DWindow.ShowDialog();
+            window.Owner = this;
+
+            window.ShowDialog();
         }
     }
 }
