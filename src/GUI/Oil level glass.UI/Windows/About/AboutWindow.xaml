@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.About"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         mc:Ignorable="d"
-        Title="О ПРОГРАММЕ" Height="450" Width="800" Style="{DynamicResource KompasWindowStyle}">
+        Title="О ПРОГРАММЕ" Height="450" Width="450" Style="{DynamicResource KompasWindowStyle}" ResizeMode="NoResize">
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom">

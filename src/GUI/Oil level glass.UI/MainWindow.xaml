@@ -37,7 +37,8 @@
                          Height="20" 
                          Margin="10 5"
                          VerticalAlignment="Bottom" 
-                         HorizontalAlignment="Right" Click="BtAbout_Click">
+                         HorizontalAlignment="Right"
+                         Command="{Binding ShowAboutCommand}">
                     </Button>
 
                     <Button 

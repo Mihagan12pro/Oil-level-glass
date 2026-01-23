@@ -1,4 +1,6 @@
 ﻿using KompasWPF;
+using Oil_level_glass.ViewModels;
+using Oil_level_glass_UI.Services.Windows;
 using Oil_level_glass_UI.Windows.About;
 
 namespace Oil_level_glass_UI
@@ -11,15 +13,12 @@ namespace Oil_level_glass_UI
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel(new WindowsService());
         }
 
         private void BtAbout_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            AboutWindow window = new AboutWindow();
-
-            window.Owner = this;
-
-            window.ShowDialog();
         }
     }
 }
