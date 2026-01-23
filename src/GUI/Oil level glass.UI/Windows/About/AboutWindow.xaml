@@ -6,12 +6,23 @@
         xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.About"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         mc:Ignorable="d"
-        Title="О ПРОГРАММЕ" Height="450" Width="450" Style="{DynamicResource KompasWindowStyle}" ResizeMode="NoResize">
+        Title="О ПРОГРАММЕ" Height="500" Width="500" Style="{DynamicResource KompasWindowStyle}" ResizeMode="NoResize">
     <Grid>
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Bottom">
-                
-            </StackPanel>
-        </DockPanel>
+        <StackPanel Margin="20 20 20 0" VerticalAlignment="Bottom">
+            <Border Height="405" BorderThickness="1" BorderBrush="Black">
+                <TextBlock Background="White">
+                    
+                </TextBlock>
+            </Border>
+            <Button 
+                Content="Закрыть"
+                Width="100"
+                Margin="0 10"
+                HorizontalAlignment="Right" 
+                Style="{StaticResource FormButton}"
+                VerticalAlignment="Top"
+                Height="20" Click="Button_Click">
+            </Button>
+        </StackPanel>
     </Grid>
 </kompas:KompasWindow>

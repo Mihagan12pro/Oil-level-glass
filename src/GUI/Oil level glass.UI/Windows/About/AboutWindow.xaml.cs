@@ -11,5 +11,10 @@ namespace Oil_level_glass_UI.Windows.About
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
