@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasWPF", "src\GUI\Kompas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI", "src\GUI\Oil level glass.UI\Oil level glass.UI.csproj", "{021BEE0D-9BDB-4169-18BB-C029B40407A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.ViewModels", "src\GUI\Oil level glass.ViewModels\Oil level glass.ViewModels.csproj", "{CF07BFC4-C63F-4C9F-B4AF-2850B938F7DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{021BEE0D-9BDB-4169-18BB-C029B40407A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{021BEE0D-9BDB-4169-18BB-C029B40407A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{021BEE0D-9BDB-4169-18BB-C029B40407A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF07BFC4-C63F-4C9F-B4AF-2850B938F7DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF07BFC4-C63F-4C9F-B4AF-2850B938F7DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF07BFC4-C63F-4C9F-B4AF-2850B938F7DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF07BFC4-C63F-4C9F-B4AF-2850B938F7DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{A1B42776-545A-45DE-90BF-783CBDFC5B8E} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
 		{ABD6F8BD-A1D9-9C9A-5084-0E7E1A910E71} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
 		{021BEE0D-9BDB-4169-18BB-C029B40407A9} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
+		{CF07BFC4-C63F-4C9F-B4AF-2850B938F7DD} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09E88832-B967-43DA-BE85-E0BC97BD4700}
