@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <Border BorderBrush="Gray" Grid.Row="0" BorderThickness="1">
-            <Image   Source="/Images/Oil level glass.png" Stretch="Fill"></Image>
+            <Image   Source="/Resources/Images/Oil level glass.png" Stretch="Fill"></Image>
         </Border>
 
         <Grid Grid.Row="1">
