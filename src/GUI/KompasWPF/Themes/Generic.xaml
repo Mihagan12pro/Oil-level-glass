@@ -3,11 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:KompasWPF">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/RootButtonStyle.xaml"></ResourceDictionary>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/FormButtonStyle.xaml"></ResourceDictionary>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/HelpButtonStyle.xaml"></ResourceDictionary>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/KompasTootTipStyle.xaml"></ResourceDictionary>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/Tab/KompasTabControlStyle.xaml"></ResourceDictionary>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/Tab/KompasTabItemStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/ControlsStyles.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Templates/KompasWindowTemplate.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

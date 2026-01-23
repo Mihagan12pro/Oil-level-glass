@@ -6,8 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/KompasWPF;component/Themes/Templates/KompasWindowTemplate.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Styles/Oil-level-glass-resources.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/KompasWPF;component/Themes/Generic.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

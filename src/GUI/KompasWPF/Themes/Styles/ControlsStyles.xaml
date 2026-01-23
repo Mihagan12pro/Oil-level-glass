@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/RootButtonStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/FormButtonStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/HelpButtonStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/KompasTootTipStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/Tab/KompasTabControlStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/Tab/KompasTabItemStyle.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
