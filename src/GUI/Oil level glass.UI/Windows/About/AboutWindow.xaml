@@ -7,10 +7,10 @@
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="О ПРОГРАММЕ" Height="500" Width="500" Style="{DynamicResource KompasWindowStyle}" ResizeMode="NoResize">
-    <Grid Loaded="Grid_Loaded">
+    <Grid>
         <StackPanel Margin="20 20 20 0" VerticalAlignment="Bottom">
             <Border Height="405" BorderThickness="1" BorderBrush="Black">
-                <DocumentViewer Name="dvAbout" Background="White">
+                <DocumentViewer Name="dvAbout" Background="White" Document="{Binding DocumentSource}">
 
                 </DocumentViewer>
             </Border>
