@@ -8,5 +8,6 @@
         <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/Tab/KompasTabControlStyle.xaml"></ResourceDictionary>
         <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/Tab/KompasTabItemStyle.xaml"></ResourceDictionary>
         <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/DocumentVieverStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/SliderStyles/SliderStyles.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

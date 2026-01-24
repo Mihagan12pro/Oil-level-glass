@@ -24,6 +24,7 @@
                 VerticalAlignment="Top"
                 Height="20" Click="btClose_Click">
             </Button>
+            <Slider Style="{DynamicResource ScalingSliderStyle}" Width="120"/>
         </StackPanel>
     </Grid>
 </kompas:KompasWindow>
