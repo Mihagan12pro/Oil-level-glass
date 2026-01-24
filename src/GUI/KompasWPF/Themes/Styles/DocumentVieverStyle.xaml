@@ -2,42 +2,48 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="clr-namespace:System.Windows.Documents;assembly=PresentationUI">
     
-    <Style x:Key="DocumentViewerStyle" BasedOn="{x:Null}" TargetType="{x:Type DocumentViewer}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="ContextMenu" Value="{DynamicResource {ComponentResourceKey ResourceId=PUIDocumentViewerContextMenu, TypeInTargetAssembly={x:Type ui:PresentationUIStyleResources}}}"/>
+    <Style x:Key="DocumentViewerStyle" 
+           BasedOn="{x:Null}"
+           TargetType="{x:Type DocumentViewer}">
+        <Setter Property="Foreground"
+          Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="Background"
+          Value="Transparent" />
+        <Setter Property="FocusVisualStyle"
+          Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DocumentViewer}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Focusable="False">
-                        <Grid Background="{TemplateBinding Background}" KeyboardNavigation.TabNavigation="Local">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                Focusable="False">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <ContentControl Grid.Column="0" Focusable="{TemplateBinding Focusable}" Grid.Row="0" Style="{DynamicResource {ComponentResourceKey ResourceId=PUIDocumentViewerToolBarStyleKey, TypeInTargetAssembly={x:Type ui:PresentationUIStyleResources}}}" TabIndex="0"/>
-                            <ScrollViewer x:Name="PART_ContentHost" Grid.Column="0" CanContentScroll="true" Focusable="{TemplateBinding Focusable}" HorizontalScrollBarVisibility="Auto" IsTabStop="true" Grid.Row="1" TabIndex="1"/>
-                            <DockPanel Grid.Row="1">
-                                <FrameworkElement DockPanel.Dock="Right" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
-                                <Rectangle Height="10" VerticalAlignment="top" Visibility="Visible">
-                                    <Rectangle.Fill>
-                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                            <LinearGradientBrush.GradientStops>
-                                                <GradientStopCollection>
-                                                    <GradientStop Color="#66000000" Offset="0"/>
-                                                    <GradientStop Color="Transparent" Offset="1"/>
-                                                </GradientStopCollection>
-                                            </LinearGradientBrush.GradientStops>
-                                        </LinearGradientBrush>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </DockPanel>
-                            <ContentControl x:Name="PART_FindToolBarHost" Grid.Column="0" Focusable="{TemplateBinding Focusable}" Grid.Row="2" TabIndex="2"/>
+                            <ToolBar ToolBarTray.IsLocked="True"
+                     KeyboardNavigation.TabNavigation="Continue" Background="Transparent">
+                                <Button Command="NavigationCommands.IncreaseZoom"
+                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                      Content="Zoom In" />
+                                <Button Command="NavigationCommands.DecreaseZoom"
+                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                      Content="Zoom Out" />
+                            </ToolBar>
+
+                            <ScrollViewer Grid.Row="1"
+                              CanContentScroll="true"
+                              HorizontalScrollBarVisibility="Auto"
+                              x:Name="PART_ContentHost"
+                              IsTabStop="true">
+                            </ScrollViewer>
+
+                            <ContentControl Grid.Row="2"
+                            x:Name="PART_FindToolBarHost" Background="Transparent">
+                                
+                            </ContentControl>
                         </Grid>
                     </Border>
                 </ControlTemplate>
