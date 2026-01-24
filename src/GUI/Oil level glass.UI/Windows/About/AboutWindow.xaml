@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel Margin="20 20 20 0" VerticalAlignment="Bottom">
             <Border Height="405" BorderThickness="1" BorderBrush="Black">
-                <DocumentViewer Name="dvAbout" Background="White" Document="{Binding DocumentSource}">
+                <DocumentViewer Style="{DynamicResource DocumentViewerStyle}" Name="dvAbout" Background="White" Document="{Binding DocumentSource}">
 
                 </DocumentViewer>
             </Border>
