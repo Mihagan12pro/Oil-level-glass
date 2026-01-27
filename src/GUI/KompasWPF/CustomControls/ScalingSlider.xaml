@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label></Label>
-            <Button Style="{StaticResource RoundButton}">-</Button>
-            <Slider Style="{StaticResource ScalingSliderStyle}" Width="80" HorizontalAlignment="Center"></Slider>
-            <Button Style="{StaticResource RoundButton}">+</Button>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="100">
+            <Label  HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="0" Width="35" Name="lblScaleDisplayer"></Label>
+            <Button Style="{StaticResource RoundButton}" Margin="3 0 5 0" Name="btMinimize" Click="btMinimize_Click" Content="-"></Button>
+            <Slider Style="{StaticResource ScalingSliderStyle}" Width="80" Height="19" Minimum="0" Maximum="100" Name="slrScaler" ValueChanged="slrScaler_ValueChanged"/>
+            <Button Style="{StaticResource RoundButton}" Margin="5 0" Name="btMaximize" Click="btMaximize_Click" Content="+"></Button>
         </StackPanel>
     </Grid>
 </UserControl>

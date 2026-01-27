@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.About"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
+        xmlns:kompasControl="clr-namespace:KompasWPF.CustomControls;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="О ПРОГРАММЕ" Height="500" Width="500" Style="{DynamicResource KompasWindowStyle}" ResizeMode="NoResize">
     <Grid>
@@ -14,6 +15,7 @@
 
                 </DocumentViewer>
             </Border>
+            <kompasControl:ScalingSlider></kompasControl:ScalingSlider>
             <Button 
                 Name="btClose"
                 Content="Закрыть"
@@ -24,7 +26,6 @@
                 VerticalAlignment="Top"
                 Height="20" Click="btClose_Click">
             </Button>
-            <Slider Style="{DynamicResource ScalingSliderStyle}" Width="120"/>
         </StackPanel>
     </Grid>
 </kompas:KompasWindow>

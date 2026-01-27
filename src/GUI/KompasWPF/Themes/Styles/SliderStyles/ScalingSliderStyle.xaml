@@ -10,7 +10,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                    <Rectangle Fill="{TemplateBinding Background}" Height="11" Width="{TemplateBinding Width}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

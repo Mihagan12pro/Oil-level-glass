@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KompasWPF.CustomControls
 {
@@ -20,9 +8,58 @@ namespace KompasWPF.CustomControls
     /// </summary>
     public partial class ScalingSlider : UserControl
     {
+        public static readonly DependencyProperty ValueProperty;
+
+        public int Value
+        {
+            get
+            {
+                return (int)GetValue(ValueProperty);
+            }
+            set 
+            { 
+                SetValue(ValueProperty, value);
+                lblScaleDisplayer.Content = $"{value} %";
+            }
+        }
+
+        private void btMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            if (slrScaler.Value >= 0)
+                slrScaler.Value -= 10;
+            else
+                slrScaler.Value = 0;
+        }
+
+        private void btMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (slrScaler.Value <= 90)
+                slrScaler.Value += 10;
+            else
+                slrScaler.Value = 100;
+        }
+
+        private void slrScaler_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Value = Convert.ToInt32(slrScaler.Value);
+        }
+
+
         public ScalingSlider()
         {
             InitializeComponent();
+
+            Value -= 10;
+        }
+
+        static ScalingSlider()
+        {
+            ValueProperty = DependencyProperty.Register(
+                nameof(Value),
+                typeof(int),
+                typeof(ScalingSlider),
+                new FrameworkPropertyMetadata(10)
+                );
         }
     }
 }

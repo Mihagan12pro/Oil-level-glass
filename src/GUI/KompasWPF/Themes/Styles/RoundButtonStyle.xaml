@@ -15,8 +15,10 @@
                                 </LinearGradientBrush>
                             </Ellipse.Fill>
                         </Ellipse>
-                        <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"/>
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        </ContentPresenter>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
