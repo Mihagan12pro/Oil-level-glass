@@ -15,8 +15,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DocumentViewer}">
                     <Border BorderThickness="{TemplateBinding BorderThickness}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                Focusable="False">
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        Focusable="False">
                         <Grid KeyboardNavigation.TabNavigation="Local">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -30,22 +30,7 @@
                               x:Name="PART_ContentHost"
                               IsTabStop="true"
                               Background="Transparent">
-                        </ScrollViewer>
-                            <StackPanel Name="PART_ControlPanel" Orientation="Horizontal" Grid.Row="2">
-                                <ContentControl x:Name="PART_FindToolBarHost" Background="Transparent" HorizontalAlignment="Left">
-                                    
-                                </ContentControl>
-                                
-                                <ToolBar ToolBarTray.IsLocked="True" HorizontalAlignment="Right"
-                                     KeyboardNavigation.TabNavigation="Continue" Background="Transparent">
-                                    <Button Command="NavigationCommands.IncreaseZoom"
-                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                      Content="Zoom In" />
-                                    <Button Command="NavigationCommands.DecreaseZoom"
-                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                      Content="Zoom Out" />
-                                </ToolBar>
-                            </StackPanel>
+                            </ScrollViewer>
                         </Grid>
                     </Border>
                 </ControlTemplate>

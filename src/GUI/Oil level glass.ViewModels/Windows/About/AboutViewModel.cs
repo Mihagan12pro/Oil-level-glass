@@ -6,6 +6,20 @@ namespace Oil_level_glass.ViewModels.Windows.About
 {
     public class AboutViewModel : ViewModelBase
     {
+        private double _scaleParameter;
+        public double ScaleParameter
+        {
+            get 
+            {
+                return _scaleParameter; 
+            }
+            set
+            {
+                _scaleParameter = value; 
+                OnPropertyChanged(nameof(ScaleParameter));
+            }
+        }
+
         public IDocumentPaginatorSource DocumentSource
         {
             get
@@ -21,6 +35,8 @@ namespace Oil_level_glass.ViewModels.Windows.About
         public AboutViewModel(string aboutPath)
         {
             _aboutPath = aboutPath;
+
+            ScaleParameter = 20;
         }
     }
 }

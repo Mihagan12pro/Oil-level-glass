@@ -25,18 +25,18 @@ namespace KompasWPF.CustomControls
 
         private void btMinimize_Click(object sender, RoutedEventArgs e)
         {
-            if (slrScaler.Value >= 0)
-                slrScaler.Value -= 10;
+            if (Value >= 10)
+                Value -= 10;
             else
-                slrScaler.Value = 0;
+                Value = 0;
         }
 
         private void btMaximize_Click(object sender, RoutedEventArgs e)
         {
-            if (slrScaler.Value <= 90)
-                slrScaler.Value += 10;
+            if (Value <= 90)
+                Value += 10;
             else
-                slrScaler.Value = 100;
+                Value = 100;
         }
 
         private void slrScaler_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
