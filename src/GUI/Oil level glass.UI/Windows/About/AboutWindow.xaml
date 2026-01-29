@@ -15,11 +15,13 @@
                 Style="{DynamicResource DocumentViewerStyle}" 
                 Background="Transparent"
                 Document="{Binding DocumentSource}"
+                Zoom="{Binding ScaleParameter}"
                 Height="393" Margin="0 10">
             </DocumentViewer>
             
             <kompasControl:ScalingSlider
-                Width="171"
+                Width="172"
+                SliderWidth="80"
                 HorizontalAlignment="Right" 
                 Value="{Binding ScaleParameter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             </kompasControl:ScalingSlider>

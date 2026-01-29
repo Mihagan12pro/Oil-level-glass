@@ -8,7 +8,29 @@ namespace KompasWPF.CustomControls
     /// </summary>
     public partial class ScalingSlider : UserControl
     {
-        public static readonly DependencyProperty ValueProperty;
+        public double ButtonDiameter
+        {
+            get
+            {
+                return (double)GetValue(SliderWidthProperty);
+            }
+            set
+            {
+                SetValue(SliderWidthProperty, value);
+            }
+        }
+
+        public double SliderWidth
+        {
+            get
+            {
+                return (double)GetValue(SliderWidthProperty);
+            }
+            set
+            {
+                SetValue(SliderWidthProperty, value);
+            }
+        }
 
         public int Value
         {
@@ -22,6 +44,7 @@ namespace KompasWPF.CustomControls
                 lblScaleDisplayer.Content = $"{value} %";
             }
         }
+
 
         private void btMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -45,21 +68,33 @@ namespace KompasWPF.CustomControls
         }
 
 
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
+            nameof(Value),
+            typeof(int),
+            typeof(ScalingSlider),
+            new FrameworkPropertyMetadata(10)
+            );
+
+        public static readonly DependencyProperty SliderWidthProperty = DependencyProperty.Register(
+            nameof(SliderWidth),
+            typeof(double),
+            typeof(ScalingSlider),
+            new FrameworkPropertyMetadata(80.0)
+            );
+
+        public static readonly DependencyProperty ButtonDiameterProperty = DependencyProperty.Register(
+            nameof(ButtonDiameter),
+            typeof(double),
+            typeof(ScalingSlider),
+            new FrameworkPropertyMetadata(24.0)
+            );
+
+
         public ScalingSlider()
         {
             InitializeComponent();
 
             Value -= 10;
-        }
-
-        static ScalingSlider()
-        {
-            ValueProperty = DependencyProperty.Register(
-                nameof(Value),
-                typeof(int),
-                typeof(ScalingSlider),
-                new FrameworkPropertyMetadata(10)
-                );
         }
     }
 }

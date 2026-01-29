@@ -11,9 +11,34 @@
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="100">
             <Label  HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="0" Width="35" Name="lblScaleDisplayer"></Label>
-            <Button Style="{StaticResource RoundButton}" Margin="3 0 5 0" Name="btMinimize" Click="btMinimize_Click" Content="-"></Button>
-            <Slider Style="{StaticResource ScalingSliderStyle}" Value="{Binding ElementName=scaleSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Width="80" Height="19" Minimum="0" Maximum="100" Name="slrScaler" ValueChanged="slrScaler_ValueChanged"/>
-            <Button Style="{StaticResource RoundButton}" Margin="5 0" Name="btMaximize" Click="btMaximize_Click" Content="+"></Button>
+            <Button 
+                Style="{StaticResource RoundButton}" 
+                Margin="3 0 5 0"
+                Name="btMinimize" 
+                Click="btMinimize_Click"
+                Content="-" 
+                Width="{Binding ElementName=scaleSlider, Path=ButtonDiameter}" 
+                Height="{Binding ElementName=scaleSlider, Path=ButtonDiameter}">
+            </Button>
+            <Slider 
+                Style="{StaticResource ScalingSliderStyle}"
+                Value="{Binding ElementName=scaleSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" 
+                Width="{Binding ElementName=scaleSlider, Path=SliderWidth}"
+                Height="19"
+                Minimum="0" 
+                Maximum="100" 
+                Name="slrScaler" 
+                ValueChanged="slrScaler_ValueChanged">
+            </Slider>
+            <Button 
+                Style="{StaticResource RoundButton}"
+                Margin="5 0" 
+                Name="btMaximize" 
+                Click="btMaximize_Click"
+                Content="+" 
+                Width="{Binding ElementName=scaleSlider, Path=ButtonDiameter}"
+                Height="{Binding ElementName=scaleSlider, Path=ButtonDiameter}">
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
