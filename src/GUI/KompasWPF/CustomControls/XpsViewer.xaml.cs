@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KompasWPF.CustomControls
 {
@@ -20,6 +9,24 @@ namespace KompasWPF.CustomControls
     /// </summary>
     public partial class XpsViewer : UserControl
     {
+        public IDocumentPaginatorSource Document
+        {
+            get
+            {
+                return (IDocumentPaginatorSource)GetValue(DocumentProperty);
+            }
+            set
+            {
+                SetValue(DocumentProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty DocumentProperty = DependencyProperty.Register(
+            nameof(Document),
+            typeof(IDocumentPaginatorSource),
+            typeof(XpsViewer)
+            );
+
         public XpsViewer()
         {
             InitializeComponent();

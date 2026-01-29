@@ -5,12 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KompasWPF.CustomControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="400">
+             d:DesignHeight="420" d:DesignWidth="420"  Name="xpsViewver">
     <Grid>
-        <StackPanel>
-            <DocumentViewer Height="393" Style="{StaticResource DocumentViewerStyle}" HorizontalAlignment="Center">
-                
-            </DocumentViewer>
-        </StackPanel>    
+        <DockPanel VerticalAlignment="Center" Height="420">
+            <DocumentViewer 
+                DockPanel.Dock="Top" 
+                Height="366" 
+                Style="{StaticResource DocumentViewerStyle}"
+                Document="{Binding ElementName=xpsViewver, Path=Document}"/>
+            <DockPanel 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Bottom"
+                Margin="20 10 20 10">
+                <local:ScalingSlider 
+                    DockPanel.Dock="Bottom"
+                    Height="30"
+                    Width="175" 
+                    HorizontalAlignment="Right">
+                </local:ScalingSlider>
+            </DockPanel>
+        </DockPanel>
     </Grid>
 </UserControl>
