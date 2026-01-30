@@ -32,9 +32,9 @@ namespace KompasWPF.UserControls
             InitializeComponent();
         }
 
-        private void XpsDocumentViewer_Zooming()
+        private void XpsDocumentViewer_Zooming(object sender, RoutedEventArgs e)
         {
-            
+            Console.WriteLine();
         }
     }
 }

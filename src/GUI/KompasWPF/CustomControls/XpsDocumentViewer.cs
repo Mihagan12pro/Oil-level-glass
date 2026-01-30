@@ -1,25 +1,41 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace KompasWPF.CustomControls
 {
     public partial class XpsDocumentViewer : DocumentViewer
     {
-        public delegate void ZoomingHandler();
+        public static readonly RoutedEvent ZoomingEvent = EventManager.RegisterRoutedEvent(
+            name: "Zooming",
+            routingStrategy: RoutingStrategy.Bubble,
+            handlerType: typeof(RoutedEventHandler),
+            ownerType: typeof(XpsDocumentViewer));
 
-        public event ZoomingHandler? Zooming;
+        public event RoutedEventHandler Zooming
+        {
+            add { AddHandler(ZoomingEvent, value); }
+            remove { RemoveHandler(ZoomingEvent, value); }
+        }
 
         protected override void OnIncreaseZoomCommand()
         {
             base.OnIncreaseZoomCommand();
 
-            Zooming?.Invoke();
+            RaiseCustomRoutedEvent();
         }
 
         protected override void OnDecreaseZoomCommand()
         {
             base.OnDecreaseZoomCommand();
 
-            Zooming?.Invoke();
+            RaiseCustomRoutedEvent();
+        }
+
+        private void RaiseCustomRoutedEvent()
+        {
+            RoutedEventArgs routedEventArgs = new(routedEvent: ZoomingEvent);
+
+            RaiseEvent(routedEventArgs);
         }
     }
 }
