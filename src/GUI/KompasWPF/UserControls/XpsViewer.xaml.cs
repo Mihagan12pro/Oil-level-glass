@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using KompasWPF.CustomControls;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 
@@ -34,7 +35,9 @@ namespace KompasWPF.UserControls
 
         private void XpsDocumentViewer_Zooming(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine();
+            XpsDocumentViewer viewer = (XpsDocumentViewer)sender;
+
+            slrScaler.Value = Convert.ToInt32(Math.Round(viewer.Zoom, 0));
         }
     }
 }

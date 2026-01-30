@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KompasWPF.UserControls"
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              d:DesignHeight="450"
              d:DesignWidth="800"
@@ -15,15 +16,14 @@
                 Style="{StaticResource RoundButton}" 
                 Margin="3 0 5 0"
                 Name="btMinimize" 
-                Click="btMinimize_Click"
-                Content="-" 
-                Width="{Binding ElementName=scaleSlider, Path=ButtonDiameter}" 
-                Height="{Binding ElementName=scaleSlider, Path=ButtonDiameter}">
+                Click="btMinimize_Click">
+                <icon:PackIconMaterial Kind="Minus" Width="8"/>
             </Button>
             <Slider 
                 Style="{StaticResource ScalingSliderStyle}"
                 Value="{Binding ElementName=scaleSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" 
                 Width="{Binding ElementName=scaleSlider, Path=SliderWidth}"
+                MinWidth="80"
                 Height="19"
                 Minimum="0" 
                 Maximum="100" 
@@ -34,10 +34,8 @@
                 Style="{StaticResource RoundButton}"
                 Margin="5 0" 
                 Name="btMaximize" 
-                Click="btMaximize_Click"
-                Content="+" 
-                Width="{Binding ElementName=scaleSlider, Path=ButtonDiameter}"
-                Height="{Binding ElementName=scaleSlider, Path=ButtonDiameter}">
+                Click="btMaximize_Click">
+                <icon:PackIconMaterial Kind="Plus" Width="8"/>
             </Button>
         </StackPanel>
     </Grid>
