@@ -41,7 +41,7 @@ public partial class ScalingSlider : UserControl
         set 
         { 
             SetValue(ValueProperty, value);
-            lblScaleDisplayer.Content = $"{value} %";
+            RaiseScalingEvent();
         }
     }
 
@@ -88,6 +88,28 @@ public partial class ScalingSlider : UserControl
         typeof(ScalingSlider),
         new FrameworkPropertyMetadata(24.0)
         );
+
+
+    public static readonly RoutedEvent ScalingEvent = EventManager.RegisterRoutedEvent(
+        "Scaling",
+        RoutingStrategy.Bubble,
+        typeof(RoutedEventHandler),
+        typeof(ScalingSlider));
+
+    public event RoutedEventHandler Scaling
+    {
+        add { AddHandler(ScalingEvent, value); }
+        remove { RemoveHandler(ScalingEvent, value); }
+    }
+
+
+    private void RaiseScalingEvent()
+    {
+        lblScaleDisplayer.Content = $"{Value} %";
+
+        RoutedEventArgs routedEventArgs = new RoutedEventArgs(ScalingEvent);
+        RaiseEvent(routedEventArgs);
+    }
 
 
     public ScalingSlider()

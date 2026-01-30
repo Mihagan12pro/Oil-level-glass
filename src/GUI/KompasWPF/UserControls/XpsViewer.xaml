@@ -10,6 +10,7 @@
     <Grid>
         <DockPanel VerticalAlignment="Center" Height="420">
             <custom:XpsDocumentViewer 
+                x:Name="Viewer"
                 DockPanel.Dock="Top" 
                 Height="366"
                 Style="{StaticResource DocumentViewerStyle}"
@@ -20,11 +21,12 @@
                 VerticalAlignment="Bottom"
                 Margin="20 10 20 10">
                 <local:ScalingSlider 
-                    x:Name="slrScaler"
+                    x:Name="SlrScaler"
                     DockPanel.Dock="Bottom"
                     Height="30"
                     Width="175" 
-                    HorizontalAlignment="Right">
+                    HorizontalAlignment="Right" 
+                    Scaling="SlrScaler_Scaling">
                 </local:ScalingSlider>
             </DockPanel>
         </DockPanel>

@@ -37,7 +37,14 @@ namespace KompasWPF.UserControls
         {
             XpsDocumentViewer viewer = (XpsDocumentViewer)sender;
 
-            slrScaler.Value = Convert.ToInt32(Math.Round(viewer.Zoom, 0));
+            SlrScaler.Value = Convert.ToInt32(Math.Round(viewer.Zoom, 0));
+        }
+
+        private void SlrScaler_Scaling(object sender, RoutedEventArgs e)
+        {
+            ScalingSlider slider = (ScalingSlider)sender;
+
+            Viewer.Zoom = slider.Value;
         }
     }
 }

@@ -21,17 +21,17 @@ namespace KompasWPF.CustomControls
         {
             base.OnIncreaseZoomCommand();
 
-            RaiseCustomRoutedEvent();
+            RaiseZoomingRoutedEvent();
         }
 
         protected override void OnDecreaseZoomCommand()
         {
             base.OnDecreaseZoomCommand();
 
-            RaiseCustomRoutedEvent();
+            RaiseZoomingRoutedEvent();
         }
 
-        private void RaiseCustomRoutedEvent()
+        private void RaiseZoomingRoutedEvent()
         {
             RoutedEventArgs routedEventArgs = new(routedEvent: ZoomingEvent);
 
