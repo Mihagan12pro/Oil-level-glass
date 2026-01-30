@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.About"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
-        xmlns:kompasControl="clr-namespace:KompasWPF.CustomControls;assembly=KompasWPF"
+        xmlns:kompasControl="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="О ПРОГРАММЕ" Height="510" Width="510" Style="{DynamicResource KompasWindowStyle}" ResizeMode="NoResize">
     <Grid Margin="0 10 0 0">

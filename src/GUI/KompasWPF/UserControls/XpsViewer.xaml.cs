@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Documents;
 
-namespace KompasWPF.CustomControls
+namespace KompasWPF.UserControls
 {
     /// <summary>
     /// Interaction logic for XpsViewer.xaml
