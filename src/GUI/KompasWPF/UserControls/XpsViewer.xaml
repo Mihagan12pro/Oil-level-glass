@@ -13,7 +13,7 @@
                 DockPanel.Dock="Top" 
                 Height="366"
                 Style="{StaticResource DocumentViewerStyle}"
-                Document="{Binding ElementName=xpsViewver, Path=Document}">
+                Document="{Binding ElementName=xpsViewver, Path=Document}" Zooming="XpsDocumentViewer_Zooming">
             </custom:XpsDocumentViewer>
             <DockPanel 
                 HorizontalAlignment="Stretch" 

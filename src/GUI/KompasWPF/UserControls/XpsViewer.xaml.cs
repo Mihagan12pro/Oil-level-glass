@@ -31,5 +31,10 @@ namespace KompasWPF.UserControls
         {
             InitializeComponent();
         }
+
+        private void XpsDocumentViewer_Zooming()
+        {
+            
+        }
     }
 }
