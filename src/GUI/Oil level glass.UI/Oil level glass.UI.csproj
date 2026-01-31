@@ -11,11 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\appIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KompasWPF\KompasWPF.csproj" />
     <ProjectReference Include="..\Oil level glass.ViewModels\Oil level glass.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\appIcon.ico" />
     <Resource Include="Resources\Images\Oil level glass.png" />
   </ItemGroup>
 

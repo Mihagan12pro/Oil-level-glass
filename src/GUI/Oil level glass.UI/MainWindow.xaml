@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         mc:Ignorable="d"
-        Title="МАСТЕР СМОТРОВЫХ ЛЮЧКОВ" MinHeight="450" MinWidth="450" Height="450" Width="620" Style="{DynamicResource KompasWindowStyle}" ResizeMode="NoResize">
+        Title="МАСТЕР СМОТРОВЫХ ЛЮЧКОВ" 
+        MinHeight="450"
+        MinWidth="450" 
+        Height="450"
+        Width="620" 
+        Style="{DynamicResource KompasWindowStyle}" 
+        ResizeMode="NoResize" Icon="/Resources/Images/appIcon.ico">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
