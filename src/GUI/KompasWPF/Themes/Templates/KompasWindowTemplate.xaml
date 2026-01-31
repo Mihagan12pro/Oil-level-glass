@@ -3,7 +3,7 @@
                     xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/RootButtonStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/ButtonStyles/RootButtonStyle.xaml"></ResourceDictionary>
         <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/KompasTootTipStyle.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
     
@@ -62,8 +62,7 @@
                                             Panel.ZIndex="0"
                                             IsEnabled="{TemplateBinding IsActive}">
                                         </TextBlock>
-
-
+                                        
                                         <Grid x:Name="WindowControlsGrid" Grid.Column="2" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="30"/>

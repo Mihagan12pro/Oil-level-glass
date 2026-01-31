@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:KompasWPF">
 
         <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/RootButtonStyle.xaml"></ResourceDictionary>
+            <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/ButtonStyles/RootButtonStyle.xaml"></ResourceDictionary>
             <ResourceDictionary Source="/KompasWPF;component/Themes/Styles/KompasTootTipStyle.xaml"></ResourceDictionary>
         </ResourceDictionary.MergedDictionaries>
 
