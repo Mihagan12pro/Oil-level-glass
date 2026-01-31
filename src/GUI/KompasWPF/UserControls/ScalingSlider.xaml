@@ -10,13 +10,28 @@
              d:DesignWidth="800"
              Name="scaleSlider">
     <Grid>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="100">
-            <Label  HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="0" Width="35" Name="lblScaleDisplayer"></Label>
+        <StackPanel 
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" 
+            MinWidth="100">
+            <Label  
+                HorizontalContentAlignment="Right" 
+                VerticalContentAlignment="Center" 
+                Padding="0" 
+                Width="35"
+                Name="lblScaleDisplayer">
+            </Label>
             <Button 
                 Style="{StaticResource RoundButton}" 
                 Margin="3 0 5 0"
                 Name="btMinimize" 
                 Click="btMinimize_Click">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource KompasToolTip}" Width="50" Height="25" FontSize="10" HorizontalAlignment="Center">
+                        Мельче
+                    </ToolTip>
+                </Button.ToolTip>
                 <icon:PackIconMaterial Kind="Minus" Width="8"/>
             </Button>
             <Slider 
@@ -35,6 +50,11 @@
                 Margin="5 0" 
                 Name="btMaximize" 
                 Click="btMaximize_Click">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource KompasToolTip}" Width="50" Height="25" FontSize="10" HorizontalAlignment="Center">
+                        Крупнее
+                    </ToolTip>
+                </Button.ToolTip>
                 <icon:PackIconMaterial Kind="Plus" Width="8"/>
             </Button>
         </StackPanel>

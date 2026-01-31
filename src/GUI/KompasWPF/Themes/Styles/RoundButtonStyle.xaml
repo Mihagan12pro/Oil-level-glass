@@ -6,8 +6,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Ellipse Stroke="#7d7d7d"
-                         StrokeThickness="1">
+                        <Ellipse 
+                            Stroke="#7d7d7d"
+                            StrokeThickness="1"
+                            x:Name="ellipse">
                             <Ellipse.Fill>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                     <GradientStop Color="#f7f7f7" Offset="0.3" />
@@ -20,13 +22,63 @@
                             VerticalAlignment="Center">
                         </ContentPresenter>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter 
+                               TargetName="ellipse" 
+                               Property="Stroke"
+                               Value="#cfd0d0">
+                            </Setter>
+                            <Setter TargetName="ellipse" Property="Fill">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#d0d0d0" Offset="0.3" />
+                                        <GradientStop Color="#f7f7f7" Offset="0.8" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter 
+                                TargetName="ellipse" 
+                                Property="Stroke"
+                                Value="#bababa">
+                            </Setter>
+                            <Setter TargetName="ellipse" Property="Fill">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#dcdcdc" Offset="0.0"></GradientStop>
+                                        <GradientStop Color="#e3e3e3" Offset="0.25" ></GradientStop>
+                                        <GradientStop Color="#e0e0e0" Offset="0.75"></GradientStop>
+                                        <GradientStop Color="#dfdfdf" Offset="1.0"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Padding" Value="0">
+        
+        <Setter 
+            Property="Padding" 
+            Value="0">
         </Setter>
-        <Setter Property="Width" Value="15"></Setter>
-        <Setter Property="Height" Value="15"></Setter>
-        <Setter Property="FontSize" Value="5"></Setter>
+        
+        <Setter 
+            Property="Width" 
+            Value="15">
+        </Setter>
+        
+        <Setter 
+            Property="Height" 
+            Value="15">
+        </Setter>
+
+        <Setter 
+            Property="FontSize"
+            Value="5">
+        </Setter>
     </Style>
 </ResourceDictionary>
