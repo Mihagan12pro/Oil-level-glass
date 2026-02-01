@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="KompasWPF.UserControls.XpsViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KompasWPF.UserControls"
+             xmlns:custom="clr-namespace:KompasWPF.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="420" d:DesignWidth="420"  Name="xpsViewver">
+    <Grid>
+        <DockPanel VerticalAlignment="Center" Height="420">
+            <custom:XpsDocumentViewer 
+                x:Name="Viewer"
+                DockPanel.Dock="Top" 
+                Height="366"
+                Style="{StaticResource DocumentViewerStyle}"
+                Document="{Binding ElementName=xpsViewver, Path=Document}" Zooming="XpsDocumentViewer_Zooming">
+            </custom:XpsDocumentViewer>
+            <DockPanel 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Bottom"
+                Margin="20 10 20 10">
+                <local:ScalingSlider 
+                    x:Name="SlrScaler"
+                    DockPanel.Dock="Bottom"
+                    Height="30"
+                    Width="175" 
+                    HorizontalAlignment="Right" 
+                    Scaling="SlrScaler_Scaling">
+                </local:ScalingSlider>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>
