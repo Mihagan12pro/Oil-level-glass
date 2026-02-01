@@ -7,10 +7,33 @@
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
-        Height="450"
-        Width="800" 
-        Style="{DynamicResource KompasWindowStyle}">
+        Height="700"
+        Width="600" 
+        Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Grid>
-        
+        <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" Width="600" HorizontalAlignment="Left">
+            <TabItem 
+                Style="{StaticResource KompasTabItem}"
+                Height="20"
+                Header="Главная" 
+                Margin="-1,-1,0,1"
+                Name="tiMain">
+                
+            </TabItem>
+            <TabItem 
+                Style="{StaticResource KompasTabItem}"
+                Height="20"
+                Width="100"
+                Header="Материалы"
+                Name="tiMaterials">
+            </TabItem>
+            <TabItem 
+                Style="{StaticResource KompasTabItem}" 
+                Height="20"
+                Width="100" 
+                Header="Сохранение"
+                Name="tiSaving">
+            </TabItem>
+        </TabControl>
     </Grid>
 </kompas:KompasWindow>
