@@ -7,11 +7,22 @@ namespace Oil_level_glass.ViewModels
     {
         private readonly IWindowsService _windowsService;
 
-        public RelayCommand ShowAboutCommand
+        public RelayCommand ShowWizard3dCommand
         {
             get
             {
                 return new RelayCommand(obj => 
+                {
+                    _windowsService.ShowWizard3dWindow();
+                });
+            }
+        }
+
+        public RelayCommand ShowAboutCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
                 {
                     _windowsService.ShowAboutWindow();
                 });

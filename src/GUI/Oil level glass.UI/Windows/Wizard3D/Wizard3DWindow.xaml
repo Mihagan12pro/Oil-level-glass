@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.Wizard3D"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
         mc:Ignorable="d"
-        Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" Height="450" Width="800" Style="{DynamicResource KompasWindowStyle}">
+        Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
+        Height="450"
+        Width="800" 
+        Style="{DynamicResource KompasWindowStyle}">
     <Grid>
         
     </Grid>
