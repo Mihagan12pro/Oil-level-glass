@@ -46,11 +46,24 @@
         {
             string error = string.Empty;
 
-            if (columnName == nameof(Density))
-                error = CheckRange(columnName, MinDensity, MaxDensity, false);
+            switch(columnName)
+            {
+                case nameof(Title):
+                    { 
+                        if (string.IsNullOrEmpty(Title))
+                            error = "Material title can't be empty string!";
+                            break;
+                    }
 
-            else if (columnName == nameof(Title))
-                error = CheckEmptyString(columnName);
+                case nameof(Density):
+                    {
+                        if (MaxDensity < Density)
+                            error = "Material density can't be greater than max density for this material class!";
+                        else if (MinDensity > Density)
+                            error = "Material density must be greater than min density for this class!";
+                            break;
+                    }
+            }
 
             return error;
         }

@@ -32,7 +32,7 @@ namespace Oil_level_glass.Model.Data.Other
 
         protected override string CheckField(string columnName)
         {
-            throw new NotImplementedException();
+            return string.Empty;
         }
     }
 }
