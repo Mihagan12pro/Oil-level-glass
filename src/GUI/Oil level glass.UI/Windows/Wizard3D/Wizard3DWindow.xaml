@@ -27,7 +27,7 @@
                 Width="100"
                 Header="Материалы"
                 Name="tiMaterials">
-                <Grid>
+                <Grid Margin="30 0 30 0">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>

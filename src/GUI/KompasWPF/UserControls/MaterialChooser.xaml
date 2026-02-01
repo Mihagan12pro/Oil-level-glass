@@ -7,19 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="400" MinHeight="70" x:Name="chooser" >
     <Grid>
-        <GroupBox Name="gbPartMaterial" Header="{Binding ElementName=chooser, Path=Title}" Foreground="Black" HorizontalAlignment="Center">
-            <StackPanel Margin="10 5 0 0" MinHeight="14" VerticalAlignment="Center">
-                <Image Visibility="Collapsed" Name="imgPartSketch" Margin="5" Stretch="Fill">
-
-                </Image>
-                <StackPanel Orientation="Horizontal" Height="20">
-                    <Border Width="315" Margin="0 0 10 0" BorderThickness="1" BorderBrush="Black">
+        <GroupBox Name="gbPartMaterial" Header="{Binding ElementName=chooser, Path=Title}" Foreground="Black" HorizontalAlignment="Stretch" MinWidth="400">
+            <StackPanel Margin="10 5 0 0" MinHeight="14" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Margin="0 0 10 0" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" Grid.Column="0">
                         <StackPanel>
                             <TextBlock Name="tbkMaterialTitle"/>
                         </StackPanel>
                     </Border>
-                    <Button Name="btSelect"  HorizontalAlignment="Center" FontSize="12" Style="{StaticResource FormButton}" Content="Выбрать..." Width="60"></Button>
-                </StackPanel>
+                    <Button Name="btSelect"  HorizontalAlignment="Center" FontSize="12" Style="{StaticResource FormButton}" Content="Выбрать..." Width="60" Grid.Column="1"></Button>
+                </Grid>
                 <Expander Header="Остальные параметры" Margin="0 10">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
