@@ -5,20 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.Wizard3D"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
+        xmlns:user="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
-        Height="700"
-        Width="600" 
+        Height="400"
+        Width="370" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Grid>
-        <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" Width="600" HorizontalAlignment="Left">
+        <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" HorizontalAlignment="Stretch">
             <TabItem 
                 Style="{StaticResource KompasTabItem}"
                 Height="20"
                 Header="Главная" 
                 Margin="-1,-1,0,1"
                 Name="tiMain">
-                
+                <StackPanel VerticalAlignment="Center">
+                    <user:MaterialChooser Width="390" Margin="0 10">
+                        
+                    </user:MaterialChooser>
+                    <user:MaterialChooser Width="390" Margin="0 10">
+                        
+                    </user:MaterialChooser>
+                    <user:MaterialChooser Width="390" Margin="0 10">
+                        
+                    </user:MaterialChooser>
+                </StackPanel>
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}"
@@ -26,6 +37,9 @@
                 Width="100"
                 Header="Материалы"
                 Name="tiMaterials">
+                <StackPanel>
+                    
+                </StackPanel>
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}" 
