@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Material = Oil_level_glass.Model.Data.Materials.Material;
 
 namespace KompasWPF.UserControls
 {
@@ -8,6 +9,18 @@ namespace KompasWPF.UserControls
     /// </summary>
     public partial class MaterialChooser : UserControl
     {
+        public Material Material
+        {
+            get
+            {
+                return (Material)GetValue(MaterialProperty);
+            }
+            set
+            {
+                SetValue(MaterialProperty, value);
+            }
+        }
+
         public string Title
         {
             get
@@ -26,6 +39,12 @@ namespace KompasWPF.UserControls
             typeof(MaterialChooser),
             new FrameworkPropertyMetadata(defaultValue: "Part")
             );
+
+        public static readonly DependencyProperty MaterialProperty = DependencyProperty.Register(
+          nameof(Material),
+          typeof(Material),
+          typeof(MaterialChooser)
+          );
 
         public MaterialChooser()
         {

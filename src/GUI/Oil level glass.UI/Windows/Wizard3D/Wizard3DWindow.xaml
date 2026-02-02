@@ -34,13 +34,13 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <StackPanel VerticalAlignment="Center" Grid.Row="0">
-                        <user:MaterialChooser Title="Корпус"></user:MaterialChooser>
+                        <user:MaterialChooser Title="Корпус" Material="{Binding Metal}"></user:MaterialChooser>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" Grid.Row="1">
-                        <user:MaterialChooser Title="Прокладка"></user:MaterialChooser>
+                        <user:MaterialChooser Title="Прокладка" Material="{Binding Rubber}"></user:MaterialChooser>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" Grid.Row="2">
-                        <user:MaterialChooser Title="Линза"></user:MaterialChooser>
+                        <user:MaterialChooser Title="Линза" Material="{Binding Glass}"></user:MaterialChooser>
                     </StackPanel>
                 </Grid>
             </TabItem>

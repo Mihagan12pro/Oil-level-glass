@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Model\Oil level glass.Model.csproj" />
+  </ItemGroup>
+
 </Project>

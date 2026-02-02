@@ -1,4 +1,5 @@
 ﻿using KompasWPF;
+using Oil_level_glass.ViewModels.Windows.Wizard3d;
 
 namespace Oil_level_glass_UI.Windows.Wizard3D
 {
@@ -10,6 +11,8 @@ namespace Oil_level_glass_UI.Windows.Wizard3D
         public Wizard3DWindow()
         {
             InitializeComponent();
+
+            DataContext = new Wizard3dViewModel();
         }
     }
 }
