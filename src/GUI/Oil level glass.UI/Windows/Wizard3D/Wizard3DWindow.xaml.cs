@@ -1,4 +1,5 @@
 ﻿using KompasWPF;
+using Oil_level_glass.COM.KompasDialogs;
 using Oil_level_glass.ViewModels.Windows.Wizard3d;
 
 namespace Oil_level_glass_UI.Windows.Wizard3D
@@ -12,7 +13,7 @@ namespace Oil_level_glass_UI.Windows.Wizard3D
         {
             InitializeComponent();
 
-            DataContext = new Wizard3dViewModel();
+            DataContext = new Wizard3dViewModel(new ComDialogsProvider());
         }
     }
 }

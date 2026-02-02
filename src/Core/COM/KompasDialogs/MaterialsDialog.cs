@@ -21,14 +21,14 @@ namespace Oil_level_glass.COM.KompasDialogs
             if (!applicationDialogs.ChoiceMaterial(hwnd, dialogParam))
                 return;
 
-            List<string> errors =  material.TryUpdate(dialogParam.Material, dialogParam.Density, dialogParam.HatchStyle);
+            //List<string> errors =  material.TryUpdate(dialogParam.Material, dialogParam.Density, dialogParam.HatchStyle);
 
-            if (errors.Count > 0)
-            {
-                string message = string.Empty;
+            //if (errors.Count > 0)
+            //{
+            //    string message = string.Empty;
 
-                application.MessageBoxEx("Был выбран неправильный материал для данного изделия!", "ОШИБКА!", 2);
-            }
+            //    application.MessageBoxEx("Был выбран неправильный материал для данного изделия!", "ОШИБКА!", 2);
+            //}
         }
 
         protected internal MaterialsDialog(IApplication application) : base(application)

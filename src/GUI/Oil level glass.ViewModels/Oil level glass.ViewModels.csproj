@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core\Oil level glass.Core.csproj" />
     <ProjectReference Include="..\..\Model\Oil level glass.Model.csproj" />
   </ItemGroup>
 

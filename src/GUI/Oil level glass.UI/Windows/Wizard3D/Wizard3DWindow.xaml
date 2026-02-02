@@ -34,7 +34,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <StackPanel VerticalAlignment="Center" Grid.Row="0">
-                        <user:MaterialChooser Title="Корпус" Material="{Binding Metal}"></user:MaterialChooser>
+                        <user:MaterialChooser Title="Корпус" Material="{Binding Metal}" SelectMaterialCommand="{Binding SelectMetalCommand}"></user:MaterialChooser>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" Grid.Row="1">
                         <user:MaterialChooser Title="Прокладка" Material="{Binding Rubber}"></user:MaterialChooser>

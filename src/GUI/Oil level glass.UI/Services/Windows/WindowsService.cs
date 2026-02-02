@@ -18,6 +18,7 @@ namespace Oil_level_glass_UI.Services.Windows
         {
             Wizard3DWindow wizard3dWindow = new Wizard3DWindow();
             wizard3dWindow.ShowInTaskbar = false;
+            wizard3dWindow.Topmost = true;
 
             wizard3dWindow.ShowDialog();
         }

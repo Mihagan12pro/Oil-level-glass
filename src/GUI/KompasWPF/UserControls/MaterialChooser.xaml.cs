@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Material = Oil_level_glass.Model.Data.Materials.Material;
 
 namespace KompasWPF.UserControls
@@ -33,6 +34,18 @@ namespace KompasWPF.UserControls
             }
         }
 
+        public ICommand SelectMaterialCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(SelectMaterialCommandProperty);
+            }
+            set
+            {
+                SetValue(SelectMaterialCommandProperty, value);
+            }
+        }
+
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
             nameof(Title),
             typeof(string),
@@ -41,10 +54,16 @@ namespace KompasWPF.UserControls
             );
 
         public static readonly DependencyProperty MaterialProperty = DependencyProperty.Register(
-          nameof(Material),
-          typeof(Material),
-          typeof(MaterialChooser)
-          );
+            nameof(Material),
+            typeof(Material),
+            typeof(MaterialChooser)
+            );
+
+        public static DependencyProperty SelectMaterialCommandProperty = DependencyProperty.Register(
+            nameof(SelectMaterialCommand),
+            typeof(ICommand),
+            typeof(MaterialChooser)
+            );
 
         public MaterialChooser()
         {

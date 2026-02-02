@@ -19,7 +19,16 @@
                             <TextBlock Name="tbkMaterialTitle"/>
                         </StackPanel>
                     </Border>
-                    <Button Name="btSelect"  HorizontalAlignment="Center" FontSize="12" Style="{StaticResource FormButton}" Content="Выбрать..." Width="60" Grid.Column="1"></Button>
+                    <Button
+                        Name="btSelect"
+                        HorizontalAlignment="Center" 
+                        FontSize="12" 
+                        Style="{StaticResource FormButton}" 
+                        Content="Выбрать..." 
+                        Width="60"
+                        Command="{Binding ElementName=chooser, Path=SelectMaterialCommand}"
+                        Grid.Column="1">
+                    </Button>
                 </Grid>
                 <Expander Header="Остальные параметры" Margin="0 10">
                     <StackPanel>
