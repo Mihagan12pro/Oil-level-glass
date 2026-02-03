@@ -1,13 +1,13 @@
-﻿using Oil_level_glass.Core.KompasDialogs;
-using Oil_level_glass.Model.Data.Materials;
+﻿using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.ViewModels.Commands;
+using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Windows.Wizard3d
 {
     public class Wizard3dViewModel 
         : ViewModelBase
     {
-        private readonly IDialogsProvider _dialogsProvider;
+        private readonly IKompasDialogsService _kompasDialogsService;
 
         private Glass _material = null!;
         public Glass Glass
@@ -57,20 +57,14 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             {
                 return new RelayCommand(obj =>
                 {
-                    SelectMaterial(Metal);
+                    _kompasDialogsService.SelectMaterial(Metal);
                 });
             }
         }
 
-        private void SelectMaterial(Material material)
+        public Wizard3dViewModel(IKompasDialogsService kompasDialogsService)
         {
-            IMaterialsDialog dialog = _dialogsProvider.GetMaterialsDialog();
-            dialog.SelectMaterial(material);
-        }
-
-        public Wizard3dViewModel(IDialogsProvider dialogsProvider)
-        {
-            _dialogsProvider = dialogsProvider;
+            _kompasDialogsService = kompasDialogsService;
 
             Glass = new Glass();
             Metal = new Metal();
