@@ -1,8 +1,8 @@
 ﻿using KompasWPF;
+using Oil_level_glass.COM;
 using Oil_level_glass.ViewModels;
+using Oil_level_glass.ViewModels.Services.Windows;
 using Oil_level_glass_UI.Services.Windows;
-using Oil_level_glass_UI.Windows.About;
-using System.Windows.Controls;
 
 namespace Oil_level_glass_UI
 {
@@ -11,11 +11,15 @@ namespace Oil_level_glass_UI
     /// </summary>
     public partial class MainWindow : KompasWindow
     {
+        private readonly IWindowsService _windowsService;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            DataContext = new MainViewModel(new WindowsService());
+            _windowsService = new WindowsService(new ComConnectionChecker());
+
+            DataContext = new MainViewModel(_windowsService);
         }
 
         private void BtAbout_Click(object sender, System.Windows.RoutedEventArgs e)
