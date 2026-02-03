@@ -1,5 +1,6 @@
 ﻿using KompasAPI7;
 using Oil_level_glass.Core.KompasDialogs;
+using Oil_level_glass.Core.Records;
 using Oil_level_glass.Model.Data.Operations;
 
 namespace Oil_level_glass.COM.KompasDialogs
@@ -11,7 +12,7 @@ namespace Oil_level_glass.COM.KompasDialogs
         {
         }
 
-        public void SelectThread(ThreadModel thread)
+        public DialogResult SelectThread(ThreadModel thread)
         {
             ThreadDialogParam dialogParam = (ThreadDialogParam)applicationDialogs
                 .GetDialogParam(
@@ -31,9 +32,11 @@ namespace Oil_level_glass.COM.KompasDialogs
             thread.Standard = dialogParam.Standart;
             thread.Pitch = dialogParam.P;
             thread.NominalDiameter = dialogParam.NominalDiameter;
+
+            return new DialogResult(true);
         }
 
-        public void SelectThread(
+        public DialogResult SelectThread(
             ThreadModel thread,
             double maximumDiameter, 
             bool isStrictly = false)
@@ -71,10 +74,10 @@ namespace Oil_level_glass.COM.KompasDialogs
                 thread.Pitch = dialogParam.P;
                 thread.NominalDiameter = dialogParam.NominalDiameter;
 
-                return;
+                return new DialogResult(true);
             }
 
-            application.MessageBoxEx("Была выбрана резьба со слишком большим номинальным диаметром!", "ОШИБКА!", 2);
+            return new DialogResult(false, "Была выбрана резьба со слишком большим номинальным диаметром!", "ОШИБКА!");
         }
     }
 }

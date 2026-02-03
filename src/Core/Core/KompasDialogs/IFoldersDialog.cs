@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.Model.Data.KompasFile;
+﻿using Oil_level_glass.Core.Records;
+using Oil_level_glass.Model.Data.KompasFile;
 
 namespace Oil_level_glass.Core.KompasDialogs
 {
@@ -7,6 +8,6 @@ namespace Oil_level_glass.Core.KompasDialogs
     /// </summary>
     public interface IFoldersDialog
     {
-        void SelectFolder(KompasFile file);
+        DialogResult SelectFolder(KompasFile file);
     }
 }

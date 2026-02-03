@@ -8,7 +8,7 @@
              d:DesignHeight="50" d:DesignWidth="400" MinHeight="70" x:Name="chooser" >
     <Grid>
         <GroupBox Name="gbPartMaterial" Header="{Binding ElementName=chooser, Path=Title}" Foreground="Black" HorizontalAlignment="Stretch" MinWidth="400">
-            <StackPanel Margin="10 5 0 0" MinHeight="14" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <StackPanel Margin="10 5 0 0" MinHeight="14" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -30,7 +30,7 @@
                         Grid.Column="1">
                     </Button>
                 </Grid>
-                <Expander Header="Остальные параметры" Margin="0 10">
+                <Expander Header="Остальные параметры" Margin="0 10" ExpandDirection="Down">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Штриховка: "></Label>

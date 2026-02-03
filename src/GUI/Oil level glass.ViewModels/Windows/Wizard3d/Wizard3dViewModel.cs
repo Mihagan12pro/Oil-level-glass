@@ -57,10 +57,15 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             {
                 return new RelayCommand(obj =>
                 {
-                    IMaterialsDialog dialog = _dialogsProvider.GetMaterialsDialog();
-                    dialog.SelectMaterial(Metal);
+                    SelectMaterial(Metal);
                 });
             }
+        }
+
+        private void SelectMaterial(Material material)
+        {
+            IMaterialsDialog dialog = _dialogsProvider.GetMaterialsDialog();
+            dialog.SelectMaterial(material);
         }
 
         public Wizard3dViewModel(IDialogsProvider dialogsProvider)

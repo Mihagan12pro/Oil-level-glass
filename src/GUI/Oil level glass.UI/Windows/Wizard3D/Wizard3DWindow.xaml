@@ -27,19 +27,19 @@
                 Width="100"
                 Header="Материалы"
                 Name="tiMaterials">
-                <Grid Margin="30 0 30 0">
+                <Grid Margin="40 35 40 15">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <StackPanel VerticalAlignment="Center" Grid.Row="0">
+                    <DockPanel VerticalAlignment="Top" Grid.Row="0" LastChildFill="True">
                         <user:MaterialChooser Title="Корпус" Material="{Binding Metal}" SelectMaterialCommand="{Binding SelectMetalCommand}"></user:MaterialChooser>
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Center" Grid.Row="1">
+                    </DockPanel>
+                        <StackPanel VerticalAlignment="Top" Grid.Row="1">
                         <user:MaterialChooser Title="Прокладка" Material="{Binding Rubber}"></user:MaterialChooser>
                     </StackPanel>
-                    <StackPanel VerticalAlignment="Center" Grid.Row="2">
+                    <StackPanel VerticalAlignment="Top" Grid.Row="2">
                         <user:MaterialChooser Title="Линза" Material="{Binding Glass}"></user:MaterialChooser>
                     </StackPanel>
                 </Grid>
