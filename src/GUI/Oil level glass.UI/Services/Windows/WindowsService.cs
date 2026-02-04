@@ -1,8 +1,8 @@
 ﻿using Oil_level_glass.Core;
+using Oil_level_glass.Core.Records;
 using Oil_level_glass.ViewModels.Services.Windows;
 using Oil_level_glass_UI.Windows.About;
 using Oil_level_glass_UI.Windows.Wizard3D;
-using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace Oil_level_glass_UI.Services.Windows
@@ -20,18 +20,22 @@ namespace Oil_level_glass_UI.Services.Windows
 
         public void ShowWizard3dWindow()
         {
-            try
-            {
-                _connectionChecker.Check();
+            DialogResult result = _connectionChecker.Check(KompasDocumentType.Assembly);
 
-                Wizard3DWindow wizard3dWindow = new Wizard3DWindow();
-
-                wizard3dWindow.ShowDialog();
-            }
-            catch(COMException)
+            if (!result.Success)
             {
-                MessageBox.Show("Для работы с мастером трёхмерной модели необходимо запустить КОМПАС-3D!", "ВНИМАНИЕ!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    result.Message,
+                    result.Caption, 
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
             }
+
+            Wizard3DWindow wizard3dWindow = new Wizard3DWindow();
+
+            wizard3dWindow.ShowDialog();
         }
 
         public WindowsService(IConnectionChecker connectionChecker)

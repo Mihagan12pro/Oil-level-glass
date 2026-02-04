@@ -12,12 +12,15 @@ namespace Oil_level_glass.COM.KompasDialogs
         public DialogResult SelectMaterial(Material material)
         {
             ChoiceMaterialDialogParam dialogParam = (ChoiceMaterialDialogParam)applicationDialogs.GetDialogParam(KompasAPIObjectTypeEnum.ksObjectChoiceMaterialDialogParam);
-
+           
             if (material.Title != string.Empty && material.Density > 0)
             {
                 dialogParam.Material = material.Title;
                 dialogParam.Density = material.Density;
             }
+
+            if (!applicationDialogs.ChoiceMaterial(hwnd, dialogParam))
+                return new DialogResult(true);
 
             if (dialogParam.HatchStyle == material.HatchStyle && dialogParam.Density <= material.MaxDensity && dialogParam.Density >= material.MinDensity)
             {
@@ -27,7 +30,7 @@ namespace Oil_level_glass.COM.KompasDialogs
                 return new DialogResult(true);
             }
 
-            return new DialogResult(false, "Был выбран неправильный материал!", "ОШИБКА!");
+            return new DialogResult(false, "Был выбран неверный материал для данной детали!", "ОШИБКА!");
         }
 
         protected internal MaterialsDialog(IApplication application) : base(application)

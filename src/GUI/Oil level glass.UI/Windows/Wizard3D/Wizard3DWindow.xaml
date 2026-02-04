@@ -34,7 +34,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <DockPanel VerticalAlignment="Top" Grid.Row="0" LastChildFill="True">
-                        <user:MaterialChooser Title="Корпус" Material="{Binding Metal}" SelectMaterialCommand="{Binding SelectMetalCommand}"></user:MaterialChooser>
+                        <user:MaterialChooser Title="Корпус" Material="{Binding Metal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectMaterialCommand="{Binding SelectMetalCommand}"></user:MaterialChooser>
                     </DockPanel>
                         <StackPanel VerticalAlignment="Top" Grid.Row="1">
                         <user:MaterialChooser Title="Прокладка" Material="{Binding Rubber}"></user:MaterialChooser>
