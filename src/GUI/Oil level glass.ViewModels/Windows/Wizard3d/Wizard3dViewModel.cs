@@ -62,6 +62,28 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             }
         }
 
+        public RelayCommand SelectGlassCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    _kompasDialogsService.SelectMaterial(Glass);
+                });
+            }
+        }
+
+        public RelayCommand SelectRubberCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    _kompasDialogsService.SelectMaterial(Rubber);
+                });
+            }
+        }
+
         public Wizard3dViewModel(IKompasDialogsService kompasDialogsService)
         {
             _kompasDialogsService = kompasDialogsService;

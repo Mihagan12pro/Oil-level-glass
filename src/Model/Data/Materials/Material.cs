@@ -3,10 +3,36 @@
     public abstract class Material 
         : BaseModel
     {
-        public double Density { get; set; }
-    
-        public string? Title { get; set; } = string.Empty;
-    
+        private double _density;
+        public double Density
+        {
+            get 
+            {
+                return _density; 
+            }
+            set 
+            {
+                _density = value; 
+                OnPropertyChanged(nameof(Density)); 
+            }
+        }
+
+
+        private string _title;
+        public string Title
+        {
+            get 
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value; 
+                OnPropertyChanged(nameof(Title)); 
+            }
+        }
+
+
         public double MinDensity { get; init; }
     
         public double MaxDensity { get; init; }
@@ -70,5 +96,10 @@
 
         public static string InvalidHatchError
             => "Invalid hatch!";
+
+        protected Material()
+        {
+            Title = string.Empty;   
+        }
     }
 }

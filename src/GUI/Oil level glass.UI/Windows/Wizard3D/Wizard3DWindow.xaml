@@ -26,7 +26,7 @@
                 Height="20"
                 Width="100"
                 Header="Материалы"
-                Name="tiMaterials">
+                Name="tiMaterials" HorizontalAlignment="Left">
                 <Grid Margin="40 35 40 15">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -34,13 +34,28 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <DockPanel VerticalAlignment="Top" Grid.Row="0" LastChildFill="True">
-                        <user:MaterialChooser Title="Корпус" Material="{Binding Metal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectMaterialCommand="{Binding SelectMetalCommand}"></user:MaterialChooser>
+                        <user:MaterialChooser 
+                            Header="Корпус" 
+                            SelectMaterialCommand="{Binding SelectMetalCommand}"
+                            Density="{Binding Metal.Density}"
+                            Title="{Binding Metal.Title}">
+                        </user:MaterialChooser>
                     </DockPanel>
                         <StackPanel VerticalAlignment="Top" Grid.Row="1">
-                        <user:MaterialChooser Title="Прокладка" Material="{Binding Rubber}"></user:MaterialChooser>
+                        <user:MaterialChooser 
+                            Header="Прокладка" 
+                            Density="{Binding Rubber.Density}"
+                            Title="{Binding Rubber.Title}"
+                            SelectMaterialCommand="{Binding SelectRubberCommand}">
+                        </user:MaterialChooser>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Top" Grid.Row="2">
-                        <user:MaterialChooser Title="Линза" Material="{Binding Glass}"></user:MaterialChooser>
+                        <user:MaterialChooser 
+                            Header="Линза"
+                            Density="{Binding Glass.Density}"
+                            Title="{Binding Glass.Title}"
+                            SelectMaterialCommand="{Binding SelectGlassCommand}">
+                        </user:MaterialChooser>
                     </StackPanel>
                 </Grid>
             </TabItem>

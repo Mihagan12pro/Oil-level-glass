@@ -7,16 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="400" MinHeight="70" x:Name="chooser" >
     <Grid>
-        <GroupBox Name="gbPartMaterial" Header="{Binding ElementName=chooser, Path=Title}" Foreground="Black" HorizontalAlignment="Stretch" MinWidth="400">
+        <GroupBox Name="gbPartMaterial" Header="{Binding ElementName=chooser, Path=Header}" Foreground="Black" HorizontalAlignment="Stretch" MinWidth="400">
             <StackPanel Margin="10 5 0 0" MinHeight="14" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Border Margin="0 0 10 0" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Margin="0 0 10 0" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="0">
                         <StackPanel>
-                            <TextBlock Name="tbkMaterialTitle"/>
+                            <TextBlock Name="tbkMaterialTitle" Text="{Binding ElementName=chooser, Path=Title}"/>
                         </StackPanel>
                     </Border>
                     <Button
@@ -26,19 +29,18 @@
                         Style="{StaticResource FormButton}" 
                         Content="Выбрать..." 
                         Width="60"
+                        MinHeight="20"
+                        MaxHeight="20"
                         Command="{Binding ElementName=chooser, Path=SelectMaterialCommand}"
-                        Grid.Column="1">
+                        Grid.Column="1"
+                        Grid.Row="0">
                     </Button>
                 </Grid>
                 <Expander Header="Остальные параметры" Margin="0 10" ExpandDirection="Down">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Штриховка: "></Label>
-                            <TextBlock></TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
                             <Label Content="Плотность: "></Label>
-                            <TextBlock Width="50"></TextBlock>
+                            <TextBlock Name="tbDensity" MinWidth="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0" Text="{Binding ElementName=chooser, Path=Density}"></TextBlock>
                             <Label Content="г/см³"></Label>
                         </StackPanel>
                     </StackPanel>

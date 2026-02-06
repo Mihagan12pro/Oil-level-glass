@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Material = Oil_level_glass.Model.Data.Materials.Material;
 
 namespace KompasWPF.UserControls
 {
@@ -10,29 +9,63 @@ namespace KompasWPF.UserControls
     /// </summary>
     public partial class MaterialChooser : UserControl
     {
-        public Material Material
+        public double Density
         {
             get
             {
-                return (Material)GetValue(MaterialProperty);
+                return (double)GetValue(DensityProperty);
             }
             set
             {
-                SetValue(MaterialProperty, value);
+                SetValue(DensityProperty, value);
             }
         }
+
+
+        public static readonly DependencyProperty DensityProperty = DependencyProperty.Register(
+            nameof(Density),
+            typeof(double),
+            typeof(MaterialChooser)
+            );
 
         public string Title
         {
             get
             {
-                return (string)GetValue(TitleProperty);
+                return (string)GetValue(TittleProperty);
             }
             set
             {
-                SetValue(TitleProperty, value);
+                SetValue(TittleProperty, value);
             }
         }
+
+        public static readonly DependencyProperty TittleProperty = DependencyProperty.Register(
+            nameof(Title),
+            typeof(string),
+            typeof(MaterialChooser)
+            );
+
+
+        public string Header
+        {
+            get
+            {
+                return (string)GetValue(HeaderProperty);
+            }
+            set
+            {
+                SetValue(HeaderProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
+            nameof(Header),
+            typeof(string),
+            typeof(MaterialChooser),
+            new FrameworkPropertyMetadata(defaultValue: "Part")
+            );
+
 
         public ICommand SelectMaterialCommand
         {
@@ -45,19 +78,6 @@ namespace KompasWPF.UserControls
                 SetValue(SelectMaterialCommandProperty, value);
             }
         }
-
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
-            nameof(Title),
-            typeof(string),
-            typeof(MaterialChooser),
-            new FrameworkPropertyMetadata(defaultValue: "Part")
-            );
-
-        public static readonly DependencyProperty MaterialProperty = DependencyProperty.Register(
-            nameof(Material),
-            typeof(Material),
-            typeof(MaterialChooser)
-            );
 
         public static DependencyProperty SelectMaterialCommandProperty = DependencyProperty.Register(
             nameof(SelectMaterialCommand),
