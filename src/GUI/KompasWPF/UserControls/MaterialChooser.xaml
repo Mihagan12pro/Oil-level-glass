@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="KompasWPF.UserControls.MaterialChooser"
+﻿<local:GroupControlBase x:Class="KompasWPF.UserControls.MaterialChooser"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -19,33 +19,33 @@
                     </Grid.RowDefinitions>
                     <Border Margin="0 0 10 0" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="0">
                         <StackPanel>
-                            <TextBlock Name="tbkMaterialTitle" Text="{Binding ElementName=chooser, Path=Title}"/>
+                            <TextBlock Name="tbkMaterialTitle" Text="{Binding ElementName=chooser, Path=Title}" FontSize="10"/>
                         </StackPanel>
                     </Border>
                     <Button
                         Name="btSelect"
                         HorizontalAlignment="Center" 
-                        FontSize="12" 
+                        FontSize="10" 
                         Style="{StaticResource FormButton}" 
                         Content="Выбрать..." 
                         Width="60"
                         MinHeight="20"
                         MaxHeight="20"
-                        Command="{Binding ElementName=chooser, Path=SelectMaterialCommand}"
+                        Command="{Binding ElementName=chooser, Path=Command}"
                         Grid.Column="1"
                         Grid.Row="0">
                     </Button>
                 </Grid>
-                <Expander Header="Остальные параметры" Margin="0 10" ExpandDirection="Down">
+                <Expander Header="Остальные параметры" Margin="0 10" ExpandDirection="Down" FontSize="10">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Плотность: "></Label>
-                            <TextBlock Name="tbDensity" MinWidth="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0" Text="{Binding ElementName=chooser, Path=Density}"></TextBlock>
-                            <Label Content="г/см³"></Label>
+                            <Label Content="Плотность: " FontSize="10"></Label>
+                            <TextBlock Name="tbDensity" FontSize="10" MinWidth="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0" Text="{Binding ElementName=chooser, Path=Density}"></TextBlock>
+                            <Label Content="г/см³" FontSize="10"></Label>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
             </StackPanel>
         </GroupBox>
     </Grid>
-</UserControl>
+</local:GroupControlBase>

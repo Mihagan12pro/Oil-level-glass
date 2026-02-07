@@ -7,7 +7,8 @@ namespace KompasWPF.UserControls
     /// <summary>
     /// Interaction logic for MaterialChooser.xaml
     /// </summary>
-    public partial class MaterialChooser : UserControl
+    public partial class MaterialChooser 
+        : GroupControlBase
     {
         public double Density
         {
@@ -43,45 +44,6 @@ namespace KompasWPF.UserControls
         public static readonly DependencyProperty TittleProperty = DependencyProperty.Register(
             nameof(Title),
             typeof(string),
-            typeof(MaterialChooser)
-            );
-
-
-        public string Header
-        {
-            get
-            {
-                return (string)GetValue(HeaderProperty);
-            }
-            set
-            {
-                SetValue(HeaderProperty, value);
-            }
-        }
-
-        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
-            nameof(Header),
-            typeof(string),
-            typeof(MaterialChooser),
-            new FrameworkPropertyMetadata(defaultValue: "Part")
-            );
-
-
-        public ICommand SelectMaterialCommand
-        {
-            get
-            {
-                return (ICommand)GetValue(SelectMaterialCommandProperty);
-            }
-            set
-            {
-                SetValue(SelectMaterialCommandProperty, value);
-            }
-        }
-
-        public static DependencyProperty SelectMaterialCommandProperty = DependencyProperty.Register(
-            nameof(SelectMaterialCommand),
-            typeof(ICommand),
             typeof(MaterialChooser)
             );
 

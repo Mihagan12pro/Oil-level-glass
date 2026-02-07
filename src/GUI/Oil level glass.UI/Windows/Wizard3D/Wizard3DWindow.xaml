@@ -12,7 +12,11 @@
         Width="650" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Grid>
-        <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="202*"/>
+            <ColumnDefinition Width="449*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" Grid.ColumnSpan="2">
             <TabItem 
                 Style="{StaticResource KompasTabItem}"
                 Height="20"
@@ -33,20 +37,20 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <DockPanel VerticalAlignment="Top" Grid.Row="0" LastChildFill="True">
+                    <StackPanel VerticalAlignment="Top" Grid.Row="0">
                         <user:MaterialChooser 
                             Header="Корпус" 
-                            SelectMaterialCommand="{Binding SelectMetalCommand}"
+                            Command="{Binding SelectMetalCommand}"
                             Density="{Binding Metal.Density}"
                             Title="{Binding Metal.Title}">
                         </user:MaterialChooser>
-                    </DockPanel>
-                        <StackPanel VerticalAlignment="Top" Grid.Row="1">
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Top" Grid.Row="1">
                         <user:MaterialChooser 
                             Header="Прокладка" 
                             Density="{Binding Rubber.Density}"
                             Title="{Binding Rubber.Title}"
-                            SelectMaterialCommand="{Binding SelectRubberCommand}">
+                            Command="{Binding SelectRubberCommand}">
                         </user:MaterialChooser>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Top" Grid.Row="2">
@@ -54,7 +58,7 @@
                             Header="Линза"
                             Density="{Binding Glass.Density}"
                             Title="{Binding Glass.Title}"
-                            SelectMaterialCommand="{Binding SelectGlassCommand}">
+                            Command="{Binding SelectGlassCommand}">
                         </user:MaterialChooser>
                     </StackPanel>
                 </Grid>
@@ -65,6 +69,25 @@
                 Width="100" 
                 Header="Сохранение"
                 Name="tiSaving">
+                <Grid Margin="40 70 40 15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel VerticalAlignment="Top" Grid.Row="0">
+                        <user:SavingEditor Header="Корпус"></user:SavingEditor>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Top" Grid.Row="1">
+                        <user:SavingEditor  Header="Прокладка"></user:SavingEditor>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Top" Grid.Row="2">
+                        <user:SavingEditor  Header="Линза"></user:SavingEditor>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}" 
