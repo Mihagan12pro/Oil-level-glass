@@ -10,11 +10,22 @@
         {
             string error = string.Empty;
 
-            if (columnName == nameof(Angle))
-                error = CheckRange(columnName, 0, 90);
+            switch(columnName)
+            {
+                case nameof(Angle):
 
-            else if (columnName == nameof(Length))
-                error = CheckMinimumValue(columnName);
+                    if (Angle <= 0)
+                        error = "Chamfer angle must be greater than zero!";
+                    else if (Angle >= 90)
+                        error = "Chamfer angle can't be equal or greater than 90!";
+                    break;
+
+                case nameof(Length):
+
+                    if (Length <= 0)
+                        error = "Length must be greater than zero!";
+                    break;
+            }
 
 
             return error;

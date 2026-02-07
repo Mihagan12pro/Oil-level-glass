@@ -1,5 +1,6 @@
 ﻿using KompasAPI7;
 using Oil_level_glass.Core.KompasDialogs;
+using Oil_level_glass.Core.Records;
 using Oil_level_glass.Model.Data.KompasFile;
 
 namespace Oil_level_glass.COM.KompasDialogs
@@ -7,7 +8,7 @@ namespace Oil_level_glass.COM.KompasDialogs
     internal class FoldersDialog
         : ComDialogBase, IFoldersDialog
     {
-        public void SelectFolder(KompasFile file)
+        public DialogResult SelectFolder(KompasFile file)
         {
             string initialFolder = string.Empty;
             if (file.Folder == string.Empty)
@@ -18,7 +19,13 @@ namespace Oil_level_glass.COM.KompasDialogs
             string result = applicationDialogs.ChoiceFolder(hwnd, initialFolder);
 
             if (result != string.Empty)
+            {
                 file.Folder = result;
+
+                return new DialogResult(true);
+            }
+
+            return new DialogResult(false, "Вы не выбрали папку!", "ОШИБКА!"); 
         }
 
         protected internal FoldersDialog(IApplication application) 

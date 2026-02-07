@@ -6,7 +6,9 @@ using Oil_level_glass.Model.Data.Entities.Parts;
 
 namespace Oil_level_glass.COM
 {
-    internal abstract class ComSolidPartCreator<TModel> : ComCreator, ISolidPartCreator<TModel>
+    internal abstract class ComSolidPartCreator<TModel> 
+        : ComCreator, 
+        ISolidPartCreator<TModel>
         where TModel : BaseDetailModel
     {
         public IPart7? Part7 { get; private set; }

@@ -23,11 +23,29 @@ public class RubberStripModel : BaseDetailModel
     {
         string error = string.Empty;
 
-        if ( columnName == nameof(Height) ||
-             columnName == nameof(ExternalDiameter) ||
-             columnName == nameof(InternalDiameter) )
+        switch(columnName)
         {
-            error = CheckMinimumValue(columnName);
+            case nameof(Height):
+                {
+                    if (Height <= 0)
+                        error = "Ring height must be greater than zero!";
+
+                    break;
+                }
+            case nameof(InternalDiameter):
+                {
+                    if (InternalDiameter <= 0)
+                        error = "Ring height must be greater than zero!";
+
+                    break;
+                }
+            case nameof(ExternalDiameter):
+                {
+                    if (ExternalDiameter <= 0)
+                        error = "Ring height must be greater than zero!";
+
+                    break;
+                }
         }
 
         return error;

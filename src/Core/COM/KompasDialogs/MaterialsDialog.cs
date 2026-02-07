@@ -1,6 +1,7 @@
 ﻿using Kompas6Constants;
 using KompasAPI7;
 using Oil_level_glass.Core.KompasDialogs;
+using Oil_level_glass.Core.Records;
 using Oil_level_glass.Model.Data.Materials;
 
 namespace Oil_level_glass.COM.KompasDialogs
@@ -8,10 +9,10 @@ namespace Oil_level_glass.COM.KompasDialogs
     internal class MaterialsDialog
         : ComDialogBase, IMaterialsDialog
     {
-        public void SelectMaterial(Material material)
+        public DialogResult SelectMaterial(Material material)
         {
             ChoiceMaterialDialogParam dialogParam = (ChoiceMaterialDialogParam)applicationDialogs.GetDialogParam(KompasAPIObjectTypeEnum.ksObjectChoiceMaterialDialogParam);
-
+           
             if (material.Title != string.Empty && material.Density > 0)
             {
                 dialogParam.Material = material.Title;
@@ -19,16 +20,17 @@ namespace Oil_level_glass.COM.KompasDialogs
             }
 
             if (!applicationDialogs.ChoiceMaterial(hwnd, dialogParam))
-                return;
+                return new DialogResult(true);
 
-            List<string> errors =  material.TryUpdate(dialogParam.Material, dialogParam.Density, dialogParam.HatchStyle);
-
-            if (errors.Count > 0)
+            if (dialogParam.HatchStyle == material.HatchStyle && dialogParam.Density <= material.MaxDensity && dialogParam.Density >= material.MinDensity)
             {
-                string message = string.Empty;
+                material.Density = dialogParam.Density;
+                material.Title = dialogParam.Material;
 
-                application.MessageBoxEx("Был выбран неправильный материал для данного изделия!", "ОШИБКА!", 2);
+                return new DialogResult(true);
             }
+
+            return new DialogResult(false, "Был выбран неверный материал для данной детали!", "ОШИБКА!");
         }
 
         protected internal MaterialsDialog(IApplication application) : base(application)

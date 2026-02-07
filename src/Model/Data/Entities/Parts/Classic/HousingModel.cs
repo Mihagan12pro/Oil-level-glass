@@ -30,21 +30,6 @@ public class HousingModel : BaseDetailModel
     {
         string error = string.Empty;
 
-        if (columnName == nameof(MainDiameter) ||
-            columnName == nameof(MainHeight) ||
-            columnName == nameof(GlassSocketHeight) ||
-            columnName == nameof(GlassSocketDiameter) ||
-            columnName == nameof(CentralHoleDiameter) ||
-            columnName == nameof(ScrewHolesCount) ||
-            columnName == nameof(ScrewHolesDistance))
-        {
-            error = CheckMinimumValue(columnName); 
-        }
-
-
-        else if (columnName == nameof(ScrewHolesCount))
-            error = CheckMinimumValue(columnName, 3);
-
         return error;
     }
 }

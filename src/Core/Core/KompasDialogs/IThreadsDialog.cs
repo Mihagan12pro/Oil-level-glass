@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.Model.Data.Operations;
+﻿using Oil_level_glass.Core.Records;
+using Oil_level_glass.Model.Data.Operations;
 
 namespace Oil_level_glass.Core.KompasDialogs
 {
@@ -7,8 +8,8 @@ namespace Oil_level_glass.Core.KompasDialogs
     /// </summary>
     public interface IThreadsDialog
     {
-        void SelectThread(ThreadModel thread);
+        DialogResult SelectThread(ThreadModel thread);
 
-        void SelectThread(ThreadModel thread, double maximumDiameter, bool isStrictly = false);
+        DialogResult SelectThread(ThreadModel thread, double maximumDiameter, bool isStrictly = false);
     }
 }
