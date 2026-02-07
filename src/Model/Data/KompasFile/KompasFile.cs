@@ -5,17 +5,24 @@ namespace Oil_level_glass.Model.Data.KompasFile
     public abstract class KompasFile : BaseModel
     {
         public Name Name { get; }
-    
-        public string ?Folder { get; set; } = string.Empty;
+
+        private string? _folder;
+        public string? Folder
+        {
+            get
+            {
+                return _folder;
+            }
+            set
+            {
+                _folder = value;
+                OnPropertyChanged();
+            }
+        }
     
         public string ?Extension { get; init; }
 
         public string FullName => $"{Folder}\\{Name.Marking}_{Name.Naming}.{Extension}";
-
-        public KompasFile()
-        {
-            Name = new Name();
-        }
 
         protected override string CheckField(string columnName)
         {
@@ -31,6 +38,12 @@ namespace Oil_level_glass.Model.Data.KompasFile
                     }
             }
             return error;
+        }
+
+        public KompasFile()
+        {
+            Name = new Name();
+            Folder = string.Empty;
         }
     }
 }

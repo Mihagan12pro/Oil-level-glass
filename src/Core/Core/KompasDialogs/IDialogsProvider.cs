@@ -7,5 +7,7 @@
         IMaterialsDialog GetMaterialsDialog();
 
         IThreadsDialog GetThreadsDialog();
+
+        IFoldersDialog GetFoldersDialog();
     }
 }

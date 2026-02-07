@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Model.Data.Materials;
+﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.ViewModels.Commands;
 using Oil_level_glass.ViewModels.Services.Windows;
 
@@ -9,45 +9,42 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
     {
         private readonly IKompasDialogsService _kompasDialogsService;
 
-        private Glass _material = null!;
-        public Glass Glass
+        private GlassModel? _glass;
+        public GlassModel? Glass
         {
             get 
-            { 
-                return _material; 
-            }
-            set
             {
-                _material = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private Metal _metal = null!;
-        public Metal Metal
-        {
-            get
+                return _glass; 
+            } 
+            set 
             {
-                return _metal;
-            }
-            set
-            {
-                _metal = value;
-                OnPropertyChanged();
+                _glass = value;
             }
         }
 
-        private Rubber _rubber;
-        public Rubber Rubber
+        private HousingModel? _housing;
+        public HousingModel? Housing
         {
             get
             {
-                return _rubber;
+                return _housing; 
             }
             set
             {
-                _rubber = value;
-                OnPropertyChanged();
+                _housing = value; 
+            }
+        }
+
+        private RubberStripModel? _rubberStrip;
+        public RubberStripModel? RubberStrip
+        {
+            get
+            {
+                return _rubberStrip;
+            }
+            set
+            {
+                _rubberStrip = value;
             }
         }
 
@@ -57,7 +54,7 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             {
                 return new RelayCommand(obj =>
                 {
-                    _kompasDialogsService.SelectMaterial(Metal);
+                    _kompasDialogsService.SelectMaterial(Housing?.Material!);
                 });
             }
         }
@@ -68,7 +65,7 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             {
                 return new RelayCommand(obj =>
                 {
-                    _kompasDialogsService.SelectMaterial(Glass);
+                    _kompasDialogsService.SelectMaterial(Glass?.Material!);
                 });
             }
         }
@@ -79,18 +76,52 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             {
                 return new RelayCommand(obj =>
                 {
-                    _kompasDialogsService.SelectMaterial(Rubber);
+                    _kompasDialogsService.SelectMaterial(RubberStrip?.Material!);
                 });
             }
         }
+
+        public RelayCommand EditSavingGlassCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    _kompasDialogsService.SelectFolder(Glass?.File!);
+                });
+            }
+        }
+
+        public RelayCommand EditSavingHousingCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    _kompasDialogsService.SelectFolder(Housing?.File!);
+                });
+            }
+        }
+
+        public RelayCommand EditSavingRubberStripCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    _kompasDialogsService.SelectFolder(RubberStrip?.File!);
+                });
+            }
+        }
+
 
         public Wizard3dViewModel(IKompasDialogsService kompasDialogsService)
         {
             _kompasDialogsService = kompasDialogsService;
 
-            Glass = new Glass();
-            Metal = new Metal();
-            Rubber = new Rubber();
+            Glass = new GlassModel();
+            Housing = new HousingModel();
+            RubberStrip = new RubberStripModel();
         }
     }
 }

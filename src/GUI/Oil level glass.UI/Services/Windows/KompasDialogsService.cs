@@ -1,5 +1,6 @@
 ﻿using Oil_level_glass.Core.KompasDialogs;
 using Oil_level_glass.Core.Records;
+using Oil_level_glass.Model.Data.KompasFile;
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.ViewModels.Services.Windows;
 using System.Windows;
@@ -20,6 +21,12 @@ namespace Oil_level_glass_UI.Services.Windows
             {
                 MessageBox.Show(result.Message, result.Caption, MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        public void SelectFolder(KompasFile file)
+        {
+            IFoldersDialog folderDialog = _provider.GetFoldersDialog();
+            DialogResult result = folderDialog.SelectFolder(file);
         }
 
         public KompasDialogsService(IDialogsProvider provider)

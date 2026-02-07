@@ -7,7 +7,8 @@ using System.Windows;
 
 namespace Oil_level_glass_UI.Services.Windows
 {
-    internal class WindowsService : IWindowsService
+    internal class WindowsService
+        : IWindowsService
     {
         private readonly IConnectionChecker _connectionChecker;
 

@@ -31,7 +31,7 @@ namespace Oil_level_glass.COM
 
                             if (document == null || !(document is IPartDocument))
                             {
-                                result = new DialogResult(false, "Для работы данного модуля необходимо создать новую деталь!", "ОШИБКА");
+                                result = new DialogResult(false, "Для работы данного модуля необходимо создать новую деталь!", "ОШИБКА!");
                             }
                             break;
                         }
@@ -41,7 +41,7 @@ namespace Oil_level_glass.COM
 
                             if (document == null || !(document is IAssemblyDocument))
                             {
-                                result = new DialogResult(false, "Для работы данного модуля необходимо создать новую сборку!", "ОШИБКА");
+                                result = new DialogResult(false, "Для работы данного модуля необходимо создать новую сборку!", "ОШИБКА!");
                             }
                             break;
                         }

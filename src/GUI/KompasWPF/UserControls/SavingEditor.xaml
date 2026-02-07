@@ -21,7 +21,7 @@
                         <ColumnDefinition Width="0.25*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Height="18">
-                        <TextBlock>
+                        <TextBlock Text="{Binding ElementName=editor, Path=Directory}">
                             
                         </TextBlock>
                     </Border>
@@ -33,7 +33,8 @@
                         MaxHeight="18"
                         MinHeight="18" 
                         Style="{StaticResource FormButton}"
-                        Content="Выбрать...">
+                        Content="Выбрать..."
+                        Command="{Binding ElementName=editor, Path=Command}">
                     </Button>
                 </Grid>
 
@@ -42,7 +43,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="0.25*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" Height="18" FontSize="10">
+                    <TextBox Grid.Column="0" Height="18" FontSize="10" Text="{Binding ElementName=editor, Path=Marking}">
 
                     </TextBox>
                     <Label 
@@ -61,7 +62,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="0.25*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" Height="18" FontSize="10">
+                    <TextBox Grid.Column="0" Height="18" FontSize="10" Text="{Binding ElementName=editor, Path=Naming}">
 
                     </TextBox>
                     <Label 

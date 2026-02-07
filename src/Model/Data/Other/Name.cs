@@ -2,9 +2,33 @@
 
 public class Name : BaseModel
 {
-    public string Naming { get; set; } = string.Empty;
+    private string? _naming;
+    public string? Naming
+    {
+        get
+        {
+            return _naming; 
+        }
+        set
+        {
+            _naming = value;
+            OnPropertyChanged();
+        }
+    }
 
-    public string Marking { get; set; } = string.Empty;
+    private string? _marking;
+    public string? Marking
+    {
+        get
+        {
+            return _marking;
+        }
+        set
+        {
+            _marking = value;
+            OnPropertyChanged();
+        }
+    }
 
     protected override string CheckField(string columnName)
     {
@@ -29,5 +53,11 @@ public class Name : BaseModel
         }
 
         return error;
+    }
+
+    public Name()
+    {
+        Naming = string.Empty;
+        Marking = string.Empty;
     }
 }
