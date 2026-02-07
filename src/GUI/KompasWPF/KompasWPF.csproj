@@ -11,8 +11,4 @@
     <PackageReference Include="MahApps.Metro.IconPacks" Version="6.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Model\Oil level glass.Model.csproj" />
-  </ItemGroup>
-
 </Project>

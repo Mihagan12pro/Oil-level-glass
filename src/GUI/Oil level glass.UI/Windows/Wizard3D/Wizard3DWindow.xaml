@@ -23,7 +23,7 @@
                 Header="Размеры" 
                 Margin="-1,-1,0,1"
                 Name="tiSizes">
-
+                <user:ThreadChooser Height="108"></user:ThreadChooser>
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}"
@@ -105,13 +105,6 @@
                         </user:SavingEditor>
                     </StackPanel>
                 </Grid>
-            </TabItem>
-            <TabItem 
-                Style="{StaticResource KompasTabItem}" 
-                Height="20"
-                Width="50" 
-                Header="Вид"
-                Name="tiColors">
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}" 
