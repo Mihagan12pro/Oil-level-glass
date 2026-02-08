@@ -11,12 +11,12 @@ namespace Oil_level_glass_UI.Services.Windows
         : IWindowsService
     {
         private readonly IConnectionChecker _connectionChecker;
-
+        private readonly Window _parent;
         public void ShowAboutWindow()
         {
             AboutWindow aboutWindow = new AboutWindow();
-
-            aboutWindow.ShowDialog();
+            
+            ShowModalWindow(aboutWindow);
         }
 
         public void ShowWizard3dWindow()
@@ -36,12 +36,22 @@ namespace Oil_level_glass_UI.Services.Windows
 
             Wizard3DWindow wizard3dWindow = new Wizard3DWindow();
 
-            wizard3dWindow.ShowDialog();
+            ShowModalWindow(wizard3dWindow);
         }
 
-        public WindowsService(IConnectionChecker connectionChecker)
+        private void ShowModalWindow(Window window)
+        {
+            window.Owner = _parent;
+            window.ShowInTaskbar = false;
+
+            window.ShowDialog();
+        }
+
+
+        public WindowsService(IConnectionChecker connectionChecker, Window parent)
         {
             _connectionChecker = connectionChecker;
+            _parent = parent;
         }
     }
 }

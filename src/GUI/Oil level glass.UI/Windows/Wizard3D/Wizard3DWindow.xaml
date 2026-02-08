@@ -23,7 +23,7 @@
                 Header="Размеры" 
                 Margin="-1,-1,0,1"
                 Name="tiSizes">
-                <user:ThreadChooser Height="108"></user:ThreadChooser>
+                <user:ThreadChooser Height="108" Width="350"></user:ThreadChooser>
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}"

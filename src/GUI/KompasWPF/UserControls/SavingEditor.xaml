@@ -7,7 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="440" MinHeight="100" x:Name="editor">
     <Grid>
-        <GroupBox Name="gbPartSaving" Foreground="Black" Header="{Binding ElementName=editor, Path=Header}" MinWidth="440"   HorizontalAlignment="Stretch" >
+        <GroupBox 
+            Name="gbPartSaving" 
+            Foreground="Black" 
+            Header="{Binding ElementName=editor, Path=Header}" 
+            MinWidth="440" 
+            HorizontalAlignment="Stretch">
+            
             <Grid Margin="10 0 0 2">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>

@@ -17,7 +17,7 @@ namespace Oil_level_glass_UI
         {
             InitializeComponent();
 
-            _windowsService = new WindowsService(new ComConnectionChecker());
+            _windowsService = new WindowsService(new ComConnectionChecker(), this);
 
             DataContext = new MainViewModel(_windowsService);
         }

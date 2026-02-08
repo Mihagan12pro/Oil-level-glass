@@ -11,9 +11,8 @@
             Header="{Binding ElementName=chooser, Path=Header}" 
             MinHeight="140"
             HorizontalAlignment="Stretch"
-            Foreground="Black"
-            Width="350">
-            <Grid Margin="10 10 10 0" VerticalAlignment="Stretch" Width="320">
+            Foreground="Black">
+            <Grid Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="320">
                 <Grid.Resources>
                     <Style TargetType="Label">
                         <Setter Property="Padding" Value="0"></Setter>
@@ -117,6 +116,7 @@
                         Content="Максимальный номинальный диаметр:">
                     </Label>
                     <Label
+                        HorizontalContentAlignment="Left"
                         Grid.Column="1"
                         Content="{Binding ElementName=chooser, Path=MaxNominalDiameter}">
                     </Label>
