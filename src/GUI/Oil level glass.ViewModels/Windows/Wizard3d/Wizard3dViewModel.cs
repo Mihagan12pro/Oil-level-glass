@@ -1,5 +1,4 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Operations;
 using Oil_level_glass.ViewModels.Commands;
 using Oil_level_glass.ViewModels.Services.Windows;
 
@@ -111,6 +110,18 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
                 return new RelayCommand(obj =>
                 {
                     _kompasDialogsService.SelectFolder(RubberStrip?.File!);
+                });
+            }
+        }
+
+
+        public RelayCommand SelectThreadCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                   
                 });
             }
         }

@@ -48,7 +48,9 @@ namespace Oil_level_glass_UI.Services.Windows
         }
 
 
-        public WindowsService(IConnectionChecker connectionChecker, Window parent)
+        public WindowsService(
+            IConnectionChecker connectionChecker,
+            Window parent)
         {
             _connectionChecker = connectionChecker;
             _parent = parent;

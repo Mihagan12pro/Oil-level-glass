@@ -2,6 +2,7 @@
 using Oil_level_glass.Core.Records;
 using Oil_level_glass.Model.Data.KompasFile;
 using Oil_level_glass.Model.Data.Materials;
+using Oil_level_glass.Model.Data.Operations;
 using Oil_level_glass.ViewModels.Services.Windows;
 using System.Windows;
 
@@ -17,10 +18,7 @@ namespace Oil_level_glass_UI.Services.Windows
             IMaterialsDialog materialsDialog = _provider.GetMaterialsDialog();
 
             DialogResult result = materialsDialog.SelectMaterial(material);
-            if (!result.Success)
-            {
-                MessageBox.Show(result.Message, result.Caption, MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            TryToShowErrorMessageBox(result);
         }
 
         public void SelectFolder(KompasFile file)
@@ -28,6 +26,27 @@ namespace Oil_level_glass_UI.Services.Windows
             IFoldersDialog folderDialog = _provider.GetFoldersDialog();
             DialogResult result = folderDialog.SelectFolder(file);
         }
+
+        public void SelectThread(ThreadModel threadModel)
+        {
+            IThreadsDialog threadsDialog = _provider.GetThreadsDialog();
+
+            DialogResult result = threadsDialog.SelectThread(threadModel);
+            TryToShowErrorMessageBox(result);
+        }
+
+
+        private void TryToShowErrorMessageBox(DialogResult result)
+        {
+            if (!result.Success)
+            {
+                MessageBox.Show(result.Message,
+                    result.Caption,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
 
         public KompasDialogsService(IDialogsProvider provider)
         {
