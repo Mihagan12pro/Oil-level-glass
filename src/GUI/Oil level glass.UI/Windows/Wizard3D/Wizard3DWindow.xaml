@@ -23,7 +23,15 @@
                 Header="Размеры" 
                 Margin="-1,-1,0,1"
                 Name="tiSizes">
-                <user:ThreadChooser Height="108" Width="350"></user:ThreadChooser>
+                <user:ThreadChooser 
+                    Height="108" 
+                    Width="350"
+                    MaxNominalDiameter="{Binding MaxThreadNominalDiameter}"
+                    NominalDiameter="{Binding Housing.Thread.NominalDiameter}"
+                    Pitch="{Binding Housing.Thread.Pitch}"
+                    Standard="{Binding Housing.Thread.Standard}"
+                    Command="{Binding SelectThreadCommand}">
+                </user:ThreadChooser>
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}"

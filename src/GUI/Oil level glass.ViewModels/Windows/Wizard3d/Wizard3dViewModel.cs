@@ -48,6 +48,21 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             }
         }
 
+        private double _maxThreadNominalDiameter;
+        public double MaxThreadNominalDiameter
+        {
+            get
+            {
+                return _maxThreadNominalDiameter; 
+            }
+            private set
+            {
+                _maxThreadNominalDiameter = value;
+
+                OnPropertyChanged();
+            }
+        }
+
         public RelayCommand SelectMetalCommand
         {
             get
@@ -121,7 +136,7 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             {
                 return new RelayCommand(obj =>
                 {
-                   
+                    _kompasDialogsService.SelectThread(Housing?.Thread!, MaxThreadNominalDiameter);
                 });
             }
         }
@@ -134,6 +149,8 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             Glass = new GlassModel();
             Housing = new HousingModel();
             RubberStrip = new RubberStripModel();
+
+            MaxThreadNominalDiameter = 20;
         }
     }
 }

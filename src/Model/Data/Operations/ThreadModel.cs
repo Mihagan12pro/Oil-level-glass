@@ -1,11 +1,58 @@
 ﻿namespace Oil_level_glass.Model.Data.Operations
 {
-    public class ThreadModel : BaseModel
+    public class ThreadModel 
+        : BaseModel
     {
-        public double NominalDiameter { get; set; }
+        private double _nominalDiameter;
+        public double NominalDiameter
+        {
+            get
+            {
+                return _nominalDiameter; 
+            }
+            set
+            {
+                _nominalDiameter = value;
 
-        public double Pitch { get; set; }
+                OnPropertyChanged();
+            }
+        }
 
-        public string Standard { get; set; } = string.Empty;
+
+        private double _pitch;
+        public double Pitch
+        {
+            get
+            {
+                return _pitch; 
+            }
+            set
+            {
+                _pitch = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+
+        private string? _standard;
+        public string? Standard
+        {
+            get
+            {
+                return _standard; 
+            }
+            set
+            {
+                _standard = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        public ThreadModel()
+        {
+            Standard = string.Empty;
+        }
     }
 }

@@ -11,5 +11,10 @@ namespace Oil_level_glass.ViewModels.Services.Windows
         void SelectFolder(KompasFile file);
 
         void SelectThread(ThreadModel threadModel);
+
+        void SelectThread(
+            ThreadModel threadModel,
+            double maximumDiameter,
+            bool isStrictly = false);
     }
 }

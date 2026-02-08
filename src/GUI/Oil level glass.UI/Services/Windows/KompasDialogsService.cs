@@ -35,6 +35,17 @@ namespace Oil_level_glass_UI.Services.Windows
             TryToShowErrorMessageBox(result);
         }
 
+        public void SelectThread(
+            ThreadModel threadModel,
+            double maximumDiameter,
+            bool isStrictly = false)
+        {
+            IThreadsDialog threadsDialog = _provider.GetThreadsDialog();
+
+            DialogResult result = threadsDialog.SelectThread(threadModel, maximumDiameter, isStrictly);
+            TryToShowErrorMessageBox(result);
+        }
+
 
         private void TryToShowErrorMessageBox(DialogResult result)
         {
