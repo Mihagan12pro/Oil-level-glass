@@ -6,10 +6,57 @@
              xmlns:user="clr-namespace:KompasWPF.UserControls"
              xmlns:local="clr-namespace:KompasWPF.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="400" x:Name="editor">
+             Height="Auto" Width="Auto" x:Name="editor">
     <Grid>
-        <GroupBox Header="{Binding ElementName=editor, Path=Header}">
-            <user:SelectingValueSlider HorizontalAlignment="Left" Width="200"></user:SelectingValueSlider>
+        <GroupBox Header="{Binding ElementName=editor, Path=Header}" Foreground="Black">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" Margin="0 0 3 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                           Height="20"
+                           Margin="0"
+                           Padding="0"
+                           BorderBrush="Black"
+                           BorderThickness="1"
+                           HorizontalContentAlignment="Stretch"
+                           VerticalContentAlignment="Stretch"/>
+
+                    <Button Grid.Column="1" 
+                            Margin="10,0,-3,0" 
+                            Height="20" 
+                            Style="{StaticResource FormButton}" 
+                            Content="Выбрать..."
+                            Command="{Binding ElementName=editor, Path=Command}"/>
+                </Grid>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 5">
+                    <StackPanel.Resources>
+                        <Style TargetType="local:SelectingValueSlider">
+                            <Setter Property="Margin" Value="0 0 0 8"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <local:SelectingValueSlider Header="Прозрачность"/>
+                    <local:SelectingValueSlider Header="Общий цвет"/>
+                    <local:SelectingValueSlider Header="Диффузия"/>
+                    <local:SelectingValueSlider Header="Зеркальность"/>
+                    <local:SelectingValueSlider Header="Блеск"/>
+                    <local:SelectingValueSlider Header="Излучение"/>
+                </StackPanel>
+            </Grid>
         </GroupBox>
     </Grid>
 </local:GroupControlBase>

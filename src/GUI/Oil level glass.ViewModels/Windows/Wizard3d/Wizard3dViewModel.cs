@@ -48,99 +48,6 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             }
         }
 
-        private double _maxThreadNominalDiameter;
-        public double MaxThreadNominalDiameter
-        {
-            get
-            {
-                return _maxThreadNominalDiameter; 
-            }
-            private set
-            {
-                _maxThreadNominalDiameter = value;
-
-                OnPropertyChanged();
-            }
-        }
-
-        public RelayCommand SelectMetalCommand
-        {
-            get
-            {
-                return new RelayCommand(obj =>
-                {
-                    _kompasDialogsService.SelectMaterial(Housing?.Material!);
-                });
-            }
-        }
-
-        public RelayCommand SelectGlassCommand
-        {
-            get
-            {
-                return new RelayCommand(obj =>
-                {
-                    _kompasDialogsService.SelectMaterial(Glass?.Material!);
-                });
-            }
-        }
-
-        public RelayCommand SelectRubberCommand
-        {
-            get
-            {
-                return new RelayCommand(obj =>
-                {
-                    _kompasDialogsService.SelectMaterial(RubberStrip?.Material!);
-                });
-            }
-        }
-
-        public RelayCommand EditSavingGlassCommand
-        {
-            get
-            {
-                return new RelayCommand(obj =>
-                {
-                    _kompasDialogsService.SelectFolder(Glass?.File!);
-                });
-            }
-        }
-
-        public RelayCommand EditSavingHousingCommand
-        {
-            get
-            {
-                return new RelayCommand(obj =>
-                {
-                    _kompasDialogsService.SelectFolder(Housing?.File!);
-                });
-            }
-        }
-
-        public RelayCommand EditSavingRubberStripCommand
-        {
-            get
-            {
-                return new RelayCommand(obj =>
-                {
-                    _kompasDialogsService.SelectFolder(RubberStrip?.File!);
-                });
-            }
-        }
-
-
-        public RelayCommand SelectThreadCommand
-        {
-            get
-            {
-                return new RelayCommand(obj =>
-                {
-                    _kompasDialogsService.SelectThread(Housing?.Thread!, MaxThreadNominalDiameter);
-                });
-            }
-        }
-
 
         public Wizard3dViewModel(IKompasDialogsService kompasDialogsService)
         {
@@ -149,8 +56,6 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             Glass = new GlassModel();
             Housing = new HousingModel();
             RubberStrip = new RubberStripModel();
-
-            MaxThreadNominalDiameter = 20;
         }
     }
 }

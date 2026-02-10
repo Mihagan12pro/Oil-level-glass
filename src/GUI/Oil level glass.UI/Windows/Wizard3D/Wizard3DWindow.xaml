@@ -23,7 +23,8 @@
                 Header="Размеры" 
                 Margin="-1,-1,0,1"
                 Name="tiSizes">
-                <user:AppearanceEditor></user:AppearanceEditor>
+                <user:AppearanceEditor Margin="168,0,217,0" Height="226"></user:AppearanceEditor>
+
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}"
@@ -109,7 +110,7 @@
             <TabItem
                  Style="{StaticResource KompasTabItem}" 
                  Header="Вид">
-                
+
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}" 

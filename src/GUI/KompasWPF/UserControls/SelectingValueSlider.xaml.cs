@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace KompasWPF.UserControls
 {
@@ -20,6 +8,79 @@ namespace KompasWPF.UserControls
     /// </summary>
     public partial class SelectingValueSlider : UserControl
     {
+        public int Value
+        {
+            get
+            {
+                return (int)GetValue(ValueProperty);
+            }
+            set
+            {
+                SetValue(ValueProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
+            nameof(Value),
+            typeof(int),
+            typeof(SelectingValueSlider));
+
+
+        public int Maximum
+        {
+            get
+            {
+                return (int)GetValue(MaximumProperty);
+            }
+            set
+            {
+                SetValue(MaximumProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register(
+            nameof(Maximum),
+            typeof(int),
+            typeof(SelectingValueSlider),
+            new FrameworkPropertyMetadata(100));
+
+
+        public int Minimum
+        {
+            get
+            {
+                return (int)GetValue(ManimumProperty);
+            }
+            set
+            {
+                SetValue(ManimumProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty ManimumProperty = DependencyProperty.Register(
+            nameof(Minimum),
+            typeof(int),
+            typeof(SelectingValueSlider),
+            new FrameworkPropertyMetadata(0));
+
+        public string Header
+        {
+            get
+            {
+                return (string)GetValue(HeaderProperty);
+            }
+            set
+            {
+                SetValue(HeaderProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
+            nameof(Header),
+            typeof(string),
+            typeof(SelectingValueSlider));
+
+
         public SelectingValueSlider()
         {
             InitializeComponent();
