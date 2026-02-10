@@ -59,14 +59,14 @@ namespace Oil_level_glass.COM.Extensions.V7
             part.Update();
         }
 
-        public static void SetAppearance(this IPart7 part, Appereance appearance)
+        public static void SetAppearance(this IPart7 part, Appearance appearance)
         {
             IModelContainer modelContainer = (IModelContainer)part;
 
             IColorParam7 colorParameter = (IColorParam7)modelContainer;
 
             colorParameter.SetAdvancedColor(
-                appearance.Color,
+                appearance.Color.Color,
 
                 appearance.Ambient,
 

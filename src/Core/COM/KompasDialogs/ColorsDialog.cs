@@ -8,17 +8,15 @@ namespace Oil_level_glass.COM.KompasDialogs
     internal class ColorsDialog
         : ComDialogBase, IColorsDialog
     {
-        public DialogResult SelectColor(Appereance appearance)
+        public DialogResult SelectColor(Appearance appearance)
         {
-            int color = appearance.Color;
+            int color = appearance.Color.Color;
 
             applicationDialogs.SelectColor(hwnd, Title, ref color);
 
             byte[] values = BitConverter.GetBytes(color);
 
-            appearance.Red = values[0];
-            appearance.Green = values[1];
-            appearance.Blue = values[2];
+            appearance.Color = new RGB(values[0], values[1], values[2]);
 
             return new DialogResult(true);
         }

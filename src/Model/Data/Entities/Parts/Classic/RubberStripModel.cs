@@ -7,10 +7,6 @@ public class RubberStripModel : BaseDetailModel
     public RubberStripModel()
     {
         Material = new Rubber();
-
-        Appereance.Blue = 0;
-        Appereance.Red = 0;
-        Appereance.Green = 0;
     }
 
     public double InternalDiameter { get; set; }

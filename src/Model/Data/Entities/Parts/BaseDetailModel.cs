@@ -10,9 +10,9 @@ public abstract class BaseDetailModel : BaseEntityModel
     {
         File = new PartFile();
 
-        Appereance = new Appereance();
+        Appereance = new Appearance();
     }
 
-    public Appereance Appereance { get; init; }
+    public Appearance Appereance { get; init; }
     public Material? Material { get; init; }
 }
