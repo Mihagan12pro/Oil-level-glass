@@ -24,7 +24,9 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0"
+                    <Label 
+                           Name="lbColor"
+                           Grid.Column="0"
                            Height="20"
                            Margin="0"
                            Padding="0"
@@ -49,12 +51,12 @@
                         </Style>
                     </StackPanel.Resources>
 
-                    <local:SelectingValueSlider Header="Прозрачность"/>
-                    <local:SelectingValueSlider Header="Общий цвет"/>
-                    <local:SelectingValueSlider Header="Диффузия"/>
-                    <local:SelectingValueSlider Header="Зеркальность"/>
-                    <local:SelectingValueSlider Header="Блеск"/>
-                    <local:SelectingValueSlider Header="Излучение"/>
+                    <local:SelectingValueSlider Header="Прозрачность" Value="{Binding ElementName=editor, Path=Transparency}"/>
+                    <local:SelectingValueSlider Header="Общий цвет" Value="{Binding ElementName=editor, Path=Ambient}"/>
+                    <local:SelectingValueSlider Header="Диффузия" Value="{Binding ElementName=editor, Path=Diffuse}"/>
+                    <local:SelectingValueSlider Header="Зеркальность" Value="{Binding ElementName=editor, Path=Specularity}"/>
+                    <local:SelectingValueSlider Header="Блеск" Value="{Binding ElementName=editor, Path=Shininess}"/>
+                    <local:SelectingValueSlider Header="Излучение" Value="{Binding ElementName=editor, Path=Emission}"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
