@@ -12,10 +12,6 @@
         Width="650" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="202*"/>
-            <ColumnDefinition Width="449*"/>
-        </Grid.ColumnDefinitions>
         <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" Grid.ColumnSpan="2">
             <TabItem 
                 Style="{StaticResource KompasTabItem}"
@@ -23,7 +19,7 @@
                 Header="Размеры" 
                 Margin="-1,-1,0,1"
                 Name="tiSizes">
-                <user:AppearanceEditor Margin="168,0,217,0" Height="226"></user:AppearanceEditor>
+                <user:AppearanceEditor Height="284" Margin="0,0,252,0" ></user:AppearanceEditor>
 
             </TabItem>
             <TabItem 

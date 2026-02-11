@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KompasWPF.UserControls"
              mc:Ignorable="d" 
-             Height="20" Width="230" MaxHeight="20" x:Name="editor">
-    <Grid>
+             Height="20" MaxHeight="20" x:Name="editor" HorizontalAlignment="Stretch">
+    <Grid MinWidth="230" HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>

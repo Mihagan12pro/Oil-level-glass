@@ -184,7 +184,7 @@ namespace KompasWPF.UserControls
             color.G = Convert.ToByte(Green);
             color.B = Convert.ToByte(Blue);
 
-            lbColor.Background = new SolidColorBrush(color);
+            rectColor.Fill = new SolidColorBrush(color);
         }
 
         public AppearanceEditor()

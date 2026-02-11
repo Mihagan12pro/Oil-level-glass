@@ -1,6 +1,7 @@
 ﻿namespace Oil_level_glass.Model.Data.Other
 {
-    public class Appearance : BaseModel
+    public class Appearance
+        : BaseModel
     {
         public RGB Color { get; set; } = new RGB(144, 144, 144);
 

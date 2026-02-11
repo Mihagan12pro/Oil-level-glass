@@ -82,8 +82,13 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="SliderHorizontal" TargetType="{x:Type Slider}">
-        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-            <Grid>
+        <Border x:Name="border" 
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                SnapsToDevicePixels="True"
+                HorizontalAlignment="Stretch">
+            <Grid HorizontalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
@@ -91,12 +96,20 @@
                 </Grid.RowDefinitions>
                 <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
                 <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
-                <Border x:Name="TrackBackground" Background="{StaticResource SliderThumb.Track.Background}" BorderBrush="{StaticResource SliderThumb.Track.Border}" BorderThickness="0" Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}}" Margin="0" Grid.Row="1" VerticalAlignment="center">
+                <Border x:Name="TrackBackground" 
+                        Background="{StaticResource SliderThumb.Track.Background}"
+                        BorderBrush="{StaticResource SliderThumb.Track.Border}" 
+                        BorderThickness="0"
+                        Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                        Margin="0" 
+                        Grid.Row="1" 
+                        VerticalAlignment="center"
+                        HorizontalAlignment="Stretch">
                     <Canvas Margin="-6,-1">
                         <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4.0" Visibility="Hidden"/>
                     </Canvas>
                 </Border>
-                <Track x:Name="PART_Track" Grid.Row="1">
+                <Track x:Name="PART_Track" Grid.Row="1" HorizontalAlignment="Stretch">
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
                                               BorderThickness="0" Margin="0,0,0,0">
@@ -105,7 +118,11 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type RepeatButton}">
-                                                <Border Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}}" Background="#b2b2b2"/>
+                                                <Border
+                                                    Height="{Binding ActualHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                                                    Background="#b2b2b2"
+                                                    HorizontalAlignment="Stretch">
+                                                </Border>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
@@ -159,5 +176,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource SliderThumb.Static.Foreground}"/>
         <Setter Property="Template" Value="{StaticResource SliderHorizontal}"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
 </ResourceDictionary>

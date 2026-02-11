@@ -1,12 +1,48 @@
 ﻿namespace Oil_level_glass.Model.Data.Other
 {
-    public class RGB
+    public class RGB : BaseModel
     {
-        public int Red { get; set; }
+        private int _red;
+        public int Red
+        {
+            get
+            {
+                return _red;
+            }
+            set
+            {
+                _red = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public int Green { get; set; }
+        private int _green;
+        public int Green
+        {
+            get
+            {
+                return _green;
+            }
+            set
+            {
+                _green = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public int Blue { get; set; }
+        private int _blue;
+        public int Blue
+        {
+            get
+            {
+                return _blue;
+            }
+            set
+            {
+                _blue = value;
+                OnPropertyChanged();
+            }
+        }
 
         public int Color
         {
