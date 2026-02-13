@@ -9,62 +9,36 @@ namespace KompasWPF.UserControls
     public partial class AppearanceEditor 
         : GroupControlBase
     {
-        public int Red
+        public Brush Color
         {
             get
             {
-                return (int)GetValue(RedProperty);
+                return (Brush)GetValue(ColorProperty);
             }
             set
             {
-                SetValue(RedProperty, value);
-                UpdateColor();
+                SetValue(ColorProperty, value);
             }
         }
 
-        public static readonly DependencyProperty RedProperty = DependencyProperty.Register(
-            nameof(Red),
-            typeof(int),
-            typeof(AppearanceEditor)
-            );
+        public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(
+            nameof(Color),
+            typeof(Brush),
+            typeof(AppearanceEditor),
+            new PropertyMetadata(null, OnColorChanged));
 
-        public int Green
+        private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            get
+            if (d is AppearanceEditor editor)
             {
-                return (int)GetValue(GreenProperty);
-            }
-            set
-            {
-                SetValue(GreenProperty, value);
-                UpdateColor();
+                if (editor.rectColor != null)
+                {
+                    var rect = editor.rectColor;
+
+                    rect.Fill = e.NewValue as Brush;
+                }
             }
         }
-
-        public static readonly DependencyProperty GreenProperty = DependencyProperty.Register(
-            nameof(Green),
-            typeof(int),
-            typeof(AppearanceEditor)
-            );
-
-          public int Blue
-        {
-            get
-            {
-                return (int)GetValue(BlueProperty);
-            }
-            set
-            {
-                SetValue(BlueProperty, value);
-                UpdateColor();
-            }
-        }
-
-        public static readonly DependencyProperty BlueProperty = DependencyProperty.Register(
-            nameof(Blue),
-            typeof(int),
-            typeof(AppearanceEditor)
-            );
 
         public double Emission
         {
@@ -118,7 +92,7 @@ namespace KompasWPF.UserControls
         public static readonly DependencyProperty ShininessProperty = DependencyProperty.Register(
             nameof(Shininess),
             typeof(double),
-            typeof(AppearanceEditor )
+            typeof(AppearanceEditor)
             );
 
 
@@ -177,15 +151,6 @@ namespace KompasWPF.UserControls
             typeof(AppearanceEditor )
             );
 
-        private void UpdateColor()
-        {
-            Color color = new Color();
-            color.R = Convert.ToByte(Red);
-            color.G = Convert.ToByte(Green);
-            color.B = Convert.ToByte(Blue);
-
-            rectColor.Fill = new SolidColorBrush(color);
-        }
 
         public AppearanceEditor()
         {

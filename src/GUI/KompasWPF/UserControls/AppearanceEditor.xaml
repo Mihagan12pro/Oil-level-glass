@@ -35,17 +35,34 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="10"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                        </Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Padding" Value="0"></Setter>
+                            <Setter Property="FontSize" Value="10"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Orientation" Value="Horizontal"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+
                     <Rectangle 
                         Name="rectColor"
                         Stroke="Gray"
                         Height="20"
                         StrokeThickness="1"
+                        Grid.Column="0"
                         Margin="0 0 10 0">
-                        
                     </Rectangle>
                     <Button 
                         HorizontalAlignment="Right"
@@ -53,8 +70,8 @@
                         MinHeight="20"
                         Width="60"
                         Grid.Column="1"
+                        Command="{Binding ElementName=editor, Path=Command}"
                         Content="Выбрать...">
-                        
                     </Button>
                 </Grid>
                 <local:SelectingValueSlider 
@@ -65,7 +82,7 @@
                 
                 <local:SelectingValueSlider 
                     Header="Общий цвет" 
-                    Value="{Binding ElementName=editor, Path=Ambient}"
+                    Value="{Binding ElementName=editor, Path=Ambient, Mode=TwoWay}"
                     Grid.Row="2">
                 </local:SelectingValueSlider>
                 

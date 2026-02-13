@@ -5,12 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.Wizard3D"
         xmlns:kompas="clr-namespace:KompasWPF;assembly=KompasWPF"
+        xmlns:converter="clr-namespace:Oil_level_glass_UI.Converters"
         xmlns:user="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
         Height="650"
         Width="650" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <converter:AppearanceConverter x:Key="AppearanceConverter">
+            
+        </converter:AppearanceConverter>
+    </Window.Resources>
     <Grid>
         <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" Grid.ColumnSpan="2">
             <TabItem 
@@ -19,8 +25,12 @@
                 Header="Размеры" 
                 Margin="-1,-1,0,1"
                 Name="tiSizes">
-                <user:AppearanceEditor Height="284" Margin="0,0,252,0" ></user:AppearanceEditor>
-
+                <user:AppearanceEditor 
+                    Color="{Binding HousingColor}"
+                    Command="{Binding SelectColorCommand}"
+                    Ambient="{Binding Housing.Appearance.Ambient, Mode=TwoWay, Converter={StaticResource AppearanceConverter}}" Height="367" Margin="114,0,118,0">
+                    
+                </user:AppearanceEditor>
             </TabItem>
             <TabItem 
                 Style="{StaticResource KompasTabItem}"

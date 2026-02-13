@@ -3,7 +3,8 @@ using Oil_level_glass.Model.Data.Operations;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
-public class HousingModel : BaseDetailModel
+public class HousingModel 
+    : BaseDetailModel
 {
     public HousingModel()
     {

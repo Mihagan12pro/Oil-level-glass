@@ -84,7 +84,7 @@ namespace Oil_level_glass.Tests
             ComDialogsProvider dialogsProvider = new ComDialogsProvider();
 
             IColorsDialog colorDialog = dialogsProvider.GetColorsDialog();
-            colorDialog.SelectColor(_glassModel.Appereance);
+            colorDialog.SelectColor(_glassModel.Appearance);
 
             glassPartCreator.EditAppearances();
             glassPartCreator.EditMaterial();

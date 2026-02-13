@@ -1,6 +1,8 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Model.Data.Other;
 using Oil_level_glass.ViewModels.Commands;
 using Oil_level_glass.ViewModels.Services.Windows;
+using System.Windows.Media;
 
 namespace Oil_level_glass.ViewModels.Windows.Wizard3d
 {
@@ -8,6 +10,20 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
         : ViewModelBase
     {
         private readonly IKompasDialogsService _kompasDialogsService;
+
+        private Brush _housingColor;
+        public Brush HousingColor
+        {
+            get
+            {
+                return _housingColor; 
+            }
+            set
+            {
+                _housingColor = value;
+                OnPropertyChanged();
+            }
+        }
 
         private GlassModel? _glass;
         public GlassModel? Glass
@@ -45,6 +61,37 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             set
             {
                 _rubberStrip = value;
+            }
+        }
+
+
+        public RelayCommand SelectMetalCommand
+        {
+            get
+            {
+                return new RelayCommand((obj) =>
+                {
+                    _kompasDialogsService.SelectMaterial(Housing.Material);
+                });
+            }
+        }
+
+
+        public RelayCommand SelectColorCommand
+        {
+            get
+            {
+                return new RelayCommand((obj) =>
+                {
+                    RGB color = Housing!.Appearance.Color;
+
+                    _kompasDialogsService.SelectColor(color);
+
+                    HousingColor = new SolidColorBrush(
+                        Color.FromRgb(Convert.ToByte(color.Red), 
+                        Convert.ToByte(color.Green),
+                        Convert.ToByte(color.Blue)));
+                });
             }
         }
 

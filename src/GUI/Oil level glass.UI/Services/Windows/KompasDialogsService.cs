@@ -3,6 +3,7 @@ using Oil_level_glass.Core.Records;
 using Oil_level_glass.Model.Data.KompasFile;
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Operations;
+using Oil_level_glass.Model.Data.Other;
 using Oil_level_glass.ViewModels.Services.Windows;
 using System.Windows;
 
@@ -46,6 +47,12 @@ namespace Oil_level_glass_UI.Services.Windows
             TryToShowErrorMessageBox(result);
         }
 
+        public void SelectColor(RGB color)
+        {
+            IColorsDialog colorsDialog = _provider.GetColorsDialog();
+            colorsDialog.SelectColor(color);
+        }
+
 
         private void TryToShowErrorMessageBox(DialogResult result)
         {
@@ -57,7 +64,6 @@ namespace Oil_level_glass_UI.Services.Windows
                     MessageBoxImage.Error);
             }
         }
-
 
         public KompasDialogsService(IDialogsProvider provider)
         {

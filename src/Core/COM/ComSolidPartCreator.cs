@@ -25,7 +25,7 @@ namespace Oil_level_glass.COM
 
         public void EditAppearances()
         {
-            Part7!.SetAppearance(PartModel!.Appereance);
+            Part7!.SetAppearance(PartModel!.Appearance);
         }
 
         public void EditMaterial()

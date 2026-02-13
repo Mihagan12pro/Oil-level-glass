@@ -8,12 +8,12 @@ public class GlassModel : BaseDetailModel
     {
         Material = new Glass();
 
-        Appereance.Transparency = 0.74;
-        Appereance.Ambient = 0.5;
-        Appereance.Diffuse = 0.6;
-        Appereance.Specularity = 0.8;
-        Appereance.Shininess = 0.8;
-        Appereance.Emission = 0.5;
+        Appearance.Transparency = 0.74;
+        Appearance.Ambient = 0.5;
+        Appearance.Diffuse = 0.6;
+        Appearance.Specularity = 0.8;
+        Appearance.Shininess = 0.8;
+        Appearance.Emission = 0.5;
     }
 
     public double ExternalDiameter { get; set; }
