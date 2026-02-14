@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace Oil_level_glass.Model.Data
 {
+    /// <summary>
+    /// Base model class. Every domain model must be inherited from this class
+    /// </summary>
     public abstract class BaseModel 
         : IDataErrorInfo, 
           INotifyPropertyChanged

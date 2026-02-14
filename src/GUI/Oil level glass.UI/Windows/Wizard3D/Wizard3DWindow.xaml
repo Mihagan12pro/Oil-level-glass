@@ -39,12 +39,47 @@
             </RowDefinition>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0" Name="grdGlass">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border 
+                Grid.Column="0"
+                Margin="20"
+                BorderBrush="Black"
+                BorderThickness="1">
+                <Image Source="/Resources/Images/Glass.png" Stretch="Fill"></Image>
+            </Border>
+            <Grid
+                Grid.Column="1"
+                Margin="0 20 20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0" Header="Размеры линзы">
+                    
+                </GroupBox>
+                <user:MaterialChooser Grid.Row="1">
+                    
+                </user:MaterialChooser>
+                <user:SavingEditor Grid.Row="2">
+                    
+                </user:SavingEditor>
+                <user:AppearanceEditor Grid.Row="3">
+                    
+                </user:AppearanceEditor>
+            </Grid>
+        </Grid>
         <Border Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="Gray">
             <StackPanel 
-             HorizontalAlignment="Right"
-             VerticalAlignment="Center"
-             Orientation="Horizontal"
-             Margin="0 0 20 0">
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Center"
+                 Orientation="Horizontal"
+                 Margin="0 0 20 0">
                 <StackPanel.Resources>
                     <Style TargetType="Button" BasedOn="{StaticResource wizard3dStyle}">
 
