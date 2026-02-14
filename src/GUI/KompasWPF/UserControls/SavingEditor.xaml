@@ -5,83 +5,89 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KompasWPF.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="440" MinHeight="100" x:Name="editor">
+             MinHeight="100" x:Name="editor" HorizontalAlignment="Stretch">
     <Grid>
         <GroupBox 
             Name="gbPartSaving" 
             Foreground="Black" 
             Header="{Binding ElementName=editor, Path=Header}" 
-            MinWidth="440" 
             HorizontalAlignment="Stretch">
             
             <Grid Margin="10 0 0 2">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Height="18">
-                        <TextBlock Text="{Binding ElementName=editor, Path=Directory}">
-                            
-                        </TextBlock>
-                    </Border>
-                    <Button 
-                        Grid.Column="1"
-                        FontSize="10"
-                        Margin="10 0 10 0" 
-                        Width="60"
-                        MaxHeight="18"
-                        MinHeight="18" 
-                        Style="{StaticResource FormButton}"
-                        Content="Выбрать..."
-                        Command="{Binding ElementName=editor, Path=Command}">
-                    </Button>
-                </Grid>
+                <Border 
+                    Grid.Column="0"  
+                    Grid.Row="0" 
+                    BorderBrush="Black" 
+                    BorderThickness="1"
+                    Height="18">
+                    <TextBlock Text="{Binding ElementName=editor, Path=Directory}">
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" Height="18" FontSize="10" Text="{Binding ElementName=editor, Path=Marking}">
+                    </TextBlock>
+                </Border>
+                <Button 
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    FontSize="10"
+                    Margin="10 0 10 0" 
+                    Width="60"
+                    MaxHeight="18"
+                    MinHeight="18" 
+                    Style="{StaticResource FormButton}"
+                    Content="Выбрать..."
+                    Command="{Binding ElementName=editor, Path=Command}">
+                </Button>
 
-                    </TextBox>
-                    <Label 
-                        Padding="0"
-                        Content="Обозначение"
-                        Height="18"
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Center"
-                        FontSize="10"
-                        Grid.Column="1"
-                        Margin="10 0 10 0" />
-                </Grid>
+                <TextBox 
+                    Grid.Column="0" 
+                     Grid.Row="1"
+                    Height="18"
+                    FontSize="10" 
+                    Text="{Binding ElementName=editor, Path=Marking}">
 
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" Height="18" FontSize="10" Text="{Binding ElementName=editor, Path=Naming}">
+                </TextBox>
+                <Label 
+                    Padding="0"
+                    Content="Обозначение"
+                    Height="18"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="10"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10 0 10 0">
+                </Label>
 
-                    </TextBox>
-                    <Label 
-                        Content="Наименование"
-                        Padding="0"
-                        Height="18"
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Center"
-                        FontSize="10"
-                        Grid.Column="1" />
-                </Grid>
+                <TextBox 
+                    Grid.Row="2"
+                    Grid.Column="0" 
+                    Height="18" 
+                    FontSize="10"
+                    Text="{Binding ElementName=editor, Path=Naming}">
+                </TextBox>
+                <Label 
+                    Content="Наименование"
+                    Padding="0"
+                    Height="18"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="10"
+                    Grid.Row="2"
+                    Grid.Column="1">
+                </Label>
 
             </Grid>
+            
         </GroupBox>
     </Grid>
 </local:GroupControlBase>
