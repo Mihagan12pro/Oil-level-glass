@@ -18,113 +18,45 @@
         </converter:AppearanceConverter>
     </Window.Resources>
     <Grid>
-        <TabControl Style="{StaticResource KompasTabControl}" TabStripPlacement="Top" Grid.ColumnSpan="2">
-            <TabItem 
-                Style="{StaticResource KompasTabItem}"
-                Height="20"
-                Header="Размеры" 
-                Margin="-1,-1,0,1"
-                Name="tiSizes">
-                <user:AppearanceEditor 
-                    Color="{Binding HousingColor}"
-                    Command="{Binding SelectColorCommand}"
-                    Ambient="{Binding Housing.Appearance.Ambient, Mode=TwoWay, Converter={StaticResource AppearanceConverter}}" Height="367" Margin="114,0,118,0">
-                    
-                </user:AppearanceEditor>
-            </TabItem>
-            <TabItem 
-                Style="{StaticResource KompasTabItem}"
-                Height="20"
-                Width="100"
-                Header="Материалы"
-                Name="tiMaterials" HorizontalAlignment="Left">
-                <Grid Margin="40 35 40 15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <StackPanel VerticalAlignment="Top" Grid.Row="0">
-                        <user:MaterialChooser 
-                            Header="Корпус" 
-                            Command="{Binding SelectMetalCommand}"
-                            Density="{Binding Housing.Material.Density}"
-                            Title="{Binding Housing.Material.Title}">
-                        </user:MaterialChooser>
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Top" Grid.Row="1">
-                        <user:MaterialChooser 
-                            Header="Прокладка" 
-                            Density="{Binding RubberStrip.Material.Density}"
-                            Title="{Binding RubberStrip.Material.Title}"
-                            Command="{Binding SelectRubberCommand}">
-                        </user:MaterialChooser>
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Top" Grid.Row="2">
-                        <user:MaterialChooser 
-                            Header="Линза"
-                            Density="{Binding Glass.Material.Density}"
-                            Title="{Binding Glass.Material.Title}"
-                            Command="{Binding SelectGlassCommand}">
-                        </user:MaterialChooser>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem 
-                Style="{StaticResource KompasTabItem}" 
-                Height="20"
-                Width="100" 
-                Header="Сохранение"
-                Name="tiSaving">
-                <Grid Margin="40 70 40 15">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource FormButton}" x:Key="wizard3dStyle">
+                <Setter 
+                    Property="Width" 
+                    Value="60">
+                </Setter>
+                <Setter 
+                    Property="Height" 
+                    Value="20">
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition>
+                
+            </RowDefinition>
+            <RowDefinition Height="0.1*">
+                
+            </RowDefinition>
+        </Grid.RowDefinitions>
 
-                    <StackPanel VerticalAlignment="Top" Grid.Row="0">
-                        <user:SavingEditor 
-                            Command="{Binding EditSavingHousingCommand}"
-                            Header="Корпус" Directory="{Binding Housing.File.Folder}" 
-                            Naming="{Binding Housing.File.Name.Naming}" 
-                            Marking="{Binding Housing.File.Name.Marking}">
-                        </user:SavingEditor>
-                    </StackPanel>
+        <Border Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="Gray">
+            <StackPanel 
+             HorizontalAlignment="Right"
+             VerticalAlignment="Center"
+             Orientation="Horizontal"
+             Margin="0 0 20 0">
+                <StackPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource wizard3dStyle}">
 
-                    <StackPanel VerticalAlignment="Top" Grid.Row="1">
-                        <user:SavingEditor
-                            Command="{Binding EditSavingRubberStripCommand}"
-                            Header="Прокладка" 
-                            Directory="{Binding RubberStrip.File.Folder}" 
-                            Naming="{Binding RubberStrip.File.Name.Naming}" 
-                            Marking="{Binding RubberStrip.File.Name.Marking}">
-                        </user:SavingEditor>
-                    </StackPanel>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Content="Назад" Margin="0 0 10 0">
 
-                    <StackPanel VerticalAlignment="Top" Grid.Row="2">
-                        <user:SavingEditor  
-                            Command="{Binding EditSavingGlassCommand}"
-                            Header="Линза"
-                            Directory="{Binding Glass.File.Folder}" 
-                            Naming="{Binding Glass.File.Name.Naming}" 
-                            Marking="{Binding Glass.File.Name.Marking}">
-                        </user:SavingEditor>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem
-                 Style="{StaticResource KompasTabItem}" 
-                 Header="Вид">
+                </Button>
+                <Button Content="Дальше">
 
-            </TabItem>
-            <TabItem 
-                Style="{StaticResource KompasTabItem}" 
-                Height="20"
-                Width="120" 
-                Header="Генерация модели"
-                Name="tiPartGeneration">
-            </TabItem>
-        </TabControl>
+                </Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </kompas:KompasWindow>

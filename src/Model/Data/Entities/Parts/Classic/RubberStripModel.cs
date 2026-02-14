@@ -4,16 +4,50 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 public class RubberStripModel : BaseDetailModel
 {
-    public RubberStripModel()
+    private double _internalDiameter;
+    public double InternalDiameter
     {
-        Material = new Rubber();
+        get
+        {
+            return _internalDiameter; 
+        }
+        set
+        {
+            _internalDiameter = value;
+
+            OnPropertyChanged();
+        }
     }
 
-    public double InternalDiameter { get; set; }
+    private double _externalDiameter;
+    public double ExternalDiameter
+    {
+        get
+        {
+            return _externalDiameter; 
+        }
+        set
+        {
+            _externalDiameter = value;
 
-    public double ExternalDiameter { get; set; }
+            OnPropertyChanged();
+        }
+    }
 
-    public double Height { get; set; }
+    private double _height;
+    public double Height
+    {
+        get 
+        {
+            return _height;
+        }
+        set
+        {
+            _height = value;
+
+            OnPropertyChanged();
+        }
+    }
 
     protected override string CheckField(string columnName)
     {
@@ -45,5 +79,11 @@ public class RubberStripModel : BaseDetailModel
         }
 
         return error;
+    }
+
+
+    public RubberStripModel()
+    {
+        Material = new Rubber();
     }
 }

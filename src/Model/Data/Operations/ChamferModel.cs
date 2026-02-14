@@ -1,10 +1,43 @@
 ﻿namespace Oil_level_glass.Model.Data.Operations
 {
-    public class ChamferModel : BaseModel
+    public class ChamferModel 
+        : BaseModel
     {
-        public double Length { get; set; }  
+        private double _length, _angle;
 
-        public double Angle { get; set; }
+        /// <summary>
+        /// Length of the side 1 (in mm)
+        /// </summary>
+        public double Length
+        {
+            get
+            {
+                return _length;
+            }
+            set
+            {
+                _length = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Angle in degrees
+        /// </summary>
+        public double Angle
+        {
+            get
+            {
+                return _angle; 
+            }
+            set
+            {
+                _angle = value;
+
+                OnPropertyChanged();
+            }
+        }
 
         protected override string CheckField(string columnName)
         {

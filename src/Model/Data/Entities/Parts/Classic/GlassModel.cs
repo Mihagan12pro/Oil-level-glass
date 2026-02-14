@@ -16,9 +16,35 @@ public class GlassModel : BaseDetailModel
         Appearance.Emission = 0.5;
     }
 
-    public double ExternalDiameter { get; set; }
+    private double _externalDiameter;
+    public double ExternalDiameter
+    {
+        get
+        {
+            return _externalDiameter; 
+        }
+        set
+        {
+            _externalDiameter = value;
 
-    public double Height { get; set; }
+            OnPropertyChanged();
+        }
+    }
+
+    private double _height;
+    public double Height
+    {
+        get
+        {
+            return _height;
+        }
+        set
+        {
+            _height = value;
+
+            OnPropertyChanged();
+        }
+    }
 
     protected override string CheckField(string columnName)
     {
