@@ -2,7 +2,8 @@
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
-public class GlassModel : BaseDetailModel
+public class GlassModel 
+    : BaseDetailModel
 {
     public GlassModel()
     {
@@ -49,6 +50,24 @@ public class GlassModel : BaseDetailModel
     protected override string CheckField(string columnName)
     {
         string error = string.Empty;
+
+        switch (columnName)
+        {
+            case nameof(Height):
+                {
+                    if (Height <= 0)
+                        error = "Height must be greater than zero!";
+
+                    break;
+                }
+            case nameof(ExternalDiameter):
+                {
+                    if (ExternalDiameter <= 0)
+                        error = "Diameter must be greater than zero!";
+
+                    break;
+                }
+        }
 
         return error;
     }
