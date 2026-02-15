@@ -5,47 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KompasWPF.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="400" MinHeight="70" x:Name="chooser" >
+             x:Name="chooser" HorizontalAlignment="Stretch">
     <Grid>
-        <GroupBox Name="gbPartMaterial" Header="{Binding ElementName=chooser, Path=Header}" Foreground="Black" HorizontalAlignment="Stretch" MinWidth="400">
-            <StackPanel Margin="10 5 0 0" MinHeight="14" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Border Margin="0 0 10 0" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.Row="0">
-                        <StackPanel>
-                            <TextBlock Name="tbkMaterialTitle" Text="{Binding ElementName=chooser, Path=Title}" FontSize="10"/>
-                        </StackPanel>
-                    </Border>
-                    <Button
-                        Name="btSelect"
-                        HorizontalAlignment="Center" 
-                        FontSize="10" 
-                        Style="{StaticResource FormButton}" 
-                        Content="Выбрать..." 
-                        Width="60"
-                        MinHeight="20"
-                        MaxHeight="20"
-                        Command="{Binding ElementName=chooser, Path=Command}"
-                        Grid.Column="1"
-                        Grid.Row="0">
-                    </Button>
-                </Grid>
-                <Expander Header="Остальные параметры" Margin="0 10" ExpandDirection="Down" FontSize="10">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Плотность: " FontSize="10"></Label>
-                            <TextBlock Name="tbDensity" FontSize="10" MinWidth="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="0" Text="{Binding ElementName=chooser, Path=Density}"></TextBlock>
-                            <Label Content="г/см³" FontSize="10"></Label>
-                        </StackPanel>
-                    </StackPanel>
-                </Expander>
-            </StackPanel>
+        <GroupBox 
+            Name="gbPartMaterial" 
+            Header="{Binding ElementName=chooser, Path=Header}"
+            Foreground="Black" 
+            HorizontalAlignment="Stretch">
+            <Grid  Margin="10 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox 
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    FontSize="10"
+                    VerticalAlignment="Center"
+                    IsReadOnly="True"
+                    Background="Transparent" 
+                    Margin="0 0 10 0">
+                    
+                </TextBox>
+                <Button 
+                    Grid.Row="0" 
+                    Grid.Column="1" 
+                    Height="16"
+                    FontSize="10"
+                    VerticalAlignment="Center"
+                    Width="60"
+                    MaxWidth="60"
+                    Style="{StaticResource FormButton}"
+                    Content="Выбрать..." 
+                    HorizontalAlignment="Left">
+                    
+                </Button>
+                
+                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="Padding" Value="0"></Setter>
+                        </Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Padding" Value="0"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Label Content="Плотность: " FontSize="10"></Label>
+                    <TextBlock
+                        Name="tbDensity" 
+                        FontSize="10"
+                        MinWidth="10" 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Padding="0" 
+                        Text="{Binding ElementName=chooser, Path=Density}">
+                    </TextBlock>
+                    <Label Content="г/см³" FontSize="10"></Label>
+                </StackPanel>
+            </Grid>
         </GroupBox>
     </Grid>
 </local:GroupControlBase>
