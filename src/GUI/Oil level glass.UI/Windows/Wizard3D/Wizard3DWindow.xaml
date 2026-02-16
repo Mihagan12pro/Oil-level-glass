@@ -9,17 +9,21 @@
         xmlns:user="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
-        Height="650"
-        Width="650" 
+        Height="850"
+        Width="850" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Window.Resources>
         <converter:AppearanceConverter x:Key="AppearanceConverter">
 
         </converter:AppearanceConverter>
     </Window.Resources>
+
     <Grid>
         <Grid.Resources>
-            <Style TargetType="Button" BasedOn="{StaticResource FormButton}" x:Key="wizard3dStyle">
+            <Style 
+                TargetType="Button" 
+                BasedOn="{StaticResource FormButton}" 
+                x:Key="wizard3dStyle">
                 <Setter 
                     Property="Width" 
                     Value="60">
@@ -46,7 +50,7 @@
             </Grid.ColumnDefinitions>
             <Border 
                 Grid.Column="0"
-                Margin="20"
+                Margin="20 25 20 20"
                 BorderBrush="Black"
                 BorderThickness="1">
                 <Image Source="/Resources/Images/Glass.png" Stretch="Fill"></Image>
@@ -56,28 +60,38 @@
                 Margin="0 20 20 20">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <GroupBox Grid.Row="0" Header="Размеры линзы">
-
+                
+                <GroupBox
+                    Grid.Row="0"
+                    Margin="0 0 0 5"
+                    Header="Размеры линзы">
                 </GroupBox>
-                <user:MaterialChooser Grid.Row="1" Header="Материал линзы">
 
+                <user:MaterialChooser 
+                     Margin="0 5"
+                    Header="Материал линзы"
+                    Grid.Row="1">
                 </user:MaterialChooser>
-                <user:SavingEditor 
-                    Grid.Row="1"
-                    Header="Параметры сохранения линзы" Margin="0,137,0,0" Grid.RowSpan="2"/>
-                <user:AppearanceEditor 
-                    Grid.Row="3" 
-                    Width="Auto"
-                    Header="Внешний вид линзы">
 
+                <user:SavingEditor
+                     Margin="0 5"
+                    Header="Сохранение линзы"
+                    Grid.Row="2">
+                </user:SavingEditor>
+
+                <user:AppearanceEditor 
+                     Margin="0 5 0 0"
+                    Header="Внешний вид линзы"
+                    Grid.Row="3">
                 </user:AppearanceEditor>
+            
             </Grid>
         </Grid>
-        <Border Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="Gray">
+        <Border Margin="0 5 0 0" Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="Gray">
             <StackPanel 
                  HorizontalAlignment="Right"
                  VerticalAlignment="Center"

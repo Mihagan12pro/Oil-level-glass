@@ -6,7 +6,7 @@
              xmlns:user="clr-namespace:KompasWPF.UserControls"
              xmlns:local="clr-namespace:KompasWPF.UserControls"
              mc:Ignorable="d" 
-             Height="Auto" Width="Auto" x:Name="editor">
+             x:Name="editor" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid>
         <GroupBox 
             Header="{Binding ElementName=editor, Path=Header}" 
@@ -17,13 +17,16 @@
                 <Style TargetType="Button" BasedOn="{StaticResource FormButton}">
                     <Setter Property="FontSize" Value="10"></Setter>
                 </Style>
+                <Style TargetType="local:SelectingValueSlider">
+                    <Setter Property="Width" Value="Auto"></Setter>
+                    <Setter Property="Margin" Value="0 5"></Setter>
+                </Style>
             </GroupBox.Resources>
             <Grid VerticalAlignment="Stretch" Margin="5">
-                <Grid.Resources>
-                    <Style TargetType="user:SelectingValueSlider">
-                        <Setter Property="Margin" Value="0 5"></Setter>
-                    </Style>
-                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -34,80 +37,63 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
-                    <Grid.Resources>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="FontSize" Value="10"></Setter>
-                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                        </Style>
-                        <Style TargetType="Label">
-                            <Setter Property="Padding" Value="0"></Setter>
-                            <Setter Property="FontSize" Value="10"></Setter>
-                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                        </Style>
-                        <Style TargetType="StackPanel">
-                            <Setter Property="Orientation" Value="Horizontal"></Setter>
-                        </Style>
-                    </Grid.Resources>
-                    
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                <Rectangle 
+                    Name="rectColor"
+                    Stroke="Gray"
+                    Height="20"
+                    StrokeThickness="1"
+                    Grid.Column="0"
+                    Grid.Row="0">
+                </Rectangle>
+                <Button 
+                    Height="20"
+                    Width="60"
+                    Margin="10 0 0 0"
+                    Grid.Column="1"
+                    Command="{Binding ElementName=editor, Path=Command}"
+                    Content="Выбрать...">
+                </Button>
 
-                    <Rectangle 
-                        Name="rectColor"
-                        Stroke="Gray"
-                        Height="20"
-                        StrokeThickness="1"
-                        Grid.Column="0"
-                        Margin="0 0 10 0">
-                    </Rectangle>
-                    <Button 
-                        HorizontalAlignment="Right"
-                        MaxHeight="20"
-                        MinHeight="20"
-                        Width="60"
-                        Grid.Column="1"
-                        Command="{Binding ElementName=editor, Path=Command}"
-                        Content="Выбрать...">
-                    </Button>
-                </Grid>
                 <local:SelectingValueSlider 
                     Header="Прозрачность" 
                     Value="{Binding ElementName=editor, Path=Transparency}"
-                    Grid.Row="1">
+                    Grid.Row="1"
+                    Grid.Column="0">
                 </local:SelectingValueSlider>
                 
                 <local:SelectingValueSlider 
                     Header="Общий цвет" 
                     Value="{Binding ElementName=editor, Path=Ambient, Mode=TwoWay}"
-                    Grid.Row="2">
+                    Grid.Row="2"
+                    Grid.Column="0">
                 </local:SelectingValueSlider>
                 
                 <local:SelectingValueSlider 
                     Header="Диффузия"
                     Value="{Binding ElementName=editor, Path=Diffuse}"
-                    Grid.Row="3">
+                    Grid.Row="3"
+                    Grid.Column="0">
                 </local:SelectingValueSlider>
                 
                 <local:SelectingValueSlider 
                     Header="Зеркальность" 
                     Value="{Binding ElementName=editor, Path=Specularity}"
-                    Grid.Row="4">
+                    Grid.Row="4"
+                    Grid.Column="0">
                 </local:SelectingValueSlider>
                 
                 <local:SelectingValueSlider 
                     Header="Блеск" 
                     Value="{Binding ElementName=editor, Path=Shininess}"
-                    Grid.Row="5">
+                    Grid.Row="5"
+                    Grid.Column="0">
                 </local:SelectingValueSlider>
                 
                 <local:SelectingValueSlider 
                     Header="Излучение"
                     Value="{Binding ElementName=editor, Path=Emission}"
-                    Grid.Row="6">
+                    Grid.Row="6"
+                    Grid.Column="0">
                 </local:SelectingValueSlider>
             </Grid>
         </GroupBox>

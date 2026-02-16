@@ -12,7 +12,7 @@ namespace Oil_level_glass.COM
     {
         public DialogResult Check(KompasDocumentType kompasDocument = KompasDocumentType.None)
         {
-            DialogResult result = null;
+            DialogResult result = null!;
 
             try
             {

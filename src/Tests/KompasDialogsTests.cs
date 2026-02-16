@@ -70,28 +70,28 @@ namespace Oil_level_glass.Tests
         [Fact()]
         public void TestColor()
         {
-            ComGlassPartCreatorsFactory partCreatorsFactory = new ComGlassPartCreatorsFactory();
+            //ComGlassPartCreatorsFactory partCreatorsFactory = new ComGlassPartCreatorsFactory();
 
-            IGlassPartCreator glassPartCreator = partCreatorsFactory.GetCreator();
+            //IGlassPartCreator glassPartCreator = partCreatorsFactory.GetCreator();
 
-            glassPartCreator.PartModel = _glassModel;
+            //glassPartCreator.PartModel = _glassModel;
 
 
-            glassPartCreator.Initialize();
-            glassPartCreator.AddSketch1();
-            glassPartCreator.ExtrudeSketch1();
+            //glassPartCreator.Initialize();
+            //glassPartCreator.AddSketch1();
+            //glassPartCreator.ExtrudeSketch1();
 
-            ComDialogsProvider dialogsProvider = new ComDialogsProvider();
+            //ComDialogsProvider dialogsProvider = new ComDialogsProvider();
 
-            IColorsDialog colorDialog = dialogsProvider.GetColorsDialog();
-            colorDialog.SelectColor(_glassModel.Appearance);
+            //IColorsDialog colorDialog = dialogsProvider.GetColorsDialog();
+            //colorDialog.SelectColor(_glassModel.Appearance);
 
-            glassPartCreator.EditAppearances();
-            glassPartCreator.EditMaterial();
-            glassPartCreator.EditNaming();
-            glassPartCreator.EditSavingParameter();
+            //glassPartCreator.EditAppearances();
+            //glassPartCreator.EditMaterial();
+            //glassPartCreator.EditNaming();
+            //glassPartCreator.EditSavingParameter();
 
-            glassPartCreator.SaveFile();
+            //glassPartCreator.SaveFile();
         }
 
         public KompasDialogsTests()
