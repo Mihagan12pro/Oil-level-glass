@@ -21,10 +21,5 @@ namespace Oil_level_glass_UI
 
             DataContext = new MainViewModel(_windowsService);
         }
-
-        private void BtAbout_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-       
-        }
     }
 }

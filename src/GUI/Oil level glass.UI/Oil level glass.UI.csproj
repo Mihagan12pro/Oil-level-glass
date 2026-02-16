@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\COM\Oil level glass.COM.csproj" />
-    <ProjectReference Include="..\..\Core\Core\Oil level glass.Core.csproj" />
     <ProjectReference Include="..\KompasWPF\KompasWPF.csproj" />
     <ProjectReference Include="..\Oil level glass.ViewModels\Oil level glass.ViewModels.csproj" />
   </ItemGroup>

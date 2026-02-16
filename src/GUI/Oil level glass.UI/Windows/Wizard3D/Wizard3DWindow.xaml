@@ -10,16 +10,19 @@
         mc:Ignorable="d"
         Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
         Height="850"
-        Width="850" 
+        Width="1000" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Window.Resources>
-        <converter:AppearanceConverter x:Key="AppearanceConverter">
+        <!--<converter:AppearanceConverter x:Key="AppearanceConverter">
 
-        </converter:AppearanceConverter>
+        </converter:AppearanceConverter>-->
     </Window.Resources>
 
     <Grid>
         <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Padding" Value="0"></Setter>
+            </Style>
             <Style 
                 TargetType="Button" 
                 BasedOn="{StaticResource FormButton}" 
@@ -43,17 +46,21 @@
             </RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Name="grdGlass">
+        <Grid Name="grdClient" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border 
                 Grid.Column="0"
                 Margin="20 25 20 20"
                 BorderBrush="Black"
                 BorderThickness="1">
-                <Image Source="/Resources/Images/Glass.png" Stretch="Fill"></Image>
+                <Image 
+                    Name="imgGlass"
+                    Source="/Resources/Images/Glass.png"
+                    Stretch="Fill">
+                </Image>
             </Border>
             <Grid
                 Grid.Column="1"
@@ -69,6 +76,65 @@
                     Grid.Row="0"
                     Margin="0 0 0 5"
                     Header="Размеры линзы">
+                    <Grid Margin="20">
+                        <Grid.Resources>
+                            <Style 
+                                TargetType="Label">
+                                <Setter 
+                                    Property="VerticalAlignment"
+                                    Value="Center">
+                                </Setter>
+                                <Setter
+                                    Property="HorizontalAlignment"
+                                    Value="Left">
+                                </Setter>
+                            </Style>
+                            <Style 
+                                TargetType="TextBox">
+                                <Setter
+                                    Property="Width"
+                                    Value="200">
+                                </Setter>
+                                <Setter
+                                    Property="VerticalAlignment"
+                                    Value="Center">
+                                </Setter>
+                                <Setter 
+                                    Property="HorizontalAlignment"
+                                    Value="Left">
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label 
+                            Content="Высота:" 
+                            Grid.Row="0"
+                            Grid.Column="0">
+                        </Label>
+                        <TextBox  
+                            Grid.Row="0"
+                            Grid.Column="1" 
+                            Text="{Binding Glass.Height, UpdateSourceTrigger=PropertyChanged}">
+                        </TextBox>
+
+                        <Label 
+                            Content="Диаметр:" 
+                            Grid.Row="1"
+                            Grid.Column="0">
+                        </Label>
+                        <TextBox 
+                            Grid.Row="1" 
+                            Grid.Column="1">
+                        </TextBox>
+                    </Grid>
                 </GroupBox>
 
                 <user:MaterialChooser 
