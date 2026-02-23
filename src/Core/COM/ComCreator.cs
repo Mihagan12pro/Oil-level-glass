@@ -4,8 +4,7 @@ using Oil_level_glass.Core;
 
 namespace Oil_level_glass.COM
 {
-    internal abstract class ComCreator 
-        : ICreator
+    internal abstract class ComCreator : ICreator
     {
         public KompasObject KompasObject { get; private set; }  
 

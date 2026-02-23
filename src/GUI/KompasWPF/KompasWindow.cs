@@ -1,13 +1,7 @@
-﻿using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace KompasWPF
 {
@@ -54,7 +48,16 @@ namespace KompasWPF
 
         public Grid HeaderBar { get; protected set; } = null!;
 
+        public bool UserResized 
+            => false;
+
+        //internal static readonly DependencyProperty IWindowServiceProperty;
+
+        private DispatcherOperation _contentRenderedCallback;
+
         private bool _isTemplateApplied = false;
+
+        private bool _postContentRenderedFromLoadedHandler;
 
         public override void OnApplyTemplate()
         {
@@ -128,7 +131,31 @@ namespace KompasWPF
             if (Mouse.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
-        
+
+
+        protected override void OnContentChanged(object oldContent, object newContent)
+        {
+            base.OnContentChanged(oldContent, newContent);
+            SetIWindowService();
+            if (base.IsLoaded)
+            {
+                PostContentRendered();
+            }
+            else if (!_postContentRenderedFromLoadedHandler)
+            {
+                base.Loaded += KompasWindow_Loaded;
+                _postContentRenderedFromLoadedHandler = true;
+            }
+        }
+
+        private void SetIWindowService()
+        {
+            //if (GetValue(IWindowServiceProperty) == null)
+            //{
+            //    SetValue(IWindowServiceProperty, this);
+            //}
+        }
+
 
         protected void ToggleWindowState()
         {
@@ -146,6 +173,21 @@ namespace KompasWPF
 
                 WindowState = WindowState.Maximized;
             }
+        }
+
+        private void PostContentRendered()
+        {
+            if (_contentRenderedCallback != null)
+            {
+                _contentRenderedCallback.Abort();
+            }
+
+            _contentRenderedCallback = base.Dispatcher.BeginInvoke(DispatcherPriority.Input, (DispatcherOperationCallback)delegate
+            {
+                _contentRenderedCallback = null;
+                OnContentRendered(EventArgs.Empty);
+                return (object)null;
+            }, this);
         }
 
 
@@ -192,10 +234,34 @@ namespace KompasWPF
             return (T)base.GetTemplateChild(childName);
         }
 
-
+        
         public KompasWindow()
         {
            
         }
+
+        static KompasWindow()
+        {
+            //IWindowServiceProperty = DependencyProperty.RegisterAttached(
+            //    "IWindowService",
+            //    typeof(IWindowService), 
+            //    typeof(Window), 
+            //    new FrameworkPropertyMetadata(
+            //        null, 
+            //        FrameworkPropertyMetadataOptions.Inherits |
+            //        FrameworkPropertyMetadataOptions.OverridesInheritanceBehavior)
+            //    );
+        }
     }
+
+    //internal interface IWindowService
+    //{
+    //    string Title { get; set; }
+
+    //    double Height { get; set; }
+
+    //    double Width { get; set; }
+
+    //    bool UserResized { get; }
+    //}
 }

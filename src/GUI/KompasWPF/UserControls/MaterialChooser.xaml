@@ -15,7 +15,7 @@
             <Grid  Margin="10 5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -29,7 +29,8 @@
                     VerticalAlignment="Center"
                     IsReadOnly="True"
                     Background="Transparent" 
-                    Margin="0 0 10 0">
+                    Margin="0 0 10 0"
+                    Text="{Binding ElementName=chooser, Path=Title}">
                     
                 </TextBox>
                 <Button 
@@ -38,6 +39,7 @@
                     Height="18"
                     FontSize="10"
                     VerticalAlignment="Center"
+                    Command="{Binding ElementName=chooser, Path=Command}"
                     Width="60"
                     MaxWidth="60"
                     Style="{StaticResource FormButton}"
@@ -69,7 +71,7 @@
                         Padding="0" 
                         Text="{Binding ElementName=chooser, Path=Density}">
                     </TextBlock>
-                    <Label Content="г/см³" FontSize="10"></Label>
+                    <Label Content=" г/см³" FontSize="10"></Label>
                 </StackPanel>
             </Grid>
         </GroupBox>

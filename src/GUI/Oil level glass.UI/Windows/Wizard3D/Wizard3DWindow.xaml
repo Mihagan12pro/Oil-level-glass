@@ -9,172 +9,112 @@
         xmlns:user="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
-        Height="850"
-        Width="1000" 
+        Height="600"
+        Width="600" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Window.Resources>
-        <!--<converter:AppearanceConverter x:Key="AppearanceConverter">
 
-        </converter:AppearanceConverter>-->
     </Window.Resources>
 
     <Grid>
         <Grid.Resources>
-            <Style TargetType="Label">
-                <Setter Property="Padding" Value="0"></Setter>
+            <Style TargetType="StackPanel">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
             </Style>
-            <Style 
-                TargetType="Button" 
-                BasedOn="{StaticResource FormButton}" 
-                x:Key="wizard3dStyle">
-                <Setter 
-                    Property="Width" 
-                    Value="60">
-                </Setter>
-                <Setter 
-                    Property="Height" 
-                    Value="20">
-                </Setter>
+            <Style TargetType="Button" BasedOn="{StaticResource FormButton}">
+                <Setter Property="Padding" Value="0"></Setter>
+                <Setter Property="Width" Value="60"></Setter>
+                <Setter Property="Height" Value="20"></Setter>
+                <Setter Property="FontSize" Value="10"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            </Style>
+            <Style TargetType="user:MaterialChooser">
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Width" Value="500"></Setter>
+                <Setter Property="Margin" Value="0 20"></Setter>
+            </Style>
+
+            <Style TargetType="user:AppearanceEditor">
+                <Setter Property="Header" Value="Вид"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Width" Value="500"></Setter>
+                <Setter Property="Margin" Value="0"></Setter>
+            </Style>
+
+            <Style TargetType="user:SavingEditor">
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Width" Value="500"></Setter>
+                <Setter Property="Margin" Value="0 0 0 20"></Setter>
             </Style>
         </Grid.Resources>
+
         <Grid.RowDefinitions>
-            <RowDefinition>
-
-            </RowDefinition>
-            <RowDefinition Height="0.1*">
-
-            </RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Name="grdClient" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Border 
-                Grid.Column="0"
-                Margin="20 25 20 20"
-                BorderBrush="Black"
-                BorderThickness="1">
-                <Image 
-                    Name="imgGlass"
-                    Source="/Resources/Images/Glass.png"
-                    Stretch="Fill">
-                </Image>
-            </Border>
-            <Grid
-                Grid.Column="1"
-                Margin="0 20 20 20">
+        <GroupBox
+            Header="Выбор материалов"
+            Margin="20">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                
-                <GroupBox
-                    Grid.Row="0"
-                    Margin="0 0 0 5"
-                    Header="Размеры линзы">
-                    <Grid Margin="20">
-                        <Grid.Resources>
-                            <Style 
-                                TargetType="Label">
-                                <Setter 
-                                    Property="VerticalAlignment"
-                                    Value="Center">
-                                </Setter>
-                                <Setter
-                                    Property="HorizontalAlignment"
-                                    Value="Left">
-                                </Setter>
-                            </Style>
-                            <Style 
-                                TargetType="TextBox">
-                                <Setter
-                                    Property="Width"
-                                    Value="200">
-                                </Setter>
-                                <Setter
-                                    Property="VerticalAlignment"
-                                    Value="Center">
-                                </Setter>
-                                <Setter 
-                                    Property="HorizontalAlignment"
-                                    Value="Left">
-                                </Setter>
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.3*"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
 
-                        <Label 
-                            Content="Высота:" 
-                            Grid.Row="0"
-                            Grid.Column="0">
-                        </Label>
-                        <TextBox  
-                            Grid.Row="0"
-                            Grid.Column="1" 
-                            Text="{Binding Glass.Height, UpdateSourceTrigger=PropertyChanged}">
-                        </TextBox>
-
-                        <Label 
-                            Content="Диаметр:" 
-                            Grid.Row="1"
-                            Grid.Column="0">
-                        </Label>
-                        <TextBox 
-                            Grid.Row="1" 
-                            Grid.Column="1">
-                        </TextBox>
-                    </Grid>
-                </GroupBox>
-
-                <user:MaterialChooser 
-                     Margin="0 5"
-                    Header="Материал линзы"
-                    Grid.Row="1">
+                <user:MaterialChooser
+                    Grid.Row="0" 
+                    Header="Линза"
+                    Title="{Binding Glass.Material.Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Density="{Binding Glass.Material.Density, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Command="{Binding SelectGlassMaterialCommand}">
+                    
                 </user:MaterialChooser>
+                
+                <user:MaterialChooser 
+                    Grid.Row="1" 
+                    Header="Резиновая прокладка"
+                    Title="{Binding RubberStrip.Material.Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Density="{Binding RubberStrip.Material.Density, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Command="{Binding SelectStripMaterialCommand}">
 
-                <user:SavingEditor
-                     Margin="0 5"
-                    Header="Сохранение линзы"
-                    Grid.Row="2">
-                </user:SavingEditor>
+                </user:MaterialChooser>
+                
+                <user:MaterialChooser 
+                    Grid.Row="2" 
+                    Header="Корпус"
+                    Title="{Binding Housing.Material.Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Density="{Binding Housing.Material.Density, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Command="{Binding SelectHousingMaterialCommand}">
 
-                <user:AppearanceEditor 
-                     Margin="0 5 0 0"
-                    Header="Внешний вид линзы"
-                    Grid.Row="3">
-                </user:AppearanceEditor>
-            
+                </user:MaterialChooser>
             </Grid>
-        </Grid>
-        <Border Margin="0 5 0 0" Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="Gray">
+        </GroupBox>
+
+        <Border 
+            BorderBrush="Black" 
+            BorderThickness="0 1 0 0"
+            Grid.Row="1"
+            Padding="0"
+            Height="60">
             <StackPanel 
-                 HorizontalAlignment="Right"
-                 VerticalAlignment="Center"
-                 Orientation="Horizontal"
-                 Margin="0 0 20 0">
-                <StackPanel.Resources>
-                    <Style TargetType="Button" BasedOn="{StaticResource wizard3dStyle}">
-
-                    </Style>
-                </StackPanel.Resources>
-                <Button Content="Назад" Margin="0 0 10 0">
-
+                Margin="20 0"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                
+                <Button
+                    Margin="20 0"
+                    Content="Назад">
                 </Button>
-                <Button Content="Дальше">
 
+                <Button
+                    Content="Далее">
                 </Button>
+
             </StackPanel>
         </Border>
+        
     </Grid>
+    
 </kompas:KompasWindow>
