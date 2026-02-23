@@ -55,7 +55,8 @@
 
         <GroupBox
             Header="Выбор материалов"
-            Margin="20">
+            Margin="20"
+            Visibility="{Binding PageOneVisibility}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -92,6 +93,10 @@
             </Grid>
         </GroupBox>
 
+        <GroupBox Visibility="{Binding PageTwoVisibility}">
+            
+        </GroupBox>
+
         <Border 
             BorderBrush="Black" 
             BorderThickness="0 1 0 0"
@@ -106,12 +111,14 @@
                 <Button
                     Margin="20 0"
                     Content="Назад"
-                    IsEnabled="{Binding IsBackEnabled}">
+                    IsEnabled="{Binding IsBackEnabled}"
+                    Command="{Binding BackCommand}">
                 </Button>
 
                 <Button
                     Content="Далее"
-                    IsEnabled="{Binding IsNextEnabled}">
+                    IsEnabled="{Binding IsNextEnabled}"
+                    Command="{Binding NextCommand}">
                 </Button>
 
             </StackPanel>

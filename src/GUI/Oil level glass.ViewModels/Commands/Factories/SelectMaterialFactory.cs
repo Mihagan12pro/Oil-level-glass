@@ -3,7 +3,7 @@ using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Commands.Factories
 {
-    public class SelectMaterialFactory
+    internal class SelectMaterialFactory
     {
         private readonly IKompasDialogsService _kompasDialogsService;
 
