@@ -105,11 +105,13 @@
                 
                 <Button
                     Margin="20 0"
-                    Content="Назад">
+                    Content="Назад"
+                    IsEnabled="{Binding IsBackEnabled}">
                 </Button>
 
                 <Button
-                    Content="Далее">
+                    Content="Далее"
+                    IsEnabled="{Binding IsNextEnabled}">
                 </Button>
 
             </StackPanel>

@@ -15,6 +15,58 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
         public RelayCommand SelectStripMaterialCommand { get; private set; }
         public RelayCommand SelectHousingMaterialCommand { get; private set; }
 
+        public int PageNumber { get; set; }
+
+        public RelayCommand NextCommand
+        {
+            get
+            {
+                return new RelayCommand((obj) =>
+                {
+                    PageNumber++;
+                });
+            }
+        }
+
+        public RelayCommand BackCommand
+        {
+            get
+            {
+                return new RelayCommand((obj) =>
+                {
+                    PageNumber++;
+                });
+            }
+        }
+
+        private bool _isNextEnabled;
+        public bool IsNextEnabled
+        {
+            get
+            {
+                return _isNextEnabled;
+            }
+            set
+            {
+                _isNextEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isBackEnabled;
+        public bool IsBackEnabled
+        {
+            get
+            {
+                return _isNextEnabled;
+            }
+            set
+            {
+                _isNextEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
         public GlassModel Glass { get; private set;  }
         public RubberStripModel RubberStrip { get; private set; }
         public HousingModel Housing { get; private set; }
