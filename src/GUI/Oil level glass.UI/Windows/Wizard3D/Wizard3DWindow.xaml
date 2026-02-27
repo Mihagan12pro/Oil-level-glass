@@ -56,7 +56,7 @@
         <GroupBox
             Header="Выбор материалов"
             Margin="20"
-            Visibility="{Binding PageOneVisibility}">
+            Visibility="Collapsed">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -93,8 +93,100 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Visibility="{Binding PageTwoVisibility}">
-            
+        <GroupBox 
+            Visibility="{Binding PageTwoVisibility}"
+            Header="Назначение размеров"
+            Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                        <Image>
+                            
+                        </Image>
+                    </Border>
+                    <GroupBox Grid.Column="1" Margin="20 0 0 0" Header="Просмотр чертежей">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="RadioButton">
+                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                    <Setter Property="Margin" Value="10 0 0 0"></Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <RadioButton Grid.Row="0" Content="Смотровой лючок в сборке">
+                                
+                            </RadioButton>
+                            <RadioButton Grid.Row="1" Content="Корпус смотрового лючка">
+
+                            </RadioButton>
+                            <RadioButton Grid.Row="2" Content="Линза смотрового лючка">
+
+                            </RadioButton>
+                            <RadioButton Grid.Row="3" Content="Резиновая прокладка под линзу">
+
+                            </RadioButton>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+                <GroupBox Grid.Row="1" Header="Назначенные размеры" Margin="20 0 10 20">
+                    <WrapPanel>
+                        
+                    </WrapPanel>
+                </GroupBox>
+                
+                <Grid Grid.Row="2" Margin="0 0 0 10">
+                    <Grid.Resources>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Orientation" Value="Horizontal"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                        </Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource FormButton}">
+                            <Setter Property="Content" Value="Назначить..."></Setter>
+                            <Setter Property="Height" Value="16"></Setter>
+                            <Setter Property="FontSize" Value="10"></Setter>
+                        </Style>
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="10"></Setter>
+                            <Setter Property="Padding" Value="0"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="Margin" Value="0 0 10 0"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label Content="Размеры линзы "></Label>
+                        <Button></Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Размеры прокладки "></Label>
+                        <Button></Button>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Label Content="Размеры корпуса "></Label>
+                        <Button></Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </GroupBox>
 
         <Border 

@@ -4,6 +4,7 @@ using Oil_level_glass.Core.KompasDialogs;
 using Oil_level_glass.ViewModels.Services.Windows;
 using Oil_level_glass.ViewModels.Windows.Wizard3d;
 using Oil_level_glass_UI.Services.Windows;
+using System.Windows;
 
 namespace Oil_level_glass_UI.Windows.Wizard3D
 {

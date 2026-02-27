@@ -10,6 +10,8 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
 {
     public class Wizard3dViewModel : ViewModelBase
     {
+        private readonly int _maxPageNumber, _minPageNumber;
+
         private readonly IKompasDialogsService _kompasDialogsService;
 
         private readonly SelectMaterialFactory _selectMaterialFactory;
@@ -93,12 +95,15 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
 
             while (true) 
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
 
                 switch (PageNumber)
                 {
                     case 0:
                         {
+                            PageTwoVisibility = Visibility.Collapsed;
+                            PageOneVisibility = Visibility.Visible;
+
                             Material glass = Glass.Material!;
                             Material rubber = RubberStrip.Material!;
                             Material metal = Housing.Material!;
@@ -107,7 +112,6 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
                                 metal.Error == empty &&
                                 rubber.Error == empty)
                             {
-                                PageNumber++;
                                 IsNextEnabled = true;
                             }
 
@@ -116,6 +120,9 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
                     case 1:
                         {
                             IsBackEnabled = true;
+
+                            PageTwoVisibility = Visibility.Visible;
+                            PageOneVisibility = Visibility.Collapsed;
 
                             break;
                         }
@@ -129,35 +136,19 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             }
         }
 
-        private void CheckPageNumber()
-        {
-            switch (PageNumber)
-            {
-                case 0:
-                    {
-                        PageOneVisibility = Visibility.Visible;
-                        PageTwoVisibility = Visibility.Collapsed;
-                        break;
-                    }
-                case 1:
-                    {
-                        PageOneVisibility = Visibility.Collapsed;
-                        PageTwoVisibility = Visibility.Visible;
-                        break;
-                    }
-            }
-        }
-
         private void LeafPage(int count)
         {
-            PageNumber += count;
-            CheckPageNumber();
+            if (PageNumber >= _minPageNumber && PageNumber <= _maxPageNumber)
+                PageNumber += count;
         }
 
 
         public Wizard3dViewModel(IKompasDialogsService kompasDialogsService)
         {
             _kompasDialogsService = kompasDialogsService;
+
+            _minPageNumber = 0;
+            _maxPageNumber = 5;
 
             Glass = new GlassModel();
             RubberStrip = new RubberStripModel();
