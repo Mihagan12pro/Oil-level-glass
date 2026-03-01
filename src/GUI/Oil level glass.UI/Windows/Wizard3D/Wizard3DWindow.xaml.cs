@@ -4,6 +4,7 @@ using Oil_level_glass.Core.KompasDialogs;
 using Oil_level_glass.ViewModels.Services.Windows;
 using Oil_level_glass.ViewModels.Windows.Wizard3d;
 using Oil_level_glass_UI.Services.Windows;
+using Oil_level_glass_UI.Windows.Editors;
 using System.Windows;
 
 namespace Oil_level_glass_UI.Windows.Wizard3D
@@ -27,6 +28,12 @@ namespace Oil_level_glass_UI.Windows.Wizard3D
             _wizard3dViewModel = new Wizard3dViewModel(_kompasDialogsService);
 
             DataContext = _wizard3dViewModel;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GlassEditorWindow glassEditorWindow = new GlassEditorWindow();
+            glassEditorWindow.Show();
         }
     }
 }

@@ -9,11 +9,18 @@
         xmlns:user="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
         mc:Ignorable="d"
         Title="МАСТЕР ТРЕХМЕРНОЙ МОДЕЛИ" 
-        Height="600"
-        Width="600" 
+        Height="500"
+        Width="650" 
         Style="{DynamicResource KompasWindowStyle}" ResizeMode="CanMinimize">
     <Window.Resources>
-
+        <Style TargetType="user:MaterialChooser">
+            <Setter Property="Width" Value="376"></Setter>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource FormButton}" x:Key="wizardButton">
+            <Setter Property="Height" Value="18"></Setter>
+            <Setter Property="MaxHeight" Value="18"></Setter>
+            <Setter Property="FontSize" Value="10"></Setter>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -67,6 +74,7 @@
                 <user:MaterialChooser
                     Grid.Row="0" 
                     Header="Линза"
+                    Width="550"
                     Title="{Binding Glass.Material.Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Density="{Binding Glass.Material.Density, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Command="{Binding SelectGlassMaterialCommand}">
@@ -76,6 +84,7 @@
                 <user:MaterialChooser 
                     Grid.Row="1" 
                     Header="Резиновая прокладка"
+                    Width="550"
                     Title="{Binding RubberStrip.Material.Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Density="{Binding RubberStrip.Material.Density, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Command="{Binding SelectStripMaterialCommand}">
@@ -87,79 +96,84 @@
                     Header="Корпус"
                     Title="{Binding Housing.Material.Title, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Density="{Binding Housing.Material.Density, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    Command="{Binding SelectHousingMaterialCommand}">
+                    Command="{Binding SelectHousingMaterialCommand}" Width="550">
 
                 </user:MaterialChooser>
             </Grid>
         </GroupBox>
 
         <GroupBox 
-            Visibility="{Binding PageTwoVisibility}"
+            Visibility="Visible"
             Header="Назначение размеров"
             Margin="20">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Margin="20">
+                <GroupBox Header="Чертежи" Margin="20 10 20 0">
+                    <Grid>
+                        <Grid.Resources>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                <Setter Property="Margin" Value="0 0 0 10"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Margin="10">
+                            <Image>
+                                
+                            </Image>
+                        </Border>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" Content="Корпус"></RadioButton>
+                            <RadioButton Grid.Column="1" Content="Линза"></RadioButton>
+                            <RadioButton Grid.Column="2" Content="Прокладка"></RadioButton>
+                            <RadioButton Grid.Column="3" Content="Сборка"></RadioButton>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+
+                <Grid Grid.Row="1" Margin="20 0">
+                    <Grid.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource wizardButton}">
+                            <Setter Property="Width" Value="65"></Setter>
+                            <Setter Property="Margin" Value="0 10"></Setter>
+                        </Style>
+                    </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1">
-                        <Image>
-                            
-                        </Image>
-                    </Border>
-                    <GroupBox Grid.Column="1" Margin="20 0 0 0" Header="Просмотр чертежей">
-                        <Grid>
-                            <Grid.Resources>
-                                <Style TargetType="RadioButton">
-                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                    <Setter Property="Margin" Value="10 0 0 0"></Setter>
-                                </Style>
-                            </Grid.Resources>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <RadioButton Grid.Row="0" Content="Смотровой лючок в сборке">
-                                
-                            </RadioButton>
-                            <RadioButton Grid.Row="1" Content="Корпус смотрового лючка">
+                    <Button Content="Линза..." Grid.Column="0" HorizontalAlignment="Left">
+                        
+                    </Button>
+                    <Button Content="Прокладка..." Grid.Column="1" HorizontalAlignment="Center">
 
-                            </RadioButton>
-                            <RadioButton Grid.Row="2" Content="Линза смотрового лючка">
+                    </Button>
+                    <Button Content="Корпус..." Grid.Column="2" HorizontalAlignment="Right" Click="Button_Click">
 
-                            </RadioButton>
-                            <RadioButton Grid.Row="3" Content="Резиновая прокладка под линзу">
-
-                            </RadioButton>
-                        </Grid>
-                    </GroupBox>
+                    </Button>
                 </Grid>
 
-                <GroupBox Grid.Row="1" Header="Назначенные размеры" Margin="20 0 10 20">
-                    <WrapPanel>
-                        
-                    </WrapPanel>
-                </GroupBox>
-                
-                <Grid Grid.Row="2" Margin="0 0 0 10">
+                <Grid Grid.Row="2" Margin="0 0 0 5">
                     <Grid.Resources>
                         <Style TargetType="StackPanel">
                             <Setter Property="Orientation" Value="Horizontal"></Setter>
                             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                        </Style>
-                        <Style TargetType="Button" BasedOn="{StaticResource FormButton}">
-                            <Setter Property="Content" Value="Назначить..."></Setter>
-                            <Setter Property="Height" Value="16"></Setter>
-                            <Setter Property="FontSize" Value="10"></Setter>
                         </Style>
                         <Style TargetType="Label">
                             <Setter Property="FontSize" Value="10"></Setter>
@@ -173,18 +187,6 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <Label Content="Размеры линзы "></Label>
-                        <Button></Button>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <Label Content="Размеры прокладки "></Label>
-                        <Button></Button>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2">
-                        <Label Content="Размеры корпуса "></Label>
-                        <Button></Button>
-                    </StackPanel>
                 </Grid>
             </Grid>
         </GroupBox>
