@@ -1,10 +1,12 @@
 ﻿using KompasWPF;
 using Oil_level_glass.COM.KompasDialogs;
 using Oil_level_glass.Core.KompasDialogs;
+using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.ViewModels.Services.Windows;
 using Oil_level_glass.ViewModels.Windows.Wizard3d;
 using Oil_level_glass_UI.Services.Windows;
 using Oil_level_glass_UI.Windows.Editors;
+using Oil_level_glass_UI.Windows.Validation;
 using System.Windows;
 
 namespace Oil_level_glass_UI.Windows.Wizard3D
@@ -15,7 +17,7 @@ namespace Oil_level_glass_UI.Windows.Wizard3D
     public partial class Wizard3DWindow : KompasWindow
     {
         private readonly IDialogsProvider _dialogsProvider;
-        private readonly IKompasDialogsService _kompasDialogsService;
+        private readonly IDialogsService _kompasDialogsService;
         private readonly Wizard3dViewModel _wizard3dViewModel;
 
         public Wizard3DWindow()
@@ -32,8 +34,13 @@ namespace Oil_level_glass_UI.Windows.Wizard3D
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GlassEditorWindow glassEditorWindow = new GlassEditorWindow();
-            glassEditorWindow.Show();
+            //GlassEditorWindow glassEditorWindow = new GlassEditorWindow(new GlassModel());
+            //glassEditorWindow.Owner = this;
+            //glassEditorWindow.ShowDialog();
+
+            ValidationWindow window = new ValidationWindow();
+            window.Owner = this;
+            window.ShowDialog();
         }
     }
 }

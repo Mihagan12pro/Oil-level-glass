@@ -12,7 +12,7 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
     {
         private readonly int _maxPageNumber, _minPageNumber;
 
-        private readonly IKompasDialogsService _kompasDialogsService;
+        private readonly IDialogsService _kompasDialogsService;
 
         private readonly SelectMaterialFactory _selectMaterialFactory;
 
@@ -143,7 +143,7 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
         }
 
 
-        public Wizard3dViewModel(IKompasDialogsService kompasDialogsService)
+        public Wizard3dViewModel(IDialogsService kompasDialogsService)
         {
             _kompasDialogsService = kompasDialogsService;
 

@@ -1,0 +1,24 @@
+﻿<windows:NoneWindow x:Class="Oil_level_glass_UI.Windows.Validation.ValidationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Oil_level_glass_UI.Windows.Validation"
+        xmlns:user="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
+        xmlns:windows="clr-namespace:Oil_level_glass_UI.Windows"
+        mc:Ignorable="d"
+        Title="ValidationWindow" Height="450" Width="450">
+    <Border BorderThickness="1" BorderBrush="Black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.09*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <user:WindowsHeader>
+                
+            </user:WindowsHeader>
+        </Grid>
+    </Border>
+</windows:NoneWindow>

@@ -5,7 +5,7 @@ namespace Oil_level_glass.ViewModels.Commands.Factories
 {
     internal class SelectMaterialFactory
     {
-        private readonly IKompasDialogsService _kompasDialogsService;
+        private readonly IDialogsService _kompasDialogsService;
 
         public RelayCommand Create(Material material)
         {
@@ -15,7 +15,7 @@ namespace Oil_level_glass.ViewModels.Commands.Factories
             });
         }
 
-        public SelectMaterialFactory(IKompasDialogsService kompasDialogsService)
+        public SelectMaterialFactory(IDialogsService kompasDialogsService)
         {
             _kompasDialogsService = kompasDialogsService;
         }

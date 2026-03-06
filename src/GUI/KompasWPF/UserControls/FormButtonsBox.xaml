@@ -5,34 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KompasWPF.UserControls"
              mc:Ignorable="d" x:Name="formBox">
-    <Grid>
-        <Grid.Resources>
-            <Style TargetType="Button" BasedOn="{StaticResource FormButton}">
-                
-            </Style>
-        </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <StackPanel Orientation="Horizontal" Width="180" Height="20">
         <Button 
             Width="80"
             Height="20"
-            Grid.Column="0" 
             Margin="0 0 10 0"
             Content="{Binding ElementName=formBox, Path=CancelContent}"
             Command="{Binding ElementName=formBox, Path=CancelCommand}">
-            
+
         </Button>
         <Button 
             Width="80" 
             Height="20"
-            Grid.Column="1"
             Margin="10 0 0 0"
             Content="{Binding ElementName=formBox, Path=OkContent}"
             Command="{Binding ElementName=formBox, Path=OkCommand}"
             IsEnabled="{Binding ElementName=formBox, Path=IsOkEnabled}">
 
         </Button>
-    </Grid>
+    </StackPanel>
 </UserControl>
