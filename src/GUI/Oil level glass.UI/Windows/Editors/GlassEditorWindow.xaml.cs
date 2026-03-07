@@ -16,11 +16,15 @@ namespace Oil_level_glass_UI.Windows.Editors
 
             WindowHeader.PreviewMouseDown += WindowHeader_PreviewMouseDown;
 
-            grSizes.DataContext = Model;
+            foreach(var control in grSizes.Children)
+            {
+                if (control is StackPanel stackPanel)
+                {
+                    stackPanel.DataContext = Model;
+                }
+            }
 
             DataContext = new GlassEditorViewModel(closeAction, Model);
-
-            btCheck.Click += BtCheck_Click;
         }
 
         protected override void BtCheck_Click(object sender, System.Windows.RoutedEventArgs e)

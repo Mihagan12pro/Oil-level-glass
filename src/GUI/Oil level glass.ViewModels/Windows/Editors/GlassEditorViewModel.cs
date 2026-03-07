@@ -7,13 +7,35 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
     {
         public readonly GlassModel GlassModel;
 
+        private double _height, _externalDiameter;
+
         public override RelayCommand CancelCommand
         {
             get
             {
                 return new RelayCommand((obj) => 
                 {
+                    GlassModel.Height = _height;
+                    GlassModel.ExternalDiameter = _externalDiameter;
+
                     closeAction.Invoke();
+                });
+            }
+        }
+
+        public override RelayCommand CheckCommand
+        {
+            get
+            {
+                return new RelayCommand((obj) => 
+                {
+                    if (GlassModel.Error == string.Empty)
+                    {
+                        IsOkEnabled = true;
+                        return;
+                    }
+
+                    IsOkEnabled = false;
                 });
             }
         }
@@ -22,6 +44,9 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
             : base(closeAction)
         {
             GlassModel = glassModel;
+
+            _height = glassModel.Height;
+            _externalDiameter = glassModel.ExternalDiameter;
         }
     }
 }

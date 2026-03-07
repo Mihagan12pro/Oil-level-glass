@@ -34,13 +34,9 @@ namespace Oil_level_glass_UI.Windows.Wizard3D
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //GlassEditorWindow glassEditorWindow = new GlassEditorWindow(new GlassModel());
-            //glassEditorWindow.Owner = this;
-            //glassEditorWindow.ShowDialog();
-
-            ValidationWindow window = new ValidationWindow();
-            window.Owner = this;
-            window.ShowDialog();
+            GlassEditorWindow glassEditorWindow = new GlassEditorWindow(new GlassModel());
+            glassEditorWindow.Owner = this;
+            glassEditorWindow.ShowDialog();
         }
     }
 }
