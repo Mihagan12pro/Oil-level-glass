@@ -24,7 +24,7 @@ namespace Oil_level_glass_UI.Windows.Wizard3D
             InitializeComponent();
 
             _dialogsProvider = new ComDialogsProvider();
-            _kompasDialogsService = new KompasDialogsService(_dialogsProvider);
+            _kompasDialogsService = new KompasDialogsService(this, _dialogsProvider);
 
             _wizard3dViewModel = new Wizard3dViewModel(_kompasDialogsService);
 

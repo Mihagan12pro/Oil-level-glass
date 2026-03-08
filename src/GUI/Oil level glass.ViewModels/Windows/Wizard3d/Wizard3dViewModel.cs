@@ -10,17 +10,15 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
 {
     public class Wizard3dViewModel : ViewModelBase
     {
-        private readonly int _maxPageNumber, _minPageNumber;
-
-        private readonly IDialogsService _kompasDialogsService;
-
-        private readonly SelectMaterialFactory _selectMaterialFactory;
-
-        private readonly BackgroundWorker _backgroundWorker;
+        private readonly IDialogsService _dialogsService;
 
         private bool _isNextEnabled, _isBackEnabled;
 
         private Visibility _pageOneVisibility, _pageTwoVisibility;
+
+        public RelayCommand EditGlassSizesCommand { get; private set; }
+        public RelayCommand EditHousingSizesCommand { get; private set; }
+        public RelayCommand EditRubberStripSizesCommand { get; private set; }
 
         public RelayCommand SelectGlassMaterialCommand { get; private set; }
         public RelayCommand SelectStripMaterialCommand { get; private set; }
@@ -89,94 +87,25 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
         public RubberStripModel RubberStrip { get; private set; }
         public HousingModel Housing { get; private set; }
 
-        private void CheckFields()
+
+        public Wizard3dViewModel(IDialogsService dialogsService)
         {
-            string empty = string.Empty;
-
-            while (true) 
-            {
-                Thread.Sleep(1000);
-
-                switch (PageNumber)
-                {
-                    case 0:
-                        {
-                            PageTwoVisibility = Visibility.Collapsed;
-                            PageOneVisibility = Visibility.Visible;
-
-                            Material glass = Glass.Material!;
-                            Material rubber = RubberStrip.Material!;
-                            Material metal = Housing.Material!;
-
-                            if (glass.Error == empty &&  
-                                metal.Error == empty &&
-                                rubber.Error == empty)
-                            {
-                                IsNextEnabled = true;
-                            }
-
-                            break;
-                        }
-                    case 1:
-                        {
-                            IsBackEnabled = true;
-
-                            PageTwoVisibility = Visibility.Visible;
-                            PageOneVisibility = Visibility.Collapsed;
-
-                            break;
-                        }
-                    default:
-                        {
-                            IsBackEnabled = false;
-                            IsNextEnabled = false;
-                            break;
-                        }
-                }
-            }
-        }
-
-        private void LeafPage(int count)
-        {
-            if (PageNumber >= _minPageNumber && PageNumber <= _maxPageNumber)
-                PageNumber += count;
-        }
-
-
-        public Wizard3dViewModel(IDialogsService kompasDialogsService)
-        {
-            _kompasDialogsService = kompasDialogsService;
-
-            _minPageNumber = 0;
-            _maxPageNumber = 5;
+            _dialogsService = dialogsService;
 
             Glass = new GlassModel();
             RubberStrip = new RubberStripModel();
             Housing = new HousingModel();
 
-            _selectMaterialFactory = new SelectMaterialFactory(_kompasDialogsService);
+            SelectMaterialFactory selectMaterialFactory = new SelectMaterialFactory(_dialogsService);
+            SizesEditorsFactory sizesEditorsFactory = new SizesEditorsFactory(_dialogsService);
 
-            SelectGlassMaterialCommand = _selectMaterialFactory.Create(Glass.Material!);
-            SelectStripMaterialCommand = _selectMaterialFactory.Create(RubberStrip.Material!);
-            SelectHousingMaterialCommand = _selectMaterialFactory.Create(Housing.Material!);
+            SelectGlassMaterialCommand = selectMaterialFactory.Create(Glass.Material!);
+            SelectStripMaterialCommand = selectMaterialFactory.Create(RubberStrip.Material!);
+            SelectHousingMaterialCommand = selectMaterialFactory.Create(Housing.Material!);
 
-            BackCommand = new RelayCommand((obj) =>
-            {
-                LeafPage(-1);
-            });
-
-            NextCommand = new RelayCommand((obj) =>
-            {
-                LeafPage(1);
-            });
-
-            PageOneVisibility = Visibility.Visible;
-            PageTwoVisibility = Visibility.Collapsed;
-
-            _backgroundWorker = new BackgroundWorker();
-            _backgroundWorker.DoWork += (obj, ea)
-                => CheckFields();
-            _backgroundWorker.RunWorkerAsync();
+            EditGlassSizesCommand = sizesEditorsFactory.Create(Glass);
+            EditHousingSizesCommand = sizesEditorsFactory.Create(Housing);
+            EditRubberStripSizesCommand = sizesEditorsFactory.Create(RubberStrip);
         }
     }
 }

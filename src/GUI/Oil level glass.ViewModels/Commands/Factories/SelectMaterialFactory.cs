@@ -3,21 +3,20 @@ using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Commands.Factories
 {
-    internal class SelectMaterialFactory
+    internal class SelectMaterialFactory : DialogsFactory<Material>
     {
-        private readonly IDialogsService _kompasDialogsService;
-
-        public RelayCommand Create(Material material)
+        public override RelayCommand Create(Material material)
         {
             return new RelayCommand((obj) =>
             {
-                _kompasDialogsService.SelectMaterial(material);
+                dialogsService.SelectMaterial(material);
             });
         }
 
-        public SelectMaterialFactory(IDialogsService kompasDialogsService)
+        public SelectMaterialFactory(IDialogsService kompasDialogsService) 
+            : base(kompasDialogsService)
         {
-            _kompasDialogsService = kompasDialogsService;
+          
         }
     }
 }

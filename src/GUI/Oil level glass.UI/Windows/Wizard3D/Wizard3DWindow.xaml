@@ -158,7 +158,11 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Линза..." Grid.Column="0" HorizontalAlignment="Left">
+                    <Button 
+                        Content="Линза..."
+                        Grid.Column="0"
+                        Command="{Binding EditGlassSizesCommand}"
+                        HorizontalAlignment="Left">
                         
                     </Button>
                     <Button Content="Прокладка..." Grid.Column="1" HorizontalAlignment="Center">
