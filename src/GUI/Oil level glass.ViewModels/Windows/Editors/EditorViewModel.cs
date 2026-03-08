@@ -1,12 +1,12 @@
 ﻿using Oil_level_glass.ViewModels.Commands;
-using System.ComponentModel;
-using System.Windows.Input;
+using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Windows.Editors
 {
     public abstract class EditorViewModel : ViewModelBase
     {
         protected readonly Action closeAction;
+        protected readonly IValidationWindowService validationWindowService;
 
         public virtual RelayCommand CancelCommand
         {
@@ -57,8 +57,9 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
         }
 
 
-        public EditorViewModel(Action closeAction)
+        public EditorViewModel(Action closeAction, IValidationWindowService validationWindowService)
         {
+            this.validationWindowService = validationWindowService;
             this.closeAction = closeAction;
         }
     }

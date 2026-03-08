@@ -7,18 +7,53 @@
         xmlns:user="clr-namespace:KompasWPF.UserControls;assembly=KompasWPF"
         xmlns:windows="clr-namespace:Oil_level_glass_UI.Windows"
         mc:Ignorable="d"
-        Title="ValidationWindow" Height="450" Width="450">
+        Title="ValidationWindow"
+        Height="450"
+        Width="450" 
+        ResizeMode="NoResize" 
+        ShowInTaskbar="False">
     <Border BorderThickness="1" BorderBrush="Black">
+        <Border.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource FormButton}">
+                <Setter Property="Height" Value="20"></Setter>
+                <Setter Property="Width" Value="80"></Setter>
+            </Style>
+        </Border.Resources>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="0.09*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <user:WindowsHeader>
-                
-            </user:WindowsHeader>
+            <StackPanel 
+                Grid.Row="0"
+                Height="20" 
+                Background="#E4E4E4"
+                Name="WindowHeader">
+            </StackPanel>
+
+            <GroupBox 
+                Grid.Row="1"
+                Margin="20 20 20 0" 
+                Header="Ошибки">
+                <ListBox 
+                    BorderThickness="0"
+                    Margin="10"
+                    ItemsSource="{Binding Errors}">
+                 
+                </ListBox>
+            </GroupBox>
+
+            <Button 
+                Name="btClose" 
+                Grid.Row="2"
+                Content="Закрыть"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Stretch"
+                Margin="20 10"
+                Click="btClose_Click">
+            </Button>
         </Grid>
     </Border>
 </windows:NoneWindow>

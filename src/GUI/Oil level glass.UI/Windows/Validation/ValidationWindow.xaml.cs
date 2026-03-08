@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using Oil_level_glass.Model.Data;
+using Oil_level_glass.ViewModels.Windows.Validation;
 
 namespace Oil_level_glass_UI.Windows.Validation
 {
@@ -19,9 +8,22 @@ namespace Oil_level_glass_UI.Windows.Validation
     /// </summary>
     public partial class ValidationWindow : NoneWindow
     {
-        public ValidationWindow()
+        private readonly BaseModel _model;
+
+        public ValidationWindow(BaseModel model)
         {
             InitializeComponent();
+
+            _model = model;
+
+            WindowHeader.PreviewMouseDown += WindowHeader_PreviewMouseDown;
+
+            DataContext = new ValidationViewModel(_model);
+        }
+
+        private void btClose_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

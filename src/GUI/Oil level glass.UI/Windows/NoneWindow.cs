@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Oil_level_glass_UI.Windows
@@ -12,7 +13,14 @@ namespace Oil_level_glass_UI.Windows
 
         protected void WindowHeader_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            try
+            {
+                DragMove();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         public NoneWindow()

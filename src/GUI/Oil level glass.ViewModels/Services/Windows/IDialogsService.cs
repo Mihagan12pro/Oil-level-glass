@@ -21,7 +21,5 @@ namespace Oil_level_glass.ViewModels.Services.Windows
             bool isStrictly = false);
 
         void SelectColor(RGB color);
-
-        DialogResult CheckValues(BaseModel model);
     }
 }

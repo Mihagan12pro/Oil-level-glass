@@ -54,11 +54,6 @@ namespace Oil_level_glass_UI.Services.Windows
             colorsDialog.SelectColor(color);
         }
 
-        public DialogResult CheckValues(BaseModel model)
-        {
-            throw new NotImplementedException();
-        }
-
 
         private void TryToShowErrorMessageBox(DialogResult result)
         {

@@ -12,8 +12,7 @@
         Height="250" 
         Width="280"
         ResizeMode="NoResize" 
-        ShowInTaskbar="False"
-        WindowStyle="None">
+        ShowInTaskbar="False">
     <Border BorderBrush="Black" BorderThickness="1">
         <Grid Background="#F2F2F2">
             <Grid.Resources>

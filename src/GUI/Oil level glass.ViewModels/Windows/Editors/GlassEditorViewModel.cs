@@ -1,5 +1,6 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.ViewModels.Commands;
+using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Windows.Editors
 {
@@ -29,6 +30,8 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
             {
                 return new RelayCommand((obj) => 
                 {
+                    validationWindowService.Check(GlassModel);
+
                     if (GlassModel.Error == string.Empty)
                     {
                         IsOkEnabled = true;
@@ -40,8 +43,10 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
             }
         }
 
-        public GlassEditorViewModel(Action closeAction, GlassModel glassModel)
-            : base(closeAction)
+        public GlassEditorViewModel(
+            Action closeAction,
+            IValidationWindowService validationService,
+            GlassModel glassModel) : base(closeAction, validationService)
         {
             GlassModel = glassModel;
 
