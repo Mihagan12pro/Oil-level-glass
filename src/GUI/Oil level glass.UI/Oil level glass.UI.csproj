@@ -14,6 +14,7 @@
     <None Remove="Resources\Images\appIcon.ico" />
     <None Remove="Resources\Images\Glass.bmp" />
     <None Remove="Resources\Images\Glass.png" />
+    <None Remove="Resources\Images\RubberStrip.bmp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
     <Resource Include="Resources\Images\Glass.bmp" />
     <Resource Include="Resources\Images\Glass.png" />
     <Resource Include="Resources\Images\Oil level glass.png" />
+    <Resource Include="Resources\Images\RubberStrip.bmp" />
   </ItemGroup>
 
 </Project>

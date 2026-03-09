@@ -1,10 +1,13 @@
-﻿using Oil_level_glass.ViewModels.Commands;
+﻿using Oil_level_glass.Model.Data;
+using Oil_level_glass.ViewModels.Commands;
 using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Windows.Editors
 {
-    public abstract class EditorViewModel : ViewModelBase
+    public abstract class EditorViewModel<TModel> : ViewModelBase where TModel : BaseModel
     {
+        public readonly TModel Model;
+
         protected readonly Action closeAction;
         protected readonly IValidationWindowService validationWindowService;
 
@@ -57,8 +60,9 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
         }
 
 
-        public EditorViewModel(Action closeAction, IValidationWindowService validationWindowService)
+        public EditorViewModel(TModel model, Action closeAction, IValidationWindowService validationWindowService)
         {
+            Model = model;
             this.validationWindowService = validationWindowService;
             this.closeAction = closeAction;
         }

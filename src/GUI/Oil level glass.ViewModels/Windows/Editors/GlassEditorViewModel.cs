@@ -4,10 +4,8 @@ using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Windows.Editors
 {
-    public class GlassEditorViewModel : EditorViewModel
+    public class GlassEditorViewModel : EditorViewModel<GlassModel>
     {
-        public readonly GlassModel GlassModel;
-
         private double _height, _externalDiameter;
 
         public override RelayCommand CancelCommand
@@ -16,8 +14,8 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
             {
                 return new RelayCommand((obj) => 
                 {
-                    GlassModel.Height = _height;
-                    GlassModel.ExternalDiameter = _externalDiameter;
+                    Model.Height = _height;
+                    Model.ExternalDiameter = _externalDiameter;
 
                     closeAction.Invoke();
                 });
@@ -30,9 +28,9 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
             {
                 return new RelayCommand((obj) => 
                 {
-                    validationWindowService.Check(GlassModel);
+                    validationWindowService.Check(Model);
 
-                    if (GlassModel.Error == string.Empty)
+                    if (Model.Error == string.Empty)
                     {
                         IsOkEnabled = true;
                         return;
@@ -44,12 +42,10 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
         }
 
         public GlassEditorViewModel(
+            GlassModel glassModel,
             Action closeAction,
-            IValidationWindowService validationService,
-            GlassModel glassModel) : base(closeAction, validationService)
+            IValidationWindowService validationService) : base(glassModel, closeAction, validationService)
         {
-            GlassModel = glassModel;
-
             _height = glassModel.Height;
             _externalDiameter = glassModel.ExternalDiameter;
         }

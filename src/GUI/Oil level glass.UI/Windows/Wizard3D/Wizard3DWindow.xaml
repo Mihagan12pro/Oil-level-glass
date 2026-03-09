@@ -161,14 +161,25 @@
                     <Button 
                         Content="Линза..."
                         Grid.Column="0"
+                        
                         Command="{Binding EditGlassSizesCommand}"
                         HorizontalAlignment="Left">
                         
                     </Button>
-                    <Button Content="Прокладка..." Grid.Column="1" HorizontalAlignment="Center">
+                    <Button
+                        Content="Прокладка..." 
+                        Grid.Column="1" 
+                        HorizontalAlignment="Center"
+                        Command="{Binding EditRubberStripSizesCommand}"
+                        IsEnabled="{Binding IsRubberSizesEnabled}">
 
                     </Button>
-                    <Button Content="Корпус..." Grid.Column="2" HorizontalAlignment="Right" Click="Button_Click">
+                    <Button 
+                        Content="Корпус..." 
+                        Grid.Column="2"
+                        HorizontalAlignment="Right" 
+                        Command="{Binding EditHousingSizesCommand}"
+                        IsEnabled="{Binding IsHousingSizesEnabled}">
 
                     </Button>
                 </Grid>

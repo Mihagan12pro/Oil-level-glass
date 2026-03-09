@@ -1,9 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.ViewModels.Commands;
 using Oil_level_glass.ViewModels.Commands.Factories;
 using Oil_level_glass.ViewModels.Services.Windows;
-using System.ComponentModel;
 using System.Windows;
 
 namespace Oil_level_glass.ViewModels.Windows.Wizard3d
@@ -13,6 +11,8 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
         private readonly IDialogsService _dialogsService;
 
         private bool _isNextEnabled, _isBackEnabled;
+
+        private bool _isRubberSizesEnabled, _isHousingSizesEnabled; 
 
         private Visibility _pageOneVisibility, _pageTwoVisibility;
 
@@ -51,6 +51,34 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             set
             {
                 _isBackEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsRubberSizesEnabled
+        {
+            get
+            {
+                return _isRubberSizesEnabled;
+            }
+            set
+            {
+                _isRubberSizesEnabled = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsHousingSizesEnabled
+        {
+            get
+            {
+                return _isHousingSizesEnabled;
+            }
+            set
+            {
+                _isHousingSizesEnabled = value;
+
                 OnPropertyChanged();
             }
         }
@@ -103,9 +131,40 @@ namespace Oil_level_glass.ViewModels.Windows.Wizard3d
             SelectStripMaterialCommand = selectMaterialFactory.Create(RubberStrip.Material!);
             SelectHousingMaterialCommand = selectMaterialFactory.Create(Housing.Material!);
 
-            EditGlassSizesCommand = sizesEditorsFactory.Create(Glass);
-            EditHousingSizesCommand = sizesEditorsFactory.Create(Housing);
-            EditRubberStripSizesCommand = sizesEditorsFactory.Create(RubberStrip);
+            EditGlassSizesCommand = sizesEditorsFactory.Create(Glass, () => 
+            {
+                if (Glass.Error != string.Empty)
+                {
+                    IsHousingSizesEnabled = false;
+                    IsRubberSizesEnabled = false;
+
+                    return;
+                }
+                IsRubberSizesEnabled = true;
+
+                RubberStrip.ExternalDiameter = Glass.ExternalDiameter;
+                RubberStrip.Height = Glass.Height;
+            });
+
+            EditRubberStripSizesCommand = sizesEditorsFactory.Create(RubberStrip, () => 
+            {
+                if (RubberStrip.Error != string.Empty)
+                {
+                    IsHousingSizesEnabled = false;
+
+                    return;
+                }
+
+                IsHousingSizesEnabled = true;
+            });
+
+            EditHousingSizesCommand = sizesEditorsFactory.Create(Housing, () => 
+            {
+                if (Housing.Error != string.Empty)
+                {
+
+                }
+            });
         }
     }
 }

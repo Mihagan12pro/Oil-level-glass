@@ -3,9 +3,9 @@ using Oil_level_glass.ViewModels.Services.Windows;
 
 namespace Oil_level_glass.ViewModels.Commands.Factories
 {
-    internal class SelectMaterialFactory : DialogsFactory<Material>
+    internal class SelectMaterialFactory : DialogsFactory
     {
-        public override RelayCommand Create(Material material)
+        public RelayCommand Create(Material material)
         {
             return new RelayCommand((obj) =>
             {

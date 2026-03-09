@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.ViewModels.Commands.Factories
 {
-    internal abstract class DialogsFactory<T> where T : BaseModel
+    internal abstract class DialogsFactory
     {
         protected readonly IDialogsService dialogsService;
-
-        public abstract RelayCommand Create(T model);
 
         public DialogsFactory(IDialogsService kompasDialogsService)
         {

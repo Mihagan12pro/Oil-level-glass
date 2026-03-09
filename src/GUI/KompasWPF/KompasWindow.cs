@@ -239,29 +239,5 @@ namespace KompasWPF
         {
            
         }
-
-        static KompasWindow()
-        {
-            //IWindowServiceProperty = DependencyProperty.RegisterAttached(
-            //    "IWindowService",
-            //    typeof(IWindowService), 
-            //    typeof(Window), 
-            //    new FrameworkPropertyMetadata(
-            //        null, 
-            //        FrameworkPropertyMetadataOptions.Inherits |
-            //        FrameworkPropertyMetadataOptions.OverridesInheritanceBehavior)
-            //    );
-        }
     }
-
-    //internal interface IWindowService
-    //{
-    //    string Title { get; set; }
-
-    //    double Height { get; set; }
-
-    //    double Width { get; set; }
-
-    //    bool UserResized { get; }
-    //}
 }

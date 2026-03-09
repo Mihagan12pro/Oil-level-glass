@@ -80,9 +80,9 @@ namespace Oil_level_glass_UI.Services.Windows
                     editor = new GlassEditorWindow(glass);
                     break;
 
-                //case RubberStripModel rubberStrip:
-                //    editor = new Rubb(rubberStrip);
-                //    break;
+                case RubberStripModel rubberStrip:
+                    editor = new RubberStripEditorWindow(rubberStrip);
+                    break;
             }
 
             if (editor == null)

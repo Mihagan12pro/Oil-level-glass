@@ -1,23 +1,24 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.ViewModels.Windows.Editors;
 using Oil_level_glass_UI.Services.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace Oil_level_glass_UI.Windows.Editors
 {
     /// <summary>
-    /// Interaction logic for GlassEditorWindow.xaml
+    /// Interaction logic for RubberStripEditor.xaml
     /// </summary>
-    public partial class GlassEditorWindow : EditorWindow
+    public partial class RubberStripEditorWindow : EditorWindow
     {
-        public GlassEditorWindow(GlassModel model) : base(model)
+        public RubberStripEditorWindow(RubberStripModel model) : base(model)
         {
             InitializeComponent();
 
             WindowHeader.PreviewMouseDown += WindowHeader_PreviewMouseDown;
 
-            foreach(var control in grSizes.Children)
+            foreach (var control in grSizes.Children)
             {
                 if (control is StackPanel stackPanel)
                 {
@@ -25,22 +26,19 @@ namespace Oil_level_glass_UI.Windows.Editors
                 }
             }
 
-            DataContext = new GlassEditorViewModel(
+            DataContext = new RubberStripViewModel(
                 model,
-                closeAction, 
+                closeAction,
                 new ValidationWindowService(this)
                 );
         }
 
-        protected override void BtCheck_Click(object sender, System.Windows.RoutedEventArgs e)
+        protected override void BtCheck_Click(object sender, RoutedEventArgs e)
         {
-            BindingExpression heightExpression = tbHeight.GetBindingExpression(TextBox.TextProperty);
+            BindingExpression tbInternalDiameterExpression = tbInternalDiameter
+                .GetBindingExpression(TextBox.TextProperty);
 
-            BindingExpression diameterExpression = tbExternalDiameter.GetBindingExpression(TextBox.TextProperty);
-
-
-            diameterExpression.UpdateSource();
-            heightExpression.UpdateSource();
+            tbInternalDiameterExpression.UpdateSource();
         }
     }
 }
