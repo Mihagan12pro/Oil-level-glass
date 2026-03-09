@@ -50,18 +50,18 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
         {
             get
             {
-                string error = string.Empty;
+                string errors = string.Empty;
 
 
                 string heightError = this[nameof(Height)];
                 if (heightError != string.Empty)
-                    error += heightError + '\n';
+                    errors += heightError + '\n';
                 
                 string externalDiameterError = this[nameof(ExternalDiameter)];
                 if (externalDiameterError != string.Empty)
-                    error += externalDiameterError;
+                    errors += externalDiameterError;
 
-                return error;
+                return errors;
             }
         }
 

@@ -33,12 +33,21 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
             }
         }
 
-        public virtual RelayCommand CheckCommand
+        public RelayCommand CheckCommand
         {
             get
             {
                 return new RelayCommand((obj) =>
                 {
+                    validationWindowService.Check(Model);
+
+                    if (Model.Error == string.Empty)
+                    {
+                        IsOkEnabled = true;
+                        return;
+                    }
+
+                    IsOkEnabled = false;
                 });
             }
         }

@@ -22,25 +22,6 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
             }
         }
 
-        public override RelayCommand CheckCommand
-        {
-            get
-            {
-                return new RelayCommand((obj) => 
-                {
-                    validationWindowService.Check(Model);
-
-                    if (Model.Error == string.Empty)
-                    {
-                        IsOkEnabled = true;
-                        return;
-                    }
-
-                    IsOkEnabled = false;
-                });
-            }
-        }
-
         public GlassEditorViewModel(
             GlassModel glassModel,
             Action closeAction,
