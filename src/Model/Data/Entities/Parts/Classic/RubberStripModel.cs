@@ -66,6 +66,8 @@ public class RubberStripModel : BaseDetailModel
                 {
                     if (InternalDiameter <= 0)
                         error = "Ring internal diameter must be greater than zero!";
+                    else if (InternalDiameter >= ExternalDiameter)
+                        error = "External diameter must be greater than internal diameter!";
 
                     break;
                 }
@@ -73,6 +75,8 @@ public class RubberStripModel : BaseDetailModel
                 {
                     if (ExternalDiameter <= 0)
                         error = "Ring external diameter must be greater than zero!";
+                    else if (InternalDiameter >= ExternalDiameter)
+                        error = "External diameter must be greater than internal diameter!";
 
                     break;
                 }
@@ -85,19 +89,42 @@ public class RubberStripModel : BaseDetailModel
     {
         get
         {
-            string errors = string.Empty;
+            string[] errorsArray = new string[0];
 
             string heightError = this[nameof(Height)];
             if (heightError != string.Empty)
-                errors += heightError + '\n';
+            {
+                int length = errorsArray.Length;
+
+                Array.Resize(ref errorsArray, length + 1);
+                errorsArray[length] = heightError + '\n'; 
+            }
+
 
             string externalDiameterError = this[nameof(ExternalDiameter)];
             if (externalDiameterError != string.Empty)
-                errors += externalDiameterError + '\n';
+            {
+                int length = errorsArray.Length;
+
+                Array.Resize(ref errorsArray, length + 1);
+                errorsArray[length] = externalDiameterError + '\n';
+            }
 
             string internalDiameterError = this[nameof(InternalDiameter)];
             if (internalDiameterError != string.Empty)
-                errors += internalDiameterError;
+            {
+                int length = errorsArray.Length;
+
+                Array.Resize(ref errorsArray, length + 1);
+                errorsArray[length] = internalDiameterError + '\n';
+            }
+
+            string errors = string.Empty;
+            IEnumerable<string> errorsDictionary = errorsArray.Distinct();
+            foreach (string error in errorsDictionary)
+            {
+                errors += error;   
+            }
 
             return errors;
         }
