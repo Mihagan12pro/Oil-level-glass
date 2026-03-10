@@ -1,138 +1,139 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
 
-namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
-
-public class RubberStripModel : BaseDetailModel
+namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
-    private double _internalDiameter;
-    public double InternalDiameter
+    public class RubberStripModel : BaseDetailModel
     {
-        get
+        private double _internalDiameter;
+        public double InternalDiameter
         {
-            return _internalDiameter; 
+            get
+            {
+                return _internalDiameter; 
+            }
+            set
+            {
+                _internalDiameter = value;
+
+                OnPropertyChanged();
+            }
         }
-        set
-        {
-            _internalDiameter = value;
 
-            OnPropertyChanged();
+        private double _externalDiameter;
+        public double ExternalDiameter
+        {
+            get
+            {
+                return _externalDiameter; 
+            }
+            set
+            {
+                _externalDiameter = value;
+
+                OnPropertyChanged();
+            }
         }
-    }
 
-    private double _externalDiameter;
-    public double ExternalDiameter
-    {
-        get
+        private double _height;
+        public double Height
         {
-            return _externalDiameter; 
+            get 
+            {
+                return _height;
+            }
+            set
+            {
+                _height = value;
+
+                OnPropertyChanged();
+            }
         }
-        set
-        {
-            _externalDiameter = value;
 
-            OnPropertyChanged();
+        protected override string CheckField(string columnName)
+        {
+            string error = string.Empty;
+
+            switch(columnName)
+            {
+                case nameof(Height):
+                    {
+                        if (Height <= 0)
+                            error = "Ring height must be greater than zero!";
+
+                        break;
+                    }
+                case nameof(InternalDiameter):
+                    {
+                        if (InternalDiameter <= 0)
+                            error = "Ring internal diameter must be greater than zero!";
+                        else if (InternalDiameter >= ExternalDiameter)
+                            error = "External diameter must be greater than internal diameter!";
+
+                        break;
+                    }
+                case nameof(ExternalDiameter):
+                    {
+                        if (ExternalDiameter <= 0)
+                            error = "Ring external diameter must be greater than zero!";
+                        else if (InternalDiameter >= ExternalDiameter)
+                            error = "External diameter must be greater than internal diameter!";
+
+                        break;
+                    }
+            }
+
+            return error;
         }
-    }
 
-    private double _height;
-    public double Height
-    {
-        get 
+        public override string Error
         {
-            return _height;
-        }
-        set
-        {
-            _height = value;
+            get
+            {
+                string[] errorsArray = new string[0];
 
-            OnPropertyChanged();
-        }
-    }
-
-    protected override string CheckField(string columnName)
-    {
-        string error = string.Empty;
-
-        switch(columnName)
-        {
-            case nameof(Height):
+                string heightError = this[nameof(Height)];
+                if (heightError != string.Empty)
                 {
-                    if (Height <= 0)
-                        error = "Ring height must be greater than zero!";
+                    int length = errorsArray.Length;
 
-                    break;
+                    Array.Resize(ref errorsArray, length + 1);
+                    errorsArray[length] = heightError + '\n'; 
                 }
-            case nameof(InternalDiameter):
+
+
+                string externalDiameterError = this[nameof(ExternalDiameter)];
+                if (externalDiameterError != string.Empty)
                 {
-                    if (InternalDiameter <= 0)
-                        error = "Ring internal diameter must be greater than zero!";
-                    else if (InternalDiameter >= ExternalDiameter)
-                        error = "External diameter must be greater than internal diameter!";
+                    int length = errorsArray.Length;
 
-                    break;
+                    Array.Resize(ref errorsArray, length + 1);
+                    errorsArray[length] = externalDiameterError + '\n';
                 }
-            case nameof(ExternalDiameter):
+
+                string internalDiameterError = this[nameof(InternalDiameter)];
+                if (internalDiameterError != string.Empty)
                 {
-                    if (ExternalDiameter <= 0)
-                        error = "Ring external diameter must be greater than zero!";
-                    else if (InternalDiameter >= ExternalDiameter)
-                        error = "External diameter must be greater than internal diameter!";
+                    int length = errorsArray.Length;
 
-                    break;
+                    Array.Resize(ref errorsArray, length + 1);
+                    errorsArray[length] = internalDiameterError + '\n';
                 }
+
+                string errors = string.Empty;
+                IEnumerable<string> errorsDictionary = errorsArray.Distinct();
+                foreach (string error in errorsDictionary)
+                {
+                    errors += error;   
+                }
+
+                return errors;
+            }
         }
 
-        return error;
-    }
 
-    public override string Error
-    {
-        get
+        public RubberStripModel()
         {
-            string[] errorsArray = new string[0];
-
-            string heightError = this[nameof(Height)];
-            if (heightError != string.Empty)
-            {
-                int length = errorsArray.Length;
-
-                Array.Resize(ref errorsArray, length + 1);
-                errorsArray[length] = heightError + '\n'; 
-            }
-
-
-            string externalDiameterError = this[nameof(ExternalDiameter)];
-            if (externalDiameterError != string.Empty)
-            {
-                int length = errorsArray.Length;
-
-                Array.Resize(ref errorsArray, length + 1);
-                errorsArray[length] = externalDiameterError + '\n';
-            }
-
-            string internalDiameterError = this[nameof(InternalDiameter)];
-            if (internalDiameterError != string.Empty)
-            {
-                int length = errorsArray.Length;
-
-                Array.Resize(ref errorsArray, length + 1);
-                errorsArray[length] = internalDiameterError + '\n';
-            }
-
-            string errors = string.Empty;
-            IEnumerable<string> errorsDictionary = errorsArray.Distinct();
-            foreach (string error in errorsDictionary)
-            {
-                errors += error;   
-            }
-
-            return errors;
+            Material = new Rubber();
         }
-    }
-
-
-    public RubberStripModel()
-    {
-        Material = new Rubber();
     }
 }

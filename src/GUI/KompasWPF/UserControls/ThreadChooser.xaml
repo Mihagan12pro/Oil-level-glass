@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KompasWPF.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="140" d:DesignWidth="350" MinHeight="140" x:Name="chooser">
+             MinHeight="140" x:Name="chooser">
     <Grid>
         <GroupBox 
             Header="{Binding ElementName=chooser, Path=Header}" 
             MinHeight="140"
             HorizontalAlignment="Stretch"
             Foreground="Black">
-            <Grid Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="320">
+            <Grid Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.Resources>
                     <Style TargetType="Label">
                         <Setter Property="Padding" Value="0"></Setter>
@@ -42,9 +42,9 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
@@ -56,70 +56,64 @@
                         Grid.Column="1" 
                         BorderBrush="Black" 
                         BorderThickness="1"
-                        VerticalAlignment="Center" Margin="5 0">
+                        VerticalAlignment="Center" Margin="5 0 0 0">
                         <TextBlock Text="{Binding ElementName=chooser, Path=Standard}">
 
                         </TextBlock>
                     </Border>
                 </Grid>
 
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.6*">
-
-                        </ColumnDefinition>
-                        <ColumnDefinition>
-
-                        </ColumnDefinition>
-                        <ColumnDefinition>
-
-                        </ColumnDefinition>
-                        <ColumnDefinition>
-
-                        </ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+                        <Label 
+                            Padding="0" 
+                            VerticalAlignment="Center"
+                            Content="Номинальный диаметр">
+                        </Label>
+                        <Border>
+                            <TextBlock Text="{Binding ElementName=chooser, Path=NominalDiameter}">
 
-                    <Label 
-                        Grid.Column="0"
-                        Padding="0" 
-                        VerticalAlignment="Center"
-                        Content="Номинальный диаметр">
-                    </Label>
-                    <Border Grid.Column="1">
-                        <TextBlock Text="{Binding ElementName=chooser, Path=NominalDiameter}">
-                            
-                        </TextBlock>
-                    </Border>
+                            </TextBlock>
+                        </Border>
+                    </StackPanel>
 
 
-                    <Label 
-                        Grid.Column="2" 
-                        Content="Шаг резьбы"
-                        HorizontalAlignment="Right">
-                    </Label>
-                    <Border Grid.Column="3" Margin="5 0">
-                        <TextBlock Text="{Binding ElementName=chooser, Path=Pitch}">
-                            
-                        </TextBlock>
-                    </Border>
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0" HorizontalAlignment="Right">
+                        <Label 
+                            Grid.Column="2" 
+                            Content="Шаг резьбы"
+                            HorizontalAlignment="Right">
+                        </Label>
+                        <Border Grid.Column="3">
+                            <TextBlock Text="{Binding ElementName=chooser, Path=Pitch}">
+
+                            </TextBlock>
+                        </Border>
+                    </StackPanel>
                 </Grid>
 
 
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="0.6*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                <Grid Grid.Row="2" Margin="0 0 0 10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
 
                     <Label 
-                        Grid.Column="0" 
+                        Grid.Row="0" 
                         Content="Максимальный номинальный диаметр:">
                     </Label>
-                    <Label
-                        HorizontalContentAlignment="Left"
-                        Grid.Column="1"
-                        Content="{Binding ElementName=chooser, Path=MaxNominalDiameter}">
-                    </Label>
+                    <Border  Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                        <Label
+                            HorizontalContentAlignment="Left"
+                            Height="14"
+                            Content="{Binding ElementName=chooser, Path=MaxNominalDiameter}">
+                        </Label>
+                    </Border>
                 </Grid>
                 <Button 
                     Grid.Row="3"

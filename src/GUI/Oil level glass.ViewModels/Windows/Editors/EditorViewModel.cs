@@ -11,16 +11,7 @@ namespace Oil_level_glass.ViewModels.Windows.Editors
         protected readonly Action closeAction;
         protected readonly IValidationWindowService validationWindowService;
 
-        public virtual RelayCommand CancelCommand
-        {
-            get
-            {
-                return new RelayCommand((obj) => 
-                {
-                    closeAction.Invoke();
-                });
-            }
-        }
+        public abstract RelayCommand CancelCommand { get; }
 
         public RelayCommand OkCommand
         {
