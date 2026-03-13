@@ -18,12 +18,7 @@ namespace Oil_level_glass_UI.Windows.Validation
 
             WindowHeader.PreviewMouseDown += WindowHeader_PreviewMouseDown;
 
-            DataContext = new ValidationViewModel(_model);
-        }
-
-        private void btClose_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            Close();
+            DataContext = new ValidationViewModel(_model, () => this.Close());
         }
     }
 }

@@ -11,11 +11,16 @@ namespace Oil_level_glass_UI.Services.Windows
 
         public void Check(BaseModel model)
         {
-            ValidationWindow validationWindow = new ValidationWindow(model);
+            Window window = null;
 
-            validationWindow.Owner = _owner;
+            if (model.Error == string.Empty)
+                window = new NoProblemsWindow();
+            else
+                window = new ValidationWindow(model); 
 
-            validationWindow.ShowDialog();
+            window.Owner = _owner;
+
+            window.ShowDialog();
         }
 
         public ValidationWindowService(Window owner)
