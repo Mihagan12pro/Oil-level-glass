@@ -38,10 +38,16 @@
             materialChooser1 = new Oil_level_glass.UI.Controls.MaterialChooser();
             materialChooser2 = new Oil_level_glass.UI.Controls.MaterialChooser();
             tabSaving = new TabPage();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            savingParametersEditor1 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            savingParametersEditor2 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            savingParametersEditor3 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
             tabAppearance = new TabPage();
             tbCtlrModelParams.SuspendLayout();
             tabMaterials.SuspendLayout();
             tlpMaterials.SuspendLayout();
+            tabSaving.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // btOk
@@ -158,6 +164,7 @@
             // 
             // tabSaving
             // 
+            tabSaving.Controls.Add(tableLayoutPanel1);
             tabSaving.Location = new Point(8, 46);
             tabSaving.Margin = new Padding(5);
             tabSaving.Name = "tabSaving";
@@ -165,6 +172,50 @@
             tabSaving.TabIndex = 2;
             tabSaving.Text = "Сохранение";
             tabSaving.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Controls.Add(savingParametersEditor1, 0, 0);
+            tableLayoutPanel1.Controls.Add(savingParametersEditor2, 1, 0);
+            tableLayoutPanel1.Controls.Add(savingParametersEditor3, 2, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(1245, 588);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // savingParametersEditor1
+            // 
+            savingParametersEditor1.Header = "Корпус";
+            savingParametersEditor1.Location = new Point(20, 3);
+            savingParametersEditor1.Margin = new Padding(20, 3, 20, 3);
+            savingParametersEditor1.Name = "savingParametersEditor1";
+            savingParametersEditor1.Size = new Size(375, 582);
+            savingParametersEditor1.TabIndex = 0;
+            // 
+            // savingParametersEditor2
+            // 
+            savingParametersEditor2.Header = "Линза";
+            savingParametersEditor2.Location = new Point(435, 3);
+            savingParametersEditor2.Margin = new Padding(20, 3, 20, 3);
+            savingParametersEditor2.Name = "savingParametersEditor2";
+            savingParametersEditor2.Size = new Size(375, 582);
+            savingParametersEditor2.TabIndex = 1;
+            // 
+            // savingParametersEditor3
+            // 
+            savingParametersEditor3.Header = "Прокладка";
+            savingParametersEditor3.Location = new Point(850, 3);
+            savingParametersEditor3.Margin = new Padding(20, 3, 20, 3);
+            savingParametersEditor3.Name = "savingParametersEditor3";
+            savingParametersEditor3.Size = new Size(375, 582);
+            savingParametersEditor3.TabIndex = 2;
             // 
             // tabAppearance
             // 
@@ -196,6 +247,8 @@
             tbCtlrModelParams.ResumeLayout(false);
             tabMaterials.ResumeLayout(false);
             tlpMaterials.ResumeLayout(false);
+            tabSaving.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -212,5 +265,9 @@
         private Controls.MaterialChooser mcHousing;
         private Controls.MaterialChooser materialChooser1;
         private Controls.MaterialChooser materialChooser2;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Controls.SavingParametersEditor savingParametersEditor1;
+        private Controls.SavingParametersEditor savingParametersEditor2;
+        private Controls.SavingParametersEditor savingParametersEditor3;
     }
 }
