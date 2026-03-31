@@ -32,13 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI", "src\GUI\Oil level glass.UI\Oil level glass.UI.csproj", "{E0C30A2C-A15D-41F9-8C1E-0B7E90D74385}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{0C5043E5-1284-45EF-B9F2-0DD51C7F3ECF}"
-	ProjectSection(SolutionItems) = preProject
-		Images\appIcon.ico = Images\appIcon.ico
-		Images\Oil level glass.png = Images\Oil level glass.png
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI.Controls", "src\GUI\Oil level glass.UI.Controls\Oil level glass.UI.Controls.csproj", "{BA5FAFD5-E153-454D-A9F4-3A7904C25405}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI.Controls", "src\GUI\Oil level glass.UI.Controls\Oil level glass.UI.Controls.csproj", "{CEB7F453-861B-4CDF-BF00-234C17B13FD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,10 +64,10 @@ Global
 		{E0C30A2C-A15D-41F9-8C1E-0B7E90D74385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0C30A2C-A15D-41F9-8C1E-0B7E90D74385}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0C30A2C-A15D-41F9-8C1E-0B7E90D74385}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA5FAFD5-E153-454D-A9F4-3A7904C25405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA5FAFD5-E153-454D-A9F4-3A7904C25405}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA5FAFD5-E153-454D-A9F4-3A7904C25405}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA5FAFD5-E153-454D-A9F4-3A7904C25405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEB7F453-861B-4CDF-BF00-234C17B13FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB7F453-861B-4CDF-BF00-234C17B13FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB7F453-861B-4CDF-BF00-234C17B13FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB7F453-861B-4CDF-BF00-234C17B13FD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,7 +82,7 @@ Global
 		{A1B42776-545A-45DE-90BF-783CBDFC5B8E} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
 		{252DC00F-9D64-4651-8F17-8445F9C468E4} = {A27D415A-E781-4514-AFD3-AA65566B9A99}
 		{E0C30A2C-A15D-41F9-8C1E-0B7E90D74385} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
-		{BA5FAFD5-E153-454D-A9F4-3A7904C25405} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
+		{CEB7F453-861B-4CDF-BF00-234C17B13FD9} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09E88832-B967-43DA-BE85-E0BC97BD4700}
