@@ -32,6 +32,7 @@
             btCancel = new Button();
             tbCtlrModelParams = new TabControl();
             tabSizes = new TabPage();
+            splitContainer1 = new SplitContainer();
             tabMaterials = new TabPage();
             tlpMaterials = new TableLayoutPanel();
             mcHousing = new Oil_level_glass.UI.Controls.MaterialChooser();
@@ -47,13 +48,20 @@
             appeareanceEditor3 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
             appeareanceEditor2 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
             appeareanceEditor1 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            pictureBox1 = new PictureBox();
             tbCtlrModelParams.SuspendLayout();
+            tabSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             tabMaterials.SuspendLayout();
             tlpMaterials.SuspendLayout();
             tabSaving.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tabAppearance.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btOk
@@ -94,6 +102,7 @@
             // 
             // tabSizes
             // 
+            tabSizes.Controls.Add(splitContainer1);
             tabSizes.Location = new Point(8, 46);
             tabSizes.Margin = new Padding(5);
             tabSizes.Name = "tabSizes";
@@ -102,6 +111,20 @@
             tabSizes.TabIndex = 0;
             tabSizes.Text = "Размеры";
             tabSizes.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(5, 5);
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(pictureBox1);
+            splitContainer1.Panel2.Controls.Add(flowLayoutPanel1);
+            splitContainer1.Size = new Size(1235, 643);
+            splitContainer1.SplitterDistance = 410;
+            splitContainer1.TabIndex = 0;
             // 
             // tabMaterials
             // 
@@ -270,6 +293,7 @@
             // 
             // appeareanceEditor3
             // 
+            appeareanceEditor3.Color = Color.Transparent;
             appeareanceEditor3.Diffusion = 0;
             appeareanceEditor3.Dock = DockStyle.Fill;
             appeareanceEditor3.Embient = 0;
@@ -286,6 +310,7 @@
             // 
             // appeareanceEditor2
             // 
+            appeareanceEditor2.Color = Color.Transparent;
             appeareanceEditor2.Diffusion = 0;
             appeareanceEditor2.Dock = DockStyle.Fill;
             appeareanceEditor2.Embient = 0;
@@ -302,6 +327,7 @@
             // 
             // appeareanceEditor1
             // 
+            appeareanceEditor1.Color = Color.Transparent;
             appeareanceEditor1.Diffusion = 0;
             appeareanceEditor1.Dock = DockStyle.Fill;
             appeareanceEditor1.Embient = 0;
@@ -315,6 +341,23 @@
             appeareanceEditor1.Specularity = 0;
             appeareanceEditor1.TabIndex = 0;
             appeareanceEditor1.Transparency = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Dock = DockStyle.Bottom;
+            flowLayoutPanel1.Location = new Point(0, 558);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(821, 85);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(821, 558);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // Wizard3dForm
             // 
@@ -334,12 +377,17 @@
             ShowInTaskbar = false;
             Text = "Мастер 3d модели";
             tbCtlrModelParams.ResumeLayout(false);
+            tabSizes.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             tabMaterials.ResumeLayout(false);
             tlpMaterials.ResumeLayout(false);
             tabSaving.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tabAppearance.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -364,5 +412,8 @@
         private Controls.AppeareanceEditor appeareanceEditor1;
         private Controls.AppeareanceEditor appeareanceEditor3;
         private Controls.AppeareanceEditor appeareanceEditor2;
+        private SplitContainer splitContainer1;
+        private PictureBox pictureBox1;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
