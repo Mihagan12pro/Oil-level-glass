@@ -47,6 +47,7 @@ namespace Oil_level_glass.UI.Controls
             }
         }
 
+        [Category("Appearance")]
         public double Density
         {
             get { return _density; }
@@ -59,6 +60,7 @@ namespace Oil_level_glass.UI.Controls
             }
         }
 
+        [Category("Appearance")]
         public int HatchStyle
         {
             get { return _hatchStyle; }

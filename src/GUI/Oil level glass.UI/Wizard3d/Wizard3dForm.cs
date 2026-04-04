@@ -15,10 +15,6 @@ namespace Oil_level_glass.UI.Wizard3d
         public Wizard3dForm()
         {
             InitializeComponent();
-
-            mcHousing.MaterialTitle = "Железо";
-            mcHousing.Density = 10.243;
-            mcHousing.HatchStyle = 0;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

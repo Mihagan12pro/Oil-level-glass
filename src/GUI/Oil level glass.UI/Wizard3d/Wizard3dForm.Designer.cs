@@ -43,16 +43,23 @@
             savingParametersEditor2 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
             savingParametersEditor3 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
             tabAppearance = new TabPage();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            appeareanceEditor3 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
+            appeareanceEditor2 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
+            appeareanceEditor1 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
             tbCtlrModelParams.SuspendLayout();
             tabMaterials.SuspendLayout();
             tlpMaterials.SuspendLayout();
             tabSaving.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            tabAppearance.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // btOk
             // 
-            btOk.Location = new Point(942, 654);
+            btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btOk.Location = new Point(940, 745);
             btOk.Margin = new Padding(5);
             btOk.Name = "btOk";
             btOk.Size = new Size(153, 46);
@@ -62,7 +69,8 @@
             // 
             // btCancel
             // 
-            btCancel.Location = new Point(1128, 654);
+            btCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btCancel.Location = new Point(1128, 745);
             btCancel.Margin = new Padding(5);
             btCancel.Name = "btCancel";
             btCancel.Size = new Size(153, 46);
@@ -81,7 +89,7 @@
             tbCtlrModelParams.Margin = new Padding(5);
             tbCtlrModelParams.Name = "tbCtlrModelParams";
             tbCtlrModelParams.SelectedIndex = 0;
-            tbCtlrModelParams.Size = new Size(1261, 642);
+            tbCtlrModelParams.Size = new Size(1261, 707);
             tbCtlrModelParams.TabIndex = 2;
             // 
             // tabSizes
@@ -90,7 +98,7 @@
             tabSizes.Margin = new Padding(5);
             tabSizes.Name = "tabSizes";
             tabSizes.Padding = new Padding(5);
-            tabSizes.Size = new Size(1245, 588);
+            tabSizes.Size = new Size(1245, 653);
             tabSizes.TabIndex = 0;
             tabSizes.Text = "Размеры";
             tabSizes.UseVisualStyleBackColor = true;
@@ -102,7 +110,7 @@
             tabMaterials.Margin = new Padding(5);
             tabMaterials.Name = "tabMaterials";
             tabMaterials.Padding = new Padding(5);
-            tabMaterials.Size = new Size(1245, 588);
+            tabMaterials.Size = new Size(1245, 653);
             tabMaterials.TabIndex = 1;
             tabMaterials.Text = "Материалы";
             tabMaterials.UseVisualStyleBackColor = true;
@@ -122,44 +130,47 @@
             tlpMaterials.Name = "tlpMaterials";
             tlpMaterials.RowCount = 1;
             tlpMaterials.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMaterials.Size = new Size(1235, 578);
+            tlpMaterials.Size = new Size(1235, 643);
             tlpMaterials.TabIndex = 0;
             // 
             // mcHousing
             // 
             mcHousing.Density = 0D;
+            mcHousing.Dock = DockStyle.Fill;
             mcHousing.HatchStyle = 0;
             mcHousing.Header = "Корпус";
             mcHousing.Location = new Point(20, 3);
             mcHousing.Margin = new Padding(20, 3, 20, 3);
             mcHousing.MaterialTitle = null;
             mcHousing.Name = "mcHousing";
-            mcHousing.Size = new Size(371, 572);
+            mcHousing.Size = new Size(371, 637);
             mcHousing.TabIndex = 0;
             mcHousing.Load += materialChooser1_Load;
             // 
             // materialChooser1
             // 
             materialChooser1.Density = 0D;
+            materialChooser1.Dock = DockStyle.Fill;
             materialChooser1.HatchStyle = 0;
             materialChooser1.Header = "Линза";
             materialChooser1.Location = new Point(431, 3);
             materialChooser1.Margin = new Padding(20, 3, 20, 3);
             materialChooser1.MaterialTitle = null;
             materialChooser1.Name = "materialChooser1";
-            materialChooser1.Size = new Size(371, 572);
+            materialChooser1.Size = new Size(371, 637);
             materialChooser1.TabIndex = 1;
             // 
             // materialChooser2
             // 
             materialChooser2.Density = 0D;
+            materialChooser2.Dock = DockStyle.Fill;
             materialChooser2.HatchStyle = 0;
             materialChooser2.Header = "Прокладка";
             materialChooser2.Location = new Point(842, 3);
             materialChooser2.Margin = new Padding(20, 3, 20, 3);
             materialChooser2.MaterialTitle = null;
             materialChooser2.Name = "materialChooser2";
-            materialChooser2.Size = new Size(373, 572);
+            materialChooser2.Size = new Size(373, 637);
             materialChooser2.TabIndex = 2;
             // 
             // tabSaving
@@ -168,7 +179,7 @@
             tabSaving.Location = new Point(8, 46);
             tabSaving.Margin = new Padding(5);
             tabSaving.Name = "tabSaving";
-            tabSaving.Size = new Size(1245, 588);
+            tabSaving.Size = new Size(1245, 653);
             tabSaving.TabIndex = 2;
             tabSaving.Text = "Сохранение";
             tabSaving.UseVisualStyleBackColor = true;
@@ -187,52 +198,130 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1245, 588);
+            tableLayoutPanel1.Size = new Size(1245, 653);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // savingParametersEditor1
             // 
+            savingParametersEditor1.Dock = DockStyle.Fill;
+            savingParametersEditor1.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
             savingParametersEditor1.Header = "Корпус";
             savingParametersEditor1.Location = new Point(20, 3);
             savingParametersEditor1.Margin = new Padding(20, 3, 20, 3);
+            savingParametersEditor1.Marking = null;
             savingParametersEditor1.Name = "savingParametersEditor1";
-            savingParametersEditor1.Size = new Size(375, 582);
+            savingParametersEditor1.Namimg = null;
+            savingParametersEditor1.Size = new Size(375, 647);
             savingParametersEditor1.TabIndex = 0;
             // 
             // savingParametersEditor2
             // 
+            savingParametersEditor2.Dock = DockStyle.Fill;
+            savingParametersEditor2.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
             savingParametersEditor2.Header = "Линза";
             savingParametersEditor2.Location = new Point(435, 3);
             savingParametersEditor2.Margin = new Padding(20, 3, 20, 3);
+            savingParametersEditor2.Marking = null;
             savingParametersEditor2.Name = "savingParametersEditor2";
-            savingParametersEditor2.Size = new Size(375, 582);
+            savingParametersEditor2.Namimg = null;
+            savingParametersEditor2.Size = new Size(375, 647);
             savingParametersEditor2.TabIndex = 1;
             // 
             // savingParametersEditor3
             // 
+            savingParametersEditor3.Dock = DockStyle.Fill;
+            savingParametersEditor3.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
             savingParametersEditor3.Header = "Прокладка";
             savingParametersEditor3.Location = new Point(850, 3);
             savingParametersEditor3.Margin = new Padding(20, 3, 20, 3);
+            savingParametersEditor3.Marking = null;
             savingParametersEditor3.Name = "savingParametersEditor3";
-            savingParametersEditor3.Size = new Size(375, 582);
+            savingParametersEditor3.Namimg = null;
+            savingParametersEditor3.Size = new Size(375, 647);
             savingParametersEditor3.TabIndex = 2;
             // 
             // tabAppearance
             // 
+            tabAppearance.Controls.Add(tableLayoutPanel2);
             tabAppearance.Location = new Point(8, 46);
             tabAppearance.Margin = new Padding(5);
             tabAppearance.Name = "tabAppearance";
-            tabAppearance.Size = new Size(1245, 588);
+            tabAppearance.Size = new Size(1245, 653);
             tabAppearance.TabIndex = 3;
-            tabAppearance.Text = "Вид";
+            tabAppearance.Text = "Отображение";
             tabAppearance.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.Controls.Add(appeareanceEditor3, 2, 0);
+            tableLayoutPanel2.Controls.Add(appeareanceEditor2, 1, 0);
+            tableLayoutPanel2.Controls.Add(appeareanceEditor1, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(1245, 653);
+            tableLayoutPanel2.TabIndex = 0;
+            // 
+            // appeareanceEditor3
+            // 
+            appeareanceEditor3.Diffusion = 0;
+            appeareanceEditor3.Dock = DockStyle.Fill;
+            appeareanceEditor3.Embient = 0;
+            appeareanceEditor3.Emission = 0;
+            appeareanceEditor3.Header = "Прокладка";
+            appeareanceEditor3.Location = new Point(840, 3);
+            appeareanceEditor3.Margin = new Padding(10, 3, 10, 3);
+            appeareanceEditor3.Name = "appeareanceEditor3";
+            appeareanceEditor3.Shininess = 0;
+            appeareanceEditor3.Size = new Size(395, 647);
+            appeareanceEditor3.Specularity = 0;
+            appeareanceEditor3.TabIndex = 2;
+            appeareanceEditor3.Transparency = 0;
+            // 
+            // appeareanceEditor2
+            // 
+            appeareanceEditor2.Diffusion = 0;
+            appeareanceEditor2.Dock = DockStyle.Fill;
+            appeareanceEditor2.Embient = 0;
+            appeareanceEditor2.Emission = 0;
+            appeareanceEditor2.Header = "Линза";
+            appeareanceEditor2.Location = new Point(425, 3);
+            appeareanceEditor2.Margin = new Padding(10, 3, 10, 3);
+            appeareanceEditor2.Name = "appeareanceEditor2";
+            appeareanceEditor2.Shininess = 0;
+            appeareanceEditor2.Size = new Size(395, 647);
+            appeareanceEditor2.Specularity = 0;
+            appeareanceEditor2.TabIndex = 1;
+            appeareanceEditor2.Transparency = 0;
+            // 
+            // appeareanceEditor1
+            // 
+            appeareanceEditor1.Diffusion = 0;
+            appeareanceEditor1.Dock = DockStyle.Fill;
+            appeareanceEditor1.Embient = 0;
+            appeareanceEditor1.Emission = 0;
+            appeareanceEditor1.Header = "Корпус";
+            appeareanceEditor1.Location = new Point(10, 3);
+            appeareanceEditor1.Margin = new Padding(10, 3, 10, 3);
+            appeareanceEditor1.Name = "appeareanceEditor1";
+            appeareanceEditor1.Shininess = 0;
+            appeareanceEditor1.Size = new Size(395, 647);
+            appeareanceEditor1.Specularity = 0;
+            appeareanceEditor1.TabIndex = 0;
+            appeareanceEditor1.Transparency = 0;
             // 
             // Wizard3dForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btCancel;
-            ClientSize = new Size(1300, 720);
+            ClientSize = new Size(1300, 832);
             Controls.Add(tbCtlrModelParams);
             Controls.Add(btCancel);
             Controls.Add(btOk);
@@ -249,6 +338,8 @@
             tlpMaterials.ResumeLayout(false);
             tabSaving.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
+            tabAppearance.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -269,5 +360,9 @@
         private Controls.SavingParametersEditor savingParametersEditor1;
         private Controls.SavingParametersEditor savingParametersEditor2;
         private Controls.SavingParametersEditor savingParametersEditor3;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Controls.AppeareanceEditor appeareanceEditor1;
+        private Controls.AppeareanceEditor appeareanceEditor3;
+        private Controls.AppeareanceEditor appeareanceEditor2;
     }
 }
