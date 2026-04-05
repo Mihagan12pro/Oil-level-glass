@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.5.11626.173 insiders
+VisualStudioVersion = 18.5.11626.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{754FC069-D67B-A9D7-50A1-8D1CA196D8F1}"
 	ProjectSection(SolutionItems) = preProject
@@ -33,13 +33,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI", "src\GUI\Oil level glass.UI\Oil level glass.UI.csproj", "{E0C30A2C-A15D-41F9-8C1E-0B7E90D74385}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI.Controls", "src\GUI\Oil level glass.UI.Controls\Oil level glass.UI.Controls.csproj", "{CEB7F453-861B-4CDF-BF00-234C17B13FD9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{1F2E9B9F-732F-4D0B-AF2F-5A45E8B48AB6}"
-	ProjectSection(SolutionItems) = preProject
-		Images\appIcon.ico = Images\appIcon.ico
-		Images\Glass.png = Images\Glass.png
-		Images\Oil level glass.png = Images\Oil level glass.png
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
