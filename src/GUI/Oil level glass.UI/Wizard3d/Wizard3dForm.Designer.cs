@@ -33,6 +33,13 @@
             tbCtlrModelParams = new TabControl();
             tabSizes = new TabPage();
             splitContainer1 = new SplitContainer();
+            splitContainer2 = new SplitContainer();
+            pbSketch = new PictureBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            rbAssembly = new RadioButton();
+            rbHousing = new RadioButton();
+            rbGlass = new RadioButton();
+            rbRubberStrip = new RadioButton();
             tabMaterials = new TabPage();
             tlpMaterials = new TableLayoutPanel();
             mcHousing = new Oil_level_glass.UI.Controls.MaterialChooser();
@@ -48,20 +55,23 @@
             appeareanceEditor3 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
             appeareanceEditor2 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
             appeareanceEditor1 = new Oil_level_glass.UI.Controls.AppeareanceEditor();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            pictureBox1 = new PictureBox();
             tbCtlrModelParams.SuspendLayout();
             tabSizes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbSketch).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
             tabMaterials.SuspendLayout();
             tlpMaterials.SuspendLayout();
             tabSaving.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tabAppearance.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btOk
@@ -120,11 +130,102 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(pictureBox1);
-            splitContainer1.Panel2.Controls.Add(flowLayoutPanel1);
+            splitContainer1.Panel2.Controls.Add(splitContainer2);
             splitContainer1.Size = new Size(1235, 643);
             splitContainer1.SplitterDistance = 410;
             splitContainer1.TabIndex = 0;
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(0, 0);
+            splitContainer2.Name = "splitContainer2";
+            splitContainer2.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(pbSketch);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(flowLayoutPanel1);
+            splitContainer2.Size = new Size(821, 643);
+            splitContainer2.SplitterDistance = 580;
+            splitContainer2.TabIndex = 0;
+            // 
+            // pbSketch
+            // 
+            pbSketch.BorderStyle = BorderStyle.FixedSingle;
+            pbSketch.Dock = DockStyle.Fill;
+            pbSketch.Image = Properties.Resources.Oil_level_glass;
+            pbSketch.Location = new Point(0, 0);
+            pbSketch.Name = "pbSketch";
+            pbSketch.Size = new Size(821, 580);
+            pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbSketch.TabIndex = 0;
+            pbSketch.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(rbAssembly);
+            flowLayoutPanel1.Controls.Add(rbHousing);
+            flowLayoutPanel1.Controls.Add(rbGlass);
+            flowLayoutPanel1.Controls.Add(rbRubberStrip);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(821, 59);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
+            // rbAssembly
+            // 
+            rbAssembly.AutoSize = true;
+            rbAssembly.Checked = true;
+            rbAssembly.Location = new Point(20, 10);
+            rbAssembly.Margin = new Padding(20, 10, 3, 3);
+            rbAssembly.Name = "rbAssembly";
+            rbAssembly.Size = new Size(250, 36);
+            rbAssembly.TabIndex = 0;
+            rbAssembly.TabStop = true;
+            rbAssembly.Text = "Смотровой лючок";
+            rbAssembly.UseVisualStyleBackColor = true;
+            rbAssembly.CheckedChanged += rbSketch_CheckedChanged;
+            // 
+            // rbHousing
+            // 
+            rbHousing.AutoSize = true;
+            rbHousing.Location = new Point(276, 10);
+            rbHousing.Margin = new Padding(3, 10, 3, 3);
+            rbHousing.Name = "rbHousing";
+            rbHousing.Size = new Size(124, 36);
+            rbHousing.TabIndex = 1;
+            rbHousing.Text = "Корпус";
+            rbHousing.UseVisualStyleBackColor = true;
+            rbHousing.CheckedChanged += rbSketch_CheckedChanged;
+            // 
+            // rbGlass
+            // 
+            rbGlass.AutoSize = true;
+            rbGlass.Location = new Point(406, 10);
+            rbGlass.Margin = new Padding(3, 10, 3, 3);
+            rbGlass.Name = "rbGlass";
+            rbGlass.Size = new Size(112, 36);
+            rbGlass.TabIndex = 2;
+            rbGlass.Text = "Линза";
+            rbGlass.UseVisualStyleBackColor = true;
+            rbGlass.CheckedChanged += rbSketch_CheckedChanged;
+            // 
+            // rbRubberStrip
+            // 
+            rbRubberStrip.AutoSize = true;
+            rbRubberStrip.Location = new Point(524, 10);
+            rbRubberStrip.Margin = new Padding(3, 10, 3, 3);
+            rbRubberStrip.Name = "rbRubberStrip";
+            rbRubberStrip.Size = new Size(284, 36);
+            rbRubberStrip.TabIndex = 3;
+            rbRubberStrip.Text = "Резиновая прокладка";
+            rbRubberStrip.UseVisualStyleBackColor = true;
+            rbRubberStrip.CheckedChanged += rbSketch_CheckedChanged;
             // 
             // tabMaterials
             // 
@@ -342,23 +443,6 @@
             appeareanceEditor1.TabIndex = 0;
             appeareanceEditor1.Transparency = 0;
             // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Dock = DockStyle.Bottom;
-            flowLayoutPanel1.Location = new Point(0, 558);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(821, 85);
-            flowLayoutPanel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(821, 558);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
             // Wizard3dForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -381,13 +465,19 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbSketch).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             tabMaterials.ResumeLayout(false);
             tlpMaterials.ResumeLayout(false);
             tabSaving.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tabAppearance.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -413,7 +503,12 @@
         private Controls.AppeareanceEditor appeareanceEditor3;
         private Controls.AppeareanceEditor appeareanceEditor2;
         private SplitContainer splitContainer1;
-        private PictureBox pictureBox1;
+        private SplitContainer splitContainer2;
+        private PictureBox pbSketch;
         private FlowLayoutPanel flowLayoutPanel1;
+        private RadioButton rbAssembly;
+        private RadioButton rbHousing;
+        private RadioButton rbGlass;
+        private RadioButton rbRubberStrip;
     }
 }
