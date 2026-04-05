@@ -34,11 +34,11 @@
             tabSizes = new TabPage();
             splitContainer1 = new SplitContainer();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            groupBox1 = new GroupBox();
+            gbDiameters = new GroupBox();
             tableLayoutPanel5 = new TableLayoutPanel();
             textBox6 = new TextBox();
             textBox5 = new TextBox();
-            textBox4 = new TextBox();
+            tbD = new TextBox();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
@@ -94,7 +94,7 @@
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
-            groupBox1.SuspendLayout();
+            gbDiameters.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             groupBox2.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -188,7 +188,7 @@
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Controls.Add(groupBox1);
+            flowLayoutPanel2.Controls.Add(gbDiameters);
             flowLayoutPanel2.Controls.Add(groupBox2);
             flowLayoutPanel2.Controls.Add(groupBox3);
             flowLayoutPanel2.Controls.Add(groupBox4);
@@ -199,15 +199,15 @@
             flowLayoutPanel2.Size = new Size(410, 794);
             flowLayoutPanel2.TabIndex = 0;
             // 
-            // groupBox1
+            // gbDiameters
             // 
-            groupBox1.Controls.Add(tableLayoutPanel5);
-            groupBox1.Location = new Point(3, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(400, 184);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Диаметры";
+            gbDiameters.Controls.Add(tableLayoutPanel5);
+            gbDiameters.Location = new Point(3, 3);
+            gbDiameters.Name = "gbDiameters";
+            gbDiameters.Size = new Size(400, 184);
+            gbDiameters.TabIndex = 0;
+            gbDiameters.TabStop = false;
+            gbDiameters.Text = "Диаметры";
             // 
             // tableLayoutPanel5
             // 
@@ -216,7 +216,7 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.Controls.Add(textBox6, 1, 2);
             tableLayoutPanel5.Controls.Add(textBox5, 1, 1);
-            tableLayoutPanel5.Controls.Add(textBox4, 1, 0);
+            tableLayoutPanel5.Controls.Add(tbD, 1, 0);
             tableLayoutPanel5.Controls.Add(label5, 0, 0);
             tableLayoutPanel5.Controls.Add(label6, 0, 1);
             tableLayoutPanel5.Controls.Add(label7, 0, 2);
@@ -248,14 +248,14 @@
             textBox5.Size = new Size(321, 39);
             textBox5.TabIndex = 4;
             // 
-            // textBox4
+            // tbD
             // 
-            textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(53, 3);
-            textBox4.Margin = new Padding(3, 3, 20, 3);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(321, 39);
-            textBox4.TabIndex = 3;
+            tbD.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbD.Location = new Point(53, 3);
+            tbD.Margin = new Padding(3, 3, 20, 3);
+            tbD.Name = "tbD";
+            tbD.Size = new Size(321, 39);
+            tbD.TabIndex = 3;
             // 
             // label5
             // 
@@ -533,9 +533,11 @@
             // numericUpDown2
             // 
             numericUpDown2.Location = new Point(197, 3);
+            numericUpDown2.Minimum = new decimal(new int[] { 3, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(188, 39);
             numericUpDown2.TabIndex = 0;
+            numericUpDown2.Value = new decimal(new int[] { 3, 0, 0, 0 });
             // 
             // splitContainer2
             // 
@@ -636,7 +638,7 @@
             tabMaterials.Margin = new Padding(5);
             tabMaterials.Name = "tabMaterials";
             tabMaterials.Padding = new Padding(5);
-            tabMaterials.Size = new Size(1245, 766);
+            tabMaterials.Size = new Size(1245, 804);
             tabMaterials.TabIndex = 1;
             tabMaterials.Text = "Материалы";
             tabMaterials.UseVisualStyleBackColor = true;
@@ -656,7 +658,7 @@
             tlpMaterials.Name = "tlpMaterials";
             tlpMaterials.RowCount = 1;
             tlpMaterials.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMaterials.Size = new Size(1235, 756);
+            tlpMaterials.Size = new Size(1235, 794);
             tlpMaterials.TabIndex = 0;
             // 
             // mcHousing
@@ -669,9 +671,8 @@
             mcHousing.Margin = new Padding(20, 3, 20, 3);
             mcHousing.MaterialTitle = null;
             mcHousing.Name = "mcHousing";
-            mcHousing.Size = new Size(371, 750);
+            mcHousing.Size = new Size(371, 788);
             mcHousing.TabIndex = 0;
-            mcHousing.Load += materialChooser1_Load;
             // 
             // materialChooser1
             // 
@@ -683,7 +684,7 @@
             materialChooser1.Margin = new Padding(20, 3, 20, 3);
             materialChooser1.MaterialTitle = null;
             materialChooser1.Name = "materialChooser1";
-            materialChooser1.Size = new Size(371, 750);
+            materialChooser1.Size = new Size(371, 788);
             materialChooser1.TabIndex = 1;
             // 
             // materialChooser2
@@ -696,7 +697,7 @@
             materialChooser2.Margin = new Padding(20, 3, 20, 3);
             materialChooser2.MaterialTitle = null;
             materialChooser2.Name = "materialChooser2";
-            materialChooser2.Size = new Size(373, 750);
+            materialChooser2.Size = new Size(373, 788);
             materialChooser2.TabIndex = 2;
             // 
             // tabSaving
@@ -705,7 +706,7 @@
             tabSaving.Location = new Point(8, 46);
             tabSaving.Margin = new Padding(5);
             tabSaving.Name = "tabSaving";
-            tabSaving.Size = new Size(1245, 766);
+            tabSaving.Size = new Size(1245, 804);
             tabSaving.TabIndex = 2;
             tabSaving.Text = "Сохранение";
             tabSaving.UseVisualStyleBackColor = true;
@@ -724,7 +725,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1245, 766);
+            tableLayoutPanel1.Size = new Size(1245, 804);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // savingParametersEditor1
@@ -737,7 +738,7 @@
             savingParametersEditor1.Marking = null;
             savingParametersEditor1.Name = "savingParametersEditor1";
             savingParametersEditor1.Namimg = null;
-            savingParametersEditor1.Size = new Size(375, 760);
+            savingParametersEditor1.Size = new Size(375, 798);
             savingParametersEditor1.TabIndex = 0;
             // 
             // savingParametersEditor2
@@ -750,7 +751,7 @@
             savingParametersEditor2.Marking = null;
             savingParametersEditor2.Name = "savingParametersEditor2";
             savingParametersEditor2.Namimg = null;
-            savingParametersEditor2.Size = new Size(375, 760);
+            savingParametersEditor2.Size = new Size(375, 798);
             savingParametersEditor2.TabIndex = 1;
             // 
             // savingParametersEditor3
@@ -763,7 +764,7 @@
             savingParametersEditor3.Marking = null;
             savingParametersEditor3.Name = "savingParametersEditor3";
             savingParametersEditor3.Namimg = null;
-            savingParametersEditor3.Size = new Size(375, 760);
+            savingParametersEditor3.Size = new Size(375, 798);
             savingParametersEditor3.TabIndex = 2;
             // 
             // tabAppearance
@@ -772,7 +773,7 @@
             tabAppearance.Location = new Point(8, 46);
             tabAppearance.Margin = new Padding(5);
             tabAppearance.Name = "tabAppearance";
-            tabAppearance.Size = new Size(1245, 766);
+            tabAppearance.Size = new Size(1245, 804);
             tabAppearance.TabIndex = 3;
             tabAppearance.Text = "Отображение";
             tabAppearance.UseVisualStyleBackColor = true;
@@ -791,7 +792,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1245, 766);
+            tableLayoutPanel2.Size = new Size(1245, 804);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // appeareanceEditor3
@@ -806,7 +807,7 @@
             appeareanceEditor3.Margin = new Padding(10, 3, 10, 3);
             appeareanceEditor3.Name = "appeareanceEditor3";
             appeareanceEditor3.Shininess = 0;
-            appeareanceEditor3.Size = new Size(395, 760);
+            appeareanceEditor3.Size = new Size(395, 798);
             appeareanceEditor3.Specularity = 0;
             appeareanceEditor3.TabIndex = 2;
             appeareanceEditor3.Transparency = 0;
@@ -823,7 +824,7 @@
             appeareanceEditor2.Margin = new Padding(10, 3, 10, 3);
             appeareanceEditor2.Name = "appeareanceEditor2";
             appeareanceEditor2.Shininess = 0;
-            appeareanceEditor2.Size = new Size(395, 760);
+            appeareanceEditor2.Size = new Size(395, 798);
             appeareanceEditor2.Specularity = 0;
             appeareanceEditor2.TabIndex = 1;
             appeareanceEditor2.Transparency = 0;
@@ -840,7 +841,7 @@
             appeareanceEditor1.Margin = new Padding(10, 3, 10, 3);
             appeareanceEditor1.Name = "appeareanceEditor1";
             appeareanceEditor1.Shininess = 0;
-            appeareanceEditor1.Size = new Size(395, 760);
+            appeareanceEditor1.Size = new Size(395, 798);
             appeareanceEditor1.Specularity = 0;
             appeareanceEditor1.TabIndex = 0;
             appeareanceEditor1.Transparency = 0;
@@ -869,7 +870,7 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
+            gbDiameters.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -933,7 +934,7 @@
         private RadioButton rbGlass;
         private RadioButton rbRubberStrip;
         private FlowLayoutPanel flowLayoutPanel2;
-        private GroupBox groupBox1;
+        private GroupBox gbDiameters;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
@@ -950,7 +951,7 @@
         private TextBox textBox3;
         private TextBox textBox6;
         private TextBox textBox5;
-        private TextBox textBox4;
+        private TextBox tbD;
         private Label label5;
         private Label label6;
         private Label label7;
