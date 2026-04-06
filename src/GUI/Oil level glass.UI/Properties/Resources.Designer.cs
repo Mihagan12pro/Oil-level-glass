@@ -19,7 +19,7 @@ namespace Oil_level_glass.UI.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,11 +61,39 @@ namespace Oil_level_glass.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Линза.
+        /// </summary>
+        internal static string Glass {
+            get {
+                return ResourceManager.GetString("Glass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Glass {
+        internal static System.Drawing.Bitmap Glass_Img {
             get {
-                object obj = ResourceManager.GetObject("Glass", resourceCulture);
+                object obj = ResourceManager.GetObject("Glass_Img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Корпус.
+        /// </summary>
+        internal static string Housing {
+            get {
+                return ResourceManager.GetString("Housing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Housing_Img {
+            get {
+                object obj = ResourceManager.GetObject("Housing Img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,30 +101,38 @@ namespace Oil_level_glass.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Housing {
+        internal static System.Drawing.Bitmap Oil_level_glass_Img {
             get {
-                object obj = ResourceManager.GetObject("Housing", resourceCulture);
+                object obj = ResourceManager.GetObject("Oil level glass Img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Смотровой лючок.
+        /// </summary>
+        internal static string OilLevelGlass {
+            get {
+                return ResourceManager.GetString("OilLevelGlass", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Oil_level_glass {
+        internal static System.Drawing.Bitmap Rubber_strip_Img {
             get {
-                object obj = ResourceManager.GetObject("Oil level glass", resourceCulture);
+                object obj = ResourceManager.GetObject("Rubber strip Img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Резиновая прокладка.
         /// </summary>
-        internal static System.Drawing.Bitmap Rubber_strip {
+        internal static string RubberStrip {
             get {
-                object obj = ResourceManager.GetObject("Rubber strip", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("RubberStrip", resourceCulture);
             }
         }
     }
