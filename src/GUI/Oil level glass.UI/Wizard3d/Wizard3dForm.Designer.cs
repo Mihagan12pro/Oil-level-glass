@@ -205,6 +205,7 @@
             // pbSketch
             // 
             pbSketch.Dock = DockStyle.Fill;
+            pbSketch.Image = Properties.Resources.Oil_level_glass_Img;
             pbSketch.Location = new Point(0, 0);
             pbSketch.Name = "pbSketch";
             pbSketch.Size = new Size(527, 495);

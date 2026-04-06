@@ -1,6 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.UI.Main;
 using Oil_level_glass.UI.Properties;
+using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 
 namespace Oil_level_glass.UI.Wizard3d
 {
@@ -48,7 +49,14 @@ namespace Oil_level_glass.UI.Wizard3d
             switch (treeNode.Tag)
             {
                 case Part.Glass:
+                    GlassEditorForm form = new GlassEditorForm()
+                    { 
+                        Owner = this,
+                        ShowInTaskbar = false,
+                        ShowIcon = false
+                    };
 
+                    form.ShowDialog();
                     break;
 
                 case Part.RubberStrip:
