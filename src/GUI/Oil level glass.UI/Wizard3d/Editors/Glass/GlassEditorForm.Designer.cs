@@ -212,8 +212,8 @@
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(btCancel, 0, 0);
-            tableLayoutPanel2.Controls.Add(btOk, 1, 0);
+            tableLayoutPanel2.Controls.Add(btOk, 0, 0);
+            tableLayoutPanel2.Controls.Add(btCancel, 1, 0);
             tableLayoutPanel2.Location = new Point(510, 439);
             tableLayoutPanel2.Margin = new Padding(5);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -225,7 +225,7 @@
             // btCancel
             // 
             btCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btCancel.Location = new Point(50, 10);
+            btCancel.Location = new Point(253, 10);
             btCancel.Margin = new Padding(5, 5, 0, 16);
             btCancel.Name = "btCancel";
             btCancel.Size = new Size(153, 46);
@@ -237,7 +237,8 @@
             // btOk
             // 
             btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btOk.Location = new Point(221, 10);
+            btOk.Enabled = false;
+            btOk.Location = new Point(18, 10);
             btOk.Margin = new Padding(5, 5, 32, 16);
             btOk.Name = "btOk";
             btOk.Size = new Size(153, 46);

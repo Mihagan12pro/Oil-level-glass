@@ -19,7 +19,7 @@ namespace Oil_level_glass.Model.Data
             }
         }
 
-        public virtual string Error => throw new NotImplementedException();
+        public virtual string Error => string.Empty;
 
         protected virtual string CheckField(string columnName)
         {

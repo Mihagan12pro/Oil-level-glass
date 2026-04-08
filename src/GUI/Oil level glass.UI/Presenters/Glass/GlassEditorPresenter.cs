@@ -1,8 +1,9 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
 using System.Globalization;
 
-namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
+namespace Oil_level_glass.UI.Presenters.Glass
 {
     internal class GlassEditorPresenter : IGlassEditorPresenter
     {

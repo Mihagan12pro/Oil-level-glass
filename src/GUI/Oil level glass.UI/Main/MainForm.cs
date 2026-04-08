@@ -21,5 +21,10 @@ namespace Oil_level_glass.UI.Main
         {
 
         }
+
+        private void pbMain_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.UI.Controls;
+using Oil_level_glass.UI.Presenters.Glass;
 using System.ComponentModel;
 
 namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
@@ -29,8 +30,7 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
         public void CheckFormData()
         {
             var action = () => {
-                btOk.Enabled = !_diameterErrorProvider.HasErrors &&
-                  !_heightErrorProvider.HasErrors;
+                btOk.Enabled = Model.Error == string.Empty;
             };
 
             _backgroundBtOk = new ThreadControl(btOk, action);

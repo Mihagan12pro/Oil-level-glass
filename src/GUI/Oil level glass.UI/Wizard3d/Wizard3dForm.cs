@@ -1,5 +1,6 @@
-﻿using Oil_level_glass.Model.Data.Materials;
-using Oil_level_glass.UI.Main;
+﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Model.Data.Materials;
+using Oil_level_glass.UI.Presenters.Wizard3d;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 
@@ -13,9 +14,14 @@ namespace Oil_level_glass.UI.Wizard3d
         Housing
     }
 
-    public partial class Wizard3dForm : Form, IMainForm
+    public partial class Wizard3dForm : Form, IWizardForm
     {
-        private readonly MainPresenter _mainPresenter;
+        private readonly Wizard3dPresenter _wizardPresenter;
+        private readonly GlassModel _glass;
+        private readonly HousingModel _housing;
+        private readonly RubberStripModel _rubberStrip;
+
+        public Action<bool> CanCreate { get; }
 
         public Wizard3dForm()
         {
@@ -23,10 +29,14 @@ namespace Oil_level_glass.UI.Wizard3d
 
             InitTreeViewNodes();
 
-            _mainPresenter = new MainPresenter(this);
-        }
+            _glass = new GlassModel();
+            _rubberStrip = new RubberStripModel();
+            _housing = new HousingModel();
 
-        public event EventHandler UpdateDiameterTextBox = delegate { };
+            _wizardPresenter = new Wizard3dPresenter(this, _housing, _rubberStrip, _glass);
+
+            CanCreate = (bool b) => { btOk.Enabled = b; };
+        }
 
         private void InitTreeViewNodes()
         {
@@ -55,8 +65,8 @@ namespace Oil_level_glass.UI.Wizard3d
                         ShowInTaskbar = false,
                         ShowIcon = false
                     };
-
                     form.ShowDialog();
+
                     break;
 
                 case Part.RubberStrip:
@@ -75,6 +85,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
                     break;
             }
+
+            _wizardPresenter.UpdateModel();
         }
 
         private void tvParts_AfterSelect(object sender, TreeViewEventArgs e)
@@ -110,5 +122,6 @@ namespace Oil_level_glass.UI.Wizard3d
                 pbSketch.Image = sketch;
             }
         }
+
     }
 }

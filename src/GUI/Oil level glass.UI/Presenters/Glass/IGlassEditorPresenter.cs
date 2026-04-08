@@ -1,6 +1,6 @@
 ﻿using Shared;
 
-namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
+namespace Oil_level_glass.UI.Presenters.Glass
 {
     internal interface IGlassEditorPresenter : IEditorPresenter
     {
