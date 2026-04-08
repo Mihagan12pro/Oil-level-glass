@@ -1,11 +1,15 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.UI.Controls;
+using System.ComponentModel;
 
 namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 {
     public partial class GlassEditorForm : Form, IGlassEditor
     {
+        private BackgroundWorker _bgWorker;
+        private ThreadControl _backgroundBtOk;
         private readonly GlassEditorPresenter _glassEditorPresenter;
-        private ErrorProvider _diameterError, _heightError;
+        private ErrorProvider _diameterErrorProvider, _heightErrorProvider;
 
         public GlassEditorForm()
         {
@@ -15,22 +19,39 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 
             _glassEditorPresenter = new GlassEditorPresenter(this);
 
-            _diameterError = new ErrorProvider();
-            _heightError = new ErrorProvider();
+            _diameterErrorProvider = new ErrorProvider();
+            _heightErrorProvider = new ErrorProvider();
         }
 
         public GlassModel Model { get; set; }
+        public BackgroundWorker BackgroundWorker { get; set; }
+
+        public void CheckFormData()
+        {
+            var action = () => {
+                btOk.Enabled = !_diameterErrorProvider.HasErrors &&
+                  !_heightErrorProvider.HasErrors;
+            };
+
+            _backgroundBtOk = new ThreadControl(btOk, action);
+            _bgWorker = new BackgroundWorker();
+
+            _bgWorker.DoWork += (obj, ea)
+                => CheckFormDataBackground();
+
+            _bgWorker.RunWorkerAsync();
+        }
 
         private void tbHeight_TextChanged(object sender, EventArgs e)
         {
             var result = _glassEditorPresenter.UpdateWidth((sender as TextBox)!.Text);
             if (!result.IsSuccess)
             {
-                _heightError.SetError((sender as TextBox), result.ErrorMessage);
+                _heightErrorProvider.SetError((sender as TextBox), result.ErrorMessage);
                 return;
             }
 
-            _heightError.Clear();
+            _heightErrorProvider.Clear();
         }
 
         private void tbDiameter_TextChanged(object sender, EventArgs e)
@@ -38,21 +59,36 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             var result = _glassEditorPresenter.UpdateDiameter((sender as TextBox)!.Text);
             if (!result.IsSuccess)
             {
-                _diameterError.SetError((sender as TextBox), result.ErrorMessage);
+                _diameterErrorProvider.SetError((sender as TextBox), result.ErrorMessage);
                 return;
             }
 
-           _diameterError.Clear();
+            _diameterErrorProvider.Clear();
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.OK;
         }
 
-        private void btCancel_Click(object sender, EventArgs e)
+        private void resetData_Click(object sender, EventArgs e)
         {
             _glassEditorPresenter.ResetFields();
+        }
+
+        private void CheckFormDataBackground()
+        {
+            while (true)
+            {
+                Thread.Sleep(500);
+
+                _backgroundBtOk.Run();
+            }
+        }
+
+        private void GlassEditorForm_Load(object sender, EventArgs e)
+        {
+            CheckFormData();
         }
     }
 }
