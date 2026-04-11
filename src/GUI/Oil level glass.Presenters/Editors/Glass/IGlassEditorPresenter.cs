@@ -1,8 +1,8 @@
 ﻿using Shared;
 
-namespace Oil_level_glass.UI.Presenters.Glass
+namespace Oil_level_glass.UI.Presenters.Editors.Glass
 {
-    internal interface IGlassEditorPresenter : IEditorPresenter
+    public interface IGlassEditorPresenter : IEditorPresenter
     {
         Result UpdateDiameter(string diameter);
 

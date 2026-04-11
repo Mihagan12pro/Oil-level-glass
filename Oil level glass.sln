@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI.Controls
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.UI.Abstractions", "src\Oil level glass\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj", "{0F178596-B391-480A-AA7D-8FBF73A0D416}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oil level glass.Presenters", "src\GUI\Oil level glass.Presenters\Oil level glass.Presenters.csproj", "{7B5156E7-8575-4511-BD41-BF4D89B83396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{0F178596-B391-480A-AA7D-8FBF73A0D416}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F178596-B391-480A-AA7D-8FBF73A0D416}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F178596-B391-480A-AA7D-8FBF73A0D416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B5156E7-8575-4511-BD41-BF4D89B83396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B5156E7-8575-4511-BD41-BF4D89B83396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B5156E7-8575-4511-BD41-BF4D89B83396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B5156E7-8575-4511-BD41-BF4D89B83396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{E0C30A2C-A15D-41F9-8C1E-0B7E90D74385} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
 		{CEB7F453-861B-4CDF-BF00-234C17B13FD9} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
 		{0F178596-B391-480A-AA7D-8FBF73A0D416} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
+		{7B5156E7-8575-4511-BD41-BF4D89B83396} = {99EFDC32-04F3-4529-9D69-B9DEFC04A4F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09E88832-B967-43DA-BE85-E0BC97BD4700}

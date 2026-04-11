@@ -13,6 +13,7 @@
     <ProjectReference Include="..\..\Model\Oil level glass.Model.csproj" />
     <ProjectReference Include="..\..\Oil level glass\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj" />
     <ProjectReference Include="..\..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Oil level glass.Presenters\Oil level glass.Presenters.csproj" />
     <ProjectReference Include="..\Oil level glass.UI.Controls\Oil level glass.UI.Controls.csproj" />
   </ItemGroup>
 

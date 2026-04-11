@@ -3,7 +3,7 @@ using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Shared;
 using System.Globalization;
 
-namespace Oil_level_glass.UI.Presenters.Glass
+namespace Oil_level_glass.UI.Presenters.Editors.Glass
 {
     internal class GlassEditorPresenter : IGlassEditorPresenter
     {

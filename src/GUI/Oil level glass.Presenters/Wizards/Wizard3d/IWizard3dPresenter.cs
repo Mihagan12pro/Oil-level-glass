@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oil_level_glass.UI.Presenters.Wizard3d
+namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 {
-    internal class Wizard3dPresenter
+    public interface IWizard3dPresenter : IWizardPresenter
     {
+
     }
 }

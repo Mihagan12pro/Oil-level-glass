@@ -1,7 +1,8 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Presenters;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Oil_level_glass.UI.Controls;
-using Oil_level_glass.UI.Presenters.Glass;
+using Oil_level_glass.UI.Presenters.Editors.Glass;
 using System.ComponentModel;
 
 namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
@@ -10,7 +11,7 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
     {
         private BackgroundWorker _bgWorker;
         private ThreadControl _backgroundBtOk;
-        private readonly GlassEditorPresenter _glassEditorPresenter;
+        private readonly IGlassEditorPresenter _glassEditorPresenter;
         private ErrorProvider _diameterErrorProvider, _heightErrorProvider;
 
         public GlassEditorForm()
@@ -19,7 +20,7 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 
             Model = new GlassModel();
 
-            _glassEditorPresenter = new GlassEditorPresenter(this);
+            _glassEditorPresenter = PresentersFactory.CreateGlassEditorPresenter(this);
 
             _diameterErrorProvider = new ErrorProvider();
             _heightErrorProvider = new ErrorProvider();
