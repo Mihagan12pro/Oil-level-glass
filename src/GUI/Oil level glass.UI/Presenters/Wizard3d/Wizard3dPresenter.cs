@@ -1,5 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.UI.Wizard3d;
+using Oil_level_glass.UI.Abstractions.Wizards;
 using Shared;
 
 namespace Oil_level_glass.UI.Presenters.Wizard3d

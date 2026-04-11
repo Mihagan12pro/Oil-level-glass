@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oil_level_glass
+namespace Oil_level_glass.UI.Abstractions.Wizards.Wizard3d
 {
-    public class Program
+    public interface IWizard3dForm : IWizardForm
     {
     }
 }

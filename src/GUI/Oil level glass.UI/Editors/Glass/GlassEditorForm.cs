@@ -1,12 +1,12 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Oil_level_glass.UI.Controls;
-using Oil_level_glass.UI.Editors.Glass;
 using Oil_level_glass.UI.Presenters.Glass;
 using System.ComponentModel;
 
 namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 {
-    public partial class GlassEditorForm : Form, IGlassEditor
+    public partial class GlassEditorForm : Form, IGlassEditorForm
     {
         private BackgroundWorker _bgWorker;
         private ThreadControl _backgroundBtOk;

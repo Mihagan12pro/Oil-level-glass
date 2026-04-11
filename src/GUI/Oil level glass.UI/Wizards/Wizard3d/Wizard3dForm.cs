@@ -1,5 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Model.Data.Materials;
+using Oil_level_glass.UI.Abstractions.Wizards;
+using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Presenters.Wizard3d;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
@@ -14,7 +16,7 @@ namespace Oil_level_glass.UI.Wizard3d
         Housing
     }
 
-    public partial class Wizard3dForm : Form, IWizardForm
+    public partial class Wizard3dForm : Form, IWizard3dForm
     {
         private readonly Wizard3dPresenter _wizardPresenter;
         private readonly GlassModel _glass;

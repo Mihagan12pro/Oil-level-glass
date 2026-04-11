@@ -1,5 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.UI.Editors.Glass;
+using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Shared;
 using System.Globalization;
 
@@ -7,7 +7,7 @@ namespace Oil_level_glass.UI.Presenters.Glass
 {
     internal class GlassEditorPresenter : IGlassEditorPresenter
     {
-        private readonly IGlassEditor _glassEditor;
+        private readonly IGlassEditorForm _glassEditor;
         private readonly GlassModel _glass;
 
         private readonly double _oldWidth, _oldDiameter;
@@ -56,7 +56,7 @@ namespace Oil_level_glass.UI.Presenters.Glass
             _glass.Height = _oldWidth;
         }
 
-        public GlassEditorPresenter(IGlassEditor glassEditor)
+        public GlassEditorPresenter(IGlassEditorForm glassEditor)
         {
             _glassEditor = glassEditor;
 

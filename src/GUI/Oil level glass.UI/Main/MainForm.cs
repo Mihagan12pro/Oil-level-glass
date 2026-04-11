@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.UI.Wizard3d;
+﻿using Oil_level_glass.UI.Abstractions;
+using Oil_level_glass.UI.Wizard3d;
 
 namespace Oil_level_glass.UI.Main
 {
