@@ -40,6 +40,7 @@
             tbDiameter = new TextBox();
             label2 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
+            btClear = new Button();
             btCancel = new Button();
             btOk = new Button();
             tableLayoutPanel1.SuspendLayout();
@@ -93,9 +94,9 @@
             pbSketch.BorderStyle = BorderStyle.FixedSingle;
             pbSketch.Image = Properties.Resources.Glass_Img;
             pbSketch.Location = new Point(460, 19);
-            pbSketch.Margin = new Padding(5, 19, 5, 5);
+            pbSketch.Margin = new Padding(5, 19, 20, 5);
             pbSketch.Name = "pbSketch";
-            pbSketch.Size = new Size(446, 400);
+            pbSketch.Size = new Size(431, 400);
             pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSketch.TabIndex = 0;
             pbSketch.TabStop = false;
@@ -104,11 +105,11 @@
             // 
             groupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox.Controls.Add(tableLayoutPanel4);
-            groupBox.Location = new Point(5, 5);
-            groupBox.Margin = new Padding(5);
+            groupBox.Location = new Point(20, 5);
+            groupBox.Margin = new Padding(20, 5, 20, 5);
             groupBox.Name = "groupBox";
             groupBox.Padding = new Padding(5);
-            groupBox.Size = new Size(445, 414);
+            groupBox.Size = new Size(415, 414);
             groupBox.TabIndex = 1;
             groupBox.TabStop = false;
             groupBox.Text = "Размеры";
@@ -127,7 +128,7 @@
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(435, 372);
+            tableLayoutPanel4.Size = new Size(405, 372);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -138,13 +139,13 @@
             tableLayoutPanel5.Controls.Add(label1, 0, 0);
             tableLayoutPanel5.Controls.Add(tbHeight, 0, 1);
             tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(5, 5);
-            tableLayoutPanel5.Margin = new Padding(5);
+            tableLayoutPanel5.Location = new Point(10, 5);
+            tableLayoutPanel5.Margin = new Padding(10, 5, 5, 5);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(425, 176);
+            tableLayoutPanel5.Size = new Size(390, 176);
             tableLayoutPanel5.TabIndex = 0;
             // 
             // label1
@@ -164,7 +165,7 @@
             tbHeight.Location = new Point(49, 88);
             tbHeight.Margin = new Padding(49, 0, 49, 0);
             tbHeight.Name = "tbHeight";
-            tbHeight.Size = new Size(327, 39);
+            tbHeight.Size = new Size(292, 39);
             tbHeight.TabIndex = 1;
             tbHeight.TextChanged += tbHeight_TextChanged;
             // 
@@ -182,7 +183,7 @@
             tableLayoutPanel6.RowCount = 2;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(425, 176);
+            tableLayoutPanel6.Size = new Size(395, 176);
             tableLayoutPanel6.TabIndex = 1;
             // 
             // tbDiameter
@@ -191,7 +192,7 @@
             tbDiameter.Location = new Point(49, 88);
             tbDiameter.Margin = new Padding(49, 0, 49, 0);
             tbDiameter.Name = "tbDiameter";
-            tbDiameter.Size = new Size(327, 39);
+            tbDiameter.Size = new Size(297, 39);
             tbDiameter.TabIndex = 0;
             tbDiameter.TextChanged += tbDiameter_TextChanged;
             // 
@@ -209,26 +210,39 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(btOk, 0, 0);
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.Controls.Add(btClear, 0, 0);
             tableLayoutPanel2.Controls.Add(btCancel, 1, 0);
-            tableLayoutPanel2.Location = new Point(510, 439);
-            tableLayoutPanel2.Margin = new Padding(5);
+            tableLayoutPanel2.Controls.Add(btOk, 2, 0);
+            tableLayoutPanel2.Location = new Point(450, 439);
+            tableLayoutPanel2.Margin = new Padding(5, 5, 20, 5);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(406, 72);
+            tableLayoutPanel2.Size = new Size(451, 72);
             tableLayoutPanel2.TabIndex = 0;
+            // 
+            // btClear
+            // 
+            btClear.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btClear.Location = new Point(5, 10);
+            btClear.Margin = new Padding(5, 5, 5, 16);
+            btClear.Name = "btClear";
+            btClear.Size = new Size(140, 46);
+            btClear.TabIndex = 2;
+            btClear.Text = "Очистить";
+            btClear.UseVisualStyleBackColor = true;
             // 
             // btCancel
             // 
             btCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btCancel.Location = new Point(253, 10);
-            btCancel.Margin = new Padding(5, 5, 0, 16);
+            btCancel.Location = new Point(155, 10);
+            btCancel.Margin = new Padding(5, 5, 5, 16);
             btCancel.Name = "btCancel";
-            btCancel.Size = new Size(153, 46);
+            btCancel.Size = new Size(140, 46);
             btCancel.TabIndex = 0;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
@@ -238,10 +252,10 @@
             // 
             btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btOk.Enabled = false;
-            btOk.Location = new Point(18, 10);
-            btOk.Margin = new Padding(5, 5, 32, 16);
+            btOk.Location = new Point(305, 10);
+            btOk.Margin = new Padding(5, 5, 0, 16);
             btOk.Name = "btOk";
-            btOk.Size = new Size(153, 46);
+            btOk.Size = new Size(146, 46);
             btOk.TabIndex = 1;
             btOk.Text = "Ок";
             btOk.UseVisualStyleBackColor = true;
@@ -254,6 +268,7 @@
             CancelButton = btCancel;
             ClientSize = new Size(921, 516);
             Controls.Add(tableLayoutPanel1);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(5);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -289,5 +304,6 @@
         private TextBox tbHeight;
         private TextBox tbDiameter;
         private Label label2;
+        private Button btClear;
     }
 }

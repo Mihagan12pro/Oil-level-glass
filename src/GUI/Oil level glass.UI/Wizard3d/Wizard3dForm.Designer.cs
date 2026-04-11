@@ -225,7 +225,7 @@
             // 
             // tbCtlrModelParams
             // 
-            tbCtlrModelParams.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbCtlrModelParams.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tbCtlrModelParams.Controls.Add(tabSizes);
             tbCtlrModelParams.Controls.Add(tabMaterials);
             tbCtlrModelParams.Controls.Add(tabSaving);
@@ -246,7 +246,6 @@
             Controls.Add(tbCtlrModelParams);
             Controls.Add(btCancel);
             Controls.Add(btOk);
-            FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(5);
             MaximizeBox = false;
             MinimizeBox = false;
