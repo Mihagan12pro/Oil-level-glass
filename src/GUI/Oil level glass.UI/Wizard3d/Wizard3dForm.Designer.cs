@@ -253,6 +253,7 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Мастер 3d модели";
+            Load += Wizard3dForm_Load;
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             tabAppearance.ResumeLayout(false);

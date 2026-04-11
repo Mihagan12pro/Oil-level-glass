@@ -27,8 +27,6 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             InitializeComponent();
 
-            InitTreeViewNodes();
-
             _glass = new GlassModel();
             _rubberStrip = new RubberStripModel();
             _housing = new HousingModel();
@@ -36,20 +34,6 @@ namespace Oil_level_glass.UI.Wizard3d
             _wizardPresenter = new Wizard3dPresenter(this, _housing, _rubberStrip, _glass);
 
             CanCreate = (bool b) => { btOk.Enabled = b; };
-        }
-
-        private void InitTreeViewNodes()
-        {
-            TreeNode[] details = new TreeNode[]
-            {
-                new TreeNode(Resources.Glass) { Tag = Part.Glass },
-                new TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
-                new TreeNode(Resources.Housing) { Tag = Part.Housing }
-            };
-
-            TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
-
-            tvParts.Nodes.Add(oilLevelGlassNode);
         }
 
         private void tvParts_DoubleClick(object sender, EventArgs e)
@@ -60,7 +44,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 case Part.Glass:
                     GlassEditorForm form = new GlassEditorForm()
-                    { 
+                    {
                         Owner = this,
                         ShowInTaskbar = false,
                         ShowIcon = false
@@ -123,5 +107,18 @@ namespace Oil_level_glass.UI.Wizard3d
             }
         }
 
+        private void Wizard3dForm_Load(object sender, EventArgs e)
+        {
+            TreeNode[] details = new TreeNode[]
+            {
+                new TreeNode(Resources.Glass) { Tag = Part.Glass },
+                new TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
+                new TreeNode(Resources.Housing) { Tag = Part.Housing }
+            };
+
+            TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
+
+            tvParts.Nodes.Add(oilLevelGlassNode);
+        }
     }
 }

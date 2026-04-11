@@ -1,5 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.UI.Wizard3d.Editors.Glass;
+using Oil_level_glass.UI.Editors.Glass;
 using Shared;
 using System.Globalization;
 
