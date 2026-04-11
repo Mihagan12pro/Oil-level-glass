@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 
 namespace Oil_level_glass.Presenters.Wizards.Wizard3d
@@ -11,33 +12,60 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         private readonly RubberStripModel _stripModel;
         private readonly GlassModel _glass;
 
-        public Action InvokeGlassEditor { get; set; }
+        public Action InvokeGlassEditor { get; }
 
-        public Action InvokeHousingEditor { get; set; }
+        public Action InvokeHousingEditor { get; }
 
-        public Action InvokeRubberStripEditor { get; set; }
+        public Action InvokeRubberStripEditor { get; }
 
         public void InvokeEditor(object tag)
         {
-            throw new NotImplementedException();
+            if (tag is Part part)
+            {
+                switch(part)
+                {
+                    case Part.Housing:
+                        InvokeHousingEditor();
+                        break;
+
+                    case Part.RubberStrip:
+                        InvokeRubberStripEditor();
+                        break;
+
+                    case Part.Glass:
+                        InvokeGlassEditor();
+                        break;
+                }
+            }
         }
 
         public void UpdateModel()
         {
-            throw new NotImplementedException();
+            _stripModel.ExternalDiameter = _glass.ExternalDiameter;
+            _housing.GlassSocketDiameter = _stripModel.ExternalDiameter;
+
+            _housing.GlassSocketHeight = _stripModel.Height * 2 + _glass.Height;
+            _housing.CentralHoleDiameter = _stripModel.InternalDiameter;
         }
 
         public Wizard3dPresenter(
             IWizard3dForm wizardForm, 
             GlassModel glass,
             RubberStripModel rubberStrip, 
-            HousingModel housing)
+            HousingModel housing,
+            Action invokeGlassEditor,
+            Action invokeRubberStripEditor,
+            Action invokeHousingEditor)
         {
             _wizardForm = wizardForm;
 
             _glass = glass;
             _stripModel = rubberStrip;
             _housing = housing;
+
+            InvokeGlassEditor = invokeGlassEditor;
+            InvokeRubberStripEditor = invokeRubberStripEditor;
+            InvokeHousingEditor = invokeRubberStripEditor;
         }
     }
 }

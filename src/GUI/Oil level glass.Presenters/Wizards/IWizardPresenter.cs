@@ -8,10 +8,8 @@ namespace Oil_level_glass.Presenters.Wizards
 
         void UpdateModel();
 
-        Action InvokeGlassEditor { get; set; }
-
-        Action InvokeHousingEditor { get; set; }
-
-        Action InvokeRubberStripEditor { get; set; }
+        Action InvokeGlassEditor { get; }
+        Action InvokeHousingEditor { get; }
+        Action InvokeRubberStripEditor { get; }
     }
 }

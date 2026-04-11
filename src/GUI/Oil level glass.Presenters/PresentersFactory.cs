@@ -17,9 +17,19 @@ namespace Oil_level_glass.Presenters
             IWizard3dForm form,
             GlassModel glass,
             RubberStripModel rubberStrip,
-            HousingModel housing)
+            HousingModel housing,
+            Action invokeGlassEditor,
+            Action invokeRubberStripEditor,
+            Action invokeHousingEditor)
         {
-            return new Wizard3dPresenter(form, glass, rubberStrip, housing);
+            return new Wizard3dPresenter(
+                form,
+                glass, 
+                rubberStrip,
+                housing, 
+                invokeGlassEditor,
+                invokeRubberStripEditor,
+                invokeHousingEditor);
         }
     }
 }

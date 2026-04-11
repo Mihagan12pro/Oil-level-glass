@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Oil_level_glass.Presenters.Enums
+{
+    public enum Part
+    {
+        OilLevelGlass,
+        
+        Glass,
+        
+        RubberStrip,
+        
+        Housing
+    }
+}
