@@ -59,11 +59,9 @@
             // btOk
             // 
             btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btOk.Enabled = false;
-            btOk.Location = new Point(990, 885);
-            btOk.Margin = new Padding(5);
+            btOk.Location = new Point(609, 553);
             btOk.Name = "btOk";
-            btOk.Size = new Size(153, 46);
+            btOk.Size = new Size(94, 29);
             btOk.TabIndex = 0;
             btOk.Text = "Ок";
             btOk.UseVisualStyleBackColor = true;
@@ -71,10 +69,9 @@
             // btCancel
             // 
             btCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btCancel.Location = new Point(1188, 885);
-            btCancel.Margin = new Padding(5);
+            btCancel.Location = new Point(731, 553);
             btCancel.Name = "btCancel";
-            btCancel.Size = new Size(153, 46);
+            btCancel.Size = new Size(94, 29);
             btCancel.TabIndex = 1;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
@@ -94,10 +91,9 @@
             // tabAppearance
             // 
             tabAppearance.Controls.Add(tableLayoutPanel2);
-            tabAppearance.Location = new Point(8, 46);
-            tabAppearance.Margin = new Padding(5);
+            tabAppearance.Location = new Point(4, 29);
             tabAppearance.Name = "tabAppearance";
-            tabAppearance.Size = new Size(1305, 804);
+            tabAppearance.Size = new Size(805, 503);
             tabAppearance.TabIndex = 3;
             tabAppearance.Text = "Отображение";
             tabAppearance.UseVisualStyleBackColor = true;
@@ -110,19 +106,19 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Margin = new Padding(2, 2, 2, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1305, 804);
+            tableLayoutPanel2.Size = new Size(805, 503);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // tabSaving
             // 
             tabSaving.Controls.Add(tableLayoutPanel1);
-            tabSaving.Location = new Point(8, 46);
-            tabSaving.Margin = new Padding(5);
+            tabSaving.Location = new Point(4, 29);
             tabSaving.Name = "tabSaving";
-            tabSaving.Size = new Size(1305, 804);
+            tabSaving.Size = new Size(805, 503);
             tabSaving.TabIndex = 2;
             tabSaving.Text = "Сохранение";
             tabSaving.UseVisualStyleBackColor = true;
@@ -135,20 +131,20 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(2, 2, 2, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1305, 804);
+            tableLayoutPanel1.Size = new Size(805, 503);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tabMaterials
             // 
             tabMaterials.Controls.Add(tlpMaterials);
-            tabMaterials.Location = new Point(8, 46);
-            tabMaterials.Margin = new Padding(5);
+            tabMaterials.Location = new Point(4, 29);
             tabMaterials.Name = "tabMaterials";
-            tabMaterials.Padding = new Padding(5);
-            tabMaterials.Size = new Size(1305, 804);
+            tabMaterials.Padding = new Padding(3, 3, 3, 3);
+            tabMaterials.Size = new Size(805, 503);
             tabMaterials.TabIndex = 1;
             tabMaterials.Text = "Материалы";
             tabMaterials.UseVisualStyleBackColor = true;
@@ -160,22 +156,20 @@
             tlpMaterials.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tlpMaterials.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tlpMaterials.Dock = DockStyle.Fill;
-            tlpMaterials.Location = new Point(5, 5);
-            tlpMaterials.Margin = new Padding(5);
+            tlpMaterials.Location = new Point(3, 3);
             tlpMaterials.Name = "tlpMaterials";
             tlpMaterials.RowCount = 1;
             tlpMaterials.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMaterials.Size = new Size(1295, 794);
+            tlpMaterials.Size = new Size(799, 497);
             tlpMaterials.TabIndex = 0;
             // 
             // tabSizes
             // 
             tabSizes.Controls.Add(splitSizes);
-            tabSizes.Location = new Point(8, 46);
-            tabSizes.Margin = new Padding(5);
+            tabSizes.Location = new Point(4, 29);
             tabSizes.Name = "tabSizes";
-            tabSizes.Padding = new Padding(5);
-            tabSizes.Size = new Size(1305, 804);
+            tabSizes.Padding = new Padding(3, 3, 3, 3);
+            tabSizes.Size = new Size(805, 503);
             tabSizes.TabIndex = 0;
             tabSizes.Text = "Размеры";
             tabSizes.UseVisualStyleBackColor = true;
@@ -184,8 +178,7 @@
             // 
             splitSizes.BorderStyle = BorderStyle.Fixed3D;
             splitSizes.Dock = DockStyle.Fill;
-            splitSizes.Location = new Point(5, 5);
-            splitSizes.Margin = new Padding(5);
+            splitSizes.Location = new Point(3, 3);
             splitSizes.Name = "splitSizes";
             // 
             // splitSizes.Panel1
@@ -195,18 +188,16 @@
             // splitSizes.Panel2
             // 
             splitSizes.Panel2.Controls.Add(pbSketch);
-            splitSizes.Size = new Size(1295, 794);
-            splitSizes.SplitterDistance = 431;
-            splitSizes.SplitterWidth = 6;
+            splitSizes.Size = new Size(799, 497);
+            splitSizes.SplitterDistance = 265;
             splitSizes.TabIndex = 0;
             // 
             // tvParts
             // 
             tvParts.Dock = DockStyle.Fill;
             tvParts.Location = new Point(0, 0);
-            tvParts.Margin = new Padding(5);
             tvParts.Name = "tvParts";
-            tvParts.Size = new Size(427, 790);
+            tvParts.Size = new Size(261, 493);
             tvParts.TabIndex = 0;
             tvParts.AfterSelect += tvParts_AfterSelect;
             tvParts.DoubleClick += tvParts_DoubleClick;
@@ -216,9 +207,8 @@
             pbSketch.Dock = DockStyle.Fill;
             pbSketch.Image = Properties.Resources.Oil_level_glass_Img;
             pbSketch.Location = new Point(0, 0);
-            pbSketch.Margin = new Padding(5);
             pbSketch.Name = "pbSketch";
-            pbSketch.Size = new Size(854, 790);
+            pbSketch.Size = new Size(526, 493);
             pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSketch.TabIndex = 0;
             pbSketch.TabStop = false;
@@ -230,23 +220,21 @@
             tbCtlrModelParams.Controls.Add(tabMaterials);
             tbCtlrModelParams.Controls.Add(tabSaving);
             tbCtlrModelParams.Controls.Add(tabAppearance);
-            tbCtlrModelParams.Location = new Point(20, 3);
-            tbCtlrModelParams.Margin = new Padding(5);
+            tbCtlrModelParams.Location = new Point(12, 2);
             tbCtlrModelParams.Name = "tbCtlrModelParams";
             tbCtlrModelParams.SelectedIndex = 0;
-            tbCtlrModelParams.Size = new Size(1321, 858);
+            tbCtlrModelParams.Size = new Size(813, 536);
             tbCtlrModelParams.TabIndex = 2;
             // 
             // Wizard3dForm
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btCancel;
-            ClientSize = new Size(1360, 946);
+            ClientSize = new Size(837, 591);
             Controls.Add(tbCtlrModelParams);
             Controls.Add(btCancel);
             Controls.Add(btOk);
-            Margin = new Padding(5);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Wizard3dForm";

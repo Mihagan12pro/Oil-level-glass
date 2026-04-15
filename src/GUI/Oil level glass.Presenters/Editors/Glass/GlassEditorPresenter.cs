@@ -12,7 +12,9 @@ namespace Oil_level_glass.UI.Presenters.Editors.Glass
 
         private readonly double _oldWidth, _oldDiameter;
 
-        public Result UpdateWidth(string width)
+        public Action CheckData { get; }
+
+        public Result UpdateHeight(string width)
         {
             if (double.TryParse(width, out double realWidth) || double.TryParse(
                     width, NumberStyles.AllowDecimalPoint,
@@ -56,7 +58,7 @@ namespace Oil_level_glass.UI.Presenters.Editors.Glass
             _glass.Height = _oldWidth;
         }
 
-        public GlassEditorPresenter(IGlassEditorForm glassEditor)
+        internal GlassEditorPresenter(IGlassEditorForm glassEditor, Action checkData)
         {
             _glassEditor = glassEditor;
 
@@ -64,6 +66,7 @@ namespace Oil_level_glass.UI.Presenters.Editors.Glass
 
             _oldWidth = _glass.Height;
             _oldDiameter = _glass.ExternalDiameter;
+            CheckData = checkData;
         }
     }
 }

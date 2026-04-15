@@ -4,6 +4,7 @@ using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Presenters.Editors.Glass;
 using System.ComponentModel;
+using System.Data.Common;
 
 namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 {
@@ -11,61 +12,24 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
     {
         private BackgroundWorker _bgWorker;
         private ThreadControl _backgroundBtOk;
-        private readonly IGlassEditorPresenter _glassEditorPresenter;
+        private IGlassEditorPresenter _glassEditorPresenter;
         private ErrorProvider _diameterErrorProvider, _heightErrorProvider;
 
         public GlassEditorForm()
         {
             InitializeComponent();
-
-            Model = new GlassModel();
-
-            _glassEditorPresenter = PresentersFactory.CreateGlassEditorPresenter(this);
-
-            _diameterErrorProvider = new ErrorProvider();
-            _heightErrorProvider = new ErrorProvider();
         }
 
         public GlassModel Model { get; set; }
-        public BackgroundWorker BackgroundWorker { get; set; }
-
-        public void CheckFormData()
-        {
-            var action = () => {
-                btOk.Enabled = Model.Error == string.Empty;
-            };
-
-            _backgroundBtOk = new ThreadControl(btOk, action);
-            _bgWorker = new BackgroundWorker();
-
-            _bgWorker.DoWork += (obj, ea)
-                => CheckFormDataBackground();
-
-            _bgWorker.RunWorkerAsync();
-        }
 
         private void tbHeight_TextChanged(object sender, EventArgs e)
         {
-            var result = _glassEditorPresenter.UpdateWidth((sender as TextBox)!.Text);
-            if (!result.IsSuccess)
-            {
-                _heightErrorProvider.SetError((sender as TextBox), result.ErrorMessage);
-                return;
-            }
-
-            _heightErrorProvider.Clear();
+            _glassEditorPresenter.CheckData();
         }
 
         private void tbDiameter_TextChanged(object sender, EventArgs e)
         {
-            var result = _glassEditorPresenter.UpdateDiameter((sender as TextBox)!.Text);
-            if (!result.IsSuccess)
-            {
-                _diameterErrorProvider.SetError((sender as TextBox), result.ErrorMessage);
-                return;
-            }
-
-            _diameterErrorProvider.Clear();
+            _glassEditorPresenter.CheckData();
         }
 
         private void btOk_Click(object sender, EventArgs e)
@@ -78,19 +42,46 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             _glassEditorPresenter.ResetFields();
         }
 
-        private void CheckFormDataBackground()
-        {
-            while (true)
-            {
-                Thread.Sleep(500);
-
-                _backgroundBtOk.Run();
-            }
-        }
-
         private void GlassEditorForm_Load(object sender, EventArgs e)
         {
-            CheckFormData();
+            Action checkData = () => {
+                var diameterResult =  _glassEditorPresenter.UpdateDiameter(tbDiameter.Text);
+                var heightResult = _glassEditorPresenter.UpdateHeight(tbHeight.Text);
+
+                btOk.Enabled = diameterResult.IsSuccess && heightResult.IsSuccess;
+
+                if (!diameterResult.IsSuccess)
+                    _diameterErrorProvider.SetError(tbDiameter, diameterResult.ErrorMessage);
+                else
+                    _diameterErrorProvider.Clear();
+
+                if (!heightResult.IsSuccess)
+                    _heightErrorProvider.SetError(tbHeight, heightResult.ErrorMessage);
+                else
+                    _heightErrorProvider.Clear();
+            };
+
+
+            _glassEditorPresenter = PresentersFactory.CreateGlassEditorPresenter(this, checkData);
+
+            _diameterErrorProvider = new ErrorProvider();
+            _heightErrorProvider = new ErrorProvider();
+
+            if (Model.Error == string.Empty)
+            {
+                tbDiameter.Text = Model.ExternalDiameter.ToString();
+                tbHeight.Text = Model.Height.ToString();
+            }
+
+            _glassEditorPresenter.CheckData.Invoke();
+        }
+
+        private void btClear_Click(object sender, EventArgs e)
+        {
+            tbDiameter.Text = "";
+            tbHeight.Text = "";
+
+            _glassEditorPresenter.CheckData.Invoke();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Oil_level_glass.Presenters
 {
     public static class PresentersFactory
     {
-        public static IGlassEditorPresenter CreateGlassEditorPresenter(IGlassEditorForm form)
+        public static IGlassEditorPresenter CreateGlassEditorPresenter(IGlassEditorForm form, Action checkData)
         {
-            return new GlassEditorPresenter(form);
+            return new GlassEditorPresenter(form, checkData);
         }
 
         public static IWizard3dPresenter CreateWizard3dPresenter(
@@ -20,7 +20,8 @@ namespace Oil_level_glass.Presenters
             HousingModel housing,
             Action invokeGlassEditor,
             Action invokeRubberStripEditor,
-            Action invokeHousingEditor)
+            Action invokeHousingEditor,
+            Action checkData)
         {
             return new Wizard3dPresenter(
                 form,
@@ -29,7 +30,8 @@ namespace Oil_level_glass.Presenters
                 housing, 
                 invokeGlassEditor,
                 invokeRubberStripEditor,
-                invokeHousingEditor);
+                invokeHousingEditor,
+                checkData);
         }
     }
 }

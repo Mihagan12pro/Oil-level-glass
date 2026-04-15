@@ -6,6 +6,6 @@ namespace Oil_level_glass.UI.Abstractions.Editors
     {
         TModel Model { get; set; }
 
-        void CheckFormData();
+        //void CheckFormData();
     }
 }

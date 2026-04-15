@@ -6,6 +6,6 @@ namespace Oil_level_glass.UI.Presenters.Editors.Glass
     {
         Result UpdateDiameter(string diameter);
 
-        Result UpdateWidth(string width);
+        Result UpdateHeight(string width);
     }
 }

@@ -45,9 +45,12 @@ namespace Oil_level_glass.UI.Wizard3d
                 
                 () => {
                     throw new NotImplementedException();
+                },
+                () => {
+                    btOk.Enabled = (_glass.Error == string.Empty &&
+                        _housing.Error == string.Empty &&
+                        _rubberStrip.Error == string.Empty);
                 });
-
-            CanCreate = (bool b) => { btOk.Enabled = b; };
         }
 
         private void tvParts_DoubleClick(object sender, EventArgs e)
@@ -104,6 +107,8 @@ namespace Oil_level_glass.UI.Wizard3d
             TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
 
             tvParts.Nodes.Add(oilLevelGlassNode);
+
+            _wizardPresenter.CheckData();
         }
     }
 }

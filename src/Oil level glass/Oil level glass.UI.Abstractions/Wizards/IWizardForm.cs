@@ -2,6 +2,6 @@
 {
     public interface IWizardForm : IForm
     {
-        Action<bool> CanCreate { get; }
+        
     }
 }

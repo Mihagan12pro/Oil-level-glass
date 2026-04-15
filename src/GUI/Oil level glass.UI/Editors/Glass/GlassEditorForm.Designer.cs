@@ -161,6 +161,7 @@
             tbHeight.Location = new Point(30, 55);
             tbHeight.Margin = new Padding(30, 0, 30, 0);
             tbHeight.Name = "tbHeight";
+            tbHeight.PlaceholderText = "2";
             tbHeight.Size = new Size(181, 27);
             tbHeight.TabIndex = 1;
             tbHeight.TextChanged += tbHeight_TextChanged;
@@ -187,6 +188,7 @@
             tbDiameter.Location = new Point(30, 55);
             tbDiameter.Margin = new Padding(30, 0, 30, 0);
             tbDiameter.Name = "tbDiameter";
+            tbDiameter.PlaceholderText = "60";
             tbDiameter.Size = new Size(184, 27);
             tbDiameter.TabIndex = 0;
             tbDiameter.TextChanged += tbDiameter_TextChanged;
@@ -230,6 +232,7 @@
             btClear.TabIndex = 2;
             btClear.Text = "Очистить";
             btClear.UseVisualStyleBackColor = true;
+            btClear.Click += btClear_Click;
             // 
             // btCancel
             // 

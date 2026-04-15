@@ -13,10 +13,10 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         private readonly GlassModel _glass;
 
         public Action InvokeGlassEditor { get; }
-
         public Action InvokeHousingEditor { get; }
-
         public Action InvokeRubberStripEditor { get; }
+
+        public Action CheckData { get; }
 
         public void InvokeEditor(object tag)
         {
@@ -46,6 +46,8 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
             _housing.GlassSocketHeight = _stripModel.Height * 2 + _glass.Height;
             _housing.CentralHoleDiameter = _stripModel.InternalDiameter;
+
+            CheckData.Invoke();
         }
 
         public Wizard3dPresenter(
@@ -55,7 +57,8 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             HousingModel housing,
             Action invokeGlassEditor,
             Action invokeRubberStripEditor,
-            Action invokeHousingEditor)
+            Action invokeHousingEditor,
+            Action checkData)
         {
             _wizardForm = wizardForm;
 
@@ -66,6 +69,8 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             InvokeGlassEditor = invokeGlassEditor;
             InvokeRubberStripEditor = invokeRubberStripEditor;
             InvokeHousingEditor = invokeRubberStripEditor;
+
+            CheckData = checkData;
         }
     }
 }
