@@ -209,9 +209,9 @@
             lblInternalDiameter.Location = new Point(49, 28);
             lblInternalDiameter.Margin = new Padding(49, 0, 49, 0);
             lblInternalDiameter.Name = "lblInternalDiameter";
-            lblInternalDiameter.Size = new Size(247, 32);
+            lblInternalDiameter.Size = new Size(284, 32);
             lblInternalDiameter.TabIndex = 0;
-            lblInternalDiameter.Text = "Внутренний диаметр";
+            lblInternalDiameter.Text = "Внутренний диаметр D2";
             // 
             // tbInternalDiameter
             // 
@@ -219,6 +219,7 @@
             tbInternalDiameter.Location = new Point(49, 60);
             tbInternalDiameter.Margin = new Padding(49, 0, 49, 0);
             tbInternalDiameter.Name = "tbInternalDiameter";
+            tbInternalDiameter.PlaceholderText = "50";
             tbInternalDiameter.Size = new Size(303, 39);
             tbInternalDiameter.TabIndex = 1;
             tbInternalDiameter.TextChanged += tbInternalDiameter_TextChanged;
@@ -246,9 +247,9 @@
             lblExternalDiameter.Location = new Point(49, 28);
             lblExternalDiameter.Margin = new Padding(49, 0, 49, 0);
             lblExternalDiameter.Name = "lblExternalDiameter";
-            lblExternalDiameter.Size = new Size(216, 32);
+            lblExternalDiameter.Size = new Size(240, 32);
             lblExternalDiameter.TabIndex = 0;
-            lblExternalDiameter.Text = "Внешний диаметр";
+            lblExternalDiameter.Text = "Внешний диаметр D";
             // 
             // tbExternalDiameter
             // 
