@@ -1,17 +1,12 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Presenters;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
-using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Presenters.Editors.Glass;
-using System.ComponentModel;
-using System.Data.Common;
 
 namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 {
     public partial class GlassEditorForm : Form, IGlassEditorForm
     {
-        private BackgroundWorker _bgWorker;
-        private ThreadControl _backgroundBtOk;
         private IGlassEditorPresenter _glassEditorPresenter;
         private ErrorProvider _diameterErrorProvider, _heightErrorProvider;
 
@@ -37,15 +32,11 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             DialogResult = DialogResult.OK;
         }
 
-        private void resetData_Click(object sender, EventArgs e)
-        {
-            _glassEditorPresenter.ResetFields();
-        }
-
         private void GlassEditorForm_Load(object sender, EventArgs e)
         {
-            Action checkData = () => {
-                var diameterResult =  _glassEditorPresenter.UpdateDiameter(tbDiameter.Text);
+            Action checkData = () =>
+            {
+                var diameterResult = _glassEditorPresenter.UpdateDiameter(tbDiameter.Text);
                 var heightResult = _glassEditorPresenter.UpdateHeight(tbHeight.Text);
 
                 btOk.Enabled = diameterResult.IsSuccess && heightResult.IsSuccess;
@@ -82,6 +73,12 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             tbHeight.Text = "";
 
             _glassEditorPresenter.CheckData.Invoke();
+        }
+
+        private void GlassEditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult != DialogResult.OK)
+                _glassEditorPresenter.ResetFields();
         }
     }
 }

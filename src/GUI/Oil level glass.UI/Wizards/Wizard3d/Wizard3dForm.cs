@@ -3,6 +3,7 @@ using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
+using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 
@@ -40,7 +41,12 @@ namespace Oil_level_glass.UI.Wizard3d
                 },
                 
                 () => {
-                    throw new NotImplementedException();
+                    RubberStripEditorForm form = new RubberStripEditorForm()
+                    {
+                        Owner = this,
+                        Model = _rubberStrip
+                    };
+                    form.ShowDialog();
                 },
                 
                 () => {
