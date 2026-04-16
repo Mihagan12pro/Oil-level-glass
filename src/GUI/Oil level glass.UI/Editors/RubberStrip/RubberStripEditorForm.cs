@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Editors.RubberStrip;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 
@@ -28,11 +29,31 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
 
         private void tbInternalDiameter_TextChanged(object sender, EventArgs e)
         {
-
+            _stripEditorPresenter.CheckData.Invoke();
         }
 
         private void RubberStripEditorForm_Load(object sender, EventArgs e)
         {
+            _internalDiameterError = new ErrorProvider();
+
+            Action checkData = () =>
+            {
+                var internalDiameterResult = _stripEditorPresenter.UpdateInternalDiameter(tbInternalDiameter.Text);
+
+
+                btOk.Enabled = internalDiameterResult.IsSuccess;
+                if (internalDiameterResult.IsSuccess)
+                {
+                    _internalDiameterError.Clear();
+                }
+                else
+                {
+                    _internalDiameterError.SetError(tbInternalDiameter, internalDiameterResult.ErrorMessage);
+                }
+            };
+
+            _stripEditorPresenter = PresentersFactory.CreateRubberStripPresenter(this, checkData);
+
             if (Model[nameof(Model.ExternalDiameter)] == string.Empty &&
                 Model[nameof(Model.Height)] == string.Empty)
             {
@@ -43,7 +64,7 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
             if (Model.Error == string.Empty)
                 tbInternalDiameter.Text = Model.InternalDiameter.ToString();
 
-            _internalDiameterError = new ErrorProvider();
+            _stripEditorPresenter.CheckData.Invoke();
         }
     }
 }

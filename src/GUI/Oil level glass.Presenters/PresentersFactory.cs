@@ -12,7 +12,7 @@ namespace Oil_level_glass.Presenters
     {
         public static IRubberStripEditorPresenter CreateRubberStripPresenter(
             IRubberStripEditorForm form,
-            Action checkData) => throw new NotImplementedException();
+            Action checkData) => new RubberStripEditorPresenter(form, checkData);
 
         public static IGlassEditorPresenter CreateGlassEditorPresenter(
             IGlassEditorForm form,

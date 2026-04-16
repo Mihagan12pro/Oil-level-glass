@@ -41,12 +41,17 @@ namespace Oil_level_glass.UI.Wizard3d
                 },
                 
                 () => {
-                    RubberStripEditorForm form = new RubberStripEditorForm()
+                    if (_glass.Error == string.Empty)
                     {
-                        Owner = this,
-                        Model = _rubberStrip
-                    };
-                    form.ShowDialog();
+                        RubberStripEditorForm form = new RubberStripEditorForm()
+                        {
+                            Owner = this,
+                            Model = _rubberStrip
+                        };
+                        form.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show(this, "Перед началом конфигурации прокладки необходимо сконфигурировать линзу!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 },
                 
                 () => {
