@@ -2,6 +2,7 @@
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Editors.RubberStrip;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
+using Oil_level_glass.UI.Presenters.Editors.Glass;
 
 namespace Oil_level_glass.UI.Editors.RubberStrip
 {
@@ -65,6 +66,12 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
                 tbInternalDiameter.Text = Model.InternalDiameter.ToString();
 
             _stripEditorPresenter.CheckData.Invoke();
+        }
+
+        private void RubberStripEditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult != DialogResult.OK)
+                _stripEditorPresenter.ResetFields();
         }
     }
 }

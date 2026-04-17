@@ -314,6 +314,7 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор размеров прокладки";
+            FormClosing += RubberStripEditorForm_FormClosing;
             Load += RubberStripEditorForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);

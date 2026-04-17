@@ -3,6 +3,7 @@ using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
+using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
@@ -27,20 +28,22 @@ namespace Oil_level_glass.UI.Wizard3d
             _housing = new HousingModel();
 
             _wizardPresenter = PresentersFactory.CreateWizard3dPresenter(
-                this, 
+                this,
                 _glass,
                 _rubberStrip,
                 _housing,
-                () => { 
-                    GlassEditorForm form = new GlassEditorForm() 
+                () =>
+                {
+                    GlassEditorForm form = new GlassEditorForm()
                     {
                         Owner = this,
                         Model = _glass
                     };
                     form.ShowDialog();
                 },
-                
-                () => {
+
+                () =>
+                {
                     if (_glass.Error == string.Empty)
                     {
                         RubberStripEditorForm form = new RubberStripEditorForm()
@@ -53,11 +56,23 @@ namespace Oil_level_glass.UI.Wizard3d
                     else
                         MessageBox.Show(this, "Перед началом конфигурации прокладки необходимо сконфигурировать линзу!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 },
-                
-                () => {
-                    throw new NotImplementedException();
+
+                () =>
+                {
+                    if (_rubberStrip.Error == string.Empty)
+                    {
+                        HousingEditorForm form = new HousingEditorForm()
+                        {
+                            Owner = this,
+                            Model = _housing
+                        };
+                        form.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show(this, "Перед началом конфигурации корпуса необходимо сконфигурировать прокладку!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 },
-                () => {
+                () =>
+                {
                     btOk.Enabled = (_glass.Error == string.Empty &&
                         _housing.Error == string.Empty &&
                         _rubberStrip.Error == string.Empty);
@@ -120,6 +135,11 @@ namespace Oil_level_glass.UI.Wizard3d
             tvParts.Nodes.Add(oilLevelGlassNode);
 
             _wizardPresenter.CheckData();
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

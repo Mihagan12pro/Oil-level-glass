@@ -69,7 +69,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
             InvokeGlassEditor = invokeGlassEditor;
             InvokeRubberStripEditor = invokeRubberStripEditor;
-            InvokeHousingEditor = invokeRubberStripEditor;
+            InvokeHousingEditor = invokeHousingEditor;
 
             CheckData = checkData;
         }

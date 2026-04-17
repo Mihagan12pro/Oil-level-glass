@@ -33,14 +33,15 @@
             splitContainer2 = new SplitContainer();
             tabSaving = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
+            savingParametersEditor6 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            savingParametersEditor5 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            savingParametersEditor4 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
             tabSizes = new TabPage();
             splitSizes = new SplitContainer();
             tvParts = new TreeView();
             pbSketch = new PictureBox();
             tbCtlrModelParams = new TabControl();
-            savingParametersEditor4 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            savingParametersEditor5 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            savingParametersEditor6 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            btResetData = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
             tabSaving.SuspendLayout();
@@ -57,7 +58,7 @@
             // btOk
             // 
             btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btOk.Location = new Point(990, 885);
+            btOk.Location = new Point(1180, 928);
             btOk.Margin = new Padding(5);
             btOk.Name = "btOk";
             btOk.Size = new Size(153, 46);
@@ -68,13 +69,14 @@
             // btCancel
             // 
             btCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btCancel.Location = new Point(1188, 885);
+            btCancel.Location = new Point(991, 928);
             btCancel.Margin = new Padding(5);
             btCancel.Name = "btCancel";
             btCancel.Size = new Size(153, 46);
             btCancel.TabIndex = 1;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
+            btCancel.Click += btCancel_Click;
             // 
             // splitContainer2
             // 
@@ -116,6 +118,42 @@
             tableLayoutPanel1.Size = new Size(1305, 804);
             tableLayoutPanel1.TabIndex = 0;
             // 
+            // savingParametersEditor6
+            // 
+            savingParametersEditor6.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
+            savingParametersEditor6.Header = null;
+            savingParametersEditor6.Location = new Point(880, 3);
+            savingParametersEditor6.Margin = new Padding(10, 3, 10, 10);
+            savingParametersEditor6.Marking = null;
+            savingParametersEditor6.Name = "savingParametersEditor6";
+            savingParametersEditor6.Namimg = null;
+            savingParametersEditor6.Size = new Size(415, 791);
+            savingParametersEditor6.TabIndex = 2;
+            // 
+            // savingParametersEditor5
+            // 
+            savingParametersEditor5.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
+            savingParametersEditor5.Header = null;
+            savingParametersEditor5.Location = new Point(445, 3);
+            savingParametersEditor5.Margin = new Padding(10, 3, 10, 10);
+            savingParametersEditor5.Marking = null;
+            savingParametersEditor5.Name = "savingParametersEditor5";
+            savingParametersEditor5.Namimg = null;
+            savingParametersEditor5.Size = new Size(415, 791);
+            savingParametersEditor5.TabIndex = 1;
+            // 
+            // savingParametersEditor4
+            // 
+            savingParametersEditor4.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
+            savingParametersEditor4.Header = null;
+            savingParametersEditor4.Location = new Point(10, 3);
+            savingParametersEditor4.Margin = new Padding(10, 3, 10, 10);
+            savingParametersEditor4.Marking = null;
+            savingParametersEditor4.Name = "savingParametersEditor4";
+            savingParametersEditor4.Namimg = null;
+            savingParametersEditor4.Size = new Size(415, 791);
+            savingParametersEditor4.TabIndex = 0;
+            // 
             // tabSizes
             // 
             tabSizes.Controls.Add(splitSizes);
@@ -123,7 +161,7 @@
             tabSizes.Margin = new Padding(5);
             tabSizes.Name = "tabSizes";
             tabSizes.Padding = new Padding(5);
-            tabSizes.Size = new Size(1305, 804);
+            tabSizes.Size = new Size(1305, 846);
             tabSizes.TabIndex = 0;
             tabSizes.Text = "Размеры";
             tabSizes.UseVisualStyleBackColor = true;
@@ -143,7 +181,7 @@
             // splitSizes.Panel2
             // 
             splitSizes.Panel2.Controls.Add(pbSketch);
-            splitSizes.Size = new Size(1295, 794);
+            splitSizes.Size = new Size(1295, 836);
             splitSizes.SplitterDistance = 429;
             splitSizes.SplitterWidth = 6;
             splitSizes.TabIndex = 0;
@@ -154,7 +192,7 @@
             tvParts.Location = new Point(0, 0);
             tvParts.Margin = new Padding(5);
             tvParts.Name = "tvParts";
-            tvParts.Size = new Size(425, 790);
+            tvParts.Size = new Size(425, 832);
             tvParts.TabIndex = 0;
             tvParts.AfterSelect += tvParts_AfterSelect;
             tvParts.DoubleClick += tvParts_DoubleClick;
@@ -166,7 +204,7 @@
             pbSketch.Location = new Point(0, 0);
             pbSketch.Margin = new Padding(5);
             pbSketch.Name = "pbSketch";
-            pbSketch.Size = new Size(856, 790);
+            pbSketch.Size = new Size(856, 832);
             pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSketch.TabIndex = 0;
             pbSketch.TabStop = false;
@@ -180,53 +218,29 @@
             tbCtlrModelParams.Margin = new Padding(5);
             tbCtlrModelParams.Name = "tbCtlrModelParams";
             tbCtlrModelParams.SelectedIndex = 0;
-            tbCtlrModelParams.Size = new Size(1321, 858);
+            tbCtlrModelParams.Size = new Size(1321, 900);
             tbCtlrModelParams.TabIndex = 2;
             // 
-            // savingParametersEditor4
+            // btResetData
             // 
-            savingParametersEditor4.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
-            savingParametersEditor4.Header = null;
-            savingParametersEditor4.Location = new Point(10, 3);
-            savingParametersEditor4.Margin = new Padding(10, 3, 10, 10);
-            savingParametersEditor4.Marking = null;
-            savingParametersEditor4.Name = "savingParametersEditor4";
-            savingParametersEditor4.Namimg = null;
-            savingParametersEditor4.Size = new Size(415, 791);
-            savingParametersEditor4.TabIndex = 0;
-            // 
-            // savingParametersEditor5
-            // 
-            savingParametersEditor5.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
-            savingParametersEditor5.Header = null;
-            savingParametersEditor5.Location = new Point(445, 3);
-            savingParametersEditor5.Margin = new Padding(10, 3, 10, 10);
-            savingParametersEditor5.Marking = null;
-            savingParametersEditor5.Name = "savingParametersEditor5";
-            savingParametersEditor5.Namimg = null;
-            savingParametersEditor5.Size = new Size(415, 791);
-            savingParametersEditor5.TabIndex = 1;
-            // 
-            // savingParametersEditor6
-            // 
-            savingParametersEditor6.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
-            savingParametersEditor6.Header = null;
-            savingParametersEditor6.Location = new Point(880, 3);
-            savingParametersEditor6.Margin = new Padding(10, 3, 10, 10);
-            savingParametersEditor6.Marking = null;
-            savingParametersEditor6.Name = "savingParametersEditor6";
-            savingParametersEditor6.Namimg = null;
-            savingParametersEditor6.Size = new Size(415, 791);
-            savingParametersEditor6.TabIndex = 2;
+            btResetData.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btResetData.Location = new Point(804, 928);
+            btResetData.Margin = new Padding(5);
+            btResetData.Name = "btResetData";
+            btResetData.Size = new Size(153, 46);
+            btResetData.TabIndex = 3;
+            btResetData.Text = "Отмена";
+            btResetData.UseVisualStyleBackColor = true;
             // 
             // Wizard3dForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1360, 946);
-            Controls.Add(tbCtlrModelParams);
+            ClientSize = new Size(1360, 988);
+            Controls.Add(btResetData);
             Controls.Add(btCancel);
             Controls.Add(btOk);
+            Controls.Add(tbCtlrModelParams);
             Margin = new Padding(5);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -273,5 +287,6 @@
         private Controls.SavingParametersEditor savingParametersEditor6;
         private Controls.SavingParametersEditor savingParametersEditor5;
         private Controls.SavingParametersEditor savingParametersEditor4;
+        private Button btResetData;
     }
 }
