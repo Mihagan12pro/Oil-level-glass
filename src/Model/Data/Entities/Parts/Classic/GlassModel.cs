@@ -19,7 +19,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 
         private double _externalDiameter;
         [DisplayName("Diameter")]
-        public double ExternalDiameter
+        public double Diameter
         {
             get
             {
@@ -61,7 +61,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
                 if (heightError != string.Empty)
                     errors += heightError + '\n';
                 
-                string externalDiameterError = this[nameof(ExternalDiameter)];
+                string externalDiameterError = this[nameof(Diameter)];
                 if (externalDiameterError != string.Empty)
                     errors += externalDiameterError;
 
@@ -82,9 +82,9 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 
                         break;
                     }
-                case nameof(ExternalDiameter):
+                case nameof(Diameter):
                     {
-                        if (ExternalDiameter <= 0)
+                        if (Diameter <= 0)
                             error = "Diameter must be greater than zero!";
 
                         break;

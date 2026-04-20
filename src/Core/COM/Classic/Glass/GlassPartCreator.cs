@@ -39,7 +39,7 @@ namespace Oil_level_glass.COM.Classic.Glass
 
         public void EditSketch1()
         {
-            _diameterVariable!.Expression = PartModel!.ExternalDiameter.ToString();
+            _diameterVariable!.Expression = PartModel!.Diameter.ToString();
         }
 
         public void ExtrudeSketch1()
@@ -65,7 +65,7 @@ namespace Oil_level_glass.COM.Classic.Glass
         {
             base.Initialize();
 
-            _diameterVariable = Part7!.AddVariable("D", PartModel.ExternalDiameter, "Диаметр линзы");
+            _diameterVariable = Part7!.AddVariable("D", PartModel.Diameter, "Диаметр линзы");
             _extrusionHeight = Part7!.AddVariable("h", PartModel.Height, "Высота линзы");
         }
     }

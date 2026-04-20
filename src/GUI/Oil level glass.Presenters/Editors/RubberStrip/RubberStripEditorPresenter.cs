@@ -20,20 +20,7 @@ namespace Oil_level_glass.Presenters.Editors.RubberStrip
         }
 
         public Result UpdateInternalDiameter(string diameter)
-        {
-            if (diameter.TryConvertToDouble(out double realDiameter))
-            {
-                _rubberStrip.InternalDiameter = realDiameter;
-
-                string error = _rubberStrip[nameof(_rubberStrip.InternalDiameter)];
-                if (error == string.Empty)
-                    return new Result(true);
-
-                return new Result(false, error);
-            }
-
-            return new Result(false, "Internal diameter must be real number!");
-        }
+            => _rubberStrip.TryConvertToDouble(diameter, nameof(_rubberStrip.InternalDiameter));
 
         public RubberStripEditorPresenter(
             IRubberStripEditorForm form,

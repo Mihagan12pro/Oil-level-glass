@@ -136,7 +136,7 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
                 Where(f => f.IsCylinder && f.GetEdges()
                     .Where(e =>
                         e.ToPoint() == new Point3DCrossApi(
-                            glassModel.ExternalDiameter * 0.5,
+                            glassModel.Diameter * 0.5,
                             0,
                             glassModel.Height / 2)
                         ).FirstOrDefault() != null)
@@ -154,7 +154,7 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
                 Where(f => f.IsPlanar && f.GetEdges()
                     .Where(e =>
                         e.ToPoint() == new Point3DCrossApi(
-                            glassModel.ExternalDiameter * 0.5,
+                            glassModel.Diameter * 0.5,
                             0,
                             -glassModel.Height / 2)
                         ).FirstOrDefault() != null)
@@ -198,7 +198,7 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
                 Where(f => f.IsCylinder && f.GetEdges()
                     .Where(e =>
                         e.ToPoint() == new Point3DCrossApi(
-                            glassModel.ExternalDiameter * 0.5,
+                            glassModel.Diameter * 0.5,
                             0,
                             glassModel.Height / 2)
                         ).FirstOrDefault() != null)
@@ -225,7 +225,7 @@ namespace Oil_level_glass.COM.Classic.OilLevelGlass
                 Where(f => f.IsPlanar && f.GetEdges()
                     .Where(e =>
                         e.ToPoint() == new Point3DCrossApi(
-                            glassModel.ExternalDiameter * 0.5,
+                            glassModel.Diameter * 0.5,
                             0,
                             glassModel.Height / 2)
                         ).FirstOrDefault() != null)

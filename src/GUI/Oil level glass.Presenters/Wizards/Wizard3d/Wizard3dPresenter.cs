@@ -41,7 +41,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
         public void UpdateModel()
         {
-            _stripModel.ExternalDiameter = _glass.ExternalDiameter;
+            _stripModel.ExternalDiameter = _glass.Diameter;
             _stripModel.Height = _glass.Height;
             _housing.GlassSocketDiameter = _stripModel.ExternalDiameter;
 

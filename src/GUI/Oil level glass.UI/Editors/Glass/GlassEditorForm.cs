@@ -60,7 +60,7 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 
             if (Model.Error == string.Empty)
             {
-                tbDiameter.Text = Model.ExternalDiameter.ToString();
+                tbDiameter.Text = Model.Diameter.ToString();
                 tbHeight.Text = Model.Height.ToString();
             }
 

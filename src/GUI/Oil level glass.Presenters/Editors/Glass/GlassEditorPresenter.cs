@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Shared;
 using System.Globalization;
@@ -14,47 +15,15 @@ namespace Oil_level_glass.UI.Presenters.Editors.Glass
 
         public Action CheckData { get; }
 
-        public Result UpdateHeight(string width)
-        {
-            if (double.TryParse(width, out double realWidth) || double.TryParse(
-                    width, NumberStyles.AllowDecimalPoint,
-                    new CultureInfo("en-US"),
-                    out realWidth))
-            {
-                _glass.Height = realWidth;
-
-                string error = _glass[nameof(_glass.Height)];
-                if (error == string.Empty)
-                    return new Result(true);
-
-                return new Result(false, error);
-            }
-
-            return new Result(false, "Height must be real number!");
-        }
+        public Result UpdateHeight(string height)
+            => _glass.TryConvertToDouble(height, nameof(_glass.Height));
 
         public Result UpdateDiameter(string diameter)
-        {
-            if (double.TryParse(diameter, out double realDiameter) || double.TryParse(
-                   diameter, NumberStyles.AllowDecimalPoint,
-                   new CultureInfo("en-US"),
-                   out realDiameter))
-            {
-                _glass.ExternalDiameter = realDiameter;
-
-                string error = _glass[nameof(_glass.ExternalDiameter)];
-                if (error == string.Empty)
-                    return new Result(true);
-
-                return new Result(false, error);
-            }
-
-            return new Result(false, "Diameter must be real number!");
-        }
+            => _glass.TryConvertToDouble(diameter, nameof(_glass.Diameter));
 
         public void ResetFields()
         {
-            _glass.ExternalDiameter = _oldDiameter;
+            _glass.Diameter = _oldDiameter;
             _glass.Height = _oldWidth;
         }
 
@@ -65,7 +34,7 @@ namespace Oil_level_glass.UI.Presenters.Editors.Glass
             _glass = _glassEditor.Model;
 
             _oldWidth = _glass.Height;
-            _oldDiameter = _glass.ExternalDiameter;
+            _oldDiameter = _glass.Diameter;
             CheckData = checkData;
         }
     }
