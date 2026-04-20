@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
+using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
@@ -17,6 +18,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
         }
 
         private double _externalDiameter;
+        [DisplayName("Diameter")]
         public double ExternalDiameter
         {
             get
@@ -32,6 +34,8 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
         }
 
         private double _height;
+
+        [DisplayName("Height")]
         public double Height
         {
             get

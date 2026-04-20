@@ -1,4 +1,6 @@
-﻿namespace Oil_level_glass.Model.Data.Operations
+﻿using System.ComponentModel;
+
+namespace Oil_level_glass.Model.Data.Operations
 {
     public class ChamferModel 
         : BaseModel
@@ -8,6 +10,7 @@
         /// <summary>
         /// Length of the side 1 (in mm)
         /// </summary>
+        [DisplayName("Length")]
         public double Length
         {
             get
@@ -25,6 +28,7 @@
         /// <summary>
         /// Angle in degrees
         /// </summary>
+        [DisplayName("Angle")]
         public double Angle
         {
             get

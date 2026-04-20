@@ -1,10 +1,13 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
+using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
     public class RubberStripModel : BaseDetailModel
     {
-        private double _internalDiameter;
+        private double _internalDiameter, _height, _externalDiameter;
+
+        [DisplayName("Internal diameter")]
         public double InternalDiameter
         {
             get
@@ -19,7 +22,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             }
         }
 
-        private double _externalDiameter;
+        [DisplayName("External diameter")]
         public double ExternalDiameter
         {
             get
@@ -34,7 +37,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             }
         }
 
-        private double _height;
+        [DisplayName("Height")]
         public double Height
         {
             get 

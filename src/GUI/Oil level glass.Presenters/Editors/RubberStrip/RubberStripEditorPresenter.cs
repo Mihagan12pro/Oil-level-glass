@@ -2,7 +2,7 @@
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 using Shared;
-using System.Globalization;
+using Oil_level_glass.Presenters.Extensions;
 
 namespace Oil_level_glass.Presenters.Editors.RubberStrip
 {
@@ -21,10 +21,7 @@ namespace Oil_level_glass.Presenters.Editors.RubberStrip
 
         public Result UpdateInternalDiameter(string diameter)
         {
-            if (double.TryParse(diameter, out double realDiameter) || double.TryParse(
-                  diameter, NumberStyles.AllowDecimalPoint,
-                  new CultureInfo("en-US"),
-                  out realDiameter))
+            if (diameter.TryConvertToDouble(out double realDiameter))
             {
                 _rubberStrip.InternalDiameter = realDiameter;
 

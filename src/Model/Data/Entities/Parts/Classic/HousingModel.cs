@@ -1,5 +1,6 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Operations;
+using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
@@ -11,7 +12,11 @@ public class HousingModel
         Material = new Metal();
     }
 
-    private double _mainDiameter;
+    private double _mainDiameter, _mainHeight, _glassSocketHeight, _glassSocketDiameter;
+    private double _centralHoleDiameter, _screwHolesDistance;
+    private int _screwHolesCount;
+
+    [DisplayName("Main diameter")]
     public double MainDiameter
     {
         get
@@ -26,7 +31,7 @@ public class HousingModel
         }
     }
 
-    private double _mainHeight;
+    [DisplayName("Main height")]
     public double MainHeight
     {
         get
@@ -41,7 +46,7 @@ public class HousingModel
         }
     }
 
-    private double _glassSocketHeight;
+    [DisplayName("Glass socket height")]
     public double GlassSocketHeight
     {
         get
@@ -56,7 +61,7 @@ public class HousingModel
         }
     }
 
-    private double _glassSocketDiameter;
+    [DisplayName("Glass socket diameter")]
     public double GlassSocketDiameter
     {
         get
@@ -71,7 +76,7 @@ public class HousingModel
         }
     }
 
-    private double _centralHoleDiameter;
+    [DisplayName("Central hole diameter")]
     public double CentralHoleDiameter
     {
         get
@@ -86,7 +91,7 @@ public class HousingModel
         }
     }
 
-    private int _screwHolesCount;
+    [DisplayName("Screw holes count")]
     public int ScrewHolesCount
     {
         get
@@ -101,7 +106,7 @@ public class HousingModel
         }
     }
 
-    private double _screwHolesDistance;
+    [DisplayName("Screw holes distance")]
     public double ScrewHolesDistance
     {
         get
@@ -119,6 +124,7 @@ public class HousingModel
     public ThreadModel Thread { get; } = new ThreadModel();
 
     public ChamferModel Chamfer { get; } = new ChamferModel() { Angle = 45, Length = 5 };
+
 
     protected override string CheckField(string columnName)
     {

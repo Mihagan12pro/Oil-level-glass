@@ -35,20 +35,20 @@
             groupBox = new GroupBox();
             tblSizes = new TableLayoutPanel();
             tableLayoutPanel11 = new TableLayoutPanel();
-            label7 = new Label();
-            tbChamferLength = new TextBox();
-            tableLayoutPanel4 = new TableLayoutPanel();
             label6 = new Label();
             tbGlassSocketHeight = new TextBox();
-            tableLayoutPanel10 = new TableLayoutPanel();
+            tableLayoutPanel4 = new TableLayoutPanel();
             label5 = new Label();
             tbHeight = new TextBox();
-            tableLayoutPanel9 = new TableLayoutPanel();
+            tableLayoutPanel10 = new TableLayoutPanel();
             label4 = new Label();
             tbHolesCount = new TextBox();
+            tableLayoutPanel9 = new TableLayoutPanel();
+            tbScrewHolesDistance = new TextBox();
+            tbHolesDiatance = new Label();
             tableLayoutPanel8 = new TableLayoutPanel();
             label3 = new Label();
-            tbHoleDiameter = new TextBox();
+            tbScrewHoleDiameter = new TextBox();
             tableLayoutPanel7 = new TableLayoutPanel();
             tbCentralHoleDiameter = new TextBox();
             label9 = new Label();
@@ -57,10 +57,13 @@
             tbGlassSocketDiameter = new TextBox();
             tableLayoutPanel5 = new TableLayoutPanel();
             label1 = new Label();
-            tbExternalDiameter = new TextBox();
+            tbMainDiameter = new TextBox();
             tableLayoutPanel12 = new TableLayoutPanel();
-            tbChamferAngle = new TextBox();
+            label7 = new Label();
+            tbChamferLength = new TextBox();
+            tableLayoutPanel13 = new TableLayoutPanel();
             label8 = new Label();
+            tbChamferAngle = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             btOk = new Button();
             btCancel = new Button();
@@ -79,6 +82,7 @@
             tableLayoutPanel6.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel12.SuspendLayout();
+            tableLayoutPanel13.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -154,20 +158,22 @@
             tblSizes.Controls.Add(tableLayoutPanel6, 0, 1);
             tblSizes.Controls.Add(tableLayoutPanel5, 0, 0);
             tblSizes.Controls.Add(tableLayoutPanel12, 0, 8);
+            tblSizes.Controls.Add(tableLayoutPanel13, 0, 9);
             tblSizes.Dock = DockStyle.Fill;
             tblSizes.Location = new Point(5, 37);
             tblSizes.Margin = new Padding(5);
             tblSizes.Name = "tblSizes";
-            tblSizes.RowCount = 9;
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1105595F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1105556F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1105556F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1105556F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1105556F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1105556F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1127777F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1127739F));
-            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1111107F));
+            tblSizes.RowCount = 10;
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 9.999603F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 9.999599F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 9.999599F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 9.999599F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 9.999599F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 9.999599F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0015993F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0015955F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0000982F));
+            tblSizes.RowStyles.Add(new RowStyle(SizeType.Percent, 9.999099F));
             tblSizes.Size = new Size(569, 861);
             tblSizes.TabIndex = 0;
             // 
@@ -176,59 +182,22 @@
             tableLayoutPanel11.ColumnCount = 1;
             tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel11.Controls.Add(label7, 0, 0);
-            tableLayoutPanel11.Controls.Add(tbChamferLength, 0, 1);
+            tableLayoutPanel11.Controls.Add(label6, 0, 0);
+            tableLayoutPanel11.Controls.Add(tbGlassSocketHeight, 0, 1);
             tableLayoutPanel11.Dock = DockStyle.Fill;
-            tableLayoutPanel11.Location = new Point(3, 668);
+            tableLayoutPanel11.Location = new Point(3, 605);
             tableLayoutPanel11.Name = "tableLayoutPanel11";
             tableLayoutPanel11.RowCount = 2;
             tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel11.Size = new Size(563, 89);
+            tableLayoutPanel11.Size = new Size(563, 80);
             tableLayoutPanel11.TabIndex = 7;
-            // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            label7.AutoSize = true;
-            label7.Location = new Point(49, 12);
-            label7.Margin = new Padding(49, 0, 49, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(97, 32);
-            label7.TabIndex = 0;
-            label7.Text = "Длина l";
-            // 
-            // tbChamferLength
-            // 
-            tbChamferLength.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbChamferLength.Location = new Point(49, 44);
-            tbChamferLength.Margin = new Padding(49, 0, 49, 0);
-            tbChamferLength.Name = "tbChamferLength";
-            tbChamferLength.PlaceholderText = "3";
-            tbChamferLength.Size = new Size(465, 39);
-            tbChamferLength.TabIndex = 1;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(label6, 0, 0);
-            tableLayoutPanel4.Controls.Add(tbGlassSocketHeight, 0, 1);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 573);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(563, 89);
-            tableLayoutPanel4.TabIndex = 6;
             // 
             // label6
             // 
             label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label6.AutoSize = true;
-            label6.Location = new Point(49, 12);
+            label6.Location = new Point(49, 8);
             label6.Margin = new Padding(49, 0, 49, 0);
             label6.Name = "label6";
             label6.Size = new Size(126, 32);
@@ -238,34 +207,34 @@
             // tbGlassSocketHeight
             // 
             tbGlassSocketHeight.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbGlassSocketHeight.Location = new Point(49, 44);
+            tbGlassSocketHeight.Location = new Point(49, 40);
             tbGlassSocketHeight.Margin = new Padding(49, 0, 49, 0);
             tbGlassSocketHeight.Name = "tbGlassSocketHeight";
             tbGlassSocketHeight.ReadOnly = true;
             tbGlassSocketHeight.Size = new Size(465, 39);
             tbGlassSocketHeight.TabIndex = 1;
             // 
-            // tableLayoutPanel10
+            // tableLayoutPanel4
             // 
-            tableLayoutPanel10.ColumnCount = 1;
-            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel10.Controls.Add(label5, 0, 0);
-            tableLayoutPanel10.Controls.Add(tbHeight, 0, 1);
-            tableLayoutPanel10.Dock = DockStyle.Fill;
-            tableLayoutPanel10.Location = new Point(3, 478);
-            tableLayoutPanel10.Name = "tableLayoutPanel10";
-            tableLayoutPanel10.RowCount = 2;
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel10.Size = new Size(563, 89);
-            tableLayoutPanel10.TabIndex = 5;
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(label5, 0, 0);
+            tableLayoutPanel4.Controls.Add(tbHeight, 0, 1);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(3, 519);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Size = new Size(563, 80);
+            tableLayoutPanel4.TabIndex = 6;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Location = new Point(49, 12);
+            label5.Location = new Point(49, 8);
             label5.Margin = new Padding(49, 0, 49, 0);
             label5.Name = "label5";
             label5.Size = new Size(113, 32);
@@ -275,34 +244,34 @@
             // tbHeight
             // 
             tbHeight.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbHeight.Location = new Point(49, 44);
+            tbHeight.Location = new Point(49, 40);
             tbHeight.Margin = new Padding(49, 0, 49, 0);
             tbHeight.Name = "tbHeight";
             tbHeight.PlaceholderText = "8";
             tbHeight.Size = new Size(465, 39);
             tbHeight.TabIndex = 1;
             // 
-            // tableLayoutPanel9
+            // tableLayoutPanel10
             // 
-            tableLayoutPanel9.ColumnCount = 1;
-            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel9.Controls.Add(label4, 0, 0);
-            tableLayoutPanel9.Controls.Add(tbHolesCount, 0, 1);
-            tableLayoutPanel9.Dock = DockStyle.Fill;
-            tableLayoutPanel9.Location = new Point(3, 383);
-            tableLayoutPanel9.Name = "tableLayoutPanel9";
-            tableLayoutPanel9.RowCount = 2;
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel9.Size = new Size(563, 89);
-            tableLayoutPanel9.TabIndex = 4;
+            tableLayoutPanel10.ColumnCount = 1;
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.Controls.Add(label4, 0, 0);
+            tableLayoutPanel10.Controls.Add(tbHolesCount, 0, 1);
+            tableLayoutPanel10.Dock = DockStyle.Fill;
+            tableLayoutPanel10.Location = new Point(3, 433);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 2;
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.Size = new Size(563, 80);
+            tableLayoutPanel10.TabIndex = 5;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label4.AutoSize = true;
-            label4.Location = new Point(49, 12);
+            label4.Location = new Point(49, 8);
             label4.Margin = new Padding(49, 0, 49, 0);
             label4.Name = "label4";
             label4.Size = new Size(223, 32);
@@ -312,12 +281,48 @@
             // tbHolesCount
             // 
             tbHolesCount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbHolesCount.Location = new Point(49, 44);
+            tbHolesCount.Location = new Point(49, 40);
             tbHolesCount.Margin = new Padding(49, 0, 49, 0);
             tbHolesCount.Name = "tbHolesCount";
             tbHolesCount.PlaceholderText = "3";
             tbHolesCount.Size = new Size(465, 39);
             tbHolesCount.TabIndex = 1;
+            // 
+            // tableLayoutPanel9
+            // 
+            tableLayoutPanel9.ColumnCount = 1;
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.Controls.Add(tbScrewHolesDistance, 0, 1);
+            tableLayoutPanel9.Controls.Add(tbHolesDiatance, 0, 0);
+            tableLayoutPanel9.Dock = DockStyle.Fill;
+            tableLayoutPanel9.Location = new Point(3, 347);
+            tableLayoutPanel9.Name = "tableLayoutPanel9";
+            tableLayoutPanel9.RowCount = 2;
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.Size = new Size(563, 80);
+            tableLayoutPanel9.TabIndex = 4;
+            // 
+            // tbScrewHolesDistance
+            // 
+            tbScrewHolesDistance.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbScrewHolesDistance.Location = new Point(49, 40);
+            tbScrewHolesDistance.Margin = new Padding(49, 0, 49, 0);
+            tbScrewHolesDistance.Name = "tbScrewHolesDistance";
+            tbScrewHolesDistance.PlaceholderText = "36";
+            tbScrewHolesDistance.Size = new Size(465, 39);
+            tbScrewHolesDistance.TabIndex = 0;
+            // 
+            // tbHolesDiatance
+            // 
+            tbHolesDiatance.AutoSize = true;
+            tbHolesDiatance.Location = new Point(49, 0);
+            tbHolesDiatance.Margin = new Padding(49, 0, 49, 0);
+            tbHolesDiatance.Name = "tbHolesDiatance";
+            tbHolesDiatance.Size = new Size(175, 32);
+            tbHolesDiatance.TabIndex = 1;
+            tbHolesDiatance.Text = "Расстояние D3";
             // 
             // tableLayoutPanel8
             // 
@@ -325,36 +330,36 @@
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel8.Controls.Add(label3, 0, 0);
-            tableLayoutPanel8.Controls.Add(tbHoleDiameter, 0, 1);
+            tableLayoutPanel8.Controls.Add(tbScrewHoleDiameter, 0, 1);
             tableLayoutPanel8.Dock = DockStyle.Fill;
-            tableLayoutPanel8.Location = new Point(3, 288);
+            tableLayoutPanel8.Location = new Point(3, 261);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 2;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel8.Size = new Size(563, 89);
+            tableLayoutPanel8.Size = new Size(563, 80);
             tableLayoutPanel8.TabIndex = 3;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Location = new Point(49, 12);
+            label3.Location = new Point(49, 8);
             label3.Margin = new Padding(49, 0, 49, 0);
             label3.Name = "label3";
             label3.Size = new Size(132, 32);
             label3.TabIndex = 0;
             label3.Text = "Диаметр d";
             // 
-            // tbHoleDiameter
+            // tbScrewHoleDiameter
             // 
-            tbHoleDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbHoleDiameter.Location = new Point(49, 44);
-            tbHoleDiameter.Margin = new Padding(49, 0, 49, 0);
-            tbHoleDiameter.Name = "tbHoleDiameter";
-            tbHoleDiameter.PlaceholderText = "8";
-            tbHoleDiameter.Size = new Size(465, 39);
-            tbHoleDiameter.TabIndex = 1;
+            tbScrewHoleDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbScrewHoleDiameter.Location = new Point(49, 40);
+            tbScrewHoleDiameter.Margin = new Padding(49, 0, 49, 0);
+            tbScrewHoleDiameter.Name = "tbScrewHoleDiameter";
+            tbScrewHoleDiameter.PlaceholderText = "8";
+            tbScrewHoleDiameter.Size = new Size(465, 39);
+            tbScrewHoleDiameter.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 
@@ -364,21 +369,21 @@
             tableLayoutPanel7.Controls.Add(tbCentralHoleDiameter, 0, 1);
             tableLayoutPanel7.Controls.Add(label9, 0, 0);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(3, 193);
+            tableLayoutPanel7.Location = new Point(3, 175);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 2;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.Size = new Size(563, 89);
+            tableLayoutPanel7.Size = new Size(563, 80);
             tableLayoutPanel7.TabIndex = 2;
             // 
             // tbCentralHoleDiameter
             // 
             tbCentralHoleDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbCentralHoleDiameter.Location = new Point(49, 44);
+            tbCentralHoleDiameter.Location = new Point(49, 40);
             tbCentralHoleDiameter.Margin = new Padding(49, 0, 49, 0);
             tbCentralHoleDiameter.Name = "tbCentralHoleDiameter";
-            tbCentralHoleDiameter.PlaceholderText = "50";
+            tbCentralHoleDiameter.ReadOnly = true;
             tbCentralHoleDiameter.Size = new Size(465, 39);
             tbCentralHoleDiameter.TabIndex = 2;
             // 
@@ -386,7 +391,7 @@
             // 
             label9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label9.AutoSize = true;
-            label9.Location = new Point(49, 12);
+            label9.Location = new Point(49, 8);
             label9.Margin = new Padding(49, 0, 49, 0);
             label9.Name = "label9";
             label9.Size = new Size(148, 32);
@@ -401,20 +406,20 @@
             tableLayoutPanel6.Controls.Add(label2, 0, 0);
             tableLayoutPanel6.Controls.Add(tbGlassSocketDiameter, 0, 1);
             tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(3, 98);
+            tableLayoutPanel6.Location = new Point(3, 89);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 2;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel6.Size = new Size(563, 89);
+            tableLayoutPanel6.Size = new Size(563, 80);
             tableLayoutPanel6.TabIndex = 1;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(49, 12);
+            label2.Location = new Point(49, 8);
             label2.Margin = new Padding(49, 0, 49, 0);
             label2.Name = "label2";
             label2.Size = new Size(148, 32);
@@ -425,7 +430,7 @@
             // 
             tbGlassSocketDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tbGlassSocketDiameter.Enabled = false;
-            tbGlassSocketDiameter.Location = new Point(49, 44);
+            tbGlassSocketDiameter.Location = new Point(49, 40);
             tbGlassSocketDiameter.Margin = new Padding(49, 0, 49, 0);
             tbGlassSocketDiameter.Name = "tbGlassSocketDiameter";
             tbGlassSocketDiameter.ReadOnly = true;
@@ -438,73 +443,110 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Controls.Add(label1, 0, 0);
-            tableLayoutPanel5.Controls.Add(tbExternalDiameter, 0, 1);
+            tableLayoutPanel5.Controls.Add(tbMainDiameter, 0, 1);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(3, 3);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(563, 89);
+            tableLayoutPanel5.Size = new Size(563, 80);
             tableLayoutPanel5.TabIndex = 0;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(49, 12);
+            label1.Location = new Point(49, 8);
             label1.Margin = new Padding(49, 0, 49, 0);
             label1.Name = "label1";
             label1.Size = new Size(135, 32);
             label1.TabIndex = 0;
             label1.Text = "Диаметр D";
             // 
-            // tbExternalDiameter
+            // tbMainDiameter
             // 
-            tbExternalDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbExternalDiameter.Location = new Point(49, 44);
-            tbExternalDiameter.Margin = new Padding(49, 0, 49, 0);
-            tbExternalDiameter.Name = "tbExternalDiameter";
-            tbExternalDiameter.PlaceholderText = "90";
-            tbExternalDiameter.Size = new Size(465, 39);
-            tbExternalDiameter.TabIndex = 1;
+            tbMainDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbMainDiameter.Location = new Point(49, 40);
+            tbMainDiameter.Margin = new Padding(49, 0, 49, 0);
+            tbMainDiameter.Name = "tbMainDiameter";
+            tbMainDiameter.PlaceholderText = "90";
+            tbMainDiameter.Size = new Size(465, 39);
+            tbMainDiameter.TabIndex = 1;
             // 
             // tableLayoutPanel12
             // 
             tableLayoutPanel12.ColumnCount = 1;
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel12.Controls.Add(tbChamferAngle, 0, 1);
-            tableLayoutPanel12.Controls.Add(label8, 0, 0);
+            tableLayoutPanel12.Controls.Add(label7, 0, 0);
+            tableLayoutPanel12.Controls.Add(tbChamferLength, 0, 1);
             tableLayoutPanel12.Dock = DockStyle.Fill;
-            tableLayoutPanel12.Location = new Point(3, 763);
+            tableLayoutPanel12.Location = new Point(3, 691);
             tableLayoutPanel12.Name = "tableLayoutPanel12";
             tableLayoutPanel12.RowCount = 2;
             tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel12.Size = new Size(563, 95);
+            tableLayoutPanel12.Size = new Size(563, 80);
             tableLayoutPanel12.TabIndex = 8;
             // 
-            // tbChamferAngle
+            // label7
             // 
-            tbChamferAngle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbChamferAngle.Location = new Point(49, 47);
-            tbChamferAngle.Margin = new Padding(49, 0, 49, 0);
-            tbChamferAngle.Name = "tbChamferAngle";
-            tbChamferAngle.PlaceholderText = "60";
-            tbChamferAngle.Size = new Size(465, 39);
-            tbChamferAngle.TabIndex = 1;
+            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label7.AutoSize = true;
+            label7.Location = new Point(49, 8);
+            label7.Margin = new Padding(49, 0, 49, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(97, 32);
+            label7.TabIndex = 0;
+            label7.Text = "Длина l";
+            // 
+            // tbChamferLength
+            // 
+            tbChamferLength.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbChamferLength.Location = new Point(49, 40);
+            tbChamferLength.Margin = new Padding(49, 0, 49, 0);
+            tbChamferLength.Name = "tbChamferLength";
+            tbChamferLength.PlaceholderText = "3";
+            tbChamferLength.Size = new Size(465, 39);
+            tbChamferLength.TabIndex = 1;
+            // 
+            // tableLayoutPanel13
+            // 
+            tableLayoutPanel13.ColumnCount = 1;
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.Controls.Add(label8, 0, 0);
+            tableLayoutPanel13.Controls.Add(tbChamferAngle, 0, 1);
+            tableLayoutPanel13.Dock = DockStyle.Fill;
+            tableLayoutPanel13.Location = new Point(3, 777);
+            tableLayoutPanel13.Name = "tableLayoutPanel13";
+            tableLayoutPanel13.RowCount = 2;
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.Size = new Size(563, 81);
+            tableLayoutPanel13.TabIndex = 9;
             // 
             // label8
             // 
             label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label8.AutoSize = true;
-            label8.Location = new Point(49, 15);
+            label8.Location = new Point(49, 8);
             label8.Margin = new Padding(49, 0, 49, 0);
             label8.Name = "label8";
             label8.Size = new Size(100, 32);
             label8.TabIndex = 0;
             label8.Text = "Угол α,°";
+            // 
+            // tbChamferAngle
+            // 
+            tbChamferAngle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbChamferAngle.Location = new Point(49, 40);
+            tbChamferAngle.Margin = new Padding(49, 0, 49, 0);
+            tbChamferAngle.Name = "tbChamferAngle";
+            tbChamferAngle.PlaceholderText = "60";
+            tbChamferAngle.Size = new Size(465, 39);
+            tbChamferAngle.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -572,6 +614,7 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор размеров корпуса";
+            Load += HousingEditorForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbSketch).EndInit();
@@ -595,6 +638,8 @@
             tableLayoutPanel5.PerformLayout();
             tableLayoutPanel12.ResumeLayout(false);
             tableLayoutPanel12.PerformLayout();
+            tableLayoutPanel13.ResumeLayout(false);
+            tableLayoutPanel13.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -612,12 +657,12 @@
         private TableLayoutPanel tblSizes;
         private TableLayoutPanel tableLayoutPanel5;
         private Label label1;
-        private TextBox tbExternalDiameter;
+        private TextBox tbMainDiameter;
         private TableLayoutPanel tableLayoutPanel8;
         private Label label4;
         private TextBox tbHolesCount;
         private TableLayoutPanel tableLayoutPanel7;
-        private TextBox tbHoleDiameter;
+        private TextBox tbScrewHoleDiameter;
         private Label label3;
         private TableLayoutPanel tableLayoutPanel6;
         private Label label2;
@@ -637,5 +682,8 @@
         private TextBox tbCentralHoleDiameter;
         private Label label9;
         private TableLayoutPanel tableLayoutPanel12;
+        private TextBox tbScrewHolesDistance;
+        private Label tbHolesDiatance;
+        private TableLayoutPanel tableLayoutPanel13;
     }
 }
