@@ -258,6 +258,7 @@
             tbExternalDiameter.Location = new Point(49, 60);
             tbExternalDiameter.Margin = new Padding(49, 0, 49, 0);
             tbExternalDiameter.Name = "tbExternalDiameter";
+            tbExternalDiameter.ReadOnly = true;
             tbExternalDiameter.Size = new Size(303, 39);
             tbExternalDiameter.TabIndex = 1;
             // 
@@ -295,6 +296,7 @@
             tbHeight.Location = new Point(49, 60);
             tbHeight.Margin = new Padding(49, 0, 49, 0);
             tbHeight.Name = "tbHeight";
+            tbHeight.ReadOnly = true;
             tbHeight.Size = new Size(303, 39);
             tbHeight.TabIndex = 1;
             // 

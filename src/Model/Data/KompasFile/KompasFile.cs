@@ -22,7 +22,18 @@ namespace Oil_level_glass.Model.Data.KompasFile
     
         public string ?Extension { get; init; }
 
-        public string FullName => $"{Folder}\\{Name.Marking}_{Name.Naming}.{Extension}";
+        public string FullName
+        {
+            get
+            {
+                if (Name.Marking == string.Empty)
+                {
+                    return $"{Folder}\\{Name.Naming}{Extension}";
+                }
+
+                return $"{Folder}\\{Name.Marking}_{Name.Naming}{Extension}";
+            }
+        }
 
         protected override string CheckField(string columnName)
         {

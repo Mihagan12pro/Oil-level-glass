@@ -1,28 +1,17 @@
-﻿namespace Oil_level_glass.Core
+﻿using Oil_level_glass.Model.Data;
+using Shared.Results;
+
+namespace Oil_level_glass.Core
 {
     /// <summary>
     /// Base interface for all builders
     /// </summary>
-    public interface ICreator
+    public interface ICreator<TModel> where TModel : BaseModel
     {
         /// <summary>
-        /// Entry point. Here application initializes code for interaction with API
+        /// Creates a model
         /// </summary>
-        void Initialize();
-
-        /// <summary>
-        /// Save file with a solid part
-        /// </summary>
-        void SaveFile();
-
-        /// <summary>
-        /// Set naming of the model
-        /// </summary>
-        void EditNaming();
-
-        /// <summary>
-        /// Set save folder
-        /// </summary>
-        void EditSavingParameter();
+        /// <returns></returns>
+        Result Create();
     }
 }

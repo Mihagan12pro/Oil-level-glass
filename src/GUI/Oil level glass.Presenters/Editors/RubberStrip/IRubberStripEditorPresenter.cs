@@ -1,5 +1,5 @@
 ﻿using Oil_level_glass.UI.Presenters.Editors;
-using Shared;
+using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.RubberStrip
 {

@@ -1,5 +1,5 @@
 ﻿using Oil_level_glass.Model.Data;
-using Shared;
+using Shared.Results;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;

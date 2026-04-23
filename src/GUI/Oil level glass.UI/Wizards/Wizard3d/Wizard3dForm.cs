@@ -133,6 +133,7 @@ namespace Oil_level_glass.UI.Wizard3d
             TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
 
             tvParts.Nodes.Add(oilLevelGlassNode);
+            tvParts.ExpandAll();
 
             _wizardPresenter.CheckData();
         }

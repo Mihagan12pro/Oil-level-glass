@@ -1,5 +1,5 @@
 ﻿using Oil_level_glass.UI.Presenters.Editors;
-using Shared;
+using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Housing
 {
@@ -10,6 +10,8 @@ namespace Oil_level_glass.Presenters.Editors.Housing
         Result UpdateMainDiameter(string mainDiameter);
 
         Result UpdateScrewHoleDiameter(string screwHoleDiameter);
+
+        Result UpdatePicth(string pitch);
 
         Result UpdateScrewHolesDictance(string screwHoleDistance);
 

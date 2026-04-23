@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Oil level glass\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj" />
     <ProjectReference Include="..\..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

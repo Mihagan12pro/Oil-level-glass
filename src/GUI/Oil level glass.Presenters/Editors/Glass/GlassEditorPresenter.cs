@@ -1,7 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
-using Shared;
+using Shared.Results;
 using System.Globalization;
 
 namespace Oil_level_glass.UI.Presenters.Editors.Glass
