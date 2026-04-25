@@ -35,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="Editors\Glass\" />
-    <Folder Include="Editors\Housing\HolesEditor\" />
   </ItemGroup>
 
 </Project>

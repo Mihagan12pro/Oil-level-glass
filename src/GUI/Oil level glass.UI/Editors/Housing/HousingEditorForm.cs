@@ -2,6 +2,7 @@
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Editors.Housing;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
+using Oil_level_glass.UI.Editors.Housing.HolesEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing
 {
@@ -54,6 +55,8 @@ namespace Oil_level_glass.UI.Editors.Housing
 
                 if (Model.GlassSocketDiameter > 0)
                     tbGlassSocketDiameter.Text = Model.GlassSocketDiameter.ToString();
+
+                Model.ScrewHolesDistance = (Model.MainDiameter / 2 + Model.GlassSocketDiameter / 2) * 0.5;
             };
 
             _housingEditorPresenter = PresentersFactory.CreateHousingEditorPresenter(this, checkData);
@@ -82,6 +85,14 @@ namespace Oil_level_glass.UI.Editors.Housing
         private void btChamfer_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btScrewHole_Click(object sender, EventArgs e)
+        {
+            HolesEditorForm holesEditorForm = new HolesEditorForm();
+            holesEditorForm.Owner = this;
+
+            holesEditorForm.ShowDialog();
         }
     }
 }

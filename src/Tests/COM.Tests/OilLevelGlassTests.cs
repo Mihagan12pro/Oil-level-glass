@@ -66,7 +66,7 @@ namespace COM.Tests
                 ScrewHolesDistance = 72
             };
 
-            ((ScrewHoleModel)housing.Hole).Diameter = 8;
+            ((BasicScrewHoleModel)housing.Hole).Diameter = 8;
             housing.ScrewHolesCount = 4;
 
             housing.Chamfer.Length = 2;

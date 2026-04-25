@@ -3,7 +3,10 @@ using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.ScrewHoles
 {
-    public class ScrewHoleModel : BaseScrewHoleModel
+    /// <summary>
+    /// Простое отверстие
+    /// </summary>
+    public class BasicScrewHoleModel : BaseScrewHoleModel
     {
         private double _diameter;
 
@@ -32,7 +35,9 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
                     {
                         if (Diameter <= 0)
                             error = "Diameter must be greater than zero!";
-                        break;
+                        else if (Diameter > MaxDiameter)
+                            error = $"Diameter can't be greater than {MaxDiameter}!";
+                            break;
                     }
             }
 

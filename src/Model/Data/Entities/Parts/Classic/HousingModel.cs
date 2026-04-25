@@ -123,7 +123,7 @@ public class HousingModel
         }
     }
 
-    public BaseScrewHoleModel Hole { get; } = new ScrewHoleModel(); 
+    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel(); 
 
     public ChamferModel Chamfer { get; } = new ChamferAngleLengthModel();
 

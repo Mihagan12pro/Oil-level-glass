@@ -324,6 +324,7 @@
             btScrewHole.TabIndex = 0;
             btScrewHole.Text = "Отверстия...";
             btScrewHole.UseVisualStyleBackColor = true;
+            btScrewHole.Click += btScrewHole_Click;
             // 
             // btChamfer
             // 

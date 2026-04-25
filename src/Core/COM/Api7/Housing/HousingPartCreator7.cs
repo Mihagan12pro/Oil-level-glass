@@ -110,7 +110,7 @@ namespace Oil_level_glass.Core.COM.Api7.Housing
                 IVertex vertex = ((IFeature7)sketch3).GetVertexByPoint(_housing.ScrewHolesDistance * 0.5, 0, _housing.MainHeight * 0.5);
 
                 IHole3D hole = modelContainer.Holes3D.Add();
-                hole.Diameter = ((ScrewHoleModel)_housing.Hole).Diameter;
+                hole.Diameter = ((BasicScrewHoleModel)_housing.Hole).Diameter;
                 hole.ShowThread = true;
 
                 IThread thread = hole.Thread;

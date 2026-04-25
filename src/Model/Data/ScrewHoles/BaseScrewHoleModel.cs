@@ -2,6 +2,6 @@
 {
     public abstract class BaseScrewHoleModel : BaseModel
     {
-
+        public double MaxDiameter { get;set; }
     }
 }
