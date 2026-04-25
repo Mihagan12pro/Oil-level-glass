@@ -25,8 +25,8 @@ namespace Oil_level_glass.Presenters.Editors.Housing
             _housing.MainHeight = _oldMainHeight;
 
             _housing.ScrewHolesCount = _oldHolesCount;
-            _housing.Thread.NominalDiameter = _oldHolesDiameter;
-            _housing.Thread.Pitch = _oldHolesPitch;
+            _housing.Hole.NominalDiameter = _oldHolesDiameter;
+            _housing.Hole.Pitch = _oldHolesPitch;
 
             _housing.Chamfer.Angle = _oldChamferAngle;
             _housing.Chamfer.Length = _oldChamferLength;
@@ -39,9 +39,9 @@ namespace Oil_level_glass.Presenters.Editors.Housing
             => _housing.TryConvertToDouble(mainDiameter, nameof(_housing.MainDiameter));
 
         public Result UpdateScrewHoleDiameter(string screwHoleDiameter)
-            => _housing.Thread.TryConvertToDouble(screwHoleDiameter, nameof(_housing.Thread.NominalDiameter));
+            => _housing.Hole.TryConvertToDouble(screwHoleDiameter, nameof(_housing.Hole.NominalDiameter));
         public Result UpdatePicth(string pitch)
-             => _housing.Thread.TryConvertToDouble(pitch, nameof(_housing.Thread.Pitch));
+             => _housing.Hole.TryConvertToDouble(pitch, nameof(_housing.Hole.Pitch));
 
         public Result UpdateScrewHolesDictance(string screwHoleDistance)
             => _housing.TryConvertToDouble(screwHoleDistance, nameof(_housing.ScrewHolesDistance));
@@ -68,8 +68,8 @@ namespace Oil_level_glass.Presenters.Editors.Housing
             _oldMainHeight = _housing.MainHeight;
 
             _oldHolesCount = _housing.ScrewHolesCount;
-            _oldHolesDiameter = _housing.Thread.NominalDiameter;
-            _oldHolesPitch = _housing.Thread.Pitch;
+            _oldHolesDiameter = _housing.Hole.NominalDiameter;
+            _oldHolesPitch = _housing.Hole.Pitch;
 
             _oldChamferAngle = _housing.Chamfer.Angle;
             _oldChamferLength = _housing.Chamfer.Length;

@@ -21,10 +21,7 @@ namespace Oil_level_glass.Model.Data
 
         public virtual string Error => string.Empty;
 
-        protected virtual string CheckField(string columnName)
-        {
-            return string.Empty;
-        }
+        protected abstract string CheckField(string columnName);
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

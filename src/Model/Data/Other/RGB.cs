@@ -58,5 +58,10 @@
             Green = green;
             Blue = blue;
         }
+
+        protected override string CheckField(string columnName)
+        {
+            return string.Empty;
+        }
     }
 }

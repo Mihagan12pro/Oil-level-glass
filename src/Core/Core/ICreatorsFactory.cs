@@ -10,10 +10,10 @@ namespace Oil_level_glass.Core
     {
         IGlassPartCreator CreateGlassPart(GlassModel glass);
 
-        IRubberStripPartCreator CreateRubberStripPart(RubberStripModel rubberStripModel);
+        IRubberStripPartCreator CreateRubberStripPartCreator(RubberStripModel rubberStripModel);
 
-        IHousingPartCreator CreateHousingPart(HousingModel housing);
+        IHousingPartCreator CreateHousingPartCreator(HousingModel housing);
 
-        IOilLevelGlassPartCreator CreateOilLevelGlassAssembly(GlassModel glass, RubberStripModel rubberStrip, HousingModel housing);
+        IOilLevelGlassPartCreator CreateOilLevelGlassPartCreator(GlassModel glass, RubberStripModel rubberStrip, HousingModel housing);
     }
 }

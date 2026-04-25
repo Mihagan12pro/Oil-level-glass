@@ -4,7 +4,7 @@ using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 namespace COM.Tests
 {
-    public class GlassTests
+    public class GlassTests : IPartTests
     {
         private GlassModel glass;
 
@@ -39,7 +39,7 @@ namespace COM.Tests
             {
                 Diameter = 0,
 
-                Height = 3,
+                Height = 2,
             };
 
             failedGlass.File.Folder = "D:\\";
@@ -60,7 +60,7 @@ namespace COM.Tests
             {   
                 Diameter = 60,
 
-                Height = 3,
+                Height = 2,
             };
 
             glass.File.Folder = "D:\\";

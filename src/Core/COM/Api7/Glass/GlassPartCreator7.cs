@@ -3,7 +3,7 @@ using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Core.COM.Api7.Extensions;
-using Oil_level_glass.Core.COM.Providers;
+using Oil_level_glass.Core.COM.COMProviders;
 using Oil_level_glass.Core.Glass;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Shared.Results;

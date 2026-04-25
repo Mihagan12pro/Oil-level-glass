@@ -18,5 +18,14 @@ namespace Oil_level_glass.Core.COM.Api7.Extensions
 
             return drawingContainer.Circles.Add();
         }
+
+        public static IPoint AddPoint(this IKompasDocument2D document2D)
+        {
+            IViewsAndLayersManager viewsAndLayersManager = document2D.ViewsAndLayersManager;
+            IView view = viewsAndLayersManager.Views.ActiveView;
+            IDrawingContainer drawingContainer = (IDrawingContainer)view;
+
+            return drawingContainer.Points.Add();
+        }
     }
 }

@@ -1,39 +1,14 @@
-﻿using System.ComponentModel;
-
-namespace Oil_level_glass.Model.Data.Operations
+﻿namespace Oil_level_glass.Model.Data.Operations.Chamfers
 {
-    public class ChamferModel 
-        : BaseModel
+    public class ChamferAngleLengthModel : ChamferModel
     {
-        private double _length, _angle;
+        private double _angle;
 
-        /// <summary>
-        /// Length of the side 1 (in mm)
-        /// </summary>
-        [DisplayName("Length")]
-        public double Length
-        {
-            get
-            {
-                return _length;
-            }
-            set
-            {
-                _length = value;
-
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Angle in degrees
-        /// </summary>
-        [DisplayName("Angle")]
         public double Angle
         {
             get
             {
-                return _angle; 
+                return _angle;
             }
             set
             {
@@ -47,7 +22,7 @@ namespace Oil_level_glass.Model.Data.Operations
         {
             string error = string.Empty;
 
-            switch(columnName)
+            switch (columnName)
             {
                 case nameof(Angle):
 

@@ -1,4 +1,4 @@
-﻿namespace Oil_level_glass.Core.COM.Providers
+﻿namespace Oil_level_glass.Core.COM.COMProviders
 {
     internal static class ComConnector
     {

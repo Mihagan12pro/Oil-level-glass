@@ -37,7 +37,7 @@ namespace Oil_level_glass.UI.Editors.Housing
                 btScrewHoles.Enabled = mainDiameterResult.IsSuccess && mainHeightResult.IsSuccess &&
                                distanceResult.IsSuccess;
 
-                btChamfer.Enabled = Model.Thread.Error == string.Empty;
+                btChamfer.Enabled = Model.Hole.Error == string.Empty;
 
 
                 if (!mainDiameterResult.IsSuccess)
