@@ -222,7 +222,7 @@
             tbInternalDiameter.PlaceholderText = "50";
             tbInternalDiameter.Size = new Size(303, 39);
             tbInternalDiameter.TabIndex = 1;
-            tbInternalDiameter.TextChanged += tbInternalDiameter_TextChanged;
+            tbInternalDiameter.TextChanged += tb_TextChanged;
             // 
             // tableLayoutPanel6
             // 
@@ -292,13 +292,13 @@
             // tbHeight
             // 
             tbHeight.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbHeight.Enabled = false;
             tbHeight.Location = new Point(49, 60);
             tbHeight.Margin = new Padding(49, 0, 49, 0);
             tbHeight.Name = "tbHeight";
-            tbHeight.ReadOnly = true;
+            tbHeight.PlaceholderText = "2";
             tbHeight.Size = new Size(303, 39);
             tbHeight.TabIndex = 1;
+            tbHeight.TextChanged += tb_TextChanged;
             // 
             // RubberStripEditorForm
             // 

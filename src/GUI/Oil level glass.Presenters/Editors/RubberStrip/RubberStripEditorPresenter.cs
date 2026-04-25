@@ -9,7 +9,7 @@ namespace Oil_level_glass.Presenters.Editors.RubberStrip
     internal class RubberStripEditorPresenter : IRubberStripEditorPresenter
     {
         private readonly RubberStripModel _rubberStrip;
-        private readonly double _oldInternalDiameter;
+        private readonly double _oldInternalDiameter, _oldHeight;
         private readonly IRubberStripEditorForm _form;
         
         public Action CheckData { get; }
@@ -17,10 +17,14 @@ namespace Oil_level_glass.Presenters.Editors.RubberStrip
         public void ResetFields()
         {
             _rubberStrip.InternalDiameter = _oldInternalDiameter;
+            _rubberStrip.Height = _oldHeight;
         }
 
         public Result UpdateInternalDiameter(string diameter)
             => _rubberStrip.TryConvertToDouble(diameter, nameof(_rubberStrip.InternalDiameter));
+
+        public Result UpdateHeight(string height)
+            => _rubberStrip.TryConvertToDouble(height, nameof(_rubberStrip.Height));
 
         public RubberStripEditorPresenter(
             IRubberStripEditorForm form,
@@ -31,6 +35,7 @@ namespace Oil_level_glass.Presenters.Editors.RubberStrip
             _rubberStrip = _form.Model;
 
             _oldInternalDiameter = _rubberStrip.InternalDiameter;
+            _oldHeight = _rubberStrip.Height;
         }
     }
 }

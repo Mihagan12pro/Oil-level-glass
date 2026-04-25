@@ -9,7 +9,7 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
     public partial class RubberStripEditorForm : Form, IRubberStripEditorForm
     {
         private IRubberStripEditorPresenter _stripEditorPresenter;
-        private ErrorProvider _internalDiameterError;
+        private ErrorProvider _internalDiameterError, _heightError;
 
         public RubberStripEditorForm()
         {
@@ -26,9 +26,10 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
         private void blResetData_Click(object sender, EventArgs e)
         {
             tbInternalDiameter.Text = "";
+            tbHeight.Text = "";
         }
 
-        private void tbInternalDiameter_TextChanged(object sender, EventArgs e)
+        private void tb_TextChanged(object sender, EventArgs e)
         {
             _stripEditorPresenter.CheckData.Invoke();
         }
@@ -36,13 +37,14 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
         private void RubberStripEditorForm_Load(object sender, EventArgs e)
         {
             _internalDiameterError = new ErrorProvider();
+            _heightError = new ErrorProvider();
 
             Action checkData = () =>
             {
                 var internalDiameterResult = _stripEditorPresenter.UpdateInternalDiameter(tbInternalDiameter.Text);
+                var heightResult = _stripEditorPresenter.UpdateHeight(tbHeight.Text);
 
-
-                btOk.Enabled = internalDiameterResult.IsSuccess;
+                btOk.Enabled = internalDiameterResult.IsSuccess && heightResult.IsSuccess;
                 if (internalDiameterResult.IsSuccess)
                 {
                     _internalDiameterError.Clear();
@@ -51,19 +53,27 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
                 {
                     _internalDiameterError.SetError(tbInternalDiameter, internalDiameterResult.ErrorMessage);
                 }
+
+                if (heightResult.IsSuccess)
+                {
+                    _heightError.Clear();
+                }
+                else
+                {
+                    _heightError.SetError(tbHeight, heightResult.ErrorMessage);
+                }
             };
 
             _stripEditorPresenter = PresentersFactory.CreateRubberStripPresenter(this, checkData);
 
-            if (Model[nameof(Model.ExternalDiameter)] == string.Empty &&
-                Model[nameof(Model.Height)] == string.Empty)
-            {
+            if (Model[nameof(Model.ExternalDiameter)] == string.Empty)
                 tbExternalDiameter.Text = Model.ExternalDiameter.ToString();
-                tbHeight.Text = Model.Height.ToString();
-            }
 
             if (Model.Error == string.Empty)
+            {
                 tbInternalDiameter.Text = Model.InternalDiameter.ToString();
+                tbHeight.Text = Model.Height.ToString();
+            }
 
             _stripEditorPresenter.CheckData.Invoke();
         }
