@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
+﻿using Oil_level_glass.Model.Data.Operations.Chamfers;
+using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.ScrewHoles
 {
     public class ScrewHoleModel : BaseScrewHoleModel
     {
         private double _diameter;
-
-        public double MaxDiameter { get; set; }
 
         [DisplayName("Diameter")]
         public double Diameter
@@ -33,14 +32,31 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
                     {
                         if (Diameter <= 0)
                             error = "Diameter must be greater than zero!";
-                        else if (Diameter > MaxDiameter)
-                            error = $"Diameter must be less or equal {MaxDiameter}!";
-
                         break;
                     }
             }
 
             return error;
+        }
+
+        public override string Error
+        {
+            get
+            {
+                string error = string.Empty;
+
+                foreach (var property in this.GetType().GetProperties())
+                {
+                    string propertyError = this[property.Name];
+
+                    if (propertyError != string.Empty)
+                    {
+                        error += propertyError + '\n';
+                    }
+                }
+
+                return error;
+            }
         }
     }
 }

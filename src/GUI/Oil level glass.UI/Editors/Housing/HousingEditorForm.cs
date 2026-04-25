@@ -10,8 +10,6 @@ namespace Oil_level_glass.UI.Editors.Housing
         private IHousingEditorPresenter _housingEditorPresenter;
 
         private ErrorProvider _mainDiameterError, _mainHeightError;
-        private ErrorProvider _screwHolesCountError, _screwHoleDiameterError, _screwHolePitchError, _screwHoleDistanceError;
-        private ErrorProvider _chamferLengthError, _chamferAngleError;
 
         public HousingEditorForm()
         {
@@ -27,59 +25,38 @@ namespace Oil_level_glass.UI.Editors.Housing
 
         private void HousingEditorForm_Load(object sender, EventArgs e)
         {
+            _mainDiameterError = new ErrorProvider();
+            _mainHeightError = new ErrorProvider();
+
             Action checkData = () =>
             {
+                var mainHeightResult = _housingEditorPresenter.UpdateMainHeight(tbMainHeight.Text);
                 var mainDiameterResult = _housingEditorPresenter.UpdateMainDiameter(tbMainDiameter.Text);
-                var mainHeightResult = _housingEditorPresenter.UpdateMainHeight(tbHeight.Text);
-                var distanceResult = _housingEditorPresenter.UpdateScrewHolesDictance(tbScrewHolesDistance.Text);
 
-
-                btScrewHoles.Enabled = mainDiameterResult.IsSuccess && mainHeightResult.IsSuccess &&
-                               distanceResult.IsSuccess;
-
-                btChamfer.Enabled = Model.Hole.Error == string.Empty;
-
+                if (!mainHeightResult.IsSuccess)
+                    _mainHeightError.SetError(tbMainHeight, mainHeightResult.ErrorMessage);
+                else
+                    _mainHeightError.Clear();
 
                 if (!mainDiameterResult.IsSuccess)
                     _mainDiameterError.SetError(tbMainDiameter, mainDiameterResult.ErrorMessage);
                 else
                     _mainDiameterError.Clear();
 
-                if (!mainHeightResult.IsSuccess)
-                    _mainHeightError.SetError(tbHeight, mainHeightResult.ErrorMessage);
-                else
-                    _mainHeightError.Clear();
+                btScrewHole.Enabled = mainHeightResult.IsSuccess && mainDiameterResult.IsSuccess;
 
-                if (!distanceResult.IsSuccess)
-                    _screwHoleDistanceError.SetError(tbScrewHolesDistance, distanceResult.ErrorMessage);
-                else
-                    _screwHoleDistanceError.Clear();
-
+                btChamfer.Enabled = Model.Hole.Error == string.Empty;
 
                 btOk.Enabled = Model.Error == string.Empty;
+
+                if (Model.GlassSocketHeight > 0)
+                    tbGlassSocketHeight.Text = Model.GlassSocketHeight.ToString();
+
+                if (Model.GlassSocketDiameter > 0)
+                    tbGlassSocketDiameter.Text = Model.GlassSocketDiameter.ToString();
             };
 
             _housingEditorPresenter = PresentersFactory.CreateHousingEditorPresenter(this, checkData);
-
-            _mainDiameterError = new ErrorProvider();
-            _mainHeightError = new ErrorProvider();
-            _screwHoleDiameterError = new ErrorProvider();
-            _screwHolesCountError = new ErrorProvider();
-            _screwHolePitchError = new ErrorProvider();
-            _screwHoleDistanceError = new ErrorProvider();
-            _chamferLengthError = new ErrorProvider();
-            _chamferAngleError = new ErrorProvider();
-
-
-            tbGlassSocketDiameter.Text = Model.GlassSocketDiameter.ToString();
-            tbCentralHoleDiameter.Text = Model.CentralHoleDiameter.ToString();
-            tbGlassSocketHeight.Text = Model.GlassSocketHeight.ToString();
-
-            if (Model.Error == string.Empty)
-            {
-                tbMainDiameter.Text = Model.MainDiameter.ToString();
-                tbHeight.Text = Model.MainHeight.ToString();
-            }
 
             _housingEditorPresenter.CheckData.Invoke();
         }
@@ -87,8 +64,9 @@ namespace Oil_level_glass.UI.Editors.Housing
         private void blResetData_Click(object sender, EventArgs e)
         {
             tbMainDiameter.Text = "";
-            tbHeight.Text = "";
-            tbScrewHolesDistance.Text = "";
+            tbMainHeight.Text = "";
+
+            _housingEditorPresenter.CheckData.Invoke();
         }
 
         private void textbox_TextChanged(object sender, EventArgs e)

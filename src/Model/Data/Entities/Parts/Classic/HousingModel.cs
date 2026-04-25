@@ -132,6 +132,19 @@ public class HousingModel
     {
         string error = string.Empty;
 
+        switch(columnName)
+        {
+            case nameof(MainDiameter):
+                if (MainDiameter <= GlassSocketDiameter)
+                    error = "Main diameter is must be greater than other diameters!";
+                break;
+
+            case nameof(MainHeight):
+                if (MainHeight <= GlassSocketHeight)
+                    error = "Main height must be greater than other heights!";
+                break;
+        }
+
         return error;
     }
 
@@ -145,7 +158,7 @@ public class HousingModel
             {
                 string propertyError = this[property.Name];
 
-                if (property.PropertyType == typeof(ScrewHoleModel))
+                if (property.Name == nameof(Hole))
                 {
                     error += Hole.Error;
                 }

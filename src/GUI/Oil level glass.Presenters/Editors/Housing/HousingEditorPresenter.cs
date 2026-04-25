@@ -12,10 +12,7 @@ namespace Oil_level_glass.Presenters.Editors.Housing
         private readonly HousingModel _housing;
 
         private readonly double _oldMainDiameter, _oldMainHeight;
-        private readonly double  _oldHolesDiameter, _oldHolesPitch;
         private readonly int _oldHolesCount;
-
-        private readonly double _oldChamferLength, _oldChamferAngle;
 
         public Action CheckData { get; }
 
@@ -25,38 +22,13 @@ namespace Oil_level_glass.Presenters.Editors.Housing
             _housing.MainHeight = _oldMainHeight;
 
             _housing.ScrewHolesCount = _oldHolesCount;
-            //_housing.Hole.NominalDiameter = _oldHolesDiameter;
-            //_housing.Hole.Pitch = _oldHolesPitch;
-
-            //_housing.Chamfer.Angle = _oldChamferAngle;
-            //_housing.Chamfer.Length = _oldChamferLength;
         }
-
-        public Result UpdateMainHeight(string mainHeight)
-            => _housing.TryConvertToDouble(mainHeight, nameof(_housing.MainHeight));
 
         public Result UpdateMainDiameter(string mainDiameter)
             => _housing.TryConvertToDouble(mainDiameter, nameof(_housing.MainDiameter));
 
-        public Result UpdateScrewHoleDiameter(string screwHoleDiameter)
-             => throw new NotImplementedException();
-        //=> _housing.Hole.TryConvertToDouble(screwHoleDiameter, nameof(_housing.Hole.NominalDiameter));
-        public Result UpdatePicth(string pitch)
-            => throw new NotImplementedException();
-             //=> _housing.Hole.TryConvertToDouble(pitch, nameof(_housing.Hole.Pitch));
-
-        public Result UpdateScrewHolesDictance(string screwHoleDistance)
-            => _housing.TryConvertToDouble(screwHoleDistance, nameof(_housing.ScrewHolesDistance));
-
-        public Result UpdateScrewHolesCount(string screwHolesCount)
-            => _housing.TryConvertToInt32(screwHolesCount, nameof(_housing.ScrewHolesCount));
-
-        public Result UpdateChamferLength(string chamferLength)
-            => _housing.Chamfer.TryConvertToDouble(chamferLength, nameof(_housing.Chamfer.Length));
-
-        public Result UpdateChamferAngle(string chamferAngle)
-            => throw new NotImplementedException();
-            //=> _housing.Chamfer.TryConvertToDouble(chamferAngle, nameof(_housing.Chamfer.Angle));
+        public Result UpdateMainHeight(string mainHeight)
+            => _housing.TryConvertToDouble(mainHeight, nameof(_housing.MainHeight));
 
         public HousingEditorPresenter(
             IHousingForm housingForm,
@@ -66,16 +38,6 @@ namespace Oil_level_glass.Presenters.Editors.Housing
             _housingForm = housingForm;
 
             _housing = _housingForm.Model;
-
-            _oldMainDiameter = _housing.MainDiameter;
-            _oldMainHeight = _housing.MainHeight;
-
-            _oldHolesCount = _housing.ScrewHolesCount;
-            //_oldHolesDiameter = _housing.Hole.NominalDiameter;
-            //_oldHolesPitch = _housing.Hole.Pitch;
-
-            //_oldChamferAngle = _housing.Chamfer.Angle;
-            _oldChamferLength = _housing.Chamfer.Length;
         }
     }
 }
