@@ -14,6 +14,8 @@ public class HousingModel
         Material = new Metal();
     }
 
+    public int MaxCountOfHoles {  get; set; }
+
     private double _mainDiameter, _mainHeight, _glassSocketHeight, _glassSocketDiameter;
     private double _centralHoleDiameter, _screwHolesDistance;
     private int _screwHolesCount;

@@ -1,8 +1,10 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Editors.Housing;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
 using Oil_level_glass.UI.Editors.Housing.HolesEditor;
+using Oil_level_glass.UI.Presenters.Editors.Glass;
 
 namespace Oil_level_glass.UI.Editors.Housing
 {
@@ -56,7 +58,9 @@ namespace Oil_level_glass.UI.Editors.Housing
                 if (Model.GlassSocketDiameter > 0)
                     tbGlassSocketDiameter.Text = Model.GlassSocketDiameter.ToString();
 
-                Model.ScrewHolesDistance = (Model.MainDiameter / 2 + Model.GlassSocketDiameter / 2) * 0.5;
+                Model.ScrewHolesDistance = (Model.MainDiameter / 2 + Model.GlassSocketDiameter / 2);
+
+                ((BasicScrewHoleModel)Model.Hole).MaxDiameter = (Model.MainDiameter / 2 - Model.ScrewHolesDistance / 2) * 0.9;
             };
 
             _housingEditorPresenter = PresentersFactory.CreateHousingEditorPresenter(this, checkData);
@@ -64,7 +68,7 @@ namespace Oil_level_glass.UI.Editors.Housing
             _housingEditorPresenter.CheckData.Invoke();
         }
 
-        private void blResetData_Click(object sender, EventArgs e)
+        private void btResetData_Click(object sender, EventArgs e)
         {
             tbMainDiameter.Text = "";
             tbMainHeight.Text = "";
@@ -89,10 +93,25 @@ namespace Oil_level_glass.UI.Editors.Housing
 
         private void btScrewHole_Click(object sender, EventArgs e)
         {
-            HolesEditorForm holesEditorForm = new HolesEditorForm();
+            HolesEditorForm holesEditorForm = new HolesEditorForm()
+            {
+                Model = Model
+            };
+
             holesEditorForm.Owner = this;
 
             holesEditorForm.ShowDialog();
+        }
+
+        private void HousingEditorForm_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void HousingEditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult != DialogResult.OK)
+                _housingEditorPresenter.ResetFields();
         }
     }
 }

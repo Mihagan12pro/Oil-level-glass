@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RubberStripEditorForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             btOk = new Button();
@@ -147,7 +148,7 @@
             // 
             pbSketch.BorderStyle = BorderStyle.FixedSingle;
             pbSketch.Dock = DockStyle.Fill;
-            pbSketch.Image = Properties.Resources.Rubber_strip_Img;
+            pbSketch.Image = (Image)resources.GetObject("pbSketch.Image");
             pbSketch.Location = new Point(462, 19);
             pbSketch.Margin = new Padding(5, 19, 20, 5);
             pbSketch.Name = "pbSketch";

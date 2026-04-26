@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HousingEditorForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
-            pbSketch = new PictureBox();
             groupBox = new GroupBox();
             tblSizes = new TableLayoutPanel();
             tableLayoutPanel7 = new TableLayoutPanel();
@@ -49,13 +48,13 @@
             tableLayoutPanel8 = new TableLayoutPanel();
             btScrewHole = new Button();
             btChamfer = new Button();
+            pbSketch = new PictureBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             btOk = new Button();
             btCancel = new Button();
             blResetData = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbSketch).BeginInit();
             groupBox.SuspendLayout();
             tblSizes.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
@@ -63,6 +62,7 @@
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbSketch).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -87,8 +87,8 @@
             tableLayoutPanel3.ColumnCount = 2;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Controls.Add(pbSketch, 1, 0);
             tableLayoutPanel3.Controls.Add(groupBox, 0, 0);
+            tableLayoutPanel3.Controls.Add(pbSketch, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(5, 5);
             tableLayoutPanel3.Margin = new Padding(5);
@@ -98,19 +98,6 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Size = new Size(1058, 542);
             tableLayoutPanel3.TabIndex = 2;
-            // 
-            // pbSketch
-            // 
-            pbSketch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pbSketch.BorderStyle = BorderStyle.FixedSingle;
-            pbSketch.Image = (Image)resources.GetObject("pbSketch.Image");
-            pbSketch.Location = new Point(534, 19);
-            pbSketch.Margin = new Padding(5, 19, 20, 5);
-            pbSketch.Name = "pbSketch";
-            pbSketch.Size = new Size(504, 518);
-            pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSketch.TabIndex = 0;
-            pbSketch.TabStop = false;
             // 
             // groupBox
             // 
@@ -172,9 +159,9 @@
             label4.Location = new Point(49, 13);
             label4.Margin = new Padding(49, 0, 49, 0);
             label4.Name = "label4";
-            label4.Size = new Size(145, 32);
+            label4.Size = new Size(126, 32);
             label4.TabIndex = 3;
-            label4.Text = "Диаметр h1";
+            label4.Text = "Высота h1";
             // 
             // tbGlassSocketHeight
             // 
@@ -220,9 +207,9 @@
             label3.Location = new Point(49, 13);
             label3.Margin = new Padding(49, 0, 49, 0);
             label3.Name = "label3";
-            label3.Size = new Size(132, 32);
+            label3.Size = new Size(113, 32);
             label3.TabIndex = 3;
-            label3.Text = "Диаметр h";
+            label3.Text = "Высота h";
             // 
             // tableLayoutPanel5
             // 
@@ -337,6 +324,19 @@
             btChamfer.Text = "Фаски...";
             btChamfer.UseVisualStyleBackColor = true;
             // 
+            // pbSketch
+            // 
+            pbSketch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pbSketch.BorderStyle = BorderStyle.FixedSingle;
+            pbSketch.Image = (Image)resources.GetObject("pbSketch.Image");
+            pbSketch.Location = new Point(534, 19);
+            pbSketch.Margin = new Padding(5, 19, 20, 5);
+            pbSketch.Name = "pbSketch";
+            pbSketch.Size = new Size(504, 518);
+            pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbSketch.TabIndex = 0;
+            pbSketch.TabStop = false;
+            // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -388,7 +388,7 @@
             blResetData.TabIndex = 2;
             blResetData.Text = "Очистить";
             blResetData.UseVisualStyleBackColor = true;
-            blResetData.Click += blResetData_Click;
+            blResetData.Click += btResetData_Click;
             // 
             // HousingEditorForm
             // 
@@ -404,10 +404,11 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор размеров корпуса";
+            FormClosing += HousingEditorForm_FormClosing;
             Load += HousingEditorForm_Load;
+            Click += HousingEditorForm_Click;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbSketch).EndInit();
             groupBox.ResumeLayout(false);
             tblSizes.ResumeLayout(false);
             tableLayoutPanel7.ResumeLayout(false);
@@ -419,6 +420,7 @@
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
             tableLayoutPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbSketch).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }

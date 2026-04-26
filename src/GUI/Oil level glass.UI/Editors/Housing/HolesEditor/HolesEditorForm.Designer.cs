@@ -32,7 +32,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             btCancel = new Button();
             btOk = new Button();
-            blResetData = new Button();
+            btResetData = new Button();
             groupBox1 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             tableLayoutPanel6 = new TableLayoutPanel();
@@ -78,7 +78,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.Controls.Add(btCancel, 1, 0);
             tableLayoutPanel2.Controls.Add(btOk, 2, 0);
-            tableLayoutPanel2.Controls.Add(blResetData, 0, 0);
+            tableLayoutPanel2.Controls.Add(btResetData, 0, 0);
             tableLayoutPanel2.Location = new Point(148, 363);
             tableLayoutPanel2.Margin = new Padding(5, 5, 20, 16);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -108,17 +108,19 @@
             btOk.TabIndex = 0;
             btOk.Text = "Ок";
             btOk.UseVisualStyleBackColor = true;
+            btOk.Click += btOk_Click;
             // 
-            // blResetData
+            // btResetData
             // 
-            blResetData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            blResetData.Location = new Point(5, 5);
-            blResetData.Margin = new Padding(5, 5, 5, 16);
-            blResetData.Name = "blResetData";
-            blResetData.Size = new Size(143, 46);
-            blResetData.TabIndex = 2;
-            blResetData.Text = "Очистить";
-            blResetData.UseVisualStyleBackColor = true;
+            btResetData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btResetData.Location = new Point(5, 5);
+            btResetData.Margin = new Padding(5, 5, 5, 16);
+            btResetData.Name = "btResetData";
+            btResetData.Size = new Size(143, 46);
+            btResetData.TabIndex = 2;
+            btResetData.Text = "Очистить";
+            btResetData.UseVisualStyleBackColor = true;
+            btResetData.Click += btResetData_Click;
             // 
             // groupBox1
             // 
@@ -188,6 +190,7 @@
             tbScrewHolesCount.Size = new Size(478, 39);
             tbScrewHolesCount.TabIndex = 0;
             tbScrewHolesCount.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            tbScrewHolesCount.ValueChanged += tb_TextChanged;
             // 
             // tableLayoutPanel5
             // 
@@ -224,6 +227,7 @@
             tbHoleDiameter.Name = "tbHoleDiameter";
             tbHoleDiameter.Size = new Size(478, 39);
             tbHoleDiameter.TabIndex = 1;
+            tbHoleDiameter.TextChanged += tb_TextChanged;
             // 
             // tableLayoutPanel4
             // 
@@ -244,6 +248,7 @@
             // tbMaxDiameter
             // 
             tbMaxDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbMaxDiameter.Enabled = false;
             tbMaxDiameter.Location = new Point(49, 52);
             tbMaxDiameter.Margin = new Padding(49, 3, 49, 3);
             tbMaxDiameter.Name = "tbMaxDiameter";
@@ -275,6 +280,8 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор отверстий";
+            FormClosing += HolesEditorForm_FormClosing;
+            Load += HolesEditorForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
@@ -295,7 +302,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btCancel;
         private Button btOk;
-        private Button blResetData;
+        private Button btResetData;
         private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel6;
