@@ -36,6 +36,9 @@
 
                     if (Length <= 0)
                         error = "Length must be greater than zero!";
+                    else if (MaxLength > 0 && Length > MaxLength)
+                        error = $"Length can't be greater than {MaxLength}!";
+
                     break;
             }
 

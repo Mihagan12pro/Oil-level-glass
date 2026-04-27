@@ -96,7 +96,7 @@
             tabSaving.Location = new Point(8, 46);
             tabSaving.Margin = new Padding(5);
             tabSaving.Name = "tabSaving";
-            tabSaving.Size = new Size(1305, 804);
+            tabSaving.Size = new Size(1305, 846);
             tabSaving.TabIndex = 2;
             tabSaving.Text = "Сохранение";
             tabSaving.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1305, 804);
+            tableLayoutPanel1.Size = new Size(1305, 846);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // savingParametersEditor6
@@ -229,7 +229,7 @@
             btResetData.Name = "btResetData";
             btResetData.Size = new Size(153, 46);
             btResetData.TabIndex = 3;
-            btResetData.Text = "Отмена";
+            btResetData.Text = "Очистить";
             btResetData.UseVisualStyleBackColor = true;
             // 
             // Wizard3dForm

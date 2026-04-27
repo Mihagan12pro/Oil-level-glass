@@ -24,5 +24,7 @@ namespace Oil_level_glass.Model.Data.Operations.Chamfers
                 OnPropertyChanged();
             }
         }
+
+        public double MaxLength { get; set; }
     }
 }
