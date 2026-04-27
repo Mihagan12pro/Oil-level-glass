@@ -268,6 +268,7 @@
             // 
             // HolesEditorForm
             // 
+            AcceptButton = btOk;
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btCancel;

@@ -3,8 +3,8 @@ using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Editors.Housing;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
+using Oil_level_glass.UI.Editors.Housing.ChamferEditor;
 using Oil_level_glass.UI.Editors.Housing.HolesEditor;
-using Oil_level_glass.UI.Presenters.Editors.Glass;
 
 namespace Oil_level_glass.UI.Editors.Housing
 {
@@ -48,7 +48,7 @@ namespace Oil_level_glass.UI.Editors.Housing
 
                 btScrewHole.Enabled = mainHeightResult.IsSuccess && mainDiameterResult.IsSuccess;
 
-                btChamfer.Enabled = Model.Hole.Error == string.Empty;
+                btChamfer.Enabled = Model.Hole.Error == string.Empty && btScrewHole.Enabled;
 
                 btOk.Enabled = Model.Error == string.Empty;
 
@@ -81,14 +81,10 @@ namespace Oil_level_glass.UI.Editors.Housing
             _housingEditorPresenter.CheckData.Invoke();
         }
 
-        private void btScrewHoles_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btChamfer_Click(object sender, EventArgs e)
         {
-
+            ChamferEditorForm chamferEditorForm = new ChamferEditorForm();
+            chamferEditorForm.ShowDialog();
         }
 
         private void btScrewHole_Click(object sender, EventArgs e)
@@ -101,6 +97,7 @@ namespace Oil_level_glass.UI.Editors.Housing
             holesEditorForm.Owner = this;
 
             holesEditorForm.ShowDialog();
+            _housingEditorPresenter.CheckData.Invoke();
         }
 
         private void HousingEditorForm_Click(object sender, EventArgs e)

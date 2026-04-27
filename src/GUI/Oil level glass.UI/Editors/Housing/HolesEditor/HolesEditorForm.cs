@@ -1,8 +1,8 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Editors.Housing.HolesEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
-using Oil_level_glass.UI.Presenters.Editors.Glass;
 
 namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
 {
@@ -20,13 +20,9 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
 
         private void HolesEditorForm_Load(object sender, EventArgs e)
         {
-            tbMaxDiameter.Text = Model.Hole.MaxDiameter.ToString();
-
-            tbHoleDiameter.PlaceholderText = tbMaxDiameter.Text;
-
             Action checkData = () =>
             {
-                var counfResult = _holesEditorPresenter.UpdateCountOfHoles(tbScrewHolesCount.Value.ToString());
+                var countResult = _holesEditorPresenter.UpdateCountOfHoles(tbScrewHolesCount.Value.ToString());
                 var diameterResult = _holesEditorPresenter.UpdateDiameter(tbHoleDiameter.Text);
 
                 tbScrewHolesCount.Enabled = diameterResult.IsSuccess;
@@ -40,11 +36,24 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
                 }
 
                 tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
-                btOk.Enabled = Model.Hole.Error == string.Empty;
+                btOk.Enabled = countResult.IsSuccess && diameterResult.IsSuccess;
             };
 
             _holesEditorPresenter = PresentersFactory.CreateHolesEditorPresenter(this, checkData);
             _holesEditorPresenter.CheckData.Invoke();
+
+
+            tbMaxDiameter.Text = Model.Hole.MaxDiameter.ToString();
+
+            tbHoleDiameter.PlaceholderText = tbMaxDiameter.Text;
+
+            var basic = (BasicScrewHoleModel)Model.Hole;
+            if (basic.Error == string.Empty)
+            {
+                tbHoleDiameter.Text = ((BasicScrewHoleModel)Model.Hole).Diameter.ToString();
+                tbScrewHolesCount.Value = Model.ScrewHolesCount;
+                tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
+            }
         }
 
         private void tb_TextChanged(object sender, EventArgs e)

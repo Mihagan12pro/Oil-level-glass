@@ -323,6 +323,7 @@
             btChamfer.TabIndex = 1;
             btChamfer.Text = "Фаски...";
             btChamfer.UseVisualStyleBackColor = true;
+            btChamfer.Click += btChamfer_Click;
             // 
             // pbSketch
             // 
