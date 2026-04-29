@@ -25,10 +25,10 @@ namespace Oil_level_glass.Presenters.Editors.Housing
         }
 
         public Result UpdateMainDiameter(string mainDiameter)
-            => _housing.TryConvertToDouble(mainDiameter, nameof(_housing.MainDiameter));
+            => _housing.TryConvertToDoubleAndValidate(mainDiameter, nameof(_housing.MainDiameter));
 
         public Result UpdateMainHeight(string mainHeight)
-            => _housing.TryConvertToDouble(mainHeight, nameof(_housing.MainHeight));
+            => _housing.TryConvertToDoubleAndValidate(mainHeight, nameof(_housing.MainHeight));
 
         public HousingEditorPresenter(
             IHousingForm housingForm,

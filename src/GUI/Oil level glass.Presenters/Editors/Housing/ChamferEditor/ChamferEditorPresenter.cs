@@ -1,5 +1,4 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Operations.Chamfers;
 using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Shared.Results;
@@ -11,28 +10,49 @@ namespace Oil_level_glass.Presenters.Editors.Housing.ChamferEditor
         private readonly IChamferEditorForm _form;
         private readonly HousingModel _housing;
 
-        private readonly double _oldChamgerLength, _oldChamferAngle;
+        private readonly double _oldChamgerSide1, _oldChamferSide2, _oldChamferAngle;
 
         public Action CheckData { get; }
 
+        private void CulcSide2()
+        {
+            double betta = double.DegreesToRadians(90 - _housing.Chamfer.Angle);
+            double alpha = double.DegreesToRadians(_housing.Chamfer.Angle);
+
+            _housing.Chamfer.Side2 = Math.Round(Math.Sin(alpha) * _housing.Chamfer.Side1 / Math.Sin(betta), 3);
+        }
+
         public void ResetFields()
         {
-            _housing.Chamfer.Length = _oldChamgerLength;
-            ((ChamferAngleLengthModel)_housing.Chamfer).Angle = _oldChamferAngle;
+            _housing.Chamfer.Side1 = _oldChamgerSide1;
+            _housing.Chamfer.Angle = _oldChamferAngle;
+            _housing.Chamfer.Side2 = _oldChamferSide2;
         }
 
         public Result UpdateAngle(string angle)
         {
-            var chamfer = (ChamferAngleLengthModel)_housing.Chamfer;
+            var chamfer = _housing.Chamfer;
+            var result = chamfer.TryConvertToDoubleAndValidate(angle, nameof(chamfer.Angle));
 
-            throw new NotImplementedException();
+            CulcSide2();
+
+            return result;
         }
 
-        public Result UpdateLength(string length)
+        public Result UpdateSide1(string side1)
+        {
+            var chamfer = _housing.Chamfer;
+            var result = chamfer.TryConvertToDoubleAndValidate(side1, nameof(chamfer.Side1));
+            CulcSide2();
+
+            return result;
+        }
+
+        public Result UpdateSide2(string side2)
         {
             var chamfer = _housing.Chamfer;
 
-            return chamfer.TryConvertToDouble(length, nameof(chamfer.Length));
+            return chamfer.TryConvertToDoubleAndValidate(side2, nameof(chamfer.Side2));
         }
 
         public ChamferEditorPresenter(
@@ -45,8 +65,9 @@ namespace Oil_level_glass.Presenters.Editors.Housing.ChamferEditor
 
             _housing = _form.Model;
 
-            _oldChamgerLength = _housing.Chamfer.Length;
-            _oldChamferAngle = ((ChamferAngleLengthModel)_housing.Chamfer).Angle;
+            _oldChamgerSide1 = _housing.Chamfer.Side1;
+            _oldChamferSide2 = _housing.Chamfer.Side2;
+            _oldChamferAngle = (_housing.Chamfer).Angle;
         }
     }
 }

@@ -59,7 +59,7 @@ namespace COM.Tests
             ((BasicScrewHoleModel)housing.Hole).Diameter = 8;
             housing.ScrewHolesCount = 4;
 
-            housing.Chamfer.Length = 2;
+            housing.Chamfer.Side1 = 2;
             ((ChamferAngleLengthModel)housing.Chamfer).Angle = 45;
 
             housing.File.Name.Naming = "Корпус";

@@ -21,10 +21,10 @@ namespace Oil_level_glass.Presenters.Editors.RubberStrip
         }
 
         public Result UpdateInternalDiameter(string diameter)
-            => _rubberStrip.TryConvertToDouble(diameter, nameof(_rubberStrip.InternalDiameter));
+            => _rubberStrip.TryConvertToDoubleAndValidate(diameter, nameof(_rubberStrip.InternalDiameter));
 
         public Result UpdateHeight(string height)
-            => _rubberStrip.TryConvertToDouble(height, nameof(_rubberStrip.Height));
+            => _rubberStrip.TryConvertToDoubleAndValidate(height, nameof(_rubberStrip.Height));
 
         public RubberStripEditorPresenter(
             IRubberStripEditorForm form,

@@ -1,8 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
-using Oil_level_glass.Model.Data.Operations.Chamfers;
+using Oil_level_glass.Model.Data.Operations;
 using Oil_level_glass.Model.Data.ScrewHoles;
 using System.ComponentModel;
-using System.Reflection;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
@@ -12,6 +11,11 @@ public class HousingModel
     public HousingModel()
     {
         Material = new Metal();
+
+        Chamfer = new ChamferModel()
+        {
+            Angle = 60
+        };
     }
 
     public int MaxCountOfHoles {  get; set; }
@@ -125,9 +129,9 @@ public class HousingModel
         }
     }
 
-    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel(); 
+    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel();
 
-    public ChamferModel Chamfer { get; } = new ChamferAngleLengthModel();
+    public ChamferModel Chamfer { get; } = new ChamferModel();
 
 
     protected override string CheckField(string columnName)

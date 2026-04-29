@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Model.Data.Operations.Chamfers;
+﻿using Oil_level_glass.Model.Data.Operations;
 using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.ScrewHoles

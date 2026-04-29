@@ -16,10 +16,10 @@ namespace Oil_level_glass.UI.Presenters.Editors.Glass
         public Action CheckData { get; }
 
         public Result UpdateHeight(string height)
-            => _glass.TryConvertToDouble(height, nameof(_glass.Height));
+            => _glass.TryConvertToDoubleAndValidate(height, nameof(_glass.Height));
 
         public Result UpdateDiameter(string diameter)
-            => _glass.TryConvertToDouble(diameter, nameof(_glass.Diameter));
+            => _glass.TryConvertToDoubleAndValidate(diameter, nameof(_glass.Diameter));
 
         public void ResetFields()
         {

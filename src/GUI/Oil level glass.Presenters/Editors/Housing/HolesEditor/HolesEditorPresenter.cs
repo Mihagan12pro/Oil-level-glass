@@ -23,13 +23,13 @@ namespace Oil_level_glass.Presenters.Editors.Housing.HolesEditor
         }
 
         public Result UpdateCountOfHoles(string count)
-            => _housingModel.TryConvertToInt32(count, nameof(_housingModel.ScrewHolesCount));
+            => _housingModel.TryConvertToInt32AndValidate(count, nameof(_housingModel.ScrewHolesCount));
 
         public Result UpdateDiameter(string diameter)
         {
             var basic = ((BasicScrewHoleModel)_housingModel.Hole);
 
-            Result result = basic.TryConvertToDouble(diameter, nameof(basic.Diameter));
+            Result result = basic.TryConvertToDoubleAndValidate(diameter, nameof(basic.Diameter));
             if (result.IsSuccess)
             {
                 double length = Math.PI * _housingModel.ScrewHolesDistance;

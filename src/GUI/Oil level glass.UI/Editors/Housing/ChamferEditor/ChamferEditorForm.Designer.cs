@@ -39,14 +39,17 @@
             groupBox1 = new GroupBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             tableLayoutPanel7 = new TableLayoutPanel();
+            tbSide1 = new TextBox();
             label3 = new Label();
-            tbLength = new TextBox();
             tableLayoutPanel6 = new TableLayoutPanel();
             label2 = new Label();
             tbMaxLength = new TextBox();
             tableLayoutPanel5 = new TableLayoutPanel();
             label1 = new Label();
             tbAngle = new NumericUpDown();
+            tableLayoutPanel8 = new TableLayoutPanel();
+            label4 = new Label();
+            tbSide2 = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -57,6 +60,7 @@
             tableLayoutPanel6.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tbAngle).BeginInit();
+            tableLayoutPanel8.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -102,6 +106,7 @@
             btResetData.TabIndex = 2;
             btResetData.Text = "Очистить";
             btResetData.UseVisualStyleBackColor = true;
+            btResetData.Click += btResetData_Click;
             // 
             // btCancel
             // 
@@ -125,6 +130,7 @@
             btOk.TabIndex = 1;
             btOk.Text = "Ок";
             btOk.UseVisualStyleBackColor = true;
+            btOk.Click += btOk_Click;
             // 
             // tableLayoutPanel3
             // 
@@ -170,18 +176,19 @@
             // tableLayoutPanel4
             // 
             tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.Controls.Add(tableLayoutPanel7, 0, 2);
             tableLayoutPanel4.Controls.Add(tableLayoutPanel6, 0, 1);
             tableLayoutPanel4.Controls.Add(tableLayoutPanel5, 0, 0);
+            tableLayoutPanel4.Controls.Add(tableLayoutPanel8, 0, 3);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(3, 35);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 3;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel4.RowCount = 4;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 25.0006237F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 25.0006275F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 25.0006237F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 24.9981289F));
             tableLayoutPanel4.Size = new Size(419, 318);
             tableLayoutPanel4.TabIndex = 0;
             // 
@@ -190,36 +197,37 @@
             tableLayoutPanel7.ColumnCount = 1;
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Controls.Add(tbSide1, 0, 1);
             tableLayoutPanel7.Controls.Add(label3, 0, 0);
-            tableLayoutPanel7.Controls.Add(tbLength, 0, 1);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(3, 215);
+            tableLayoutPanel7.Location = new Point(3, 161);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 2;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel7.Size = new Size(413, 100);
+            tableLayoutPanel7.Size = new Size(413, 73);
             tableLayoutPanel7.TabIndex = 2;
+            // 
+            // tbSide1
+            // 
+            tbSide1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbSide1.Location = new Point(49, 36);
+            tbSide1.Margin = new Padding(49, 0, 49, 0);
+            tbSide1.Name = "tbSide1";
+            tbSide1.Size = new Size(315, 39);
+            tbSide1.TabIndex = 1;
+            tbSide1.TextChanged += tb_TextChanged;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Location = new Point(49, 18);
+            label3.Location = new Point(49, 4);
             label3.Margin = new Padding(49, 0, 49, 0);
             label3.Name = "label3";
-            label3.Size = new Size(97, 32);
+            label3.Size = new Size(86, 32);
             label3.TabIndex = 0;
-            label3.Text = "Длина l";
-            // 
-            // tbLength
-            // 
-            tbLength.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbLength.Location = new Point(49, 50);
-            tbLength.Margin = new Padding(49, 0, 49, 0);
-            tbLength.Name = "tbLength";
-            tbLength.Size = new Size(315, 39);
-            tbLength.TabIndex = 1;
+            label3.Text = "Катет l";
             // 
             // tableLayoutPanel6
             // 
@@ -229,19 +237,19 @@
             tableLayoutPanel6.Controls.Add(label2, 0, 0);
             tableLayoutPanel6.Controls.Add(tbMaxLength, 0, 1);
             tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(3, 109);
+            tableLayoutPanel6.Location = new Point(3, 82);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 2;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(413, 100);
+            tableLayoutPanel6.Size = new Size(413, 73);
             tableLayoutPanel6.TabIndex = 1;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(49, 18);
+            label2.Location = new Point(49, 4);
             label2.Margin = new Padding(49, 0, 49, 0);
             label2.Name = "label2";
             label2.Size = new Size(270, 32);
@@ -252,7 +260,7 @@
             // 
             tbMaxLength.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tbMaxLength.Enabled = false;
-            tbMaxLength.Location = new Point(49, 50);
+            tbMaxLength.Location = new Point(49, 36);
             tbMaxLength.Margin = new Padding(49, 0, 49, 0);
             tbMaxLength.Name = "tbMaxLength";
             tbMaxLength.Size = new Size(315, 39);
@@ -271,14 +279,14 @@
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(413, 100);
+            tableLayoutPanel5.Size = new Size(413, 73);
             tableLayoutPanel5.TabIndex = 0;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(49, 18);
+            label1.Location = new Point(49, 4);
             label1.Margin = new Padding(49, 0, 49, 0);
             label1.Name = "label1";
             label1.Size = new Size(107, 32);
@@ -288,7 +296,7 @@
             // tbAngle
             // 
             tbAngle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbAngle.Location = new Point(49, 50);
+            tbAngle.Location = new Point(49, 36);
             tbAngle.Margin = new Padding(49, 0, 49, 0);
             tbAngle.Maximum = new decimal(new int[] { 89, 0, 0, 0 });
             tbAngle.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
@@ -296,6 +304,43 @@
             tbAngle.Size = new Size(315, 39);
             tbAngle.TabIndex = 1;
             tbAngle.Value = new decimal(new int[] { 45, 0, 0, 0 });
+            tbAngle.ValueChanged += tb_TextChanged;
+            // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 1;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel8.Controls.Add(label4, 0, 0);
+            tableLayoutPanel8.Controls.Add(tbSide2, 0, 1);
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(3, 240);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 2;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel8.Size = new Size(413, 75);
+            tableLayoutPanel8.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(49, 0);
+            label4.Margin = new Padding(49, 0, 49, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(99, 32);
+            label4.TabIndex = 0;
+            label4.Text = "Катет l2";
+            // 
+            // tbSide2
+            // 
+            tbSide2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbSide2.Enabled = false;
+            tbSide2.Location = new Point(49, 37);
+            tbSide2.Margin = new Padding(49, 0, 49, 0);
+            tbSide2.Name = "tbSide2";
+            tbSide2.Size = new Size(315, 39);
+            tbSide2.TabIndex = 1;
             // 
             // ChamferEditorForm
             // 
@@ -312,6 +357,7 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор фасок";
+            FormClosing += ChamferEditorForm_FormClosing;
             Load += ChamferEditorForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
@@ -326,6 +372,8 @@
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)tbAngle).EndInit();
+            tableLayoutPanel8.ResumeLayout(false);
+            tableLayoutPanel8.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -344,10 +392,13 @@
         private Label label1;
         private TableLayoutPanel tableLayoutPanel7;
         private Label label3;
-        private TextBox tbLength;
+        private TextBox tbSide1;
         private TableLayoutPanel tableLayoutPanel6;
         private Label label2;
         private TextBox tbMaxLength;
         private NumericUpDown tbAngle;
+        private TableLayoutPanel tableLayoutPanel8;
+        private Label label4;
+        private TextBox tbSide2;
     }
 }

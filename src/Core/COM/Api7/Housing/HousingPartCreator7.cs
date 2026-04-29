@@ -134,7 +134,7 @@ namespace Oil_level_glass.Core.COM.Api7.Housing
 
                 IChamfer chamfer = modelContainer.Chamfers.Add();
                 chamfer.Angle = ((ChamferAngleLengthModel)_housing.Chamfer).Angle;
-                chamfer.Distance1 = _housing.Chamfer.Length;
+                chamfer.Distance1 = _housing.Chamfer.Side1;
                 chamfer.BuildingType = ksChamferBuildingTypeEnum.ksChamferSideAngle;
                 chamfer.BaseObjects = edge;
 

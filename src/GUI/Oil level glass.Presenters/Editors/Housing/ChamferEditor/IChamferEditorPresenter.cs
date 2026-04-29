@@ -7,6 +7,8 @@ namespace Oil_level_glass.Presenters.Editors.Housing.ChamferEditor
     {
         Result UpdateAngle(string angle);
 
-        Result UpdateLength(string length);
+        Result UpdateSide1(string side1);
+
+        Result UpdateSide2(string side2);
     }
 }

@@ -59,8 +59,10 @@ namespace Oil_level_glass.UI.Editors.Housing
                     tbGlassSocketDiameter.Text = Model.GlassSocketDiameter.ToString();
 
                 Model.ScrewHolesDistance = (Model.MainDiameter / 2 + Model.GlassSocketDiameter / 2);
+                Model.Chamfer.MaxSide1 = (Model.MainDiameter * 0.5 - (Model.ScrewHolesDistance * 0.5 + ((BasicScrewHoleModel)Model.Hole).Diameter * 0.5)) * 0.5;
+                Model.Chamfer.MaxSide2 = Model.MainHeight;
 
-                ((BasicScrewHoleModel)Model.Hole).MaxDiameter = (Model.MainDiameter / 2 - Model.ScrewHolesDistance / 2) * 0.9;
+               ((BasicScrewHoleModel)Model.Hole).MaxDiameter = (Model.MainDiameter / 2 - Model.ScrewHolesDistance / 2) * 0.9;
             };
 
             _housingEditorPresenter = PresentersFactory.CreateHousingEditorPresenter(this, checkData);
@@ -83,8 +85,14 @@ namespace Oil_level_glass.UI.Editors.Housing
 
         private void btChamfer_Click(object sender, EventArgs e)
         {
-            ChamferEditorForm chamferEditorForm = new ChamferEditorForm();
+            ChamferEditorForm chamferEditorForm = new ChamferEditorForm()
+            {
+                Model = Model
+            };
+            chamferEditorForm.Owner = this;
+            
             chamferEditorForm.ShowDialog();
+            _housingEditorPresenter.CheckData.Invoke();
         }
 
         private void btScrewHole_Click(object sender, EventArgs e)

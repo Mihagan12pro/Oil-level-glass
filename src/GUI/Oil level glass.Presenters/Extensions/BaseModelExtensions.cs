@@ -9,7 +9,7 @@ namespace Oil_level_glass.Presenters.Extensions
 {
     internal static class BaseModelExtensions
     {
-        public static Result TryConvertToInt32(this BaseModel model, string str, string propertyTitle)
+        public static Result TryConvertToInt32AndValidate(this BaseModel model, string str, string propertyTitle)
         {
             PropertyInfo property = ExtractPropertInfo(model, propertyTitle);
 
@@ -26,7 +26,7 @@ namespace Oil_level_glass.Presenters.Extensions
             return new Result(false, $"{property.GetCustomAttribute<DisplayNameAttribute>().DisplayName} must be a number!");
         }
 
-        public static Result TryConvertToDouble(this BaseModel model, string str, string propertyTitle)
+        public static Result TryConvertToDoubleAndValidate(this BaseModel model, string str, string propertyTitle)
         {
             PropertyInfo property = ExtractPropertInfo(model, propertyTitle);
 
