@@ -142,5 +142,15 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            var result = _wizardPresenter.Create();
+
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show(this, result.ErrorMessage, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

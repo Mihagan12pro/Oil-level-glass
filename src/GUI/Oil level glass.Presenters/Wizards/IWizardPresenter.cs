@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.UI.Presenters;
+using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Wizards
 {
@@ -7,6 +8,8 @@ namespace Oil_level_glass.Presenters.Wizards
         void InvokeEditor(object tag);
 
         void UpdateModel();
+
+        Result Create();
 
         Action InvokeGlassEditor { get; }
         Action InvokeHousingEditor { get; }

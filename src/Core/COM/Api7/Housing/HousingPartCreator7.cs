@@ -5,7 +5,6 @@ using Oil_level_glass.Core.COM.Api7.Extensions;
 using Oil_level_glass.Core.COM.COMProviders;
 using Oil_level_glass.Core.Housing;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Operations.Chamfers;
 using Oil_level_glass.Model.Data.ScrewHoles;
 using Shared.Results;
 using System.Runtime.InteropServices;
@@ -133,7 +132,7 @@ namespace Oil_level_glass.Core.COM.Api7.Housing
                 circularPattern.Update();
 
                 IChamfer chamfer = modelContainer.Chamfers.Add();
-                chamfer.Angle = ((ChamferAngleLengthModel)_housing.Chamfer).Angle;
+                chamfer.Angle = _housing.Chamfer.Angle;
                 chamfer.Distance1 = _housing.Chamfer.Side1;
                 chamfer.BuildingType = ksChamferBuildingTypeEnum.ksChamferSideAngle;
                 chamfer.BaseObjects = edge;

@@ -1,6 +1,8 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
+using Oil_level_glass.Core.COM;
+using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 {
@@ -48,6 +50,36 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             _housing.CentralHoleDiameter = _stripModel.InternalDiameter;
 
             CheckData.Invoke();
+        }
+
+        public Result Create()
+        {
+            Result result = null;
+
+            CreatorsFactory creatorsFactory = new CreatorsFactory();
+           
+            var housingCreator = creatorsFactory.CreateHousingPartCreator(_housing);
+            result = housingCreator.Create();
+
+            if (result.IsSuccess)
+            {
+                var rubberStripCreator = creatorsFactory.CreateRubberStripPartCreator(_stripModel);
+                result = rubberStripCreator.Create();
+
+                if (result.IsSuccess)
+                {
+                    var glassCreator = creatorsFactory.CreateGlassPart(_glass);
+                    result = glassCreator.Create();
+
+                    if (result.IsSuccess)
+                    {
+                        var oliLevelGlassCreator = creatorsFactory.CreateOilLevelGlassPartCreator(_glass, _stripModel, _housing);
+                        return oliLevelGlassCreator.Create();
+                    }
+                }
+            }
+
+            return result;
         }
 
         public Wizard3dPresenter(

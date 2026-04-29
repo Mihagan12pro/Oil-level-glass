@@ -46,6 +46,8 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
             tbHoleDiameter.PlaceholderText = tbMaxDiameter.Text;
 
             var basic = (BasicScrewHoleModel)Model.Hole;
+
+            Console.WriteLine(Model);
             if (basic.Error == string.Empty)
             {
                 tbHoleDiameter.Text = ((BasicScrewHoleModel)Model.Hole).Diameter.ToString();

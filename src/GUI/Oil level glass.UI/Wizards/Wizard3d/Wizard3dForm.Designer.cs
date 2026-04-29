@@ -65,6 +65,7 @@
             btOk.TabIndex = 0;
             btOk.Text = "Ок";
             btOk.UseVisualStyleBackColor = true;
+            btOk.Click += btOk_Click;
             // 
             // btCancel
             // 
