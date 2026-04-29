@@ -11,7 +11,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         private readonly IWizard3dForm _wizardForm;
 
         private readonly HousingModel _housing;
-        private readonly RubberStripModel _stripModel;
+        private readonly RubberStripModel _rubberStrip;
         private readonly GlassModel _glass;
 
         public Action InvokeGlassEditor { get; }
@@ -19,6 +19,8 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         public Action InvokeRubberStripEditor { get; }
 
         public Action CheckData { get; }
+
+        public Action SetInitialValues { get; }
 
         public void InvokeEditor(object tag)
         {
@@ -43,11 +45,11 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
         public void UpdateModel()
         {
-            _stripModel.ExternalDiameter = _glass.Diameter;
-            _housing.GlassSocketDiameter = _stripModel.ExternalDiameter;
+            _rubberStrip.ExternalDiameter = _glass.Diameter;
+            _housing.GlassSocketDiameter = _rubberStrip.ExternalDiameter;
 
-            _housing.GlassSocketHeight = _stripModel.Height * 2 + _glass.Height;
-            _housing.CentralHoleDiameter = _stripModel.InternalDiameter;
+            _housing.GlassSocketHeight = _rubberStrip.Height * 2 + _glass.Height;
+            _housing.CentralHoleDiameter = _rubberStrip.InternalDiameter;
 
             CheckData.Invoke();
         }
@@ -63,7 +65,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
             if (result.IsSuccess)
             {
-                var rubberStripCreator = creatorsFactory.CreateRubberStripPartCreator(_stripModel);
+                var rubberStripCreator = creatorsFactory.CreateRubberStripPartCreator(_rubberStrip);
                 result = rubberStripCreator.Create();
 
                 if (result.IsSuccess)
@@ -73,13 +75,53 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
                     if (result.IsSuccess)
                     {
-                        var oliLevelGlassCreator = creatorsFactory.CreateOilLevelGlassPartCreator(_glass, _stripModel, _housing);
+                        var oliLevelGlassCreator = creatorsFactory.CreateOilLevelGlassPartCreator(_glass, _rubberStrip, _housing);
                         return oliLevelGlassCreator.Create();
                     }
                 }
             }
 
             return result;
+        }
+
+        public void UpdatePartSavingParameter(
+            object tag,
+            string folder,
+            string naming,
+            string marking)
+        {
+            if (tag is Part partTag)
+            {
+                switch(partTag)
+                {
+                    case Part.Housing:
+                        {
+                            _housing.File.Folder = folder;
+                            _housing.File.Name.Naming = naming;
+                            _housing.File.Name.Marking = marking;
+
+                            break;
+                        }
+
+                    case Part.RubberStrip:
+                        {
+                            _rubberStrip.File.Folder = folder;
+                            _rubberStrip.File.Name.Naming = naming;
+                            _rubberStrip.File.Name.Marking = marking;
+
+                            break;
+                        }
+
+                    case Part.Glass:
+                        {
+                            _glass.File.Folder = folder;
+                            _glass.File.Name.Naming = naming;
+                            _glass.File.Name.Marking = marking;
+
+                            break;
+                        }
+                }
+            }
         }
 
         public Wizard3dPresenter(
@@ -90,12 +132,13 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             Action invokeGlassEditor,
             Action invokeRubberStripEditor,
             Action invokeHousingEditor,
-            Action checkData)
+            Action checkData,
+            Action setInitialValues)
         {
             _wizardForm = wizardForm;
 
             _glass = glass;
-            _stripModel = rubberStrip;
+            _rubberStrip = rubberStrip;
             _housing = housing;
 
             InvokeGlassEditor = invokeGlassEditor;
@@ -103,6 +146,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             InvokeHousingEditor = invokeHousingEditor;
 
             CheckData = checkData;
+            SetInitialValues = setInitialValues;
         }
     }
 }

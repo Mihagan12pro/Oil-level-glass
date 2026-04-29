@@ -7,6 +7,7 @@ namespace Oil_level_glass.UI.Controls
         private string _header, _folderPath, _naming, _marking;
         private ErrorProvider _folderPathErrors, _namingErrors;
 
+        [Browsable(true)]
         public event EventHandler? UpdateModel;
 
         public SavingParametersEditor()
@@ -88,7 +89,7 @@ namespace Oil_level_glass.UI.Controls
 
         [Browsable(true)]
         [Category("Appearance")]
-        public string Namimg
+        public string Naming
         {
             get { return _naming; }
             set

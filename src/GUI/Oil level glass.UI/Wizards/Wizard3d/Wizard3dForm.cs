@@ -3,6 +3,7 @@ using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
+using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Properties;
@@ -76,7 +77,13 @@ namespace Oil_level_glass.UI.Wizard3d
                     btOk.Enabled = (_glass.Error == string.Empty &&
                         _housing.Error == string.Empty &&
                         _rubberStrip.Error == string.Empty);
+                },
+                () => 
+                { 
+
                 });
+
+            _wizardPresenter.SetInitialValues();
         }
 
         private void tvParts_DoubleClick(object sender, EventArgs e)
@@ -129,6 +136,9 @@ namespace Oil_level_glass.UI.Wizard3d
                 new TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
                 new TreeNode(Resources.Housing) { Tag = Part.Housing }
             };
+            saveEditorGlass.Tag = Part.Glass;
+            saveEditorHousing.Tag = Part.Housing;
+            saveEditorRubberStrip.Tag = Part.RubberStrip;
 
             TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
 
@@ -151,6 +161,25 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 MessageBox.Show(this, result.ErrorMessage, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void saveEditor_UpdateModel(object sender, EventArgs e)
+        {
+            if (sender is SavingParametersEditor editor)
+            {
+                _wizardPresenter.UpdatePartSavingParameter(
+                    editor.Tag,
+                    editor.FolderPath,
+                    editor.Naming,
+                    editor.Marking);
+            }
+
+            _wizardPresenter.CheckData();
+        }
+
+        private void btResetData_Click(object sender, EventArgs e)
+        {
+            string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
     }
 }

@@ -33,9 +33,9 @@
             splitContainer2 = new SplitContainer();
             tabSaving = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
-            savingParametersEditor6 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            savingParametersEditor5 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            savingParametersEditor4 = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            saveEditorRubberStrip = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            saveEditorGlass = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            saveEditorHousing = new Oil_level_glass.UI.Controls.SavingParametersEditor();
             tabSizes = new TabPage();
             splitSizes = new SplitContainer();
             tvParts = new TreeView();
@@ -108,9 +108,9 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(savingParametersEditor6, 2, 0);
-            tableLayoutPanel1.Controls.Add(savingParametersEditor5, 1, 0);
-            tableLayoutPanel1.Controls.Add(savingParametersEditor4, 0, 0);
+            tableLayoutPanel1.Controls.Add(saveEditorRubberStrip, 2, 0);
+            tableLayoutPanel1.Controls.Add(saveEditorGlass, 1, 0);
+            tableLayoutPanel1.Controls.Add(saveEditorHousing, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -119,41 +119,44 @@
             tableLayoutPanel1.Size = new Size(1305, 846);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // savingParametersEditor6
+            // saveEditorRubberStrip
             // 
-            savingParametersEditor6.FolderPath = "";
-            savingParametersEditor6.Header = null;
-            savingParametersEditor6.Location = new Point(880, 3);
-            savingParametersEditor6.Margin = new Padding(10, 3, 10, 10);
-            savingParametersEditor6.Marking = null;
-            savingParametersEditor6.Name = "savingParametersEditor6";
-            savingParametersEditor6.Namimg = null;
-            savingParametersEditor6.Size = new Size(415, 791);
-            savingParametersEditor6.TabIndex = 2;
+            saveEditorRubberStrip.FolderPath = "";
+            saveEditorRubberStrip.Header = "Прокладка";
+            saveEditorRubberStrip.Location = new Point(880, 3);
+            saveEditorRubberStrip.Margin = new Padding(10, 3, 10, 10);
+            saveEditorRubberStrip.Marking = null;
+            saveEditorRubberStrip.Name = "saveEditorRubberStrip";
+            saveEditorRubberStrip.Naming = null;
+            saveEditorRubberStrip.Size = new Size(415, 791);
+            saveEditorRubberStrip.TabIndex = 2;
+            saveEditorRubberStrip.UpdateModel += saveEditor_UpdateModel;
             // 
-            // savingParametersEditor5
+            // saveEditorGlass
             // 
-            savingParametersEditor5.FolderPath = "";
-            savingParametersEditor5.Header = null;
-            savingParametersEditor5.Location = new Point(445, 3);
-            savingParametersEditor5.Margin = new Padding(10, 3, 10, 10);
-            savingParametersEditor5.Marking = null;
-            savingParametersEditor5.Name = "savingParametersEditor5";
-            savingParametersEditor5.Namimg = null;
-            savingParametersEditor5.Size = new Size(415, 791);
-            savingParametersEditor5.TabIndex = 1;
+            saveEditorGlass.FolderPath = "";
+            saveEditorGlass.Header = "Линза";
+            saveEditorGlass.Location = new Point(445, 3);
+            saveEditorGlass.Margin = new Padding(10, 3, 10, 10);
+            saveEditorGlass.Marking = null;
+            saveEditorGlass.Name = "saveEditorGlass";
+            saveEditorGlass.Naming = null;
+            saveEditorGlass.Size = new Size(415, 791);
+            saveEditorGlass.TabIndex = 1;
+            saveEditorGlass.UpdateModel += saveEditor_UpdateModel;
             // 
-            // savingParametersEditor4
+            // saveEditorHousing
             // 
-            savingParametersEditor4.FolderPath = "";
-            savingParametersEditor4.Header = null;
-            savingParametersEditor4.Location = new Point(10, 3);
-            savingParametersEditor4.Margin = new Padding(10, 3, 10, 10);
-            savingParametersEditor4.Marking = null;
-            savingParametersEditor4.Name = "savingParametersEditor4";
-            savingParametersEditor4.Namimg = null;
-            savingParametersEditor4.Size = new Size(415, 791);
-            savingParametersEditor4.TabIndex = 0;
+            saveEditorHousing.FolderPath = "";
+            saveEditorHousing.Header = "Корпус";
+            saveEditorHousing.Location = new Point(10, 3);
+            saveEditorHousing.Margin = new Padding(10, 3, 10, 10);
+            saveEditorHousing.Marking = null;
+            saveEditorHousing.Name = "saveEditorHousing";
+            saveEditorHousing.Naming = null;
+            saveEditorHousing.Size = new Size(415, 791);
+            saveEditorHousing.TabIndex = 0;
+            saveEditorHousing.UpdateModel += saveEditor_UpdateModel;
             // 
             // tabSizes
             // 
@@ -232,6 +235,7 @@
             btResetData.TabIndex = 3;
             btResetData.Text = "Очистить";
             btResetData.UseVisualStyleBackColor = true;
+            btResetData.Click += btResetData_Click;
             // 
             // Wizard3dForm
             // 
@@ -285,9 +289,9 @@
         private TreeView tvParts;
         private PictureBox pbSketch;
         private TabControl tbCtlrModelParams;
-        private Controls.SavingParametersEditor savingParametersEditor6;
-        private Controls.SavingParametersEditor savingParametersEditor5;
-        private Controls.SavingParametersEditor savingParametersEditor4;
+        private Controls.SavingParametersEditor saveEditorRubberStrip;
+        private Controls.SavingParametersEditor saveEditorGlass;
+        private Controls.SavingParametersEditor saveEditorHousing;
         private Button btResetData;
     }
 }

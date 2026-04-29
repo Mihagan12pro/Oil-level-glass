@@ -42,7 +42,8 @@ namespace Oil_level_glass.Presenters
             Action invokeGlassEditor,
             Action invokeRubberStripEditor,
             Action invokeHousingEditor,
-            Action checkData)
+            Action checkData,
+            Action setInitialValues)
         {
             return new Wizard3dPresenter(
                 form,
@@ -52,7 +53,8 @@ namespace Oil_level_glass.Presenters
                 invokeGlassEditor,
                 invokeRubberStripEditor,
                 invokeHousingEditor,
-                checkData);
+                checkData,
+                setInitialValues);
         }
     }
 }
