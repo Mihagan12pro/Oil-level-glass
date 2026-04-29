@@ -18,7 +18,7 @@ public class HousingModel
         };
     }
 
-    public int MaxCountOfHoles {  get; set; }
+    public int MaxCountOfHoles;
 
     private double _mainDiameter, _mainHeight, _glassSocketHeight, _glassSocketDiameter;
     private double _centralHoleDiameter, _screwHolesDistance;

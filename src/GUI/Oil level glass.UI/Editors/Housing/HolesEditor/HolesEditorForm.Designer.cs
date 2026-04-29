@@ -190,7 +190,6 @@
             tbScrewHolesCount.Size = new Size(478, 39);
             tbScrewHolesCount.TabIndex = 0;
             tbScrewHolesCount.Value = new decimal(new int[] { 3, 0, 0, 0 });
-            tbScrewHolesCount.ValueChanged += tb_TextChanged;
             // 
             // tableLayoutPanel5
             // 
@@ -227,7 +226,6 @@
             tbHoleDiameter.Name = "tbHoleDiameter";
             tbHoleDiameter.Size = new Size(478, 39);
             tbHoleDiameter.TabIndex = 1;
-            tbHoleDiameter.TextChanged += tb_TextChanged;
             // 
             // tableLayoutPanel4
             // 

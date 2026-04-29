@@ -41,21 +41,24 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
 
             _holesEditorPresenter = PresentersFactory.CreateHolesEditorPresenter(this, checkData);
 
+          
             tbMaxDiameter.Text = Model.Hole.MaxDiameter.ToString();
-
             tbHoleDiameter.PlaceholderText = tbMaxDiameter.Text;
 
             var basic = (BasicScrewHoleModel)Model.Hole;
 
-            Console.WriteLine(Model);
+            
             if (basic.Error == string.Empty)
             {
+                tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
                 tbHoleDiameter.Text = ((BasicScrewHoleModel)Model.Hole).Diameter.ToString();
                 tbScrewHolesCount.Value = Model.ScrewHolesCount;
-                tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
             }
 
-            _holesEditorPresenter.CheckData.Invoke();
+            tbScrewHolesCount.ValueChanged += tb_TextChanged;
+            tbHoleDiameter.TextChanged += tb_TextChanged;
+
+            checkData.Invoke();
         }
 
         private void tb_TextChanged(object sender, EventArgs e)
