@@ -40,8 +40,6 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
             };
 
             _holesEditorPresenter = PresentersFactory.CreateHolesEditorPresenter(this, checkData);
-            _holesEditorPresenter.CheckData.Invoke();
-
 
             tbMaxDiameter.Text = Model.Hole.MaxDiameter.ToString();
 
@@ -54,6 +52,8 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
                 tbScrewHolesCount.Value = Model.ScrewHolesCount;
                 tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
             }
+
+            _holesEditorPresenter.CheckData.Invoke();
         }
 
         private void tb_TextChanged(object sender, EventArgs e)
