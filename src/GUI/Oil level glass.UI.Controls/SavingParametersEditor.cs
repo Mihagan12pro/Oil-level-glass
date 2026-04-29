@@ -5,12 +5,16 @@ namespace Oil_level_glass.UI.Controls
     public partial class SavingParametersEditor : UserControl
     {
         private string _header, _folderPath, _naming, _marking;
+        private ErrorProvider _folderPathErrors, _namingErrors;
+
+        public event EventHandler? UpdateModel;
 
         public SavingParametersEditor()
         {
             InitializeComponent();
 
-            FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            _namingErrors = new ErrorProvider();
+            _folderPathErrors = new ErrorProvider();
         }
 
         private void btChooseFolder_Click(object sender, EventArgs e)
@@ -21,6 +25,37 @@ namespace Oil_level_glass.UI.Controls
             {
                 FolderPath = folderBrowserDialog.SelectedPath;
             }
+        }
+
+        private void tb_TextChanged(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                switch(textBox.Name)
+                {
+                    case nameof(tbNaming):
+                        {
+                            if (textBox.Text == "")
+                                _namingErrors.SetError(textBox, "Naming is a required field!");
+                            else
+                                _namingErrors.Clear();
+                            break;
+                        }
+                    case nameof(tbFolderPath):
+                        {
+                            if (textBox.Text == "")
+                                _folderPathErrors.SetError(textBox, "Folder path is a required field!");
+                            else if (!Directory.Exists(textBox.Text))
+                                _folderPathErrors.SetError(textBox, "Folder with this path does not exists!");
+                            else
+                                _folderPathErrors.Clear();
+
+                            break;
+                        }
+                }
+            }
+
+            UpdateModel?.Invoke(sender, e);
         }
 
         [Browsable(true)]

@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.Model.Data.Materials;
+﻿using Oil_level_glass.Model.Data.KompasFile;
+using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Operations;
 using Oil_level_glass.Model.Data.ScrewHoles;
 using System.ComponentModel;
@@ -168,9 +169,13 @@ public class HousingModel
                 {
                     error += Hole.Error;
                 }
-                else if (property.PropertyType == typeof(ChamferModel))
+                else if (property.Name == nameof(Chamfer))
                 {
                     error += Chamfer.Error;
+                }
+                else if (property.Name == nameof(File))
+                {
+                    error += File.Error;
                 }
                 else
                 {

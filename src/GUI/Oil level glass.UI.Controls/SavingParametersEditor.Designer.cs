@@ -94,21 +94,22 @@
             // 
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(20, 57);
-            label1.Margin = new Padding(20, 3, 20, 3);
+            label1.Location = new Point(40, 57);
+            label1.Margin = new Padding(40, 3, 40, 3);
             label1.Name = "label1";
-            label1.Size = new Size(165, 32);
+            label1.Size = new Size(181, 32);
             label1.TabIndex = 0;
-            label1.Text = "Обозначение";
+            label1.Text = "Наименование";
             // 
             // tbNaming
             // 
             tbNaming.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbNaming.Location = new Point(20, 95);
-            tbNaming.Margin = new Padding(20, 3, 20, 3);
+            tbNaming.Location = new Point(40, 95);
+            tbNaming.Margin = new Padding(40, 3, 40, 3);
             tbNaming.Name = "tbNaming";
-            tbNaming.Size = new Size(360, 39);
+            tbNaming.Size = new Size(320, 39);
             tbNaming.TabIndex = 1;
+            tbNaming.TextChanged += tb_TextChanged;
             // 
             // tableLayoutPanel3
             // 
@@ -129,21 +130,22 @@
             // 
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Location = new Point(20, 57);
-            label2.Margin = new Padding(20, 3, 20, 3);
+            label2.Location = new Point(40, 57);
+            label2.Margin = new Padding(40, 3, 40, 3);
             label2.Name = "label2";
-            label2.Size = new Size(181, 32);
+            label2.Size = new Size(165, 32);
             label2.TabIndex = 0;
-            label2.Text = "Наименование";
+            label2.Text = "Обозначение";
             // 
             // tbMarking
             // 
             tbMarking.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbMarking.Location = new Point(20, 95);
-            tbMarking.Margin = new Padding(20, 3, 20, 3);
+            tbMarking.Location = new Point(40, 95);
+            tbMarking.Margin = new Padding(40, 3, 40, 3);
             tbMarking.Name = "tbMarking";
-            tbMarking.Size = new Size(360, 39);
+            tbMarking.Size = new Size(320, 39);
             tbMarking.TabIndex = 1;
+            tbMarking.TextChanged += tb_TextChanged;
             // 
             // tableLayoutPanel4
             // 
@@ -163,8 +165,8 @@
             // btChooseFolder
             // 
             btChooseFolder.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btChooseFolder.Location = new Point(20, 44);
-            btChooseFolder.Margin = new Padding(20, 3, 20, 3);
+            btChooseFolder.Location = new Point(40, 44);
+            btChooseFolder.Margin = new Padding(40, 3, 40, 3);
             btChooseFolder.Name = "btChooseFolder";
             btChooseFolder.Size = new Size(150, 46);
             btChooseFolder.TabIndex = 0;
@@ -175,15 +177,16 @@
             // tbFolderPath
             // 
             tbFolderPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tbFolderPath.Location = new Point(20, 96);
-            tbFolderPath.Margin = new Padding(20, 3, 20, 3);
+            tbFolderPath.Location = new Point(40, 96);
+            tbFolderPath.Margin = new Padding(40, 3, 40, 3);
             tbFolderPath.Multiline = false;
             tbFolderPath.Name = "tbFolderPath";
             tbFolderPath.ReadOnly = true;
             tbFolderPath.ScrollBars = RichTextBoxScrollBars.ForcedHorizontal;
-            tbFolderPath.Size = new Size(360, 47);
+            tbFolderPath.Size = new Size(320, 47);
             tbFolderPath.TabIndex = 1;
             tbFolderPath.Text = "";
+            tbFolderPath.TextChanged += tb_TextChanged;
             // 
             // SavingParametersEditor
             // 

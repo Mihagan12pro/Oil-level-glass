@@ -121,7 +121,7 @@
             // 
             // savingParametersEditor6
             // 
-            savingParametersEditor6.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
+            savingParametersEditor6.FolderPath = "";
             savingParametersEditor6.Header = null;
             savingParametersEditor6.Location = new Point(880, 3);
             savingParametersEditor6.Margin = new Padding(10, 3, 10, 10);
@@ -133,7 +133,7 @@
             // 
             // savingParametersEditor5
             // 
-            savingParametersEditor5.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
+            savingParametersEditor5.FolderPath = "";
             savingParametersEditor5.Header = null;
             savingParametersEditor5.Location = new Point(445, 3);
             savingParametersEditor5.Margin = new Padding(10, 3, 10, 10);
@@ -145,7 +145,7 @@
             // 
             // savingParametersEditor4
             // 
-            savingParametersEditor4.FolderPath = "C:\\Users\\kargi\\OneDrive\\Документы";
+            savingParametersEditor4.FolderPath = "";
             savingParametersEditor4.Header = null;
             savingParametersEditor4.Location = new Point(10, 3);
             savingParametersEditor4.Margin = new Padding(10, 3, 10, 10);
