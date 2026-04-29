@@ -50,7 +50,7 @@ namespace Oil_level_glass.UI.Editors.Housing
 
                 btChamfer.Enabled = Model.Hole.Error == string.Empty && btScrewHole.Enabled;
 
-                btOk.Enabled = Model.Error == string.Empty;
+                btOk.Enabled = Model.Error == string.Empty && Model.Chamfer.Error == string.Empty;
 
                 if (Model.GlassSocketHeight > 0)
                     tbGlassSocketHeight.Text = Model.GlassSocketHeight.ToString();

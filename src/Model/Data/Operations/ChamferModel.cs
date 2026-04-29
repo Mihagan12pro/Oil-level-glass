@@ -3,7 +3,7 @@
 namespace Oil_level_glass.Model.Data.Operations
 {
 
-    public class ChamferModel 
+    public class ChamferModel
         : BaseModel
     {
         private double _side1, _side2;
@@ -59,6 +59,26 @@ namespace Oil_level_glass.Model.Data.Operations
                 _angle = value;
 
                 OnPropertyChanged();
+            }
+        }
+
+        public override string Error
+        {
+            get
+            {
+                string error = string.Empty;
+
+                foreach (var property in this.GetType().GetProperties())
+                {
+                    string propertyError = this[property.Name];
+
+                    if (propertyError != string.Empty)
+                    {
+                        error += propertyError + '\n';
+                    }
+                }
+
+                return error;
             }
         }
 

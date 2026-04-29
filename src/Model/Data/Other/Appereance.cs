@@ -95,6 +95,8 @@
             }
         }
 
+        public override string Error => string.Empty;
+
         protected override string CheckField(string columnName)
         {
             return string.Empty;

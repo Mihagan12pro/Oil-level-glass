@@ -14,6 +14,8 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 
         public RubberStripModel RubberStripModel { get; set; } = null!;
 
+        public override string Error => string.Empty;
+
         public OilLevelGlassModel()
         {
             File = new AssemblyFile();

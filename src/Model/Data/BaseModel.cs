@@ -19,7 +19,7 @@ namespace Oil_level_glass.Model.Data
             }
         }
 
-        public virtual string Error => string.Empty;
+        public abstract string Error { get; }
 
         protected abstract string CheckField(string columnName);
 
