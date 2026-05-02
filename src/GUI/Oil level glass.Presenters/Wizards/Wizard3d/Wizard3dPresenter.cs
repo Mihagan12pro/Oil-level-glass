@@ -122,6 +122,8 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
                         }
                 }
             }
+
+            CheckData.Invoke();
         }
 
         public Wizard3dPresenter(

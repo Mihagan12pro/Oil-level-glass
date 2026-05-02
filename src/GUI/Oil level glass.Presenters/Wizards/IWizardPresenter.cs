@@ -7,12 +7,6 @@ namespace Oil_level_glass.Presenters.Wizards
     {
         void InvokeEditor(object tag);
 
-        void UpdatePartSavingParameter(
-            object tag,
-            string folder,
-            string naming, 
-            string marking);
-
         void UpdateModel();
 
         Result Create();

@@ -16,47 +16,8 @@ namespace Oil_level_glass.UI.Controls
 
             _namingErrors = new ErrorProvider();
             _folderPathErrors = new ErrorProvider();
-        }
 
-        private void btChooseFolder_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                FolderPath = folderBrowserDialog.SelectedPath;
-            }
-        }
-
-        private void tb_TextChanged(object sender, EventArgs e)
-        {
-            if (sender is TextBox textBox)
-            {
-                switch(textBox.Name)
-                {
-                    case nameof(tbNaming):
-                        {
-                            if (textBox.Text == "")
-                                _namingErrors.SetError(textBox, "Naming is a required field!");
-                            else
-                                _namingErrors.Clear();
-                            break;
-                        }
-                    case nameof(tbFolderPath):
-                        {
-                            if (textBox.Text == "")
-                                _folderPathErrors.SetError(textBox, "Folder path is a required field!");
-                            else if (!Directory.Exists(textBox.Text))
-                                _folderPathErrors.SetError(textBox, "Folder with this path does not exists!");
-                            else
-                                _folderPathErrors.Clear();
-
-                            break;
-                        }
-                }
-            }
-
-            UpdateModel?.Invoke(sender, e);
+            CheckData();
         }
 
         [Browsable(true)]
@@ -113,6 +74,41 @@ namespace Oil_level_glass.UI.Controls
                 tbMarking.Text = _marking;
                 this.Invalidate();
             }
+        }
+
+        private void btChooseFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                FolderPath = folderBrowserDialog.SelectedPath;
+            }
+        }
+
+        private void tb_TextChanged(object sender, EventArgs e)
+        {
+            _naming = tbNaming.Text;      
+            _marking = tbMarking.Text;
+            _folderPath = tbFolderPath.Text;
+
+            CheckData();
+            UpdateModel?.Invoke(this, e);
+        }
+
+        private void CheckData()
+        {
+            if (tbNaming.Text == "")
+                _namingErrors.SetError(tbNaming, "Naming is a required field!");
+            else
+                _namingErrors.Clear();
+
+            if (tbFolderPath.Text == "")
+                _folderPathErrors.SetError(tbFolderPath, "Folder path is a required field!");
+            else if (!Directory.Exists(tbFolderPath.Text))
+                _folderPathErrors.SetError(tbFolderPath, "Folder with this path does not exists!");
+            else
+                _folderPathErrors.Clear();
         }
     }
 }

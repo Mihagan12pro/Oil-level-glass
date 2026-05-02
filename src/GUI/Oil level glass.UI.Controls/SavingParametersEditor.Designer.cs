@@ -38,7 +38,7 @@
             tbMarking = new TextBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             btChooseFolder = new Button();
-            tbFolderPath = new RichTextBox();
+            tbFolderPath = new TextBox();
             groupBox.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -179,13 +179,9 @@
             tbFolderPath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tbFolderPath.Location = new Point(40, 96);
             tbFolderPath.Margin = new Padding(40, 3, 40, 3);
-            tbFolderPath.Multiline = false;
             tbFolderPath.Name = "tbFolderPath";
-            tbFolderPath.ReadOnly = true;
-            tbFolderPath.ScrollBars = RichTextBoxScrollBars.ForcedHorizontal;
-            tbFolderPath.Size = new Size(320, 47);
+            tbFolderPath.Size = new Size(320, 39);
             tbFolderPath.TabIndex = 1;
-            tbFolderPath.Text = "";
             tbFolderPath.TextChanged += tb_TextChanged;
             // 
             // SavingParametersEditor
@@ -202,6 +198,7 @@
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -218,6 +215,6 @@
         private TextBox tbMarking;
         private TableLayoutPanel tableLayoutPanel4;
         private Button btChooseFolder;
-        private RichTextBox tbFolderPath;
+        private TextBox tbFolderPath;
     }
 }

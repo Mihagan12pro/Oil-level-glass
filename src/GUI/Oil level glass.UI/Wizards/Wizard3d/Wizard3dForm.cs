@@ -25,8 +25,16 @@ namespace Oil_level_glass.UI.Wizard3d
             InitializeComponent();
 
             _glass = new GlassModel();
+            _glass.Material.Title = "Стекло БК10 ГОСТ 3514-94";
+            _glass.Material.Density = 3.12;
+
             _rubberStrip = new RubberStripModel();
+            _rubberStrip.Material.Title = "Смесь резиновая 3063 ТУ 38-1051082-86";
+            _rubberStrip.Material.Density = 1.28;
+
             _housing = new HousingModel();
+            _housing.Material.Title = "Сталь 10 ГОСТ 1050-2013";
+            _housing.Material.Density = 7.856;
 
             _wizardPresenter = PresentersFactory.CreateWizard3dPresenter(
                 this,
@@ -136,14 +144,14 @@ namespace Oil_level_glass.UI.Wizard3d
                 new TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
                 new TreeNode(Resources.Housing) { Tag = Part.Housing }
             };
-            saveEditorGlass.Tag = Part.Glass;
-            saveEditorHousing.Tag = Part.Housing;
-            saveEditorRubberStrip.Tag = Part.RubberStrip;
-
             TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
 
             tvParts.Nodes.Add(oilLevelGlassNode);
             tvParts.ExpandAll();
+
+            svpGlass.Tag = Part.Glass;
+            svpRubberStrip.Tag = Part.RubberStrip;
+            svpHousing.Tag = Part.Housing;
 
             _wizardPresenter.CheckData();
         }
@@ -168,10 +176,10 @@ namespace Oil_level_glass.UI.Wizard3d
             if (sender is SavingParametersEditor editor)
             {
                 _wizardPresenter.UpdatePartSavingParameter(
-                    editor.Tag,
-                    editor.FolderPath,
-                    editor.Naming,
-                    editor.Marking);
+                      editor.Tag,
+                      editor.FolderPath,
+                      editor.Naming,
+                      editor.Marking);
             }
 
             _wizardPresenter.CheckData();
@@ -180,49 +188,6 @@ namespace Oil_level_glass.UI.Wizard3d
         private void btResetData_Click(object sender, EventArgs e)
         {
             _wizardPresenter.SetInitialValues.Invoke();
-            //string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        }
-
-
-        private void InvokeGlassEditorForm()
-        {
-            GlassEditorForm form = new GlassEditorForm()
-            {
-                Owner = this,
-                Model = _glass
-            };
-            form.ShowDialog();
-        }
-
-
-        private void InvokeRubberStripForm()
-        {
-            if (_glass.Error == string.Empty)
-            {
-                RubberStripEditorForm form = new RubberStripEditorForm()
-                {
-                    Owner = this,
-                    Model = _rubberStrip
-                };
-                form.ShowDialog();
-            }
-            else
-                MessageBox.Show(this, "Перед началом конфигурации прокладки необходимо сконфигурировать линзу!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
-        private void InvokeHousingEditorForm()
-        {
-            if (_rubberStrip.Error == string.Empty)
-            {
-                HousingEditorForm form = new HousingEditorForm()
-                {
-                    Owner = this,
-                    Model = _housing
-                };
-                form.ShowDialog();
-            }
-            else
-                MessageBox.Show(this, "Перед началом конфигурации корпуса необходимо сконфигурировать прокладку!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

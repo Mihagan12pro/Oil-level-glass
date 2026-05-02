@@ -33,9 +33,9 @@
             splitContainer2 = new SplitContainer();
             tabSaving = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
-            saveEditorRubberStrip = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            saveEditorGlass = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            saveEditorHousing = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            svpHousing = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            svpGlass = new Oil_level_glass.UI.Controls.SavingParametersEditor();
+            svpRubberStrip = new Oil_level_glass.UI.Controls.SavingParametersEditor();
             tabSizes = new TabPage();
             splitSizes = new SplitContainer();
             tvParts = new TreeView();
@@ -108,9 +108,9 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(saveEditorRubberStrip, 2, 0);
-            tableLayoutPanel1.Controls.Add(saveEditorGlass, 1, 0);
-            tableLayoutPanel1.Controls.Add(saveEditorHousing, 0, 0);
+            tableLayoutPanel1.Controls.Add(svpHousing, 0, 0);
+            tableLayoutPanel1.Controls.Add(svpGlass, 1, 0);
+            tableLayoutPanel1.Controls.Add(svpRubberStrip, 2, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -119,44 +119,41 @@
             tableLayoutPanel1.Size = new Size(1305, 846);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // saveEditorRubberStrip
+            // svpHousing
             // 
-            saveEditorRubberStrip.FolderPath = "";
-            saveEditorRubberStrip.Header = "Прокладка";
-            saveEditorRubberStrip.Location = new Point(880, 3);
-            saveEditorRubberStrip.Margin = new Padding(10, 3, 10, 10);
-            saveEditorRubberStrip.Marking = null;
-            saveEditorRubberStrip.Name = "saveEditorRubberStrip";
-            saveEditorRubberStrip.Naming = null;
-            saveEditorRubberStrip.Size = new Size(415, 791);
-            saveEditorRubberStrip.TabIndex = 2;
-            saveEditorRubberStrip.UpdateModel += saveEditor_UpdateModel;
+            svpHousing.FolderPath = null;
+            svpHousing.Header = "Корпус";
+            svpHousing.Location = new Point(20, 3);
+            svpHousing.Margin = new Padding(20, 3, 20, 10);
+            svpHousing.Marking = null;
+            svpHousing.Name = "svpHousing";
+            svpHousing.Size = new Size(395, 833);
+            svpHousing.TabIndex = 0;
+            svpHousing.UpdateModel += saveEditor_UpdateModel;
             // 
-            // saveEditorGlass
+            // svpGlass
             // 
-            saveEditorGlass.FolderPath = "";
-            saveEditorGlass.Header = "Линза";
-            saveEditorGlass.Location = new Point(445, 3);
-            saveEditorGlass.Margin = new Padding(10, 3, 10, 10);
-            saveEditorGlass.Marking = null;
-            saveEditorGlass.Name = "saveEditorGlass";
-            saveEditorGlass.Naming = null;
-            saveEditorGlass.Size = new Size(415, 791);
-            saveEditorGlass.TabIndex = 1;
-            saveEditorGlass.UpdateModel += saveEditor_UpdateModel;
+            svpGlass.FolderPath = null;
+            svpGlass.Header = "Линза";
+            svpGlass.Location = new Point(435, 3);
+            svpGlass.Margin = new Padding(0, 3, 20, 10);
+            svpGlass.Marking = null;
+            svpGlass.Name = "svpGlass";
+            svpGlass.Size = new Size(415, 833);
+            svpGlass.TabIndex = 1;
+            svpGlass.UpdateModel += saveEditor_UpdateModel;
             // 
-            // saveEditorHousing
+            // svpRubberStrip
             // 
-            saveEditorHousing.FolderPath = "";
-            saveEditorHousing.Header = "Корпус";
-            saveEditorHousing.Location = new Point(10, 3);
-            saveEditorHousing.Margin = new Padding(10, 3, 10, 10);
-            saveEditorHousing.Marking = null;
-            saveEditorHousing.Name = "saveEditorHousing";
-            saveEditorHousing.Naming = null;
-            saveEditorHousing.Size = new Size(415, 791);
-            saveEditorHousing.TabIndex = 0;
-            saveEditorHousing.UpdateModel += saveEditor_UpdateModel;
+            svpRubberStrip.FolderPath = null;
+            svpRubberStrip.Header = "Прокладка";
+            svpRubberStrip.Location = new Point(870, 3);
+            svpRubberStrip.Margin = new Padding(0, 3, 20, 10);
+            svpRubberStrip.Marking = null;
+            svpRubberStrip.Name = "svpRubberStrip";
+            svpRubberStrip.Size = new Size(415, 833);
+            svpRubberStrip.TabIndex = 2;
+            svpRubberStrip.UpdateModel += saveEditor_UpdateModel;
             // 
             // tabSizes
             // 
@@ -275,23 +272,23 @@
         private Controls.MaterialChooser mcHousing;
         private Controls.MaterialChooser materialChooser1;
         private Controls.MaterialChooser materialChooser2;
-        private Controls.SavingParametersEditor savingParametersEditor1;
-        private Controls.SavingParametersEditor savingParametersEditor2;
-        private Controls.SavingParametersEditor savingParametersEditor3;
+        private Controls.SavingParametersEditor svpHousing;
+        private Controls.SavingParametersEditor svpGlass;
+        private Controls.SavingParametersEditor svpRubberStrip;
         private Controls.AppeareanceEditor appeareanceEditor1;
         private Controls.AppeareanceEditor appeareanceEditor3;
         private Controls.AppeareanceEditor appeareanceEditor2;
         private SplitContainer splitContainer2;
         private TabPage tabSaving;
-        private TableLayoutPanel tableLayoutPanel1;
         private TabPage tabSizes;
         private SplitContainer splitSizes;
         private TreeView tvParts;
         private PictureBox pbSketch;
         private TabControl tbCtlrModelParams;
-        private Controls.SavingParametersEditor saveEditorRubberStrip;
-        private Controls.SavingParametersEditor saveEditorGlass;
-        private Controls.SavingParametersEditor saveEditorHousing;
         private Button btResetData;
+        private Controls.SavingParametersEditor savingParametersEditor4;
+        private Controls.SavingParametersEditor savingParametersEditor5;
+        private Controls.SavingParametersEditor savingParametersEditor6;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

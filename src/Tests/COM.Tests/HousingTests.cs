@@ -1,14 +1,6 @@
 ﻿using Oil_level_glass.Core.COM;
-using Oil_level_glass.Core.Glass;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Materials;
-using Oil_level_glass.Model.Data.Operations.Chamfers;
 using Oil_level_glass.Model.Data.ScrewHoles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace COM.Tests
 {
@@ -60,7 +52,7 @@ namespace COM.Tests
             housing.ScrewHolesCount = 4;
 
             housing.Chamfer.Side1 = 2;
-            ((ChamferAngleLengthModel)housing.Chamfer).Angle = 45;
+            housing.Chamfer.Angle = 45;
 
             housing.File.Name.Naming = "Корпус";
             housing.File.Folder = "D:\\";
