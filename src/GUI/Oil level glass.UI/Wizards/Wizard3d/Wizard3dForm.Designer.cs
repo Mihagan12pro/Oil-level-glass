@@ -41,7 +41,6 @@
             tvParts = new TreeView();
             pbSketch = new PictureBox();
             tbCtlrModelParams = new TabControl();
-            btResetData = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
             tabSaving.SuspendLayout();
@@ -127,6 +126,7 @@
             svpHousing.Margin = new Padding(20, 3, 20, 10);
             svpHousing.Marking = null;
             svpHousing.Name = "svpHousing";
+            svpHousing.Naming = null;
             svpHousing.Size = new Size(395, 833);
             svpHousing.TabIndex = 0;
             svpHousing.UpdateModel += saveEditor_UpdateModel;
@@ -139,6 +139,7 @@
             svpGlass.Margin = new Padding(0, 3, 20, 10);
             svpGlass.Marking = null;
             svpGlass.Name = "svpGlass";
+            svpGlass.Naming = null;
             svpGlass.Size = new Size(415, 833);
             svpGlass.TabIndex = 1;
             svpGlass.UpdateModel += saveEditor_UpdateModel;
@@ -151,6 +152,7 @@
             svpRubberStrip.Margin = new Padding(0, 3, 20, 10);
             svpRubberStrip.Marking = null;
             svpRubberStrip.Name = "svpRubberStrip";
+            svpRubberStrip.Naming = null;
             svpRubberStrip.Size = new Size(415, 833);
             svpRubberStrip.TabIndex = 2;
             svpRubberStrip.UpdateModel += saveEditor_UpdateModel;
@@ -222,24 +224,11 @@
             tbCtlrModelParams.Size = new Size(1321, 900);
             tbCtlrModelParams.TabIndex = 2;
             // 
-            // btResetData
-            // 
-            btResetData.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btResetData.Location = new Point(804, 928);
-            btResetData.Margin = new Padding(5);
-            btResetData.Name = "btResetData";
-            btResetData.Size = new Size(153, 46);
-            btResetData.TabIndex = 3;
-            btResetData.Text = "Очистить";
-            btResetData.UseVisualStyleBackColor = true;
-            btResetData.Click += btResetData_Click;
-            // 
             // Wizard3dForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1360, 988);
-            Controls.Add(btResetData);
             Controls.Add(btCancel);
             Controls.Add(btOk);
             Controls.Add(tbCtlrModelParams);
@@ -285,7 +274,6 @@
         private TreeView tvParts;
         private PictureBox pbSketch;
         private TabControl tbCtlrModelParams;
-        private Button btResetData;
         private Controls.SavingParametersEditor savingParametersEditor4;
         private Controls.SavingParametersEditor savingParametersEditor5;
         private Controls.SavingParametersEditor savingParametersEditor6;

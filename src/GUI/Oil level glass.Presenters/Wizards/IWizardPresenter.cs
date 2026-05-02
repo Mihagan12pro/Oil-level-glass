@@ -11,8 +11,6 @@ namespace Oil_level_glass.Presenters.Wizards
 
         Result Create();
 
-        Action SetInitialValues { get; }
-
         Action InvokeGlassEditor { get; }
         Action InvokeHousingEditor { get; }
         Action InvokeRubberStripEditor { get; }

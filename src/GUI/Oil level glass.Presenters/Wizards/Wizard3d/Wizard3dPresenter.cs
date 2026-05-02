@@ -20,8 +20,6 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
         public Action CheckData { get; }
 
-        public Action SetInitialValues { get; }
-
         public void InvokeEditor(object tag)
         {
             if (tag is Part part)
@@ -134,8 +132,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             Action invokeGlassEditor,
             Action invokeRubberStripEditor,
             Action invokeHousingEditor,
-            Action checkData,
-            Action setInitialValues)
+            Action checkData)
         {
             _wizardForm = wizardForm;
 
@@ -148,7 +145,6 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             InvokeHousingEditor = invokeHousingEditor;
 
             CheckData = checkData;
-            SetInitialValues = setInitialValues;
         }
     }
 }

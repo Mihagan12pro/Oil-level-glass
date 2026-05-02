@@ -32,6 +32,7 @@ namespace Oil_level_glass.UI.Wizard3d
             _rubberStrip.Material.Title = "Смесь резиновая 3063 ТУ 38-1051082-86";
             _rubberStrip.Material.Density = 1.28;
 
+
             _housing = new HousingModel();
             _housing.Material.Title = "Сталь 10 ГОСТ 1050-2013";
             _housing.Material.Density = 7.856;
@@ -88,13 +89,7 @@ namespace Oil_level_glass.UI.Wizard3d
                     btOk.Enabled = (_glass.Error == string.Empty &&
                         _housing.Error == string.Empty &&
                         _rubberStrip.Error == string.Empty);
-                },
-                () => 
-                { 
-
                 });
-
-            _wizardPresenter.SetInitialValues();
         }
 
         private void tvParts_DoubleClick(object sender, EventArgs e)
@@ -153,8 +148,16 @@ namespace Oil_level_glass.UI.Wizard3d
             tvParts.ExpandAll();
 
             svpGlass.Tag = Part.Glass;
+            svpGlass.Naming = "Линза";
+            svpGlass.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); ;
+
             svpRubberStrip.Tag = Part.RubberStrip;
+            svpRubberStrip.Naming = "Прокладка";
+            svpRubberStrip.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
             svpHousing.Tag = Part.Housing;
+            svpHousing.Naming = "Корпус";
+            svpHousing.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             _wizardPresenter.CheckData();
         }
@@ -186,11 +189,6 @@ namespace Oil_level_glass.UI.Wizard3d
             }
 
             _wizardPresenter.CheckData();
-        }
-
-        private void btResetData_Click(object sender, EventArgs e)
-        {
-            _wizardPresenter.SetInitialValues.Invoke();
         }
     }
 }
