@@ -3,9 +3,6 @@
     public abstract class Material 
         : BaseModel
     {
-        public override string Error 
-            => this[nameof(Density)] + this[nameof(Title)];
-
         private double _density;
         public double Density
         {

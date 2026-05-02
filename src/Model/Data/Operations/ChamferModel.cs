@@ -62,26 +62,6 @@ namespace Oil_level_glass.Model.Data.Operations
             }
         }
 
-        public override string Error
-        {
-            get
-            {
-                string error = string.Empty;
-
-                foreach (var property in this.GetType().GetProperties())
-                {
-                    string propertyError = this[property.Name];
-
-                    if (propertyError != string.Empty)
-                    {
-                        error += propertyError + '\n';
-                    }
-                }
-
-                return error;
-            }
-        }
-
         protected override string CheckField(string columnName)
         {
             string error = string.Empty;

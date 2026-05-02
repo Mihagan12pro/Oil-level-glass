@@ -52,8 +52,6 @@
             }
         }
 
-        public override string Error => string.Empty;
-
         public RGB(int red, int green, int blue)
         {
             Red = red;

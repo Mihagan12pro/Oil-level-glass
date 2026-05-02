@@ -180,6 +180,7 @@
             tbFolderPath.Location = new Point(40, 96);
             tbFolderPath.Margin = new Padding(40, 3, 40, 3);
             tbFolderPath.Name = "tbFolderPath";
+            tbFolderPath.ReadOnly = true;
             tbFolderPath.Size = new Size(320, 39);
             tbFolderPath.TabIndex = 1;
             tbFolderPath.TextChanged += tb_TextChanged;

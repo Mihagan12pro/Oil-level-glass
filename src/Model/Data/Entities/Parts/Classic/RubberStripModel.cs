@@ -88,51 +88,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             return error;
         }
 
-        public override string Error
-        {
-            get
-            {
-                string[] errorsArray = new string[0];
-
-                string heightError = this[nameof(Height)];
-                if (heightError != string.Empty)
-                {
-                    int length = errorsArray.Length;
-
-                    Array.Resize(ref errorsArray, length + 1);
-                    errorsArray[length] = heightError + '\n'; 
-                }
-
-
-                string externalDiameterError = this[nameof(ExternalDiameter)];
-                if (externalDiameterError != string.Empty)
-                {
-                    int length = errorsArray.Length;
-
-                    Array.Resize(ref errorsArray, length + 1);
-                    errorsArray[length] = externalDiameterError + '\n';
-                }
-
-                string internalDiameterError = this[nameof(InternalDiameter)];
-                if (internalDiameterError != string.Empty)
-                {
-                    int length = errorsArray.Length;
-
-                    Array.Resize(ref errorsArray, length + 1);
-                    errorsArray[length] = internalDiameterError + '\n';
-                }
-
-                string errors = string.Empty;
-                IEnumerable<string> errorsDictionary = errorsArray.Distinct();
-                foreach (string error in errorsDictionary)
-                {
-                    errors += error;   
-                }
-
-                return errors;
-            }
-        }
-
 
         public RubberStripModel()
         {

@@ -154,39 +154,4 @@ public class HousingModel
 
         return error;
     }
-
-    public override string Error
-    {
-        get
-        {
-            string error = string.Empty;
-
-            foreach (var property in this.GetType().GetProperties())
-            {
-                string propertyError = this[property.Name];
-
-                if (property.Name == nameof(Hole))
-                {
-                    error += Hole.Error;
-                }
-                else if (property.Name == nameof(Chamfer))
-                {
-                    error += Chamfer.Error;
-                }
-                else if (property.Name == nameof(File))
-                {
-                    error += File.Error;
-                }
-                else
-                {
-                    if (propertyError != string.Empty)
-                    {
-                        error += propertyError + '\n';
-                    }
-                }
-            }
-
-            return error;
-        }
-    }
 }

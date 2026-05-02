@@ -50,25 +50,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             }
         }
 
-        public override string Error
-        {
-            get
-            {
-                string errors = string.Empty;
-
-
-                string heightError = this[nameof(Height)];
-                if (heightError != string.Empty)
-                    errors += heightError + '\n';
-                
-                string externalDiameterError = this[nameof(Diameter)];
-                if (externalDiameterError != string.Empty)
-                    errors += externalDiameterError;
-
-                return errors;
-            }
-        }
-
         protected override string CheckField(string columnName)
         {
             string error = string.Empty;

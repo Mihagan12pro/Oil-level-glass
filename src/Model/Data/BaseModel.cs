@@ -19,12 +19,34 @@ namespace Oil_level_glass.Model.Data
             }
         }
 
-        public abstract string Error { get; }
-
-        public virtual void ResetFields()
+        public string Error
         {
+            get
+            {
+                string error = string.Empty;
 
+                Type modelType = this.GetType();
+                foreach(PropertyInfo prop in modelType.GetProperties())
+                {
+                    if (typeof(BaseModel).IsAssignableFrom(prop.PropertyType))
+                    {
+                        BaseModel model = (BaseModel)prop.GetValue(this);
+
+                        error += model.Error;
+                    }
+                    else
+                    {
+                        if (this[prop.Name] != string.Empty)
+                        {
+                            error += this[prop.Name] + '\n';
+                        }
+                    }
+                }
+
+                return error;
+            }
         }
+
 
         protected abstract string CheckField(string columnName);
 

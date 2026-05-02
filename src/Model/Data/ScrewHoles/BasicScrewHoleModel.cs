@@ -43,25 +43,5 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
 
             return error;
         }
-
-        public override string Error
-        {
-            get
-            {
-                string error = string.Empty;
-
-                foreach (var property in this.GetType().GetProperties())
-                {
-                    string propertyError = this[property.Name];
-
-                    if (propertyError != string.Empty)
-                    {
-                        error += propertyError + '\n';
-                    }
-                }
-
-                return error;
-            }
-        }
     }
 }

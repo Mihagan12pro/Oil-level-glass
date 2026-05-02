@@ -30,22 +30,6 @@ public class Name : BaseModel
         }
     }
 
-    public override string Error
-    {
-        get
-        {
-            string error = string.Empty;
-
-            string namingError = this[nameof(Naming)];
-            if (namingError != string.Empty)
-            {
-                error += namingError + '\n';
-            }
-
-            return error;
-        }
-    }
-
     protected override string CheckField(string columnName)
     {
         string error = string.Empty;
@@ -56,13 +40,6 @@ public class Name : BaseModel
                 {
                     if (string.IsNullOrEmpty(Naming))
                         error = "Naming can't be empty string!";
-
-                    break;
-                }
-            case nameof(Marking):
-                {
-                    if (string.IsNullOrEmpty(Marking))
-                        error = "Marking can't be empty string!";
 
                     break;
                 }

@@ -53,7 +53,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
                 () =>
                 {
-                    if (_glass.Error == string.Empty)
+                    if (_glass[nameof(_glass.Diameter)] == string.Empty &&
+                        _glass[nameof(_glass.Height)] == string.Empty)
                     {
                         RubberStripEditorForm form = new RubberStripEditorForm()
                         {
@@ -68,7 +69,9 @@ namespace Oil_level_glass.UI.Wizard3d
 
                 () =>
                 {
-                    if (_rubberStrip.Error == string.Empty)
+                    if (_rubberStrip[nameof(_rubberStrip.ExternalDiameter)] == string.Empty &&
+                        _rubberStrip[nameof(_rubberStrip.InternalDiameter)] ==  string.Empty &&
+                        _rubberStrip[nameof(_rubberStrip.Height)] == string.Empty)
                     {
                         HousingEditorForm form = new HousingEditorForm()
                         {
