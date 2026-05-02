@@ -21,6 +21,11 @@ namespace Oil_level_glass.Model.Data
 
         public abstract string Error { get; }
 
+        public virtual void ResetFields()
+        {
+
+        }
+
         protected abstract string CheckField(string columnName);
 
         public event PropertyChangedEventHandler PropertyChanged;

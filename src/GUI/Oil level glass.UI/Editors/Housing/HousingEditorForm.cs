@@ -70,7 +70,15 @@ namespace Oil_level_glass.UI.Editors.Housing
 
             _housingEditorPresenter = PresentersFactory.CreateHousingEditorPresenter(this, checkData);
 
-            _housingEditorPresenter.CheckData.Invoke();
+            if (Model[nameof(Model.MainDiameter)] == string.Empty && Model[nameof(Model.MainHeight)] == string.Empty)
+            {
+                tbMainDiameter.Text = Model.MainDiameter.ToString();
+                tbMainHeight.Text = Model.MainHeight.ToString();
+            }
+            else
+            {
+                _housingEditorPresenter.CheckData.Invoke();
+            }
         }
 
         private void btResetData_Click(object sender, EventArgs e)

@@ -179,7 +179,50 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void btResetData_Click(object sender, EventArgs e)
         {
-            string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            _wizardPresenter.SetInitialValues.Invoke();
+            //string myDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        }
+
+
+        private void InvokeGlassEditorForm()
+        {
+            GlassEditorForm form = new GlassEditorForm()
+            {
+                Owner = this,
+                Model = _glass
+            };
+            form.ShowDialog();
+        }
+
+
+        private void InvokeRubberStripForm()
+        {
+            if (_glass.Error == string.Empty)
+            {
+                RubberStripEditorForm form = new RubberStripEditorForm()
+                {
+                    Owner = this,
+                    Model = _rubberStrip
+                };
+                form.ShowDialog();
+            }
+            else
+                MessageBox.Show(this, "Перед началом конфигурации прокладки необходимо сконфигурировать линзу!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void InvokeHousingEditorForm()
+        {
+            if (_rubberStrip.Error == string.Empty)
+            {
+                HousingEditorForm form = new HousingEditorForm()
+                {
+                    Owner = this,
+                    Model = _housing
+                };
+                form.ShowDialog();
+            }
+            else
+                MessageBox.Show(this, "Перед началом конфигурации корпуса необходимо сконфигурировать прокладку!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }
