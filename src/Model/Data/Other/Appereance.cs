@@ -1,38 +1,113 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Oil_level_glass.Model.Data.Other
+﻿namespace Oil_level_glass.Model.Data.Other
 {
-    public class Appereance : BaseModel
+    public class Appearance
+        : BaseModel
     {
-        public double Ambient { get; set; } = 0.5;
+        public RGB Color { get; set; } = new RGB(144, 144, 144);
 
-        public double Diffuse { get; set; } = 0.6;
-
-        public double Shininess { get; set; } = 0.8;
-
-        public double Transparency { get; set; } = 1;
-
-        public double Specularity { get; set; } = 0.8;
-
-        public double Emission { get; set; } = 0.5;
-
-        public int Red { get; set; } = 144;
-
-        public int Green { get; set; } = 144;
-
-        public int Blue { get; set; } = 144;
-
-        public int Color
+        private double _ambient;
+        public double Ambient
         {
             get
             {
-                return ((Red | (Green << 8)) | (Blue << 16));
+                return _ambient;
+            }
+            set
+            {
+                _ambient = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private double _diffuse;
+        public double Diffuse
+        {
+            get
+            {
+                return _diffuse;
+            }
+            set
+            {
+                _diffuse = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private double _shininess;
+        public double Shininess
+        {
+            get
+            {
+                return _shininess;
+            }
+            set
+            {
+                _shininess = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private double _transparency;
+        public double Transparency
+        {
+            get
+            {
+                return _transparency;
+            }
+            set
+            {
+                _transparency = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private double _specularity;
+        public double Specularity
+        {
+            get
+            {
+                return _specularity;
+            }
+            set
+            {
+                _specularity = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private double _emission;
+        public double Emission
+        {
+            get
+            {
+                return _emission;
+            }
+            set
+            {
+                _emission = value;
+
+                OnPropertyChanged();
             }
         }
 
         protected override string CheckField(string columnName)
         {
-            throw new NotImplementedException();
+            return string.Empty;
+        }
+
+        public Appearance()
+        {
+            Shininess = 0.8;
+            Transparency = 1;
+            Ambient = 0.5;
+            Emission = 0.5;
+            Specularity = 0.8;
+            Diffuse = 0.6;
         }
     }
 }

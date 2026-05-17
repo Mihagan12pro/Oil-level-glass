@@ -1,36 +1,78 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
+using System.ComponentModel;
 
-namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
-
-public class GlassModel : BaseDetailModel
+namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
-    public GlassModel()
+    public class GlassModel : BaseDetailModel
     {
-        Material = new Glass();
-        Material.Title = "Стекло";
-        Material.Density = 6;
-
-        Appereance.Transparency = 0.74;
-        Appereance.Ambient = 0.5;
-        Appereance.Diffuse = 0.6;
-        Appereance.Specularity = 0.8;
-        Appereance.Shininess = 0.8;
-        Appereance.Emission = 0.5;
-    }
-
-    public double ExternalDiameter { get; set; }
-
-    public double Height { get; set; }
-
-    protected override string CheckField(string columnName)
-    {
-        string error = string.Empty;
-
-        if (columnName == nameof(ExternalDiameter) || columnName == nameof(Height))
+        public GlassModel()
         {
-            error = CheckMinimumValue(columnName);
+            Material = new Glass();
+
+            Appearance.Transparency = 0.74;
+            Appearance.Ambient = 0.5;
+            Appearance.Diffuse = 0.6;
+            Appearance.Specularity = 0.8;
+            Appearance.Shininess = 0.8;
+            Appearance.Emission = 0.5;
         }
 
-        return error;
+        private double _externalDiameter;
+        [DisplayName("Diameter")]
+        public double Diameter
+        {
+            get
+            {
+                return _externalDiameter; 
+            }
+            set
+            {
+                _externalDiameter = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        private double _height;
+
+        [DisplayName("Height")]
+        public double Height
+        {
+            get
+            {
+                return _height;
+            }
+            set
+            {
+                _height = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        protected override string CheckField(string columnName)
+        {
+            string error = string.Empty;
+
+            switch (columnName)
+            {
+                case nameof(Height):
+                    {
+                        if (Height <= 0)
+                            error = "Height must be greater than zero!";
+
+                        break;
+                    }
+                case nameof(Diameter):
+                    {
+                        if (Diameter <= 0)
+                            error = "Diameter must be greater than zero!";
+
+                        break;
+                    }
+            }
+
+            return error;
+        }
     }
 }

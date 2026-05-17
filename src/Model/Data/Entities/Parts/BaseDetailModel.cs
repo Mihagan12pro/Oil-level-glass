@@ -2,17 +2,22 @@
 using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.Model.Data.Other;
 
-namespace Oil_level_glass.Model.Data.Entities.Parts;
-
-public abstract class BaseDetailModel : BaseEntityModel
+namespace Oil_level_glass.Model.Data.Entities.Parts
 {
-    public BaseDetailModel()
+    /// <summary>
+    /// Base class for entities that describe solid parts
+    /// </summary>
+    public abstract class BaseDetailModel 
+        : BaseEntityModel
     {
-        File = new PartFile();
+        public BaseDetailModel()
+        {
+            File = new PartFile();
 
-        Appereance = new Appereance();
+            Appearance = new Appearance();
+        }
+
+        public Appearance Appearance { get; init; }
+        public Material? Material { get; init; }
     }
-
-    public Appereance Appereance { get; init; }
-    public Material? Material { get; init; }
 }

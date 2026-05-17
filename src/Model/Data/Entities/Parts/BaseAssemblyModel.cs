@@ -1,11 +1,15 @@
 ﻿using Oil_level_glass.Model.Data.KompasFile;
 
-namespace Oil_level_glass.Model.Data.Entities.Parts;
-
-public abstract class BaseAssemblyModel : BaseEntityModel
+namespace Oil_level_glass.Model.Data.Entities.Parts
 {
-    public BaseAssemblyModel()
+    /// <summary>
+    /// Base class for entities that describe assemblies
+    /// </summary>
+    public abstract class BaseAssemblyModel : BaseEntityModel
     {
-        File = new AssemblyFile();
+        public BaseAssemblyModel()
+        {
+            File = new AssemblyFile();
+        }
     }
 }

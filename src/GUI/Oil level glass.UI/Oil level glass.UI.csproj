@@ -1,27 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <RootNamespace>Oil_level_glass_UI</RootNamespace>
+    <RootNamespace>Oil_level_glass.UI</RootNamespace>
     <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-    <AssemblyName>Oil level glass</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\appIcon.ico" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KompasWPF\KompasWPF.csproj" />
-    <ProjectReference Include="..\Oil level glass.ViewModels\Oil level glass.ViewModels.csproj" />
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\appIcon.ico" />
-    <Resource Include="Resources\Images\Oil level glass.png" />
+    <Folder Include="Editors\Glass\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\COM\Oil level glass.Core.COM.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Oil level glass.Presenters\Oil level glass.Presenters.csproj" />
+    <ProjectReference Include="..\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj" />
+    <ProjectReference Include="..\Oil level glass.UI.Controls\Oil level glass.UI.Controls.csproj" />
   </ItemGroup>
 
 </Project>

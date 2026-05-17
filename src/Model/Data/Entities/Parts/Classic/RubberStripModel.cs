@@ -1,35 +1,97 @@
 ﻿using Oil_level_glass.Model.Data.Materials;
+using System.ComponentModel;
 
-namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
-
-public class RubberStripModel : BaseDetailModel
+namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
-    public RubberStripModel()
+    public class RubberStripModel : BaseDetailModel
     {
-        Material = new Rubber();
+        private double _internalDiameter, _height, _externalDiameter;
 
-        Appereance.Blue = 0;
-        Appereance.Red = 0;
-        Appereance.Green = 0;
-    }
-
-    public double InternalDiameter { get; set; }
-
-    public double ExternalDiameter { get; set; }
-
-    public double Height { get; set; }
-
-    protected override string CheckField(string columnName)
-    {
-        string error = string.Empty;
-
-        if ( columnName == nameof(Height) ||
-             columnName == nameof(ExternalDiameter) ||
-             columnName == nameof(InternalDiameter) )
+        [DisplayName("Internal diameter")]
+        public double InternalDiameter
         {
-            error = CheckMinimumValue(columnName);
+            get
+            {
+                return _internalDiameter; 
+            }
+            set
+            {
+                _internalDiameter = value;
+
+                OnPropertyChanged();
+            }
         }
 
-        return error;
+        [DisplayName("External diameter")]
+        public double ExternalDiameter
+        {
+            get
+            {
+                return _externalDiameter; 
+            }
+            set
+            {
+                _externalDiameter = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        [DisplayName("Height")]
+        public double Height
+        {
+            get 
+            {
+                return _height;
+            }
+            set
+            {
+                _height = value;
+
+                OnPropertyChanged();
+            }
+        }
+
+        protected override string CheckField(string columnName)
+        {
+            string error = string.Empty;
+
+            switch(columnName)
+            {
+                case nameof(Height):
+                    {
+                        if (Height <= 0)
+                            error = "Ring height must be greater than zero!";
+
+                        break;
+                    }
+                case nameof(InternalDiameter):
+                    {
+                        if (InternalDiameter <= 0)
+                            error = "Ring internal diameter must be greater than zero!";
+                        else if (InternalDiameter >= ExternalDiameter)
+                            error = "External diameter must be greater than internal diameter!";
+
+                        break;
+                    }
+                case nameof(ExternalDiameter):
+                    {
+                        if (ExternalDiameter <= 0)
+                            error = "Ring external diameter must be greater than zero!";
+                        else if (InternalDiameter >= ExternalDiameter)
+                            error = "External diameter must be greater than internal diameter!";
+
+                        break;
+                    }
+            }
+
+            return error;
+        }
+
+
+        public RubberStripModel()
+        {
+            Material = new Rubber();
+        }
     }
 }

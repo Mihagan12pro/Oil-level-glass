@@ -3,10 +3,36 @@
     public abstract class Material 
         : BaseModel
     {
-        public double Density { get; set; }
-    
-        public string? Title { get; set; } = string.Empty;
-    
+        private double _density;
+        public double Density
+        {
+            get 
+            {
+                return _density; 
+            }
+            set 
+            {
+                _density = value; 
+                OnPropertyChanged(nameof(Density)); 
+            }
+        }
+
+
+        private string _title;
+        public string Title
+        {
+            get 
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value; 
+                OnPropertyChanged(nameof(Title)); 
+            }
+        }
+
+
         public double MinDensity { get; init; }
     
         public double MaxDensity { get; init; }
@@ -46,16 +72,34 @@
         {
             string error = string.Empty;
 
-            if (columnName == nameof(Density))
-                error = CheckRange(columnName, MinDensity, MaxDensity, false);
+            switch(columnName)
+            {
+                case nameof(Title):
+                    { 
+                        if (string.IsNullOrEmpty(Title))
+                            error = "Material title can't be empty string!";
+                            break;
+                    }
 
-            else if (columnName == nameof(Title))
-                error = CheckEmptyString(columnName);
+                case nameof(Density):
+                    {
+                        if (MaxDensity < Density)
+                            error = "Material density can't be greater than max density for this material class!";
+                        else if (MinDensity > Density)
+                            error = "Material density must be greater than min density for this class!";
+                            break;
+                    }
+            }
 
             return error;
         }
 
         public static string InvalidHatchError
             => "Invalid hatch!";
+
+        protected Material()
+        {
+            Title = string.Empty;   
+        }
     }
 }
