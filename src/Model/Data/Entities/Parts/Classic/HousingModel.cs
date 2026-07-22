@@ -142,8 +142,8 @@ public class HousingModel
         switch(columnName)
         {
             case nameof(MainDiameter):
-                if (MainDiameter <= GlassSocketDiameter)
-                    error = "Main diameter is must be greater than other diameters!";
+                if (MainDiameter / GlassSocketDiameter < 1.5)
+                    error = "Main diameter must be at least 1.5 times larger than glass socket diameter!";
                 break;
 
             case nameof(MainHeight):
