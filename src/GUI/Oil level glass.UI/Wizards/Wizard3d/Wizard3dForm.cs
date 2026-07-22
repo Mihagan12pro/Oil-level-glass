@@ -71,7 +71,7 @@ namespace Oil_level_glass.UI.Wizard3d
                 () =>
                 {
                     if (_rubberStrip[nameof(_rubberStrip.ExternalDiameter)] == string.Empty &&
-                        _rubberStrip[nameof(_rubberStrip.InternalDiameter)] ==  string.Empty &&
+                        _rubberStrip[nameof(_rubberStrip.InternalDiameter)] == string.Empty &&
                         _rubberStrip[nameof(_rubberStrip.Height)] == string.Empty)
                     {
                         HousingEditorForm form = new HousingEditorForm()
@@ -94,10 +94,13 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tvParts_DoubleClick(object sender, EventArgs e)
         {
-            TreeNode treeNode = tvParts.SelectedNode;
+            if (tvParts.SelectedNode != null)
+            {
+                TreeNode treeNode = tvParts.SelectedNode;
 
-            _wizardPresenter.InvokeEditor(treeNode.Tag);
-            _wizardPresenter.UpdateModel();
+                _wizardPresenter.InvokeEditor(treeNode.Tag);
+                _wizardPresenter.UpdateModel();
+            }
         }
 
         private void tvParts_AfterSelect(object sender, TreeViewEventArgs e)
@@ -189,6 +192,17 @@ namespace Oil_level_glass.UI.Wizard3d
             }
 
             _wizardPresenter.CheckData();
+        }
+
+        private void btConfigPart_Click(object sender, EventArgs e)
+        {
+            if (tvParts.SelectedNode != null)
+            {
+                TreeNode treeNode = tvParts.SelectedNode;
+
+                _wizardPresenter.InvokeEditor(treeNode.Tag);
+                _wizardPresenter.UpdateModel();
+            }
         }
     }
 }
