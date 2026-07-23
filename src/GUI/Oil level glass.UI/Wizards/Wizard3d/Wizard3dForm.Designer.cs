@@ -213,6 +213,7 @@
             tvParts.TabIndex = 0;
             tvParts.AfterSelect += tvParts_AfterSelect;
             tvParts.DoubleClick += tvParts_DoubleClick;
+            tvParts.KeyDown += tvParts_KeyDown;
             // 
             // pbSketch
             // 
