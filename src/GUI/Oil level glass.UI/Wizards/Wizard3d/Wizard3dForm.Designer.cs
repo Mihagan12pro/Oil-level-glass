@@ -31,29 +31,23 @@
             btOk = new Button();
             btCancel = new Button();
             splitContainer2 = new SplitContainer();
-            tabSaving = new TabPage();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            svpHousing = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            svpGlass = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            svpRubberStrip = new Oil_level_glass.UI.Controls.SavingParametersEditor();
-            tabSizes = new TabPage();
+            button1 = new Button();
             splitSizes = new SplitContainer();
             btConfigPart = new Button();
             tvParts = new TreeView();
             pbSketch = new PictureBox();
-            tbCtlrModelParams = new TabControl();
-            button1 = new Button();
+            menuStrip1 = new MenuStrip();
+            файлToolStripMenuItem = new ToolStripMenuItem();
+            папкаToolStripMenuItem = new ToolStripMenuItem();
+            имяToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
-            tabSaving.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            tabSizes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitSizes).BeginInit();
             splitSizes.Panel1.SuspendLayout();
             splitSizes.Panel2.SuspendLayout();
             splitSizes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbSketch).BeginInit();
-            tbCtlrModelParams.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // btOk
@@ -92,90 +86,20 @@
             splitContainer2.SplitterWidth = 2;
             splitContainer2.TabIndex = 0;
             // 
-            // tabSaving
+            // button1
             // 
-            tabSaving.Controls.Add(tableLayoutPanel1);
-            tabSaving.Location = new Point(8, 46);
-            tabSaving.Margin = new Padding(5);
-            tabSaving.Name = "tabSaving";
-            tabSaving.Size = new Size(1305, 846);
-            tabSaving.TabIndex = 2;
-            tabSaving.Text = "Сохранение";
-            tabSaving.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(svpHousing, 0, 0);
-            tableLayoutPanel1.Controls.Add(svpGlass, 1, 0);
-            tableLayoutPanel1.Controls.Add(svpRubberStrip, 2, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1305, 846);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // svpHousing
-            // 
-            svpHousing.FolderPath = null;
-            svpHousing.Header = "Корпус";
-            svpHousing.Location = new Point(20, 3);
-            svpHousing.Margin = new Padding(20, 3, 20, 10);
-            svpHousing.Marking = null;
-            svpHousing.Name = "svpHousing";
-            svpHousing.Naming = null;
-            svpHousing.Size = new Size(395, 833);
-            svpHousing.TabIndex = 0;
-            svpHousing.UpdateModel += saveEditor_UpdateModel;
-            // 
-            // svpGlass
-            // 
-            svpGlass.FolderPath = null;
-            svpGlass.Header = "Линза";
-            svpGlass.Location = new Point(435, 3);
-            svpGlass.Margin = new Padding(0, 3, 20, 10);
-            svpGlass.Marking = null;
-            svpGlass.Name = "svpGlass";
-            svpGlass.Naming = null;
-            svpGlass.Size = new Size(415, 833);
-            svpGlass.TabIndex = 1;
-            svpGlass.UpdateModel += saveEditor_UpdateModel;
-            // 
-            // svpRubberStrip
-            // 
-            svpRubberStrip.FolderPath = null;
-            svpRubberStrip.Header = "Прокладка";
-            svpRubberStrip.Location = new Point(870, 3);
-            svpRubberStrip.Margin = new Padding(0, 3, 20, 10);
-            svpRubberStrip.Marking = null;
-            svpRubberStrip.Name = "svpRubberStrip";
-            svpRubberStrip.Naming = null;
-            svpRubberStrip.Size = new Size(415, 833);
-            svpRubberStrip.TabIndex = 2;
-            svpRubberStrip.UpdateModel += saveEditor_UpdateModel;
-            // 
-            // tabSizes
-            // 
-            tabSizes.Controls.Add(splitSizes);
-            tabSizes.Location = new Point(8, 46);
-            tabSizes.Margin = new Padding(5);
-            tabSizes.Name = "tabSizes";
-            tabSizes.Padding = new Padding(5);
-            tabSizes.Size = new Size(1305, 846);
-            tabSizes.TabIndex = 0;
-            tabSizes.Text = "Размеры";
-            tabSizes.UseVisualStyleBackColor = true;
+            button1.Location = new Point(287, 972);
+            button1.Name = "button1";
+            button1.Size = new Size(8, 8);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // splitSizes
             // 
+            splitSizes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             splitSizes.BorderStyle = BorderStyle.Fixed3D;
-            splitSizes.Dock = DockStyle.Fill;
-            splitSizes.Location = new Point(5, 5);
+            splitSizes.Location = new Point(0, 45);
             splitSizes.Margin = new Padding(5);
             splitSizes.Name = "splitSizes";
             // 
@@ -187,21 +111,20 @@
             // splitSizes.Panel2
             // 
             splitSizes.Panel2.Controls.Add(pbSketch);
-            splitSizes.Size = new Size(1295, 836);
-            splitSizes.SplitterDistance = 429;
+            splitSizes.Size = new Size(1360, 943);
+            splitSizes.SplitterDistance = 450;
             splitSizes.SplitterWidth = 6;
-            splitSizes.TabIndex = 0;
+            splitSizes.TabIndex = 4;
             // 
             // btConfigPart
             // 
-            btConfigPart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btConfigPart.Location = new Point(3, 783);
+            btConfigPart.Dock = DockStyle.Bottom;
+            btConfigPart.Location = new Point(0, 893);
             btConfigPart.Name = "btConfigPart";
-            btConfigPart.Size = new Size(419, 46);
+            btConfigPart.Size = new Size(446, 46);
             btConfigPart.TabIndex = 1;
             btConfigPart.Text = "Конфигурировать...";
             btConfigPart.UseVisualStyleBackColor = true;
-            btConfigPart.Click += btConfigPart_Click;
             // 
             // tvParts
             // 
@@ -209,11 +132,8 @@
             tvParts.Location = new Point(0, 0);
             tvParts.Margin = new Padding(5);
             tvParts.Name = "tvParts";
-            tvParts.Size = new Size(425, 832);
+            tvParts.Size = new Size(446, 939);
             tvParts.TabIndex = 0;
-            tvParts.AfterSelect += tvParts_AfterSelect;
-            tvParts.DoubleClick += tvParts_DoubleClick;
-            tvParts.KeyDown += tvParts_KeyDown;
             // 
             // pbSketch
             // 
@@ -222,41 +142,51 @@
             pbSketch.Location = new Point(0, 0);
             pbSketch.Margin = new Padding(5);
             pbSketch.Name = "pbSketch";
-            pbSketch.Size = new Size(856, 832);
+            pbSketch.Size = new Size(900, 939);
             pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSketch.TabIndex = 0;
             pbSketch.TabStop = false;
             // 
-            // tbCtlrModelParams
+            // menuStrip1
             // 
-            tbCtlrModelParams.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tbCtlrModelParams.Controls.Add(tabSizes);
-            tbCtlrModelParams.Controls.Add(tabSaving);
-            tbCtlrModelParams.Location = new Point(20, 3);
-            tbCtlrModelParams.Margin = new Padding(5);
-            tbCtlrModelParams.Name = "tbCtlrModelParams";
-            tbCtlrModelParams.SelectedIndex = 0;
-            tbCtlrModelParams.Size = new Size(1321, 900);
-            tbCtlrModelParams.TabIndex = 2;
+            menuStrip1.ImageScalingSize = new Size(32, 32);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1360, 42);
+            menuStrip1.TabIndex = 5;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // button1
+            // файлToolStripMenuItem
             // 
-            button1.Location = new Point(287, 972);
-            button1.Name = "button1";
-            button1.Size = new Size(8, 8);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { папкаToolStripMenuItem, имяToolStripMenuItem });
+            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            файлToolStripMenuItem.Size = new Size(90, 38);
+            файлToolStripMenuItem.Text = "Файл";
+            // 
+            // папкаToolStripMenuItem
+            // 
+            папкаToolStripMenuItem.Name = "папкаToolStripMenuItem";
+            папкаToolStripMenuItem.Size = new Size(359, 44);
+            папкаToolStripMenuItem.Text = "Папка...";
+            // 
+            // имяToolStripMenuItem
+            // 
+            имяToolStripMenuItem.Name = "имяToolStripMenuItem";
+            имяToolStripMenuItem.Size = new Size(359, 44);
+            имяToolStripMenuItem.Text = "Имя...";
             // 
             // Wizard3dForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1360, 988);
+            Controls.Add(splitSizes);
             Controls.Add(button1);
             Controls.Add(btCancel);
             Controls.Add(btOk);
-            Controls.Add(tbCtlrModelParams);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Margin = new Padding(5);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -267,16 +197,15 @@
             Load += Wizard3dForm_Load;
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
-            tabSaving.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tabSizes.ResumeLayout(false);
             splitSizes.Panel1.ResumeLayout(false);
             splitSizes.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitSizes).EndInit();
             splitSizes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbSketch).EndInit();
-            tbCtlrModelParams.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -286,24 +215,21 @@
         private Controls.MaterialChooser mcHousing;
         private Controls.MaterialChooser materialChooser1;
         private Controls.MaterialChooser materialChooser2;
-        private Controls.SavingParametersEditor svpHousing;
-        private Controls.SavingParametersEditor svpGlass;
-        private Controls.SavingParametersEditor svpRubberStrip;
         private Controls.AppeareanceEditor appeareanceEditor1;
         private Controls.AppeareanceEditor appeareanceEditor3;
         private Controls.AppeareanceEditor appeareanceEditor2;
         private SplitContainer splitContainer2;
-        private TabPage tabSaving;
-        private TabPage tabSizes;
-        private SplitContainer splitSizes;
-        private TreeView tvParts;
-        private PictureBox pbSketch;
-        private TabControl tbCtlrModelParams;
         private Controls.SavingParametersEditor savingParametersEditor4;
         private Controls.SavingParametersEditor savingParametersEditor5;
         private Controls.SavingParametersEditor savingParametersEditor6;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button btConfigPart;
         private Button button1;
+        private SplitContainer splitSizes;
+        private Button btConfigPart;
+        private TreeView tvParts;
+        private PictureBox pbSketch;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem файлToolStripMenuItem;
+        private ToolStripMenuItem папкаToolStripMenuItem;
+        private ToolStripMenuItem имяToolStripMenuItem;
     }
 }
