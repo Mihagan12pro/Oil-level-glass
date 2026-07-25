@@ -18,53 +18,53 @@ namespace Oil_level_glass.UI.Controls
             set {  groupBox.Text = value; }
         }
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public int Transparency
-        {
-            get { return slrTransparency.Value; }
-            set {  slrTransparency.Value = value; }
-        }
+        //[Browsable(true)]
+        //[Category("Appearance")]
+        //public int Transparency
+        //{
+        //    get { return slrTransparency.Value; }
+        //    set {  slrTransparency.Value = value; }
+        //}
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public int Specularity
-        {
-            get { return slrSpecularity.Value; }
-            set { slrSpecularity.Value = value; }
-        }
+        //[Browsable(true)]
+        //[Category("Appearance")]
+        //public int Specularity
+        //{
+        //    get { return slrSpecularity.Value; }
+        //    set { slrSpecularity.Value = value; }
+        //}
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public int Embient
-        {
-            get { return slrEmbient.Value; }
-            set { slrEmbient.Value = value; }
-        }
+        //[Browsable(true)]
+        //[Category("Appearance")]
+        //public int Embient
+        //{
+        //    get { return slrEmbient.Value; }
+        //    set { slrEmbient.Value = value; }
+        //}
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public int Diffusion
-        {
-            get { return slrDiffusion.Value; }
-            set { slrDiffusion.Value = value; }
-        }
+        //[Browsable(true)]
+        //[Category("Appearance")]
+        //public int Diffusion
+        //{
+        //    get { return slrDiffusion.Value; }
+        //    set { slrDiffusion.Value = value; }
+        //}
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public int Shininess
-        {
-            get { return slrShininess.Value; }
-            set { slrShininess.Value = value; }
-        }
+        //[Browsable(true)]
+        //[Category("Appearance")]
+        //public int Shininess
+        //{
+        //    get { return slrShininess.Value; }
+        //    set { slrShininess.Value = value; }
+        //}
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public int Emission
-        {
-            get { return slrEmission.Value; }
-            set { slrEmission.Value = value; }
-        }
+        //[Browsable(true)]
+        //[Category("Appearance")]
+        //public int Emission
+        //{
+        //    get { return slrEmission.Value; }
+        //    set { slrEmission.Value = value; }
+        //}
 
         [Browsable(true)]
         [Category("Appearance")]
