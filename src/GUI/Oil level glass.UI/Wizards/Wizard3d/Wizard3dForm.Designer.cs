@@ -38,7 +38,7 @@
             pbSketch = new PictureBox();
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
-            папкаToolStripMenuItem = new ToolStripMenuItem();
+            tspmFolder = new ToolStripMenuItem();
             имяToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
@@ -159,16 +159,17 @@
             // 
             // файлToolStripMenuItem
             // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { папкаToolStripMenuItem, имяToolStripMenuItem });
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, имяToolStripMenuItem });
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             файлToolStripMenuItem.Size = new Size(90, 38);
             файлToolStripMenuItem.Text = "Файл";
             // 
-            // папкаToolStripMenuItem
+            // tspmFolder
             // 
-            папкаToolStripMenuItem.Name = "папкаToolStripMenuItem";
-            папкаToolStripMenuItem.Size = new Size(359, 44);
-            папкаToolStripMenuItem.Text = "Папка...";
+            tspmFolder.Name = "tspmFolder";
+            tspmFolder.Size = new Size(359, 44);
+            tspmFolder.Text = "Папка...";
+            tspmFolder.Click += tspmFolder_Click;
             // 
             // имяToolStripMenuItem
             // 
@@ -229,7 +230,7 @@
         private PictureBox pbSketch;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem файлToolStripMenuItem;
-        private ToolStripMenuItem папкаToolStripMenuItem;
+        private ToolStripMenuItem tspmFolder;
         private ToolStripMenuItem имяToolStripMenuItem;
     }
 }
