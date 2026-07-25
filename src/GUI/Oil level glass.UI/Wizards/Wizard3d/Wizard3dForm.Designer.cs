@@ -38,9 +38,11 @@
             svpRubberStrip = new Oil_level_glass.UI.Controls.SavingParametersEditor();
             tabSizes = new TabPage();
             splitSizes = new SplitContainer();
+            btConfigPart = new Button();
             tvParts = new TreeView();
             pbSketch = new PictureBox();
             tbCtlrModelParams = new TabControl();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
             tabSaving.SuspendLayout();
@@ -179,6 +181,7 @@
             // 
             // splitSizes.Panel1
             // 
+            splitSizes.Panel1.Controls.Add(btConfigPart);
             splitSizes.Panel1.Controls.Add(tvParts);
             // 
             // splitSizes.Panel2
@@ -188,6 +191,17 @@
             splitSizes.SplitterDistance = 429;
             splitSizes.SplitterWidth = 6;
             splitSizes.TabIndex = 0;
+            // 
+            // btConfigPart
+            // 
+            btConfigPart.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btConfigPart.Location = new Point(3, 783);
+            btConfigPart.Name = "btConfigPart";
+            btConfigPart.Size = new Size(419, 46);
+            btConfigPart.TabIndex = 1;
+            btConfigPart.Text = "Конфигурировать...";
+            btConfigPart.UseVisualStyleBackColor = true;
+            btConfigPart.Click += btConfigPart_Click;
             // 
             // tvParts
             // 
@@ -199,6 +213,7 @@
             tvParts.TabIndex = 0;
             tvParts.AfterSelect += tvParts_AfterSelect;
             tvParts.DoubleClick += tvParts_DoubleClick;
+            tvParts.KeyDown += tvParts_KeyDown;
             // 
             // pbSketch
             // 
@@ -224,11 +239,21 @@
             tbCtlrModelParams.Size = new Size(1321, 900);
             tbCtlrModelParams.TabIndex = 2;
             // 
+            // button1
+            // 
+            button1.Location = new Point(287, 972);
+            button1.Name = "button1";
+            button1.Size = new Size(8, 8);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Wizard3dForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1360, 988);
+            Controls.Add(button1);
             Controls.Add(btCancel);
             Controls.Add(btOk);
             Controls.Add(tbCtlrModelParams);
@@ -278,5 +303,7 @@
         private Controls.SavingParametersEditor savingParametersEditor5;
         private Controls.SavingParametersEditor savingParametersEditor6;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button btConfigPart;
+        private Button button1;
     }
 }

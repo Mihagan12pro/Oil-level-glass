@@ -1,5 +1,4 @@
-﻿using Kompas6API5;
-using Kompas6Constants;
+﻿using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Core.COM.Api7.Extensions;
@@ -7,7 +6,6 @@ using Oil_level_glass.Core.COM.COMProviders;
 using Oil_level_glass.Core.Glass;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Shared.Results;
-using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 
 namespace Oil_level_glass.Core.COM.Api7.Glass

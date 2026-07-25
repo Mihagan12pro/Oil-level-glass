@@ -8,6 +8,7 @@ using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
+using Shared;
 
 namespace Oil_level_glass.UI.Wizard3d
 {
@@ -17,6 +18,8 @@ namespace Oil_level_glass.UI.Wizard3d
         private readonly GlassModel _glass;
         private readonly HousingModel _housing;
         private readonly RubberStripModel _rubberStrip;
+
+        private ICommand _configureCommand = new UICommand();
 
         public Action<bool> CanCreate { get; }
 
@@ -36,6 +39,17 @@ namespace Oil_level_glass.UI.Wizard3d
             _housing = new HousingModel();
             _housing.Material.Title = "Сталь 10 ГОСТ 1050-2013";
             _housing.Material.Density = 7.856;
+
+            _configureCommand.SetAction(() =>
+            {
+                if (tvParts.SelectedNode != null)
+                {
+                    TreeNode treeNode = tvParts.SelectedNode;
+
+                    _wizardPresenter.InvokeEditor(treeNode.Tag);
+                    _wizardPresenter.UpdateModel();
+                }
+            });
 
             _wizardPresenter = PresentersFactory.CreateWizard3dPresenter(
                 this,
@@ -71,7 +85,7 @@ namespace Oil_level_glass.UI.Wizard3d
                 () =>
                 {
                     if (_rubberStrip[nameof(_rubberStrip.ExternalDiameter)] == string.Empty &&
-                        _rubberStrip[nameof(_rubberStrip.InternalDiameter)] ==  string.Empty &&
+                        _rubberStrip[nameof(_rubberStrip.InternalDiameter)] == string.Empty &&
                         _rubberStrip[nameof(_rubberStrip.Height)] == string.Empty)
                     {
                         HousingEditorForm form = new HousingEditorForm()
@@ -94,10 +108,7 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tvParts_DoubleClick(object sender, EventArgs e)
         {
-            TreeNode treeNode = tvParts.SelectedNode;
-
-            _wizardPresenter.InvokeEditor(treeNode.Tag);
-            _wizardPresenter.UpdateModel();
+            _configureCommand.Execute();
         }
 
         private void tvParts_AfterSelect(object sender, TreeViewEventArgs e)
@@ -189,6 +200,16 @@ namespace Oil_level_glass.UI.Wizard3d
             }
 
             _wizardPresenter.CheckData();
+        }
+
+        private void btConfigPart_Click(object sender, EventArgs e)
+        {
+            _configureCommand.Execute();
+        }
+
+        private void tvParts_KeyDown(object sender, KeyEventArgs e)
+        {
+            _configureCommand.Execute();
         }
     }
 }
