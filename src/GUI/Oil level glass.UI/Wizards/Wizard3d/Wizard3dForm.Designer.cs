@@ -37,9 +37,11 @@
             tvParts = new TreeView();
             pbSketch = new PictureBox();
             menuStrip1 = new MenuStrip();
-            файлToolStripMenuItem = new ToolStripMenuItem();
+            this.tspmFile = new ToolStripMenuItem();
             tspmFolder = new ToolStripMenuItem();
             tspmNaming = new ToolStripMenuItem();
+            this.tspmView = new ToolStripMenuItem();
+            tspmModelView = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitSizes).BeginInit();
@@ -150,33 +152,46 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { this.tspmFile, this.tspmView });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1360, 40);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
-            // файлToolStripMenuItem
+            // tspmFile
             // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
-            файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            файлToolStripMenuItem.Size = new Size(90, 36);
-            файлToolStripMenuItem.Text = "Файл";
+            this.tspmFile.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
+            this.tspmFile.Name = "tspmFile";
+            this.tspmFile.Size = new Size(90, 36);
+            this.tspmFile.Text = "Файл";
             // 
             // tspmFolder
             // 
             tspmFolder.Name = "tspmFolder";
-            tspmFolder.Size = new Size(229, 44);
+            tspmFolder.Size = new Size(359, 44);
             tspmFolder.Text = "Папка...";
             tspmFolder.Click += tspmFolder_Click;
             // 
             // tspmNaming
             // 
             tspmNaming.Name = "tspmNaming";
-            tspmNaming.Size = new Size(229, 44);
+            tspmNaming.Size = new Size(359, 44);
             tspmNaming.Text = "Имя...";
             tspmNaming.Click += tspmNaming_Click;
+            // 
+            // tspmView
+            // 
+            this.tspmView.DropDownItems.AddRange(new ToolStripItem[] { tspmModelView });
+            this.tspmView.Name = "tspmView";
+            this.tspmView.Size = new Size(75, 36);
+            this.tspmView.Text = "Вид";
+            // 
+            // tspmModelView
+            // 
+            tspmModelView.Name = "tspmModelView";
+            tspmModelView.Size = new Size(294, 44);
+            tspmModelView.Text = "Вид модели...";
             // 
             // Wizard3dForm
             // 
@@ -233,5 +248,8 @@
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem tspmFolder;
         private ToolStripMenuItem tspmNaming;
+        private ToolStripMenuItem tspmView;
+        private ToolStripMenuItem tspmModelView;
+        private ToolStripMenuItem tspmFile;
     }
 }
