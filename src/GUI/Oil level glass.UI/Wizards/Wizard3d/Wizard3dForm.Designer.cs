@@ -39,7 +39,7 @@
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             tspmFolder = new ToolStripMenuItem();
-            имяToolStripMenuItem = new ToolStripMenuItem();
+            tspmNaming = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitSizes).BeginInit();
@@ -159,7 +159,7 @@
             // 
             // файлToolStripMenuItem
             // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, имяToolStripMenuItem });
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             файлToolStripMenuItem.Size = new Size(90, 38);
             файлToolStripMenuItem.Text = "Файл";
@@ -171,11 +171,12 @@
             tspmFolder.Text = "Папка...";
             tspmFolder.Click += tspmFolder_Click;
             // 
-            // имяToolStripMenuItem
+            // tspmNaming
             // 
-            имяToolStripMenuItem.Name = "имяToolStripMenuItem";
-            имяToolStripMenuItem.Size = new Size(359, 44);
-            имяToolStripMenuItem.Text = "Имя...";
+            tspmNaming.Name = "tspmNaming";
+            tspmNaming.Size = new Size(359, 44);
+            tspmNaming.Text = "Имя...";
+            tspmNaming.Click += tspmNaming_Click;
             // 
             // Wizard3dForm
             // 
@@ -231,6 +232,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem tspmFolder;
-        private ToolStripMenuItem имяToolStripMenuItem;
+        private ToolStripMenuItem tspmNaming;
     }
 }

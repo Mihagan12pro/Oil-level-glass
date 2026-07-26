@@ -31,9 +31,9 @@ namespace Oil_level_glass.UI.Wizard3d
             InitializeComponent();
 
             _glass = new GlassModel()
-            { 
+            {
                 File = new PartFile()
-                { 
+                {
                     Name = new Name()
                     {
                         Naming = "Стекло",
@@ -64,7 +64,7 @@ namespace Oil_level_glass.UI.Wizard3d
             _housing = new HousingModel()
             {
                 File = new PartFile()
-                { 
+                {
                     Name = new Model.Data.Other.Name()
                     {
                         Naming = "Корпус"
@@ -258,6 +258,19 @@ namespace Oil_level_glass.UI.Wizard3d
 
                 RubberStripFile = _rubberStrip.File
             };
+
+            form.Owner = this;
+
+            form.ShowDialog();
+        }
+
+        private void tspmNaming_Click(object sender, EventArgs e)
+        {
+            using EditNamingForm form = new EditNamingForm()
+            {
+
+            };
+
             form.Owner = this;
 
             form.ShowDialog();
