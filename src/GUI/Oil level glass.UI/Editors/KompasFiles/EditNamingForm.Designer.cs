@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             label2 = new Label();
-            this.tbMarking = new TextBox();
+            tbMarking = new TextBox();
             tbNaming = new TextBox();
             label3 = new Label();
             cbChoosePart = new ComboBox();
@@ -58,11 +58,11 @@
             // 
             // tbMarking
             // 
-            this.tbMarking.Enabled = false;
-            this.tbMarking.Location = new Point(237, 128);
-            this.tbMarking.Name = "tbMarking";
-            this.tbMarking.Size = new Size(334, 39);
-            this.tbMarking.TabIndex = 2;
+            tbMarking.Enabled = false;
+            tbMarking.Location = new Point(237, 128);
+            tbMarking.Name = "tbMarking";
+            tbMarking.Size = new Size(334, 39);
+            tbMarking.TabIndex = 2;
             // 
             // tbNaming
             // 
@@ -90,6 +90,7 @@
             cbChoosePart.Name = "cbChoosePart";
             cbChoosePart.Size = new Size(334, 40);
             cbChoosePart.TabIndex = 4;
+            cbChoosePart.SelectedValueChanged += cbChoosePart_SelectedValueChanged;
             // 
             // btCancel
             // 
@@ -109,18 +110,20 @@
             btApply.TabIndex = 6;
             btApply.Text = "Применить";
             btApply.UseVisualStyleBackColor = true;
+            btApply.Click += btApply_Click;
             // 
             // EditNamingForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btCancel;
             ClientSize = new Size(604, 355);
             Controls.Add(btCancel);
             Controls.Add(btApply);
             Controls.Add(label3);
             Controls.Add(cbChoosePart);
             Controls.Add(tbNaming);
-            Controls.Add(this.tbMarking);
+            Controls.Add(tbMarking);
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;

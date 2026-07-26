@@ -194,18 +194,6 @@ namespace Oil_level_glass.UI.Wizard3d
             tvParts.Nodes.Add(oilLevelGlassNode);
             tvParts.ExpandAll();
 
-            //svpGlass.Tag = Part.Glass;
-            //svpGlass.Naming = "Линза";
-            //svpGlass.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); ;
-
-            //svpRubberStrip.Tag = Part.RubberStrip;
-            //svpRubberStrip.Naming = "Прокладка";
-            //svpRubberStrip.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            //svpHousing.Tag = Part.Housing;
-            //svpHousing.Naming = "Корпус";
-            //svpHousing.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
             _wizardPresenter.CheckData();
         }
 
@@ -268,7 +256,11 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using EditNamingForm form = new EditNamingForm()
             {
+                GlassName = _glass.File.Name,
 
+                HousingName = _housing.File.Name,
+
+                RubberStripName = _rubberStrip.File.Name
             };
 
             form.Owner = this;

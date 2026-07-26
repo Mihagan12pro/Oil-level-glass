@@ -111,7 +111,7 @@
             // splitSizes.Panel2
             // 
             splitSizes.Panel2.Controls.Add(pbSketch);
-            splitSizes.Size = new Size(1360, 943);
+            splitSizes.Size = new Size(1360, 862);
             splitSizes.SplitterDistance = 450;
             splitSizes.SplitterWidth = 6;
             splitSizes.TabIndex = 4;
@@ -119,7 +119,7 @@
             // btConfigPart
             // 
             btConfigPart.Dock = DockStyle.Bottom;
-            btConfigPart.Location = new Point(0, 893);
+            btConfigPart.Location = new Point(0, 812);
             btConfigPart.Name = "btConfigPart";
             btConfigPart.Size = new Size(446, 46);
             btConfigPart.TabIndex = 1;
@@ -132,7 +132,7 @@
             tvParts.Location = new Point(0, 0);
             tvParts.Margin = new Padding(5);
             tvParts.Name = "tvParts";
-            tvParts.Size = new Size(446, 939);
+            tvParts.Size = new Size(446, 858);
             tvParts.TabIndex = 0;
             // 
             // pbSketch
@@ -142,7 +142,7 @@
             pbSketch.Location = new Point(0, 0);
             pbSketch.Margin = new Padding(5);
             pbSketch.Name = "pbSketch";
-            pbSketch.Size = new Size(900, 939);
+            pbSketch.Size = new Size(900, 858);
             pbSketch.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSketch.TabIndex = 0;
             pbSketch.TabStop = false;
@@ -153,7 +153,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { файлToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1360, 42);
+            menuStrip1.Size = new Size(1360, 40);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -161,20 +161,20 @@
             // 
             файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            файлToolStripMenuItem.Size = new Size(90, 38);
+            файлToolStripMenuItem.Size = new Size(90, 36);
             файлToolStripMenuItem.Text = "Файл";
             // 
             // tspmFolder
             // 
             tspmFolder.Name = "tspmFolder";
-            tspmFolder.Size = new Size(359, 44);
+            tspmFolder.Size = new Size(229, 44);
             tspmFolder.Text = "Папка...";
             tspmFolder.Click += tspmFolder_Click;
             // 
             // tspmNaming
             // 
             tspmNaming.Name = "tspmNaming";
-            tspmNaming.Size = new Size(359, 44);
+            tspmNaming.Size = new Size(229, 44);
             tspmNaming.Text = "Имя...";
             tspmNaming.Click += tspmNaming_Click;
             // 
