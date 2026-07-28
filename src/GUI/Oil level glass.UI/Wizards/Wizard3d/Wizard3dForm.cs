@@ -85,6 +85,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
                     _wizardPresenter.InvokeEditor(treeNode.Tag);
                     _wizardPresenter.UpdateModel();
+
+                    return;
                 }
             });
 
@@ -179,7 +181,13 @@ namespace Oil_level_glass.UI.Wizard3d
                 }
 
                 pbSketch.Image = sketch;
+
+                btConfigPart.Enabled = true;
+
+                return;
             }
+
+            btConfigPart.Enabled = false;
         }
 
         private void Wizard3dForm_Load(object sender, EventArgs e)
@@ -234,7 +242,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tvParts_KeyDown(object sender, KeyEventArgs e)
         {
-            _configureCommand.Execute();
+            if (e.KeyCode == Keys.Enter)
+                _configureCommand.Execute();
         }
 
         private void tspmFolder_Click(object sender, EventArgs e)
