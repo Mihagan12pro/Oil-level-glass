@@ -16,7 +16,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 
         public OilLevelGlassModel()
         {
-            File = new AssemblyFile();
+            
         }
 
         protected override string CheckField(string columnName)

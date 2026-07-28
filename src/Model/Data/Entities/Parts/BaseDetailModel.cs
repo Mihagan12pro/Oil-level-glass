@@ -12,8 +12,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts
     {
         public BaseDetailModel()
         {
-            File = new PartFile();
-
             Appearance = new Appearance();
         }
 

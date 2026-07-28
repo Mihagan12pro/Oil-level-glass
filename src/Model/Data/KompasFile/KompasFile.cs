@@ -5,10 +5,10 @@ namespace Oil_level_glass.Model.Data.KompasFile
 {
     public abstract class KompasFile : BaseModel
     {
-        public Name Name { get; }
+        public required Name Name { get; set; }
 
         private string? _folder;
-        public string? Folder
+        public required string? Folder
         {
             get
             {
@@ -54,7 +54,6 @@ namespace Oil_level_glass.Model.Data.KompasFile
 
         public KompasFile()
         {
-            Name = new Name();
             Folder = string.Empty;
         }
     }

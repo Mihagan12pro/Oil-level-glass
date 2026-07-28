@@ -33,12 +33,12 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             btSelectColor = new Button();
             pnlColor = new Panel();
-            slrTransparency = new Oil_level_glass.UI.Controls.HelpControls.Slider();
-            slrEmbient = new Oil_level_glass.UI.Controls.HelpControls.Slider();
-            slrDiffusion = new Oil_level_glass.UI.Controls.HelpControls.Slider();
-            slrSpecularity = new Oil_level_glass.UI.Controls.HelpControls.Slider();
-            slrShininess = new Oil_level_glass.UI.Controls.HelpControls.Slider();
-            slrEmission = new Oil_level_glass.UI.Controls.HelpControls.Slider();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            tableLayoutPanel7 = new TableLayoutPanel();
+            tableLayoutPanel8 = new TableLayoutPanel();
             groupBox.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -59,13 +59,13 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel8, 0, 5);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel7, 0, 4);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel6, 0, 3);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel5, 0, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel4, 0, 1);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 6);
-            tableLayoutPanel1.Controls.Add(slrTransparency, 0, 0);
-            tableLayoutPanel1.Controls.Add(slrEmbient, 0, 1);
-            tableLayoutPanel1.Controls.Add(slrDiffusion, 0, 2);
-            tableLayoutPanel1.Controls.Add(slrSpecularity, 0, 3);
-            tableLayoutPanel1.Controls.Add(slrShininess, 0, 4);
-            tableLayoutPanel1.Controls.Add(slrEmission, 0, 5);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 35);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -115,89 +115,89 @@
             pnlColor.Size = new Size(318, 46);
             pnlColor.TabIndex = 1;
             // 
-            // slrTransparency
+            // tableLayoutPanel3
             // 
-            slrTransparency.AutoSize = true;
-            slrTransparency.Dock = DockStyle.Fill;
-            slrTransparency.Header = "Прозрачность";
-            slrTransparency.Location = new Point(20, 3);
-            slrTransparency.Margin = new Padding(20, 3, 20, 3);
-            slrTransparency.Max = 100;
-            slrTransparency.Min = 0;
-            slrTransparency.Name = "slrTransparency";
-            slrTransparency.Size = new Size(494, 91);
-            slrTransparency.TabIndex = 7;
-            slrTransparency.Value = 0;
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 3);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(528, 91);
+            tableLayoutPanel3.TabIndex = 7;
             // 
-            // slrEmbient
+            // tableLayoutPanel4
             // 
-            slrEmbient.AutoSize = true;
-            slrEmbient.Dock = DockStyle.Fill;
-            slrEmbient.Header = "Общий цвет";
-            slrEmbient.Location = new Point(20, 100);
-            slrEmbient.Margin = new Padding(20, 3, 20, 3);
-            slrEmbient.Max = 100;
-            slrEmbient.Min = 0;
-            slrEmbient.Name = "slrEmbient";
-            slrEmbient.Size = new Size(494, 91);
-            slrEmbient.TabIndex = 8;
-            slrEmbient.Value = 0;
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(3, 100);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Size = new Size(528, 91);
+            tableLayoutPanel4.TabIndex = 8;
             // 
-            // slrDiffusion
+            // tableLayoutPanel5
             // 
-            slrDiffusion.AutoSize = true;
-            slrDiffusion.Dock = DockStyle.Fill;
-            slrDiffusion.Header = "Диффузия";
-            slrDiffusion.Location = new Point(20, 197);
-            slrDiffusion.Margin = new Padding(20, 3, 20, 3);
-            slrDiffusion.Max = 100;
-            slrDiffusion.Min = 0;
-            slrDiffusion.Name = "slrDiffusion";
-            slrDiffusion.Size = new Size(494, 91);
-            slrDiffusion.TabIndex = 9;
-            slrDiffusion.Value = 0;
+            tableLayoutPanel5.ColumnCount = 1;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(3, 197);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Size = new Size(528, 91);
+            tableLayoutPanel5.TabIndex = 9;
             // 
-            // slrSpecularity
+            // tableLayoutPanel6
             // 
-            slrSpecularity.AutoSize = true;
-            slrSpecularity.Dock = DockStyle.Fill;
-            slrSpecularity.Header = "Зеркальность";
-            slrSpecularity.Location = new Point(20, 294);
-            slrSpecularity.Margin = new Padding(20, 3, 20, 3);
-            slrSpecularity.Max = 100;
-            slrSpecularity.Min = 0;
-            slrSpecularity.Name = "slrSpecularity";
-            slrSpecularity.Size = new Size(494, 91);
-            slrSpecularity.TabIndex = 10;
-            slrSpecularity.Value = 0;
+            tableLayoutPanel6.ColumnCount = 1;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new Point(3, 294);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 2;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.Size = new Size(528, 91);
+            tableLayoutPanel6.TabIndex = 10;
             // 
-            // slrShininess
+            // tableLayoutPanel7
             // 
-            slrShininess.AutoSize = true;
-            slrShininess.Dock = DockStyle.Fill;
-            slrShininess.Header = "Блеск";
-            slrShininess.Location = new Point(20, 391);
-            slrShininess.Margin = new Padding(20, 3, 20, 3);
-            slrShininess.Max = 100;
-            slrShininess.Min = 0;
-            slrShininess.Name = "slrShininess";
-            slrShininess.Size = new Size(494, 91);
-            slrShininess.TabIndex = 11;
-            slrShininess.Value = 0;
+            tableLayoutPanel7.ColumnCount = 1;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel7.Dock = DockStyle.Fill;
+            tableLayoutPanel7.Location = new Point(3, 391);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 2;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Size = new Size(528, 91);
+            tableLayoutPanel7.TabIndex = 11;
             // 
-            // slrEmission
+            // tableLayoutPanel8
             // 
-            slrEmission.AutoSize = true;
-            slrEmission.Dock = DockStyle.Fill;
-            slrEmission.Header = "Излучение";
-            slrEmission.Location = new Point(20, 488);
-            slrEmission.Margin = new Padding(20, 3, 20, 3);
-            slrEmission.Max = 100;
-            slrEmission.Min = 0;
-            slrEmission.Name = "slrEmission";
-            slrEmission.Size = new Size(494, 91);
-            slrEmission.TabIndex = 12;
-            slrEmission.Value = 0;
+            tableLayoutPanel8.ColumnCount = 1;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(3, 488);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 2;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel8.Size = new Size(528, 91);
+            tableLayoutPanel8.TabIndex = 12;
             // 
             // AppeareanceEditor
             // 
@@ -208,7 +208,6 @@
             Size = new Size(540, 723);
             groupBox.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -217,18 +216,14 @@
 
         private GroupBox groupBox;
         private TableLayoutPanel tableLayoutPanel1;
-        private HelpControls.Slider slider6;
-        private HelpControls.Slider slider5;
-        private HelpControls.Slider slider4;
-        private HelpControls.Slider slider3;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btSelectColor;
         private Panel pnlColor;
-        private HelpControls.Slider slrTransparency;
-        private HelpControls.Slider slrEmbient;
-        private HelpControls.Slider slrDiffusion;
-        private HelpControls.Slider slrSpecularity;
-        private HelpControls.Slider slrShininess;
-        private HelpControls.Slider slrEmission;
+        private TableLayoutPanel tableLayoutPanel8;
+        private TableLayoutPanel tableLayoutPanel7;
+        private TableLayoutPanel tableLayoutPanel6;
+        private TableLayoutPanel tableLayoutPanel5;
+        private TableLayoutPanel tableLayoutPanel4;
+        private TableLayoutPanel tableLayoutPanel3;
     }
 }

@@ -1,11 +1,15 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Model.Data.KompasFile;
+using Oil_level_glass.Model.Data.Other;
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Editors.Housing;
+using Oil_level_glass.UI.Editors.KompasFiles;
 using Oil_level_glass.UI.Editors.RubberStrip;
+using Oil_level_glass.UI.Editors.View;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
@@ -27,16 +31,49 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             InitializeComponent();
 
-            _glass = new GlassModel();
+            _glass = new GlassModel()
+            {
+                File = new PartFile()
+                {
+                    Name = new Name()
+                    {
+                        Naming = "Стекло",
+                    },
+
+                    Folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                }
+            };
             _glass.Material.Title = "Стекло БК10 ГОСТ 3514-94";
             _glass.Material.Density = 3.12;
 
-            _rubberStrip = new RubberStripModel();
+            _rubberStrip = new RubberStripModel()
+            {
+                File = new PartFile()
+                {
+                    Name = new Name()
+                    {
+                        Naming = "Резиновая прокладка"
+                    },
+
+                    Folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                }
+            };
             _rubberStrip.Material.Title = "Смесь резиновая 3063 ТУ 38-1051082-86";
             _rubberStrip.Material.Density = 1.28;
 
 
-            _housing = new HousingModel();
+            _housing = new HousingModel()
+            {
+                File = new PartFile()
+                {
+                    Name = new Model.Data.Other.Name()
+                    {
+                        Naming = "Корпус"
+                    },
+
+                    Folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                }
+            };
             _housing.Material.Title = "Сталь 10 ГОСТ 1050-2013";
             _housing.Material.Density = 7.856;
 
@@ -48,6 +85,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
                     _wizardPresenter.InvokeEditor(treeNode.Tag);
                     _wizardPresenter.UpdateModel();
+
+                    return;
                 }
             });
 
@@ -142,7 +181,13 @@ namespace Oil_level_glass.UI.Wizard3d
                 }
 
                 pbSketch.Image = sketch;
+
+                btConfigPart.Enabled = true;
+
+                return;
             }
+
+            btConfigPart.Enabled = false;
         }
 
         private void Wizard3dForm_Load(object sender, EventArgs e)
@@ -157,18 +202,6 @@ namespace Oil_level_glass.UI.Wizard3d
 
             tvParts.Nodes.Add(oilLevelGlassNode);
             tvParts.ExpandAll();
-
-            svpGlass.Tag = Part.Glass;
-            svpGlass.Naming = "Линза";
-            svpGlass.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); ;
-
-            svpRubberStrip.Tag = Part.RubberStrip;
-            svpRubberStrip.Naming = "Прокладка";
-            svpRubberStrip.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            svpHousing.Tag = Part.Housing;
-            svpHousing.Naming = "Корпус";
-            svpHousing.FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             _wizardPresenter.CheckData();
         }
@@ -209,7 +242,56 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tvParts_KeyDown(object sender, KeyEventArgs e)
         {
-            _configureCommand.Execute();
+            if (e.KeyCode == Keys.Enter)
+                _configureCommand.Execute();
+        }
+
+        private void tspmFolder_Click(object sender, EventArgs e)
+        {
+            using SelectFolderForm form = new SelectFolderForm()
+            {
+                GlassFile = _glass.File,
+
+                HousingFile = _housing.File,
+
+                RubberStripFile = _rubberStrip.File
+            };
+
+            form.Owner = this;
+
+            form.ShowDialog();
+        }
+
+        private void tspmNaming_Click(object sender, EventArgs e)
+        {
+            using EditNamingForm form = new EditNamingForm()
+            {
+                GlassName = _glass.File.Name,
+
+                HousingName = _housing.File.Name,
+
+                RubberStripName = _rubberStrip.File.Name
+            };
+
+            form.Owner = this;
+
+            form.ShowDialog();
+        }
+
+        private void tspmModelView_Click(object sender, EventArgs e)
+        {
+            using ModelAppereanceForm form = new ModelAppereanceForm()
+            {
+                GlassAppereance = _glass.Appearance,
+                
+                HousingAppereance = _housing.Appearance,
+                
+                RubberStripAppereance = _rubberStrip.Appearance 
+            };
+
+            form.Owner = this;
+
+            form.ShowDialog();
         }
     }
 }

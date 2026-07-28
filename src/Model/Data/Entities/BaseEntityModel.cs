@@ -6,6 +6,6 @@
     public abstract class BaseEntityModel 
         : BaseModel
     {
-        public KompasFile.KompasFile? File { get; init; }
+        public required KompasFile.KompasFile? File { get; init; }
     }
 }
