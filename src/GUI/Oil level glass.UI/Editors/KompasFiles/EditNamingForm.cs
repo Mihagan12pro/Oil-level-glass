@@ -23,8 +23,8 @@ namespace Oil_level_glass.UI.Editors.KompasFiles
                 {
                     case 0:
                         {
-                            RubberStripName.Marking = tbMarking.Text;
-                            RubberStripName.Naming = tbNaming.Text;
+                            HousingName.Marking = tbMarking.Text;
+                            HousingName.Naming = tbNaming.Text;
                             break;
                         }
 
@@ -37,8 +37,8 @@ namespace Oil_level_glass.UI.Editors.KompasFiles
 
                     case 2:
                         {
-                            HousingName.Marking = tbMarking.Text;
-                            HousingName.Naming = tbNaming.Text;
+                            RubberStripName.Marking = tbMarking.Text;
+                            RubberStripName.Naming = tbNaming.Text;
                             break;
                         }
                 }

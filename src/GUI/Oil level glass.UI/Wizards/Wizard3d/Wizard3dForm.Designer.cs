@@ -37,10 +37,10 @@
             tvParts = new TreeView();
             pbSketch = new PictureBox();
             menuStrip1 = new MenuStrip();
-            this.tspmFile = new ToolStripMenuItem();
+            tspmFile = new ToolStripMenuItem();
             tspmFolder = new ToolStripMenuItem();
             tspmNaming = new ToolStripMenuItem();
-            this.tspmView = new ToolStripMenuItem();
+            tspmView = new ToolStripMenuItem();
             tspmModelView = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
@@ -152,19 +152,19 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { this.tspmFile, this.tspmView });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tspmFile, tspmView });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1360, 40);
+            menuStrip1.Size = new Size(1360, 42);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
             // tspmFile
             // 
-            this.tspmFile.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
-            this.tspmFile.Name = "tspmFile";
-            this.tspmFile.Size = new Size(90, 36);
-            this.tspmFile.Text = "Файл";
+            tspmFile.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
+            tspmFile.Name = "tspmFile";
+            tspmFile.Size = new Size(90, 38);
+            tspmFile.Text = "Файл";
             // 
             // tspmFolder
             // 
@@ -182,16 +182,17 @@
             // 
             // tspmView
             // 
-            this.tspmView.DropDownItems.AddRange(new ToolStripItem[] { tspmModelView });
-            this.tspmView.Name = "tspmView";
-            this.tspmView.Size = new Size(75, 36);
-            this.tspmView.Text = "Вид";
+            tspmView.DropDownItems.AddRange(new ToolStripItem[] { tspmModelView });
+            tspmView.Name = "tspmView";
+            tspmView.Size = new Size(75, 38);
+            tspmView.Text = "Вид";
             // 
             // tspmModelView
             // 
             tspmModelView.Name = "tspmModelView";
-            tspmModelView.Size = new Size(294, 44);
+            tspmModelView.Size = new Size(359, 44);
             tspmModelView.Text = "Вид модели...";
+            tspmModelView.Click += tspmModelView_Click;
             // 
             // Wizard3dForm
             // 

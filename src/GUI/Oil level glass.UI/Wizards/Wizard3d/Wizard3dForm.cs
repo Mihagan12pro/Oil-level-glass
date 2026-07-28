@@ -9,6 +9,7 @@ using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.KompasFiles;
 using Oil_level_glass.UI.Editors.RubberStrip;
+using Oil_level_glass.UI.Editors.View;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
@@ -261,6 +262,22 @@ namespace Oil_level_glass.UI.Wizard3d
                 HousingName = _housing.File.Name,
 
                 RubberStripName = _rubberStrip.File.Name
+            };
+
+            form.Owner = this;
+
+            form.ShowDialog();
+        }
+
+        private void tspmModelView_Click(object sender, EventArgs e)
+        {
+            using ModelAppereanceForm form = new ModelAppereanceForm()
+            {
+                GlassAppereance = _glass.Appearance,
+                
+                HousingAppereance = _housing.Appearance,
+                
+                RubberStripAppereance = _rubberStrip.Appearance 
             };
 
             form.Owner = this;
