@@ -78,20 +78,16 @@ namespace Oil_level_glass.UI.Editors.View
 
                 case 1:
                     {
-                        GetControlsValues(HousingAppereance);
+                        GetControlsValues(GlassAppereance);
                         break;
                     }
 
                 case 2:
                     {
-                        GetControlsValues(HousingAppereance);
+                        GetControlsValues(RubberStripAppereance);
                         break;
                     }
             }
-
-            DialogResult = DialogResult.OK;
-
-            return;
         }
 
         private void SetControlsValues(Model.Data.Other.Appearance appearance)

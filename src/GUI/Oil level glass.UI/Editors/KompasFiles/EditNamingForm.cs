@@ -43,8 +43,6 @@ namespace Oil_level_glass.UI.Editors.KompasFiles
                         }
                 }
 
-                DialogResult = DialogResult.OK;
-
                 return;
             }
 
