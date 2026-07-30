@@ -35,7 +35,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new Name()
+                    Name = new T()
                     {
                         Naming = "Стекло",
                     },
@@ -50,7 +50,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new Name()
+                    Name = new T()
                     {
                         Naming = "Резиновая прокладка"
                     },
@@ -66,7 +66,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new Model.Data.Other.Name()
+                    Name = new Model.Data.Other.T()
                     {
                         Naming = "Корпус"
                     },
@@ -266,11 +266,11 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using EditNamingForm form = new EditNamingForm()
             {
-                GlassName = _glass.File.Name,
+                Glass = _glass.File.Name,
 
-                HousingName = _housing.File.Name,
+                Housing = _housing.File.Name,
 
-                RubberStripName = _rubberStrip.File.Name
+                RubberStrip = _rubberStrip.File.Name
             };
 
             form.Owner = this;
