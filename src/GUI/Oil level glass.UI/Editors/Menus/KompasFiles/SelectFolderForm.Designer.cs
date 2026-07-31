@@ -28,24 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cbChoosePart = new ComboBox();
             label1 = new Label();
             btSelectFolder = new Button();
             tbFolder = new TextBox();
-            btApply = new Button();
-            btCancel = new Button();
             SuspendLayout();
             // 
             // cbChoosePart
             // 
             cbChoosePart.DropDownStyle = ComboBoxStyle.DropDownList;
             cbChoosePart.FormattingEnabled = true;
-            cbChoosePart.Items.AddRange(new object[] { "Корпус", "Линза", "Прокладка" });
             cbChoosePart.Location = new Point(197, 27);
             cbChoosePart.Name = "cbChoosePart";
             cbChoosePart.Size = new Size(575, 40);
             cbChoosePart.TabIndex = 0;
-            cbChoosePart.SelectedValueChanged += cbChoosePart_SelectedValueChanged;
             // 
             // label1
             // 
@@ -99,7 +94,6 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btCancel;
             ClientSize = new Size(800, 242);
             Controls.Add(btCancel);
             Controls.Add(btApply);
@@ -114,18 +108,14 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Выбор папки для сохранения";
-            Load += SelectFolderForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ComboBox cbChoosePart;
         private Label label1;
         private Button btSelectFolder;
         private TextBox tbFolder;
-        private Button btApply;
-        private Button btCancel;
     }
 }

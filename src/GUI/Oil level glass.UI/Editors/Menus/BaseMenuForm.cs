@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.UI.Editors.Menus
 {
-    public class BaseMenuForm<T> : Form
+    public abstract class BaseMenuForm<T> : Form
     {
         public required T Housing { get; set; }
 
@@ -24,7 +24,9 @@ namespace Oil_level_glass.UI.Editors.Menus
 
         protected ComboBox cbChoosePart = new ComboBox()
         {
-            
+            DropDownStyle = ComboBoxStyle.DropDownList,
+
+            FormattingEnabled = true
         };
 
         public BaseMenuForm()
@@ -128,15 +130,9 @@ namespace Oil_level_glass.UI.Editors.Menus
             }
         }
 
-        protected virtual void SetControlsValues(T t)
-        {
+        protected abstract void SetControlsValues(T t);
 
-        }
-
-        protected virtual void GetControlsValues(T t)
-        {
-
-        }
+        protected abstract void GetControlsValues(T t);
 
         protected virtual void MakeControlsEnabled()
         {

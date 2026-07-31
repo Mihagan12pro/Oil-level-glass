@@ -1,15 +1,11 @@
 ﻿using Oil_level_glass.Model.Data.Other;
+using Oil_level_glass.UI.Editors.Menus;
+using Appearance = Oil_level_glass.Model.Data.Other.Appearance;
 
 namespace Oil_level_glass.UI.Editors.View
 {
-    public partial class ModelAppereanceForm : Form
+    public partial class ModelAppereanceForm : BaseMenuForm<Appearance>
     {
-        public required Model.Data.Other.Appearance HousingAppereance { get; set; }
-
-        public required Model.Data.Other.Appearance RubberStripAppereance { get; set; }
-
-        public required Model.Data.Other.Appearance GlassAppereance { get; set; }
-
         public ModelAppereanceForm()
         {
             InitializeComponent();
@@ -26,71 +22,7 @@ namespace Oil_level_glass.UI.Editors.View
             }
         }
 
-        private void cbChoosePart_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cbChoosePart.SelectedIndex != -1)
-            {
-                btApply.Enabled = true;
-                btChooseColor.Enabled = true;
-
-                tbAmbient.Enabled = true;
-                tbDiffuse.Enabled = true;
-                tbEmission.Enabled = true;
-                tbShininess.Enabled = true;
-                tbSpecularity.Enabled = true;
-                tbTransperency.Enabled = true;
-
-                switch (cbChoosePart.SelectedIndex)
-                {
-                    case 0:
-                        {
-                            SetControlsValues(HousingAppereance);
-
-                            break;
-                        }
-
-                    case 1:
-                        {
-                            SetControlsValues(GlassAppereance);
-
-                            break;
-                        }
-
-                    case 2:
-                        {
-                            SetControlsValues(RubberStripAppereance);
-
-                            break;
-                        }
-                }
-            }
-        }
-
-        private void btApply_Click(object sender, EventArgs e)
-        {
-            switch (cbChoosePart.SelectedIndex)
-            {
-                case 0:
-                    {
-                        GetControlsValues(HousingAppereance);
-                        break;
-                    }
-
-                case 1:
-                    {
-                        GetControlsValues(GlassAppereance);
-                        break;
-                    }
-
-                case 2:
-                    {
-                        GetControlsValues(RubberStripAppereance);
-                        break;
-                    }
-            }
-        }
-
-        private void SetControlsValues(Model.Data.Other.Appearance appearance)
+        protected override void SetControlsValues(Model.Data.Other.Appearance appearance)
         {
             pnlColor.BackColor = Color.FromArgb(
                 appearance.Color.Red,
@@ -106,7 +38,7 @@ namespace Oil_level_glass.UI.Editors.View
             tbTransperency.Value = Convert.ToDecimal(appearance.Transparency);
         }
 
-        private void GetControlsValues(Model.Data.Other.Appearance appearance)
+        protected override void GetControlsValues(Model.Data.Other.Appearance appearance)
         {
             appearance.Color.Red = pnlColor.BackColor.R;
             appearance.Color.Green = pnlColor.BackColor.G;
@@ -118,6 +50,21 @@ namespace Oil_level_glass.UI.Editors.View
             appearance.Shininess = Convert.ToDouble(tbShininess.Value);
             appearance.Specularity = Convert.ToDouble(tbSpecularity.Value);
             appearance.Transparency = Convert.ToDouble(tbTransperency.Value);
+        }
+
+        protected override void MakeControlsEnabled()
+        {
+            base.MakeControlsEnabled();
+
+            btApply.Enabled = true;
+            btChooseColor.Enabled = true;
+
+            tbAmbient.Enabled = true;
+            tbDiffuse.Enabled = true;
+            tbEmission.Enabled = true;
+            tbShininess.Enabled = true;
+            tbSpecularity.Enabled = true;
+            tbTransperency.Enabled = true;
         }
     }
 }

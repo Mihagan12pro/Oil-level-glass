@@ -250,11 +250,11 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using SelectFolderForm form = new SelectFolderForm()
             {
-                GlassFile = _glass.File,
+                Glass = _glass.File,
 
-                HousingFile = _housing.File,
+                Housing = _housing.File,
 
-                RubberStripFile = _rubberStrip.File
+                RubberStrip = _rubberStrip.File
             };
 
             form.Owner = this;
@@ -282,11 +282,11 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using ModelAppereanceForm form = new ModelAppereanceForm()
             {
-                GlassAppereance = _glass.Appearance,
+                Glass = _glass.Appearance,
                 
-                HousingAppereance = _housing.Appearance,
+                Housing = _housing.Appearance,
                 
-                RubberStripAppereance = _rubberStrip.Appearance 
+                RubberStrip = _rubberStrip.Appearance 
             };
 
             form.Owner = this;

@@ -1,19 +1,14 @@
 ﻿using Oil_level_glass.Model.Data.KompasFile;
+using Oil_level_glass.UI.Editors.Menus;
 
 namespace Oil_level_glass.UI.Editors.KompasFiles
 {
-    public partial class SelectFolderForm : Form
+    public partial class SelectFolderForm : BaseMenuForm<KompasFile>
     {
         public SelectFolderForm()
         {
             InitializeComponent();
         }
-
-        public required KompasFile HousingFile { get; set; }
-
-        public required KompasFile GlassFile { get; set; }
-
-        public required KompasFile RubberStripFile { get; set; }
 
         private void btSelectFolder_Click(object sender, EventArgs e)
         {
@@ -26,54 +21,12 @@ namespace Oil_level_glass.UI.Editors.KompasFiles
             }
         }
 
-        private void SelectFolderForm_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void cbChoosePart_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cbChoosePart.SelectedIndex != -1)
-            {
-                btApply.Enabled = true;
-                tbFolder.Enabled = true;
-                btSelectFolder.Enabled = true;
-
-                switch (cbChoosePart.SelectedIndex)
-                {
-                    case 0:
-                        tbFolder.Text = HousingFile.Folder;
-                        break;
-
-                    case 1:
-                        tbFolder.Text = GlassFile.Folder;
-                        break;
-
-                    case 2:
-                        tbFolder.Text = RubberStripFile.Folder;
-                        break;
-                }
-            }
-        }
-
-        private void btApply_Click(object sender, EventArgs e)
+        protected override void btApply_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(tbFolder.Text))
             {
-                switch (cbChoosePart.SelectedIndex)
-                {
-                    case 0:
-                        HousingFile.Folder = tbFolder.Text;
-                        break;
-
-                    case 1:
-                        GlassFile.Folder = tbFolder.Text;
-                        break;
-
-                    case 2:
-                        RubberStripFile.Folder = tbFolder.Text;
-                        break;
-                }
+                base.btApply_Click(sender, e);
 
                 return;
             }
@@ -85,6 +38,24 @@ namespace Oil_level_glass.UI.Editors.KompasFiles
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
             );
+        }
+
+        protected override void GetControlsValues(KompasFile t)
+        {
+            t.Folder = tbFolder.Text;
+        }
+
+        protected override void SetControlsValues(KompasFile t)
+        {
+            tbFolder.Text = t.Folder;
+        }
+
+        protected override void MakeControlsEnabled()
+        {
+            base.MakeControlsEnabled();
+
+            tbFolder.Enabled = true;
+            btSelectFolder.Enabled = true;
         }
     }
 }
