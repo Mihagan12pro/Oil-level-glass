@@ -26,16 +26,13 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        protected void InitializeComponent()
         {
             label1 = new Label();
             label2 = new Label();
             tbMarking = new TextBox();
             tbNaming = new TextBox();
             label3 = new Label();
-            cbChoosePart = new ComboBox();
-            btCancel = new Button();
-            btApply = new Button();
             SuspendLayout();
             // 
             // label1
@@ -85,12 +82,10 @@
             // 
             cbChoosePart.DropDownStyle = ComboBoxStyle.DropDownList;
             cbChoosePart.FormattingEnabled = true;
-            cbChoosePart.Items.AddRange(new object[] { "Корпус", "Линза", "Прокладка" });
             cbChoosePart.Location = new Point(237, 67);
             cbChoosePart.Name = "cbChoosePart";
             cbChoosePart.Size = new Size(334, 40);
             cbChoosePart.TabIndex = 4;
-            cbChoosePart.SelectedValueChanged += cbChoosePart_SelectedValueChanged;
             // 
             // btCancel
             // 
@@ -116,7 +111,6 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btCancel;
             ClientSize = new Size(604, 355);
             Controls.Add(btCancel);
             Controls.Add(btApply);
@@ -142,8 +136,5 @@
         private TextBox tbMarking;
         private TextBox tbNaming;
         private Label label3;
-        private ComboBox cbChoosePart;
-        private Button btCancel;
-        private Button btApply;
     }
 }

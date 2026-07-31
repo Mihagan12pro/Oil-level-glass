@@ -18,7 +18,7 @@ namespace Oil_level_glass.Core.COM.Api7.Extensions
             part.Update();
         }
 
-        public static void SetNaming(this IPart7 part, Name name)
+        public static void SetNaming(this IPart7 part, T name)
         {
             part.Name = name.Naming;
             part.Marking = name.Marking;

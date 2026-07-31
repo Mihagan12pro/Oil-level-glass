@@ -35,7 +35,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new Name()
+                    Name = new T()
                     {
                         Naming = "Стекло",
                     },
@@ -50,7 +50,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new Name()
+                    Name = new T()
                     {
                         Naming = "Резиновая прокладка"
                     },
@@ -66,7 +66,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new Model.Data.Other.Name()
+                    Name = new Model.Data.Other.T()
                     {
                         Naming = "Корпус"
                     },
@@ -250,11 +250,11 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using SelectFolderForm form = new SelectFolderForm()
             {
-                GlassFile = _glass.File,
+                Glass = _glass.File,
 
-                HousingFile = _housing.File,
+                Housing = _housing.File,
 
-                RubberStripFile = _rubberStrip.File
+                RubberStrip = _rubberStrip.File
             };
 
             form.Owner = this;
@@ -266,11 +266,11 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using EditNamingForm form = new EditNamingForm()
             {
-                GlassName = _glass.File.Name,
+                Glass = _glass.File.Name,
 
-                HousingName = _housing.File.Name,
+                Housing = _housing.File.Name,
 
-                RubberStripName = _rubberStrip.File.Name
+                RubberStrip = _rubberStrip.File.Name
             };
 
             form.Owner = this;
@@ -282,11 +282,11 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using ModelAppereanceForm form = new ModelAppereanceForm()
             {
-                GlassAppereance = _glass.Appearance,
+                Glass = _glass.Appearance,
                 
-                HousingAppereance = _housing.Appearance,
+                Housing = _housing.Appearance,
                 
-                RubberStripAppereance = _rubberStrip.Appearance 
+                RubberStrip = _rubberStrip.Appearance 
             };
 
             form.Owner = this;

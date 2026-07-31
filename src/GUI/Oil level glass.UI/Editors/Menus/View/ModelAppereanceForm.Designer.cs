@@ -44,10 +44,7 @@
             tbAmbient = new NumericUpDown();
             btChooseColor = new Button();
             pnlColor = new Panel();
-            btCancel = new Button();
-            btApply = new Button();
             label7 = new Label();
-            cbChoosePart = new ComboBox();
             groupBox1.SuspendLayout();
             tblpnlNumericParams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tbEmission).BeginInit();
@@ -280,14 +277,10 @@
             // 
             // cbChoosePart
             // 
-            cbChoosePart.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbChoosePart.FormattingEnabled = true;
-            cbChoosePart.Items.AddRange(new object[] { "Корпус", "Линза", "Прокладка" });
             cbChoosePart.Location = new Point(206, 42);
             cbChoosePart.Name = "cbChoosePart";
             cbChoosePart.Size = new Size(331, 40);
             cbChoosePart.TabIndex = 10;
-            cbChoosePart.SelectedValueChanged += cbChoosePart_SelectedValueChanged;
             // 
             // ModelAppereanceForm
             // 
@@ -341,10 +334,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private Button btCancel;
-        private Button btApply;
         private Label label7;
-
-        private ComboBox cbChoosePart;
     }
 }
