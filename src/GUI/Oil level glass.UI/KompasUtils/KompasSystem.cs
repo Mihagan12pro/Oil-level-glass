@@ -1,4 +1,4 @@
-﻿namespace Oil_level_glass.UI.Constants
+﻿namespace Oil_level_glass.UI.KompasUtils
 {
     public static class KompasSystem
     {
@@ -10,8 +10,6 @@
         {
             KompasDirectory = new DirectoryInfo(
                 Environment.GetEnvironmentVariable("KOMPAS_SDK")).Parent.FullName;
-
-            
 
             MaterialsFile = new FileInfo(Path.Combine(KompasDirectory, "Sys\\Graphic.dns")).FullName;
         }

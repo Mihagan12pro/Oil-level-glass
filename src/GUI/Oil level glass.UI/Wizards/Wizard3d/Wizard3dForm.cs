@@ -5,12 +5,12 @@ using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
-using Oil_level_glass.UI.Constants;
 using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.KompasFiles;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Editors.View;
+using Oil_level_glass.UI.KompasUtils;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
@@ -32,7 +32,7 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             InitializeComponent();
 
-            var a = KompasSystem.MaterialsFile;
+            var a = GraphicReader.GetByHatch(0);
 
             _glass = new GlassModel()
             {
@@ -84,7 +84,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 if (tvParts.SelectedNode != null)
                 {
-                    TreeNode treeNode = tvParts.SelectedNode;
+                    System.Windows.Forms.TreeNode treeNode = tvParts.SelectedNode;
 
                     _wizardPresenter.InvokeEditor(treeNode.Tag);
                     _wizardPresenter.UpdateModel();
@@ -157,7 +157,7 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             if (tvParts.SelectedNode != null)
             {
-                TreeNode treeNode = tvParts.SelectedNode;
+                System.Windows.Forms.TreeNode treeNode = tvParts.SelectedNode;
                 Image sketch;
 
                 switch (treeNode.Tag)
@@ -195,13 +195,13 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void Wizard3dForm_Load(object sender, EventArgs e)
         {
-            TreeNode[] details = new TreeNode[]
+            System.Windows.Forms.TreeNode[] details = new System.Windows.Forms.TreeNode[]
             {
-                new TreeNode(Resources.Glass) { Tag = Part.Glass },
-                new TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
-                new TreeNode(Resources.Housing) { Tag = Part.Housing }
+                new System.Windows.Forms.TreeNode(Resources.Glass) { Tag = Part.Glass },
+                new System.Windows.Forms.TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
+                new System.Windows.Forms.TreeNode(Resources.Housing) { Tag = Part.Housing }
             };
-            TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
+            System.Windows.Forms.TreeNode oilLevelGlassNode = new System.Windows.Forms.TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
 
             tvParts.Nodes.Add(oilLevelGlassNode);
             tvParts.ExpandAll();
