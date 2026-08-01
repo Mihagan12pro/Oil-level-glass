@@ -2,16 +2,48 @@
 {
     public static class GraphicReader
     {
-        public static Dictionary<string, IEnumerable<string>> GetByHatch(int hatch)
+        public static TreeNode GetByHatch(int hatch)
         {
-            Dictionary<string, IEnumerable<string>> dict = new ();
+            var lines = new Queue<string>(File.ReadLines(KompasSystem.MaterialsFile));
 
-            using(var reader = new StreamReader(KompasSystem.MaterialsFile))
+            var tree = StringToNodes(lines, new TreeNode()).Nodes[0];
+
+            return tree;
+        }
+
+        private static TreeNode StringToNodes(Queue<string> lines, TreeNode treeNode)
+        {
+            while(lines.Count > 0)
             {
-                var sections = reader.ReadToEnd().Split("\r\n");
+                string line = lines.Dequeue();
+
+                if (line.Contains("{"))
+                {
+                    treeNode.Nodes.Add(
+                        StringToNodes(
+                            lines,
+                            new TreeNode(line.Replace("{", "").Replace(" ", string.Empty))
+                        )    
+                    );
+                }
+                else if (line.Contains("}"))
+                {
+                    treeNode.Nodes.Add(
+                        new TreeNode(
+                            line.Replace("}", string.Empty)
+                            .Replace(" ", string.Empty)
+                            )
+                        );
+
+                    return treeNode;
+                }
+                else if (line.Length > 0)
+                {
+                    treeNode.Nodes.Add(new TreeNode(line));
+                }
             }
 
-            return dict;
+            return treeNode;
         }
     }
 }
