@@ -10,7 +10,7 @@ using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.KompasFiles;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Editors.View;
-using Oil_level_glass.UI.KompasUtils;
+using Oil_level_glass.UI.KompasUtils.Graphic;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
@@ -32,7 +32,8 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             InitializeComponent();
 
-            var a = GraphicReader.GetByHatch(0);
+            var tree = GraphicMaster.GetAllNodesFromFile();
+            GraphicMaster.FilterByHatch(1, tree);
 
             _glass = new GlassModel()
             {
