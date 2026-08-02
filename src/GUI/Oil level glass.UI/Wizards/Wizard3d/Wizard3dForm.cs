@@ -8,6 +8,7 @@ using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.KompasFiles;
+using Oil_level_glass.UI.Editors.Menus.View;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Editors.View;
 using Oil_level_glass.UI.KompasUtils.Graphic;
@@ -32,8 +33,8 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             InitializeComponent();
 
-            var tree = GraphicMaster.GetAllNodesFromFile();
-            GraphicMaster.FilterByHatch(1, tree);
+            //var tree = GraphicMaster.GetAllNodesFromFile();
+            //GraphicMaster.FilterByHatch(0, tree);
 
             _glass = new GlassModel()
             {
@@ -196,13 +197,13 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void Wizard3dForm_Load(object sender, EventArgs e)
         {
-            System.Windows.Forms.TreeNode[] details = new System.Windows.Forms.TreeNode[]
-            {
-                new System.Windows.Forms.TreeNode(Resources.Glass) { Tag = Part.Glass },
-                new System.Windows.Forms.TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
-                new System.Windows.Forms.TreeNode(Resources.Housing) { Tag = Part.Housing }
-            };
-            System.Windows.Forms.TreeNode oilLevelGlassNode = new System.Windows.Forms.TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
+            TreeNode[] details = new TreeNode[]
+        {
+                new TreeNode(Resources.Glass) { Tag = Part.Glass },
+                new TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
+                new TreeNode(Resources.Housing) { Tag = Part.Housing }
+        };
+            TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
 
             tvParts.Nodes.Add(oilLevelGlassNode);
             tvParts.ExpandAll();
@@ -287,13 +288,23 @@ namespace Oil_level_glass.UI.Wizard3d
             using ModelAppereanceForm form = new ModelAppereanceForm()
             {
                 Glass = _glass.Appearance,
-                
+
                 Housing = _housing.Appearance,
-                
-                RubberStrip = _rubberStrip.Appearance 
+
+                RubberStrip = _rubberStrip.Appearance
             };
 
             form.Owner = this;
+
+            form.ShowDialog();
+        }
+
+        private void tspmModelMaterial_Click(object sender, EventArgs e)
+        {
+            using ModelMaterialForm form = new ModelMaterialForm()
+            {
+
+            };
 
             form.ShowDialog();
         }
