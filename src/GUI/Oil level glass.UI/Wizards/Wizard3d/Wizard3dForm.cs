@@ -11,6 +11,7 @@ using Oil_level_glass.UI.Editors.KompasFiles;
 using Oil_level_glass.UI.Editors.Menus.View;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Editors.View;
+using Oil_level_glass.UI.KompasUtils;
 using Oil_level_glass.UI.KompasUtils.Graphic;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
@@ -301,12 +302,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tspmModelMaterial_Click(object sender, EventArgs e)
         {
-            using ModelMaterialForm form = new ModelMaterialForm()
-            {
-
-            };
-
-            form.ShowDialog();
+            GraphicCatalogFiller catalogFiller = new GraphicCatalogFiller(new FileInfo(KompasSystem.MaterialsFile), "Материалы");
+            var catalog = catalogFiller.GetCatalog();
         }
     }
 }

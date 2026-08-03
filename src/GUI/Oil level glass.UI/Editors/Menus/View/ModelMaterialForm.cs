@@ -11,9 +11,8 @@ namespace Oil_level_glass.UI.Editors.Menus.View
 
         private void ModelMaterialForm_Load(object sender, EventArgs e)
         {
-            var tree = GraphicMaster.GetAllNodesFromFile();
+            
 
-            tvMaterials.Nodes.Add(tree);
         }
     }
 }
