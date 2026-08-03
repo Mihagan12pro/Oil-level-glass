@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Oil level glass.Presenters\Oil level glass.Presenters.csproj" />
     <ProjectReference Include="..\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj" />
     <ProjectReference Include="..\Oil level glass.UI.Controls\Oil level glass.UI.Controls.csproj" />
+    <ProjectReference Include="..\Oil level glass.UI.Utils\Oil level glass.UI.Utils.csproj" />
   </ItemGroup>
 
 </Project>

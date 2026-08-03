@@ -42,6 +42,7 @@
             tspmNaming = new ToolStripMenuItem();
             tspmView = new ToolStripMenuItem();
             tspmModelView = new ToolStripMenuItem();
+            tspmModelMaterial = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitSizes).BeginInit();
@@ -160,7 +161,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { tspmFile, tspmView });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1360, 40);
+            menuStrip1.Size = new Size(1360, 42);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -168,7 +169,7 @@
             // 
             tspmFile.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
             tspmFile.Name = "tspmFile";
-            tspmFile.Size = new Size(90, 36);
+            tspmFile.Size = new Size(90, 38);
             tspmFile.Text = "Файл";
             // 
             // tspmFolder
@@ -187,17 +188,24 @@
             // 
             // tspmView
             // 
-            tspmView.DropDownItems.AddRange(new ToolStripItem[] { tspmModelView });
+            tspmView.DropDownItems.AddRange(new ToolStripItem[] { tspmModelView, tspmModelMaterial });
             tspmView.Name = "tspmView";
-            tspmView.Size = new Size(75, 36);
+            tspmView.Size = new Size(75, 38);
             tspmView.Text = "Вид";
             // 
             // tspmModelView
             // 
             tspmModelView.Name = "tspmModelView";
-            tspmModelView.Size = new Size(294, 44);
+            tspmModelView.Size = new Size(359, 44);
             tspmModelView.Text = "Вид модели...";
             tspmModelView.Click += tspmModelView_Click;
+            // 
+            // tspmModelMaterial
+            // 
+            tspmModelMaterial.Name = "tspmModelMaterial";
+            tspmModelMaterial.Size = new Size(359, 44);
+            tspmModelMaterial.Text = "Выбор материала...";
+            tspmModelMaterial.Click += tspmModelMaterial_Click;
             // 
             // Wizard3dForm
             // 
@@ -257,5 +265,6 @@
         private ToolStripMenuItem tspmView;
         private ToolStripMenuItem tspmModelView;
         private ToolStripMenuItem tspmFile;
+        private ToolStripMenuItem tspmModelMaterial;
     }
 }
