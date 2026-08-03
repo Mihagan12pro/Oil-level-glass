@@ -35,7 +35,7 @@ namespace Oil_level_glass.UI.KompasUtils.Graphic
                                .TrimStart()
                                .TrimEnd();
 
-                    Catalog section = Fill(new Catalog() { Value = line });
+                    Catalog section = Fill(new Catalog() { Text = line });
 
 
                     catalog.Add(section);
@@ -51,7 +51,7 @@ namespace Oil_level_glass.UI.KompasUtils.Graphic
 
                     if (line.Length > 0)
                     {
-                        catalog.Add(new Catalog() { Value = line });
+                        catalog.Add(new Catalog() { Text = line });
                     }
                 }
             }

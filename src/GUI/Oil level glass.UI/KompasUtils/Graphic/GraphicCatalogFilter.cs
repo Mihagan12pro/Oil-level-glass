@@ -1,5 +1,6 @@
 ﻿using Shared.DataStructues;
 using Shared.Utils.CatalogUtils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Oil_level_glass.UI.KompasUtils.Graphic
 {
@@ -9,14 +10,32 @@ namespace Oil_level_glass.UI.KompasUtils.Graphic
             Catalog catalog, 
             Func<Catalog, bool> filters)
         {
-            var filtered = base.FilterLeaves(catalog, filters);
+            var filter = (Catalog c) => c.Count > 0 || c.Text.Contains('|');
+
+            var filtered = DoFilter(
+                
+                base.FilterLeaves(catalog, filters),
+                
+                new Queue<Catalog>(),
+                
+                filter
+            );
+
+            filtered = DoFilter(
+                
+                    filtered,
+                
+                    new Queue<Catalog>(),
+                
+                    filter
+            );
 
             return filtered;
         }
 
         protected override Catalog DoFilter(
             Catalog catalog, 
-            List<Catalog> forDeleting,
+            Queue<Catalog> forDeleting,
             Func<Catalog, bool> filters)
         {
             for(int i = 0; i < catalog.Count; i++)
@@ -25,30 +44,28 @@ namespace Oil_level_glass.UI.KompasUtils.Graphic
                 {
                     var branch = catalog[i];
 
-                    List<Catalog> leavesForDeleting = new List<Catalog>();
+                    Queue<Catalog> leavesForDeleting = new Queue<Catalog>();
                     branch = DoFilter(branch, leavesForDeleting, filters);
 
-                    foreach(var leave in leavesForDeleting)
+                    while(leavesForDeleting.TryDequeue(out Catalog leave))
                     {
                         branch.Remove(leave);
                     }
-
-                    //if (branch.Count == 0 && branch.Parent != null)
-                    //{
-                    //    var parent = branch.Parent;
-
-                    //    parent.Remove(branch);
-                    //}
                 }
                 else
                 {
                     Catalog leave = catalog[i];
 
-                    if (!filters.Invoke(leave))
-                        forDeleting.Add(leave);
+                    if (filters.Invoke(leave) == false)
+                        forDeleting.Enqueue(leave);
                 }
             }
-            
+
+            while (forDeleting.TryDequeue(out Catalog leave))
+            {
+                catalog.Remove(leave);
+            }
+
             return catalog;
         }
     }

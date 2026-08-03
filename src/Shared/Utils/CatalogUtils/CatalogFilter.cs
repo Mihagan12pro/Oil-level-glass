@@ -13,11 +13,11 @@ namespace Shared.Utils.CatalogUtils
         public virtual Catalog FilterLeaves(
             Catalog catalog,
             Func<Catalog, bool> filters)
-                => DoFilter(catalog, new List<Catalog>(), filters);
+                => DoFilter(catalog, new Queue<Catalog>(), filters);
 
         protected abstract Catalog DoFilter(
             Catalog catalog,
-            List<Catalog> forDeleting,
+            Queue<Catalog> forDeleting,
             Func<Catalog, bool> filters);
     }
 }

@@ -15,7 +15,7 @@ namespace Oil_level_glass.UI.Utils.Extensions
         private static TreeNode DoToTreeNode(Catalog catalog, TreeNode treeNode)
         {
             if (catalog.Parent == null)
-                treeNode.Text = catalog.Value;
+                treeNode.Text = catalog.Text;
 
             for(int i = 0; i < catalog.Count; i++)
             {
@@ -23,13 +23,13 @@ namespace Oil_level_glass.UI.Utils.Extensions
 
                 if (item.Count > 0)
                 {
-                    TreeNode node = new TreeNode(item.Value);
+                    TreeNode node = new TreeNode(item.Text);
 
                     treeNode.Nodes.Add(DoToTreeNode(item, node));
                 }
                 else
                 {
-                    treeNode.Nodes.Add(item.Value);
+                    treeNode.Nodes.Add(item.Text);
                 }
             }
 

@@ -15,7 +15,7 @@ namespace Shared.Utils.CatalogUtils
         public Catalog GetCatalog()
         {
             if (_catalog == null)
-                _catalog = Fill(new Catalog() { Value = _rootName });
+                _catalog = Fill(new Catalog() { Text = _rootName });
 
             return _catalog;
         }

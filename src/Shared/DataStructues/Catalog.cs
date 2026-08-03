@@ -10,7 +10,7 @@
         /// <summary>
         ///  Represents a node in a tree structure
         /// </summary>
-        public string Value { get; set; }
+        public string Text { get; set; }
 
         /// <summary>
         /// Gets the parent catalog node.
