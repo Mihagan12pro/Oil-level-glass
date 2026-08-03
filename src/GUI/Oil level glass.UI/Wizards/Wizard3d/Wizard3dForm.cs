@@ -17,7 +17,6 @@ using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
 using Shared.DataStructues;
-using Shared.Utils.CatalogUtils;
 
 namespace Oil_level_glass.UI.Wizard3d
 {
@@ -304,10 +303,12 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tspmModelMaterial_Click(object sender, EventArgs e)
         {
-            GraphicCatalogFiller catalogFiller = new GraphicCatalogFiller(new FileInfo(KompasSystem.MaterialsFile), "Материалы");
-            var catalog = catalogFiller.GetCatalog();
+            using ModelMaterialForm form = new ModelMaterialForm();
+            form.ShowDialog();
+            //GraphicCatalogFiller catalogFiller = new GraphicCatalogFiller(new FileInfo(KompasSystem.MaterialsFile), "Материалы");
+            //var catalog = catalogFiller.GetCatalog();
 
-            catalog = new GraphicCatalogFilter().FilterLeaves(catalog, (Catalog c) => c.Value.Contains($"|{5}"));
+            //catalog = new GraphicCatalogFilter().FilterLeaves(catalog, (Catalog c) => c.Value.Contains($"|{5}"));
         }
     }
 }

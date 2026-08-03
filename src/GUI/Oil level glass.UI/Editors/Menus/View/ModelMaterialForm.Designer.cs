@@ -35,15 +35,18 @@
             // 
             tvMaterials.Location = new Point(12, 21);
             tvMaterials.Name = "tvMaterials";
-            tvMaterials.Size = new Size(776, 330);
+            tvMaterials.Size = new Size(1173, 565);
             tvMaterials.TabIndex = 0;
             // 
             // ModelMaterialForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1197, 695);
             Controls.Add(tvMaterials);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ModelMaterialForm";
             Text = "ModelMaterialForm";
             Load += ModelMaterialForm_Load;

@@ -10,7 +10,7 @@ namespace Shared.Utils.CatalogUtils
         /// <param name="catalog"></param>
         /// <param name="filters"></param>
         /// <returns></returns>
-        public Catalog FilterLeaves(
+        public virtual Catalog FilterLeaves(
             Catalog catalog,
             Func<Catalog, bool> filters)
                 => DoFilter(catalog, new List<Catalog>(), filters);
