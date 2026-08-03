@@ -1,4 +1,5 @@
-﻿using Shared.DataStructues.CatalogUtils;
+﻿using Shared.DataStructues;
+using Shared.Utils.CatalogUtils;
 
 namespace Oil_level_glass.UI.KompasUtils.Graphic
 {

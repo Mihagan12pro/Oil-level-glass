@@ -1,4 +1,6 @@
-﻿namespace Shared.DataStructues.CatalogUtils
+﻿using Shared.DataStructues;
+
+namespace Shared.Utils.CatalogUtils
 {
     public abstract class CatalogFiller
     {

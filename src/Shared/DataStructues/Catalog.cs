@@ -1,4 +1,4 @@
-﻿namespace Shared.DataStructues.CatalogUtils
+﻿namespace Shared.DataStructues
 {
     public class Catalog
     {
