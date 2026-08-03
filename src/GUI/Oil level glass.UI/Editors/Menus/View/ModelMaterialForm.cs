@@ -17,7 +17,8 @@ namespace Oil_level_glass.UI.Editors.Menus.View
             GraphicCatalogFiller catalogFiller = new GraphicCatalogFiller(new FileInfo(KompasSystem.MaterialsFile), "Материалы");
             var catalog = catalogFiller.GetCatalog();
 
-            catalog = new GraphicCatalogFilter().FilterLeaves(catalog, (Catalog c) => c.Text.Contains($"|{1}"));
+            catalog = new GraphicCatalogFilter().FilterLeaves(catalog, (Catalog c) => c.Text.Contains($"|{0}"));
+            catalog = new GraphicCatalogFormatter().Format(catalog);
 
             TreeNode nodes = catalog.ToTreeNode();
             tvMaterials.Nodes.Add(nodes);

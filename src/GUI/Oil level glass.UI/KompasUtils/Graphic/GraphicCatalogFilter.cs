@@ -1,6 +1,5 @@
 ﻿using Shared.DataStructues;
 using Shared.Utils.CatalogUtils;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Oil_level_glass.UI.KompasUtils.Graphic
 {

@@ -7,9 +7,6 @@
     {
         private List<Catalog> _subcatalogs = new List<Catalog>();
 
-        /// <summary>
-        ///  Represents a node in a tree structure
-        /// </summary>
         public string Text { get; set; }
 
         /// <summary>
@@ -27,7 +24,7 @@
             => _subcatalogs[index];
 
         /// <summary>
-        /// Add new subcatalog
+        /// Adds a child catalog node
         /// </summary>
         /// <param name="section"></param>
         public void Add(Catalog section)
@@ -43,5 +40,13 @@
         /// <param name="section"></param>
         public void Remove(Catalog section)
             => _subcatalogs.Remove(section);
+
+        ///// <summary>
+        /////  Applies the specified formatter to the text of the catalog section
+        ///// </summary>
+        ///// <param name="section"></param>
+        ///// <param name="formater"></param>
+        //public void Format(Catalog section, Func<string, string> formater)
+        //    => section.Text = formater.Invoke(section.Text);
     }
 }
