@@ -1,6 +1,5 @@
-﻿using Oil_level_glass.Model.Data.Other;
-using Oil_level_glass.UI.Editors.Menus;
-using Appearance = Oil_level_glass.Model.Data.Other.Appearance;
+﻿using Oil_level_glass.UI.Editors.Menus;
+using Appearance = Oil_level_glass.Model.ModelProperties.Other.Appearance;
 
 namespace Oil_level_glass.UI.Editors.View
 {
@@ -22,7 +21,7 @@ namespace Oil_level_glass.UI.Editors.View
             }
         }
 
-        protected override void SetControlsValues(Model.Data.Other.Appearance appearance)
+        protected override void SetControlsValues(Appearance appearance)
         {
             pnlColor.BackColor = Color.FromArgb(
                 appearance.Color.Red,
@@ -38,7 +37,7 @@ namespace Oil_level_glass.UI.Editors.View
             tbTransperency.Value = Convert.ToDecimal(appearance.Transparency);
         }
 
-        protected override void GetControlsValues(Model.Data.Other.Appearance appearance)
+        protected override void GetControlsValues(Appearance appearance)
         {
             appearance.Color.Red = pnlColor.BackColor.R;
             appearance.Color.Green = pnlColor.BackColor.G;

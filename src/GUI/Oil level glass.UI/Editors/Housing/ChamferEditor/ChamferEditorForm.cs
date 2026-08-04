@@ -1,6 +1,6 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Presenters;
-using Oil_level_glass.Presenters.Editors.Housing.ChamferEditor;
+using Oil_level_glass.Presenters.Editors.Data.ChamferEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor

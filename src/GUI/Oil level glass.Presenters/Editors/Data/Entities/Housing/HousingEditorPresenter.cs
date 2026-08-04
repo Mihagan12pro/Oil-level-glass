@@ -4,7 +4,7 @@ using Oil_level_glass.UI.Abstractions.Editors.Housing;
 using Shared.Results;
 using System.Threading;
 
-namespace Oil_level_glass.Presenters.Editors.Housing
+namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
 {
     internal class HousingEditorPresenter : IHousingEditorPresenter
     {

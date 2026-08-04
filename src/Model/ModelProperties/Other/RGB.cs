@@ -1,4 +1,4 @@
-﻿namespace Oil_level_glass.Model.Data.Other
+﻿namespace Oil_level_glass.Model.ModelProperties.Other
 {
     public class RGB : BaseModel
     {

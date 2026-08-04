@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Model.Data.KompasFile;
+﻿using Oil_level_glass.Model.ModelProperties.KompasFile;
 using Oil_level_glass.UI.Editors.Menus;
 
 namespace Oil_level_glass.UI.Editors.KompasFiles

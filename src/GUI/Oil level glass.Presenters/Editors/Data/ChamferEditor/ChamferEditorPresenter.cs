@@ -3,7 +3,7 @@ using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Shared.Results;
 
-namespace Oil_level_glass.Presenters.Editors.Housing.ChamferEditor
+namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
 {
     internal class ChamferEditorPresenter : IChamferEditorPresenter
     {

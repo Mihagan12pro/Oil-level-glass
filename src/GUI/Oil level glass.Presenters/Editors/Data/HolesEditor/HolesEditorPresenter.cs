@@ -4,7 +4,7 @@ using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 using Shared.Results;
 
-namespace Oil_level_glass.Presenters.Editors.Housing.HolesEditor
+namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
 {
     internal class HolesEditorPresenter : IHolesEditorPresenter
     {

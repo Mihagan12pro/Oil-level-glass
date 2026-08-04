@@ -4,7 +4,7 @@ using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Shared.Results;
 using System.Globalization;
 
-namespace Oil_level_glass.UI.Presenters.Editors.Glass
+namespace Oil_level_glass.Presenters.Editors.Data.Entities.Glass
 {
     internal class GlassEditorPresenter : IGlassEditorPresenter
     {

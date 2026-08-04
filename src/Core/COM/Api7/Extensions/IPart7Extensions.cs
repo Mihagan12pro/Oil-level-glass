@@ -1,8 +1,8 @@
 ﻿using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
-using Oil_level_glass.Model.Data.Materials;
-using Oil_level_glass.Model.Data.Other;
+using Oil_level_glass.Model.ModelProperties.Materials;
+using Oil_level_glass.Model.ModelProperties.Other;
 
 namespace Oil_level_glass.Core.COM.Api7.Extensions
 {

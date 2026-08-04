@@ -1,7 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Operations;
-using Oil_level_glass.Model.Data.Other;
+using Oil_level_glass.Model.ModelProperties.Other;
 
-namespace Oil_level_glass.Model.Data.KompasFile
+namespace Oil_level_glass.Model.ModelProperties.KompasFile
 {
     public abstract class KompasFile : BaseModel
     {

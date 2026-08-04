@@ -5,7 +5,6 @@ using Oil_level_glass.Core.COM.Api7.Extensions;
 using Oil_level_glass.Core.COM.COMProviders;
 using Oil_level_glass.Core.RubberStrip;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Materials;
 using Shared.Results;
 using System.Runtime.InteropServices;
 

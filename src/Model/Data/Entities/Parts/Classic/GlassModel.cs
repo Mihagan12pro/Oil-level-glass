@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Model.Data.Materials;
+﻿using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic

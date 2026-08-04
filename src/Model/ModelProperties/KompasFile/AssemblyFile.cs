@@ -1,4 +1,4 @@
-﻿namespace Oil_level_glass.Model.Data.KompasFile
+﻿namespace Oil_level_glass.Model.ModelProperties.KompasFile
 {
     public class AssemblyFile : KompasFile
     {

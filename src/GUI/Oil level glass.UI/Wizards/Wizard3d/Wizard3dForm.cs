@@ -11,12 +11,9 @@ using Oil_level_glass.UI.Editors.KompasFiles;
 using Oil_level_glass.UI.Editors.Menus.View;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Editors.View;
-using Oil_level_glass.UI.KompasUtils;
-using Oil_level_glass.UI.KompasUtils.Graphic;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
-using Shared.DataStructues;
 
 namespace Oil_level_glass.UI.Wizard3d
 {
@@ -34,9 +31,6 @@ namespace Oil_level_glass.UI.Wizard3d
         public Wizard3dForm()
         {
             InitializeComponent();
-
-            //var tree = GraphicMaster.GetAllNodesFromFile();
-            //GraphicMaster.FilterByHatch(0, tree);
 
             _glass = new GlassModel()
             {
@@ -305,10 +299,6 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             using ModelMaterialForm form = new ModelMaterialForm();
             form.ShowDialog();
-            //GraphicCatalogFiller catalogFiller = new GraphicCatalogFiller(new FileInfo(KompasSystem.MaterialsFile), "Материалы");
-            //var catalog = catalogFiller.GetCatalog();
-
-            //catalog = new GraphicCatalogFilter().FilterLeaves(catalog, (Catalog c) => c.Value.Contains($"|{5}"));
         }
     }
 }

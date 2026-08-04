@@ -1,7 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.Presenters;
-using Oil_level_glass.Presenters.Editors.Housing;
+using Oil_level_glass.Presenters.Editors.Data.Entities.Housing;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
 using Oil_level_glass.UI.Editors.Housing.ChamferEditor;
 using Oil_level_glass.UI.Editors.Housing.HolesEditor;

@@ -1,6 +1,4 @@
-﻿using Oil_level_glass.Model.Data.KompasFile;
-
-namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
+﻿namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
     /// <summary>
     /// Oil level glass assembly

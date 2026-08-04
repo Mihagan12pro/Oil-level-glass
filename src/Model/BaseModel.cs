@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Oil_level_glass.Model.Data
+namespace Oil_level_glass.Model
 {
     /// <summary>
     /// Base model class. Every domain model must be inherited from this class

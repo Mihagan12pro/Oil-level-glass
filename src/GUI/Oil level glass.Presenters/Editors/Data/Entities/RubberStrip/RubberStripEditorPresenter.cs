@@ -1,10 +1,9 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.Materials;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 using Oil_level_glass.Presenters.Extensions;
 using Shared.Results;
 
-namespace Oil_level_glass.Presenters.Editors.RubberStrip
+namespace Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip
 {
     internal class RubberStripEditorPresenter : IRubberStripEditorPresenter
     {

@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Model.Data;
+﻿using Oil_level_glass.Model;
 using Shared.Results;
 
 namespace Oil_level_glass.Core

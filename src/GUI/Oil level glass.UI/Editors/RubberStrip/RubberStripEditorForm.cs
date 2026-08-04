@@ -1,8 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Presenters;
-using Oil_level_glass.Presenters.Editors.RubberStrip;
+using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
-using Oil_level_glass.UI.Presenters.Editors.Glass;
 
 namespace Oil_level_glass.UI.Editors.RubberStrip
 {

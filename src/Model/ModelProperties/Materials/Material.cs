@@ -1,4 +1,4 @@
-﻿namespace Oil_level_glass.Model.Data.Materials
+﻿namespace Oil_level_glass.Model.ModelProperties.Materials
 {
     public abstract class Material 
         : BaseModel

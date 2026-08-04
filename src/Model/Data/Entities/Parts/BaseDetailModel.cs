@@ -1,6 +1,5 @@
-﻿using Oil_level_glass.Model.Data.KompasFile;
-using Oil_level_glass.Model.Data.Materials;
-using Oil_level_glass.Model.Data.Other;
+﻿using Oil_level_glass.Model.ModelProperties.Materials;
+using Oil_level_glass.Model.ModelProperties.Other;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts
 {
