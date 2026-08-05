@@ -1,6 +1,4 @@
-﻿using Oil_level_glass.Model.Data.Other;
-
-namespace Oil_level_glass.UI.Editors.Menus
+﻿namespace Oil_level_glass.UI.Editors.Menus
 {
     public abstract class BaseMenuForm<T> : Form
     {

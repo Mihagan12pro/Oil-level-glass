@@ -1,4 +1,6 @@
-﻿namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
+﻿using System.ComponentModel;
+
+namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
     /// <summary>
     /// Oil level glass assembly

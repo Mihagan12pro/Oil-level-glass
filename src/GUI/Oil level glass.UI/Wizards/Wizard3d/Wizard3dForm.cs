@@ -1,6 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.KompasFile;
-using Oil_level_glass.Model.Data.Other;
+using Oil_level_glass.Model.ModelProperties.KompasFile;
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.Presenters.Wizards.Wizard3d;
@@ -36,7 +35,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new T()
+                    Name = new ()
                     {
                         Naming = "Стекло",
                     },
@@ -51,7 +50,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new T()
+                    Name = new ()
                     {
                         Naming = "Резиновая прокладка"
                     },
@@ -67,7 +66,7 @@ namespace Oil_level_glass.UI.Wizard3d
             {
                 File = new PartFile()
                 {
-                    Name = new Model.Data.Other.T()
+                    Name = new ()
                     {
                         Naming = "Корпус"
                     },

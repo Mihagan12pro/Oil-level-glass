@@ -3,6 +3,7 @@ using System.ComponentModel;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
+    [DisplayName("Glass")]
     public class GlassModel : BaseDetailModel
     {
         public GlassModel()

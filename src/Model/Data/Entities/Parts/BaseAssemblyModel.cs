@@ -3,7 +3,8 @@
     /// <summary>
     /// Base class for entities that describe assemblies
     /// </summary>
-    public abstract class BaseAssemblyModel : BaseEntityModel
+    public abstract class BaseAssemblyModel 
+        : BaseEntityModel
     {
         public BaseAssemblyModel()
         {
