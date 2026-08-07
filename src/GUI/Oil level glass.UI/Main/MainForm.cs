@@ -3,7 +3,7 @@ using Oil_level_glass.UI.Wizard3d;
 
 namespace Oil_level_glass.UI.Main
 {
-    public partial class MainForm : Form, IForm
+    public partial class MainForm : Form, IMain
     {
         public MainForm()
         {

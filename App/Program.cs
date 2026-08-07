@@ -1,6 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Oil_level_glass.UI;
+using Oil_level_glass.UI.Abstractions;
+using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Main;
+using Oil_level_glass.UI.Wizard3d;
 
 namespace App
 {
@@ -17,7 +21,7 @@ namespace App
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(_appHost.Services.GetRequiredService<MainForm>());
+            Application.Run(_appHost.Services.GetRequiredService<IMain>() as Form);
         }
 
         static Program()
@@ -25,7 +29,8 @@ namespace App
             _appHost = Host.CreateDefaultBuilder()
                 .ConfigureServices( (hostContext, services) => 
                 {
-                    services.AddSingleton<MainForm>();
+                    services.AddForms();
+
                 }).Build();
         }
     }

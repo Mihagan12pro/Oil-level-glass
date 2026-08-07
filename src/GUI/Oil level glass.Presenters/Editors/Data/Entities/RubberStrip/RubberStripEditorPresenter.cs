@@ -9,7 +9,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip
     {
         private readonly RubberStripModel _rubberStrip;
         private readonly double _oldInternalDiameter, _oldHeight;
-        private readonly IRubberStripEditorForm _form;
+        private readonly IRubberStripEditor _form;
         
         public Action CheckData { get; }
 
@@ -26,7 +26,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip
             => _rubberStrip.TryConvertToDoubleAndValidate(height, nameof(_rubberStrip.Height));
 
         public RubberStripEditorPresenter(
-            IRubberStripEditorForm form,
+            IRubberStripEditor form,
             Action checkData)
         {
             _form = form;

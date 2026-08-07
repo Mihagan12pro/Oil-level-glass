@@ -8,7 +8,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 {
     internal class Wizard3dPresenter : IWizard3dPresenter
     {
-        private readonly IWizard3dForm _wizardForm;
+        private readonly IWizard3d _wizardForm;
 
         private readonly HousingModel _housing;
         private readonly RubberStripModel _rubberStrip;
@@ -125,7 +125,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         }
 
         public Wizard3dPresenter(
-            IWizard3dForm wizardForm, 
+            IWizard3d wizardForm, 
             GlassModel glass,
             RubberStripModel rubberStrip, 
             HousingModel housing,

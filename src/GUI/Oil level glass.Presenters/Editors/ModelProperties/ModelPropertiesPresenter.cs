@@ -5,13 +5,14 @@ using System.Collections;
 
 namespace Oil_level_glass.Presenters.Editors.ModelProperties
 {
-    internal class ModelPropertiesPresenter : IModelPropertiesPresenter
+    internal class ModelPropertiesPresenter 
+        : IModelPropertiesPresenter
     {
         protected readonly ArrayList modelsTitles = new ArrayList();
 
         protected readonly List<BaseEntityModel> models = new List<BaseEntityModel>();
 
-        protected BaseEntityModel _selectedModel = null;
+        protected BaseEntityModel selectedModel = null;
 
         public IEnumerable ModelsTitles
             => modelsTitles;
@@ -32,12 +33,12 @@ namespace Oil_level_glass.Presenters.Editors.ModelProperties
         {
             if (index == -1)
             {
-                _selectedModel = null;
+                selectedModel = null;
 
                 return;
             }
 
-            _selectedModel = models[index];
+            selectedModel = models[index];
         }
     }
 }

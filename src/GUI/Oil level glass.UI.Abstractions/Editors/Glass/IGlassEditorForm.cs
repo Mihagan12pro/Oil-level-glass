@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.UI.Abstractions.Editors.Glass
 {
-    public interface IGlassEditorForm : IEditorForm<GlassModel>
+    public interface IGlassEditor : IEditorForm<GlassModel>
     {
 
     }

@@ -9,7 +9,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Editors\ModelProperties\KompasFiles\EditNamingForm.cs" />
+    <Compile Remove="Editors\ModelProperties\KompasFiles\EditNamingForm.Designer.cs" />
+    <Compile Remove="Editors\ModelProperties\View\ModelAppereanceForm.cs" />
+    <Compile Remove="Editors\ModelProperties\View\ModelAppereanceForm.Designer.cs" />
+    <Compile Remove="Editors\ModelProperties\View\ModelMaterialForm.cs" />
+    <Compile Remove="Editors\ModelProperties\View\ModelMaterialForm.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Editors\ModelProperties\KompasFiles\EditNamingForm.resx" />
+    <EmbeddedResource Remove="Editors\ModelProperties\View\ModelAppereanceForm.resx" />
+    <EmbeddedResource Remove="Editors\ModelProperties\View\ModelMaterialForm.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Editors\Glass\" />
+    <Folder Include="Editors\ModelProperties\View\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

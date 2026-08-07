@@ -8,7 +8,7 @@ using Oil_level_glass.UI.Editors.Housing.HolesEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing
 {
-    public partial class HousingEditorForm : Form, IHousingForm
+    public partial class HousingEditorForm : Form, IHousingEditor
     {
         private IHousingEditorPresenter _housingEditorPresenter;
 

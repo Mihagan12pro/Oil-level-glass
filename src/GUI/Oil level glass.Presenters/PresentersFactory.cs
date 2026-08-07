@@ -23,19 +23,19 @@ namespace Oil_level_glass.Presenters
             => new HolesEditorPresenter(form, checkData);
 
         public static IRubberStripEditorPresenter CreateRubberStripPresenter(
-            IRubberStripEditorForm form,
+            IRubberStripEditor form,
             Action checkData) => new RubberStripEditorPresenter(form, checkData);
 
         public static IGlassEditorPresenter CreateGlassEditorPresenter(
-            IGlassEditorForm form,
+            IGlassEditor form,
             Action checkData) => new GlassEditorPresenter(form, checkData);
 
         public static IHousingEditorPresenter CreateHousingEditorPresenter(
-            IHousingForm form,
+            IHousingEditor form,
             Action checkData) => new HousingEditorPresenter(form, checkData);
 
         public static IWizard3dPresenter CreateWizard3dPresenter(
-            IWizard3dForm form,
+            IWizard3d form,
             GlassModel glass,
             RubberStripModel rubberStrip,
             HousingModel housing,

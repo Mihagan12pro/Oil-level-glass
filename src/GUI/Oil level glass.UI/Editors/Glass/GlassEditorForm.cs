@@ -5,7 +5,7 @@ using Oil_level_glass.UI.Abstractions.Editors.Glass;
 
 namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 {
-    public partial class GlassEditorForm : Form, IGlassEditorForm
+    public partial class GlassEditorForm : Form, IGlassEditor
     {
         private IGlassEditorPresenter _glassEditorPresenter;
         private ErrorProvider _diameterErrorProvider, _heightErrorProvider;

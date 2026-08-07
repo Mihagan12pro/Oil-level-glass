@@ -7,16 +7,14 @@ using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Controls;
 using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.KompasFiles;
-using Oil_level_glass.UI.Editors.Menus.View;
 using Oil_level_glass.UI.Editors.RubberStrip;
-using Oil_level_glass.UI.Editors.View;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 using Shared;
 
 namespace Oil_level_glass.UI.Wizard3d
 {
-    public partial class Wizard3dForm : Form, IWizard3dForm
+    public partial class Wizard3dForm : Form, IWizard3d
     {
         private readonly IWizard3dPresenter _wizardPresenter;
         private readonly GlassModel _glass;
@@ -248,14 +246,7 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tspmFolder_Click(object sender, EventArgs e)
         {
-            using SelectFolderForm form = new SelectFolderForm()
-            {
-                Glass = _glass.File,
-
-                Housing = _housing.File,
-
-                RubberStrip = _rubberStrip.File
-            };
+            using SelectFolderForm form = new SelectFolderForm();
 
             form.Owner = this;
 
@@ -264,40 +255,40 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tspmNaming_Click(object sender, EventArgs e)
         {
-            using EditNamingForm form = new EditNamingForm()
-            {
-                Glass = _glass.File.Name,
+            //using EditNamingForm form = new EditNamingForm()
+            //{
+            //    Glass = _glass.File.Name,
 
-                Housing = _housing.File.Name,
+            //    Housing = _housing.File.Name,
 
-                RubberStrip = _rubberStrip.File.Name
-            };
+            //    RubberStrip = _rubberStrip.File.Name
+            //};
 
-            form.Owner = this;
+            //form.Owner = this;
 
-            form.ShowDialog();
+            //form.ShowDialog();
         }
 
         private void tspmModelView_Click(object sender, EventArgs e)
         {
-            using ModelAppereanceForm form = new ModelAppereanceForm()
-            {
-                Glass = _glass.Appearance,
+            //using ModelAppereanceForm form = new ModelAppereanceForm()
+            //{
+            //    Glass = _glass.Appearance,
 
-                Housing = _housing.Appearance,
+            //    Housing = _housing.Appearance,
 
-                RubberStrip = _rubberStrip.Appearance
-            };
+            //    RubberStrip = _rubberStrip.Appearance
+            //};
 
-            form.Owner = this;
+            //form.Owner = this;
 
-            form.ShowDialog();
+            //form.ShowDialog();
         }
 
         private void tspmModelMaterial_Click(object sender, EventArgs e)
         {
-            using ModelMaterialForm form = new ModelMaterialForm();
-            form.ShowDialog();
+            //using ModelMaterialForm form = new ModelMaterialForm();
+            //form.ShowDialog();
         }
     }
 }

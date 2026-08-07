@@ -8,7 +8,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
 {
     internal class HousingEditorPresenter : IHousingEditorPresenter
     {
-        private readonly IHousingForm _housingForm;
+        private readonly IHousingEditor _housingForm;
         private readonly HousingModel _housing;
 
         private readonly double _oldMainDiameter, _oldMainHeight;
@@ -31,7 +31,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
             => _housing.TryConvertToDoubleAndValidate(mainHeight, nameof(_housing.MainHeight));
 
         public HousingEditorPresenter(
-            IHousingForm housingForm,
+            IHousingEditor housingForm,
             Action checkData)
         {
             CheckData = checkData;
