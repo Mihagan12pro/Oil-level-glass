@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Model.ModelProperties.KompasFile;
 using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Enums;
