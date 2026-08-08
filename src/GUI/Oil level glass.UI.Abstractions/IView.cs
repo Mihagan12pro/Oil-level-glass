@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.UI.Abstractions
 {
-    public interface IMain
+    public interface IView
     {
     }
 }

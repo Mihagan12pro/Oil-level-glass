@@ -7,7 +7,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
 {
     internal class ChamferEditorPresenter : IChamferEditorPresenter
     {
-        private readonly IChamferEditorForm _form;
+        private readonly IChamferEditorView _form;
         private readonly HousingModel _housing;
 
         private readonly double _oldChamgerSide1, _oldChamferSide2, _oldChamferAngle;
@@ -56,7 +56,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
         }
 
         public ChamferEditorPresenter(
-            IChamferEditorForm form, 
+            IChamferEditorView form, 
             Action checkData)
         {
             _form = form;

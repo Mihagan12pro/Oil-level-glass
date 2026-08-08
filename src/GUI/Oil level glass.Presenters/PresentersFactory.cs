@@ -16,26 +16,26 @@ namespace Oil_level_glass.Presenters
 {
     public static class PresentersFactory
     {
-        public static IChamferEditorPresenter CreateChamferEditorPresenter(IChamferEditorForm form, Action checkData)
+        public static IChamferEditorPresenter CreateChamferEditorPresenter(IChamferEditorView form, Action checkData)
             => new ChamferEditorPresenter(form, checkData);
 
-        public static IHolesEditorPresenter CreateHolesEditorPresenter(IHolesEditorForm form, Action checkData)
+        public static IHolesEditorPresenter CreateHolesEditorPresenter(IHolesEditorView form, Action checkData)
             => new HolesEditorPresenter(form, checkData);
 
         public static IRubberStripEditorPresenter CreateRubberStripPresenter(
-            IRubberStripEditor form,
+            IRubberStripEditorView form,
             Action checkData) => new RubberStripEditorPresenter(form, checkData);
 
         public static IGlassEditorPresenter CreateGlassEditorPresenter(
-            IGlassEditor form,
+            IGlassView form,
             Action checkData) => new GlassEditorPresenter(form, checkData);
 
         public static IHousingEditorPresenter CreateHousingEditorPresenter(
-            IHousingEditor form,
+            IHousingEditorView form,
             Action checkData) => new HousingEditorPresenter(form, checkData);
 
         public static IWizard3dPresenter CreateWizard3dPresenter(
-            IWizard3d form,
+            IWizard3dView form,
             GlassModel glass,
             RubberStripModel rubberStrip,
             HousingModel housing,

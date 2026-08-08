@@ -8,7 +8,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Glass
 {
     internal class GlassEditorPresenter : IGlassEditorPresenter
     {
-        private readonly IGlassEditor _glassEditor;
+        private readonly IGlassView _glassEditor;
         private readonly GlassModel _glass;
 
         private readonly double _oldWidth, _oldDiameter;
@@ -27,7 +27,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Glass
             _glass.Height = _oldWidth;
         }
 
-        internal GlassEditorPresenter(IGlassEditor glassEditor, Action checkData)
+        internal GlassEditorPresenter(IGlassView glassEditor, Action checkData)
         {
             _glassEditor = glassEditor;
 

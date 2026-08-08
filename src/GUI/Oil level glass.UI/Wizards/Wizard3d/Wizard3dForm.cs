@@ -14,7 +14,7 @@ using Shared;
 
 namespace Oil_level_glass.UI.Wizard3d
 {
-    public partial class Wizard3dForm : Form, IWizard3d
+    public partial class Wizard3dForm : Form, IWizard3dView
     {
         private readonly IWizard3dPresenter _wizardPresenter;
         private readonly GlassModel _glass;

@@ -10,7 +10,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
     {
         public Action CheckData { get; }
 
-        private IHolesEditorForm _holesEditorForm;
+        private IHolesEditorView _holesEditorForm;
 
         private readonly HousingModel _housingModel;
         private readonly int _oldCountOfHoles;
@@ -52,7 +52,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
         }
 
         public HolesEditorPresenter(
-            IHolesEditorForm holesEditorForm, 
+            IHolesEditorView holesEditorForm, 
             Action checkData)
         {
             _holesEditorForm = holesEditorForm;

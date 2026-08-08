@@ -6,7 +6,7 @@ using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
 {
-    public partial class HolesEditorForm : Form, IHolesEditorForm
+    public partial class HolesEditorForm : Form, IHolesEditorView
     {
         private IHolesEditorPresenter _holesEditorPresenter;
         private ErrorProvider _diameterError = new ErrorProvider();

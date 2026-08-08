@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.UI.Abstractions.Wizards.Wizard3d
 {
-    public interface IWizard3d : IWizardForm
+    public interface IWizard3dView : IWizardView
     {
     }
 }

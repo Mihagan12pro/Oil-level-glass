@@ -5,7 +5,7 @@ using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 {
-    public partial class ChamferEditorForm : Form, IChamferEditorForm
+    public partial class ChamferEditorForm : Form, IChamferEditorView
     {
         private IChamferEditorPresenter _chamferEditorPresenter;
         private ErrorProvider _side1Error, _side2Error;

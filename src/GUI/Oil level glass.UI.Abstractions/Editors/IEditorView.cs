@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.UI.Abstractions.Editors
 {
-    public interface IEditorForm<TModel> : IForm where TModel : BaseModel
+    public interface IEditorView<TModel> : IView where TModel : BaseModel
     {
         TModel Model { get; set; }
 
