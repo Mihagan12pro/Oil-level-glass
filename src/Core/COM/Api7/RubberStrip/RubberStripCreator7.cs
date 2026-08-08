@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 
 namespace Oil_level_glass.Core.COM.Api7.RubberStrip
 {
-    internal class RubberStripCreator7 : IRubberStripPartCreator
+    internal class RubberStripPartCreator7 : IRubberStripPartCreator
     {
         private readonly RubberStripModel _rubberStrip;
 
@@ -77,7 +77,7 @@ namespace Oil_level_glass.Core.COM.Api7.RubberStrip
             return result;
         }
 
-        public RubberStripCreator7(RubberStripModel rubberStrip)
+        public RubberStripPartCreator7(RubberStripModel rubberStrip)
         {
             _rubberStrip = rubberStrip;
         }

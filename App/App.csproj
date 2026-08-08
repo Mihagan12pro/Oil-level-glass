@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\src\Core\COM\Oil level glass.Core.COM.csproj" />
     <ProjectReference Include="..\src\GUI\Oil level glass.UI\Oil level glass.UI.csproj" />
   </ItemGroup>
 

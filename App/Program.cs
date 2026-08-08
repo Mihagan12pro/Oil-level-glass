@@ -1,7 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Oil_level_glass.Presenters;
 using Oil_level_glass.UI;
 using Oil_level_glass.UI.Abstractions;
+using Oil_level_glass.Core.COM;
 
 namespace App
 {
@@ -27,6 +29,8 @@ namespace App
                 .ConfigureServices( (hostContext, services) => 
                 {
                     services.AddForms();
+                    services.AddPresenters();
+                    services.AddCreators();
 
                 }).Build();
         }

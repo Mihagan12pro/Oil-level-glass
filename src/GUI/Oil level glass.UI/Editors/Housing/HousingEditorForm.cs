@@ -21,36 +21,6 @@ namespace Oil_level_glass.UI.Editors.Housing
 
         public HousingModel Model { get; set; }
 
-        public void ShowView(
-           bool doModal,
-           object owner = null)
-        {
-            if (owner != null && owner is Form form)
-            {
-                this.Owner = form;
-
-                if (doModal)
-                {
-                    this.Show(form);
-                }
-                else
-                {
-                    this.ShowDialog(form);
-                }
-
-                return;
-            }
-
-            if (doModal)
-            {
-                this.Show();
-
-                return;
-            }
-
-            this.ShowDialog();
-        }
-
         private void btOk_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -158,6 +128,11 @@ namespace Oil_level_glass.UI.Editors.Housing
         {
             if (DialogResult != DialogResult.OK)
                 _housingEditorPresenter.ResetFields();
+        }
+
+        public void ShowView(object owner = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

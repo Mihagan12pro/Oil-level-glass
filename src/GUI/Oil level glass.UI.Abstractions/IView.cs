@@ -2,8 +2,6 @@
 {
     public interface IView : IDisposable
     {
-        void ShowView(
-            bool doModal, 
-            object owner = null);
+        void ShowView(object owner = null);
     }
 }

@@ -144,36 +144,6 @@ namespace Oil_level_glass.UI.Wizard3d
                 });
         }
 
-        public void ShowView(
-           bool doModal,
-           object owner = null)
-        {
-            if (owner != null && owner is Form form)
-            {
-                this.Owner = form;
-
-                if (doModal)
-                {
-                    this.Show(form);
-                }
-                else
-                {
-                    this.ShowDialog(form);
-                }
-
-                return;
-            }
-
-            if (doModal)
-            {
-                this.Show();
-
-                return;
-            }
-
-            this.ShowDialog();
-        }
-
         private void tvParts_DoubleClick(object sender, EventArgs e)
         {
             _configureCommand.Execute();
@@ -222,11 +192,11 @@ namespace Oil_level_glass.UI.Wizard3d
         private void Wizard3dForm_Load(object sender, EventArgs e)
         {
             TreeNode[] details = new TreeNode[]
-        {
+            {
                 new TreeNode(Resources.Glass) { Tag = Part.Glass },
                 new TreeNode(Resources.RubberStrip) { Tag = Part.RubberStrip },
                 new TreeNode(Resources.Housing) { Tag = Part.Housing }
-        };
+            };
             TreeNode oilLevelGlassNode = new TreeNode(Resources.OilLevelGlass, details) { Tag = Part.OilLevelGlass };
 
             tvParts.Nodes.Add(oilLevelGlassNode);
@@ -320,6 +290,18 @@ namespace Oil_level_glass.UI.Wizard3d
         {
             //using ModelMaterialForm form = new ModelMaterialForm();
             //form.ShowDialog();
+        }
+
+        public void ShowView(object owner = null)
+        {
+            if (owner != null && owner is Form form)
+            {
+                ShowDialog(form);
+            }
+            else
+            {
+                ShowDialog();
+            }
         }
     }
 }

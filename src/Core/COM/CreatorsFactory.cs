@@ -19,7 +19,7 @@ namespace Oil_level_glass.Core.COM
             => new HousingPartCreator7(housing);
 
         public IRubberStripPartCreator CreateRubberStripPartCreator(RubberStripModel rubberStripModel)
-            => new RubberStripCreator7(rubberStripModel);
+            => new RubberStripPartCreator7(rubberStripModel);
 
         public IOilLevelGlassPartCreator CreateOilLevelGlassPartCreator(GlassModel glass, RubberStripModel rubberStrip, HousingModel housing)
             => new OilLevelGlassPartCreator(glass, rubberStrip, housing);
