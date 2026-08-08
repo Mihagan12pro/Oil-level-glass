@@ -61,6 +61,36 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
             checkData.Invoke();
         }
 
+        public void ShowView(
+           bool doModal,
+           object owner = null)
+        {
+            if (owner != null && owner is Form form)
+            {
+                this.Owner = form;
+
+                if (doModal)
+                {
+                    this.Show(form);
+                }
+                else
+                {
+                    this.ShowDialog(form);
+                }
+
+                return;
+            }
+
+            if (doModal)
+            {
+                this.Show();
+
+                return;
+            }
+
+            this.ShowDialog();
+        }
+
         private void tb_TextChanged(object sender, EventArgs e)
         {
             _holesEditorPresenter.CheckData.Invoke();

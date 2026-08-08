@@ -81,5 +81,35 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             if (DialogResult != DialogResult.OK)
                 _glassEditorPresenter.ResetFields();
         }
+
+        public void ShowView(
+            bool doModal,
+            object owner = null)
+        {
+            if (owner != null && owner is Form form)
+            {
+                this.Owner = form;
+
+                if (doModal)
+                {
+                    this.Show(form);
+                }
+                else
+                {
+                    this.ShowDialog(form);
+                }
+
+                return;
+            }
+
+            if (doModal)
+            {
+                this.Show();
+
+                return;
+            }
+
+            this.ShowDialog();
+        }
     }
 }
