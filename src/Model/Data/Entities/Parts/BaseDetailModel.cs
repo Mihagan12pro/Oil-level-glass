@@ -1,4 +1,5 @@
-﻿using Oil_level_glass.Model.ModelProperties.Materials;
+﻿using Oil_level_glass.Model.ModelProperties.KompasFile;
+using Oil_level_glass.Model.ModelProperties.Materials;
 using Oil_level_glass.Model.ModelProperties.Other;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts
@@ -12,6 +13,11 @@ namespace Oil_level_glass.Model.Data.Entities.Parts
         public BaseDetailModel()
         {
             Appearance = new Appearance();
+
+            File = new PartFile()
+            {
+                Name = new Name()
+            };
         }
 
         public Appearance Appearance { get; init; }

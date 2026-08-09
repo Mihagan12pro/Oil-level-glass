@@ -5,10 +5,10 @@ namespace Oil_level_glass.Model.ModelProperties.KompasFile
 {
     public abstract class KompasFile : BaseModel
     {
-        public required T Name { get; set; }
+        public Name Name { get; set; }
 
         private string? _folder;
-        public required string? Folder
+        public string? Folder
         {
             get
             {

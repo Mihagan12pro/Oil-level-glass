@@ -44,15 +44,7 @@ namespace Oil_level_glass.Presenters
             Action invokeHousingEditor,
             Action checkData)
         {
-            return new Wizard3dPresenter(
-                form,
-                glass, 
-                rubberStrip,
-                housing, 
-                invokeGlassEditor,
-                invokeRubberStripEditor,
-                invokeHousingEditor,
-                checkData);
+            return new Wizard3dPresenter();
         }
     }
 }

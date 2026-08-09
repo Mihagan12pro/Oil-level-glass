@@ -2,6 +2,7 @@
 using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
@@ -16,6 +17,20 @@ public class HousingModel
         {
             Angle = 60
         };
+
+        switch (CultureInfo.CurrentCulture.Name)
+        {
+            case "ru-RU":
+                {
+                    DisplayName = "Корпус";
+                    break;
+                }
+            default:
+                {
+                    DisplayName = "Housing";
+                    break;
+                }
+        }
     }
 
     public int MaxCountOfHoles;

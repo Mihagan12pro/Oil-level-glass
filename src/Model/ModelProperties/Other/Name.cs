@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.Model.ModelProperties.Other;
 
-public class T : BaseModel
+public class Name : BaseModel
 {
     private string? _naming;
     public string? Naming
@@ -48,7 +48,7 @@ public class T : BaseModel
         return error;
     }
 
-    public T()
+    public Name()
     {
         Naming = string.Empty;
         Marking = string.Empty;

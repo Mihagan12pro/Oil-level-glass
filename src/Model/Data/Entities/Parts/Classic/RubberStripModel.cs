@@ -1,11 +1,32 @@
 ﻿using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
     public class RubberStripModel : BaseDetailModel
     {
         private double _internalDiameter, _height, _externalDiameter;
+
+        public RubberStripModel()
+        {
+            Material = new Rubber();
+
+            switch (CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        DisplayName = "Резиновая прокладка";
+                        break;
+                    }
+                default:
+                    {
+                        DisplayName = "Rubber strip";
+                        break;
+                    }
+            }
+        }
+
 
         [DisplayName("Internal diameter")]
         public double InternalDiameter
@@ -86,12 +107,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             }
 
             return error;
-        }
-
-
-        public RubberStripModel()
-        {
-            Material = new Rubber();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Globalization;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
@@ -16,7 +17,19 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 
         public OilLevelGlassModel()
         {
-            
+            switch (CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        DisplayName = "Смотровой лючок";
+                        break;
+                    }
+                default:
+                    {
+                        DisplayName = "Oil level glass";
+                        break;
+                    }
+            }
         }
 
         protected override string CheckField(string columnName)

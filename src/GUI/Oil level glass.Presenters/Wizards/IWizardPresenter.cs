@@ -1,18 +1,19 @@
-﻿using Oil_level_glass.UI.Presenters;
+﻿using Oil_level_glass.UI.Abstractions.Wizards;
+using Oil_level_glass.UI.Presenters;
+using Shared.DataStructues;
 using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Wizards
 {
-    public interface IWizardPresenter : IPresenter
+    public interface IWizardPresenter<TView> : IPresenter
+        where TView : IWizardView
     {
-        void InvokeEditor(object tag);
+        void SelectPart(string displayName);
 
-        void UpdateModel();
+        void SetView(TView view);
 
-        Result Create();
+        Catalog GetParts();
 
-        Action InvokeGlassEditor { get; }
-        Action InvokeHousingEditor { get; }
-        Action InvokeRubberStripEditor { get; }
+        Result CanBeConfigured { get; }
     }
 }

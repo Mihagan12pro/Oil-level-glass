@@ -1,10 +1,12 @@
 ﻿using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
     [DisplayName("Glass")]
-    public class GlassModel : BaseDetailModel
+    public class GlassModel 
+        : BaseDetailModel
     {
         public GlassModel()
         {
@@ -16,6 +18,20 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             Appearance.Specularity = 0.8;
             Appearance.Shininess = 0.8;
             Appearance.Emission = 0.5;
+
+            switch(CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        DisplayName = "Линза";
+                        break;
+                    }
+                default:
+                    {
+                        DisplayName = "Glass";
+                        break;
+                    }
+            }
         }
 
         private double _externalDiameter;

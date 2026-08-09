@@ -2,5 +2,16 @@
 {
     public record Result(
         bool IsSuccess, 
-        string ErrorMessage = "");
+        string ErrorMessage = "",
+        FailReason FailReason = FailReason.None);
+
+
+    public enum FailReason
+    {
+        None,
+
+        InvalidSelect,
+
+        TooEarlyForConfiguring
+    }
 }

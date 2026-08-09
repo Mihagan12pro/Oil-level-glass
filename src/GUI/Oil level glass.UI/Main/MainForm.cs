@@ -11,7 +11,6 @@ namespace Oil_level_glass.UI.Main
         public MainForm(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            //_wizard3d = wizard2d;
 
             InitializeComponent();
         }

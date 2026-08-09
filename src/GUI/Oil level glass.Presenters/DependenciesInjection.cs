@@ -6,6 +6,8 @@ using Oil_level_glass.Presenters.Editors.Data.Entities.Housing;
 using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
 using Oil_level_glass.Presenters.Editors.Data.HolesEditor;
 using Oil_level_glass.Presenters.Editors.ModelProperties.Folder;
+using Oil_level_glass.Presenters.Wizards.Wizard3d;
+using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 
 namespace Oil_level_glass.Presenters
 {
@@ -14,7 +16,15 @@ namespace Oil_level_glass.Presenters
         public static IServiceCollection AddPresenters(this IServiceCollection services)
         {
             services.AddData();
+            services.AddWizards();
             services.AddModelPreoperties();
+
+            return services;
+        }
+
+        private static IServiceCollection AddWizards(this IServiceCollection services)
+        {
+            services.AddTransient<IWizard3dPresenter, Wizard3dPresenter>();
 
             return services;
         }
