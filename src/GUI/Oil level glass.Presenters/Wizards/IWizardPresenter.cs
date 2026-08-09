@@ -10,6 +10,8 @@ namespace Oil_level_glass.Presenters.Wizards
     {
         void SelectPart(string displayName);
 
+        void ConfigureSelectedPart();
+
         void SetView(TView view);
 
         Catalog GetParts();

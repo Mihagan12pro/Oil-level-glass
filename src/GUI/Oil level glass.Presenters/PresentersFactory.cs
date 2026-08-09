@@ -33,18 +33,5 @@ namespace Oil_level_glass.Presenters
         public static IHousingEditorPresenter CreateHousingEditorPresenter(
             IHousingEditorView form,
             Action checkData) => new HousingEditorPresenter(form, checkData);
-
-        public static IWizard3dPresenter CreateWizard3dPresenter(
-            IWizard3dView form,
-            GlassModel glass,
-            RubberStripModel rubberStrip,
-            HousingModel housing,
-            Action invokeGlassEditor,
-            Action invokeRubberStripEditor,
-            Action invokeHousingEditor,
-            Action checkData)
-        {
-            return new Wizard3dPresenter();
-        }
     }
 }

@@ -5,14 +5,14 @@ using Shared;
 
 namespace Oil_level_glass.UI.Wizard3d
 {
-    public partial class Wizard3dForm : Form, 
+    public partial class Wizard3dForm : Form,
         IWizard3dView
     {
         private readonly IWizard3dPresenter _wizardPresenter;
 
         private ICommand _selectNodeCommand = new UICommand()
         {
-            
+
         };
 
         public Wizard3dForm(IWizard3dPresenter wizardPresenter)
@@ -31,6 +31,8 @@ namespace Oil_level_glass.UI.Wizard3d
             });
 
             tvParts.AfterSelect += TvParts_AfterSelect;
+
+            _wizardPresenter.SetDefaultFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
         }
 
         private void TvParts_AfterSelect(object? sender, TreeViewEventArgs e)
@@ -58,5 +60,8 @@ namespace Oil_level_glass.UI.Wizard3d
                 ShowDialog();
             }
         }
+
+        private void btConfigPart_Click(object sender, EventArgs e)
+            => _wizardPresenter.ConfigureSelectedPart();
     }
 }

@@ -85,7 +85,14 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
 
         public void ShowView(object owner = null)
         {
-            throw new NotImplementedException();
+            if (owner != null && owner is Form form)
+            {
+                ShowDialog(form);
+            }
+            else
+            {
+                ShowDialog();
+            }
         }
     }
 }
