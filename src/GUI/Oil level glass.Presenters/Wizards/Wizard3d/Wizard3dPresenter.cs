@@ -6,9 +6,13 @@ using System.Reflection;
 using Oil_level_glass.Model.Data.Entities.Parts;
 using Shared.Results;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
-using Oil_level_glass.Core.RubberStrip;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
+using Microsoft.Extensions.DependencyInjection;
+using Oil_level_glass.Core.Housing;
+using Oil_level_glass.Core.Glass;
+using Oil_level_glass.Core.RubberStrip;
+using Oil_level_glass.Core.OilLevelGlass;
 
 namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 {
@@ -17,9 +21,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
     {
         private IWizard3dView _wizardView;
 
-        private readonly IGlassView _glassView;
-        private readonly IRubberStripEditorView _stripView;
-        private readonly IHousingEditorView _housingView;
+        private readonly IServiceProvider _serviceProvider;
 
         private readonly OilLevelGlassModel _oilLevelGlass = new();
 
@@ -80,27 +82,40 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
         public void ConfigureSelectedPart()
         {
-            _rubberStrip.ExternalDiameter = _glass.Diameter;
-
-            _housing.GlassSocketDiameter = _rubberStrip.ExternalDiameter;
-
-            _housing.GlassSocketHeight = _rubberStrip.Height * 2 + _glass.Height;
-            _housing.CentralHoleDiameter = _rubberStrip.InternalDiameter;
-
             if (_selectedEntity is GlassModel)
             {
-                _glassView.Model = _glass;
-                _glassView.ShowView(this);
+                using (var glassView = _serviceProvider.GetRequiredService<IGlassView>())
+                {
+
+                    glassView.Model = _glass;
+                    glassView.ShowView(this);
+                }
+
+                _rubberStrip.ExternalDiameter = _glass.Diameter;
+                _housing.GlassSocketDiameter = _glass.Diameter;
             }
             else if (_selectedEntity is RubberStripModel)
             {
-                _stripView.Model = _rubberStrip;
-                _stripView.ShowView(this);
+                using (var stripView = _serviceProvider.GetRequiredService<IRubberStripView>())
+                {
+
+                    stripView.Model = _rubberStrip;
+                    stripView.ShowView(this);
+                }
+
+                _rubberStrip.ExternalDiameter = _glass.Diameter;
+                _housing.GlassSocketDiameter = _glass.Diameter;
+
+                _housing.GlassSocketHeight = _rubberStrip.Height * 2 + _glass.Height;
+                _housing.CentralHoleDiameter = _rubberStrip.InternalDiameter;
             }
             else if (_selectedEntity is HousingModel)
             {
-                _housingView.Model = _housing;
-                _housingView.ShowView(this);
+                using (var housingView = _serviceProvider.GetRequiredService<IHousingView>())
+                {
+                    housingView.Model = _housing;
+                    housingView.ShowView(this);
+                }
             }
         }
 
@@ -111,14 +126,31 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             _rubberStrip.File.Folder = folder;
         }
 
-        public Wizard3dPresenter(
-            IGlassView glassView,
-            IRubberStripEditorView rubberStripView,
-            IHousingEditorView housingView)
+        public void Create()
         {
-            _glassView = glassView;
-            _stripView = rubberStripView;
-            _housingView = housingView;
+            var housingCreator = _serviceProvider.GetRequiredService<IHousingPartCreator>();
+            housingCreator.Model = _housing;
+            housingCreator.Create();
+
+            var glassCreator = _serviceProvider.GetRequiredService<IGlassPartCreator>();
+            glassCreator.Model = _glass;
+            glassCreator.Create();
+
+            var rubberStripCreator = _serviceProvider.GetRequiredService<IRubberStripPartCreator>();
+            rubberStripCreator.Model = _rubberStrip;
+            rubberStripCreator.Create();
+
+            var oilLevelGlassAssembler = _serviceProvider.GetRequiredService<IOilLevelGlassPartCreator>();
+            oilLevelGlassAssembler.Model = _oilLevelGlass;
+            oilLevelGlassAssembler.Create();
+        }
+
+        public bool CanStartModeling
+            => !_glass.HasErrors && !_rubberStrip.HasErrors && !_housing.HasErrors;
+
+        public Wizard3dPresenter(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
 
             _glass.Material.Title = "Стекло БК10 ГОСТ 3514-94";
             _glass.Material.Density = 3.12;

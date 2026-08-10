@@ -47,6 +47,9 @@ namespace Oil_level_glass.Model
             }
         }
 
+        public bool HasErrors
+            => Error != string.Empty;
+
 
         protected abstract string CheckField(string columnName);
 

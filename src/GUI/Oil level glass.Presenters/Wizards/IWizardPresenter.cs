@@ -8,13 +8,17 @@ namespace Oil_level_glass.Presenters.Wizards
     public interface IWizardPresenter<TView> : IPresenter
         where TView : IWizardView
     {
+        void SetView(TView view);
+
         void SelectPart(string displayName);
 
         void ConfigureSelectedPart();
 
-        void SetView(TView view);
-
         Catalog GetParts();
+
+        void Create();
+
+        bool CanStartModeling { get; }
 
         Result CanBeConfigured { get; }
     }

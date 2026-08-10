@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Oil_level_glass.Core.COM.Api7;
 using Oil_level_glass.Core.COM.Api7.Glass;
 using Oil_level_glass.Core.COM.Api7.Housing;
 using Oil_level_glass.Core.COM.Api7.OilLevelGlass;
@@ -15,10 +16,10 @@ namespace Oil_level_glass.Core.COM
         public static IServiceCollection AddCreators(this IServiceCollection services)
         {
             services.AddTransient<IGlassPartCreator, GlassPartCreator7>();
-            services.AddTransient<IHousingCreator, HousingPartCreator7>();
-            services.AddTransient<IRubberStripCreator, RubberStripPartCreator7>();
+            services.AddTransient<IHousingPartCreator, HousingPartCreator7>();
+            services.AddTransient<IRubberStripPartCreator, RubberStripPartCreator7>();
 
-            services.AddTransient<IOilLevelGlassCreator, OilLevelGlassPartCreator>();
+            services.AddTransient<IOilLevelGlassPartCreator, OilLevelGlassPartCreator>();
 
             return services;
         }

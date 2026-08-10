@@ -1,4 +1,5 @@
-﻿using Kompas6Constants;
+﻿using Kompas6API5;
+using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Core.COM.Api7.Extensions;
@@ -12,13 +13,12 @@ namespace Oil_level_glass.Core.COM.Api7.RubberStrip
 {
     internal class RubberStripPartCreator7 : IRubberStripPartCreator
     {
-        private readonly RubberStripModel _rubberStrip;
-
         private IApplication _application;
-
 
         private IPart7 _rubberStripPart;
         private IPartDocument _document;
+
+        public RubberStripModel Model { get; set; }
 
         public Result Create()
         {
@@ -27,6 +27,23 @@ namespace Oil_level_glass.Core.COM.Api7.RubberStrip
             try
             {
                 _application = (IApplication)ComConnector.GetInstance(ProgIds.Api7);
+            }
+            catch (COMException ex)
+            {
+               
+            }
+            finally
+            {
+                if (_application == null)
+                {
+                    Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
+
+                    var kompas = (KompasObject)Activator.CreateInstance(t);
+                    kompas.Visible = true;
+                    kompas.ActivateControllerAPI();
+
+                    _application = kompas.ksGetApplication7();
+                }
 
                 _document = (IPartDocument)_application.Documents.Add(DocumentTypeEnum.ksDocumentPart);
 
@@ -43,13 +60,13 @@ namespace Oil_level_glass.Core.COM.Api7.RubberStrip
                 ICircle externalCircle = document2D.AddCircle();
                 externalCircle.Xc = 0;
                 externalCircle.Yc = 0;
-                externalCircle.Radius = _rubberStrip.ExternalDiameter * 0.5;
+                externalCircle.Radius = Model.ExternalDiameter * 0.5;
                 externalCircle.Update();
 
                 ICircle internalCircle = document2D.AddCircle();
                 internalCircle.Xc = 0;
                 internalCircle.Yc = 0;
-                internalCircle.Radius = _rubberStrip.InternalDiameter * 0.5;
+                internalCircle.Radius = Model.InternalDiameter * 0.5;
                 internalCircle.Update();
 
                 sketch.EndEdit();
@@ -57,29 +74,20 @@ namespace Oil_level_glass.Core.COM.Api7.RubberStrip
                 IExtrusion extrusion = modelContainer.Extrusions.Add(ksObj3dTypeEnum.o3d_baseExtrusion);
                 extrusion.ExtrusionType[true] = ksEndTypeEnum.etBlind;
                 extrusion.Direction = ksDirectionTypeEnum.dtMiddlePlane;
-                extrusion.Depth[true] = _rubberStrip.Height;
+                extrusion.Depth[true] = Model.Height;
                 extrusion.Sketch = sketch;
                 extrusion.Update();
 
-                _rubberStripPart.SetMaterial(_rubberStrip.Material);
-                _rubberStripPart.SetNaming(_rubberStrip.File.Name);
-                _rubberStripPart.SetAdavancedColor(_rubberStrip.Appearance);
+                _rubberStripPart.SetMaterial(Model.Material);
+                _rubberStripPart.SetNaming(Model.File.Name);
+                _rubberStripPart.SetAdavancedColor(Model.Appearance);
 
                 _application.SearchForErrors(out result);
 
-                _document.SaveAs(_rubberStrip.File.FullName);
-            }
-            catch (COMException ex)
-            {
-                result = new Result(false, ex.Message);
+                _document.SaveAs(Model.File.FullName);
             }
 
             return result;
-        }
-
-        public RubberStripPartCreator7(RubberStripModel rubberStrip)
-        {
-            _rubberStrip = rubberStrip;
         }
     }
 }

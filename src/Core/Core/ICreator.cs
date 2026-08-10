@@ -13,5 +13,7 @@ namespace Oil_level_glass.Core
         /// </summary>
         /// <returns></returns>
         Result Create();
+
+        TModel Model { get; set; }
     }
 }
