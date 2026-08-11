@@ -6,9 +6,10 @@ using System.Threading;
 
 namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
 {
-    internal class HousingEditorPresenter : IHousingEditorPresenter
+    internal class HousingEditorPresenter 
+        : IHousingEditorPresenter
     {
-        private readonly IHousingView _housingForm;
+        private readonly IHousingEditorView _housingForm;
         private readonly HousingModel _housing;
 
         private readonly double _oldMainDiameter, _oldMainHeight;
@@ -30,14 +31,17 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
         public Result UpdateMainHeight(string mainHeight)
             => _housing.TryConvertToDoubleAndValidate(mainHeight, nameof(_housing.MainHeight));
 
+        public void SetView(IHousingEditorView view)
+        {
+            throw new NotImplementedException();
+        }
+
         public HousingEditorPresenter(
-            IHousingView housingForm,
+            IHousingEditorView housingForm,
             Action checkData)
         {
             CheckData = checkData;
             _housingForm = housingForm;
-
-            _housing = _housingForm.Model;
         }
     }
 }

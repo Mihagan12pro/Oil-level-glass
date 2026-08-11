@@ -1,13 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Oil_level_glass.Core.RubberStrip;
 using Oil_level_glass.Presenters.Editors.Data.ChamferEditor;
 using Oil_level_glass.Presenters.Editors.Data.Entities.Glass;
 using Oil_level_glass.Presenters.Editors.Data.Entities.Housing;
 using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
 using Oil_level_glass.Presenters.Editors.Data.HolesEditor;
-using Oil_level_glass.Presenters.Editors.ModelProperties.Folder;
+using Oil_level_glass.Presenters.ModelProperties.Folder;
 using Oil_level_glass.Presenters.Wizards.Wizard3d;
-using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 
 namespace Oil_level_glass.Presenters
 {

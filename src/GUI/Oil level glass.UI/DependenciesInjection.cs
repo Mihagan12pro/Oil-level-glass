@@ -21,9 +21,9 @@ namespace Oil_level_glass.UI
             services.AddTransient<IMainView, MainForm>();
             services.AddTransient<IWizard3dView, Wizard3dForm>();
 
-            services.AddTransient<IGlassView, GlassEditorForm>();
-            services.AddTransient<IRubberStripView, RubberStripEditorForm>();
-            services.AddTransient<IHousingView, HousingEditorForm>();
+            services.AddTransient<IGlassEditorView, GlassEditorForm>();
+            services.AddTransient<IRubberStripEditorView, RubberStripEditorForm>();
+            services.AddTransient<IHousingEditorView, HousingEditorForm>();
 
             return services;
         }

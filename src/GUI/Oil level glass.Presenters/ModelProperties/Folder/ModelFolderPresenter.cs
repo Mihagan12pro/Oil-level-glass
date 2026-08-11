@@ -1,6 +1,7 @@
-﻿using Shared.Results;
+﻿using Oil_level_glass.Presenters.ModelProperties;
+using Shared.Results;
 
-namespace Oil_level_glass.Presenters.Editors.ModelProperties.Folder
+namespace Oil_level_glass.Presenters.ModelProperties.Folder
 {
     internal class ModelFolderPresenter : ModelPropertiesPresenter, IModelFolderPresenter
     {

@@ -5,7 +5,7 @@ using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 
 namespace Oil_level_glass.UI.Editors.RubberStrip
 {
-    public partial class RubberStripEditorForm : Form, IRubberStripView
+    public partial class RubberStripEditorForm : Form, IRubberStripEditorView
     {
         private IRubberStripEditorPresenter _stripEditorPresenter;
         private ErrorProvider _internalDiameterError, _heightError;

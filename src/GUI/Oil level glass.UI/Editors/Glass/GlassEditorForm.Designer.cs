@@ -169,7 +169,6 @@
             tbHeight.PlaceholderText = "2";
             tbHeight.Size = new Size(292, 39);
             tbHeight.TabIndex = 1;
-            tbHeight.TextChanged += tbHeight_TextChanged;
             // 
             // tableLayoutPanel6
             // 
@@ -197,7 +196,6 @@
             tbDiameter.PlaceholderText = "60";
             tbDiameter.Size = new Size(297, 39);
             tbDiameter.TabIndex = 0;
-            tbDiameter.TextChanged += tbDiameter_TextChanged;
             // 
             // label2
             // 

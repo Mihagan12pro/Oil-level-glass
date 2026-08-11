@@ -5,7 +5,8 @@ using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
 {
-    internal class ChamferEditorPresenter : IChamferEditorPresenter
+    internal class ChamferEditorPresenter 
+        : IChamferEditorPresenter
     {
         private readonly IChamferEditorView _form;
         private readonly HousingModel _housing;
@@ -55,6 +56,11 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
             return chamfer.TryConvertToDoubleAndValidate(side2, nameof(chamfer.Side2));
         }
 
+        public void SetView(IChamferEditorView view)
+        {
+            throw new NotImplementedException();
+        }
+
         public ChamferEditorPresenter(
             IChamferEditorView form, 
             Action checkData)
@@ -62,8 +68,6 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
             _form = form;
 
             CheckData = checkData;
-
-            _housing = _form.Model;
 
             _oldChamgerSide1 = _housing.Chamfer.Side1;
             _oldChamferSide2 = _housing.Chamfer.Side2;

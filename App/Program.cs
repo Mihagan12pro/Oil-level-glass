@@ -4,6 +4,7 @@ using Oil_level_glass.Presenters;
 using Oil_level_glass.UI;
 using Oil_level_glass.UI.Abstractions;
 using Oil_level_glass.Core.COM;
+using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
 namespace App
 {
@@ -31,6 +32,10 @@ namespace App
                     services.AddForms();
                     services.AddPresenters();
                     services.AddCreators();
+
+                    services.AddSingleton<GlassModel>();
+                    services.AddSingleton<HousingModel>();
+                    services.AddSingleton<RubberStripModel>();
 
                 }).Build();
         }

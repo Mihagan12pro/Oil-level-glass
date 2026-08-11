@@ -2,10 +2,8 @@
 
 namespace Oil_level_glass.UI.Abstractions.Editors
 {
-    public interface IEditorView<TModel> : IView where TModel : BaseModel
+    public interface IEditorView : IView
     {
-        TModel Model { get; set; }
 
-        //void CheckFormData();
     }
 }

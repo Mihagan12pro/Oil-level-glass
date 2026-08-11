@@ -23,7 +23,25 @@ namespace Oil_level_glass.Presenters.Extensions
                 return new Result(true);
             }
 
-            return new Result(false, $"{property.GetCustomAttribute<DisplayNameAttribute>().DisplayName} must be a number!");
+            string message = "{0} ";
+
+            switch (CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        message = "must be a number!";
+
+                        break;
+                    }
+                default:
+                    {
+                        message += "должен быть числом!";
+
+                        break;
+                    }
+            }
+
+            return new Result(false, string.Format(message, property.GetCustomAttribute<DisplayNameAttribute>().DisplayName));
         }
 
         public static Result TryConvertToDoubleAndValidate(this BaseModel model, string str, string propertyTitle)
@@ -41,8 +59,25 @@ namespace Oil_level_glass.Presenters.Extensions
                 return new Result(true);
             }
 
+            string message = "{0} ";
 
-            return new Result(false, $"{property.GetCustomAttribute<DisplayNameAttribute>().DisplayName} must be a real number!");
+            switch(CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        message += "должен быть числом!";
+
+                        break;
+                    }
+                default:
+                    {
+                        message += "must be a number!";
+                        
+                        break;
+                    }
+            }
+
+            return new Result(false, string.Format(message, property.GetCustomAttribute<DisplayNameAttribute>().DisplayName));
         }
 
         private static PropertyInfo ExtractPropertInfo(BaseModel model, string propertyTitle)

@@ -4,7 +4,7 @@ using Oil_level_glass.UI.Presenters.Editors;
 using Shared.Results;
 using System.Collections;
 
-namespace Oil_level_glass.Presenters.Editors.ValueObjects
+namespace Oil_level_glass.Presenters.ModelProperties
 {
     public interface IModelPropertiesPresenter
     {

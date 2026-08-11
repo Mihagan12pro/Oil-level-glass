@@ -1,9 +1,6 @@
-﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.ScrewHoles;
-
-namespace Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor
+﻿namespace Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor
 {
-    public interface IHolesEditorView : IEditorView<HousingModel>
+    public interface IHolesEditorView : IEditorView
     {
     }
 }

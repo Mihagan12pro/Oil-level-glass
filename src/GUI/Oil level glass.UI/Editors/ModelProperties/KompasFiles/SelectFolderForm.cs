@@ -1,6 +1,5 @@
-﻿using Oil_level_glass.Model.ModelProperties.KompasFile;
-using Oil_level_glass.Presenters.Editors.ModelProperties.Folder;
-using Oil_level_glass.UI.Editors.Menus;
+﻿using Oil_level_glass.Presenters.ModelProperties.Folder;
+using Oil_level_glass.UI.Editors.ModelProperties;
 
 namespace Oil_level_glass.UI.Editors.KompasFiles
 {

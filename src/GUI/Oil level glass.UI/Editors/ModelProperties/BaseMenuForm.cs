@@ -1,4 +1,4 @@
-﻿namespace Oil_level_glass.UI.Editors.Menus
+﻿namespace Oil_level_glass.UI.Editors.ModelProperties
 {
     public abstract class BaseMenuForm : Form
     {

@@ -23,10 +23,7 @@ namespace Oil_level_glass.UI.Main
 
         private void btShowAbout_Click(object sender, EventArgs e)
         {
-            AboutForm aboutForm = new AboutForm();
-
-            aboutForm.Owner = this;
-            aboutForm.ShowDialog();
+           
         }
 
         private void pbMain_Click(object sender, EventArgs e)

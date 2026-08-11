@@ -51,14 +51,17 @@ namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
             return result;
         }
 
+        public void SetView(IHolesEditorView view)
+        {
+            throw new NotImplementedException();
+        }
+
         public HolesEditorPresenter(
             IHolesEditorView holesEditorForm, 
             Action checkData)
         {
             _holesEditorForm = holesEditorForm;
             CheckData = checkData;
-
-            _housingModel = _holesEditorForm.Model;
 
             _oldCountOfHoles = _housingModel.ScrewHolesCount;
             _oldScrewHoleDiameter = ((BasicScrewHoleModel)_housingModel.Hole).Diameter;

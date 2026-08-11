@@ -1,8 +1,6 @@
-﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-
-namespace Oil_level_glass.UI.Abstractions.Editors.Housing
+﻿namespace Oil_level_glass.UI.Abstractions.Editors.Housing
 {
-    public interface IHousingView : IEditorView<HousingModel>
+    public interface IHousingEditorView : IEditorView
     {
     }
 }

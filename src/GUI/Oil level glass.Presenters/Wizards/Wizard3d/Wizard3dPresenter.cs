@@ -1,18 +1,18 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
+using Oil_level_glass.UI.Abstractions.Editors.Glass;
+using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
+using Oil_level_glass.UI.Abstractions.Editors.Housing;
+using Oil_level_glass.Core.Housing;
+using Oil_level_glass.Core.Glass;
+using Oil_level_glass.Core.RubberStrip;
+using Oil_level_glass.Core.OilLevelGlass;
+using Microsoft.Extensions.DependencyInjection;
 using Shared.DataStructues;
 using System.Globalization;
 using System.Reflection;
 using Oil_level_glass.Model.Data.Entities.Parts;
 using Shared.Results;
-using Oil_level_glass.UI.Abstractions.Editors.Glass;
-using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
-using Oil_level_glass.UI.Abstractions.Editors.Housing;
-using Microsoft.Extensions.DependencyInjection;
-using Oil_level_glass.Core.Housing;
-using Oil_level_glass.Core.Glass;
-using Oil_level_glass.Core.RubberStrip;
-using Oil_level_glass.Core.OilLevelGlass;
 
 namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 {
@@ -25,9 +25,9 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 
         private readonly OilLevelGlassModel _oilLevelGlass = new();
 
-        private readonly HousingModel _housing = new();
-        private readonly RubberStripModel _rubberStrip = new();
-        private readonly GlassModel _glass = new();
+        private readonly HousingModel _housing;
+        private readonly RubberStripModel _rubberStrip;
+        private readonly GlassModel _glass;
 
         private BaseDetailModel _selectedEntity = null; 
 
@@ -84,10 +84,9 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         {
             if (_selectedEntity is GlassModel)
             {
-                using (var glassView = _serviceProvider.GetRequiredService<IGlassView>())
+                using (var glassView = _serviceProvider.GetRequiredService<IGlassEditorView>())
                 {
 
-                    glassView.Model = _glass;
                     glassView.ShowView(this);
                 }
 
@@ -96,10 +95,9 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             }
             else if (_selectedEntity is RubberStripModel)
             {
-                using (var stripView = _serviceProvider.GetRequiredService<IRubberStripView>())
+                using (var stripView = _serviceProvider.GetRequiredService<IRubberStripEditorView>())
                 {
 
-                    stripView.Model = _rubberStrip;
                     stripView.ShowView(this);
                 }
 
@@ -111,9 +109,8 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             }
             else if (_selectedEntity is HousingModel)
             {
-                using (var housingView = _serviceProvider.GetRequiredService<IHousingView>())
+                using (var housingView = _serviceProvider.GetRequiredService<IHousingEditorView>())
                 {
-                    housingView.Model = _housing;
                     housingView.ShowView(this);
                 }
             }
@@ -148,8 +145,16 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         public bool CanStartModeling
             => !_glass.HasErrors && !_rubberStrip.HasErrors && !_housing.HasErrors;
 
-        public Wizard3dPresenter(IServiceProvider serviceProvider)
+        public Wizard3dPresenter(
+            IServiceProvider serviceProvider,
+            RubberStripModel rubberStrip,
+            GlassModel glass,
+            HousingModel housing)
         {
+            _glass = glass;
+            _rubberStrip = rubberStrip;
+            _housing = housing;
+
             _serviceProvider = serviceProvider;
 
             _glass.Material.Title = "Стекло БК10 ГОСТ 3514-94";

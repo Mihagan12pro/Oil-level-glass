@@ -1,5 +1,4 @@
-﻿using Oil_level_glass.Core.Housing;
-using Oil_level_glass.Presenters.Wizards.Wizard3d;
+﻿using Oil_level_glass.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Utils.Extensions;
 using Shared;

@@ -1,9 +1,8 @@
 ﻿using Oil_level_glass.Model.Data.Entities;
-using Oil_level_glass.Presenters.Editors.ValueObjects;
 using Shared.Results;
 using System.Collections;
 
-namespace Oil_level_glass.Presenters.Editors.ModelProperties
+namespace Oil_level_glass.Presenters.ModelProperties
 {
     internal class ModelPropertiesPresenter 
         : IModelPropertiesPresenter

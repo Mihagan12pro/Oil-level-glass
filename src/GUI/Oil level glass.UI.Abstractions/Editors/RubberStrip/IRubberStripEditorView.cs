@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.UI.Abstractions.Editors.RubberStrip
 {
-    public interface IRubberStripView : IEditorView<RubberStripModel>
+    public interface IRubberStripEditorView : IEditorView
     {
     }
 }
