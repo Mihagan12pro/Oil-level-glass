@@ -22,10 +22,6 @@ namespace Oil_level_glass.Presenters
         public static IHolesEditorPresenter CreateHolesEditorPresenter(IHolesEditorView form, Action checkData)
             => new HolesEditorPresenter(form, checkData);
 
-        public static IRubberStripEditorPresenter CreateRubberStripPresenter(
-            IRubberStripEditorView form,
-            Action checkData) => new RubberStripEditorPresenter(form, checkData);
-
         public static IHousingEditorPresenter CreateHousingEditorPresenter(
             IHousingEditorView form,
             Action checkData) => new HousingEditorPresenter(form, checkData);

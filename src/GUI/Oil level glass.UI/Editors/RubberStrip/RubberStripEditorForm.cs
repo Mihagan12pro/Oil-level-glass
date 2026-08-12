@@ -35,46 +35,7 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
 
         private void RubberStripEditorForm_Load(object sender, EventArgs e)
         {
-            _internalDiameterError = new ErrorProvider();
-            _heightError = new ErrorProvider();
 
-            Action checkData = () =>
-            {
-                var internalDiameterResult = _stripEditorPresenter.UpdateInternalDiameter(tbInternalDiameter.Text);
-                var heightResult = _stripEditorPresenter.UpdateHeight(tbHeight.Text);
-
-                btOk.Enabled = internalDiameterResult.IsSuccess && heightResult.IsSuccess;
-                if (internalDiameterResult.IsSuccess)
-                {
-                    _internalDiameterError.Clear();
-                }
-                else
-                {
-                    _internalDiameterError.SetError(tbInternalDiameter, internalDiameterResult.ErrorMessage);
-                }
-
-                if (heightResult.IsSuccess)
-                {
-                    _heightError.Clear();
-                }
-                else
-                {
-                    _heightError.SetError(tbHeight, heightResult.ErrorMessage);
-                }
-            };
-
-            _stripEditorPresenter = PresentersFactory.CreateRubberStripPresenter(this, checkData);
-
-            if (Model[nameof(Model.ExternalDiameter)] == string.Empty)
-                tbExternalDiameter.Text = Model.ExternalDiameter.ToString();
-
-            if (Model.Error == string.Empty)
-            {
-                tbInternalDiameter.Text = Model.InternalDiameter.ToString();
-                tbHeight.Text = Model.Height.ToString();
-            }
-
-            _stripEditorPresenter.CheckData.Invoke();
         }
 
         private void RubberStripEditorForm_FormClosing(object sender, FormClosingEventArgs e)

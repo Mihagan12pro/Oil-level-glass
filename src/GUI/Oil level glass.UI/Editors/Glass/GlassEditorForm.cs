@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Presenters.Editors.Data.Entities.Glass;
+using Oil_level_glass.Presenters.Editors.Entities.Glass.HelpStructures;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Shared.Results;
 
@@ -18,32 +19,29 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             tbDiameter.TextChanged += Tb_TextChanged;
             tbHeight.TextChanged += Tb_TextChanged;
 
-            string diameter = tbDiameter.Text;
-            string height = tbHeight.Text;
+            var defaultSizes = _glassEditorPresenter.DefaultSizes;
 
-            _glassEditorPresenter.SetDefaultValues(ref height, ref diameter);
-
-            tbDiameter.Text = diameter;
-            tbHeight.Text = height;
+            tbDiameter.Text = defaultSizes.Diameter;
+            tbHeight.Text = defaultSizes.Height;
         }
 
         private void Tb_TextChanged(object? sender, EventArgs e)
         {
             _errorProvider.Clear();
 
-            var results = _glassEditorPresenter.UpdateModel(tbHeight.Text, tbDiameter.Text);
+            var results = _glassEditorPresenter.UpdateModel(new GlassUpdateData(tbHeight.Text, tbDiameter.Text));
 
-            if (tbDiameter.Text != "" && tbHeight.Text != "" && results.Count((Result r) => !r.IsSuccess) == 0)
+            if (results.HasNoErrors && tbDiameter.Text != "" && tbHeight.Text != "")
             {
                 btOk.Enabled = true;
                 return;
             }
 
-            if (!results[0].IsSuccess)
-                _errorProvider.SetError(tbHeight, results[0].ErrorMessage);
+            if (!results.Height.IsSuccess)
+                _errorProvider.SetError(tbHeight, results.Height.ErrorMessage);
 
-            if (!results[1].IsSuccess)
-                _errorProvider.SetError(tbDiameter, results[1].ErrorMessage);
+            if (!results.Diameter.IsSuccess)
+                _errorProvider.SetError(tbDiameter, results.Diameter.ErrorMessage);
 
             btOk.Enabled = false;
         }

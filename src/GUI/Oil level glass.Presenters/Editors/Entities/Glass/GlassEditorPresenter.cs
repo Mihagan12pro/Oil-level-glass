@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Presenters.Editors.Entities.Glass.HelpStructures;
 using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
 using Shared.Results;
@@ -11,16 +12,19 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Glass
         private IGlassEditorView _glassEditor;
         private GlassModel _glass;
 
-        private double _oldWidth, _oldDiameter;
+        private double _oldHeight, _oldDiameter;
 
         private readonly string _lessThanZeroMessage;
 
         public Action CheckData { get; }
 
+        public GlassDefaultSizes DefaultSizes
+            => new GlassDefaultSizes(_oldDiameter, _oldHeight);
+
         public void ResetFields()
         {
             _glass.Diameter = _oldDiameter;
-            _glass.Height = _oldWidth;
+            _glass.Height = _oldHeight;
         }
 
         public Result[] UpdateModel(string height, string diameter)
@@ -51,11 +55,23 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Glass
             }
         }
 
+        public GlassUpdateResults UpdateModel(GlassUpdateData updateData)
+        {
+            GlassUpdateResults updateResults = new GlassUpdateResults()
+            {
+                Diameter = _glass.TryConvertToDoubleAndValidate(updateData.Diameter, nameof(_glass.Diameter)),
+
+                Height = _glass.TryConvertToDoubleAndValidate(updateData.Height, nameof(_glass.Height))
+            };
+
+            return updateResults;
+        }
+
         public GlassEditorPresenter(GlassModel glass)
         {
             _glass = glass;
 
-            _oldWidth = _glass.Height;
+            _oldHeight = _glass.Height;
             _oldDiameter = _glass.Diameter;
 
             switch(CultureInfo.CurrentCulture.Name)

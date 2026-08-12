@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
+using Oil_level_glass.Presenters.Editors.ChamferEditor.HelpStructures;
 using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Shared.Results;
@@ -14,6 +15,8 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
         private readonly double _oldChamgerSide1, _oldChamferSide2, _oldChamferAngle;
 
         public Action CheckData { get; }
+
+        public ChamferDefaultSizes DefaultSizes => throw new NotImplementedException();
 
         private void CulcSide2()
         {
@@ -57,6 +60,11 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
         }
 
         public void SetView(IChamferEditorView view)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ChamferUpdateResults UpdateModel(ChamferUpdateData updateData)
         {
             throw new NotImplementedException();
         }

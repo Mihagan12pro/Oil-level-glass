@@ -1,14 +1,18 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Model.Data.ScrewHoles;
+using Oil_level_glass.Presenters.Editors.HolesEditor.HelpStructures;
 using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
 {
-    internal class HolesEditorPresenter : IHolesEditorPresenter
+    internal class HolesEditorPresenter
+        : IHolesEditorPresenter
     {
         public Action CheckData { get; }
+
+        public HolesDefaultSizes DefaultSizes => throw new NotImplementedException();
 
         private IHolesEditorView _holesEditorForm;
 
@@ -52,6 +56,11 @@ namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
         }
 
         public void SetView(IHolesEditorView view)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HolesUpdateResults UpdateModel(HolesUpdateData updateData)
         {
             throw new NotImplementedException();
         }

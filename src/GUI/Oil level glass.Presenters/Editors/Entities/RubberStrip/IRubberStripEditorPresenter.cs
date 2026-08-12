@@ -1,14 +1,20 @@
-﻿using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
+﻿using Oil_level_glass.Presenters.Editors.Entities.RubberStrip.HelpStructures;
+using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 using Oil_level_glass.UI.Presenters.Editors;
 using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip
 {
     public interface IRubberStripEditorPresenter 
-        : IEditorPresenter<IRubberStripEditorView>
+        : IEditorPresenter<IRubberStripEditorView, RubberStripUpdateResults, RubberStripUpdateData, RubberStripDefaultSizes>
     {
-        Result UpdateInternalDiameter(string diameter);
+        Result[] UpdateModel(
+            string height,
+            string internalDiameter);
 
-        Result UpdateHeight(string height);
+        void SetDefaultValues(
+            ref string height,
+            ref string externalDiameter,
+            ref string internalDiameter);
     }
 }
