@@ -9,6 +9,20 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 public class HousingModel 
     : BaseDetailModel
 {
+    private double _mainDiameter, _mainHeight, _glassSocketHeight, _glassSocketDiameter;
+    private double _centralHoleDiameter, _screwHolesDistance;
+    private int _screwHolesCount;
+
+    private readonly string _mainHeightGreatestMessage;
+    private readonly string _mainDiameterGreaterThanSocker;
+
+    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel();
+
+    public ChamferModel Chamfer { get; } = new ChamferModel();
+
+    public int MaxCountOfHoles;
+
+
     public HousingModel()
     {
         Material = new Metal();
@@ -23,23 +37,21 @@ public class HousingModel
             case "ru-RU":
                 {
                     DisplayName = "Корпус";
+                    _mainDiameterGreaterThanSocker = "Размер 'D' должен быть больше размера 'D1' минимум в 1,5 раза!";
+                    _mainHeightGreatestMessage = "Размер 'h' должен быть максимальной высотой!";
                     break;
                 }
             default:
                 {
                     DisplayName = "Housing";
+                    _mainDiameterGreaterThanSocker = "The 'D' size must be at least 1.5 times larger than the 'D1' size!";
+                    _mainHeightGreatestMessage = "The 'h' size must be the greatest height!";
                     break;
                 }
         }
     }
 
-    public int MaxCountOfHoles;
-
-    private double _mainDiameter, _mainHeight, _glassSocketHeight, _glassSocketDiameter;
-    private double _centralHoleDiameter, _screwHolesDistance;
-    private int _screwHolesCount;
-
-    [DisplayName("Main diameter")]
+    [DisplayName("D")]
     public double MainDiameter
     {
         get
@@ -54,7 +66,7 @@ public class HousingModel
         }
     }
 
-    [DisplayName("Main height")]
+    [DisplayName("h")]
     public double MainHeight
     {
         get
@@ -69,7 +81,7 @@ public class HousingModel
         }
     }
 
-    [DisplayName("Glass socket height")]
+    [DisplayName("h1")]
     public double GlassSocketHeight
     {
         get
@@ -84,7 +96,7 @@ public class HousingModel
         }
     }
 
-    [DisplayName("Glass socket diameter")]
+    [DisplayName("D1")]
     public double GlassSocketDiameter
     {
         get
@@ -99,7 +111,7 @@ public class HousingModel
         }
     }
 
-    [DisplayName("Central hole diameter")]
+    [DisplayName("D2")]
     public double CentralHoleDiameter
     {
         get
@@ -114,7 +126,7 @@ public class HousingModel
         }
     }
 
-    [DisplayName("Screw holes count")]
+    [DisplayName("n")]
     public int ScrewHolesCount
     {
         get
@@ -129,7 +141,7 @@ public class HousingModel
         }
     }
 
-    [DisplayName("Screw holes distance")]
+    [DisplayName("D2")]
     public double ScrewHolesDistance
     {
         get
@@ -144,10 +156,6 @@ public class HousingModel
         }
     }
 
-    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel();
-
-    public ChamferModel Chamfer { get; } = new ChamferModel();
-
 
     protected override string CheckField(string columnName)
     {
@@ -157,12 +165,12 @@ public class HousingModel
         {
             case nameof(MainDiameter):
                 if (MainDiameter / GlassSocketDiameter < 1.5)
-                    error = "Main diameter must be at least 1.5 times larger than glass socket diameter!";
+                    error = _mainDiameterGreaterThanSocker;
                 break;
 
             case nameof(MainHeight):
                 if (MainHeight <= GlassSocketHeight)
-                    error = "Main height must be greater than other heights!";
+                    error = _mainHeightGreatestMessage;
                 break;
         }
 

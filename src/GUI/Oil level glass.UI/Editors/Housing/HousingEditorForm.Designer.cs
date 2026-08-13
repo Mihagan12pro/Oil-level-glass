@@ -198,7 +198,6 @@
             tbMainHeight.PlaceholderText = "8";
             tbMainHeight.Size = new Size(375, 39);
             tbMainHeight.TabIndex = 2;
-            tbMainHeight.TextChanged += textbox_TextChanged;
             // 
             // label3
             // 
@@ -284,15 +283,14 @@
             tbMainDiameter.PlaceholderText = "90";
             tbMainDiameter.Size = new Size(375, 39);
             tbMainDiameter.TabIndex = 1;
-            tbMainDiameter.TextChanged += textbox_TextChanged;
             // 
             // tableLayoutPanel8
             // 
             tableLayoutPanel8.ColumnCount = 2;
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel8.Controls.Add(btScrewHole, 0, 0);
             tableLayoutPanel8.Controls.Add(btChamfer, 1, 0);
+            tableLayoutPanel8.Controls.Add(btScrewHole, 0, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
             tableLayoutPanel8.Location = new Point(3, 392);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -304,6 +302,7 @@
             // 
             // btScrewHole
             // 
+            btScrewHole.Enabled = false;
             btScrewHole.Location = new Point(49, 20);
             btScrewHole.Margin = new Padding(49, 20, 0, 0);
             btScrewHole.Name = "btScrewHole";
@@ -316,6 +315,7 @@
             // btChamfer
             // 
             btChamfer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btChamfer.Enabled = false;
             btChamfer.Location = new Point(257, 20);
             btChamfer.Margin = new Padding(0, 20, 49, 0);
             btChamfer.Name = "btChamfer";
@@ -359,6 +359,7 @@
             // btOk
             // 
             btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btOk.Enabled = false;
             btOk.Location = new Point(311, 5);
             btOk.Margin = new Padding(5, 5, 0, 16);
             btOk.Name = "btOk";

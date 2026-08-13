@@ -46,7 +46,11 @@ namespace Oil_level_glass.UI.Wizard3d
 
             if (result.FailReason == Shared.Results.FailReason.TooEarlyForConfiguring)
             {
-                MessageBox.Show(result.ErrorMessage, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ToolTip toolTip = new ToolTip();
+                toolTip.IsBalloon = true;
+
+                toolTip.ToolTipIcon = ToolTipIcon.Info;
+                toolTip.Show(result.ErrorMessage, btConfigPart, 0, -75, 800);
             }
         }
 

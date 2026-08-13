@@ -65,12 +65,9 @@ namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
             throw new NotImplementedException();
         }
 
-        public HolesEditorPresenter(
-            IHolesEditorView holesEditorForm, 
-            Action checkData)
+        public HolesEditorPresenter(HousingModel housingModel)
         {
-            _holesEditorForm = holesEditorForm;
-            CheckData = checkData;
+            _housingModel = housingModel;
 
             _oldCountOfHoles = _housingModel.ScrewHolesCount;
             _oldScrewHoleDiameter = ((BasicScrewHoleModel)_housingModel.Hole).Diameter;

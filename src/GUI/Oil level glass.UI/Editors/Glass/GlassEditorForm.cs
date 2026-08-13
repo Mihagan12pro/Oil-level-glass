@@ -31,7 +31,7 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 
             var results = _glassEditorPresenter.UpdateModel(new GlassUpdateData(tbHeight.Text, tbDiameter.Text));
 
-            if (results.HasNoErrors && tbDiameter.Text != "" && tbHeight.Text != "")
+            if (results.NoErrors && tbDiameter.Text != "" && tbHeight.Text != "")
             {
                 btOk.Enabled = true;
                 return;

@@ -1,25 +1,34 @@
-﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.ScrewHoles;
-using Oil_level_glass.Presenters;
-using Oil_level_glass.Presenters.Editors.Data.Entities.Housing;
+﻿using Oil_level_glass.Presenters.Editors.Data.Entities.Housing;
+using Oil_level_glass.Presenters.Editors.Entities.Housing.DataStructures;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
-using Oil_level_glass.UI.Editors.Housing.ChamferEditor;
-using Oil_level_glass.UI.Editors.Housing.HolesEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing
 {
     public partial class HousingEditorForm : Form, IHousingEditorView
     {
+        private readonly ErrorProvider _errorProvider = new ErrorProvider();
+
         private IHousingEditorPresenter _housingEditorPresenter;
 
-        private ErrorProvider _mainDiameterError, _mainHeightError;
-
-        public HousingEditorForm()
+        public HousingEditorForm(IHousingEditorPresenter housingEditorPresenter)
         {
             InitializeComponent();
-        }
 
-        public HousingModel Model { get; set; }
+            tbMainHeight.TextChanged += textbox_TextChanged;
+            tbMainDiameter.TextChanged += textbox_TextChanged;
+
+            _housingEditorPresenter = housingEditorPresenter;
+
+            var defaultValues = _housingEditorPresenter.DefaultSizes;
+
+            tbMainDiameter.Text = defaultValues.MainDiameter;
+            tbMainHeight.Text = defaultValues.MainHeight;
+            tbGlassSocketDiameter.Text = defaultValues.GlassSocketDiameter;
+            tbGlassSocketHeight.Text = defaultValues.GlassSocketHeight;
+
+            tbMainDiameter.PlaceholderText = (Convert.ToDouble(tbGlassSocketDiameter.Text) * 1.5).ToString();
+            tbMainHeight.PlaceholderText = (Convert.ToDouble(tbGlassSocketHeight.Text) * 2).ToString();
+        }
 
         private void btOk_Click(object sender, EventArgs e)
         {
@@ -28,57 +37,7 @@ namespace Oil_level_glass.UI.Editors.Housing
 
         private void HousingEditorForm_Load(object sender, EventArgs e)
         {
-            _mainDiameterError = new ErrorProvider();
-            _mainHeightError = new ErrorProvider();
 
-            Action checkData = () =>
-            {
-                var mainHeightResult = _housingEditorPresenter.UpdateMainHeight(tbMainHeight.Text);
-                var mainDiameterResult = _housingEditorPresenter.UpdateMainDiameter(tbMainDiameter.Text);
-
-                if (!mainHeightResult.IsSuccess)
-                    _mainHeightError.SetError(tbMainHeight, mainHeightResult.ErrorMessage);
-                else
-                    _mainHeightError.Clear();
-
-                if (!mainDiameterResult.IsSuccess)
-                    _mainDiameterError.SetError(tbMainDiameter, mainDiameterResult.ErrorMessage);
-                else
-                    _mainDiameterError.Clear();
-
-                btScrewHole.Enabled = mainHeightResult.IsSuccess && mainDiameterResult.IsSuccess;
-
-                btChamfer.Enabled = Model.Hole.Error == string.Empty && btScrewHole.Enabled;
-
-                btOk.Enabled = Model.Hole.Error == string.Empty && 
-                    Model.Chamfer.Error == string.Empty &&
-                        mainDiameterResult.IsSuccess &&
-                            mainHeightResult.IsSuccess;
-
-                if (Model.GlassSocketHeight > 0)
-                    tbGlassSocketHeight.Text = Model.GlassSocketHeight.ToString();
-
-                if (Model.GlassSocketDiameter > 0)
-                    tbGlassSocketDiameter.Text = Model.GlassSocketDiameter.ToString();
-
-                Model.ScrewHolesDistance = (Model.MainDiameter / 2 + Model.GlassSocketDiameter / 2);
-                Model.Chamfer.MaxSide1 = (Model.MainDiameter * 0.5 - (Model.ScrewHolesDistance * 0.5 + ((BasicScrewHoleModel)Model.Hole).Diameter * 0.5)) * 0.5;
-                Model.Chamfer.MaxSide2 = Model.MainHeight;
-
-               ((BasicScrewHoleModel)Model.Hole).MaxDiameter = (Model.MainDiameter / 2 - Model.ScrewHolesDistance / 2) * 0.9;
-            };
-
-            _housingEditorPresenter = PresentersFactory.CreateHousingEditorPresenter(this, checkData);
-
-            if (Model[nameof(Model.MainDiameter)] == string.Empty && Model[nameof(Model.MainHeight)] == string.Empty)
-            {
-                tbMainDiameter.Text = Model.MainDiameter.ToString();
-                tbMainHeight.Text = Model.MainHeight.ToString();
-            }
-            else
-            {
-                _housingEditorPresenter.CheckData.Invoke();
-            }
         }
 
         private void btResetData_Click(object sender, EventArgs e)
@@ -91,33 +50,47 @@ namespace Oil_level_glass.UI.Editors.Housing
 
         private void textbox_TextChanged(object sender, EventArgs e)
         {
-            _housingEditorPresenter.CheckData.Invoke();
+            _errorProvider.Clear();
+
+            var result = _housingEditorPresenter.UpdateModel(new HousingUpdateData(
+                tbMainDiameter.Text, 
+                tbMainHeight.Text)
+            );
+
+            btChamfer.Enabled = _housingEditorPresenter.ChamferCanBeConfigured;
+            btScrewHole.Enabled = _housingEditorPresenter.ScrewHoleCanBeConfigured;
+
+            if (result.NoErrors && btChamfer.Enabled && btScrewHole.Enabled
+                && tbMainHeight.Text != "" && tbMainDiameter.Text != "")
+            {
+                btOk.Enabled = true;
+
+                return;
+            }
+
+            btOk.Enabled = false;
+
+            if (!result.MainDiameter.IsSuccess)
+                _errorProvider.SetError(tbMainDiameter, result.MainDiameter.ErrorMessage);
+
+            if (!result.MainHeight.IsSuccess)
+                _errorProvider.SetError(tbMainHeight, result.MainHeight.ErrorMessage);
         }
 
         private void btChamfer_Click(object sender, EventArgs e)
         {
-            ChamferEditorForm chamferEditorForm = new ChamferEditorForm()
-            {
-                Model = Model
-            };
-            chamferEditorForm.Owner = this;
+            //ChamferEditorForm chamferEditorForm = new ChamferEditorForm()
+            //{
+            //    Model = Model
+            //};
+            //chamferEditorForm.Owner = this;
             
-            chamferEditorForm.ShowDialog();
-            _housingEditorPresenter.CheckData.Invoke();
+            //chamferEditorForm.ShowDialog();
+            //_housingEditorPresenter.CheckData.Invoke();
         }
 
         private void btScrewHole_Click(object sender, EventArgs e)
-        {
-            HolesEditorForm holesEditorForm = new HolesEditorForm()
-            {
-                Model = Model
-            };
-
-            holesEditorForm.Owner = this;
-
-            holesEditorForm.ShowDialog();
-            _housingEditorPresenter.CheckData.Invoke();
-        }
+            => _housingEditorPresenter.ConfigureHoles();
 
         private void HousingEditorForm_Click(object sender, EventArgs e)
         {

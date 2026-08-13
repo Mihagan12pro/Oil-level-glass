@@ -43,7 +43,7 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
 
             var results = _stripEditorPresenter.UpdateModel(new RubberStripUpdateData(tbHeight.Text, tbInternalDiameter.Text));
 
-            if (results.HasNoErrors && tbHeight.Text != "" &&  tbInternalDiameter.Text != "")
+            if (results.NoErrors && tbHeight.Text != "" &&  tbInternalDiameter.Text != "")
             {
                 btOk.Enabled = true;
 

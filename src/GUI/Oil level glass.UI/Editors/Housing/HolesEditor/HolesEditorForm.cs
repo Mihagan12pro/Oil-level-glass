@@ -16,51 +16,6 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
             InitializeComponent();
         }
 
-        public HousingModel Model { get; set; }
-
-        private void HolesEditorForm_Load(object sender, EventArgs e)
-        {
-            Action checkData = () =>
-            {
-                var countResult = _holesEditorPresenter.UpdateCountOfHoles(tbScrewHolesCount.Value.ToString());
-                var diameterResult = _holesEditorPresenter.UpdateDiameter(tbHoleDiameter.Text);
-
-                tbScrewHolesCount.Enabled = diameterResult.IsSuccess;
-                if (diameterResult.IsSuccess)
-                {
-                    _diameterError.Clear();
-                }
-                else
-                {
-                    _diameterError.SetError(tbHoleDiameter, diameterResult.ErrorMessage);
-                }
-
-                tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
-                btOk.Enabled = countResult.IsSuccess && diameterResult.IsSuccess;
-            };
-
-            _holesEditorPresenter = PresentersFactory.CreateHolesEditorPresenter(this, checkData);
-
-          
-            tbMaxDiameter.Text = Model.Hole.MaxDiameter.ToString();
-            tbHoleDiameter.PlaceholderText = tbMaxDiameter.Text;
-
-            var basic = (BasicScrewHoleModel)Model.Hole;
-
-            
-            if (basic.Error == string.Empty)
-            {
-                tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
-                tbHoleDiameter.Text = ((BasicScrewHoleModel)Model.Hole).Diameter.ToString();
-                tbScrewHolesCount.Value = Model.ScrewHolesCount;
-            }
-
-            tbScrewHolesCount.ValueChanged += tb_TextChanged;
-            tbHoleDiameter.TextChanged += tb_TextChanged;
-
-            checkData.Invoke();
-        }
-
         private void tb_TextChanged(object sender, EventArgs e)
         {
             _holesEditorPresenter.CheckData.Invoke();
@@ -85,7 +40,14 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
 
         public void ShowView(object owner = null)
         {
-            throw new NotImplementedException();
+            if (owner != null && owner is Form form)
+            {
+                ShowDialog(form);
+            }
+            else
+            {
+                ShowDialog();
+            }
         }
     }
 }

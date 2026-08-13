@@ -280,7 +280,6 @@
             ShowInTaskbar = false;
             Text = "Редактор отверстий";
             FormClosing += HolesEditorForm_FormClosing;
-            Load += HolesEditorForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);

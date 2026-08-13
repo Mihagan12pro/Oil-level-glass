@@ -9,8 +9,12 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
     public interface IHousingEditorPresenter 
         : IEditorPresenter<IHousingEditorView, HousingUpdateResults, HousingUpdateData, HousingDefaultSizes>
     {
-        Result UpdateMainDiameter(string mainDiameter);
+        bool ScrewHoleCanBeConfigured { get; }
 
-        Result UpdateMainHeight(string mainHeight);
+        bool ChamferCanBeConfigured { get; }
+
+        void ConfigureChamfer();
+
+        void ConfigureHoles();
     }
 }
