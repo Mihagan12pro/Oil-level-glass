@@ -1,6 +1,7 @@
 ﻿using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
@@ -28,7 +29,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
         }
 
 
-        [DisplayName("Internal diameter")]
+        [DisplayName("D")]
         public double InternalDiameter
         {
             get
@@ -43,7 +44,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             }
         }
 
-        [DisplayName("External diameter")]
+        [DisplayName("D2")]
         public double ExternalDiameter
         {
             get
@@ -58,7 +59,7 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             }
         }
 
-        [DisplayName("Height")]
+        [DisplayName("h")]
         public double Height
         {
             get 
@@ -77,33 +78,41 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
         {
             string error = string.Empty;
 
-            switch(columnName)
+            string? displayName = this.GetType()
+                         .GetProperties()
+                         .Where(p => p.Name == columnName && p.GetCustomAttribute<DisplayNameAttribute>() != null)
+                         .Select(p => p.GetCustomAttribute<DisplayNameAttribute>().DisplayName)
+                         .FirstOrDefault();
+            if (displayName != null)
             {
-                case nameof(Height):
-                    {
-                        if (Height <= 0)
-                            error = "Ring height must be greater than zero!";
+                switch (columnName)
+                {
+                    case nameof(Height):
+                        {
+                            if (Height <= 0)
+                                error = string.Format(mustBeGraterThanZero, displayName);
 
-                        break;
-                    }
-                case nameof(InternalDiameter):
-                    {
-                        if (InternalDiameter <= 0)
-                            error = "Ring internal diameter must be greater than zero!";
-                        else if (InternalDiameter >= ExternalDiameter)
-                            error = "External diameter must be greater than internal diameter!";
+                            break;
+                        }
+                    case nameof(InternalDiameter):
+                        {
+                            if (InternalDiameter <= 0)
+                                error = string.Format(mustBeGraterThanZero, displayName);
+                            else if (InternalDiameter >= ExternalDiameter)
+                                error = string.Format(size0MustBeGreaterThanSize1, displayName);
 
-                        break;
-                    }
-                case nameof(ExternalDiameter):
-                    {
-                        if (ExternalDiameter <= 0)
-                            error = "Ring external diameter must be greater than zero!";
-                        else if (InternalDiameter >= ExternalDiameter)
-                            error = "External diameter must be greater than internal diameter!";
+                            break;
+                        }
+                    case nameof(ExternalDiameter):
+                        {
+                            if (ExternalDiameter <= 0)
+                                error = string.Format(mustBeGraterThanZero, displayName);
+                            else if (InternalDiameter >= ExternalDiameter)
+                                error = string.Format(size0MustBeGreaterThanSize1, displayName);
 
-                        break;
-                    }
+                            break;
+                        }
+                }
             }
 
             return error;

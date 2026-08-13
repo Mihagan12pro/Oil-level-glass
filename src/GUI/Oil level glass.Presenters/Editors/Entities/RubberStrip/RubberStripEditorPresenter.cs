@@ -15,7 +15,17 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip
         
         public Action CheckData { get; }
 
-        public RubberStripDefaultSizes DefaultSizes => throw new NotImplementedException();
+        public RubberStripDefaultSizes DefaultSizes
+        {
+            get
+            {
+                return new RubberStripDefaultSizes(
+                    _oldHeight,
+                    _rubberStrip.ExternalDiameter,
+                    _oldInternalDiameter
+                );
+            }
+        }
 
         public void ResetFields()
         {
@@ -23,38 +33,19 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip
             _rubberStrip.Height = _oldHeight;
         }
 
-        public Result UpdateInternalDiameter(string diameter)
-            => _rubberStrip.TryConvertToDoubleAndValidate(diameter, nameof(_rubberStrip.InternalDiameter));
-
-        public Result UpdateHeight(string height)
-            => _rubberStrip.TryConvertToDoubleAndValidate(height, nameof(_rubberStrip.Height));
-
         public void SetView(IRubberStripEditorView view)
             => _form = view; 
 
-        public Result[] UpdateModel(
-            string height,
-            string internalDiameter)
-        {
-            Result[] results = new Result[2];
-
-            results[0] = _rubberStrip.TryConvertToDoubleAndValidate(internalDiameter, nameof(_rubberStrip.InternalDiameter));
-            results[1] = _rubberStrip.TryConvertToDoubleAndValidate(height, nameof(_rubberStrip.Height));
-
-            return results;
-        }
-
-        public void SetDefaultValues(
-            ref string height, 
-            ref string externalDiameter,
-            ref string internalDiameter)
-        {
-            throw new NotImplementedException();
-        }
-
         public RubberStripUpdateResults UpdateModel(RubberStripUpdateData updateData)
         {
-            throw new NotImplementedException();
+            RubberStripUpdateResults updateResults = new RubberStripUpdateResults
+            {
+                InternalDiameter = _rubberStrip.TryConvertToDoubleAndValidate(updateData.InternalDiameter, nameof(_rubberStrip.InternalDiameter)),
+
+                Height = _rubberStrip.TryConvertToDoubleAndValidate(updateData.Height, nameof(_rubberStrip.Height))
+            };
+
+            return updateResults;
         }
 
         public RubberStripEditorPresenter(RubberStripModel rubberStrip)

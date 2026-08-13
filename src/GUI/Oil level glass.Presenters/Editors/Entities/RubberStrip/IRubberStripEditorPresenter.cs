@@ -8,13 +8,6 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip
     public interface IRubberStripEditorPresenter 
         : IEditorPresenter<IRubberStripEditorView, RubberStripUpdateResults, RubberStripUpdateData, RubberStripDefaultSizes>
     {
-        Result[] UpdateModel(
-            string height,
-            string internalDiameter);
-
-        void SetDefaultValues(
-            ref string height,
-            ref string externalDiameter,
-            ref string internalDiameter);
+       
     }
 }

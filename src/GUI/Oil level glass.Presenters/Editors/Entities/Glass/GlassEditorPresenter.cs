@@ -42,19 +42,6 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Glass
             _glassEditor = view;
         }
 
-        public void SetDefaultValues(ref string height, ref string diameter)
-        {
-            if (_glass.Height > 0 )
-            {
-                height = _glass.Height.ToString();
-            }
-            
-            if (_glass.Diameter > 0 )
-            {
-                diameter = _glass.Diameter.ToString();
-            }
-        }
-
         public GlassUpdateResults UpdateModel(GlassUpdateData updateData)
         {
             GlassUpdateResults updateResults = new GlassUpdateResults()

@@ -1,18 +1,27 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters;
 using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
+using Oil_level_glass.Presenters.Editors.Entities.RubberStrip.HelpStructures;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 
 namespace Oil_level_glass.UI.Editors.RubberStrip
 {
     public partial class RubberStripEditorForm : Form, IRubberStripEditorView
     {
-        private IRubberStripEditorPresenter _stripEditorPresenter;
-        private ErrorProvider _internalDiameterError, _heightError;
+        private ErrorProvider _errorProvider = new();
 
-        public RubberStripEditorForm()
+        private IRubberStripEditorPresenter _stripEditorPresenter;
+
+        public RubberStripEditorForm(IRubberStripEditorPresenter stripEditorPresenter)
         {
             InitializeComponent();
+
+            _stripEditorPresenter = stripEditorPresenter;
+
+            var defaultSizes = _stripEditorPresenter.DefaultSizes;
+
+            tbExternalDiameter.Text = defaultSizes.ExternalDiameter;
+            tbHeight.Text = defaultSizes.Height;
+            tbInternalDiameter.Text = defaultSizes.InternalDiameter;
         }
 
         public RubberStripModel Model { get; set; }
@@ -30,7 +39,24 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
 
         private void tb_TextChanged(object sender, EventArgs e)
         {
-            _stripEditorPresenter.CheckData.Invoke();
+            _errorProvider.Clear();
+
+            var results = _stripEditorPresenter.UpdateModel(new RubberStripUpdateData(tbHeight.Text, tbInternalDiameter.Text));
+
+            if (results.HasNoErrors && tbHeight.Text != "" &&  tbInternalDiameter.Text != "")
+            {
+                btOk.Enabled = true;
+
+                return;
+            }
+
+            if (!results.Height.IsSuccess)
+                _errorProvider.SetError(tbHeight, results.Height.ErrorMessage);
+
+            if (!results.InternalDiameter.IsSuccess)
+                _errorProvider.SetError(tbInternalDiameter, results.InternalDiameter.ErrorMessage);
+
+            btOk.Enabled = false;
         }
 
         private void RubberStripEditorForm_Load(object sender, EventArgs e)
