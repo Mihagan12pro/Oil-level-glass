@@ -8,19 +8,17 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
     [DisplayName("Glass")]
     public class GlassModel : BaseDetailModel
     {
-        private double _externalDiameter;
+        private double _diameter;
         [DisplayName("D")]
         public double Diameter
         {
             get
             {
-                return _externalDiameter; 
+                return _diameter; 
             }
             set
             {
-                _externalDiameter = value;
-
-                OnPropertyChanged();
+                _diameter = value;
             }
         }
 
@@ -36,8 +34,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             set
             {
                 _height = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -58,14 +54,14 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
                     case nameof(Height):
                         {
                             if (Height <= 0)
-                                error = string.Format(mustBeGraterThanZero, displayName);
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
 
                             break;
                         }
                     case nameof(Diameter):
                         {
                             if (Diameter <= 0)
-                                error = string.Format(mustBeGraterThanZero, displayName);
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
 
                             break;
                         }

@@ -22,7 +22,7 @@ namespace Oil_level_glass.Model.Data.Operations
             {
                 _side1 = value;
 
-                OnPropertyChanged();
+                
             }
         }
 
@@ -40,7 +40,7 @@ namespace Oil_level_glass.Model.Data.Operations
             {
                 _side2 = value;
 
-                OnPropertyChanged();
+                
             }
         }
 
@@ -58,7 +58,7 @@ namespace Oil_level_glass.Model.Data.Operations
             {
                 _angle = value;
 
-                OnPropertyChanged();
+                
             }
         }
 

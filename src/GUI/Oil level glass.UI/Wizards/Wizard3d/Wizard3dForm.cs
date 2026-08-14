@@ -24,6 +24,7 @@ namespace Oil_level_glass.UI.Wizard3d
             btOk.Enabled = _wizardPresenter.CanStartModeling;
 
             tvParts.Nodes.Add(_wizardPresenter.GetParts().ToTreeNode());
+            tvParts.ExpandAll();
 
             _selectNodeCommand.SetAction(() =>
             {

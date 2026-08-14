@@ -37,11 +37,6 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Glass
             return results;
         }
 
-        public void SetView(IGlassEditorView view)
-        {
-            _glassEditor = view;
-        }
-
         public GlassUpdateResults UpdateModel(GlassUpdateData updateData)
         {
             GlassUpdateResults updateResults = new GlassUpdateResults()

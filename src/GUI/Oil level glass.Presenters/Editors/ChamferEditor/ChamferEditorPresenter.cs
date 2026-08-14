@@ -59,11 +59,6 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
             return chamfer.TryConvertToDoubleAndValidate(side2, nameof(chamfer.Side2));
         }
 
-        public void SetView(IChamferEditorView view)
-        {
-            throw new NotImplementedException();
-        }
-
         public ChamferUpdateResults UpdateModel(ChamferUpdateData updateData)
         {
             throw new NotImplementedException();

@@ -9,11 +9,11 @@ namespace Oil_level_glass.Presenters.Extensions
 {
     internal static class BaseModelExtensions
     {
-        public static Result TryConvertToInt32AndValidate(this BaseModel model, string str, string propertyTitle)
+        public static Result TryConvertToInt32AndValidate(this BaseModel model, string propertyValue, string propertyTitle)
         {
             PropertyInfo property = ExtractPropertInfo(model, propertyTitle);
 
-            if (int.TryParse(str, out int number))
+            if (int.TryParse(propertyValue, out int number))
             {
                 property.SetValue(model, number);
 
@@ -29,13 +29,13 @@ namespace Oil_level_glass.Presenters.Extensions
             {
                 case "ru-RU":
                     {
-                        message = "must be a number!";
+                        message += "должен быть числом!";
 
                         break;
                     }
                 default:
                     {
-                        message += "должен быть числом!";
+                        message = "must be a number!";
 
                         break;
                     }
@@ -44,12 +44,12 @@ namespace Oil_level_glass.Presenters.Extensions
             return new Result(false, string.Format(message, property.GetCustomAttribute<DisplayNameAttribute>().DisplayName));
         }
 
-        public static Result TryConvertToDoubleAndValidate(this BaseModel model, string str, string propertyTitle)
+        public static Result TryConvertToDoubleAndValidate(this BaseModel model, string propertyValue, string propertyTitle)
         {
             PropertyInfo property = ExtractPropertInfo(model, propertyTitle);
 
-            if (double.TryParse(str, out double number) ||
-                double.TryParse(str, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out number))
+            if (double.TryParse(propertyValue, out double number) ||
+                double.TryParse(propertyValue, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out number))
             {
                 property.SetValue(model, number);
 

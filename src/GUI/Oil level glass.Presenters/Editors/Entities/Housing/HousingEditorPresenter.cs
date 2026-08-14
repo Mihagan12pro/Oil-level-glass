@@ -33,20 +33,11 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
         }
 
         public bool ScrewHoleCanBeConfigured
-        {
-            get
-            {
-                return _housing[nameof(_housing.MainHeight)] == string.Empty && _housing[nameof(_housing.MainDiameter)] == string.Empty;
-            }
-        }
+            => _housing[nameof(_housing.MainHeight)] == string.Empty &&
+               _housing[nameof(_housing.MainDiameter)] == string.Empty;
 
         public bool ChamferCanBeConfigured
-        {
-            get
-            {
-                return _housing.Hole.HasErrors == false;
-            }
-        }
+            => _housing.Hole.HasErrors == false;
 
         public void ResetFields()
         {
@@ -82,7 +73,7 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
         {
             using (IHolesEditorView holesEditorForm = _serviceProvider.GetRequiredService<IHolesEditorView>())
             {
-                holesEditorForm.ShowView(_housingForm);
+                holesEditorForm.ShowView();
             }
         }
 

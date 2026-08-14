@@ -13,7 +13,6 @@
             set 
             {
                 _density = value; 
-                OnPropertyChanged(nameof(Density)); 
             }
         }
 
@@ -28,7 +27,6 @@
             set
             {
                 _title = value; 
-                OnPropertyChanged(nameof(Title)); 
             }
         }
 

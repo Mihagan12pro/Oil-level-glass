@@ -3,6 +3,7 @@ using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
@@ -11,16 +12,11 @@ public class HousingModel
 {
     private double _mainDiameter, _mainHeight, _glassSocketHeight, _glassSocketDiameter;
     private double _centralHoleDiameter, _screwHolesDistance;
-    private int _screwHolesCount;
+    private int _screwHolesCount, _maxCountOfHoles;
 
-    private readonly string _mainHeightGreatestMessage;
-    private readonly string _mainDiameterGreaterThanSocker;
-
-    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel();
-
-    public ChamferModel Chamfer { get; } = new ChamferModel();
-
-    public int MaxCountOfHoles;
+    private readonly string _messageMainHeightGreatest;
+    private readonly string _messageMainDiameterGreaterThanSocker;
+    private readonly string _messageMinimalCountOfHoles;
 
 
     public HousingModel()
@@ -37,19 +33,52 @@ public class HousingModel
             case "ru-RU":
                 {
                     DisplayName = "Корпус";
-                    _mainDiameterGreaterThanSocker = "Размер 'D' должен быть больше размера 'D1' минимум в 1,5 раза!";
-                    _mainHeightGreatestMessage = "Размер 'h' должен быть максимальной высотой!";
+                    _messageMinimalCountOfHoles = "Минимальное число отверстий не может быть меньше 3!";
+                    _messageMainDiameterGreaterThanSocker = "Размер 'D' должен быть больше размера 'D1' минимум в 1,5 раза!";
+                    _messageMainHeightGreatest = "Размер 'h' должен быть максимальной высотой!";
                     break;
                 }
             default:
                 {
                     DisplayName = "Housing";
-                    _mainDiameterGreaterThanSocker = "The 'D' size must be at least 1.5 times larger than the 'D1' size!";
-                    _mainHeightGreatestMessage = "The 'h' size must be the greatest height!";
+                    _messageMinimalCountOfHoles = "Minimal count of screw holes can't be less than 3!";
+                    _messageMainDiameterGreaterThanSocker = "The 'D' size must be at least 1.5 times larger than the 'D1' size!";
+                    _messageMainHeightGreatest = "The 'h' size must be the greatest height!";
                     break;
                 }
         }
+
+        (Hole as BasicScrewHoleModel).NotifyDiameterChanged += NotifyHoleDiameterChanged;
     }
+
+    private void NotifyHoleDiameterChanged(double diameter)
+    {
+        double length = Math.PI * ScrewHolesDistance;
+
+        if ((Hole as BasicScrewHoleModel).Diameter > 0)
+        {
+            var value = Math.Floor(length / (Hole as BasicScrewHoleModel).Diameter);
+
+            MaxCountOfHoles = Convert.ToInt32(Math.Floor(value));
+        }
+    }
+
+    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel();
+
+    public ChamferModel Chamfer { get; } = new ChamferModel();
+
+    public int MaxCountOfHoles
+    {
+        get
+        {
+            return _maxCountOfHoles;
+        }
+        set
+        {
+            _maxCountOfHoles = value;
+        }
+    }
+
 
     [DisplayName("D")]
     public double MainDiameter
@@ -62,7 +91,8 @@ public class HousingModel
         {
             _mainDiameter = value;
 
-            OnPropertyChanged();
+            Hole.MaxDiameter = (MainDiameter / 2 - ScrewHolesDistance / 2) * 0.9;
+            ScrewHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;
         }
     }
 
@@ -76,8 +106,6 @@ public class HousingModel
         set
         {
             _mainHeight = value;
-
-            OnPropertyChanged();
         }
     }
 
@@ -92,7 +120,7 @@ public class HousingModel
         {
             _glassSocketHeight = value;
 
-            OnPropertyChanged();
+            ScrewHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;
         }
     }
 
@@ -106,8 +134,6 @@ public class HousingModel
         set
         {
             _glassSocketDiameter = value;
-
-            OnPropertyChanged();
         }
     }
 
@@ -121,8 +147,6 @@ public class HousingModel
         set
         {
             _centralHoleDiameter = value;
-
-            OnPropertyChanged();
         }
     }
 
@@ -136,8 +160,6 @@ public class HousingModel
         set
         {
             _screwHolesCount = value;
-
-            OnPropertyChanged();
         }
     }
 
@@ -151,8 +173,7 @@ public class HousingModel
         set
         {
             _screwHolesDistance = value;
-
-            OnPropertyChanged();
+            Hole.MaxDiameter = (MainDiameter / 2 - ScrewHolesDistance / 2) * 0.9;
         }
     }
 
@@ -161,17 +182,38 @@ public class HousingModel
     {
         string error = string.Empty;
 
-        switch(columnName)
-        {
-            case nameof(MainDiameter):
-                if (MainDiameter / GlassSocketDiameter < 1.5)
-                    error = _mainDiameterGreaterThanSocker;
-                break;
+        string? displayName = this.GetType()
+                                  .GetProperties()
+                                  .Where(p => p.GetCustomAttribute<DisplayNameAttribute>() != null && p.Name == columnName)
+                                  .Select(p => p.GetCustomAttribute<DisplayNameAttribute>().DisplayName)
+                                  .FirstOrDefault();
 
-            case nameof(MainHeight):
-                if (MainHeight <= GlassSocketHeight)
-                    error = _mainHeightGreatestMessage;
-                break;
+        if (displayName != null)
+        {
+            switch (columnName)
+            {
+                case nameof(MainDiameter):
+                    {
+                        if (MainDiameter / GlassSocketDiameter < 1.5)
+                            error = _messageMainDiameterGreaterThanSocker;
+                        break;
+                    }
+
+                case nameof(MainHeight):
+                    {
+                        if (MainHeight <= GlassSocketHeight)
+                            error = _messageMainHeightGreatest;
+                        break;
+                    }
+
+                case nameof(ScrewHolesCount):
+                    {
+                        if (ScrewHolesCount > MaxCountOfHoles)
+                            error = string.Format(messageCantBeGreaterThan, displayName, MaxCountOfHoles);
+
+                        break;
+                    }
+            }
         }
 
         return error;

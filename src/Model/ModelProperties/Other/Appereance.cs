@@ -15,8 +15,6 @@
             set
             {
                 _ambient = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -30,8 +28,6 @@
             set
             {
                 _diffuse = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -45,8 +41,6 @@
             set
             {
                 _shininess = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -60,8 +54,6 @@
             set
             {
                 _transparency = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -75,8 +67,6 @@
             set
             {
                 _specularity = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -90,8 +80,6 @@
             set
             {
                 _emission = value;
-
-                OnPropertyChanged();
             }
         }
 

@@ -90,7 +90,11 @@ namespace Oil_level_glass.UI.Editors.Housing
         }
 
         private void btScrewHole_Click(object sender, EventArgs e)
-            => _housingEditorPresenter.ConfigureHoles();
+        {
+            _housingEditorPresenter.ConfigureHoles();
+
+            btChamfer.Enabled = _housingEditorPresenter.ChamferCanBeConfigured;
+        }
 
         private void HousingEditorForm_Click(object sender, EventArgs e)
         {

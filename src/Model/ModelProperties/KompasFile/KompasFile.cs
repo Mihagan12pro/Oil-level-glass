@@ -17,7 +17,7 @@ namespace Oil_level_glass.Model.ModelProperties.KompasFile
             set
             {
                 _folder = value;
-                OnPropertyChanged();
+                
             }
         }
     

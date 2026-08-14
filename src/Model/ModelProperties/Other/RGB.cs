@@ -12,7 +12,7 @@
             set
             {
                 _red = value;
-                OnPropertyChanged();
+                
             }
         }
 
@@ -26,7 +26,7 @@
             set
             {
                 _green = value;
-                OnPropertyChanged();
+                
             }
         }
 
@@ -40,7 +40,7 @@
             set
             {
                 _blue = value;
-                OnPropertyChanged();
+                
             }
         }
 

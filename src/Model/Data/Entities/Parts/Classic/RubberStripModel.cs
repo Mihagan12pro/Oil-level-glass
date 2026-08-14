@@ -39,8 +39,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             set
             {
                 _internalDiameter = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -54,8 +52,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             set
             {
                 _externalDiameter = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -69,8 +65,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             set
             {
                 _height = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -90,25 +84,25 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
                     case nameof(Height):
                         {
                             if (Height <= 0)
-                                error = string.Format(mustBeGraterThanZero, displayName);
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
 
                             break;
                         }
                     case nameof(InternalDiameter):
                         {
                             if (InternalDiameter <= 0)
-                                error = string.Format(mustBeGraterThanZero, displayName);
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
                             else if (InternalDiameter >= ExternalDiameter)
-                                error = string.Format(size0MustBeGreaterThanSize1, displayName);
+                                error = string.Format(messageSize0MustBeGreaterThanSize1, displayName);
 
                             break;
                         }
                     case nameof(ExternalDiameter):
                         {
                             if (ExternalDiameter <= 0)
-                                error = string.Format(mustBeGraterThanZero, displayName);
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
                             else if (InternalDiameter >= ExternalDiameter)
-                                error = string.Format(size0MustBeGreaterThanSize1, displayName);
+                                error = string.Format(messageSize0MustBeGreaterThanSize1, displayName);
 
                             break;
                         }

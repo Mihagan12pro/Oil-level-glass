@@ -12,7 +12,7 @@ public class Name : BaseModel
         set
         {
             _naming = value;
-            OnPropertyChanged();
+            
         }
     }
 
@@ -26,7 +26,7 @@ public class Name : BaseModel
         set
         {
             _marking = value;
-            OnPropertyChanged();
+            
         }
     }
 

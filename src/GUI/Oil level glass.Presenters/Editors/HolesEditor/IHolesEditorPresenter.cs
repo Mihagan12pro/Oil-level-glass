@@ -8,8 +8,6 @@ namespace Oil_level_glass.Presenters.Editors.Data.HolesEditor
     public interface IHolesEditorPresenter 
         : IEditorPresenter<IHolesEditorView, HolesUpdateResults, HolesUpdateData, HolesDefaultSizes>
     {
-        Result UpdateCountOfHoles(string count);
-
-        Result UpdateDiameter(string diameter);
+       
     }
 }
