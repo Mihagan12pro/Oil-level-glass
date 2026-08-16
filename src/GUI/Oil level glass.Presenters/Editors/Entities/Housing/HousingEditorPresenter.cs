@@ -3,6 +3,7 @@ using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.Presenters.Editors.Entities.Housing.DataStructures;
 using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
+using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 
 namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
@@ -66,11 +67,18 @@ namespace Oil_level_glass.Presenters.Editors.Data.Entities.Housing
 
         public void ConfigureChamfer()
         {
-            throw new NotImplementedException();
+            _housing.UpdateComputableFields();
+
+            using (IChamferEditorView chamferEditorView = _serviceProvider.GetRequiredService<IChamferEditorView>())
+            {
+                chamferEditorView.ShowView();
+            }
         }
 
         public void ConfigureHoles()
         {
+            _housing.UpdateComputableFields();
+
             using (IHolesEditorView holesEditorForm = _serviceProvider.GetRequiredService<IHolesEditorView>())
             {
                 holesEditorForm.ShowView();

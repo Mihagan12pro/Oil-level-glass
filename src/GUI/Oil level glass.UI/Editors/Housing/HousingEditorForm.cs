@@ -79,14 +79,7 @@ namespace Oil_level_glass.UI.Editors.Housing
 
         private void btChamfer_Click(object sender, EventArgs e)
         {
-            //ChamferEditorForm chamferEditorForm = new ChamferEditorForm()
-            //{
-            //    Model = Model
-            //};
-            //chamferEditorForm.Owner = this;
-            
-            //chamferEditorForm.ShowDialog();
-            //_housingEditorPresenter.CheckData.Invoke();
+            _housingEditorPresenter.ConfigureChamfer();
         }
 
         private void btScrewHole_Click(object sender, EventArgs e)

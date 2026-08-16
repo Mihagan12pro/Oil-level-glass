@@ -1,69 +1,119 @@
-﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters;
+﻿using Oil_level_glass.Model.Data.Operations;
 using Oil_level_glass.Presenters.Editors.Data.ChamferEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
+using Oil_level_glass.Presenters.Editors.ChamferEditor.HelpStructures;
+using Shared;
 
 namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 {
     public partial class ChamferEditorForm : Form, IChamferEditorView
     {
-        private IChamferEditorPresenter _chamferEditorPresenter;
-        private ErrorProvider _side1Error, _side2Error;
+        private readonly ICommand _textUpdateCommand, _resetCommand;
 
-        public ChamferEditorForm()
+        private readonly ErrorProvider _errorProvider = new ErrorProvider();
+
+        private IChamferEditorPresenter _chamferEditorPresenter;
+
+        private ChamferType _chamferType;
+
+        public ChamferEditorForm(IChamferEditorPresenter chamferEditorPresenter)
         {
             InitializeComponent();
-        }
 
-        public HousingModel Model { get; set; }
-
-        private void ChamferEditorForm_Load(object sender, EventArgs e)
-        {
-            _side1Error = new ErrorProvider();
-            _side2Error = new ErrorProvider();
-
-            Action checkData = () =>
+            _textUpdateCommand = new UICommand();
+            _textUpdateCommand.SetAction(() => 
             {
-                var angleResult = _chamferEditorPresenter.UpdateAngle(tbAngle.Value.ToString());
+                btOk.Enabled = true;
+                _errorProvider.Clear();
 
-                var side1Result = _chamferEditorPresenter.UpdateSide1(tbSide1.Text);
+                var result = _chamferEditorPresenter.UpdateModel(new ChamferUpdateData(
+                    tbSide1.Text,
+                    tbSide2.Text,
+                    tbAngle.Text)
+                );
 
-                tbSide2.Text = Model.Chamfer.Side2.ToString();
+                btOk.Enabled = result.NoErrors && tbAngle.Text != ""
+                    && tbSide1.Text != "" && tbSide2.Text != "";
 
-                var side2Result = _chamferEditorPresenter.UpdateSide2(tbSide2.Text);
+                if (!result.FirstParam.IsSuccess)
+                    _errorProvider.SetError(tbSide1, result.FirstParam.ErrorMessage);
 
-                btOk.Enabled = angleResult.IsSuccess && side1Result.IsSuccess && side2Result.IsSuccess;
-
-                if (side1Result.IsSuccess)
-                    _side1Error.Clear();
+                if (_chamferType == ChamferType.TwoSides)
+                {
+                    if (result.SecondParam.IsSuccess)
+                    {
+                        tbAngle.Text = result.ThrirdParam;
+                    }
+                    else
+                    {
+                        _errorProvider.SetError(tbSide2, result.SecondParam.ErrorMessage);
+                    }
+                }
                 else
-                    _side1Error.SetError(tbSide1, side1Result.ErrorMessage);
+                {
+                    if (result.SecondParam.IsSuccess)
+                    {
+                        tbSide2.Text = result.ThrirdParam;
+                    }
+                    else
+                    {
+                        _errorProvider.SetError(tbAngle, result.SecondParam.ErrorMessage);
+                    }
+                }
+            });
 
-                if (side2Result.IsSuccess)
-                    _side2Error.Clear();
-                else
-                    _side2Error.SetError(tbSide2, side2Result.ErrorMessage);
-            };
-
-            _chamferEditorPresenter = PresentersFactory.CreateChamferEditorPresenter(this, checkData);
-
-            tbAngle.Value = Convert.ToDecimal((Model.Chamfer).Angle);
-            tbMaxLength.Text = Model.Chamfer.MaxSide1.ToString();
-            tbSide1.PlaceholderText = tbMaxLength.Text;
-
-            if (Model.Chamfer[nameof(Model.Chamfer.Side1)] == string.Empty)
+            _resetCommand = new UICommand();
+            _resetCommand.SetAction(() => 
             {
-                tbSide1.Text = Model.Chamfer.Side1.ToString();
-                tbSide2.Text = Model.Chamfer.Side2.ToString();
+                var defaultSizes = _chamferEditorPresenter.DefaultSizes;
+                tbSide1.Text = "";
+
+                _chamferEditorPresenter.ResetFields();
+
+                if (_chamferType == ChamferType.TwoSides)
+                {
+                    tbSide2.Text = "";
+                    tbAngle.Text = defaultSizes.Angle;
+                }
+                else
+                {
+                    tbAngle.Text = "";
+                    tbSide2.Text = defaultSizes.Side2;
+                }
+            });
+
+            rbSideAndAngle.CheckedChanged += rb_CheckedChanged;
+            rbTwoSides.CheckedChanged += rb_CheckedChanged;
+
+            tbAngle.TextChanged += Tb_TextChanged;
+            tbSide1.TextChanged += Tb_TextChanged;
+            tbSide2.TextChanged += Tb_TextChanged;
+
+            _chamferEditorPresenter = chamferEditorPresenter;
+
+            var defaultSizes = _chamferEditorPresenter.DefaultSizes;
+
+            _chamferType = defaultSizes.ChamferType;
+
+            if (_chamferType == ChamferType.TwoSides)
+            {
+                rbTwoSides.Checked = true;
+                rbSideAndAngle.Checked = false;
+            }
+            else
+            {
+                rbSideAndAngle.Checked = true;
             }
 
-            _chamferEditorPresenter.CheckData();
+            tbAngle.Text = defaultSizes.Angle;
+            tbSide1.Text = defaultSizes.Side1;
+            tbSide2.Text = defaultSizes.Side2;
+
+            _textUpdateCommand.Execute();
         }
 
-        private void tb_TextChanged(object sender, EventArgs e)
-        {
-            _chamferEditorPresenter.CheckData();
-        }
+        private void Tb_TextChanged(object? sender, EventArgs e)
+            => _textUpdateCommand.Execute();
 
         private void ChamferEditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -72,12 +122,7 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
         }
 
         private void btResetData_Click(object sender, EventArgs e)
-        {
-            tbSide1.Text = "";
-            tbSide2.Text = "";
-
-            _chamferEditorPresenter.CheckData();
-        }
+            => _resetCommand.Execute();
 
         private void btOk_Click(object sender, EventArgs e)
         {
@@ -86,7 +131,47 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 
         public void ShowView(object owner = null)
         {
-            throw new NotImplementedException();
+            if (owner != null && owner is Form form)
+            {
+                ShowDialog(form);
+            }
+            else
+            {
+                ShowDialog();
+            }
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void rb_CheckedChanged(object sender, EventArgs e)
+        {
+            tbAngle.Enabled = true;
+            tbSide2.Enabled = true;
+
+            if (sender is RadioButton rb && rb.Checked)
+            {
+                if (rb == rbSideAndAngle)
+                {
+                    tbSide2.Enabled = false;
+                    _chamferType = ChamferType.SideAndAngle;
+
+                    if (tbSide2.Text == "" && tbSide1.Text == "")
+                        _resetCommand.Execute();
+                }
+                else
+                {
+                    _chamferType = ChamferType.TwoSides;
+                    tbAngle.Enabled = false;
+
+                    if (tbAngle.Text == "" && tbSide1.Text == "")
+                        _resetCommand.Execute();
+                }
+            }
+
+            _chamferEditorPresenter.ChangeChamferType(_chamferType);
         }
     }
 }

@@ -91,8 +91,7 @@ public class HousingModel
         {
             _mainDiameter = value;
 
-            Hole.MaxDiameter = (MainDiameter / 2 - ScrewHolesDistance / 2) * 0.9;
-            ScrewHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;
+            UpdateComputableFields();
         }
     }
 
@@ -106,6 +105,8 @@ public class HousingModel
         set
         {
             _mainHeight = value;
+
+            UpdateComputableFields();
         }
     }
 
@@ -120,7 +121,7 @@ public class HousingModel
         {
             _glassSocketHeight = value;
 
-            ScrewHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;
+            UpdateComputableFields();
         }
     }
 
@@ -173,8 +174,20 @@ public class HousingModel
         set
         {
             _screwHolesDistance = value;
-            Hole.MaxDiameter = (MainDiameter / 2 - ScrewHolesDistance / 2) * 0.9;
+
+            UpdateComputableFields();
         }
+    }
+
+    public void UpdateComputableFields()
+    {
+        _screwHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;
+
+        Hole.MaxDiameter = (MainDiameter / 2 - ScrewHolesDistance / 2) * 0.9;
+
+        Chamfer.MaxSide2 = MainHeight;
+
+        Chamfer.MaxSide1 = (MainDiameter * 0.5 - (ScrewHolesDistance * 0.5 + ((BasicScrewHoleModel)Hole).Diameter * 0.5)) * 0.5;
     }
 
 
