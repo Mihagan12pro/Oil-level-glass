@@ -9,15 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Editors\ModelProperties\KompasFiles\EditNamingForm.cs" />
-    <Compile Remove="Editors\ModelProperties\KompasFiles\EditNamingForm.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="Editors\ModelProperties\KompasFiles\EditNamingForm.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Resources\chamfer2Sides.png" />
     <None Remove="Resources\chamferSideAngle.png" />
   </ItemGroup>

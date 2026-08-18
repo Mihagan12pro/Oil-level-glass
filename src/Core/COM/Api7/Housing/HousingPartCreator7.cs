@@ -149,9 +149,17 @@ namespace Oil_level_glass.Core.COM.Api7.Housing
                 circularPattern.Update();
 
                 IChamfer chamfer = modelContainer.Chamfers.Add();
-                chamfer.Angle = Model.Chamfer.Angle;
                 chamfer.Distance1 = Model.Chamfer.Side1;
-                chamfer.BuildingType = ksChamferBuildingTypeEnum.ksChamferSideAngle;
+                if (Model.Chamfer.Type == Oil_level_glass.Model.Data.Operations.ChamferType.SideAndAngle)
+                {
+                    chamfer.Angle = Model.Chamfer.Angle;
+                    chamfer.BuildingType = ksChamferBuildingTypeEnum.ksChamferSideAngle;
+                }
+                else
+                {
+                    chamfer.Distance2 = Model.Chamfer.Side2;
+                    chamfer.BuildingType = ksChamferBuildingTypeEnum.ksChamferTwoSides;
+                }
                 chamfer.BaseObjects = edge;
 
                 chamfer.Update();
