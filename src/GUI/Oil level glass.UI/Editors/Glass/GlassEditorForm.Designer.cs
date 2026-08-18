@@ -193,7 +193,7 @@
             tbDiameter.Location = new Point(49, 88);
             tbDiameter.Margin = new Padding(49, 0, 49, 0);
             tbDiameter.Name = "tbDiameter";
-            tbDiameter.PlaceholderText = "60";
+            tbDiameter.PlaceholderText = "45";
             tbDiameter.Size = new Size(297, 39);
             tbDiameter.TabIndex = 0;
             // 

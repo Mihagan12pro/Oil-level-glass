@@ -3,6 +3,7 @@ using Oil_level_glass.Presenters.Editors.Data.ChamferEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Oil_level_glass.Presenters.Editors.ChamferEditor.HelpStructures;
 using Shared;
+using Oil_level_glass.UI.Properties;
 
 namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 {
@@ -65,21 +66,13 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
             _resetCommand = new UICommand();
             _resetCommand.SetAction(() => 
             {
-                var defaultSizes = _chamferEditorPresenter.DefaultSizes;
-                tbSide1.Text = "";
-
                 _chamferEditorPresenter.ResetFields();
 
-                if (_chamferType == ChamferType.TwoSides)
-                {
-                    tbSide2.Text = "";
-                    tbAngle.Text = defaultSizes.Angle;
-                }
-                else
-                {
-                    tbAngle.Text = "";
-                    tbSide2.Text = defaultSizes.Side2;
-                }
+                var defaultSizes = _chamferEditorPresenter.DefaultSizes;
+
+                tbAngle.Text = defaultSizes.Angle;
+                tbSide1.Text = defaultSizes.Side1;
+                tbSide2.Text = defaultSizes.Side2;
             });
 
             rbSideAndAngle.CheckedChanged += rb_CheckedChanged;
@@ -153,10 +146,12 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 
             if (sender is RadioButton rb && rb.Checked)
             {
+                Bitmap image;
                 if (rb == rbSideAndAngle)
                 {
                     tbSide2.Enabled = false;
                     _chamferType = ChamferType.SideAndAngle;
+                    image = (Bitmap)Resources.ResourceManager.GetObject("chamferSideAngle");
 
                     if (tbSide2.Text == "" && tbSide1.Text == "")
                         _resetCommand.Execute();
@@ -165,10 +160,13 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
                 {
                     _chamferType = ChamferType.TwoSides;
                     tbAngle.Enabled = false;
+                    image = (Bitmap)Resources.ResourceManager.GetObject("chamfer2Sides");
 
                     if (tbAngle.Text == "" && tbSide1.Text == "")
                         _resetCommand.Execute();
                 }
+
+                pbSketch.Image = image;
             }
 
             _chamferEditorPresenter.ChangeChamferType(_chamferType);

@@ -18,6 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\chamfer2Sides.png" />
+    <None Remove="Resources\chamferSideAngle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Editors\Glass\" />
   </ItemGroup>
 
@@ -32,6 +37,11 @@
     <ProjectReference Include="..\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj" />
     <ProjectReference Include="..\Oil level glass.UI.Controls\Oil level glass.UI.Controls.csproj" />
     <ProjectReference Include="..\Oil level glass.UI.Utils\Oil level glass.UI.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\chamfer2Sides.png" />
+    <Resource Include="Resources\chamferSideAngle.png" />
   </ItemGroup>
 
 </Project>

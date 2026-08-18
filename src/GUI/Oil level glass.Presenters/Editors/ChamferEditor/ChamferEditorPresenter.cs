@@ -23,10 +23,8 @@ namespace Oil_level_glass.Presenters.Editors.Data.ChamferEditor
         public void ResetFields()
         {
             _housing.Chamfer.Side1 = _oldChamgerSide1;
-            if (_chamfer.Type == ChamferType.SideAndAngle)
-                _housing.Chamfer.Angle = _oldChamferAngle;
-            else
-                _housing.Chamfer.Side2 = _oldChamferSide2;
+            _housing.Chamfer.Angle = _oldChamferAngle;
+            _housing.Chamfer.Side2 = _oldChamferSide2;
         }
 
         public ChamferUpdateResults UpdateModel(ChamferUpdateData updateData)

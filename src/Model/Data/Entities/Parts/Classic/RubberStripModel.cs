@@ -93,7 +93,13 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
                             if (InternalDiameter <= 0)
                                 error = string.Format(messageMustBeGraterThanZero, displayName);
                             else if (InternalDiameter >= ExternalDiameter)
-                                error = string.Format(messageSize0MustBeGreaterThanSize1, displayName);
+                            {
+                                string displayName2 = GetType()
+                                    .GetProperty(nameof(ExternalDiameter))
+                                    .GetCustomAttribute<DisplayNameAttribute>().DisplayName;
+
+                                error = string.Format(messageSize0MustBeGreaterThanSize1, displayName, displayName2);
+                            }
 
                             break;
                         }

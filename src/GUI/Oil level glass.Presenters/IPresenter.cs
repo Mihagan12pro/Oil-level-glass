@@ -2,6 +2,6 @@
 {
     public interface IPresenter
     {
-        Action CheckData { get; }
+        
     }
 }

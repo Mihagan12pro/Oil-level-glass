@@ -23,10 +23,7 @@ public class HousingModel
     {
         Material = new Metal();
 
-        Chamfer = new ChamferModel()
-        {
-            Angle = 60
-        };
+        Chamfer = new ChamferModel();
 
         switch (CultureInfo.CurrentCulture.Name)
         {
@@ -223,6 +220,8 @@ public class HousingModel
                     {
                         if (ScrewHolesCount > MaxCountOfHoles)
                             error = string.Format(messageCantBeGreaterThan, displayName, MaxCountOfHoles);
+                        else if (ScrewHolesCount < 3)
+                            error = string.Format(messageCantBeLessThan, displayName, 3);
 
                         break;
                     }

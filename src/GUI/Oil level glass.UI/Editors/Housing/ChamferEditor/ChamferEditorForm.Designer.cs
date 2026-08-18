@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChamferEditorForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             btResetData = new Button();
@@ -47,10 +46,10 @@
             label2 = new Label();
             tableLayoutPanel8 = new TableLayoutPanel();
             label1 = new Label();
+            tbAngle = new TextBox();
             groupBox2 = new GroupBox();
             rbSideAndAngle = new RadioButton();
             rbTwoSides = new RadioButton();
-            tbAngle = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -154,7 +153,6 @@
             // 
             pbSketch.BorderStyle = BorderStyle.FixedSingle;
             pbSketch.Dock = DockStyle.Fill;
-            pbSketch.Image = (Image)resources.GetObject("pbSketch.Image");
             pbSketch.Location = new Point(465, 20);
             pbSketch.Margin = new Padding(0, 20, 20, 0);
             pbSketch.Name = "pbSketch";
@@ -306,6 +304,14 @@
             label1.TabIndex = 0;
             label1.Text = "Угол α, °";
             // 
+            // tbAngle
+            // 
+            tbAngle.Location = new Point(49, 39);
+            tbAngle.Margin = new Padding(49, 0, 49, 0);
+            tbAngle.Name = "tbAngle";
+            tbAngle.Size = new Size(309, 39);
+            tbAngle.TabIndex = 1;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(rbSideAndAngle);
@@ -340,14 +346,6 @@
             rbTwoSides.TabStop = true;
             rbTwoSides.Text = "По двум сторонам";
             rbTwoSides.UseVisualStyleBackColor = true;
-            // 
-            // tbAngle
-            // 
-            tbAngle.Location = new Point(49, 39);
-            tbAngle.Margin = new Padding(49, 0, 49, 0);
-            tbAngle.Name = "tbAngle";
-            tbAngle.Size = new Size(309, 39);
-            tbAngle.TabIndex = 1;
             // 
             // ChamferEditorForm
             // 

@@ -117,15 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="OilLevelGlass" xml:space="preserve">
+    <value>Смотровой лючок</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Oil level glass Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Oil level glass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Glass_Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Glass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Housing" xml:space="preserve">
+    <value>Корпус</value>
   </data>
   <data name="Housing Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Housing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RubberStrip" xml:space="preserve">
+    <value>Резиновая прокладка</value>
+  </data>
+  <data name="Glass_Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Glass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Rubber strip Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rubber strip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,13 +142,10 @@
   <data name="Glass" xml:space="preserve">
     <value>Линза</value>
   </data>
-  <data name="RubberStrip" xml:space="preserve">
-    <value>Резиновая прокладка</value>
+  <data name="chamfer2Sides" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chamfer2Sides1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Housing" xml:space="preserve">
-    <value>Корпус</value>
-  </data>
-  <data name="OilLevelGlass" xml:space="preserve">
-    <value>Смотровой лючок</value>
+  <data name="chamferSideAngle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chamferSideAngle1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
