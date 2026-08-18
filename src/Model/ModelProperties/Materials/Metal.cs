@@ -1,0 +1,14 @@
+﻿namespace Oil_level_glass.Model.ModelProperties.Materials
+{
+    public class Metal : Material
+    {
+        public Metal()
+        {
+            MinDensity = 0.534;
+
+            MaxDensity = 22.6;
+
+            HatchStyle = 0;
+        }
+    }
+}

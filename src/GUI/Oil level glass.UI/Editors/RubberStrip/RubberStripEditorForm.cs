@@ -1,19 +1,27 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters;
-using Oil_level_glass.Presenters.Editors.RubberStrip;
+using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
+using Oil_level_glass.Presenters.Editors.Entities.RubberStrip.HelpStructures;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
-using Oil_level_glass.UI.Presenters.Editors.Glass;
 
 namespace Oil_level_glass.UI.Editors.RubberStrip
 {
-    public partial class RubberStripEditorForm : Form, IRubberStripEditorForm
+    public partial class RubberStripEditorForm : Form, IRubberStripEditorView
     {
-        private IRubberStripEditorPresenter _stripEditorPresenter;
-        private ErrorProvider _internalDiameterError, _heightError;
+        private ErrorProvider _errorProvider = new();
 
-        public RubberStripEditorForm()
+        private IRubberStripEditorPresenter _stripEditorPresenter;
+
+        public RubberStripEditorForm(IRubberStripEditorPresenter stripEditorPresenter)
         {
             InitializeComponent();
+
+            _stripEditorPresenter = stripEditorPresenter;
+
+            var defaultSizes = _stripEditorPresenter.DefaultSizes;
+
+            tbExternalDiameter.Text = defaultSizes.ExternalDiameter;
+            tbHeight.Text = defaultSizes.Height;
+            tbInternalDiameter.Text = defaultSizes.InternalDiameter;
         }
 
         public RubberStripModel Model { get; set; }
@@ -31,57 +39,47 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
 
         private void tb_TextChanged(object sender, EventArgs e)
         {
-            _stripEditorPresenter.CheckData.Invoke();
+            _errorProvider.Clear();
+
+            var results = _stripEditorPresenter.UpdateModel(new RubberStripUpdateData(tbHeight.Text, tbInternalDiameter.Text));
+
+            if (results.NoErrors && tbHeight.Text != "" &&  tbInternalDiameter.Text != "")
+            {
+                btOk.Enabled = true;
+
+                return;
+            }
+
+            if (!results.Height.IsSuccess)
+                _errorProvider.SetError(tbHeight, results.Height.ErrorMessage);
+
+            if (!results.InternalDiameter.IsSuccess)
+                _errorProvider.SetError(tbInternalDiameter, results.InternalDiameter.ErrorMessage);
+
+            btOk.Enabled = false;
         }
 
         private void RubberStripEditorForm_Load(object sender, EventArgs e)
         {
-            _internalDiameterError = new ErrorProvider();
-            _heightError = new ErrorProvider();
 
-            Action checkData = () =>
-            {
-                var internalDiameterResult = _stripEditorPresenter.UpdateInternalDiameter(tbInternalDiameter.Text);
-                var heightResult = _stripEditorPresenter.UpdateHeight(tbHeight.Text);
-
-                btOk.Enabled = internalDiameterResult.IsSuccess && heightResult.IsSuccess;
-                if (internalDiameterResult.IsSuccess)
-                {
-                    _internalDiameterError.Clear();
-                }
-                else
-                {
-                    _internalDiameterError.SetError(tbInternalDiameter, internalDiameterResult.ErrorMessage);
-                }
-
-                if (heightResult.IsSuccess)
-                {
-                    _heightError.Clear();
-                }
-                else
-                {
-                    _heightError.SetError(tbHeight, heightResult.ErrorMessage);
-                }
-            };
-
-            _stripEditorPresenter = PresentersFactory.CreateRubberStripPresenter(this, checkData);
-
-            if (Model[nameof(Model.ExternalDiameter)] == string.Empty)
-                tbExternalDiameter.Text = Model.ExternalDiameter.ToString();
-
-            if (Model.Error == string.Empty)
-            {
-                tbInternalDiameter.Text = Model.InternalDiameter.ToString();
-                tbHeight.Text = Model.Height.ToString();
-            }
-
-            _stripEditorPresenter.CheckData.Invoke();
         }
 
         private void RubberStripEditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (DialogResult != DialogResult.OK)
                 _stripEditorPresenter.ResetFields();
+        }
+
+        public void ShowView(object owner = null)
+        {
+            if (owner != null && owner is Form form)
+            {
+                ShowDialog(form);
+            }
+            else
+            {
+                ShowDialog();
+            }
         }
     }
 }

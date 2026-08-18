@@ -1,150 +1,206 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters.Enums;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
-using Oil_level_glass.Core.COM;
+using Oil_level_glass.UI.Abstractions.Editors.Glass;
+using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
+using Oil_level_glass.UI.Abstractions.Editors.Housing;
+using Oil_level_glass.Core.Housing;
+using Oil_level_glass.Core.Glass;
+using Oil_level_glass.Core.RubberStrip;
+using Oil_level_glass.Core.OilLevelGlass;
+using Microsoft.Extensions.DependencyInjection;
+using Shared.DataStructues;
+using System.Globalization;
+using System.Reflection;
+using Oil_level_glass.Model.Data.Entities.Parts;
 using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 {
-    internal class Wizard3dPresenter : IWizard3dPresenter
+    internal class Wizard3dPresenter 
+        : IWizard3dPresenter
     {
-        private readonly IWizard3dForm _wizardForm;
+        private IWizard3dView _wizardView;
+
+        private readonly IServiceProvider _serviceProvider;
+
+        private readonly OilLevelGlassModel _oilLevelGlass = new();
 
         private readonly HousingModel _housing;
         private readonly RubberStripModel _rubberStrip;
         private readonly GlassModel _glass;
 
-        public Action InvokeGlassEditor { get; }
-        public Action InvokeHousingEditor { get; }
-        public Action InvokeRubberStripEditor { get; }
+        private BaseDetailModel _selectedEntity = null; 
 
-        public Action CheckData { get; }
+        private readonly Catalog _parts = new();
+        private readonly string _tooEarlyForConfiguringMessage;
 
-        public void InvokeEditor(object tag)
+        public Action CheckData => throw new NotImplementedException();
+
+        public Result CanBeConfigured
         {
-            if (tag is Part part)
+            get
             {
-                switch(part)
+                if (_selectedEntity == null)
+                    return new Result(false);
+
+                if (_selectedEntity == _rubberStrip && _glass.Error != string.Empty)
+                    return new Result(
+                        false, 
+                        string.Format(
+                            _tooEarlyForConfiguringMessage,
+                            _glass.DisplayName,
+                            _rubberStrip.DisplayName), 
+                        FailReason.TooEarlyForConfiguring);
+
+                else if (_selectedEntity == _housing && _rubberStrip.Error != string.Empty)
+                    return new Result(
+                        false,
+                        string.Format(
+                            _tooEarlyForConfiguringMessage,
+                            _rubberStrip.DisplayName,
+                            _housing.DisplayName),
+                        FailReason.TooEarlyForConfiguring);
+
+                return new Result(true);
+            }
+        }
+
+        public Catalog GetParts()
+            => _parts;
+
+        public void SetView(IWizard3dView view)
+            => _wizardView = view;
+
+        public void SelectPart(string displayName)
+        {
+            _selectedEntity = typeof(Wizard3dPresenter)
+                .GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+                .Where(f => f.FieldType.BaseType == typeof(BaseDetailModel))
+                .Select(f => f.GetValue(this) as BaseDetailModel)
+                .FirstOrDefault(d => d.DisplayName == displayName);
+        }
+
+        public void ConfigureSelectedPart()
+        {
+            if (_selectedEntity is GlassModel)
+            {
+                using (var glassView = _serviceProvider.GetRequiredService<IGlassEditorView>())
                 {
-                    case Part.Housing:
-                        InvokeHousingEditor();
-                        break;
 
-                    case Part.RubberStrip:
-                        InvokeRubberStripEditor();
-                        break;
+                    glassView.ShowView(this);
+                }
 
-                    case Part.Glass:
-                        InvokeGlassEditor();
-                        break;
+                _rubberStrip.ExternalDiameter = _glass.Diameter;
+                _housing.GlassSocketDiameter = _glass.Diameter;
+            }
+            else if (_selectedEntity is RubberStripModel)
+            {
+                using (var stripView = _serviceProvider.GetRequiredService<IRubberStripEditorView>())
+                {
+
+                    stripView.ShowView(this);
+                }
+
+                _rubberStrip.ExternalDiameter = _glass.Diameter;
+                _housing.GlassSocketDiameter = _glass.Diameter;
+
+                _housing.GlassSocketHeight = _rubberStrip.Height * 2 + _glass.Height;
+                _housing.CentralHoleDiameter = _rubberStrip.InternalDiameter;
+            }
+            else if (_selectedEntity is HousingModel)
+            {
+                using (var housingView = _serviceProvider.GetRequiredService<IHousingEditorView>())
+                {
+                    housingView.ShowView(this);
                 }
             }
         }
 
-        public void UpdateModel()
+        public void SetDefaultFolder(string folder)
         {
-            _rubberStrip.ExternalDiameter = _glass.Diameter;
-            _housing.GlassSocketDiameter = _rubberStrip.ExternalDiameter;
-
-            _housing.GlassSocketHeight = _rubberStrip.Height * 2 + _glass.Height;
-            _housing.CentralHoleDiameter = _rubberStrip.InternalDiameter;
-
-            CheckData.Invoke();
+            _glass.File.Folder = folder;
+            _housing.File.Folder = folder;
+            _rubberStrip.File.Folder = folder;
         }
 
-        public Result Create()
+        public void Create()
         {
-            Result result = null;
+            var housingCreator = _serviceProvider.GetRequiredService<IHousingPartCreator>();
+            housingCreator.Model = _housing;
+            housingCreator.Create();
 
-            CreatorsFactory creatorsFactory = new CreatorsFactory();
-           
-            var housingCreator = creatorsFactory.CreateHousingPartCreator(_housing);
-            result = housingCreator.Create();
+            var glassCreator = _serviceProvider.GetRequiredService<IGlassPartCreator>();
+            glassCreator.Model = _glass;
+            glassCreator.Create();
 
-            if (result.IsSuccess)
-            {
-                var rubberStripCreator = creatorsFactory.CreateRubberStripPartCreator(_rubberStrip);
-                result = rubberStripCreator.Create();
+            var rubberStripCreator = _serviceProvider.GetRequiredService<IRubberStripPartCreator>();
+            rubberStripCreator.Model = _rubberStrip;
+            rubberStripCreator.Create();
 
-                if (result.IsSuccess)
-                {
-                    var glassCreator = creatorsFactory.CreateGlassPart(_glass);
-                    result = glassCreator.Create();
-
-                    if (result.IsSuccess)
-                    {
-                        var oliLevelGlassCreator = creatorsFactory.CreateOilLevelGlassPartCreator(_glass, _rubberStrip, _housing);
-                        return oliLevelGlassCreator.Create();
-                    }
-                }
-            }
-
-            return result;
+            var oilLevelGlassAssembler = _serviceProvider.GetRequiredService<IOilLevelGlassPartCreator>();
+            oilLevelGlassAssembler.Model = _oilLevelGlass;
+            oilLevelGlassAssembler.Create();
         }
 
-        public void UpdatePartSavingParameter(
-            object tag,
-            string folder,
-            string naming,
-            string marking)
-        {
-            if (tag is Part partTag)
-            {
-                switch(partTag)
-                {
-                    case Part.Housing:
-                        {
-                            _housing.File.Folder = folder;
-                            _housing.File.Name.Naming = naming;
-                            _housing.File.Name.Marking = marking;
-
-                            break;
-                        }
-
-                    case Part.RubberStrip:
-                        {
-                            _rubberStrip.File.Folder = folder;
-                            _rubberStrip.File.Name.Naming = naming;
-                            _rubberStrip.File.Name.Marking = marking;
-
-                            break;
-                        }
-
-                    case Part.Glass:
-                        {
-                            _glass.File.Folder = folder;
-                            _glass.File.Name.Naming = naming;
-                            _glass.File.Name.Marking = marking;
-
-                            break;
-                        }
-                }
-            }
-
-            CheckData.Invoke();
-        }
+        public bool CanStartModeling
+            => !_glass.HasErrors && !_rubberStrip.HasErrors && !_housing.HasErrors;
 
         public Wizard3dPresenter(
-            IWizard3dForm wizardForm, 
+            IServiceProvider serviceProvider,
+            RubberStripModel rubberStrip,
             GlassModel glass,
-            RubberStripModel rubberStrip, 
-            HousingModel housing,
-            Action invokeGlassEditor,
-            Action invokeRubberStripEditor,
-            Action invokeHousingEditor,
-            Action checkData)
+            HousingModel housing)
         {
-            _wizardForm = wizardForm;
-
             _glass = glass;
             _rubberStrip = rubberStrip;
             _housing = housing;
 
-            InvokeGlassEditor = invokeGlassEditor;
-            InvokeRubberStripEditor = invokeRubberStripEditor;
-            InvokeHousingEditor = invokeHousingEditor;
+            _serviceProvider = serviceProvider;
 
-            CheckData = checkData;
+            _glass.Material.Title = "Стекло БК10 ГОСТ 3514-94";
+            _glass.Material.Density = 3.12;
+
+            _rubberStrip.Material.Title = "Смесь резиновая 3063 ТУ 38-1051082-86";
+            _rubberStrip.Material.Density = 1.28;
+
+            _housing.Material.Title = "Сталь 10 ГОСТ 1050-2013";
+            _housing.Material.Density = 7.856;
+
+            switch (CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        _housing.File.Name.Naming = "Корпус";
+                        _rubberStrip.File.Name.Naming = "Резиновая прокладка";
+                        _glass.File.Name.Naming = "Линза";
+
+                        _parts.Text = "Изделия";
+                        _tooEarlyForConfiguringMessage = "Изделие '{0}' должно быть сконфигурировано до изделия '{1}'!";
+                        break;
+                    }
+                default:
+                    {
+                        _housing.File.Name.Naming = "Housing";
+                        _rubberStrip.File.Name.Naming = "Rubber strip";
+                        _glass.File.Name.Naming = "Glass";
+
+                        _parts.Text = "Parts";
+                        _tooEarlyForConfiguringMessage = "The part '{1}' must be configured before the part '{0}'!";
+                        break;
+                    }
+            }
+
+            Catalog oilLevelGlassCatalog = new Catalog(_oilLevelGlass.DisplayName);
+            oilLevelGlassCatalog.AddRange(
+                _glass.DisplayName, 
+                _rubberStrip.DisplayName,
+                _housing.DisplayName);
+
+            _parts.Add(oilLevelGlassCatalog);
+
+            _oilLevelGlass.GlassModel = _glass;
+            _oilLevelGlass.RubberStripModel = _rubberStrip;
+            _oilLevelGlass.HousingModel = _housing;
         }
     }
 }

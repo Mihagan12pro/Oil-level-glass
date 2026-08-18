@@ -6,12 +6,16 @@ namespace Oil_level_glass.Model.Data.Operations
     public class ChamferModel
         : BaseModel
     {
+        private ChamferType _type;
+
         private double _side1, _side2;
+
+        public ChamferType Type { get; set; }
 
         /// <summary>
         /// Length of the side 1 (in mm)
         /// </summary>
-        [DisplayName("Side 1")]
+        [DisplayName("l")]
         public double Side1
         {
             get
@@ -21,15 +25,13 @@ namespace Oil_level_glass.Model.Data.Operations
             set
             {
                 _side1 = value;
-
-                OnPropertyChanged();
             }
         }
 
         /// <summary>
         /// Length of the side 2 (in mm)
         /// </summary>
-        [DisplayName("Side 2")]
+        [DisplayName("l2")]
         public double Side2
         {
             get
@@ -40,7 +42,8 @@ namespace Oil_level_glass.Model.Data.Operations
             {
                 _side2 = value;
 
-                OnPropertyChanged();
+               if (Type == ChamferType.TwoSides)
+                    UpdateAngle();
             }
         }
 
@@ -48,6 +51,7 @@ namespace Oil_level_glass.Model.Data.Operations
 
         private double _angle;
 
+        [DisplayName("α")]
         public double Angle
         {
             get
@@ -58,7 +62,30 @@ namespace Oil_level_glass.Model.Data.Operations
             {
                 _angle = value;
 
-                OnPropertyChanged();
+                if (Type == ChamferType.SideAndAngle)
+                    UpdateSide2();
+            }
+        }
+
+        public void UpdateSide2()
+        {
+           if (Side1 > 0 && Side2 > 0)
+           {
+                double betta = double.DegreesToRadians(90 - Angle);
+                double alpha = double.DegreesToRadians(Angle);
+
+                Side2 = Math.Round(Math.Sin(alpha) * Side1 / Math.Sin(betta), 3);
+           }
+        }
+
+        public void UpdateAngle()
+        {
+            if (Side1 > 0 && Side2 > 0)
+            {
+                double tan = Side2 / Side1;
+                double aTan = Math.Atan(tan);
+
+                Angle = Math.Round(double.RadiansToDegrees(aTan), 3);
             }
         }
 
@@ -100,5 +127,12 @@ namespace Oil_level_glass.Model.Data.Operations
 
             return error;
         }
+    }
+
+    public enum ChamferType
+    {
+        TwoSides,
+
+        SideAndAngle
     }
 }

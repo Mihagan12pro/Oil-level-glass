@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Model.Data;
+﻿using Oil_level_glass.Model;
 using Shared.Results;
 using System.ComponentModel;
 using System.Globalization;
@@ -9,11 +9,11 @@ namespace Oil_level_glass.Presenters.Extensions
 {
     internal static class BaseModelExtensions
     {
-        public static Result TryConvertToInt32AndValidate(this BaseModel model, string str, string propertyTitle)
+        public static Result TryConvertToInt32AndValidate(this BaseModel model, string propertyValue, string propertyTitle)
         {
             PropertyInfo property = ExtractPropertInfo(model, propertyTitle);
 
-            if (int.TryParse(str, out int number))
+            if (int.TryParse(propertyValue, out int number))
             {
                 property.SetValue(model, number);
 
@@ -23,15 +23,33 @@ namespace Oil_level_glass.Presenters.Extensions
                 return new Result(true);
             }
 
-            return new Result(false, $"{property.GetCustomAttribute<DisplayNameAttribute>().DisplayName} must be a number!");
+            string message = "{0} ";
+
+            switch (CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        message += "должен быть числом!";
+
+                        break;
+                    }
+                default:
+                    {
+                        message = "must be a number!";
+
+                        break;
+                    }
+            }
+
+            return new Result(false, string.Format(message, property.GetCustomAttribute<DisplayNameAttribute>().DisplayName));
         }
 
-        public static Result TryConvertToDoubleAndValidate(this BaseModel model, string str, string propertyTitle)
+        public static Result TryConvertToDoubleAndValidate(this BaseModel model, string propertyValue, string propertyTitle)
         {
             PropertyInfo property = ExtractPropertInfo(model, propertyTitle);
 
-            if (double.TryParse(str, out double number) ||
-                double.TryParse(str, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out number))
+            if (double.TryParse(propertyValue, out double number) ||
+                double.TryParse(propertyValue, NumberStyles.AllowDecimalPoint, new CultureInfo("en-US"), out number))
             {
                 property.SetValue(model, number);
 
@@ -41,8 +59,25 @@ namespace Oil_level_glass.Presenters.Extensions
                 return new Result(true);
             }
 
+            string message = "{0} ";
 
-            return new Result(false, $"{property.GetCustomAttribute<DisplayNameAttribute>().DisplayName} must be a real number!");
+            switch(CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        message += "должен быть числом!";
+
+                        break;
+                    }
+                default:
+                    {
+                        message += "must be a number!";
+                        
+                        break;
+                    }
+            }
+
+            return new Result(false, string.Format(message, property.GetCustomAttribute<DisplayNameAttribute>().DisplayName));
         }
 
         private static PropertyInfo ExtractPropertInfo(BaseModel model, string propertyTitle)

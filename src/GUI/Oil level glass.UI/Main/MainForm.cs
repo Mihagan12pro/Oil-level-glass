@@ -1,29 +1,29 @@
-﻿using Oil_level_glass.UI.Abstractions;
-using Oil_level_glass.UI.Wizard3d;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Oil_level_glass.UI.Abstractions;
+using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 
 namespace Oil_level_glass.UI.Main
 {
-    public partial class MainForm : Form, IForm
+    public partial class MainForm : Form, IMainView
     {
-        public MainForm()
+        private readonly IServiceProvider _serviceProvider;
+
+        public MainForm(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
         }
 
         private void btShow3d_Click(object sender, EventArgs e)
         {
-            Wizard3dForm wizard3DForm = new Wizard3dForm();
-            wizard3DForm.Owner = this;
-
-            wizard3DForm.ShowDialog();
+            using var wizard3d = _serviceProvider.GetRequiredService<IWizard3dView>();
+            wizard3d.ShowView(this);
         }
 
         private void btShowAbout_Click(object sender, EventArgs e)
         {
-            AboutForm aboutForm = new AboutForm();
-
-            aboutForm.Owner = this;
-            aboutForm.ShowDialog();
+           
         }
 
         private void pbMain_Click(object sender, EventArgs e)

@@ -35,6 +35,33 @@
         }
 
         /// <summary>
+        /// Adds a child catalog node
+        /// </summary>
+        /// <param name="text"></param>
+        public void Add(string text)
+        {
+            Catalog catalog = new Catalog(text);
+            catalog.Parent = this;
+
+            _subcatalogs.Add(catalog);
+        }
+
+        /// <summary>
+        /// Adds the elements of the specified nodes collection
+        /// </summary>
+        /// <param name="texts"></param>
+        public void AddRange(params string[] texts)
+        {
+            foreach(string text in texts)
+            {
+                Catalog catalog = new Catalog(text);
+                catalog.Parent = this;
+
+                _subcatalogs.Add(catalog);
+            }
+        }
+
+        /// <summary>
         /// Removes a child catalog node
         /// </summary>
         /// <param name="section"></param>
@@ -48,5 +75,15 @@
         ///// <param name="formater"></param>
         //public void Format(Catalog section, Func<string, string> formater)
         //    => section.Text = formater.Invoke(section.Text);
+
+        public Catalog()
+        {
+            
+        }
+
+        public Catalog(string text)
+        {
+            Text = text;
+        }
     }
 }

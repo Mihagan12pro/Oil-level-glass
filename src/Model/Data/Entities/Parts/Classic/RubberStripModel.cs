@@ -1,5 +1,7 @@
-﻿using Oil_level_glass.Model.Data.Materials;
+﻿using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
+using System.Globalization;
+using System.Reflection;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
@@ -7,7 +9,27 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
     {
         private double _internalDiameter, _height, _externalDiameter;
 
-        [DisplayName("Internal diameter")]
+        public RubberStripModel()
+        {
+            Material = new Rubber();
+
+            switch (CultureInfo.CurrentCulture.Name)
+            {
+                case "ru-RU":
+                    {
+                        DisplayName = "Резиновая прокладка";
+                        break;
+                    }
+                default:
+                    {
+                        DisplayName = "Rubber strip";
+                        break;
+                    }
+            }
+        }
+
+
+        [DisplayName("D")]
         public double InternalDiameter
         {
             get
@@ -17,12 +39,10 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             set
             {
                 _internalDiameter = value;
-
-                OnPropertyChanged();
             }
         }
 
-        [DisplayName("External diameter")]
+        [DisplayName("D2")]
         public double ExternalDiameter
         {
             get
@@ -32,12 +52,10 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             set
             {
                 _externalDiameter = value;
-
-                OnPropertyChanged();
             }
         }
 
-        [DisplayName("Height")]
+        [DisplayName("h")]
         public double Height
         {
             get 
@@ -47,8 +65,6 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             set
             {
                 _height = value;
-
-                OnPropertyChanged();
             }
         }
 
@@ -56,42 +72,50 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
         {
             string error = string.Empty;
 
-            switch(columnName)
+            string? displayName = this.GetType()
+                         .GetProperties()
+                         .Where(p => p.Name == columnName && p.GetCustomAttribute<DisplayNameAttribute>() != null)
+                         .Select(p => p.GetCustomAttribute<DisplayNameAttribute>().DisplayName)
+                         .FirstOrDefault();
+            if (displayName != null)
             {
-                case nameof(Height):
-                    {
-                        if (Height <= 0)
-                            error = "Ring height must be greater than zero!";
+                switch (columnName)
+                {
+                    case nameof(Height):
+                        {
+                            if (Height <= 0)
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
 
-                        break;
-                    }
-                case nameof(InternalDiameter):
-                    {
-                        if (InternalDiameter <= 0)
-                            error = "Ring internal diameter must be greater than zero!";
-                        else if (InternalDiameter >= ExternalDiameter)
-                            error = "External diameter must be greater than internal diameter!";
+                            break;
+                        }
+                    case nameof(InternalDiameter):
+                        {
+                            if (InternalDiameter <= 0)
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
+                            else if (InternalDiameter >= ExternalDiameter)
+                            {
+                                string displayName2 = GetType()
+                                    .GetProperty(nameof(ExternalDiameter))
+                                    .GetCustomAttribute<DisplayNameAttribute>().DisplayName;
 
-                        break;
-                    }
-                case nameof(ExternalDiameter):
-                    {
-                        if (ExternalDiameter <= 0)
-                            error = "Ring external diameter must be greater than zero!";
-                        else if (InternalDiameter >= ExternalDiameter)
-                            error = "External diameter must be greater than internal diameter!";
+                                error = string.Format(messageSize0MustBeGreaterThanSize1, displayName, displayName2);
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
+                    case nameof(ExternalDiameter):
+                        {
+                            if (ExternalDiameter <= 0)
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
+                            else if (InternalDiameter >= ExternalDiameter)
+                                error = string.Format(messageSize0MustBeGreaterThanSize1, displayName);
+
+                            break;
+                        }
+                }
             }
 
             return error;
-        }
-
-
-        public RubberStripModel()
-        {
-            Material = new Rubber();
         }
     }
 }

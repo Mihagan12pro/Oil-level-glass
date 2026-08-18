@@ -1,4 +1,5 @@
-﻿using Kompas6Constants;
+﻿using Kompas6API5;
+using Kompas6Constants;
 using Kompas6Constants3D;
 using KompasAPI7;
 using Oil_level_glass.Core.COM.Api7.Extensions;
@@ -12,21 +13,44 @@ namespace Oil_level_glass.Core.COM.Api7.OilLevelGlass
 {
     internal class OilLevelGlassPartCreator : IOilLevelGlassPartCreator
     {
-        private readonly HousingModel _housing;
-        private readonly GlassModel _glass;
-        private  readonly RubberStripModel _rubberStrip;
+        private HousingModel _housing;
+        private GlassModel _glass;
+        private RubberStripModel _rubberStrip;
 
         private IApplication _application;
         private IAssemblyDocument _document;
         private IPart7 _oilLevelGlassPart;
 
+        public OilLevelGlassModel Model { get; set; }
+
         public Result Create()
         {
+            _housing = Model.HousingModel;
+            _rubberStrip = Model.RubberStripModel;
+            _glass = Model.GlassModel;
+
             Result result = null;
 
             try
             {
                 _application = (IApplication)ComConnector.GetInstance(ProgIds.Api7);
+            }
+            catch (COMException ex)
+            {
+                
+            }
+            finally
+            {
+                if (_application == null)
+                {
+                    Type? t = Type.GetTypeFromProgID("KOMPAS.Application.5");
+
+                    var kompas = (KompasObject)Activator.CreateInstance(t);
+                    kompas.Visible = true;
+                    kompas.ActivateControllerAPI();
+
+                    _application = kompas.ksGetApplication7();
+                }
 
                 _document = (IAssemblyDocument)_application.Documents.Add(DocumentTypeEnum.ksDocumentAssembly);
 
@@ -88,22 +112,8 @@ namespace Oil_level_glass.Core.COM.Api7.OilLevelGlass
 
                 _application.SearchForErrors(out result);
             }
-            catch (COMException ex)
-            {
-                result = new Result(false, ex.Message);
-            }
 
             return result;
-        }
-
-        public OilLevelGlassPartCreator(
-           GlassModel glass,
-           RubberStripModel rubberStrip,
-           HousingModel housing)
-        {
-            _housing = housing;
-            _glass = glass;
-            _rubberStrip = rubberStrip;
         }
     }
 }

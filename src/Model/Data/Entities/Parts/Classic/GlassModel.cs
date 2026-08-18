@@ -1,10 +1,76 @@
-﻿using Oil_level_glass.Model.Data.Materials;
+﻿using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
+using System.Globalization;
+using System.Reflection;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
 {
+    [DisplayName("Glass")]
     public class GlassModel : BaseDetailModel
     {
+        private double _diameter;
+        [DisplayName("D")]
+        public double Diameter
+        {
+            get
+            {
+                return _diameter; 
+            }
+            set
+            {
+                _diameter = value;
+            }
+        }
+
+        private double _height;
+
+        [DisplayName("h")]
+        public double Height
+        {
+            get
+            {
+                return _height;
+            }
+            set
+            {
+                _height = value;
+            }
+        }
+
+        protected override string CheckField(string columnName)
+        {
+            string error = string.Empty;
+
+            string? displayName = this.GetType()
+                                      .GetProperties()
+                                      .Where(p => p.GetCustomAttribute<DisplayNameAttribute>() != null && p.Name == columnName)
+                                      .Select(p => p.GetCustomAttribute<DisplayNameAttribute>().DisplayName)
+                                      .FirstOrDefault();
+
+            if (displayName != null)
+            {
+                switch (columnName)
+                {
+                    case nameof(Height):
+                        {
+                            if (Height <= 0)
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
+
+                            break;
+                        }
+                    case nameof(Diameter):
+                        {
+                            if (Diameter <= 0)
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
+
+                            break;
+                        }
+                }
+            }
+
+            return error;
+        }
+
         public GlassModel()
         {
             Material = new Glass();
@@ -15,64 +81,22 @@ namespace Oil_level_glass.Model.Data.Entities.Parts.Classic
             Appearance.Specularity = 0.8;
             Appearance.Shininess = 0.8;
             Appearance.Emission = 0.5;
-        }
 
-        private double _externalDiameter;
-        [DisplayName("Diameter")]
-        public double Diameter
-        {
-            get
+            switch (CultureInfo.CurrentCulture.Name)
             {
-                return _externalDiameter; 
-            }
-            set
-            {
-                _externalDiameter = value;
-
-                OnPropertyChanged();
-            }
-        }
-
-        private double _height;
-
-        [DisplayName("Height")]
-        public double Height
-        {
-            get
-            {
-                return _height;
-            }
-            set
-            {
-                _height = value;
-
-                OnPropertyChanged();
-            }
-        }
-
-        protected override string CheckField(string columnName)
-        {
-            string error = string.Empty;
-
-            switch (columnName)
-            {
-                case nameof(Height):
+                case "ru-RU":
                     {
-                        if (Height <= 0)
-                            error = "Height must be greater than zero!";
+                        DisplayName = "Линза";
 
                         break;
                     }
-                case nameof(Diameter):
+                default:
                     {
-                        if (Diameter <= 0)
-                            error = "Diameter must be greater than zero!";
+                        DisplayName = "Glass";
 
                         break;
                     }
             }
-
-            return error;
         }
     }
 }

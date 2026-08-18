@@ -95,6 +95,7 @@
             // btOk
             // 
             btOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btOk.Enabled = false;
             btOk.Location = new Point(311, 5);
             btOk.Margin = new Padding(5, 5, 0, 16);
             btOk.Name = "btOk";

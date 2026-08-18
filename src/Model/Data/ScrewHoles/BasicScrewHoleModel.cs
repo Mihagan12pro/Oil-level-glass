@@ -1,5 +1,5 @@
-﻿using Oil_level_glass.Model.Data.Operations;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Reflection;
 
 namespace Oil_level_glass.Model.Data.ScrewHoles
 {
@@ -10,7 +10,7 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
     {
         private double _diameter;
 
-        [DisplayName("Diameter")]
+        [DisplayName("d")]
         public double Diameter
         {
             get
@@ -21,24 +21,42 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
             {
                 _diameter = value;
 
-                OnPropertyChanged();
+                if (NotifyDiameterChanged != null)
+                    NotifyDiameterChanged(value);
             }
         }
+
+        public delegate void DiameterChangedHandler(double diameter);
+        public event DiameterChangedHandler? NotifyDiameterChanged;
 
         protected override string CheckField(string columnName)
         {
             string error = string.Empty;
 
-            switch (columnName)
+            string? displayName = this.GetType()
+                        .GetProperties()
+                        .Where(p => p.Name == columnName && p.GetCustomAttribute<DisplayNameAttribute>() != null)
+                        .Select(p => p.GetCustomAttribute<DisplayNameAttribute>().DisplayName)
+                        .FirstOrDefault();
+
+            if (displayName != null)
             {
-                case nameof(Diameter):
-                    {
-                        if (Diameter <= 0)
-                            error = "Diameter must be greater than zero!";
-                        else if (Diameter > MaxDiameter)
-                            error = $"Diameter can't be greater than {MaxDiameter}!";
+                switch (columnName)
+                {
+                    case nameof(Diameter):
+                        {
+                            if (Diameter <= 0)
+                            {
+                                error = string.Format(messageMustBeGraterThanZero, displayName);
+                            }
+                            else if (Diameter > MaxDiameter)
+                            {
+                                error = string.Format(messageCantBeGreaterThan, displayName, MaxDiameter);
+                            }
+
                             break;
-                    }
+                        }
+                }
             }
 
             return error;

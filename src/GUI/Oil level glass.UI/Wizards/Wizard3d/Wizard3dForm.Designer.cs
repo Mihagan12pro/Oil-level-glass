@@ -75,7 +75,6 @@
             btCancel.TabIndex = 1;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
-            btCancel.Click += btCancel_Click;
             // 
             // splitContainer2
             // 
@@ -139,9 +138,6 @@
             tvParts.Name = "tvParts";
             tvParts.Size = new Size(446, 858);
             tvParts.TabIndex = 0;
-            tvParts.AfterSelect += tvParts_AfterSelect;
-            tvParts.DoubleClick += tvParts_DoubleClick;
-            tvParts.KeyDown += tvParts_KeyDown;
             // 
             // pbSketch
             // 
@@ -161,7 +157,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { tspmFile, tspmView });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1360, 42);
+            menuStrip1.Size = new Size(1360, 40);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -169,7 +165,7 @@
             // 
             tspmFile.DropDownItems.AddRange(new ToolStripItem[] { tspmFolder, tspmNaming });
             tspmFile.Name = "tspmFile";
-            tspmFile.Size = new Size(90, 38);
+            tspmFile.Size = new Size(90, 36);
             tspmFile.Text = "Файл";
             // 
             // tspmFolder
@@ -177,20 +173,18 @@
             tspmFolder.Name = "tspmFolder";
             tspmFolder.Size = new Size(229, 44);
             tspmFolder.Text = "Папка...";
-            tspmFolder.Click += tspmFolder_Click;
             // 
             // tspmNaming
             // 
             tspmNaming.Name = "tspmNaming";
             tspmNaming.Size = new Size(229, 44);
             tspmNaming.Text = "Имя...";
-            tspmNaming.Click += tspmNaming_Click;
             // 
             // tspmView
             // 
             tspmView.DropDownItems.AddRange(new ToolStripItem[] { tspmModelView, tspmModelMaterial });
             tspmView.Name = "tspmView";
-            tspmView.Size = new Size(75, 38);
+            tspmView.Size = new Size(75, 36);
             tspmView.Text = "Вид";
             // 
             // tspmModelView
@@ -198,14 +192,12 @@
             tspmModelView.Name = "tspmModelView";
             tspmModelView.Size = new Size(359, 44);
             tspmModelView.Text = "Вид модели...";
-            tspmModelView.Click += tspmModelView_Click;
             // 
             // tspmModelMaterial
             // 
             tspmModelMaterial.Name = "tspmModelMaterial";
             tspmModelMaterial.Size = new Size(359, 44);
             tspmModelMaterial.Text = "Выбор материала...";
-            tspmModelMaterial.Click += tspmModelMaterial_Click;
             // 
             // Wizard3dForm
             // 
@@ -225,7 +217,6 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Мастер 3d модели";
-            Load += Wizard3dForm_Load;
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             splitSizes.Panel1.ResumeLayout(false);

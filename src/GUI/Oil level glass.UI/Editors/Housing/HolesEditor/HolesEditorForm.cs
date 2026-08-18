@@ -1,69 +1,49 @@
-﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.ScrewHoles;
-using Oil_level_glass.Presenters;
-using Oil_level_glass.Presenters.Editors.Housing.HolesEditor;
+﻿using Oil_level_glass.Presenters.Editors.Data.HolesEditor;
+using Oil_level_glass.Presenters.Editors.HolesEditor.HelpStructures;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
 {
-    public partial class HolesEditorForm : Form, IHolesEditorForm
+    public partial class HolesEditorForm : Form, IHolesEditorView
     {
-        private IHolesEditorPresenter _holesEditorPresenter;
-        private ErrorProvider _diameterError = new ErrorProvider();
+        private readonly IHolesEditorPresenter _holesEditorPresenter;
+        private ErrorProvider _errorsProvider = new ErrorProvider();
 
-        public HolesEditorForm()
+        public HolesEditorForm(IHolesEditorPresenter holesEditorPresenter)
         {
             InitializeComponent();
-        }
 
-        public HousingModel Model { get; set; }
+            _holesEditorPresenter = holesEditorPresenter;
 
-        private void HolesEditorForm_Load(object sender, EventArgs e)
-        {
-            Action checkData = () =>
-            {
-                var countResult = _holesEditorPresenter.UpdateCountOfHoles(tbScrewHolesCount.Value.ToString());
-                var diameterResult = _holesEditorPresenter.UpdateDiameter(tbHoleDiameter.Text);
-
-                tbScrewHolesCount.Enabled = diameterResult.IsSuccess;
-                if (diameterResult.IsSuccess)
-                {
-                    _diameterError.Clear();
-                }
-                else
-                {
-                    _diameterError.SetError(tbHoleDiameter, diameterResult.ErrorMessage);
-                }
-
-                tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
-                btOk.Enabled = countResult.IsSuccess && diameterResult.IsSuccess;
-            };
-
-            _holesEditorPresenter = PresentersFactory.CreateHolesEditorPresenter(this, checkData);
-
-          
-            tbMaxDiameter.Text = Model.Hole.MaxDiameter.ToString();
-            tbHoleDiameter.PlaceholderText = tbMaxDiameter.Text;
-
-            var basic = (BasicScrewHoleModel)Model.Hole;
-
-            
-            if (basic.Error == string.Empty)
-            {
-                tbScrewHolesCount.Maximum = Model.MaxCountOfHoles;
-                tbHoleDiameter.Text = ((BasicScrewHoleModel)Model.Hole).Diameter.ToString();
-                tbScrewHolesCount.Value = Model.ScrewHolesCount;
-            }
-
-            tbScrewHolesCount.ValueChanged += tb_TextChanged;
             tbHoleDiameter.TextChanged += tb_TextChanged;
+            tbHolesCount.TextChanged += tb_TextChanged;
 
-            checkData.Invoke();
+            var defaultValues = _holesEditorPresenter.DefaultSizes;
+
+            tbHoleDiameter.Text = defaultValues.Diameter;
+            tbHolesCount.Text = defaultValues.HolesCount;
         }
 
-        private void tb_TextChanged(object sender, EventArgs e)
+        private void tb_TextChanged(object? sender, EventArgs e)
         {
-            _holesEditorPresenter.CheckData.Invoke();
+            _errorsProvider.Clear();
+
+            var results = _holesEditorPresenter.UpdateModel(new HolesUpdateData(tbHoleDiameter.Text, tbHolesCount.Text));
+
+            btOk.Enabled = results.NoErrors;
+
+            if (!results.Diameter.IsSuccess)
+            {
+                _errorsProvider.SetError(tbHoleDiameter, results.Diameter.ErrorMessage);
+
+                tbHolesCount.Enabled = false;
+
+                return;
+            }
+            tbHolesCount.Enabled = true;
+
+            if (!results.Count.IsSuccess)
+                _errorsProvider.SetError(tbHolesCount, results.Count.ErrorMessage);
         }
 
         private void HolesEditorForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -74,13 +54,32 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
 
         private void btResetData_Click(object sender, EventArgs e)
         {
+            _holesEditorPresenter.ResetFields();
+
             tbHoleDiameter.Text = "";
-            _holesEditorPresenter.CheckData.Invoke();
+            tbHolesCount.Text = "";
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        public void ShowView(object owner = null)
+        {
+            if (owner != null && owner is Form form)
+            {
+                ShowDialog(form);
+            }
+            else
+            {
+                ShowDialog();
+            }
+        }
+
+        private void tbHoleDiameter_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
