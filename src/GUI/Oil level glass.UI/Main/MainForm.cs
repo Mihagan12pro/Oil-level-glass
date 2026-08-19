@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Oil_level_glass.UI.Abstractions;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
+using Oil_level_glass.UI.Editors.ModelProperties;
 
 namespace Oil_level_glass.UI.Main
 {
@@ -13,6 +14,8 @@ namespace Oil_level_glass.UI.Main
             _serviceProvider = serviceProvider;
 
             InitializeComponent();
+
+            btShow3d.Click += btShow3d_Click;
         }
 
         private void btShow3d_Click(object sender, EventArgs e)

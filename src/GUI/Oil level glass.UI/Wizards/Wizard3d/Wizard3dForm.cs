@@ -1,5 +1,7 @@
 ﻿using Oil_level_glass.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
+using Oil_level_glass.UI.Editors.ModelProperties;
+using Oil_level_glass.UI.Forms.Controls;
 using Oil_level_glass.UI.Utils.Extensions;
 using Shared;
 
@@ -76,5 +78,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void btOk_Click(object sender, EventArgs e)
             => _wizardPresenter.Create();
+
+        private void tspmFolder_Click(object sender, EventArgs e)
+            => _wizardPresenter.ChooseFolder();
     }
 }

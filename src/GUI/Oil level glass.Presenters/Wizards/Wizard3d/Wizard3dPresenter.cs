@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Reflection;
 using Oil_level_glass.Model.Data.Entities.Parts;
 using Shared.Results;
+using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 
 namespace Oil_level_glass.Presenters.Wizards.Wizard3d
 {
@@ -140,6 +141,15 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             var oilLevelGlassAssembler = _serviceProvider.GetRequiredService<IOilLevelGlassPartCreator>();
             oilLevelGlassAssembler.Model = _oilLevelGlass;
             oilLevelGlassAssembler.Create();
+        }
+
+        public void ChooseFolder()
+        {
+            using (var foldersEditor = _serviceProvider.GetRequiredService<IFolderEditorView>())
+            {
+                foldersEditor.AddModelsRange(_housing, _rubberStrip, _glass);
+                foldersEditor.ShowView();
+            }
         }
 
         public bool CanStartModeling

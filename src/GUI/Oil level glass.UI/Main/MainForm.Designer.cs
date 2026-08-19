@@ -46,7 +46,6 @@
             pbMain.SizeMode = PictureBoxSizeMode.StretchImage;
             pbMain.TabIndex = 0;
             pbMain.TabStop = false;
-            pbMain.Click += pbMain_Click;
             // 
             // btShow3d
             // 
@@ -58,7 +57,6 @@
             btShow3d.TabIndex = 1;
             btShow3d.Text = "Мастер 3d...";
             btShow3d.UseVisualStyleBackColor = true;
-            btShow3d.Click += btShow3d_Click;
             // 
             // MainForm
             // 
