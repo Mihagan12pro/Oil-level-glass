@@ -152,6 +152,14 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
             }
         }
 
+        public void EditNamimg()
+        {
+            using (var namingEditor = _serviceProvider.GetRequiredService<INamingEditorView>())
+            {
+                namingEditor.ShowView();
+            }
+        }
+
         public bool CanStartModeling
             => !_glass.HasErrors && !_rubberStrip.HasErrors && !_housing.HasErrors;
 

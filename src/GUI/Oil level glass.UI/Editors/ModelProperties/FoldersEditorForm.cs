@@ -4,7 +4,6 @@ using Oil_level_glass.Presenters.Editors.ModelProperties.FoldersEditor;
 using Oil_level_glass.Presenters.Editors.ModelProperties.FoldersEditor.HelpStructures;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 using Oil_level_glass.UI.Forms.Controls;
-using System.Net.Http.Headers;
 
 namespace Oil_level_glass.UI.Editors.ModelProperties
 {

@@ -180,6 +180,7 @@
             tspmNaming.Name = "tspmNaming";
             tspmNaming.Size = new Size(359, 44);
             tspmNaming.Text = "Имя...";
+            tspmNaming.Click += tspmNaming_Click;
             // 
             // tspmView
             // 

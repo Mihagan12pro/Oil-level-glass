@@ -81,5 +81,8 @@ namespace Oil_level_glass.UI.Wizard3d
 
         private void tspmFolder_Click(object sender, EventArgs e)
             => _wizardPresenter.ChooseFolder();
+
+        private void tspmNaming_Click(object sender, EventArgs e)
+            => _wizardPresenter.EditNamimg();
     }
 }

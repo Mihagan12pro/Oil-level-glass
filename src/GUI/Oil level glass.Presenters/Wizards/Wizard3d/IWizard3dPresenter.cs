@@ -8,5 +8,7 @@ namespace Oil_level_glass.Presenters.Wizards.Wizard3d
         void SetDefaultFolder(string folder);
 
         void ChooseFolder();
+
+        void EditNamimg();
     }
 }

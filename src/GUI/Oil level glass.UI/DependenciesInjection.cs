@@ -35,6 +35,7 @@ namespace Oil_level_glass.UI
             services.AddTransient<IChamferEditorView, ChamferEditorForm>();
 
             services.AddTransient<IFolderEditorView, FoldersEditorForm>();
+            services.AddTransient<INamingEditorView, NamingEditorForm>();
 
             return services;
         }

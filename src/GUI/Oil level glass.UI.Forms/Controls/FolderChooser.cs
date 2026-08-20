@@ -31,6 +31,8 @@
         public FolderChooser()
         {
             InitializeComponent();
+
+            btChoose.Click += btChoose_Click;
         }
 
         private void FolderChooser_Load(object sender, EventArgs e)
