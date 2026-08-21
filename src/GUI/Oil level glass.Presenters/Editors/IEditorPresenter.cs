@@ -7,8 +7,8 @@ namespace Oil_level_glass.UI.Presenters.Editors
     public interface IEditorPresenter<TView, TUpdateResults, TUpdateData, TDefaultSizes> : IPresenter
         where TView: IView
         where TUpdateData : UpdateData
-        where TUpdateResults : UpdateResults
-        where TDefaultSizes : DefaultSizes
+        where TUpdateResults : UpdateDataResults
+        where TDefaultSizes : DefaultData
     {
         /// <summary>
         /// Undo model update

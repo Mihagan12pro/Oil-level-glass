@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.Presenters.Editors.HelpStructures
 {
-    public abstract class DefaultSizes
+    public abstract class DefaultData
     {
     }
 }

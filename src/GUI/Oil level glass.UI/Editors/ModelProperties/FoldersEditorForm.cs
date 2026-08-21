@@ -1,7 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities;
 using Oil_level_glass.Model.Data.Entities.Parts;
-using Oil_level_glass.Presenters.Editors.ModelProperties.FoldersEditor;
-using Oil_level_glass.Presenters.Editors.ModelProperties.FoldersEditor.HelpStructures;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 using Oil_level_glass.UI.Forms.Controls;
 
@@ -9,9 +7,11 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 {
     internal class FoldersEditorForm : ModelPropertiesEditorForm, IFolderEditorView
     {
-        private readonly IFoldersEditorPresenter _presenter;
+        //private readonly IFoldersEditorPresenter _presenter;
 
         private FolderChooser _folderChooser;
+
+        public event IModelPropertyEditorView.PendingForUpdate PendingForUpdateHandler;
 
         protected override void InitializeComponent()
         {
@@ -41,15 +41,15 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 
         protected override void cbMain_SelectedIndexChanged(object? sender, EventArgs e)
         {
-            base.cbMain_SelectedIndexChanged(sender, e);
+            //base.cbMain_SelectedIndexChanged(sender, e);
 
-            _folderChooser.Enabled = cbMain.SelectedIndex > -1;
-            _presenter.SelectModel(cbMain.SelectedIndex);
+            //_folderChooser.Enabled = cbMain.SelectedIndex > -1;
+            //_presenter.SelectModel(cbMain.SelectedIndex);
 
-            if (_folderChooser.Enabled)
-            {
-                _folderChooser.Folder = _presenter.DefaultSizes.Folder;
-            }
+            //if (_folderChooser.Enabled)
+            //{
+            //    _folderChooser.Folder = _presenter.DefaultSizes.Folder;
+            //}
         }
 
         private void folderChooser_ValueChanged()
@@ -69,14 +69,14 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 
         public void AddModel(BaseEntityModel model)
         {
-            if (model is BaseDetailModel detailModel)
-            {
-                _presenter.AddModel(detailModel);
+            //if (model is BaseDetailModel detailModel)
+            //{
+            //    _presenter.AddModel(detailModel);
 
-                cbMain.Items.Add(model.DisplayName);
-                if (cbMain.SelectedIndex > -1)
-                    cbMain.SelectedIndex = -1;
-            }
+            //    cbMain.Items.Add(model.DisplayName);
+            //    if (cbMain.SelectedIndex > -1)
+            //        cbMain.SelectedIndex = -1;
+            //}
         }
 
         public void AddModelsRange(params BaseEntityModel[] models)
@@ -94,21 +94,21 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
                 return;
             }
 
-            _folderChooser.Folder = _presenter.DefaultSizes.Folder;
+            //_folderChooser.Folder = _presenter.DefaultSizes.Folder;
         }
 
         protected override void btOk_Click(object? sender, EventArgs e)
         {
-            if (_presenter.UpdateModel(new FolderUpdateData(_folderChooser.Folder)).NoErrors)
-            {
-                cbMain.SelectedIndex = -1;
-                _folderChooser.Folder = string.Empty;
-            }
+            //if (_presenter.UpdateModel(new FolderUpdateData(_folderChooser.Folder)).NoErrors)
+            //{
+            //    cbMain.SelectedIndex = -1;
+            //    _folderChooser.Folder = string.Empty;
+            //}
         }
 
-        public FoldersEditorForm(IFoldersEditorPresenter presenter)
-        {
-            _presenter = presenter;
-        }
+        //public FoldersEditorForm(IFoldersEditorPresenter presenter)
+        //{
+        //    _presenter = presenter;
+        //}
     }
 }

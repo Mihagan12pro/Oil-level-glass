@@ -3,7 +3,7 @@ using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.HolesEditor.HelpStructures
 {
-    public class HolesUpdateResults : UpdateResults
+    public class HolesUpdateResults : UpdateDataResults
     {
         public required Result Count { get; set; }
 

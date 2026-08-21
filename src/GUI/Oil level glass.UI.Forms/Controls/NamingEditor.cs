@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.UI.Forms.Controls
 {
-    public partial class NamingEditor : UserControl
+    public partial class NamingEditor : ModelProperties
     {
         public string Namimg
         {
@@ -41,6 +41,8 @@
             {
                 errorProvider.SetError(tbNaming, "Поле обязательно к заполнению!");
             }
+
+            OnDataChanging(nameof(sender));
         }
     }
 }

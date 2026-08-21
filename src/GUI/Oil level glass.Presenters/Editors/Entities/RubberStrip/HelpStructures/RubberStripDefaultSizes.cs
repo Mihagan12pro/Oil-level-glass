@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.Presenters.Editors.Entities.RubberStrip.HelpStructures
 {
-    public class RubberStripDefaultSizes : DefaultSizes
+    public class RubberStripDefaultSizes : DefaultData
     {
         public readonly string Height = string.Empty;
         public readonly string ExternalDiameter = string.Empty;

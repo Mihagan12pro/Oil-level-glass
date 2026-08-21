@@ -3,7 +3,7 @@
 namespace Oil_level_glass.Presenters.Editors.Entities.Glass.HelpStructures
 {
 
-    public class GlassDefaultSizes : DefaultSizes
+    public class GlassDefaultSizes : DefaultData
     {
         public readonly string Diameter = string.Empty;
 

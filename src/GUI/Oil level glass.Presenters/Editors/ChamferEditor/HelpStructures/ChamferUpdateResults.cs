@@ -3,7 +3,7 @@ using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.ChamferEditor.HelpStructures
 {
-    public class ChamferUpdateResults : UpdateResults
+    public class ChamferUpdateResults : UpdateDataResults
     {
         /// <summary>
         /// Always Side1

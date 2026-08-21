@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Oil_level_glass.Presenters.Editors.Entities.RubberStrip.HelpStructures
 {
-    public class RubberStripUpdateResults : UpdateResults
+    public class RubberStripUpdateResults : UpdateDataResults
     {
         public required Result InternalDiameter { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.Presenters.Editors.HolesEditor.HelpStructures
 {
-    public class HolesDefaultSizes : DefaultSizes
+    public class HolesDefaultSizes : DefaultData
     {
         public readonly string HolesCount = "3";
 

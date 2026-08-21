@@ -1,5 +1,4 @@
 ﻿using Oil_level_glass.Model.Data.Entities;
-using Oil_level_glass.Presenters.Editors.ModelProperties.NamingEditor;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 using Oil_level_glass.UI.Forms.Controls;
 
@@ -9,7 +8,7 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
     {
         public void AddModel(BaseEntityModel model)
         {
-            _presenter.AddModel(model);
+            //_presenter.AddModel(model);
 
             cbMain.Items.Add(model.DisplayName);
             if (cbMain.SelectedIndex > -1)
@@ -33,8 +32,8 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
                 ShowDialog();
             }
         }
-        public NamingEditorForm(INamingEditorPresenter presenter)
-            => _presenter = presenter;
+        //public NamingEditorForm(INamingEditorPresenter presenter)
+        //    => _presenter = presenter;
 
         protected override void InitializeComponent()
         {
@@ -45,6 +44,8 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 
         private readonly NamingEditor _namingEditor = new NamingEditor();
 
-        private readonly INamingEditorPresenter _presenter;
+       // private readonly INamingEditorPresenter _presenter;
+
+        public event IModelPropertyEditorView.PendingForUpdate PendingForUpdateHandler;
     }
 }

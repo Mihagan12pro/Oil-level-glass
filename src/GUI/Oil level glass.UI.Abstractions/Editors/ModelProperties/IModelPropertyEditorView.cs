@@ -7,5 +7,9 @@ namespace Oil_level_glass.UI.Abstractions.Editors.ModelProperties
         void AddModel(BaseEntityModel model);
 
         void AddModelsRange(params BaseEntityModel[] models);
+
+        delegate void PendingForUpdate();
+
+        event PendingForUpdate PendingForUpdateHandler;
     }
 }

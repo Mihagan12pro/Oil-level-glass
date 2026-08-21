@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Oil_level_glass.Presenters.Editors.HelpStructures
 {
-    public abstract class UpdateResults
+    public abstract class UpdateDataResults
     {
         public bool NoErrors
         {

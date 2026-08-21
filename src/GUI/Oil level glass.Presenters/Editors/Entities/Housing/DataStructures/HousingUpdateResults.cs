@@ -3,7 +3,7 @@ using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Entities.Housing.DataStructures
 {
-    public class HousingUpdateResults : UpdateResults
+    public class HousingUpdateResults : UpdateDataResults
     {
         public required Result MainDiameter { get; set; }
 

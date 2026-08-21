@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.UI.Forms.Controls
 {
-    public partial class FolderChooser : UserControl
+    public partial class FolderChooser : ModelProperties
     {
         public delegate void ValueChangedHandler();
 
@@ -52,6 +52,8 @@
 
             if (ValueChanged != null)
                 ValueChanged.Invoke();
+
+            OnDataChanging(nameof(sender));
         }
 
         private void btChoose_Click(object sender, EventArgs e)

@@ -2,7 +2,7 @@
 
 namespace Oil_level_glass.Presenters.Editors.Entities.Housing.DataStructures
 {
-    public class HousingDefaultSizes : DefaultSizes
+    public class HousingDefaultSizes : DefaultData
     {
         public readonly string MainDiameter = string.Empty;
         

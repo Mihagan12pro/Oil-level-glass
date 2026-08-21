@@ -3,7 +3,7 @@ using Oil_level_glass.Presenters.Editors.HelpStructures;
 
 namespace Oil_level_glass.Presenters.Editors.ChamferEditor.HelpStructures
 {
-    public class ChamferDefaultSizes : DefaultSizes
+    public class ChamferDefaultSizes : DefaultData
     {
         public readonly string Side1 = "1";
 

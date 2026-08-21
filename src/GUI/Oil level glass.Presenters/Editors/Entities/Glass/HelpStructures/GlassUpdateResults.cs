@@ -3,7 +3,7 @@ using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Entities.Glass.HelpStructures
 {
-    public class GlassUpdateResults : UpdateResults
+    public class GlassUpdateResults : UpdateDataResults
     {
         public required Result Diameter { get; set; }
 

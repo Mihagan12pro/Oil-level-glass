@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Oil level glass.UI.Abstractions\Oil level glass.UI.Abstractions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Editors\EditorsData\" />
+  </ItemGroup>
+
 </Project>
