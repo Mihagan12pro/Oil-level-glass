@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Oil_level_glass.Presenters.Editors.Data.ChamferEditor;
-using Oil_level_glass.Presenters.Editors.Data.Entities.Glass;
-using Oil_level_glass.Presenters.Editors.Data.Entities.Housing;
-using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
-using Oil_level_glass.Presenters.Editors.Data.HolesEditor;
-using Oil_level_glass.Presenters.Wizards.Wizard3d;
+using Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor;
+using Oil_level_glass.Presenters.Editors.Presenters.Entities.Glass;
+using Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing;
+using Oil_level_glass.Presenters.Editors.Presenters.Entities.RubberStrip;
+using Oil_level_glass.Presenters.Editors.Presenters.HolesEditor;
+using Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d;
 
 namespace Oil_level_glass.Presenters
 {
@@ -12,9 +12,17 @@ namespace Oil_level_glass.Presenters
     {
         public static IServiceCollection AddPresenters(this IServiceCollection services)
         {
-            services.AddData();
+            //services.AddData();
             services.AddWizards();
-            services.AddModelPreoperties();
+            services.AddModelProperties();
+            services.AddEntitiesPresenters();
+
+            return services;
+        }
+
+        private static IServiceCollection AddEntitiesPresenters(this IServiceCollection services)
+        {
+            services.AddTransient<IGlassEditorPresenter, GlassEditorPresenter>();
 
             return services;
         }
@@ -26,22 +34,21 @@ namespace Oil_level_glass.Presenters
             return services;
         }
 
-        private static IServiceCollection AddData(this IServiceCollection services)
-        {
-            services.AddTransient<IHolesEditorPresenter, HolesEditorPresenter>();
-            services.AddTransient<IChamferEditorPresenter, ChamferEditorPresenter>();
+        //private static IServiceCollection AddData(this IServiceCollection services)
+        //{
+        //    services.AddTransient<IHolesEditorPresenter, HolesEditorPresenter>();
+        //    services.AddTransient<IChamferEditorPresenter, ChamferEditorPresenter>();
 
-            services.AddTransient<IHousingEditorPresenter, HousingEditorPresenter>();
+        //    services.AddTransient<IHousingEditorPresenter, HousingEditorPresenter>();
+        //    services.AddTransient<IGlassEditorPresenter, GlassEditorPresenter>();
+        //    services.AddTransient<IRubberStripEditorPresenter, RubberStripEditorPresenter>();
+
+        //    return services;
+        //}
+
+        private static IServiceCollection AddModelProperties(this IServiceCollection services)
+        {
             services.AddTransient<IGlassEditorPresenter, GlassEditorPresenter>();
-            services.AddTransient<IRubberStripEditorPresenter, RubberStripEditorPresenter>();
-
-            return services;
-        }
-
-        private static IServiceCollection AddModelPreoperties(this IServiceCollection services)
-        {
-            //services.AddTransient<IFoldersEditorPresenter, FoldersEditorPresenter>();
-            //services.AddTransient<INamingEditorPresenter, NamingEditorPresenter>();
 
             return services;
         }

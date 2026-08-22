@@ -1,5 +1,6 @@
-﻿using Oil_level_glass.Presenters.Editors.Data.Entities.Housing;
-using Oil_level_glass.Presenters.Editors.Entities.Housing.DataStructures;
+﻿using Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing;
+using Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing.DataStructures;
+using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
 using Shared;
 
@@ -12,6 +13,10 @@ namespace Oil_level_glass.UI.Editors.Housing
         private readonly ICommand _updateCommand;
 
         private IHousingEditorPresenter _housingEditorPresenter;
+
+        public event IEditorView.ViewDataChanging DataChangingHandler;
+
+        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public HousingEditorForm(IHousingEditorPresenter housingEditorPresenter)
         {

@@ -166,7 +166,6 @@
             tbHeight.Location = new Point(49, 87);
             tbHeight.Margin = new Padding(49, 0, 49, 0);
             tbHeight.Name = "tbHeight";
-            tbHeight.PlaceholderText = "2";
             tbHeight.Size = new Size(292, 39);
             tbHeight.TabIndex = 1;
             // 
@@ -193,7 +192,6 @@
             tbDiameter.Location = new Point(49, 88);
             tbDiameter.Margin = new Padding(49, 0, 49, 0);
             tbDiameter.Name = "tbDiameter";
-            tbDiameter.PlaceholderText = "45";
             tbDiameter.Size = new Size(297, 39);
             tbDiameter.TabIndex = 0;
             // 

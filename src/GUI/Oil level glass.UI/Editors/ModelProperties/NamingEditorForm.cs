@@ -1,4 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities;
+using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 using Oil_level_glass.UI.Forms.Controls;
 
@@ -44,8 +45,11 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 
         private readonly NamingEditor _namingEditor = new NamingEditor();
 
-       // private readonly INamingEditorPresenter _presenter;
+        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        // private readonly INamingEditorPresenter _presenter;
 
         public event IModelPropertyEditorView.PendingForUpdate PendingForUpdateHandler;
+        public event IEditorView.ViewDataChanging DataChangingHandler;
     }
 }

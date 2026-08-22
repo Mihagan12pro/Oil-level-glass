@@ -1,5 +1,6 @@
-﻿using Oil_level_glass.Presenters.Editors.Data.HolesEditor;
-using Oil_level_glass.Presenters.Editors.HolesEditor.HelpStructures;
+﻿using Oil_level_glass.Presenters.Editors.Presenters.HolesEditor;
+using Oil_level_glass.Presenters.Editors.Presenters.HolesEditor.HelpStructures;
+using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 
 namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
@@ -8,6 +9,10 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
     {
         private readonly IHolesEditorPresenter _holesEditorPresenter;
         private ErrorProvider _errorsProvider = new ErrorProvider();
+
+        public event IEditorView.ViewDataChanging DataChangingHandler;
+
+        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public HolesEditorForm(IHolesEditorPresenter holesEditorPresenter)
         {

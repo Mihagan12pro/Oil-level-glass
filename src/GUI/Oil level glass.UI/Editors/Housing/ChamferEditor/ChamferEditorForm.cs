@@ -1,9 +1,10 @@
 ﻿using Oil_level_glass.Model.Data.Operations;
-using Oil_level_glass.Presenters.Editors.Data.ChamferEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
-using Oil_level_glass.Presenters.Editors.ChamferEditor.HelpStructures;
 using Shared;
 using Oil_level_glass.UI.Properties;
+using Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor;
+using Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor.HelpStructures;
+using Oil_level_glass.UI.Abstractions.Editors;
 
 namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 {
@@ -16,6 +17,10 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
         private IChamferEditorPresenter _chamferEditorPresenter;
 
         private ChamferType _chamferType;
+
+        public event IEditorView.ViewDataChanging DataChangingHandler;
+
+        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public ChamferEditorForm(IChamferEditorPresenter chamferEditorPresenter)
         {

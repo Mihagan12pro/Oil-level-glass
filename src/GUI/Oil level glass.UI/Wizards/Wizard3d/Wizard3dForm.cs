@@ -1,4 +1,4 @@
-﻿using Oil_level_glass.Presenters.Wizards.Wizard3d;
+﻿using Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Editors.ModelProperties;
 using Oil_level_glass.UI.Forms.Controls;

@@ -1,6 +1,7 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
-using Oil_level_glass.Presenters.Editors.Entities.RubberStrip.HelpStructures;
+using Oil_level_glass.Presenters.Editors.Presenters.Entities.RubberStrip;
+using Oil_level_glass.Presenters.Editors.Presenters.Entities.RubberStrip.HelpStructures;
+using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 
 namespace Oil_level_glass.UI.Editors.RubberStrip
@@ -10,6 +11,8 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
         private ErrorProvider _errorProvider = new();
 
         private IRubberStripEditorPresenter _stripEditorPresenter;
+
+        public event IEditorView.ViewDataChanging DataChangingHandler;
 
         public RubberStripEditorForm(IRubberStripEditorPresenter stripEditorPresenter)
         {
@@ -25,6 +28,7 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
         }
 
         public RubberStripModel Model { get; set; }
+        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private void btOk_Click(object sender, EventArgs e)
         {

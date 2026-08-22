@@ -1,5 +1,6 @@
 ﻿using Oil_level_glass.Model.Data.Entities;
 using Oil_level_glass.Model.Data.Entities.Parts;
+using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 using Oil_level_glass.UI.Forms.Controls;
 
@@ -11,7 +12,10 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 
         private FolderChooser _folderChooser;
 
+        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public event IModelPropertyEditorView.PendingForUpdate PendingForUpdateHandler;
+        public event IEditorView.ViewDataChanging DataChangingHandler;
 
         protected override void InitializeComponent()
         {
