@@ -23,6 +23,7 @@ namespace Oil_level_glass.Presenters
         private static IServiceCollection AddEntitiesPresenters(this IServiceCollection services)
         {
             services.AddTransient<IGlassEditorPresenter, GlassEditorPresenter>();
+            services.AddTransient<IRubberStripEditorPresenter, RubberStripEditorPresenter>();
 
             return services;
         }

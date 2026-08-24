@@ -1,65 +1,104 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
-using Oil_level_glass.Presenters.Extensions;
-using Shared.Results;
-using Oil_level_glass.Presenters.Editors.Presenters.Entities.RubberStrip.HelpStructures;
-using Oil_level_glass.UI.Abstractions;
 
 namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.RubberStrip
 {
     internal class RubberStripEditorPresenter 
         : IRubberStripEditorPresenter
     {
-        private readonly RubberStripModel _rubberStrip;
-        private readonly double _oldInternalDiameter, _oldHeight;
-        private IRubberStripEditorView _form;
-        
-        public Action CheckData { get; }
-
-        public RubberStripDefaultSizes DefaultSizes
+        public RubberStripModel Model
         {
             get
             {
-                return new RubberStripDefaultSizes(
-                    _oldHeight,
-                    _rubberStrip.ExternalDiameter,
-                    _oldInternalDiameter
-                );
+                return _model;
+            }
+            set
+            {
+                _model = value;
+
+                if (_model.Height > 0)
+                    _view.RubberStripHeight = _model.Height.ToString();
+
+                if (_model.ExternalDiameter > 0)
+                {
+                    _view.RubberStripExternalDiameter = _model.ExternalDiameter.ToString();
+                    _view.RubberStripInternalDiameterPlaceHolder = (Math.Round(_model.ExternalDiameter / 1.5, 3)).ToString();
+                }
+
+                if (_model.InternalDiameter > 0)
+                    _view.RubberStripInternalDiameter = _model.InternalDiameter.ToString();
             }
         }
 
-        public void ResetFields()
+        public void ActivateView()
+            => _view.ShowView();
+
+        public RubberStripEditorPresenter(IRubberStripEditorView view)
         {
-            _rubberStrip.InternalDiameter = _oldInternalDiameter;
-            _rubberStrip.Height = _oldHeight;
+            _view = view;
+
+            _view.RubberStripHeightPlaceHolder = "2";
+
+            _view.ClearDataHandler += view_ClearDataHandler;
+            _view.DataChangingHandler += view_DataChangingHandler;
+            _view.AcceptDataChangesHandler += view_AcceptDataChangesHandler;
+            _view.CancelDataChangesHandler += view_CancelDataChangesHandler;
         }
 
-        public void SetView(IRubberStripEditorView view)
-            => _form = view; 
-
-        public RubberStripUpdateResults UpdateModel(RubberStripUpdateData updateData)
+        private void view_CancelDataChangesHandler()
         {
-            RubberStripUpdateResults updateResults = new RubberStripUpdateResults
+            if (Model.Height > 0)
             {
-                InternalDiameter = _rubberStrip.TryConvertToDoubleAndValidate(updateData.InternalDiameter, nameof(_rubberStrip.InternalDiameter)),
+                _view.RubberStripHeight = Model.Height.ToString();
+            }
+            else
+            {
+                _view.RubberStripHeight = "";
+            }
 
-                Height = _rubberStrip.TryConvertToDoubleAndValidate(updateData.Height, nameof(_rubberStrip.Height))
-            };
+            if (Model.ExternalDiameter > 0)
+            {
+                _view.RubberStripExternalDiameter = Model.ExternalDiameter.ToString();
+            }
+            else
+            {
+                _view.RubberStripExternalDiameter = "";
+            }
 
-            return updateResults;
+            if (Model.InternalDiameter > 0)
+            {
+                _view.RubberStripInternalDiameter = Model.InternalDiameter.ToString();
+            }
+            else
+            {
+                _view.RubberStripInternalDiameter = "";
+            }
         }
 
-        public void SetView(IView view)
+        private void view_AcceptDataChangesHandler()
         {
-            throw new NotImplementedException();
+            Model.Height = double.Parse(_view.RubberStripHeight);
+            Model.ExternalDiameter = double.Parse(_view.RubberStripExternalDiameter);
+            Model.InternalDiameter = double.Parse(_view.RubberStripInternalDiameter);
         }
 
-        public RubberStripEditorPresenter(RubberStripModel rubberStrip)
+        private void view_DataChangingHandler()
         {
-            _rubberStrip = rubberStrip;
-
-            _oldInternalDiameter = _rubberStrip.InternalDiameter;
-            _oldHeight = _rubberStrip.Height;
+            _view.IsValid = double.TryParse(_view.RubberStripExternalDiameter, out double d1)
+                && double.TryParse(_view.RubberStripInternalDiameter, out double d2)
+                && double.TryParse(_view.RubberStripHeight, out double h)
+                && h > 0 && d1 > d2 && d2 > 0;
         }
+
+        private void view_ClearDataHandler()
+        {
+            _view.RubberStripInternalDiameter = "";
+            _view.RubberStripExternalDiameter = "";
+            _view.RubberStripHeight = "";
+        }
+
+        private RubberStripModel _model;
+
+        private readonly IRubberStripEditorView _view;
     }
 }

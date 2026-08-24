@@ -1,9 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters.Editors.EditorsData.GlassData;
-using Oil_level_glass.Presenters.Extensions;
 using Oil_level_glass.UI.Abstractions.Editors.Glass;
-using Oil_level_glass.UI.Presenters.Editors;
-using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Glass
 {
@@ -13,13 +9,6 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Glass
         private GlassModel _glass;
 
         private double _oldHeight, _oldDiameter;
-
-        private readonly string _lessThanZeroMessage;
-
-        public event IEditorPresenter<GlassModel>.CancelDataChanges CancelDataChangesHandler;
-
-        public GlassDefaultDataValues DefaultSizes
-            => new GlassDefaultDataValues(_oldDiameter, _oldHeight);
 
         public GlassModel Model 
         {
@@ -41,12 +30,6 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Glass
                     }
                 }
             }
-        }
-
-        public void ResetFields()
-        {
-            _view.GlassHeight = string.Empty;
-            _view.GlassDiameter = string.Empty;
         }
 
         public void ActivateView()

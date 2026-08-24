@@ -34,14 +34,8 @@ namespace Oil_level_glass.UI.Presenters.Editors
     public interface IEditorPresenter<TModel> : IPresenter
         where TModel : BaseModel
     {
-        void ResetFields();
-
         void ActivateView();
 
         TModel Model { get; set; }
-
-        delegate void CancelDataChanges();
-
-        event CancelDataChanges CancelDataChangesHandler;
     }
 }

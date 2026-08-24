@@ -221,7 +221,6 @@
             tbInternalDiameter.Location = new Point(49, 60);
             tbInternalDiameter.Margin = new Padding(49, 0, 49, 0);
             tbInternalDiameter.Name = "tbInternalDiameter";
-            tbInternalDiameter.PlaceholderText = "50";
             tbInternalDiameter.Size = new Size(303, 39);
             tbInternalDiameter.TabIndex = 1;
             tbInternalDiameter.TextChanged += tb_TextChanged;
@@ -297,7 +296,6 @@
             tbHeight.Location = new Point(49, 60);
             tbHeight.Margin = new Padding(49, 0, 49, 0);
             tbHeight.Name = "tbHeight";
-            tbHeight.PlaceholderText = "2";
             tbHeight.Size = new Size(303, 39);
             tbHeight.TabIndex = 1;
             tbHeight.TextChanged += tb_TextChanged;
@@ -318,8 +316,6 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор размеров прокладки";
-            FormClosing += RubberStripEditorForm_FormClosing;
-            Load += RubberStripEditorForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
