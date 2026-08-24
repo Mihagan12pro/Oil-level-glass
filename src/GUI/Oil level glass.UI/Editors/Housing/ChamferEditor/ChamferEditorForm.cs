@@ -19,6 +19,9 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
         private ChamferType _chamferType;
 
         public event IEditorView.ViewDataChanging DataChangingHandler;
+        public event IEditorView.ClearData ClearDataHandler;
+        public event IEditorView.CancelDataChanges CancelDataChangesHandler;
+        public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
 
         public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

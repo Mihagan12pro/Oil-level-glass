@@ -8,6 +8,9 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
         private ErrorProvider _errorProvider = new();
 
         public event IEditorView.ViewDataChanging DataChangingHandler;
+        public event IEditorView.ClearData ClearDataHandler;
+        public event IEditorView.CancelDataChanges CancelDataChangesHandler;
+        public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
 
         public string GlassDiameter
         {
@@ -21,7 +24,7 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             }
         }
 
-        public string GlassHeight 
+        public string GlassHeight
         {
             get
             {
@@ -33,7 +36,17 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             }
         }
 
-        public bool IsValid { get; set; }
+        public bool IsValid
+        {
+            get
+            {
+                return btOk.Enabled;
+            }
+            set
+            {
+                btOk.Enabled = value;
+            }
+        }
 
         public string GlassHeightPlaceHolder
         {
@@ -59,11 +72,9 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             }
         }
 
-        public GlassEditorForm(/*IGlassEditorPresenter glassEditorPresenter*/)
+        public GlassEditorForm()
         {
             InitializeComponent();
-
-            //_glassEditorPresenter = glassEditorPresenter;
 
             tbDiameter.TextChanged += Tb_TextChanged;
             tbHeight.TextChanged += Tb_TextChanged;
@@ -71,47 +82,19 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
 
         private void Tb_TextChanged(object? sender, EventArgs e)
         {
-            //_errorProvider.Clear();
-
-            //var results = _glassEditorPresenter.UpdateModel(new GlassUpdateDataPending(tbHeight.Text, tbDiameter.Text));
-
-            //if (results.NoErrors && tbDiameter.Text != "" && tbHeight.Text != "")
-            //{
-            //    btOk.Enabled = true;
-            //    return;
-            //}
-
-            //if (!results.Height.IsSuccess)
-            //    _errorProvider.SetError(tbHeight, results.Height.ErrorMessage);
-
-            //if (!results.Diameter.IsSuccess)
-            //    _errorProvider.SetError(tbDiameter, results.Diameter.ErrorMessage);
-
-            //btOk.Enabled = false;
+            if (DataChangingHandler != null)
+                DataChangingHandler();
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-        }
-
-        private void GlassEditorForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btClear_Click(object sender, EventArgs e)
-        {
-            tbDiameter.Text = "";
-            tbHeight.Text = "";
-
-            //_glassEditorPresenter.ResetFields();
+            if (AcceptDataChangesHandler != null)
+                AcceptDataChangesHandler();
         }
 
         private void GlassEditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (DialogResult != DialogResult.OK)
-            //    _glassEditorPresenter.ResetFields();
+            
         }
 
         public void ShowView(object owner = null)
@@ -124,6 +107,18 @@ namespace Oil_level_glass.UI.Wizard3d.Editors.Glass
             {
                 ShowDialog();
             }
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            if (CancelDataChangesHandler != null)
+                CancelDataChangesHandler();
+        }
+
+        private void btResetData_Click(object sender, EventArgs e)
+        {
+            if (ClearDataHandler != null)
+                ClearDataHandler();
         }
     }
 }

@@ -234,7 +234,7 @@
             btResetData.TabIndex = 2;
             btResetData.Text = "Очистить";
             btResetData.UseVisualStyleBackColor = true;
-            btResetData.Click += btClear_Click;
+            btResetData.Click += btResetData_Click;
             // 
             // btCancel
             // 
@@ -246,6 +246,7 @@
             btCancel.TabIndex = 0;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
+            btCancel.Click += btCancel_Click;
             // 
             // btOk
             // 
@@ -262,10 +263,8 @@
             // 
             // GlassEditorForm
             // 
-            AcceptButton = btOk;
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btCancel;
             ClientSize = new Size(921, 515);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -277,7 +276,6 @@
             ShowInTaskbar = false;
             Text = "Редактор размеров линзы";
             FormClosing += GlassEditorForm_FormClosing;
-            Load += GlassEditorForm_Load;
             Click += btOk_Click;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);

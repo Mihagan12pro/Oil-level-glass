@@ -51,5 +51,8 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 
         public event IModelPropertyEditorView.PendingForUpdate PendingForUpdateHandler;
         public event IEditorView.ViewDataChanging DataChangingHandler;
+        public event IEditorView.ClearData ClearDataHandler;
+        public event IEditorView.CancelDataChanges CancelDataChangesHandler;
+        public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
     }
 }

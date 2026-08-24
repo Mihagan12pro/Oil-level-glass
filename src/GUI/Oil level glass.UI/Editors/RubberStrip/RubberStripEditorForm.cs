@@ -13,6 +13,9 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
         private IRubberStripEditorPresenter _stripEditorPresenter;
 
         public event IEditorView.ViewDataChanging DataChangingHandler;
+        public event IEditorView.ClearData ClearDataHandler;
+        public event IEditorView.CancelDataChanges CancelDataChangesHandler;
+        public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
 
         public RubberStripEditorForm(IRubberStripEditorPresenter stripEditorPresenter)
         {

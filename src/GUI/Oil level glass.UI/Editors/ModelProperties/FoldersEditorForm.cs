@@ -1,5 +1,4 @@
 ﻿using Oil_level_glass.Model.Data.Entities;
-using Oil_level_glass.Model.Data.Entities.Parts;
 using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 using Oil_level_glass.UI.Forms.Controls;
@@ -16,6 +15,9 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
 
         public event IModelPropertyEditorView.PendingForUpdate PendingForUpdateHandler;
         public event IEditorView.ViewDataChanging DataChangingHandler;
+        public event IEditorView.ClearData ClearDataHandler;
+        public event IEditorView.CancelDataChanges CancelDataChangesHandler;
+        public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
 
         protected override void InitializeComponent()
         {

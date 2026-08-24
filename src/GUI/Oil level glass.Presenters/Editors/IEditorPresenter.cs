@@ -39,5 +39,9 @@ namespace Oil_level_glass.UI.Presenters.Editors
         void ActivateView();
 
         TModel Model { get; set; }
+
+        delegate void CancelDataChanges();
+
+        event CancelDataChanges CancelDataChangesHandler;
     }
 }
