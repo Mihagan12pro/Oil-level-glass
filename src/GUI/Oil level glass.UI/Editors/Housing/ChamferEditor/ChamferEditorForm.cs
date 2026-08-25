@@ -3,7 +3,6 @@ using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Shared;
 using Oil_level_glass.UI.Properties;
 using Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor;
-using Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor.HelpStructures;
 using Oil_level_glass.UI.Abstractions.Editors;
 
 namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
@@ -29,88 +28,88 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
         {
             InitializeComponent();
 
-            _textUpdateCommand = new UICommand();
-            _textUpdateCommand.SetAction(() => 
-            {
-                btOk.Enabled = true;
-                _errorProvider.Clear();
+            //_textUpdateCommand = new UICommand();
+            //_textUpdateCommand.SetAction(() => 
+            //{
+            //    btOk.Enabled = true;
+            //    _errorProvider.Clear();
 
-                var result = _chamferEditorPresenter.UpdateModel(new ChamferUpdateData(
-                    tbSide1.Text,
-                    tbSide2.Text,
-                    tbAngle.Text)
-                );
+            //    var result = _chamferEditorPresenter.UpdateModel(new ChamferUpdateData(
+            //        tbSide1.Text,
+            //        tbSide2.Text,
+            //        tbAngle.Text)
+            //    );
 
-                btOk.Enabled = result.NoErrors && tbAngle.Text != ""
-                    && tbSide1.Text != "" && tbSide2.Text != "";
+            //    btOk.Enabled = result.NoErrors && tbAngle.Text != ""
+            //        && tbSide1.Text != "" && tbSide2.Text != "";
 
-                if (!result.FirstParam.IsSuccess)
-                    _errorProvider.SetError(tbSide1, result.FirstParam.ErrorMessage);
+            //    if (!result.FirstParam.IsSuccess)
+            //        _errorProvider.SetError(tbSide1, result.FirstParam.ErrorMessage);
 
-                if (_chamferType == ChamferType.TwoSides)
-                {
-                    if (result.SecondParam.IsSuccess)
-                    {
-                        tbAngle.Text = result.ThrirdParam;
-                    }
-                    else
-                    {
-                        _errorProvider.SetError(tbSide2, result.SecondParam.ErrorMessage);
-                    }
-                }
-                else
-                {
-                    if (result.SecondParam.IsSuccess)
-                    {
-                        tbSide2.Text = result.ThrirdParam;
-                    }
-                    else
-                    {
-                        _errorProvider.SetError(tbAngle, result.SecondParam.ErrorMessage);
-                    }
-                }
-            });
+            //    if (_chamferType == ChamferType.TwoSides)
+            //    {
+            //        if (result.SecondParam.IsSuccess)
+            //        {
+            //            tbAngle.Text = result.ThrirdParam;
+            //        }
+            //        else
+            //        {
+            //            _errorProvider.SetError(tbSide2, result.SecondParam.ErrorMessage);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (result.SecondParam.IsSuccess)
+            //        {
+            //            tbSide2.Text = result.ThrirdParam;
+            //        }
+            //        else
+            //        {
+            //            _errorProvider.SetError(tbAngle, result.SecondParam.ErrorMessage);
+            //        }
+            //    }
+            //});
 
-            _resetCommand = new UICommand();
-            _resetCommand.SetAction(() => 
-            {
-                _chamferEditorPresenter.ResetFields();
+            //_resetCommand = new UICommand();
+            //_resetCommand.SetAction(() => 
+            //{
+            //    _chamferEditorPresenter.ResetFields();
 
-                var defaultSizes = _chamferEditorPresenter.DefaultSizes;
+            //    var defaultSizes = _chamferEditorPresenter.DefaultSizes;
 
-                tbAngle.Text = defaultSizes.Angle;
-                tbSide1.Text = defaultSizes.Side1;
-                tbSide2.Text = defaultSizes.Side2;
-            });
+            //    tbAngle.Text = defaultSizes.Angle;
+            //    tbSide1.Text = defaultSizes.Side1;
+            //    tbSide2.Text = defaultSizes.Side2;
+            //});
 
-            rbSideAndAngle.CheckedChanged += rb_CheckedChanged;
-            rbTwoSides.CheckedChanged += rb_CheckedChanged;
+            //rbSideAndAngle.CheckedChanged += rb_CheckedChanged;
+            //rbTwoSides.CheckedChanged += rb_CheckedChanged;
 
-            tbAngle.TextChanged += Tb_TextChanged;
-            tbSide1.TextChanged += Tb_TextChanged;
-            tbSide2.TextChanged += Tb_TextChanged;
+            //tbAngle.TextChanged += Tb_TextChanged;
+            //tbSide1.TextChanged += Tb_TextChanged;
+            //tbSide2.TextChanged += Tb_TextChanged;
 
-            _chamferEditorPresenter = chamferEditorPresenter;
+            //_chamferEditorPresenter = chamferEditorPresenter;
 
-            var defaultSizes = _chamferEditorPresenter.DefaultSizes;
+            //var defaultSizes = _chamferEditorPresenter.DefaultSizes;
 
-            _chamferType = defaultSizes.ChamferType;
+            //_chamferType = defaultSizes.ChamferType;
 
-            if (_chamferType == ChamferType.TwoSides)
-            {
-                rbTwoSides.Checked = true;
-                rbSideAndAngle.Checked = false;
-            }
-            else
-            {
-                rbSideAndAngle.Checked = true;
-            }
+            //if (_chamferType == ChamferType.TwoSides)
+            //{
+            //    rbTwoSides.Checked = true;
+            //    rbSideAndAngle.Checked = false;
+            //}
+            //else
+            //{
+            //    rbSideAndAngle.Checked = true;
+            //}
 
-            tbAngle.Text = defaultSizes.Angle;
-            tbSide1.Text = defaultSizes.Side1;
-            tbSide2.Text = defaultSizes.Side2;
+            //tbAngle.Text = defaultSizes.Angle;
+            //tbSide1.Text = defaultSizes.Side1;
+            //tbSide2.Text = defaultSizes.Side2;
 
-            _textUpdateCommand.Execute();
+            //_textUpdateCommand.Execute();
         }
 
         private void Tb_TextChanged(object? sender, EventArgs e)
@@ -118,8 +117,8 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 
         private void ChamferEditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (DialogResult != DialogResult.OK)
-                _chamferEditorPresenter.ResetFields();
+            //if (DialogResult != DialogResult.OK)
+            //    _chamferEditorPresenter.ResetFields();
         }
 
         private void btResetData_Click(object sender, EventArgs e)

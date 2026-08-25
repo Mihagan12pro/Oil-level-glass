@@ -8,8 +8,6 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Glass
         private IGlassEditorView _view;
         private GlassModel _glass;
 
-        private double _oldHeight, _oldDiameter;
-
         public GlassModel Model 
         {
             get => _glass;

@@ -1,122 +1,154 @@
-﻿using Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing;
-using Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing.DataStructures;
-using Oil_level_glass.UI.Abstractions.Editors;
+﻿using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
-using Shared;
 
 namespace Oil_level_glass.UI.Editors.Housing
 {
     public partial class HousingEditorForm : Form, IHousingEditorView
     {
-        private readonly ErrorProvider _errorProvider = new ErrorProvider();
-
-        private readonly ICommand _updateCommand;
-
-        private IHousingEditorPresenter _housingEditorPresenter;
-
         public event IEditorView.ViewDataChanging DataChangingHandler;
         public event IEditorView.ClearData ClearDataHandler;
         public event IEditorView.CancelDataChanges CancelDataChangesHandler;
         public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
+        public event IHousingEditorView.ConfigChamfer ConfigChamferHandler;
+        public event IHousingEditorView.ConfigHoles ConfigHolesHandler;
 
-        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public HousingEditorForm(IHousingEditorPresenter housingEditorPresenter)
+        public bool IsValid
         {
-            InitializeComponent();
-
-            tbMainHeight.TextChanged += textbox_TextChanged;
-            tbMainDiameter.TextChanged += textbox_TextChanged;
-
-            _updateCommand = new UICommand();
-            _updateCommand.SetAction(() => 
+            get
             {
-                _errorProvider.Clear();
-
-                var result = _housingEditorPresenter.UpdateModel(new HousingUpdateData(
-                    tbMainDiameter.Text,
-                    tbMainHeight.Text)
-                );
-
-                btChamfer.Enabled = _housingEditorPresenter.ChamferCanBeConfigured;
-                btScrewHole.Enabled = _housingEditorPresenter.ScrewHoleCanBeConfigured;
-
-                if (result.NoErrors && btChamfer.Enabled && btScrewHole.Enabled
-                    && tbMainHeight.Text != "" && tbMainDiameter.Text != "")
-                {
-                    btOk.Enabled = true;
-
-                    return;
-                }
-
-                btOk.Enabled = false;
-
-                if (!result.MainDiameter.IsSuccess)
-                    _errorProvider.SetError(tbMainDiameter, result.MainDiameter.ErrorMessage);
-
-                if (!result.MainHeight.IsSuccess)
-                    _errorProvider.SetError(tbMainHeight, result.MainHeight.ErrorMessage);
-            });
-
-            _housingEditorPresenter = housingEditorPresenter;
-
-            var defaultValues = _housingEditorPresenter.DefaultSizes;
-
-            tbMainDiameter.Text = defaultValues.MainDiameter;
-            tbMainHeight.Text = defaultValues.MainHeight;
-            tbGlassSocketDiameter.Text = defaultValues.GlassSocketDiameter;
-            tbGlassSocketHeight.Text = defaultValues.GlassSocketHeight;
-
-            tbMainDiameter.PlaceholderText = (Convert.ToDouble(tbGlassSocketDiameter.Text) * 1.5).ToString();
-            tbMainHeight.PlaceholderText = (Convert.ToDouble(tbGlassSocketHeight.Text) * 2).ToString();
+                return btOk.Enabled;
+            }
+            set
+            {
+                btOk.Enabled = value;
+            }
         }
 
-        private void btOk_Click(object sender, EventArgs e)
+        public bool ScrewHoleCanBeConfigured
         {
-            DialogResult = DialogResult.OK;
+            get
+            {
+                return btScrewHole.Enabled;
+            }
+            set
+            {
+                btScrewHole.Enabled = value;
+            }
         }
-
-        private void HousingEditorForm_Load(object sender, EventArgs e)
+        public bool ChamferCanBeConfigured
         {
-
+            get
+            {
+                return btChamfer.Enabled;
+            }
+            set
+            {
+                btChamfer.Enabled = value;
+            }
         }
 
-        private void btResetData_Click(object sender, EventArgs e)
+
+        public string HousingMainDiameter
         {
-            tbMainDiameter.Text = "";
-            tbMainHeight.Text = "";
+            get
+            {
+                return tbMainDiameter.Text;
+            }
+            set
+            {
+                tbMainDiameter.Text = value;
+            }
         }
 
-        private void textbox_TextChanged(object sender, EventArgs e)
-            => _updateCommand.Execute();
-
-        private void btChamfer_Click(object sender, EventArgs e)
+        public string HousingMainDiameterPlaceholder
         {
-            _housingEditorPresenter.ConfigureChamfer();
-
-            _updateCommand.Execute();
+            get
+            {
+                return tbMainDiameter.PlaceholderText;
+            }
+            set
+            {
+                tbMainDiameter.PlaceholderText = value;
+            }
         }
 
-        private void btScrewHole_Click(object sender, EventArgs e)
+
+        public string HousingMainHeight
         {
-            _housingEditorPresenter.ConfigureHoles();
-
-            btChamfer.Enabled = _housingEditorPresenter.ChamferCanBeConfigured;
-
-            _updateCommand.Execute();
+            get
+            {
+                return tbMainHeight.Text;
+            }
+            set
+            {
+                tbMainHeight.Text = value;
+            }
         }
 
-        private void HousingEditorForm_Click(object sender, EventArgs e)
+        public string HousingMainHeightPlaceholder
         {
-            DialogResult = DialogResult.OK;
+            get
+            {
+                return tbMainHeight.PlaceholderText;
+            }
+            set
+            {
+                tbMainHeight.PlaceholderText = value;
+            }
         }
 
-        private void HousingEditorForm_FormClosing(object sender, FormClosingEventArgs e)
+
+        public string HousingGlassSocketDiameter
         {
-            if (DialogResult != DialogResult.OK)
-                _housingEditorPresenter.ResetFields();
+            get
+            {
+                return tbGlassSocketDiameter.Text;
+            }
+            set
+            {
+                tbGlassSocketDiameter.Text = value;
+            }
         }
 
+        public string HousingGlassSocketDiameterPlaceholder
+        {
+            get
+            {
+                return tbGlassSocketDiameter.PlaceholderText;
+            }
+            set
+            {
+                tbGlassSocketDiameter.PlaceholderText = value;
+            }
+        }
+        
+        
+        public string HousingGlassSocketHeight
+        {
+            get
+            {
+                return tbGlassSocketHeight.Text;
+            }
+            set
+            {
+                tbGlassSocketHeight.Text = value;
+            }
+        }
+        
+        public string HousingGlassSocketHeightPlaceholder
+        {
+            get
+            {
+                return tbGlassSocketHeight.PlaceholderText;
+            }
+            set
+            {
+                tbGlassSocketHeight.PlaceholderText = value;
+            }
+        }
+
+        
+        
         public void ShowView(object owner = null)
         {
             if (owner != null && owner is Form form)
@@ -127,6 +159,44 @@ namespace Oil_level_glass.UI.Editors.Housing
             {
                 ShowDialog();
             }
+        }
+
+        public HousingEditorForm()
+        {
+            InitializeComponent();
+
+            tbMainHeight.TextChanged += textbox_TextChanged;
+            tbMainDiameter.TextChanged += textbox_TextChanged;
+        }
+
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            if (AcceptDataChangesHandler != null)
+                AcceptDataChangesHandler();
+        }
+
+        private void btResetData_Click(object sender, EventArgs e)
+        {
+            if (CancelDataChangesHandler != null)
+                CancelDataChangesHandler();
+        }
+
+        private void textbox_TextChanged(object sender, EventArgs e)
+        {
+            if (DataChangingHandler != null)
+                DataChangingHandler();
+        }
+
+        private void btChamfer_Click(object sender, EventArgs e)
+        {
+            if (ConfigChamferHandler != null)
+                ConfigChamferHandler();
+        }
+
+        private void btScrewHole_Click(object sender, EventArgs e)
+        {
+            if (ConfigHolesHandler != null)
+                ConfigHolesHandler();
         }
     }
 }

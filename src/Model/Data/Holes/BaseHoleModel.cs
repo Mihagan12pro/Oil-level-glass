@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace Oil_level_glass.Model.Data.ScrewHoles
+namespace Oil_level_glass.Model.Data.Holes
 {
-    /// <summary>
-    /// Простое отверстие
-    /// </summary>
-    public class BasicScrewHoleModel : BaseScrewHoleModel
+    public abstract class BaseHoleModel : BaseModel
     {
+        public double MaxDiameter { get;set; }
+
         private double _diameter;
 
         [DisplayName("d")]
@@ -25,9 +24,6 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
                     NotifyDiameterChanged(value);
             }
         }
-
-        public delegate void DiameterChangedHandler(double diameter);
-        public event DiameterChangedHandler? NotifyDiameterChanged;
 
         protected override string CheckField(string columnName)
         {
@@ -61,5 +57,8 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
 
             return error;
         }
+
+        public delegate void DiameterChangedHandler(double diameter);
+        public event DiameterChangedHandler? NotifyDiameterChanged;
     }
 }

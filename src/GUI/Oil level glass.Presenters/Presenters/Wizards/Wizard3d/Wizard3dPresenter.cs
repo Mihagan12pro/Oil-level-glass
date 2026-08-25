@@ -1,7 +1,5 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
-using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
-using Oil_level_glass.UI.Abstractions.Editors.Housing;
 using Oil_level_glass.Core.Housing;
 using Oil_level_glass.Core.Glass;
 using Oil_level_glass.Core.RubberStrip;
@@ -13,9 +11,9 @@ using System.Reflection;
 using Oil_level_glass.Model.Data.Entities.Parts;
 using Shared.Results;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
-using Oil_level_glass.UI.Abstractions;
 using Oil_level_glass.Presenters.Editors.Presenters.Entities.Glass;
 using Oil_level_glass.Presenters.Editors.Presenters.Entities.RubberStrip;
+using Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing;
 
 namespace Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d
 {
@@ -96,12 +94,9 @@ namespace Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d
             }
             else if (_selectedEntity is RubberStripModel)
             {
-                using (var stripView = _serviceProvider.GetRequiredService<IRubberStripEditorView>())
-                {
-                    var presenter = _serviceProvider.GetRequiredService<IRubberStripEditorPresenter>();
-                    presenter.Model =_rubberStrip;
-                    presenter.ActivateView();
-                }
+                var presenter = _serviceProvider.GetRequiredService<IRubberStripEditorPresenter>();
+                presenter.Model = _rubberStrip;
+                presenter.ActivateView();
 
                 _rubberStrip.ExternalDiameter = _glass.Diameter;
                 _housing.GlassSocketDiameter = _glass.Diameter;
@@ -111,10 +106,9 @@ namespace Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d
             }
             else if (_selectedEntity is HousingModel)
             {
-                using (var housingView = _serviceProvider.GetRequiredService<IHousingEditorView>())
-                {
-                    housingView.ShowView(this);
-                }
+                var housingPresenter = _serviceProvider.GetRequiredService<IHousingEditorPresenter>();
+                housingPresenter.Model = _housing;
+                housingPresenter.ActivateView();
             }
         }
 
@@ -159,11 +153,6 @@ namespace Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d
             {
                 namingEditor.ShowView();
             }
-        }
-
-        public void SetView(IView view)
-        {
-            throw new NotImplementedException();
         }
 
         public bool CanStartModeling

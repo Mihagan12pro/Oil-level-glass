@@ -12,7 +12,6 @@ namespace Oil_level_glass.Presenters
     {
         public static IServiceCollection AddPresenters(this IServiceCollection services)
         {
-            //services.AddData();
             services.AddWizards();
             services.AddModelProperties();
             services.AddEntitiesPresenters();
@@ -24,6 +23,9 @@ namespace Oil_level_glass.Presenters
         {
             services.AddTransient<IGlassEditorPresenter, GlassEditorPresenter>();
             services.AddTransient<IRubberStripEditorPresenter, RubberStripEditorPresenter>();
+            services.AddTransient<IHousingEditorPresenter, HousingEditorPresenter>();
+
+            services.AddTransient<IHolesEditorPresenter, HolesEditorPresenter>();
 
             return services;
         }
@@ -34,18 +36,6 @@ namespace Oil_level_glass.Presenters
 
             return services;
         }
-
-        //private static IServiceCollection AddData(this IServiceCollection services)
-        //{
-        //    services.AddTransient<IHolesEditorPresenter, HolesEditorPresenter>();
-        //    services.AddTransient<IChamferEditorPresenter, ChamferEditorPresenter>();
-
-        //    services.AddTransient<IHousingEditorPresenter, HousingEditorPresenter>();
-        //    services.AddTransient<IGlassEditorPresenter, GlassEditorPresenter>();
-        //    services.AddTransient<IRubberStripEditorPresenter, RubberStripEditorPresenter>();
-
-        //    return services;
-        //}
 
         private static IServiceCollection AddModelProperties(this IServiceCollection services)
         {

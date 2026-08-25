@@ -1,20 +1,10 @@
 ﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing.DataStructures;
-using Oil_level_glass.UI.Abstractions.Editors.Housing;
 using Oil_level_glass.UI.Presenters.Editors;
-using Shared.Results;
 
 namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
 {
-    public interface IHousingEditorPresenter 
-        : IEditorPresenter<IHousingEditorView, HousingUpdateResults, HousingUpdateData, HousingDefaultSizes>
+    public interface IHousingEditorPresenter : IEditorPresenter<HousingModel>
     {
-        bool ScrewHoleCanBeConfigured { get; }
 
-        bool ChamferCanBeConfigured { get; }
-
-        void ConfigureChamfer();
-
-        void ConfigureHoles();
     }
 }

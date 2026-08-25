@@ -46,8 +46,8 @@
             label1 = new Label();
             tbMainDiameter = new TextBox();
             tableLayoutPanel8 = new TableLayoutPanel();
-            btScrewHole = new Button();
             btChamfer = new Button();
+            btScrewHole = new Button();
             pbSketch = new PictureBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             btOk = new Button();
@@ -195,7 +195,6 @@
             tbMainHeight.Location = new Point(49, 45);
             tbMainHeight.Margin = new Padding(49, 0, 49, 0);
             tbMainHeight.Name = "tbMainHeight";
-            tbMainHeight.PlaceholderText = "8";
             tbMainHeight.Size = new Size(375, 39);
             tbMainHeight.TabIndex = 2;
             // 
@@ -280,7 +279,6 @@
             tbMainDiameter.Location = new Point(49, 46);
             tbMainDiameter.Margin = new Padding(49, 0, 49, 0);
             tbMainDiameter.Name = "tbMainDiameter";
-            tbMainDiameter.PlaceholderText = "90";
             tbMainDiameter.Size = new Size(375, 39);
             tbMainDiameter.TabIndex = 1;
             // 
@@ -300,18 +298,6 @@
             tableLayoutPanel8.Size = new Size(473, 95);
             tableLayoutPanel8.TabIndex = 4;
             // 
-            // btScrewHole
-            // 
-            btScrewHole.Enabled = false;
-            btScrewHole.Location = new Point(49, 20);
-            btScrewHole.Margin = new Padding(49, 20, 0, 0);
-            btScrewHole.Name = "btScrewHole";
-            btScrewHole.Size = new Size(167, 46);
-            btScrewHole.TabIndex = 0;
-            btScrewHole.Text = "Отверстия...";
-            btScrewHole.UseVisualStyleBackColor = true;
-            btScrewHole.Click += btScrewHole_Click;
-            // 
             // btChamfer
             // 
             btChamfer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -324,6 +310,18 @@
             btChamfer.Text = "Фаски...";
             btChamfer.UseVisualStyleBackColor = true;
             btChamfer.Click += btChamfer_Click;
+            // 
+            // btScrewHole
+            // 
+            btScrewHole.Enabled = false;
+            btScrewHole.Location = new Point(49, 20);
+            btScrewHole.Margin = new Padding(49, 20, 0, 0);
+            btScrewHole.Name = "btScrewHole";
+            btScrewHole.Size = new Size(167, 46);
+            btScrewHole.TabIndex = 0;
+            btScrewHole.Text = "Отверстия...";
+            btScrewHole.UseVisualStyleBackColor = true;
+            btScrewHole.Click += btScrewHole_Click;
             // 
             // pbSketch
             // 
@@ -406,9 +404,6 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор размеров корпуса";
-            FormClosing += HousingEditorForm_FormClosing;
-            Load += HousingEditorForm_Load;
-            Click += HousingEditorForm_Click;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             groupBox.ResumeLayout(false);
