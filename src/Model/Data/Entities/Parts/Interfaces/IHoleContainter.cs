@@ -5,5 +5,7 @@
         int MaxCountOfHoles { get; set; }
 
         int MinCountOfHoles { get; }
+
+        int HolesCount { get; set; }
     }
 }

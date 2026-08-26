@@ -35,4 +35,10 @@
     <Resource Include="Resources\chamferSideAngle.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="ToolEditors\IntegerSliderEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

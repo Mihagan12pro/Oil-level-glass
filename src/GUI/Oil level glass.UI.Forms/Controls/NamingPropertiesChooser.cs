@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.UI.Forms.Controls
 {
-    public partial class NamingEditor : ModelProperties
+    public partial class NamingPropertiesChooser : ModelProperties
     {
         public string Namimg
         {
@@ -26,7 +26,7 @@
             }
         }
 
-        public NamingEditor()
+        public NamingPropertiesChooser()
         {
             InitializeComponent();
 

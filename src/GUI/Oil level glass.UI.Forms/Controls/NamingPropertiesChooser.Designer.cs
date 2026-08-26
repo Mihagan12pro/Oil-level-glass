@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.UI.Forms.Controls
 {
-    partial class NamingEditor
+    partial class NamingPropertiesChooser
     {
         /// <summary> 
         /// Required designer variable.

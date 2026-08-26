@@ -151,7 +151,7 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
     }
 
     [DisplayName("n")]
-    public int ScrewHolesCount
+    public int HolesCount
     {
         get
         {
@@ -221,11 +221,11 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
                         break;
                     }
 
-                case nameof(ScrewHolesCount):
+                case nameof(HolesCount):
                     {
-                        if (ScrewHolesCount > MaxCountOfHoles)
+                        if (HolesCount > MaxCountOfHoles)
                             error = string.Format(messageCantBeGreaterThan, displayName, MaxCountOfHoles);
-                        else if (ScrewHolesCount < 3)
+                        else if (HolesCount < 3)
                             error = string.Format(messageCantBeLessThan, displayName, 3);
 
                         break;

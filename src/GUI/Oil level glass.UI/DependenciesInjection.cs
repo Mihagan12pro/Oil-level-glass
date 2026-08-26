@@ -7,12 +7,14 @@ using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 using Oil_level_glass.UI.Abstractions.Editors.ModelProperties;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
+using Oil_level_glass.UI.Abstractions.ToolEditors;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
 using Oil_level_glass.UI.Editors.Housing;
 using Oil_level_glass.UI.Editors.Housing.ChamferEditor;
 using Oil_level_glass.UI.Editors.Housing.HolesEditor;
 using Oil_level_glass.UI.Editors.ModelProperties;
 using Oil_level_glass.UI.Editors.RubberStrip;
+using Oil_level_glass.UI.Forms.ToolEditors;
 using Oil_level_glass.UI.Main;
 using Oil_level_glass.UI.Wizard3d;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
@@ -36,6 +38,8 @@ namespace Oil_level_glass.UI
 
             services.AddTransient<IFolderEditorView, FoldersEditorForm>();
             services.AddTransient<INamingEditorView, NamingEditorForm>();
+
+            services.AddTransient<INumberEditor<int>, IntegerEditor>();
 
             return services;
         }

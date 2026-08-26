@@ -126,7 +126,7 @@ namespace Oil_level_glass.Core.COM.Api7.Housing
                 IVertex vertex = ((IFeature7)sketch3).GetVertexByPoint(Model.ScrewHolesDistance * 0.5, 0, Model.MainHeight * 0.5);
 
                 IHole3D hole = modelContainer.Holes3D.Add();
-                hole.Diameter = ((BasicHoleModel)Model.Hole).Diameter;
+                hole.Diameter = Model.Hole.Diameter;
                 hole.ShowThread = true;
 
                 IThread thread = hole.Thread;
@@ -142,7 +142,7 @@ namespace Oil_level_glass.Core.COM.Api7.Housing
 
                 ICircularPattern circularPattern = (ICircularPattern)modelContainer.FeaturePatterns.Add(ksObj3dTypeEnum.o3d_circularCopy);
                 circularPattern.Step2 = 360;
-                circularPattern.Count2 = Model.ScrewHolesCount;
+                circularPattern.Count2 = Model.HolesCount;
                 circularPattern.AddInitialObjects(hole);
                 circularPattern.Axis = _housingPart.DefaultObject[ksObj3dTypeEnum.o3d_axisOZ];
 

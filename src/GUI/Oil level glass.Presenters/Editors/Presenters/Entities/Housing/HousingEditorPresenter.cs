@@ -63,6 +63,7 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
         {
             IHolesEditorPresenter editorPresenter = _serviceProvider.GetRequiredService<IHolesEditorPresenter>();
             editorPresenter.Model = Model.Hole;
+            editorPresenter.Containter = Model;
             editorPresenter.ActivateView();
         }
 

@@ -43,7 +43,7 @@ namespace Oil_level_glass.UI.Editors.ModelProperties
             tblMain.Controls.Add(_namingEditor, 1, 1);
         }
 
-        private readonly NamingEditor _namingEditor = new NamingEditor();
+        private readonly NamingPropertiesChooser _namingEditor = new NamingPropertiesChooser();
 
         public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

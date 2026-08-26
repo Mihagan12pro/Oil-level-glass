@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode1 = new TreeNode("Тип");
-            TreeNode treeNode2 = new TreeNode("Количество");
-            TreeNode treeNode3 = new TreeNode("Размеры");
-            TreeNode treeNode4 = new TreeNode("Параметры", new TreeNode[] { treeNode1, treeNode2, treeNode3 });
+            TreeNode treeNode1 = new TreeNode("Количество");
+            TreeNode treeNode2 = new TreeNode("Размеры");
+            TreeNode treeNode3 = new TreeNode("Параметры", new TreeNode[] { treeNode1, treeNode2 });
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             btCancel = new Button();
@@ -58,7 +57,7 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(628, 438);
+            tableLayoutPanel1.Size = new Size(839, 462);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -71,7 +70,7 @@
             tableLayoutPanel2.Controls.Add(btCancel, 1, 0);
             tableLayoutPanel2.Controls.Add(btOk, 2, 0);
             tableLayoutPanel2.Controls.Add(btResetData, 0, 0);
-            tableLayoutPanel2.Location = new Point(148, 363);
+            tableLayoutPanel2.Location = new Point(359, 387);
             tableLayoutPanel2.Margin = new Padding(5, 5, 20, 16);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
@@ -123,8 +122,8 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(tvHolesParams);
-            splitContainer1.Size = new Size(622, 352);
-            splitContainer1.SplitterDistance = 207;
+            splitContainer1.Size = new Size(833, 376);
+            splitContainer1.SplitterDistance = 184;
             splitContainer1.TabIndex = 3;
             // 
             // tvHolesParams
@@ -132,16 +131,14 @@
             tvHolesParams.Dock = DockStyle.Fill;
             tvHolesParams.Location = new Point(0, 0);
             tvHolesParams.Name = "tvHolesParams";
-            treeNode1.Name = "nodeType";
-            treeNode1.Text = "Тип";
-            treeNode2.Name = "nodeCount";
-            treeNode2.Text = "Количество";
-            treeNode3.Name = "nodeSizes";
-            treeNode3.Text = "Размеры";
-            treeNode4.Name = "nodeParams";
-            treeNode4.Text = "Параметры";
-            tvHolesParams.Nodes.AddRange(new TreeNode[] { treeNode4 });
-            tvHolesParams.Size = new Size(203, 348);
+            treeNode1.Name = "nodeCount";
+            treeNode1.Text = "Количество";
+            treeNode2.Name = "nodeSizes";
+            treeNode2.Text = "Размеры";
+            treeNode3.Name = "nodeParams";
+            treeNode3.Text = "Параметры";
+            tvHolesParams.Nodes.AddRange(new TreeNode[] { treeNode3 });
+            tvHolesParams.Size = new Size(180, 372);
             tvHolesParams.TabIndex = 0;
             // 
             // HolesEditorForm
@@ -150,7 +147,7 @@
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btCancel;
-            ClientSize = new Size(628, 438);
+            ClientSize = new Size(839, 462);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;

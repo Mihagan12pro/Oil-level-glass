@@ -1,6 +1,6 @@
 ﻿namespace Oil_level_glass.UI.Forms.Controls
 {
-    public abstract class ModelProperties : UserControl
+    public partial class ModelProperties : UserControl
     {
         public event EventHandler? DataChanging;
 
