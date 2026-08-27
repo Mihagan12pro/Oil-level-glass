@@ -16,6 +16,7 @@ using Oil_level_glass.UI.Editors.ModelProperties;
 using Oil_level_glass.UI.Editors.RubberStrip;
 using Oil_level_glass.UI.Forms.ToolEditors;
 using Oil_level_glass.UI.Main;
+using Oil_level_glass.UI.ToolEditors;
 using Oil_level_glass.UI.Wizard3d;
 using Oil_level_glass.UI.Wizard3d.Editors.Glass;
 
@@ -40,6 +41,7 @@ namespace Oil_level_glass.UI
             services.AddTransient<INamingEditorView, NamingEditorForm>();
 
             services.AddTransient<INumberEditor<int>, IntegerEditor>();
+            services.AddTransient<INumberEditor<double>, DoubleEditorForm>();
 
             return services;
         }

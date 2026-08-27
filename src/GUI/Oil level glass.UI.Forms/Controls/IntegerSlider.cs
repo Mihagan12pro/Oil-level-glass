@@ -13,6 +13,9 @@
                 if (value < trBr.Minimum)
                     value = trBr.Minimum;
 
+                if (value > trBr.Maximum)
+                    value = trBr.Maximum;
+
                 trBr.Value = value;
                 tb.Text = value.ToString();
             }

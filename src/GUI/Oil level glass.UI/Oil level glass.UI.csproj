@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ToolEditors\IntegerSliderEditor.cs">
+    <Compile Update="ToolEditors\IntegerEditor.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

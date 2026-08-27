@@ -186,7 +186,7 @@
             tableLayoutPanel6.Size = new Size(395, 176);
             tableLayoutPanel6.TabIndex = 1;
             // 
-            // tbDiameter
+            // tb
             // 
             tbDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tbDiameter.Location = new Point(49, 88);

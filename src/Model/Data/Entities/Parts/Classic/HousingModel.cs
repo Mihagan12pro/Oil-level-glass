@@ -24,6 +24,8 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
     {
         Material = new Metal();
 
+        HolesCount = MinHolesCount;
+
         Chamfer = new ChamferModel();
 
         switch (CultureInfo.CurrentCulture.Name)
@@ -58,7 +60,7 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
         {
             var value = Math.Floor(length / Hole.Diameter);
 
-            MaxCountOfHoles = Convert.ToInt32(Math.Floor(value));
+            MaxHolesCount = Convert.ToInt32(Math.Floor(value));
         }
     }
 
@@ -66,7 +68,7 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
 
     public ChamferModel Chamfer { get; } = new ChamferModel();
 
-    public int MaxCountOfHoles
+    public int MaxHolesCount
     {
         get
         {
@@ -178,7 +180,7 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
         }
     }
 
-    public int MinCountOfHoles
+    public int MinHolesCount
         => 3;
 
     public void UpdateComputableFields()
@@ -223,8 +225,8 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
 
                 case nameof(HolesCount):
                     {
-                        if (HolesCount > MaxCountOfHoles)
-                            error = string.Format(messageCantBeGreaterThan, displayName, MaxCountOfHoles);
+                        if (HolesCount > MaxHolesCount)
+                            error = string.Format(messageCantBeGreaterThan, displayName, MaxHolesCount);
                         else if (HolesCount < 3)
                             error = string.Format(messageCantBeLessThan, displayName, 3);
 

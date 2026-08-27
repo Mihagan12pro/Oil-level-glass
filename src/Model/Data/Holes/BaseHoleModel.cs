@@ -5,9 +5,23 @@ namespace Oil_level_glass.Model.Data.Holes
 {
     public abstract class BaseHoleModel : BaseModel
     {
-        public double MaxDiameter { get;set; }
+        public double MinDiameter
+            => 1;
+
+        public double MaxDiameter
+        {
+            get
+            {
+                return _maxDiameter;
+            }
+            set
+            {
+                _maxDiameter = Math.Round(value, 3);
+            }
+        }
 
         private double _diameter;
+        private double _maxDiameter;
 
         [DisplayName("d")]
         public double Diameter

@@ -13,17 +13,7 @@ namespace Oil_level_glass.UI.Editors.Housing.HolesEditor
         public event IHolesEditorView.ConfigHolesCount ConfigHolesCountHandler;
         public event IHolesEditorView.ConfigHolesSizes ConfigHolesSizesHandler;
 
-        public bool IsValid
-        {
-            get
-            {
-                return btOk.Enabled;
-            }
-            set
-            {
-                btOk.Enabled = value;
-            }
-        }
+        public bool IsValid { get; set; }
 
         public HolesEditorForm()
         {

@@ -2,9 +2,9 @@
 {
     public interface IHoleContainter
     {
-        int MaxCountOfHoles { get; set; }
+        int MaxHolesCount { get; set; }
 
-        int MinCountOfHoles { get; }
+        int MinHolesCount { get; }
 
         int HolesCount { get; set; }
     }

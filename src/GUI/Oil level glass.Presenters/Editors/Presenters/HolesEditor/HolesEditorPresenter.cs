@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Oil_level_glass.Model.Data.Entities.Parts.Interfaces;
 using Oil_level_glass.Model.Data.Holes;
+using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.UI.Abstractions.Editors.Housing.HolesEditor;
 using Oil_level_glass.UI.Abstractions.ToolEditors;
 
@@ -37,18 +38,32 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.HolesEditor
 
         private void view_ConfigHolesSizesHandler()
         {
-            throw new NotImplementedException();
+            if (Model is BasicHoleModel basic)
+            {
+                using (var diameterView = _serviceProvider.GetRequiredService<INumberEditor<double>>())
+                {
+                    diameterView.Header = "Редактор диаметра отверстия";
+                    diameterView.Min = Model.MinDiameter;
+                    diameterView.Max = Model.MaxDiameter;
+                    diameterView.Value = Model.Diameter;
+
+                    diameterView.ShowView();
+
+                    if (diameterView.Result)
+                        Model.Diameter = diameterView.Value;
+                }
+            }
         }
 
         private void view_ConfigHolesCountHandler(out bool result, out string message)
         {
-            if (Model.HasErrors)
+            if (!Model.HasErrors)
             {
                 using (var countView = _serviceProvider.GetRequiredService<INumberEditor<int>>())
                 {
                     countView.Header = "Редактор числа отверстий";
-                    countView.Max = Containter.MaxCountOfHoles;
-                    countView.Min = Containter.MinCountOfHoles;
+                    countView.Max = Containter.MaxHolesCount;
+                    countView.Min = Containter.MinHolesCount;
                     countView.Value = Containter.HolesCount;
 
                     countView.ShowView();
