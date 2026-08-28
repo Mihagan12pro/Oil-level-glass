@@ -11,6 +11,10 @@
   <ItemGroup>
     <None Remove="Resources\chamfer2Sides.png" />
     <None Remove="Resources\chamferSideAngle.png" />
+    <None Remove="Resources\Glass.png" />
+    <None Remove="Resources\Housing.png" />
+    <None Remove="Resources\Oil level glass.png" />
+    <None Remove="Resources\Rubber strip.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +37,10 @@
   <ItemGroup>
     <Resource Include="Resources\chamfer2Sides.png" />
     <Resource Include="Resources\chamferSideAngle.png" />
+    <Resource Include="Resources\Glass.png" />
+    <Resource Include="Resources\Housing.png" />
+    <Resource Include="Resources\Oil level glass.png" />
+    <Resource Include="Resources\Rubber strip.png" />
   </ItemGroup>
 
   <ItemGroup>

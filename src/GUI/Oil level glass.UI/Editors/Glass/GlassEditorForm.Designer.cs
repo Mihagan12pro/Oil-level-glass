@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GlassEditorForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             pbSketch = new PictureBox();
@@ -93,7 +92,7 @@
             // 
             pbSketch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pbSketch.BorderStyle = BorderStyle.FixedSingle;
-            pbSketch.Image = (Image)resources.GetObject("pbSketch.Image");
+            pbSketch.Image = Properties.Resources.Glass_Img;
             pbSketch.Location = new Point(460, 19);
             pbSketch.Margin = new Padding(5, 19, 20, 5);
             pbSketch.Name = "pbSketch";
@@ -186,7 +185,7 @@
             tableLayoutPanel6.Size = new Size(395, 176);
             tableLayoutPanel6.TabIndex = 1;
             // 
-            // tb
+            // tbDiameter
             // 
             tbDiameter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tbDiameter.Location = new Point(49, 88);

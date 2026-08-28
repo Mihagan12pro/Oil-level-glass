@@ -183,6 +183,9 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
     public int MinHolesCount
         => 3;
 
+    public double MaxSide1 { get; set; }
+    public double MaxSide2 { get; set; }
+
     public void UpdateComputableFields()
     {
         _screwHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;
@@ -190,8 +193,7 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
         Hole.MaxDiameter = (MainDiameter / 2 - ScrewHolesDistance / 2) * 0.9;
 
         Chamfer.MaxSide2 = MainHeight;
-
-        Chamfer.MaxSide1 = (MainDiameter * 0.5 - (ScrewHolesDistance * 0.5 + ((BasicHoleModel)Hole).Diameter * 0.5)) * 0.5;
+        Chamfer.MaxSide1 = (MainDiameter * 0.5 - (ScrewHolesDistance * 0.5 + Hole.FullHoleDiameter * 0.5)) * 0.5;
     }
 
 

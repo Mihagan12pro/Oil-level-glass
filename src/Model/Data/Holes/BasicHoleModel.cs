@@ -9,6 +9,7 @@ namespace Oil_level_glass.Model.Data.ScrewHoles
     /// </summary>
     public class BasicHoleModel : BaseHoleModel
     {
-        
+        public override double FullHoleDiameter
+            => Diameter;
     }
 }

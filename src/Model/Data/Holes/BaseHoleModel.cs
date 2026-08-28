@@ -20,6 +20,8 @@ namespace Oil_level_glass.Model.Data.Holes
             }
         }
 
+        public abstract double FullHoleDiameter { get; }
+
         private double _diameter;
         private double _maxDiameter;
 

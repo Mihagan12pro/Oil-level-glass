@@ -190,13 +190,19 @@ namespace Oil_level_glass.UI.Editors.Housing
         private void btChamfer_Click(object sender, EventArgs e)
         {
             if (ConfigChamferHandler != null)
+            {
                 ConfigChamferHandler();
+                AcceptDataChangesHandler();
+            }
         }
 
         private void btScrewHole_Click(object sender, EventArgs e)
         {
             if (ConfigHolesHandler != null)
+            {
                 ConfigHolesHandler();
+                AcceptDataChangesHandler();
+            }
         }
     }
 }

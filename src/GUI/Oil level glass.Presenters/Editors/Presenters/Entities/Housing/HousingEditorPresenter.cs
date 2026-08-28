@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Model.Data.ScrewHoles;
+using Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor;
 using Oil_level_glass.Presenters.Editors.Presenters.HolesEditor;
 using Oil_level_glass.UI.Abstractions.Editors.Housing;
 
@@ -69,11 +69,19 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
             _view.ScrewHoleCanBeConfigured = true;
             _view.ChamferCanBeConfigured = true;
 
+
             _view.IsValid = _view.ScrewHoleCanBeConfigured;
 
             if (Model.Hole.HasErrors)
             {
                 Model.Hole.Diameter = Model.Hole.MaxDiameter;
+            }
+
+            if (Model.Chamfer.HasErrors)
+            {
+                Model.Chamfer.Side1 = Model.MaxSide1;
+                Model.Chamfer.Side2 = Model.MaxSide1;
+                Model.Chamfer.Angle = 45;
             }
         }
 
@@ -87,7 +95,9 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
 
         private void view_ConfigChamferHandler()
         {
-           
+            IChamferEditorPresenter editorPresenter = _serviceProvider.GetRequiredService<IChamferEditorPresenter>();
+            editorPresenter.Model = Model.Chamfer;
+            editorPresenter.ActivateView();
         }
 
         private void view_DataChangingHandler()

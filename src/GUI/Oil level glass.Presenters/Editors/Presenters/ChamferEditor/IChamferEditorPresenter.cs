@@ -6,6 +6,6 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor
 {
     public interface IChamferEditorPresenter : IEditorPresenter<ChamferModel>
     {
-        void ChangeChamferType(ChamferType chamferType);
+        void ChangeChamferType(bool isAngleSide);
     }
 }
