@@ -1,8 +1,5 @@
-﻿using Oil_level_glass.Model.Data.Operations;
-using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
-using Shared;
+﻿using Oil_level_glass.UI.Abstractions.Editors.Housing.ChamferEditor;
 using Oil_level_glass.UI.Properties;
-using Oil_level_glass.Presenters.Editors.Presenters.ChamferEditor;
 using Oil_level_glass.UI.Abstractions.Editors;
 
 namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
@@ -13,8 +10,94 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
         public event IEditorView.ClearData ClearDataHandler;
         public event IEditorView.CancelDataChanges CancelDataChangesHandler;
         public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
+        public event IChamferEditorView.ChamferTypeChanged ChamferTypeChangedHandler;
 
-        public bool IsValid { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsValid
+        {
+            get
+            {
+                return btOk.Enabled;
+            }
+            set
+            {
+                btOk.Enabled = value;
+            }
+        }
+
+        public string ChamferSide1
+        {
+            get
+            {
+                return tbSide1.Text;
+            }
+            set
+            {
+                tbSide1.Text = value;
+            }
+        }
+
+        public string ChamferSide2
+        {
+            get
+            {
+                return tbSide2.Text;
+            }
+            set
+            {
+                tbSide2.Text = value;
+            }
+        }
+
+        public string ChamferAngle
+        {
+            get
+            {
+                return tbAngle.Text;
+            }
+            set
+            {
+                tbAngle.Text = value;
+            }
+        }
+
+        public bool ChamferSideAngle
+        {
+            get
+            {
+                return rbSideAndAngle.Checked;
+            }
+            set
+            {
+                rbSideAndAngle.Checked = value;
+
+                if (!rbSideAndAngle.Checked)
+                    rbTwoSides.Checked = true;
+            }
+        }
+
+        public string ChamferSide1PlaceHolder
+        {
+            get
+            {
+                return tbSide1.PlaceholderText;
+            }
+            set
+            {
+                tbSide1.PlaceholderText = value;
+            }
+        }
+
+        public string ChamferSide2PlaceHolder
+        {
+            get
+            {
+                return tbSide2.PlaceholderText;
+            }
+            set
+            {
+                tbSide2.PlaceholderText = value;
+            }
+        }
 
         public ChamferEditorForm()
         {
@@ -22,27 +105,35 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
 
             rbSideAndAngle.CheckedChanged += rb_CheckedChanged;
             rbTwoSides.CheckedChanged += rb_CheckedChanged;
+
+
+            tbAngle.TextChanged += Tb_TextChanged;
+            tbSide1.TextChanged += Tb_TextChanged;
+            tbSide2.TextChanged += Tb_TextChanged;
         }
 
         private void Tb_TextChanged(object? sender, EventArgs e)
         {
-
-        }
-
-        private void ChamferEditorForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //if (DialogResult != DialogResult.OK)
-            //    _chamferEditorPresenter.ResetFields();
+            if (DataChangingHandler != null)
+                DataChangingHandler();
         }
 
         private void btResetData_Click(object sender, EventArgs e)
         {
+            if (ClearDataHandler != null)
+                ClearDataHandler();
+        }
 
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            if (CancelDataChangesHandler != null)
+                CancelDataChangesHandler();
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            if (AcceptDataChangesHandler != null)
+                AcceptDataChangesHandler();
         }
 
         public void ShowView(object owner = null)
@@ -55,11 +146,6 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
             {
                 ShowDialog();
             }
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void rb_CheckedChanged(object sender, EventArgs e)
@@ -82,6 +168,10 @@ namespace Oil_level_glass.UI.Editors.Housing.ChamferEditor
                 }
 
                 pbSketch.Image = image;
+                ChamferSideAngle = rbSideAndAngle.Checked;
+
+                if (ChamferTypeChangedHandler != null)
+                    ChamferTypeChangedHandler();
             }
         }
     }

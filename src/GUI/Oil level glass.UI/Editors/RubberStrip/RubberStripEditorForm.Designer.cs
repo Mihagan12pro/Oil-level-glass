@@ -116,7 +116,7 @@
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
             // 
-            // blResetData
+            // btResetData
             // 
             blResetData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             blResetData.Location = new Point(5, 5);

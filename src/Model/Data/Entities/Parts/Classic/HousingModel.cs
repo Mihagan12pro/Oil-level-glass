@@ -183,9 +183,6 @@ public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
     public int MinHolesCount
         => 3;
 
-    public double MaxSide1 { get; set; }
-    public double MaxSide2 { get; set; }
-
     public void UpdateComputableFields()
     {
         _screwHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;

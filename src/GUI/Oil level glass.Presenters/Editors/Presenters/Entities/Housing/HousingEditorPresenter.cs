@@ -79,8 +79,8 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
 
             if (Model.Chamfer.HasErrors)
             {
-                Model.Chamfer.Side1 = Model.MaxSide1;
-                Model.Chamfer.Side2 = Model.MaxSide1;
+                Model.Chamfer.Side1 = Model.Chamfer.MaxSide1;
+                Model.Chamfer.Side2 = Model.Chamfer.MaxSide1;
                 Model.Chamfer.Angle = 45;
             }
         }
@@ -129,7 +129,7 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
 
             if (_model.MainHeight > 0)
             {
-                _view.HousingMainDiameter = _model.MainHeight.ToString();
+                _view.HousingMainHeight = _model.MainHeight.ToString();
             }
             else
             {

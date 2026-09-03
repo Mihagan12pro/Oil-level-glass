@@ -118,6 +118,7 @@
             btCancel.TabIndex = 0;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
+            btCancel.Click += btCancel_Click;
             // 
             // btOk
             // 
@@ -147,7 +148,6 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Size = new Size(931, 485);
             tableLayoutPanel3.TabIndex = 2;
-            tableLayoutPanel3.Paint += tableLayoutPanel3_Paint;
             // 
             // pbSketch
             // 
@@ -352,7 +352,6 @@
             AcceptButton = btOk;
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btCancel;
             ClientSize = new Size(937, 573);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -362,7 +361,6 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор фасок";
-            FormClosing += ChamferEditorForm_FormClosing;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);

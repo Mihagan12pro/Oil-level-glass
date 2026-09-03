@@ -3,8 +3,7 @@
 namespace Oil_level_glass.Model.Data.Operations
 {
 
-    public class ChamferModel
-        : BaseModel
+    public class ChamferModel : BaseModel
     {
         private ChamferType _type;
 

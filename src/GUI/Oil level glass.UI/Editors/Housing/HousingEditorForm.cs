@@ -121,8 +121,8 @@ namespace Oil_level_glass.UI.Editors.Housing
                 tbGlassSocketDiameter.PlaceholderText = value;
             }
         }
-        
-        
+
+
         public string HousingGlassSocketHeight
         {
             get
@@ -134,7 +134,7 @@ namespace Oil_level_glass.UI.Editors.Housing
                 tbGlassSocketHeight.Text = value;
             }
         }
-        
+
         public string HousingGlassSocketHeightPlaceholder
         {
             get
@@ -147,8 +147,8 @@ namespace Oil_level_glass.UI.Editors.Housing
             }
         }
 
-        
-        
+
+
         public void ShowView(object owner = null)
         {
             if (owner != null && owner is Form form)
@@ -175,10 +175,16 @@ namespace Oil_level_glass.UI.Editors.Housing
                 AcceptDataChangesHandler();
         }
 
-        private void btResetData_Click(object sender, EventArgs e)
+        private void btCancel_Click(object sender, EventArgs e)
         {
             if (CancelDataChangesHandler != null)
                 CancelDataChangesHandler();
+        }
+
+        private void btResetData_Click(object sender, EventArgs e)
+        {
+            if (ClearDataHandler != null)
+                ClearDataHandler();
         }
 
         private void textbox_TextChanged(object sender, EventArgs e)
