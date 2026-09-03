@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GlassEditorForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
             pbSketch = new PictureBox();
@@ -93,7 +92,7 @@
             // 
             pbSketch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pbSketch.BorderStyle = BorderStyle.FixedSingle;
-            pbSketch.Image = (Image)resources.GetObject("pbSketch.Image");
+            pbSketch.Image = Properties.Resources.Glass_Img;
             pbSketch.Location = new Point(460, 19);
             pbSketch.Margin = new Padding(5, 19, 20, 5);
             pbSketch.Name = "pbSketch";
@@ -166,7 +165,6 @@
             tbHeight.Location = new Point(49, 87);
             tbHeight.Margin = new Padding(49, 0, 49, 0);
             tbHeight.Name = "tbHeight";
-            tbHeight.PlaceholderText = "2";
             tbHeight.Size = new Size(292, 39);
             tbHeight.TabIndex = 1;
             // 
@@ -193,7 +191,6 @@
             tbDiameter.Location = new Point(49, 88);
             tbDiameter.Margin = new Padding(49, 0, 49, 0);
             tbDiameter.Name = "tbDiameter";
-            tbDiameter.PlaceholderText = "45";
             tbDiameter.Size = new Size(297, 39);
             tbDiameter.TabIndex = 0;
             // 
@@ -236,7 +233,7 @@
             btResetData.TabIndex = 2;
             btResetData.Text = "Очистить";
             btResetData.UseVisualStyleBackColor = true;
-            btResetData.Click += btClear_Click;
+            btResetData.Click += btResetData_Click;
             // 
             // btCancel
             // 
@@ -248,6 +245,7 @@
             btCancel.TabIndex = 0;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
+            btCancel.Click += btCancel_Click;
             // 
             // btOk
             // 
@@ -264,10 +262,8 @@
             // 
             // GlassEditorForm
             // 
-            AcceptButton = btOk;
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btCancel;
             ClientSize = new Size(921, 515);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
@@ -279,7 +275,6 @@
             ShowInTaskbar = false;
             Text = "Редактор размеров линзы";
             FormClosing += GlassEditorForm_FormClosing;
-            Load += GlassEditorForm_Load;
             Click += btOk_Click;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);

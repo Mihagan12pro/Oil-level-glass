@@ -46,13 +46,13 @@
             label1 = new Label();
             tbMainDiameter = new TextBox();
             tableLayoutPanel8 = new TableLayoutPanel();
-            btScrewHole = new Button();
             btChamfer = new Button();
+            btScrewHole = new Button();
             pbSketch = new PictureBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             btOk = new Button();
             btCancel = new Button();
-            blResetData = new Button();
+            btResetData = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             groupBox.SuspendLayout();
@@ -195,7 +195,6 @@
             tbMainHeight.Location = new Point(49, 45);
             tbMainHeight.Margin = new Padding(49, 0, 49, 0);
             tbMainHeight.Name = "tbMainHeight";
-            tbMainHeight.PlaceholderText = "8";
             tbMainHeight.Size = new Size(375, 39);
             tbMainHeight.TabIndex = 2;
             // 
@@ -280,7 +279,6 @@
             tbMainDiameter.Location = new Point(49, 46);
             tbMainDiameter.Margin = new Padding(49, 0, 49, 0);
             tbMainDiameter.Name = "tbMainDiameter";
-            tbMainDiameter.PlaceholderText = "90";
             tbMainDiameter.Size = new Size(375, 39);
             tbMainDiameter.TabIndex = 1;
             // 
@@ -300,18 +298,6 @@
             tableLayoutPanel8.Size = new Size(473, 95);
             tableLayoutPanel8.TabIndex = 4;
             // 
-            // btScrewHole
-            // 
-            btScrewHole.Enabled = false;
-            btScrewHole.Location = new Point(49, 20);
-            btScrewHole.Margin = new Padding(49, 20, 0, 0);
-            btScrewHole.Name = "btScrewHole";
-            btScrewHole.Size = new Size(167, 46);
-            btScrewHole.TabIndex = 0;
-            btScrewHole.Text = "Отверстия...";
-            btScrewHole.UseVisualStyleBackColor = true;
-            btScrewHole.Click += btScrewHole_Click;
-            // 
             // btChamfer
             // 
             btChamfer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -324,6 +310,18 @@
             btChamfer.Text = "Фаски...";
             btChamfer.UseVisualStyleBackColor = true;
             btChamfer.Click += btChamfer_Click;
+            // 
+            // btScrewHole
+            // 
+            btScrewHole.Enabled = false;
+            btScrewHole.Location = new Point(49, 20);
+            btScrewHole.Margin = new Padding(49, 20, 0, 0);
+            btScrewHole.Name = "btScrewHole";
+            btScrewHole.Size = new Size(167, 46);
+            btScrewHole.TabIndex = 0;
+            btScrewHole.Text = "Отверстия...";
+            btScrewHole.UseVisualStyleBackColor = true;
+            btScrewHole.Click += btScrewHole_Click;
             // 
             // pbSketch
             // 
@@ -347,7 +345,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.Controls.Add(btOk, 2, 0);
             tableLayoutPanel2.Controls.Add(btCancel, 1, 0);
-            tableLayoutPanel2.Controls.Add(blResetData, 0, 0);
+            tableLayoutPanel2.Controls.Add(btResetData, 0, 0);
             tableLayoutPanel2.Location = new Point(588, 557);
             tableLayoutPanel2.Margin = new Padding(5, 5, 20, 16);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -379,24 +377,24 @@
             btCancel.TabIndex = 1;
             btCancel.Text = "Отмена";
             btCancel.UseVisualStyleBackColor = true;
+            btCancel.Click += btCancel_Click;
             // 
-            // blResetData
+            // btResetData
             // 
-            blResetData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            blResetData.Location = new Point(5, 5);
-            blResetData.Margin = new Padding(5, 5, 5, 16);
-            blResetData.Name = "blResetData";
-            blResetData.Size = new Size(143, 46);
-            blResetData.TabIndex = 2;
-            blResetData.Text = "Очистить";
-            blResetData.UseVisualStyleBackColor = true;
-            blResetData.Click += btResetData_Click;
+            btResetData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btResetData.Location = new Point(5, 5);
+            btResetData.Margin = new Padding(5, 5, 5, 16);
+            btResetData.Name = "btResetData";
+            btResetData.Size = new Size(143, 46);
+            btResetData.TabIndex = 2;
+            btResetData.Text = "Очистить";
+            btResetData.UseVisualStyleBackColor = true;
+            btResetData.Click += btResetData_Click;
             // 
             // HousingEditorForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = btCancel;
             ClientSize = new Size(1068, 632);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -406,9 +404,6 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "Редактор размеров корпуса";
-            FormClosing += HousingEditorForm_FormClosing;
-            Load += HousingEditorForm_Load;
-            Click += HousingEditorForm_Click;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             groupBox.ResumeLayout(false);
@@ -433,7 +428,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btOk;
         private Button btCancel;
-        private Button blResetData;
+        private Button btResetData;
         private TableLayoutPanel tableLayoutPanel3;
         private PictureBox pbSketch;
         private GroupBox groupBox;

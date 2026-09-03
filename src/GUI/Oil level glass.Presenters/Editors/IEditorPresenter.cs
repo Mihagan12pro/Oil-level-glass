@@ -1,22 +1,13 @@
 ﻿using Oil_level_glass.Model;
-using Oil_level_glass.Presenters.Editors.HelpStructures;
-using Oil_level_glass.UI.Abstractions;
+using Oil_level_glass.Presenters.Presenters;
 
 namespace Oil_level_glass.UI.Presenters.Editors
 {
-    public interface IEditorPresenter<TView, TUpdateResults, TUpdateData, TDefaultSizes> : IPresenter
-        where TView: IView
-        where TUpdateData : UpdateData
-        where TUpdateResults : UpdateResults
-        where TDefaultSizes : DefaultSizes
+    public interface IEditorPresenter<TModel> : IPresenter
+        where TModel : BaseModel
     {
-        /// <summary>
-        /// Undo model update
-        /// </summary>
-        void ResetFields();
+        void ActivateView();
 
-        TUpdateResults UpdateModel(TUpdateData updateData);
-
-        TDefaultSizes DefaultSizes { get; }
+        TModel Model { get; set; }
     }
 }

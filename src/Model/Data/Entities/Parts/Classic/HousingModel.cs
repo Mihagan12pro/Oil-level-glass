@@ -1,4 +1,6 @@
-﻿using Oil_level_glass.Model.Data.Operations;
+﻿using Oil_level_glass.Model.Data.Entities.Parts.Interfaces;
+using Oil_level_glass.Model.Data.Holes;
+using Oil_level_glass.Model.Data.Operations;
 using Oil_level_glass.Model.Data.ScrewHoles;
 using Oil_level_glass.Model.ModelProperties.Materials;
 using System.ComponentModel;
@@ -7,8 +9,7 @@ using System.Reflection;
 
 namespace Oil_level_glass.Model.Data.Entities.Parts.Classic;
 
-public class HousingModel 
-    : BaseDetailModel
+public class HousingModel : BaseDetailModel, IHoleContainter, IChamferContainer
 {
     private double _mainDiameter, _mainHeight, _glassSocketHeight, _glassSocketDiameter;
     private double _centralHoleDiameter, _screwHolesDistance;
@@ -22,6 +23,8 @@ public class HousingModel
     public HousingModel()
     {
         Material = new Metal();
+
+        HolesCount = MinHolesCount;
 
         Chamfer = new ChamferModel();
 
@@ -45,26 +48,27 @@ public class HousingModel
                 }
         }
 
-        (Hole as BasicScrewHoleModel).NotifyDiameterChanged += NotifyHoleDiameterChanged;
+        Hole.NotifyDiameterChanged += Hole_NotifyDiameterChanged;
     }
 
-    private void NotifyHoleDiameterChanged(double diameter)
+    private void Hole_NotifyDiameterChanged(double diameter)
     {
         double length = Math.PI * ScrewHolesDistance;
 
-        if ((Hole as BasicScrewHoleModel).Diameter > 0)
-        {
-            var value = Math.Floor(length / (Hole as BasicScrewHoleModel).Diameter);
 
-            MaxCountOfHoles = Convert.ToInt32(Math.Floor(value));
+        if (Hole.Diameter > 0)
+        {
+            var value = Math.Floor(length / Hole.Diameter);
+
+            MaxHolesCount = Convert.ToInt32(Math.Floor(value));
         }
     }
 
-    public BaseScrewHoleModel Hole { get; } = new BasicScrewHoleModel();
+    public BaseHoleModel Hole { get; set; } = new BasicHoleModel();
 
     public ChamferModel Chamfer { get; } = new ChamferModel();
 
-    public int MaxCountOfHoles
+    public int MaxHolesCount
     {
         get
         {
@@ -149,7 +153,7 @@ public class HousingModel
     }
 
     [DisplayName("n")]
-    public int ScrewHolesCount
+    public int HolesCount
     {
         get
         {
@@ -176,6 +180,9 @@ public class HousingModel
         }
     }
 
+    public int MinHolesCount
+        => 3;
+
     public void UpdateComputableFields()
     {
         _screwHolesDistance = _mainDiameter / 2 + _glassSocketDiameter / 2;
@@ -183,8 +190,7 @@ public class HousingModel
         Hole.MaxDiameter = (MainDiameter / 2 - ScrewHolesDistance / 2) * 0.9;
 
         Chamfer.MaxSide2 = MainHeight;
-
-        Chamfer.MaxSide1 = (MainDiameter * 0.5 - (ScrewHolesDistance * 0.5 + ((BasicScrewHoleModel)Hole).Diameter * 0.5)) * 0.5;
+        Chamfer.MaxSide1 = (MainDiameter * 0.5 - (ScrewHolesDistance * 0.5 + Hole.FullHoleDiameter * 0.5)) * 0.5;
     }
 
 
@@ -216,11 +222,11 @@ public class HousingModel
                         break;
                     }
 
-                case nameof(ScrewHolesCount):
+                case nameof(HolesCount):
                     {
-                        if (ScrewHolesCount > MaxCountOfHoles)
-                            error = string.Format(messageCantBeGreaterThan, displayName, MaxCountOfHoles);
-                        else if (ScrewHolesCount < 3)
+                        if (HolesCount > MaxHolesCount)
+                            error = string.Format(messageCantBeGreaterThan, displayName, MaxHolesCount);
+                        else if (HolesCount < 3)
                             error = string.Format(messageCantBeLessThan, displayName, 3);
 
                         break;

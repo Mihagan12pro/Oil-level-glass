@@ -1,6 +1,5 @@
-﻿using Oil_level_glass.Model.Data.Entities.Parts.Classic;
-using Oil_level_glass.Presenters.Editors.Data.Entities.RubberStrip;
-using Oil_level_glass.Presenters.Editors.Entities.RubberStrip.HelpStructures;
+﻿using Oil_level_glass.Presenters.Editors.Presenters.Entities.RubberStrip;
+using Oil_level_glass.UI.Abstractions.Editors;
 using Oil_level_glass.UI.Abstractions.Editors.RubberStrip;
 
 namespace Oil_level_glass.UI.Editors.RubberStrip
@@ -11,63 +10,113 @@ namespace Oil_level_glass.UI.Editors.RubberStrip
 
         private IRubberStripEditorPresenter _stripEditorPresenter;
 
-        public RubberStripEditorForm(IRubberStripEditorPresenter stripEditorPresenter)
+        public event IEditorView.ViewDataChanging DataChangingHandler;
+        public event IEditorView.ClearData ClearDataHandler;
+        public event IEditorView.CancelDataChanges CancelDataChangesHandler;
+        public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
+
+        public RubberStripEditorForm()
         {
             InitializeComponent();
-
-            _stripEditorPresenter = stripEditorPresenter;
-
-            var defaultSizes = _stripEditorPresenter.DefaultSizes;
-
-            tbExternalDiameter.Text = defaultSizes.ExternalDiameter;
-            tbHeight.Text = defaultSizes.Height;
-            tbInternalDiameter.Text = defaultSizes.InternalDiameter;
         }
 
-        public RubberStripModel Model { get; set; }
+        public bool IsValid
+        {
+            get
+            {
+                return btOk.Enabled;
+            }
+            set
+            {
+                btOk.Enabled = value;
+            }
+        }
+
+        public string RubberStripHeight
+        {
+            get
+            {
+                return tbHeight.Text;
+            }
+            set
+            {
+                tbHeight.Text = value;
+            }
+        }
+        public string RubberStripHeightPlaceHolder
+        {
+            get
+            {
+                return tbHeight.PlaceholderText;
+            }
+            set
+            {
+                tbHeight.PlaceholderText = value;
+            }
+        }
+
+        public string RubberStripInternalDiameter
+        {
+            get
+            {
+                return tbInternalDiameter.Text;
+            }
+            set
+            {
+                tbInternalDiameter.Text = value;
+            }
+        }
+        public string RubberStripInternalDiameterPlaceHolder
+        {
+            get
+            {
+                return tbInternalDiameter.PlaceholderText;
+            }
+            set
+            {
+                tbInternalDiameter.PlaceholderText = value;
+            }
+        }
+
+        public string RubberStripExternalDiameter
+        {
+            get
+            {
+                return tbExternalDiameter.Text;
+            }
+            set
+            {
+                tbExternalDiameter.Text = value;
+            }
+        }
+        public string RubberStripExternalDiameterPlaceHolder
+        {
+            get
+            {
+                return tbExternalDiameter.PlaceholderText;
+            }
+            set
+            {
+                tbExternalDiameter.PlaceholderText = value;
+            }
+        }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            if (AcceptDataChangesHandler != null)
+                AcceptDataChangesHandler();
         }
 
         private void blResetData_Click(object sender, EventArgs e)
         {
-            tbInternalDiameter.Text = "";
-            tbHeight.Text = "";
+            if (ClearDataHandler != null)
+                ClearDataHandler();
         }
 
         private void tb_TextChanged(object sender, EventArgs e)
         {
-            _errorProvider.Clear();
-
-            var results = _stripEditorPresenter.UpdateModel(new RubberStripUpdateData(tbHeight.Text, tbInternalDiameter.Text));
-
-            if (results.NoErrors && tbHeight.Text != "" &&  tbInternalDiameter.Text != "")
-            {
-                btOk.Enabled = true;
-
-                return;
-            }
-
-            if (!results.Height.IsSuccess)
-                _errorProvider.SetError(tbHeight, results.Height.ErrorMessage);
-
-            if (!results.InternalDiameter.IsSuccess)
-                _errorProvider.SetError(tbInternalDiameter, results.InternalDiameter.ErrorMessage);
-
-            btOk.Enabled = false;
-        }
-
-        private void RubberStripEditorForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RubberStripEditorForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (DialogResult != DialogResult.OK)
-                _stripEditorPresenter.ResetFields();
+            if (DataChangingHandler != null)
+                DataChangingHandler();
         }
 
         public void ShowView(object owner = null)
