@@ -9,8 +9,6 @@ namespace Oil_level_glass.UI.Editors.Housing
         public event IEditorView.ClearData ClearDataHandler;
         public event IEditorView.CancelDataChanges CancelDataChangesHandler;
         public event IEditorView.AcceptDataChanges AcceptDataChangesHandler;
-        public event IHousingEditorView.ConfigChamfer ConfigChamferHandler;
-        public event IHousingEditorView.ConfigHoles ConfigHolesHandler;
 
         public bool IsValid
         {
@@ -21,29 +19,6 @@ namespace Oil_level_glass.UI.Editors.Housing
             set
             {
                 btOk.Enabled = value;
-            }
-        }
-
-        public bool ScrewHoleCanBeConfigured
-        {
-            get
-            {
-                return btScrewHole.Enabled;
-            }
-            set
-            {
-                btScrewHole.Enabled = value;
-            }
-        }
-        public bool ChamferCanBeConfigured
-        {
-            get
-            {
-                return btChamfer.Enabled;
-            }
-            set
-            {
-                btChamfer.Enabled = value;
             }
         }
 
@@ -191,24 +166,6 @@ namespace Oil_level_glass.UI.Editors.Housing
         {
             if (DataChangingHandler != null)
                 DataChangingHandler();
-        }
-
-        private void btChamfer_Click(object sender, EventArgs e)
-        {
-            if (ConfigChamferHandler != null)
-            {
-                ConfigChamferHandler();
-                AcceptDataChangesHandler();
-            }
-        }
-
-        private void btScrewHole_Click(object sender, EventArgs e)
-        {
-            if (ConfigHolesHandler != null)
-            {
-                ConfigHolesHandler();
-                AcceptDataChangesHandler();
-            }
         }
     }
 }

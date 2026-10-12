@@ -72,7 +72,7 @@ namespace Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d
         public void SetView(IWizard3dView view)
             => _wizardView = view;
 
-        public void SelectPart(string displayName)
+        public void SelectEntity(string displayName)
         {
             _selectedEntity = typeof(Wizard3dPresenter)
                 .GetFields(BindingFlags.NonPublic | BindingFlags.Instance)

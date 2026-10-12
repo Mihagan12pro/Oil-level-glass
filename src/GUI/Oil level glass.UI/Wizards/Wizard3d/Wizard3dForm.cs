@@ -1,7 +1,5 @@
 ﻿using Oil_level_glass.Presenters.Presenters.Wizards.Wizard3d;
 using Oil_level_glass.UI.Abstractions.Wizards.Wizard3d;
-using Oil_level_glass.UI.Editors.ModelProperties;
-using Oil_level_glass.UI.Forms.Controls;
 using Oil_level_glass.UI.Utils.Extensions;
 using Shared;
 
@@ -31,7 +29,7 @@ namespace Oil_level_glass.UI.Wizard3d
             _selectNodeCommand.SetAction(() =>
             {
                 if (tvParts.SelectedNode != null)
-                    _wizardPresenter.SelectPart(tvParts.SelectedNode.Text);
+                    _wizardPresenter.SelectEntity(tvParts.SelectedNode.Text);
             });
 
             tvParts.AfterSelect += TvParts_AfterSelect;
@@ -46,15 +44,6 @@ namespace Oil_level_glass.UI.Wizard3d
             var result = _wizardPresenter.CanBeConfigured;
 
             btConfigPart.Enabled = result.IsSuccess;
-
-            if (result.FailReason == Shared.Results.FailReason.TooEarlyForConfiguring)
-            {
-                ToolTip toolTip = new ToolTip();
-                toolTip.IsBalloon = true;
-
-                toolTip.ToolTipIcon = ToolTipIcon.Info;
-                toolTip.Show(result.ErrorMessage, btConfigPart, 0, -75, 800);
-            }
         }
 
         public void ShowView(object owner = null)
