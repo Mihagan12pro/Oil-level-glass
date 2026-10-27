@@ -56,48 +56,12 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
             _view.CancelDataChangesHandler += view_CancelDataChangesHandler;
             _view.DataChangingHandler += view_DataChangingHandler;
             _view.AcceptDataChangesHandler += view_AcceptDataChangesHandler;
-
-            _view.ConfigChamferHandler += view_ConfigChamferHandler;
-            _view.ConfigHolesHandler += view_ConfigHolesHandler;
         }
 
         private void view_AcceptDataChangesHandler()
         {
             Model.MainDiameter = Convert.ToDouble(_view.HousingMainDiameter);
             Model.MainHeight = Convert.ToDouble(_view.HousingMainHeight);
-
-            _view.ScrewHoleCanBeConfigured = true;
-            _view.ChamferCanBeConfigured = true;
-
-
-            _view.IsValid = _view.ScrewHoleCanBeConfigured;
-
-            if (Model.Hole.HasErrors)
-            {
-                Model.Hole.Diameter = Model.Hole.MaxDiameter;
-            }
-
-            if (Model.Chamfer.HasErrors)
-            {
-                Model.Chamfer.Side1 = Model.Chamfer.MaxSide1;
-                Model.Chamfer.Side2 = Model.Chamfer.MaxSide1;
-                Model.Chamfer.Angle = 45;
-            }
-        }
-
-        private void view_ConfigHolesHandler()
-        {
-            IHolesEditorPresenter editorPresenter = _serviceProvider.GetRequiredService<IHolesEditorPresenter>();
-            editorPresenter.Model = Model.Hole;
-            editorPresenter.Containter = Model;
-            editorPresenter.ActivateView();
-        }
-
-        private void view_ConfigChamferHandler()
-        {
-            IChamferEditorPresenter editorPresenter = _serviceProvider.GetRequiredService<IChamferEditorPresenter>();
-            editorPresenter.Model = Model.Chamfer;
-            editorPresenter.ActivateView();
         }
 
         private void view_DataChangingHandler()
@@ -107,12 +71,6 @@ namespace Oil_level_glass.Presenters.Editors.Presenters.Entities.Housing
                 double.TryParse(_view.HousingGlassSocketDiameter, out double d1) &&
                 double.TryParse(_view.HousingGlassSocketHeight, out double h1) &&
                 d >= d1 * 1.5 && h > h1;
-
-            if (!_view.IsValid)
-            {
-                _view.ScrewHoleCanBeConfigured = false;
-                _view.ChamferCanBeConfigured = false;
-            }
         }
 
         private void view_CancelDataChangesHandler()

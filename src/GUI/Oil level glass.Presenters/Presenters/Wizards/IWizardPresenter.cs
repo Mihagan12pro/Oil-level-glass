@@ -9,7 +9,7 @@ namespace Oil_level_glass.Presenters.Presenters.Wizards
     {
         void SetView(TView view);
 
-        void SelectPart(string displayName);
+        void SelectEntity(string displayName);
 
         void ConfigureSelectedPart();
 
